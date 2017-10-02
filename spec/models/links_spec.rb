@@ -32,12 +32,6 @@ describe 'Links' do
       expect(@instance).to be_instance_of(SwaggerClient::Links)
     end
   end
-  describe 'test attribute "parent"' do
-    it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
   describe 'test attribute "_self"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

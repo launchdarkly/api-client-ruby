@@ -35,7 +35,7 @@ describe 'WebhooksApi' do
   # unit tests for delete_webhook
   # Delete a webhook by ID
   # 
-  # @param webhook_id The webhook ID
+  # @param resource_id The resource ID
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'delete_webhook test' do
@@ -47,7 +47,7 @@ describe 'WebhooksApi' do
   # unit tests for get_webhook
   # Get a webhook by ID
   # 
-  # @param webhook_id The webhook ID
+  # @param resource_id The resource ID
   # @param [Hash] opts the optional parameters
   # @return [Webhook]
   describe 'get_webhook test' do
@@ -70,10 +70,10 @@ describe 'WebhooksApi' do
   # unit tests for patch_webhook
   # Modify a webhook by ID
   # 
-  # @param webhook_id The webhook ID
+  # @param resource_id The resource ID
   # @param patch_delta http://jsonpatch.com/
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [Webhook]
   describe 'patch_webhook test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -83,7 +83,7 @@ describe 'WebhooksApi' do
   # unit tests for post_webhook
   # Create a webhook
   # 
-  # @param webhook_post New webhook
+  # @param webhook_body New webhook
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'post_webhook test' do
