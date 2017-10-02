@@ -1,20 +1,20 @@
-# SwaggerClient::WebhooksApi
+# SwaggerClient::ProjectsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_webhook**](WebhooksApi.md#delete_webhook) | **DELETE** /webhooks/{resourceId} | Delete a webhook by ID
-[**get_webhook**](WebhooksApi.md#get_webhook) | **GET** /webhooks/{resourceId} | Get a webhook by ID
-[**get_webhooks**](WebhooksApi.md#get_webhooks) | **GET** /webhooks | Fetch a list of all webhooks
-[**patch_webhook**](WebhooksApi.md#patch_webhook) | **PATCH** /webhooks/{resourceId} | Modify a webhook by ID
-[**post_webhook**](WebhooksApi.md#post_webhook) | **POST** /webhooks | Create a webhook
+[**delete_project**](ProjectsApi.md#delete_project) | **DELETE** /projects/{projectKey} | Delete a project by ID
+[**get_project**](ProjectsApi.md#get_project) | **GET** /projects/{projectKey} | Get a project by key.
+[**get_projects**](ProjectsApi.md#get_projects) | **GET** /projects | Returns a list of all projects in the account.
+[**patch_project**](ProjectsApi.md#patch_project) | **PATCH** /projects/{projectKey} | Modify a project by ID
+[**post_project**](ProjectsApi.md#post_project) | **POST** /projects | Create a project
 
 
-# **delete_webhook**
-> delete_webhook(resource_id, )
+# **delete_project**
+> delete_project(project_key, )
 
-Delete a webhook by ID
+Delete a project by ID
 
 ### Example
 ```ruby
@@ -28,16 +28,16 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhooksApi.new
+api_instance = SwaggerClient::ProjectsApi.new
 
-resource_id = "resource_id_example" # String | The resource ID
+project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
 
 begin
-  #Delete a webhook by ID
-  api_instance.delete_webhook(resource_id, )
+  #Delete a project by ID
+  api_instance.delete_project(project_key, )
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling WebhooksApi->delete_webhook: #{e}"
+  puts "Exception when calling ProjectsApi->delete_project: #{e}"
 end
 ```
 
@@ -45,7 +45,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource_id** | **String**| The resource ID | 
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
 
 ### Return type
 
@@ -62,10 +62,10 @@ nil (empty response body)
 
 
 
-# **get_webhook**
-> Webhook get_webhook(resource_id, )
+# **get_project**
+> Project get_project(project_key, )
 
-Get a webhook by ID
+Get a project by key.
 
 ### Example
 ```ruby
@@ -79,17 +79,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhooksApi.new
+api_instance = SwaggerClient::ProjectsApi.new
 
-resource_id = "resource_id_example" # String | The resource ID
+project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
 
 begin
-  #Get a webhook by ID
-  result = api_instance.get_webhook(resource_id, )
+  #Get a project by key.
+  result = api_instance.get_project(project_key, )
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling WebhooksApi->get_webhook: #{e}"
+  puts "Exception when calling ProjectsApi->get_project: #{e}"
 end
 ```
 
@@ -97,11 +97,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource_id** | **String**| The resource ID | 
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
 
 ### Return type
 
-[**Webhook**](Webhook.md)
+[**Project**](Project.md)
 
 ### Authorization
 
@@ -114,10 +114,10 @@ Name | Type | Description  | Notes
 
 
 
-# **get_webhooks**
-> Webhooks get_webhooks
+# **get_projects**
+> Projects get_projects
 
-Fetch a list of all webhooks
+Returns a list of all projects in the account.
 
 ### Example
 ```ruby
@@ -131,14 +131,14 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhooksApi.new
+api_instance = SwaggerClient::ProjectsApi.new
 
 begin
-  #Fetch a list of all webhooks
-  result = api_instance.get_webhooks
+  #Returns a list of all projects in the account.
+  result = api_instance.get_projects
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling WebhooksApi->get_webhooks: #{e}"
+  puts "Exception when calling ProjectsApi->get_projects: #{e}"
 end
 ```
 
@@ -147,7 +147,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Webhooks**](Webhooks.md)
+[**Projects**](Projects.md)
 
 ### Authorization
 
@@ -160,10 +160,10 @@ This endpoint does not need any parameter.
 
 
 
-# **patch_webhook**
-> Webhook patch_webhook(resource_id, patch_delta)
+# **patch_project**
+> patch_project(project_key, patch_delta)
 
-Modify a webhook by ID
+Modify a project by ID
 
 ### Example
 ```ruby
@@ -177,19 +177,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhooksApi.new
+api_instance = SwaggerClient::ProjectsApi.new
 
-resource_id = "resource_id_example" # String | The resource ID
+project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
 patch_delta = [SwaggerClient::PatchDelta.new] # Array<PatchDelta> | http://jsonpatch.com/
 
 
 begin
-  #Modify a webhook by ID
-  result = api_instance.patch_webhook(resource_id, patch_delta)
-  p result
+  #Modify a project by ID
+  api_instance.patch_project(project_key, patch_delta)
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling WebhooksApi->patch_webhook: #{e}"
+  puts "Exception when calling ProjectsApi->patch_project: #{e}"
 end
 ```
 
@@ -197,12 +196,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource_id** | **String**| The resource ID | 
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **patch_delta** | [**Array&lt;PatchDelta&gt;**](PatchDelta.md)| http://jsonpatch.com/ | 
 
 ### Return type
 
-[**Webhook**](Webhook.md)
+nil (empty response body)
 
 ### Authorization
 
@@ -215,10 +214,10 @@ Name | Type | Description  | Notes
 
 
 
-# **post_webhook**
-> post_webhook(webhook_body)
+# **post_project**
+> post_project(project_body)
 
-Create a webhook
+Create a project
 
 ### Example
 ```ruby
@@ -232,16 +231,16 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhooksApi.new
+api_instance = SwaggerClient::ProjectsApi.new
 
-webhook_body = SwaggerClient::WebhookBody.new # WebhookBody | New webhook
+project_body = SwaggerClient::ProjectBody.new # ProjectBody | New project
 
 
 begin
-  #Create a webhook
-  api_instance.post_webhook(webhook_body)
+  #Create a project
+  api_instance.post_project(project_body)
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling WebhooksApi->post_webhook: #{e}"
+  puts "Exception when calling ProjectsApi->post_project: #{e}"
 end
 ```
 
@@ -249,7 +248,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhook_body** | [**WebhookBody**](WebhookBody.md)| New webhook | 
+ **project_body** | [**ProjectBody**](ProjectBody.md)| New project | 
 
 ### Return type
 

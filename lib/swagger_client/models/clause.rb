@@ -14,21 +14,33 @@ require 'date'
 
 module SwaggerClient
 
-  class Links
-    attr_accessor :_self
+  class Clause
+    attr_accessor :attribute
+
+    attr_accessor :op
+
+    attr_accessor :values
+
+    attr_accessor :negate
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_self' => :'self'
+        :'attribute' => :'attribute',
+        :'op' => :'op',
+        :'values' => :'values',
+        :'negate' => :'negate'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_self' => :'Link'
+        :'attribute' => :'String',
+        :'op' => :'String',
+        :'values' => :'Array<String>',
+        :'negate' => :'BOOLEAN'
       }
     end
 
@@ -40,8 +52,22 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'self')
-        self._self = attributes[:'self']
+      if attributes.has_key?(:'attribute')
+        self.attribute = attributes[:'attribute']
+      end
+
+      if attributes.has_key?(:'op')
+        self.op = attributes[:'op']
+      end
+
+      if attributes.has_key?(:'values')
+        if (value = attributes[:'values']).is_a?(Array)
+          self.values = value
+        end
+      end
+
+      if attributes.has_key?(:'negate')
+        self.negate = attributes[:'negate']
       end
 
     end
@@ -64,7 +90,10 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _self == o._self
+          attribute == o.attribute &&
+          op == o.op &&
+          values == o.values &&
+          negate == o.negate
     end
 
     # @see the `==` method
@@ -76,7 +105,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self].hash
+      [attribute, op, values, negate].hash
     end
 
     # Builds the object from hash

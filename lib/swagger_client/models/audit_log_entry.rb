@@ -14,21 +14,57 @@ require 'date'
 
 module SwaggerClient
 
-  class Links
-    attr_accessor :_self
+  class AuditLogEntry
+    attr_accessor :_links
+
+    attr_accessor :_id
+
+    attr_accessor :date
+
+    attr_accessor :kind
+
+    attr_accessor :name
+
+    attr_accessor :description
+
+    attr_accessor :member
+
+    attr_accessor :title_verb
+
+    attr_accessor :title
+
+    attr_accessor :target
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_self' => :'self'
+        :'_links' => :'_links',
+        :'_id' => :'_id',
+        :'date' => :'date',
+        :'kind' => :'kind',
+        :'name' => :'name',
+        :'description' => :'description',
+        :'member' => :'member',
+        :'title_verb' => :'titleVerb',
+        :'title' => :'title',
+        :'target' => :'target'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_self' => :'Link'
+        :'_links' => :'Links',
+        :'_id' => :'String',
+        :'date' => :'Float',
+        :'kind' => :'String',
+        :'name' => :'String',
+        :'description' => :'String',
+        :'member' => :'Member',
+        :'title_verb' => :'String',
+        :'title' => :'String',
+        :'target' => :'AuditLogEntryTarget'
       }
     end
 
@@ -40,8 +76,44 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'self')
-        self._self = attributes[:'self']
+      if attributes.has_key?(:'_links')
+        self._links = attributes[:'_links']
+      end
+
+      if attributes.has_key?(:'_id')
+        self._id = attributes[:'_id']
+      end
+
+      if attributes.has_key?(:'date')
+        self.date = attributes[:'date']
+      end
+
+      if attributes.has_key?(:'kind')
+        self.kind = attributes[:'kind']
+      end
+
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.has_key?(:'member')
+        self.member = attributes[:'member']
+      end
+
+      if attributes.has_key?(:'titleVerb')
+        self.title_verb = attributes[:'titleVerb']
+      end
+
+      if attributes.has_key?(:'title')
+        self.title = attributes[:'title']
+      end
+
+      if attributes.has_key?(:'target')
+        self.target = attributes[:'target']
       end
 
     end
@@ -64,7 +136,16 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _self == o._self
+          _links == o._links &&
+          _id == o._id &&
+          date == o.date &&
+          kind == o.kind &&
+          name == o.name &&
+          description == o.description &&
+          member == o.member &&
+          title_verb == o.title_verb &&
+          title == o.title &&
+          target == o.target
     end
 
     # @see the `==` method
@@ -76,7 +157,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self].hash
+      [_links, _id, date, kind, name, description, member, title_verb, title, target].hash
     end
 
     # Builds the object from hash

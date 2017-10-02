@@ -14,21 +14,29 @@ require 'date'
 
 module SwaggerClient
 
-  class Links
-    attr_accessor :_self
+  class Variation
+    attr_accessor :name
+
+    attr_accessor :description
+
+    attr_accessor :value
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_self' => :'self'
+        :'name' => :'name',
+        :'description' => :'description',
+        :'value' => :'value'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_self' => :'Link'
+        :'name' => :'String',
+        :'description' => :'String',
+        :'value' => :'Object'
       }
     end
 
@@ -40,8 +48,16 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'self')
-        self._self = attributes[:'self']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.has_key?(:'value')
+        self.value = attributes[:'value']
       end
 
     end
@@ -50,12 +66,17 @@ module SwaggerClient
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @value.nil?
+        invalid_properties.push("invalid value for 'value', value cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @value.nil?
       return true
     end
 
@@ -64,7 +85,9 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _self == o._self
+          name == o.name &&
+          description == o.description &&
+          value == o.value
     end
 
     # @see the `==` method
@@ -76,7 +99,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self].hash
+      [name, description, value].hash
     end
 
     # Builds the object from hash

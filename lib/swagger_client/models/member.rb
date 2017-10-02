@@ -14,21 +14,45 @@ require 'date'
 
 module SwaggerClient
 
-  class Links
-    attr_accessor :_self
+  class Member
+    attr_accessor :_links
+
+    attr_accessor :_id
+
+    attr_accessor :role
+
+    attr_accessor :email
+
+    attr_accessor :_pending_invite
+
+    attr_accessor :is_beta
+
+    attr_accessor :custom_roles
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_self' => :'self'
+        :'_links' => :'_links',
+        :'_id' => :'_id',
+        :'role' => :'role',
+        :'email' => :'email',
+        :'_pending_invite' => :'_pendingInvite',
+        :'is_beta' => :'isBeta',
+        :'custom_roles' => :'customRoles'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_self' => :'Link'
+        :'_links' => :'Links',
+        :'_id' => :'String',
+        :'role' => :'String',
+        :'email' => :'String',
+        :'_pending_invite' => :'BOOLEAN',
+        :'is_beta' => :'BOOLEAN',
+        :'custom_roles' => :'Array<String>'
       }
     end
 
@@ -40,8 +64,34 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'self')
-        self._self = attributes[:'self']
+      if attributes.has_key?(:'_links')
+        self._links = attributes[:'_links']
+      end
+
+      if attributes.has_key?(:'_id')
+        self._id = attributes[:'_id']
+      end
+
+      if attributes.has_key?(:'role')
+        self.role = attributes[:'role']
+      end
+
+      if attributes.has_key?(:'email')
+        self.email = attributes[:'email']
+      end
+
+      if attributes.has_key?(:'_pendingInvite')
+        self._pending_invite = attributes[:'_pendingInvite']
+      end
+
+      if attributes.has_key?(:'isBeta')
+        self.is_beta = attributes[:'isBeta']
+      end
+
+      if attributes.has_key?(:'customRoles')
+        if (value = attributes[:'customRoles']).is_a?(Array)
+          self.custom_roles = value
+        end
       end
 
     end
@@ -64,7 +114,13 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _self == o._self
+          _links == o._links &&
+          _id == o._id &&
+          role == o.role &&
+          email == o.email &&
+          _pending_invite == o._pending_invite &&
+          is_beta == o.is_beta &&
+          custom_roles == o.custom_roles
     end
 
     # @see the `==` method
@@ -76,7 +132,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self].hash
+      [_links, _id, role, email, _pending_invite, is_beta, custom_roles].hash
     end
 
     # Builds the object from hash

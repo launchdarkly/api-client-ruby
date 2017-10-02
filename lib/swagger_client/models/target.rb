@@ -14,21 +14,25 @@ require 'date'
 
 module SwaggerClient
 
-  class Links
-    attr_accessor :_self
+  class Target
+    attr_accessor :values
+
+    attr_accessor :variation
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_self' => :'self'
+        :'values' => :'values',
+        :'variation' => :'variation'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_self' => :'Link'
+        :'values' => :'Array<String>',
+        :'variation' => :'Integer'
       }
     end
 
@@ -40,8 +44,14 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'self')
-        self._self = attributes[:'self']
+      if attributes.has_key?(:'values')
+        if (value = attributes[:'values']).is_a?(Array)
+          self.values = value
+        end
+      end
+
+      if attributes.has_key?(:'variation')
+        self.variation = attributes[:'variation']
       end
 
     end
@@ -64,7 +74,8 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _self == o._self
+          values == o.values &&
+          variation == o.variation
     end
 
     # @see the `==` method
@@ -76,7 +87,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self].hash
+      [values, variation].hash
     end
 
     # Builds the object from hash

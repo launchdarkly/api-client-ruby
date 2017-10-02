@@ -14,21 +14,47 @@ require 'date'
 
 module SwaggerClient
 
-  class Links
-    attr_accessor :_self
+  class FeatureFlagBody
+    # A human-friendly name for the feature flag. Remember to note if this flag is intended to be temporary or permanent.
+    attr_accessor :name
+
+    # A unique key that will be used to reference the flag in your code
+    attr_accessor :key
+
+    # An array of possible variations for the flag.
+    attr_accessor :variations
+
+    # Whether or not the flag is a temporary flag
+    attr_accessor :temporary
+
+    # Tags for the feature flag
+    attr_accessor :tags
+
+    # Whether or not this flag should be made available to the client-side JavaScript SDK
+    attr_accessor :include_in_snippet
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_self' => :'self'
+        :'name' => :'name',
+        :'key' => :'key',
+        :'variations' => :'variations',
+        :'temporary' => :'temporary',
+        :'tags' => :'tags',
+        :'include_in_snippet' => :'includeInSnippet'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_self' => :'Link'
+        :'name' => :'String',
+        :'key' => :'String',
+        :'variations' => :'Array<Variation>',
+        :'temporary' => :'BOOLEAN',
+        :'tags' => :'Array<String>',
+        :'include_in_snippet' => :'BOOLEAN'
       }
     end
 
@@ -40,8 +66,32 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'self')
-        self._self = attributes[:'self']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'key')
+        self.key = attributes[:'key']
+      end
+
+      if attributes.has_key?(:'variations')
+        if (value = attributes[:'variations']).is_a?(Array)
+          self.variations = value
+        end
+      end
+
+      if attributes.has_key?(:'temporary')
+        self.temporary = attributes[:'temporary']
+      end
+
+      if attributes.has_key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
+      end
+
+      if attributes.has_key?(:'includeInSnippet')
+        self.include_in_snippet = attributes[:'includeInSnippet']
       end
 
     end
@@ -50,12 +100,27 @@ module SwaggerClient
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @name.nil?
+        invalid_properties.push("invalid value for 'name', name cannot be nil.")
+      end
+
+      if @key.nil?
+        invalid_properties.push("invalid value for 'key', key cannot be nil.")
+      end
+
+      if @variations.nil?
+        invalid_properties.push("invalid value for 'variations', variations cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @name.nil?
+      return false if @key.nil?
+      return false if @variations.nil?
       return true
     end
 
@@ -64,7 +129,12 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _self == o._self
+          name == o.name &&
+          key == o.key &&
+          variations == o.variations &&
+          temporary == o.temporary &&
+          tags == o.tags &&
+          include_in_snippet == o.include_in_snippet
     end
 
     # @see the `==` method
@@ -76,7 +146,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self].hash
+      [name, key, variations, temporary, tags, include_in_snippet].hash
     end
 
     # Builds the object from hash

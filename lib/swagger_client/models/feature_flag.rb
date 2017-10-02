@@ -14,21 +14,65 @@ require 'date'
 
 module SwaggerClient
 
-  class Links
-    attr_accessor :_self
+  class FeatureFlag
+    attr_accessor :key
+
+    attr_accessor :name
+
+    attr_accessor :kind
+
+    attr_accessor :creation_date
+
+    attr_accessor :include_in_snippet
+
+    attr_accessor :temporary
+
+    attr_accessor :maintainer_id
+
+    attr_accessor :tags
+
+    attr_accessor :variations
+
+    attr_accessor :_links
+
+    attr_accessor :_maintainer
+
+    attr_accessor :environments
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_self' => :'self'
+        :'key' => :'key',
+        :'name' => :'name',
+        :'kind' => :'kind',
+        :'creation_date' => :'creationDate',
+        :'include_in_snippet' => :'includeInSnippet',
+        :'temporary' => :'temporary',
+        :'maintainer_id' => :'maintainerId',
+        :'tags' => :'tags',
+        :'variations' => :'variations',
+        :'_links' => :'_links',
+        :'_maintainer' => :'_maintainer',
+        :'environments' => :'environments'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_self' => :'Link'
+        :'key' => :'String',
+        :'name' => :'String',
+        :'kind' => :'String',
+        :'creation_date' => :'Float',
+        :'include_in_snippet' => :'BOOLEAN',
+        :'temporary' => :'BOOLEAN',
+        :'maintainer_id' => :'String',
+        :'tags' => :'Array<String>',
+        :'variations' => :'Array<Variation>',
+        :'_links' => :'Links',
+        :'_maintainer' => :'Member',
+        :'environments' => :'Hash<String, FeatureFlagConfig>'
       }
     end
 
@@ -40,8 +84,58 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'self')
-        self._self = attributes[:'self']
+      if attributes.has_key?(:'key')
+        self.key = attributes[:'key']
+      end
+
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'kind')
+        self.kind = attributes[:'kind']
+      end
+
+      if attributes.has_key?(:'creationDate')
+        self.creation_date = attributes[:'creationDate']
+      end
+
+      if attributes.has_key?(:'includeInSnippet')
+        self.include_in_snippet = attributes[:'includeInSnippet']
+      end
+
+      if attributes.has_key?(:'temporary')
+        self.temporary = attributes[:'temporary']
+      end
+
+      if attributes.has_key?(:'maintainerId')
+        self.maintainer_id = attributes[:'maintainerId']
+      end
+
+      if attributes.has_key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
+      end
+
+      if attributes.has_key?(:'variations')
+        if (value = attributes[:'variations']).is_a?(Array)
+          self.variations = value
+        end
+      end
+
+      if attributes.has_key?(:'_links')
+        self._links = attributes[:'_links']
+      end
+
+      if attributes.has_key?(:'_maintainer')
+        self._maintainer = attributes[:'_maintainer']
+      end
+
+      if attributes.has_key?(:'environments')
+        if (value = attributes[:'environments']).is_a?(Array)
+          self.environments = value
+        end
       end
 
     end
@@ -64,7 +158,18 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _self == o._self
+          key == o.key &&
+          name == o.name &&
+          kind == o.kind &&
+          creation_date == o.creation_date &&
+          include_in_snippet == o.include_in_snippet &&
+          temporary == o.temporary &&
+          maintainer_id == o.maintainer_id &&
+          tags == o.tags &&
+          variations == o.variations &&
+          _links == o._links &&
+          _maintainer == o._maintainer &&
+          environments == o.environments
     end
 
     # @see the `==` method
@@ -76,7 +181,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self].hash
+      [key, name, kind, creation_date, include_in_snippet, temporary, maintainer_id, tags, variations, _links, _maintainer, environments].hash
     end
 
     # Builds the object from hash

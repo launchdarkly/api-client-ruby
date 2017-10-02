@@ -1,0 +1,251 @@
+# SwaggerClient::UsersApi
+
+All URIs are relative to *https://app.launchdarkly.com/api/v2*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**delete_user**](UsersApi.md#delete_user) | **DELETE** /users/{projectKey}/{environmentKey}/{userKey} | Delete a user by ID
+[**get_search_users**](UsersApi.md#get_search_users) | **GET** /user-search/{projectKey}/{environmentKey} | Search users in LaunchDarkly based on their last active date, or a search query.
+[**get_user**](UsersApi.md#get_user) | **GET** /users/{projectKey}/{environmentKey}/{userKey} | Get a user by key.
+[**get_users**](UsersApi.md#get_users) | **GET** /users/{projectKey}/{environmentKey} | List all users in the environment.
+
+
+# **delete_user**
+> delete_user(project_key, environment_key, user_key, )
+
+Delete a user by ID
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: Token
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::UsersApi.new
+
+project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+
+environment_key = "environment_key_example" # String | The environment key
+
+user_key = "user_key_example" # String | The user's key
+
+
+begin
+  #Delete a user by ID
+  api_instance.delete_user(project_key, environment_key, user_key, )
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling UsersApi->delete_user: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environment_key** | **String**| The environment key | 
+ **user_key** | **String**| The user&#39;s key | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_search_users**
+> Users get_search_users(project_key, environment_key, , opts)
+
+Search users in LaunchDarkly based on their last active date, or a search query.
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: Token
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::UsersApi.new
+
+project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+
+environment_key = "environment_key_example" # String | The environment key
+
+opts = { 
+  q: "q_example", # String | Search query
+  limit: 3.4, # Float | Pagination limit
+  offset: 3.4, # Float | Specifies the first item to return in the collection
+  after: 3.4 # Float | A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag
+}
+
+begin
+  #Search users in LaunchDarkly based on their last active date, or a search query.
+  result = api_instance.get_search_users(project_key, environment_key, , opts)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling UsersApi->get_search_users: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environment_key** | **String**| The environment key | 
+ **q** | **String**| Search query | [optional] 
+ **limit** | **Float**| Pagination limit | [optional] 
+ **offset** | **Float**| Specifies the first item to return in the collection | [optional] 
+ **after** | **Float**| A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag | [optional] 
+
+### Return type
+
+[**Users**](Users.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_user**
+> User get_user(project_key, environment_key, user_key, )
+
+Get a user by key.
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: Token
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::UsersApi.new
+
+project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+
+environment_key = "environment_key_example" # String | The environment key
+
+user_key = "user_key_example" # String | The user's key
+
+
+begin
+  #Get a user by key.
+  result = api_instance.get_user(project_key, environment_key, user_key, )
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling UsersApi->get_user: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environment_key** | **String**| The environment key | 
+ **user_key** | **String**| The user&#39;s key | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_users**
+> Users get_users(project_key, environment_key, , opts)
+
+List all users in the environment.
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: Token
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::UsersApi.new
+
+project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+
+environment_key = "environment_key_example" # String | The environment key
+
+opts = { 
+  limit: 3.4, # Float | Pagination limit
+}
+
+begin
+  #List all users in the environment.
+  result = api_instance.get_users(project_key, environment_key, , opts)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling UsersApi->get_users: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environment_key** | **String**| The environment key | 
+ **limit** | **Float**| Pagination limit | [optional] 
+
+### Return type
+
+[**Users**](Users.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+

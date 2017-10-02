@@ -14,21 +14,29 @@ require 'date'
 
 module SwaggerClient
 
-  class Links
-    attr_accessor :_self
+  class Users
+    attr_accessor :_links
+
+    attr_accessor :total_count
+
+    attr_accessor :items
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_self' => :'self'
+        :'_links' => :'_links',
+        :'total_count' => :'totalCount',
+        :'items' => :'items'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_self' => :'Link'
+        :'_links' => :'Links',
+        :'total_count' => :'Float',
+        :'items' => :'Array<User>'
       }
     end
 
@@ -40,8 +48,18 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'self')
-        self._self = attributes[:'self']
+      if attributes.has_key?(:'_links')
+        self._links = attributes[:'_links']
+      end
+
+      if attributes.has_key?(:'totalCount')
+        self.total_count = attributes[:'totalCount']
+      end
+
+      if attributes.has_key?(:'items')
+        if (value = attributes[:'items']).is_a?(Array)
+          self.items = value
+        end
       end
 
     end
@@ -64,7 +82,9 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _self == o._self
+          _links == o._links &&
+          total_count == o.total_count &&
+          items == o.items
     end
 
     # @see the `==` method
@@ -76,7 +96,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self].hash
+      [_links, total_count, items].hash
     end
 
     # Builds the object from hash

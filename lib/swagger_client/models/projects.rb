@@ -14,21 +14,37 @@ require 'date'
 
 module SwaggerClient
 
-  class Links
-    attr_accessor :_self
+  class Projects
+    attr_accessor :_links
+
+    attr_accessor :_id
+
+    attr_accessor :key
+
+    attr_accessor :name
+
+    attr_accessor :items
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_self' => :'self'
+        :'_links' => :'_links',
+        :'_id' => :'_id',
+        :'key' => :'key',
+        :'name' => :'name',
+        :'items' => :'items'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_self' => :'Link'
+        :'_links' => :'Links',
+        :'_id' => :'String',
+        :'key' => :'String',
+        :'name' => :'String',
+        :'items' => :'Array<Project>'
       }
     end
 
@@ -40,8 +56,26 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'self')
-        self._self = attributes[:'self']
+      if attributes.has_key?(:'_links')
+        self._links = attributes[:'_links']
+      end
+
+      if attributes.has_key?(:'_id')
+        self._id = attributes[:'_id']
+      end
+
+      if attributes.has_key?(:'key')
+        self.key = attributes[:'key']
+      end
+
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'items')
+        if (value = attributes[:'items']).is_a?(Array)
+          self.items = value
+        end
       end
 
     end
@@ -64,7 +98,11 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _self == o._self
+          _links == o._links &&
+          _id == o._id &&
+          key == o.key &&
+          name == o.name &&
+          items == o.items
     end
 
     # @see the `==` method
@@ -76,7 +114,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self].hash
+      [_links, _id, key, name, items].hash
     end
 
     # Builds the object from hash

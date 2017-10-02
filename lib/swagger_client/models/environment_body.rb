@@ -14,21 +14,34 @@ require 'date'
 
 module SwaggerClient
 
-  class Links
-    attr_accessor :_self
+  class EnvironmentBody
+    attr_accessor :name
+
+    attr_accessor :key
+
+    # A color swatch (as an RGB hex value with no leading '#', e.g. C8C8C8)
+    attr_accessor :color
+
+    attr_accessor :default_ttl
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_self' => :'self'
+        :'name' => :'name',
+        :'key' => :'key',
+        :'color' => :'color',
+        :'default_ttl' => :'defaultTtl'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_self' => :'Link'
+        :'name' => :'String',
+        :'key' => :'String',
+        :'color' => :'String',
+        :'default_ttl' => :'Float'
       }
     end
 
@@ -40,8 +53,20 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'self')
-        self._self = attributes[:'self']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'key')
+        self.key = attributes[:'key']
+      end
+
+      if attributes.has_key?(:'color')
+        self.color = attributes[:'color']
+      end
+
+      if attributes.has_key?(:'defaultTtl')
+        self.default_ttl = attributes[:'defaultTtl']
       end
 
     end
@@ -50,12 +75,27 @@ module SwaggerClient
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @name.nil?
+        invalid_properties.push("invalid value for 'name', name cannot be nil.")
+      end
+
+      if @key.nil?
+        invalid_properties.push("invalid value for 'key', key cannot be nil.")
+      end
+
+      if @color.nil?
+        invalid_properties.push("invalid value for 'color', color cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @name.nil?
+      return false if @key.nil?
+      return false if @color.nil?
       return true
     end
 
@@ -64,7 +104,10 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _self == o._self
+          name == o.name &&
+          key == o.key &&
+          color == o.color &&
+          default_ttl == o.default_ttl
     end
 
     # @see the `==` method
@@ -76,7 +119,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self].hash
+      [name, key, color, default_ttl].hash
     end
 
     # Builds the object from hash

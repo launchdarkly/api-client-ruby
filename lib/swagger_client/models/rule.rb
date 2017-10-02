@@ -14,21 +14,29 @@ require 'date'
 
 module SwaggerClient
 
-  class Links
-    attr_accessor :_self
+  class Rule
+    attr_accessor :variation
+
+    attr_accessor :rollout
+
+    attr_accessor :clauses
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_self' => :'self'
+        :'variation' => :'variation',
+        :'rollout' => :'rollout',
+        :'clauses' => :'clauses'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_self' => :'Link'
+        :'variation' => :'Integer',
+        :'rollout' => :'Rollout',
+        :'clauses' => :'Array<Clause>'
       }
     end
 
@@ -40,8 +48,18 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'self')
-        self._self = attributes[:'self']
+      if attributes.has_key?(:'variation')
+        self.variation = attributes[:'variation']
+      end
+
+      if attributes.has_key?(:'rollout')
+        self.rollout = attributes[:'rollout']
+      end
+
+      if attributes.has_key?(:'clauses')
+        if (value = attributes[:'clauses']).is_a?(Array)
+          self.clauses = value
+        end
       end
 
     end
@@ -64,7 +82,9 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _self == o._self
+          variation == o.variation &&
+          rollout == o.rollout &&
+          clauses == o.clauses
     end
 
     # @see the `==` method
@@ -76,7 +96,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self].hash
+      [variation, rollout, clauses].hash
     end
 
     # Builds the object from hash

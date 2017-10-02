@@ -63,14 +63,14 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::RootApi.new
+api_instance = SwaggerClient::AuditLogApi.new
 
 begin
-  #Get the root resource
-  result = api_instance.get_root
+  #Fetch a list of all webhooks
+  result = api_instance.get_audit_log_entries
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling RootApi->get_root: #{e}"
+  puts "Exception when calling AuditLogApi->get_audit_log_entries: #{e}"
 end
 
 ```
@@ -81,22 +81,74 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*SwaggerClient::AuditLogApi* | [**get_audit_log_entries**](docs/AuditLogApi.md#get_audit_log_entries) | **GET** /auditlog | Fetch a list of all webhooks
+*SwaggerClient::AuditLogApi* | [**get_audit_log_entry**](docs/AuditLogApi.md#get_audit_log_entry) | **GET** /auditlog/{resourceId} | Get a webhook by ID
+*SwaggerClient::EnvironmentsApi* | [**delete_environment**](docs/EnvironmentsApi.md#delete_environment) | **DELETE** /environments/{projectKey}/{environmentKey} | Delete an environment by ID
+*SwaggerClient::EnvironmentsApi* | [**get_environment**](docs/EnvironmentsApi.md#get_environment) | **GET** /environments/{projectKey}/{environmentKey} | Get an environment by key.
+*SwaggerClient::EnvironmentsApi* | [**patch_environment**](docs/EnvironmentsApi.md#patch_environment) | **PATCH** /environments/{projectKey}/{environmentKey} | Modify an environment by ID
+*SwaggerClient::EnvironmentsApi* | [**post_environment**](docs/EnvironmentsApi.md#post_environment) | **POST** /environments/{projectKey} | Create an environment
+*SwaggerClient::FlagsApi* | [**delete_feature_flag**](docs/FlagsApi.md#delete_feature_flag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag by ID
+*SwaggerClient::FlagsApi* | [**get_feature_flag**](docs/FlagsApi.md#get_feature_flag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
+*SwaggerClient::FlagsApi* | [**get_feature_flag_status**](docs/FlagsApi.md#get_feature_flag_status) | **GET** /flag-statuses/{projectKey}/{environmentKey} | Get a list of statuses for all feature flags
+*SwaggerClient::FlagsApi* | [**get_feature_flag_statuses**](docs/FlagsApi.md#get_feature_flag_statuses) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get a list of statuses for all feature flags
+*SwaggerClient::FlagsApi* | [**get_feature_flags**](docs/FlagsApi.md#get_feature_flags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
+*SwaggerClient::FlagsApi* | [**patch_feature_flag**](docs/FlagsApi.md#patch_feature_flag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Modify a feature flag by ID
+*SwaggerClient::FlagsApi* | [**post_feature_flag**](docs/FlagsApi.md#post_feature_flag) | **POST** /flags/{projectKey} | Create a feature flag
+*SwaggerClient::ProjectsApi* | [**delete_project**](docs/ProjectsApi.md#delete_project) | **DELETE** /projects/{projectKey} | Delete a project by ID
+*SwaggerClient::ProjectsApi* | [**get_project**](docs/ProjectsApi.md#get_project) | **GET** /projects/{projectKey} | Get a project by key.
+*SwaggerClient::ProjectsApi* | [**get_projects**](docs/ProjectsApi.md#get_projects) | **GET** /projects | Returns a list of all projects in the account.
+*SwaggerClient::ProjectsApi* | [**patch_project**](docs/ProjectsApi.md#patch_project) | **PATCH** /projects/{projectKey} | Modify a project by ID
+*SwaggerClient::ProjectsApi* | [**post_project**](docs/ProjectsApi.md#post_project) | **POST** /projects | Create a project
 *SwaggerClient::RootApi* | [**get_root**](docs/RootApi.md#get_root) | **GET** / | Get the root resource
-*SwaggerClient::WebhooksApi* | [**delete_webhook**](docs/WebhooksApi.md#delete_webhook) | **DELETE** /webhooks/{webhookId} | Delete a webhook by ID
-*SwaggerClient::WebhooksApi* | [**get_webhook**](docs/WebhooksApi.md#get_webhook) | **GET** /webhooks/{webhookId} | Get a webhook by ID
+*SwaggerClient::UserSettingsApi* | [**get_user_flag_setting**](docs/UserSettingsApi.md#get_user_flag_setting) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Get a user by key.
+*SwaggerClient::UserSettingsApi* | [**get_user_flag_settings**](docs/UserSettingsApi.md#get_user_flag_settings) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags | Lists the current flag settings for a given user.
+*SwaggerClient::UserSettingsApi* | [**put_flag_setting**](docs/UserSettingsApi.md#put_flag_setting) | **PUT** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Specifically enable or disable a feature flag for a user based on their key.
+*SwaggerClient::UsersApi* | [**delete_user**](docs/UsersApi.md#delete_user) | **DELETE** /users/{projectKey}/{environmentKey}/{userKey} | Delete a user by ID
+*SwaggerClient::UsersApi* | [**get_search_users**](docs/UsersApi.md#get_search_users) | **GET** /user-search/{projectKey}/{environmentKey} | Search users in LaunchDarkly based on their last active date, or a search query.
+*SwaggerClient::UsersApi* | [**get_user**](docs/UsersApi.md#get_user) | **GET** /users/{projectKey}/{environmentKey}/{userKey} | Get a user by key.
+*SwaggerClient::UsersApi* | [**get_users**](docs/UsersApi.md#get_users) | **GET** /users/{projectKey}/{environmentKey} | List all users in the environment.
+*SwaggerClient::WebhooksApi* | [**delete_webhook**](docs/WebhooksApi.md#delete_webhook) | **DELETE** /webhooks/{resourceId} | Delete a webhook by ID
+*SwaggerClient::WebhooksApi* | [**get_webhook**](docs/WebhooksApi.md#get_webhook) | **GET** /webhooks/{resourceId} | Get a webhook by ID
 *SwaggerClient::WebhooksApi* | [**get_webhooks**](docs/WebhooksApi.md#get_webhooks) | **GET** /webhooks | Fetch a list of all webhooks
-*SwaggerClient::WebhooksApi* | [**patch_webhook**](docs/WebhooksApi.md#patch_webhook) | **PATCH** /webhooks/{webhookId} | Modify a webhook by ID
+*SwaggerClient::WebhooksApi* | [**patch_webhook**](docs/WebhooksApi.md#patch_webhook) | **PATCH** /webhooks/{resourceId} | Modify a webhook by ID
 *SwaggerClient::WebhooksApi* | [**post_webhook**](docs/WebhooksApi.md#post_webhook) | **POST** /webhooks | Create a webhook
 
 
 ## Documentation for Models
 
+ - [SwaggerClient::AuditLogEntries](docs/AuditLogEntries.md)
+ - [SwaggerClient::AuditLogEntry](docs/AuditLogEntry.md)
+ - [SwaggerClient::AuditLogEntryTarget](docs/AuditLogEntryTarget.md)
+ - [SwaggerClient::Clause](docs/Clause.md)
+ - [SwaggerClient::Environment](docs/Environment.md)
+ - [SwaggerClient::EnvironmentBody](docs/EnvironmentBody.md)
+ - [SwaggerClient::FeatureFlag](docs/FeatureFlag.md)
+ - [SwaggerClient::FeatureFlagBody](docs/FeatureFlagBody.md)
+ - [SwaggerClient::FeatureFlagConfig](docs/FeatureFlagConfig.md)
+ - [SwaggerClient::FeatureFlagConfigFallthrough](docs/FeatureFlagConfigFallthrough.md)
+ - [SwaggerClient::FeatureFlagStatus](docs/FeatureFlagStatus.md)
+ - [SwaggerClient::FeatureFlagStatuses](docs/FeatureFlagStatuses.md)
+ - [SwaggerClient::FeatureFlags](docs/FeatureFlags.md)
  - [SwaggerClient::Link](docs/Link.md)
  - [SwaggerClient::Links](docs/Links.md)
+ - [SwaggerClient::Member](docs/Member.md)
  - [SwaggerClient::PatchDelta](docs/PatchDelta.md)
+ - [SwaggerClient::Project](docs/Project.md)
+ - [SwaggerClient::ProjectBody](docs/ProjectBody.md)
+ - [SwaggerClient::Projects](docs/Projects.md)
+ - [SwaggerClient::Rollout](docs/Rollout.md)
+ - [SwaggerClient::Rule](docs/Rule.md)
+ - [SwaggerClient::Target](docs/Target.md)
+ - [SwaggerClient::User](docs/User.md)
+ - [SwaggerClient::UserFlagSetting](docs/UserFlagSetting.md)
+ - [SwaggerClient::UserFlagSettings](docs/UserFlagSettings.md)
+ - [SwaggerClient::UserSettingsBody](docs/UserSettingsBody.md)
+ - [SwaggerClient::Users](docs/Users.md)
+ - [SwaggerClient::Variation](docs/Variation.md)
  - [SwaggerClient::Webhook](docs/Webhook.md)
- - [SwaggerClient::WebhookPost](docs/WebhookPost.md)
+ - [SwaggerClient::WebhookBody](docs/WebhookBody.md)
  - [SwaggerClient::Webhooks](docs/Webhooks.md)
+ - [SwaggerClient::WeightedVariation](docs/WeightedVariation.md)
 
 
 ## Documentation for Authorization

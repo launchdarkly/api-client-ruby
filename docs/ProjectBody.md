@@ -1,8 +1,9 @@
-# SwaggerClient::Links
+# SwaggerClient::ProjectBody
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_self** | [**Link**](Link.md) |  | [optional] 
+**name** | **String** |  | 
+**key** | **String** |  | 
 
 

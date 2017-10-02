@@ -14,21 +14,33 @@ require 'date'
 
 module SwaggerClient
 
-  class Links
-    attr_accessor :_self
+  class WebhookBody
+    attr_accessor :url
+
+    attr_accessor :secret
+
+    attr_accessor :sign
+
+    attr_accessor :on
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_self' => :'self'
+        :'url' => :'url',
+        :'secret' => :'secret',
+        :'sign' => :'sign',
+        :'on' => :'on'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_self' => :'Link'
+        :'url' => :'String',
+        :'secret' => :'String',
+        :'sign' => :'BOOLEAN',
+        :'on' => :'BOOLEAN'
       }
     end
 
@@ -40,8 +52,20 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'self')
-        self._self = attributes[:'self']
+      if attributes.has_key?(:'url')
+        self.url = attributes[:'url']
+      end
+
+      if attributes.has_key?(:'secret')
+        self.secret = attributes[:'secret']
+      end
+
+      if attributes.has_key?(:'sign')
+        self.sign = attributes[:'sign']
+      end
+
+      if attributes.has_key?(:'on')
+        self.on = attributes[:'on']
       end
 
     end
@@ -50,12 +74,27 @@ module SwaggerClient
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @url.nil?
+        invalid_properties.push("invalid value for 'url', url cannot be nil.")
+      end
+
+      if @sign.nil?
+        invalid_properties.push("invalid value for 'sign', sign cannot be nil.")
+      end
+
+      if @on.nil?
+        invalid_properties.push("invalid value for 'on', on cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @url.nil?
+      return false if @sign.nil?
+      return false if @on.nil?
       return true
     end
 
@@ -64,7 +103,10 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _self == o._self
+          url == o.url &&
+          secret == o.secret &&
+          sign == o.sign &&
+          on == o.on
     end
 
     # @see the `==` method
@@ -76,7 +118,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self].hash
+      [url, secret, sign, on].hash
     end
 
     # Builds the object from hash

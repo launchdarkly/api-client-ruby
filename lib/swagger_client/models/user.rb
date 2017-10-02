@@ -14,21 +14,37 @@ require 'date'
 
 module SwaggerClient
 
-  class Links
-    attr_accessor :_self
+  class User
+    attr_accessor :last_ping
+
+    attr_accessor :environment_id
+
+    attr_accessor :owner_id
+
+    attr_accessor :user
+
+    attr_accessor :avatar
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_self' => :'self'
+        :'last_ping' => :'lastPing',
+        :'environment_id' => :'environmentId',
+        :'owner_id' => :'ownerId',
+        :'user' => :'user',
+        :'avatar' => :'avatar'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_self' => :'Link'
+        :'last_ping' => :'String',
+        :'environment_id' => :'String',
+        :'owner_id' => :'String',
+        :'user' => :'Object',
+        :'avatar' => :'String'
       }
     end
 
@@ -40,8 +56,24 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'self')
-        self._self = attributes[:'self']
+      if attributes.has_key?(:'lastPing')
+        self.last_ping = attributes[:'lastPing']
+      end
+
+      if attributes.has_key?(:'environmentId')
+        self.environment_id = attributes[:'environmentId']
+      end
+
+      if attributes.has_key?(:'ownerId')
+        self.owner_id = attributes[:'ownerId']
+      end
+
+      if attributes.has_key?(:'user')
+        self.user = attributes[:'user']
+      end
+
+      if attributes.has_key?(:'avatar')
+        self.avatar = attributes[:'avatar']
       end
 
     end
@@ -64,7 +96,11 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _self == o._self
+          last_ping == o.last_ping &&
+          environment_id == o.environment_id &&
+          owner_id == o.owner_id &&
+          user == o.user &&
+          avatar == o.avatar
     end
 
     # @see the `==` method
@@ -76,7 +112,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self].hash
+      [last_ping, environment_id, owner_id, user, avatar].hash
     end
 
     # Builds the object from hash
