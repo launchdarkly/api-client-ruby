@@ -45,7 +45,7 @@ describe 'ProjectsApi' do
   end
 
   # unit tests for get_project
-  # Get a project by key.
+  # Fetch a single project by key.
   # 
   # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
   # @param [Hash] opts the optional parameters

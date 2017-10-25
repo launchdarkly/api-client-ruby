@@ -33,7 +33,7 @@ describe 'AuditLogApi' do
   end
 
   # unit tests for get_audit_log_entries
-  # Fetch a list of all webhooks
+  # Fetch a list of all audit log entries
   # 
   # @param [Hash] opts the optional parameters
   # @return [AuditLogEntries]
@@ -44,7 +44,7 @@ describe 'AuditLogApi' do
   end
 
   # unit tests for get_audit_log_entry
-  # Get a webhook by ID
+  # Get an audit log entry by ID
   # 
   # @param resource_id The resource ID
   # @param [Hash] opts the optional parameters

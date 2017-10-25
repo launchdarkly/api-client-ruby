@@ -115,7 +115,7 @@ describe 'FlagsApi' do
   end
 
   # unit tests for post_feature_flag
-  # Create a feature flag
+  # Creates a new feature flag.
   # 
   # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
   # @param feature_flag_body Create a new feature flag

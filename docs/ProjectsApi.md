@@ -5,7 +5,7 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_project**](ProjectsApi.md#delete_project) | **DELETE** /projects/{projectKey} | Delete a project by ID
-[**get_project**](ProjectsApi.md#get_project) | **GET** /projects/{projectKey} | Get a project by key.
+[**get_project**](ProjectsApi.md#get_project) | **GET** /projects/{projectKey} | Fetch a single project by key.
 [**get_projects**](ProjectsApi.md#get_projects) | **GET** /projects | Returns a list of all projects in the account.
 [**patch_project**](ProjectsApi.md#patch_project) | **PATCH** /projects/{projectKey} | Modify a project by ID
 [**post_project**](ProjectsApi.md#post_project) | **POST** /projects | Create a project
@@ -65,7 +65,7 @@ nil (empty response body)
 # **get_project**
 > Project get_project(project_key, )
 
-Get a project by key.
+Fetch a single project by key.
 
 ### Example
 ```ruby
@@ -85,7 +85,7 @@ project_key = "project_key_example" # String | The project key, used to tie the 
 
 
 begin
-  #Get a project by key.
+  #Fetch a single project by key.
   result = api_instance.get_project(project_key, )
   p result
 rescue SwaggerClient::ApiError => e

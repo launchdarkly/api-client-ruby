@@ -20,7 +20,7 @@ module SwaggerClient
       @api_client = api_client
     end
 
-    # Fetch a list of all webhooks
+    # Fetch a list of all audit log entries
     # 
     # @param [Hash] opts the optional parameters
     # @return [AuditLogEntries]
@@ -29,7 +29,7 @@ module SwaggerClient
       return data
     end
 
-    # Fetch a list of all webhooks
+    # Fetch a list of all audit log entries
     # 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AuditLogEntries, Fixnum, Hash)>] AuditLogEntries data, response status code and response headers
@@ -69,7 +69,7 @@ module SwaggerClient
       return data, status_code, headers
     end
 
-    # Get a webhook by ID
+    # Get an audit log entry by ID
     # 
     # @param resource_id The resource ID
     # @param [Hash] opts the optional parameters
@@ -79,7 +79,7 @@ module SwaggerClient
       return data
     end
 
-    # Get a webhook by ID
+    # Get an audit log entry by ID
     # 
     # @param resource_id The resource ID
     # @param [Hash] opts the optional parameters

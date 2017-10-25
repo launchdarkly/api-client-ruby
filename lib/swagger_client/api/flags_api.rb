@@ -400,7 +400,7 @@ module SwaggerClient
       return data, status_code, headers
     end
 
-    # Create a feature flag
+    # Creates a new feature flag.
     # 
     # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
     # @param feature_flag_body Create a new feature flag
@@ -411,7 +411,7 @@ module SwaggerClient
       return nil
     end
 
-    # Create a feature flag
+    # Creates a new feature flag.
     # 
     # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
     # @param feature_flag_body Create a new feature flag

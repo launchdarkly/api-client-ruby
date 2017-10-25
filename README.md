@@ -1,3 +1,8 @@
+This repository contains a client library for LaunchDarkly's REST API. This client was automatically
+generated from our [OpenAPI specification](https://github.com/launchdarkly/ld-openapi).
+
+This REST API is for custom integrations, data export, or automating your feature flag workflows. *DO NOT* use this client library to add feature flags to your web or mobile application. To integrate feature flags with your application, please see the [SDK documentation](https://docs.launchdarkly.com/v2.0/docs)
+
 # swagger_client
 
 SwaggerClient - the Ruby gem for the LaunchDarkly REST API
@@ -66,7 +71,7 @@ end
 api_instance = SwaggerClient::AuditLogApi.new
 
 begin
-  #Fetch a list of all webhooks
+  #Fetch a list of all audit log entries
   result = api_instance.get_audit_log_entries
   p result
 rescue SwaggerClient::ApiError => e
@@ -81,8 +86,8 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SwaggerClient::AuditLogApi* | [**get_audit_log_entries**](docs/AuditLogApi.md#get_audit_log_entries) | **GET** /auditlog | Fetch a list of all webhooks
-*SwaggerClient::AuditLogApi* | [**get_audit_log_entry**](docs/AuditLogApi.md#get_audit_log_entry) | **GET** /auditlog/{resourceId} | Get a webhook by ID
+*SwaggerClient::AuditLogApi* | [**get_audit_log_entries**](docs/AuditLogApi.md#get_audit_log_entries) | **GET** /auditlog | Fetch a list of all audit log entries
+*SwaggerClient::AuditLogApi* | [**get_audit_log_entry**](docs/AuditLogApi.md#get_audit_log_entry) | **GET** /auditlog/{resourceId} | Get an audit log entry by ID
 *SwaggerClient::EnvironmentsApi* | [**delete_environment**](docs/EnvironmentsApi.md#delete_environment) | **DELETE** /environments/{projectKey}/{environmentKey} | Delete an environment by ID
 *SwaggerClient::EnvironmentsApi* | [**get_environment**](docs/EnvironmentsApi.md#get_environment) | **GET** /environments/{projectKey}/{environmentKey} | Get an environment by key.
 *SwaggerClient::EnvironmentsApi* | [**patch_environment**](docs/EnvironmentsApi.md#patch_environment) | **PATCH** /environments/{projectKey}/{environmentKey} | Modify an environment by ID
@@ -93,9 +98,9 @@ Class | Method | HTTP request | Description
 *SwaggerClient::FlagsApi* | [**get_feature_flag_statuses**](docs/FlagsApi.md#get_feature_flag_statuses) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get a list of statuses for all feature flags
 *SwaggerClient::FlagsApi* | [**get_feature_flags**](docs/FlagsApi.md#get_feature_flags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
 *SwaggerClient::FlagsApi* | [**patch_feature_flag**](docs/FlagsApi.md#patch_feature_flag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Modify a feature flag by ID
-*SwaggerClient::FlagsApi* | [**post_feature_flag**](docs/FlagsApi.md#post_feature_flag) | **POST** /flags/{projectKey} | Create a feature flag
+*SwaggerClient::FlagsApi* | [**post_feature_flag**](docs/FlagsApi.md#post_feature_flag) | **POST** /flags/{projectKey} | Creates a new feature flag.
 *SwaggerClient::ProjectsApi* | [**delete_project**](docs/ProjectsApi.md#delete_project) | **DELETE** /projects/{projectKey} | Delete a project by ID
-*SwaggerClient::ProjectsApi* | [**get_project**](docs/ProjectsApi.md#get_project) | **GET** /projects/{projectKey} | Get a project by key.
+*SwaggerClient::ProjectsApi* | [**get_project**](docs/ProjectsApi.md#get_project) | **GET** /projects/{projectKey} | Fetch a single project by key.
 *SwaggerClient::ProjectsApi* | [**get_projects**](docs/ProjectsApi.md#get_projects) | **GET** /projects | Returns a list of all projects in the account.
 *SwaggerClient::ProjectsApi* | [**patch_project**](docs/ProjectsApi.md#patch_project) | **PATCH** /projects/{projectKey} | Modify a project by ID
 *SwaggerClient::ProjectsApi* | [**post_project**](docs/ProjectsApi.md#post_project) | **POST** /projects | Create a project

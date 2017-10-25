@@ -4,14 +4,14 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_audit_log_entries**](AuditLogApi.md#get_audit_log_entries) | **GET** /auditlog | Fetch a list of all webhooks
-[**get_audit_log_entry**](AuditLogApi.md#get_audit_log_entry) | **GET** /auditlog/{resourceId} | Get a webhook by ID
+[**get_audit_log_entries**](AuditLogApi.md#get_audit_log_entries) | **GET** /auditlog | Fetch a list of all audit log entries
+[**get_audit_log_entry**](AuditLogApi.md#get_audit_log_entry) | **GET** /auditlog/{resourceId} | Get an audit log entry by ID
 
 
 # **get_audit_log_entries**
 > AuditLogEntries get_audit_log_entries
 
-Fetch a list of all webhooks
+Fetch a list of all audit log entries
 
 ### Example
 ```ruby
@@ -28,7 +28,7 @@ end
 api_instance = SwaggerClient::AuditLogApi.new
 
 begin
-  #Fetch a list of all webhooks
+  #Fetch a list of all audit log entries
   result = api_instance.get_audit_log_entries
   p result
 rescue SwaggerClient::ApiError => e
@@ -57,7 +57,7 @@ This endpoint does not need any parameter.
 # **get_audit_log_entry**
 > AuditLogEntry get_audit_log_entry(resource_id, )
 
-Get a webhook by ID
+Get an audit log entry by ID
 
 ### Example
 ```ruby
@@ -77,7 +77,7 @@ resource_id = "resource_id_example" # String | The resource ID
 
 
 begin
-  #Get a webhook by ID
+  #Get an audit log entry by ID
   result = api_instance.get_audit_log_entry(resource_id, )
   p result
 rescue SwaggerClient::ApiError => e
