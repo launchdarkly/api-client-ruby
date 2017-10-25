@@ -5,7 +5,7 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_user_flag_setting**](UserSettingsApi.md#get_user_flag_setting) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Get a user by key.
-[**get_user_flag_settings**](UserSettingsApi.md#get_user_flag_settings) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags | Lists the current flag settings for a given user.
+[**get_user_flag_settings**](UserSettingsApi.md#get_user_flag_settings) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags | Fetch a single flag setting for a user by key.
 [**put_flag_setting**](UserSettingsApi.md#put_flag_setting) | **PUT** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Specifically enable or disable a feature flag for a user based on their key.
 
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 # **get_user_flag_settings**
 > UserFlagSettings get_user_flag_settings(project_key, environment_key, user_key, )
 
-Lists the current flag settings for a given user.
+Fetch a single flag setting for a user by key.
 
 ### Example
 ```ruby
@@ -97,7 +97,7 @@ user_key = "user_key_example" # String | The user's key
 
 
 begin
-  #Lists the current flag settings for a given user.
+  #Fetch a single flag setting for a user by key.
   result = api_instance.get_user_flag_settings(project_key, environment_key, user_key, )
   p result
 rescue SwaggerClient::ApiError => e

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **key** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **kind** | **String** |  | [optional] 
-**creation_date** | **Float** |  | [optional] 
+**creation_date** | **Integer** |  | [optional] 
 **include_in_snippet** | **BOOLEAN** |  | [optional] 
 **temporary** | **BOOLEAN** |  | [optional] 
 **maintainer_id** | **String** |  | [optional] 

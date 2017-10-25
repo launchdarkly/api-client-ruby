@@ -46,7 +46,7 @@ describe 'EnvironmentsApi' do
   end
 
   # unit tests for get_environment
-  # Get an environment by key.
+  # Get an environment given a project and key.
   # 
   # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
   # @param environment_key The environment key
@@ -73,7 +73,7 @@ describe 'EnvironmentsApi' do
   end
 
   # unit tests for post_environment
-  # Create an environment
+  # Create a new environment in a specified project with a given name, key, and swatch color.
   # 
   # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
   # @param environment_body New environment

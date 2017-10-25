@@ -80,7 +80,7 @@ module SwaggerClient
       return data, status_code, headers
     end
 
-    # Get an environment by key.
+    # Get an environment given a project and key.
     # 
     # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
     # @param environment_key The environment key
@@ -91,7 +91,7 @@ module SwaggerClient
       return data
     end
 
-    # Get an environment by key.
+    # Get an environment given a project and key.
     # 
     # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
     # @param environment_key The environment key
@@ -207,7 +207,7 @@ module SwaggerClient
       return data, status_code, headers
     end
 
-    # Create an environment
+    # Create a new environment in a specified project with a given name, key, and swatch color.
     # 
     # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
     # @param environment_body New environment
@@ -218,7 +218,7 @@ module SwaggerClient
       return nil
     end
 
-    # Create an environment
+    # Create a new environment in a specified project with a given name, key, and swatch color.
     # 
     # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
     # @param environment_body New environment

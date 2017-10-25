@@ -93,7 +93,7 @@ module SwaggerClient
       return data, status_code, headers
     end
 
-    # Lists the current flag settings for a given user.
+    # Fetch a single flag setting for a user by key.
     # 
     # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
     # @param environment_key The environment key
@@ -105,7 +105,7 @@ module SwaggerClient
       return data
     end
 
-    # Lists the current flag settings for a given user.
+    # Fetch a single flag setting for a user by key.
     # 
     # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
     # @param environment_key The environment key

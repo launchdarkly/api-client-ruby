@@ -40,7 +40,7 @@ module SwaggerClient
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'last_ping' => :'String',
+        :'last_ping' => :'Integer',
         :'environment_id' => :'String',
         :'owner_id' => :'String',
         :'user' => :'Object',

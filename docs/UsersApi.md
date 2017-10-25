@@ -5,9 +5,9 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_user**](UsersApi.md#delete_user) | **DELETE** /users/{projectKey}/{environmentKey}/{userKey} | Delete a user by ID
-[**get_search_users**](UsersApi.md#get_search_users) | **GET** /user-search/{projectKey}/{environmentKey} | Search users in LaunchDarkly based on their last active date, or a search query.
+[**get_search_users**](UsersApi.md#get_search_users) | **GET** /user-search/{projectKey}/{environmentKey} | Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly-- use the List users API resource.
 [**get_user**](UsersApi.md#get_user) | **GET** /users/{projectKey}/{environmentKey}/{userKey} | Get a user by key.
-[**get_users**](UsersApi.md#get_users) | **GET** /users/{projectKey}/{environmentKey} | List all users in the environment.
+[**get_users**](UsersApi.md#get_users) | **GET** /users/{projectKey}/{environmentKey} | List all users in the environment. Includes the total count of users. In each page, there will be up to &#39;limit&#39; users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
 
 
 # **delete_user**
@@ -70,7 +70,7 @@ nil (empty response body)
 # **get_search_users**
 > Users get_search_users(project_key, environment_key, , opts)
 
-Search users in LaunchDarkly based on their last active date, or a search query.
+Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly-- use the List users API resource.
 
 ### Example
 ```ruby
@@ -94,11 +94,11 @@ opts = {
   q: "q_example", # String | Search query
   limit: 3.4, # Float | Pagination limit
   offset: 3.4, # Float | Specifies the first item to return in the collection
-  after: 3.4 # Float | A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag
+  after: 789 # Integer | A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag
 }
 
 begin
-  #Search users in LaunchDarkly based on their last active date, or a search query.
+  #Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly-- use the List users API resource.
   result = api_instance.get_search_users(project_key, environment_key, , opts)
   p result
 rescue SwaggerClient::ApiError => e
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
  **q** | **String**| Search query | [optional] 
  **limit** | **Float**| Pagination limit | [optional] 
  **offset** | **Float**| Specifies the first item to return in the collection | [optional] 
- **after** | **Float**| A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag | [optional] 
+ **after** | **Integer**| A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag | [optional] 
 
 ### Return type
 
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 # **get_users**
 > Users get_users(project_key, environment_key, , opts)
 
-List all users in the environment.
+List all users in the environment. Includes the total count of users. In each page, there will be up to 'limit' users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
 
 ### Example
 ```ruby
@@ -218,7 +218,7 @@ opts = {
 }
 
 begin
-  #List all users in the environment.
+  #List all users in the environment. Includes the total count of users. In each page, there will be up to 'limit' users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
   result = api_instance.get_users(project_key, environment_key, , opts)
   p result
 rescue SwaggerClient::ApiError => e

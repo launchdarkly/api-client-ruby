@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_links** | [**Links**](Links.md) |  | [optional] 
 **_id** | **String** |  | [optional] 
-**date** | **Float** |  | [optional] 
+**date** | **Integer** |  | [optional] 
 **kind** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 

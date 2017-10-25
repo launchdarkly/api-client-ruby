@@ -333,7 +333,7 @@ module SwaggerClient
       return data, status_code, headers
     end
 
-    # Modify a feature flag by ID
+    # Perform a partial update to a feature.
     # 
     # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
     # @param feature_flag_key The feature flag&#39;s key. The key identifies the flag in your code.
@@ -345,7 +345,7 @@ module SwaggerClient
       return data
     end
 
-    # Modify a feature flag by ID
+    # Perform a partial update to a feature.
     # 
     # @param project_key The project key, used to tie the flags together under one project so they can be managed together.
     # @param feature_flag_key The feature flag&#39;s key. The key identifies the flag in your code.

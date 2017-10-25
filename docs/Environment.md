@@ -4,13 +4,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_links** | [**Links**](Links.md) |  | [optional] 
-**_id** | **String** |  | [optional] 
-**key** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
-**api_key** | **String** |  | [optional] 
-**mobile_key** | **String** |  | [optional] 
-**color** | **String** |  | [optional] 
-**default_ttl** | **Float** |  | [optional] 
-**secure_mode** | **BOOLEAN** |  | [optional] 
+**_id** | **String** | The unique id for the environment | [optional] 
+**key** | **String** | The key for the environment | [optional] 
+**name** | **String** | The name of the environment | [optional] 
+**api_key** | **String** | The SDK key for backend LaunchDarkly SDKs | [optional] 
+**mobile_key** | **String** | The SDK key for mobile LaunchDarkly SDKs | [optional] 
+**color** | **String** | The swatch color for the environment | [optional] 
+**default_ttl** | **Float** | The default TTL | [optional] 
+**secure_mode** | **BOOLEAN** | Determines if this environment is in safe mode | [optional] 
 
 

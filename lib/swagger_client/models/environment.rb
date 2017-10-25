@@ -17,20 +17,28 @@ module SwaggerClient
   class Environment
     attr_accessor :_links
 
+    # The unique id for the environment
     attr_accessor :_id
 
+    # The key for the environment
     attr_accessor :key
 
+    # The name of the environment
     attr_accessor :name
 
+    # The SDK key for backend LaunchDarkly SDKs
     attr_accessor :api_key
 
+    # The SDK key for mobile LaunchDarkly SDKs
     attr_accessor :mobile_key
 
+    # The swatch color for the environment
     attr_accessor :color
 
+    # The default TTL
     attr_accessor :default_ttl
 
+    # Determines if this environment is in safe mode
     attr_accessor :secure_mode
 
 

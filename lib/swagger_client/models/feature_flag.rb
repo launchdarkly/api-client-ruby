@@ -64,7 +64,7 @@ module SwaggerClient
         :'key' => :'String',
         :'name' => :'String',
         :'kind' => :'String',
-        :'creation_date' => :'Float',
+        :'creation_date' => :'Integer',
         :'include_in_snippet' => :'BOOLEAN',
         :'temporary' => :'BOOLEAN',
         :'maintainer_id' => :'String',

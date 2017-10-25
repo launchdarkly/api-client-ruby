@@ -15,13 +15,16 @@ require 'date'
 module SwaggerClient
 
   class EnvironmentBody
+    # The name of the new environment
     attr_accessor :name
 
+    # A project-unique key for the new environment
     attr_accessor :key
 
     # A color swatch (as an RGB hex value with no leading '#', e.g. C8C8C8)
     attr_accessor :color
 
+    # The default TTL for the new environment
     attr_accessor :default_ttl
 
 

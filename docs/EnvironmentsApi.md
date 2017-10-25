@@ -5,9 +5,9 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_environment**](EnvironmentsApi.md#delete_environment) | **DELETE** /environments/{projectKey}/{environmentKey} | Delete an environment by ID
-[**get_environment**](EnvironmentsApi.md#get_environment) | **GET** /environments/{projectKey}/{environmentKey} | Get an environment by key.
+[**get_environment**](EnvironmentsApi.md#get_environment) | **GET** /environments/{projectKey}/{environmentKey} | Get an environment given a project and key.
 [**patch_environment**](EnvironmentsApi.md#patch_environment) | **PATCH** /environments/{projectKey}/{environmentKey} | Modify an environment by ID
-[**post_environment**](EnvironmentsApi.md#post_environment) | **POST** /environments/{projectKey} | Create an environment
+[**post_environment**](EnvironmentsApi.md#post_environment) | **POST** /environments/{projectKey} | Create a new environment in a specified project with a given name, key, and swatch color.
 
 
 # **delete_environment**
@@ -67,7 +67,7 @@ nil (empty response body)
 # **get_environment**
 > Environment get_environment(project_key, environment_key, )
 
-Get an environment by key.
+Get an environment given a project and key.
 
 ### Example
 ```ruby
@@ -89,7 +89,7 @@ environment_key = "environment_key_example" # String | The environment key
 
 
 begin
-  #Get an environment by key.
+  #Get an environment given a project and key.
   result = api_instance.get_environment(project_key, environment_key, )
   p result
 rescue SwaggerClient::ApiError => e
@@ -179,7 +179,7 @@ nil (empty response body)
 # **post_environment**
 > post_environment(project_key, environment_body)
 
-Create an environment
+Create a new environment in a specified project with a given name, key, and swatch color.
 
 ### Example
 ```ruby
@@ -201,7 +201,7 @@ environment_body = SwaggerClient::EnvironmentBody.new # EnvironmentBody | New en
 
 
 begin
-  #Create an environment
+  #Create a new environment in a specified project with a given name, key, and swatch color.
   api_instance.post_environment(project_key, environment_body)
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling EnvironmentsApi->post_environment: #{e}"

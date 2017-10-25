@@ -57,7 +57,7 @@ module SwaggerClient
       {
         :'_links' => :'Links',
         :'_id' => :'String',
-        :'date' => :'Float',
+        :'date' => :'Integer',
         :'kind' => :'String',
         :'name' => :'String',
         :'description' => :'String',

@@ -39,7 +39,7 @@ module SwaggerClient
       {
         :'_links' => :'Links',
         :'name' => :'String',
-        :'last_requested' => :'String',
+        :'last_requested' => :'Integer',
         :'default' => :'BOOLEAN'
       }
     end
