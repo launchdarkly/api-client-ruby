@@ -4,14 +4,14 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_audit_log_entries**](AuditLogApi.md#get_audit_log_entries) | **GET** /auditlog | Fetch a list of all audit log entries
-[**get_audit_log_entry**](AuditLogApi.md#get_audit_log_entry) | **GET** /auditlog/{resourceId} | Get an audit log entry by ID
+[**get_audit_log_entries**](AuditLogApi.md#get_audit_log_entries) | **GET** /auditlog | Get a list of all audit log entries. The query parameters allow you to restrict the returned results by date ranges, resource specifiers, or a full-text search query.
+[**get_audit_log_entry**](AuditLogApi.md#get_audit_log_entry) | **GET** /auditlog/{resourceId} | Use this endpoint to fetch a single audit log entry by its resouce ID.
 
 
 # **get_audit_log_entries**
-> AuditLogEntries get_audit_log_entries
+> AuditLogEntries get_audit_log_entries(opts)
 
-Fetch a list of all audit log entries
+Get a list of all audit log entries. The query parameters allow you to restrict the returned results by date ranges, resource specifiers, or a full-text search query.
 
 ### Example
 ```ruby
@@ -27,9 +27,17 @@ end
 
 api_instance = SwaggerClient::AuditLogApi.new
 
+opts = { 
+  before: 8.14, # Float | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have before this timestamp.
+  after: 8.14, # Float | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.
+  q: "q_example", # String | Text to search for. You can search for the full or partial name of the resource involved or fullpartial email address of the member who made the change.
+  limit: 8.14, # Float | A limit on the number of audit log entries to be returned, between 1 and 20.
+  spec: "spec_example" # String | A resource specifier, allowing you to filter audit log listings by resource.
+}
+
 begin
-  #Fetch a list of all audit log entries
-  result = api_instance.get_audit_log_entries
+  #Get a list of all audit log entries. The query parameters allow you to restrict the returned results by date ranges, resource specifiers, or a full-text search query.
+  result = api_instance.get_audit_log_entries(opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AuditLogApi->get_audit_log_entries: #{e}"
@@ -37,7 +45,14 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **before** | **Float**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have before this timestamp. | [optional] 
+ **after** | **Float**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. | [optional] 
+ **q** | **String**| Text to search for. You can search for the full or partial name of the resource involved or fullpartial email address of the member who made the change. | [optional] 
+ **limit** | **Float**| A limit on the number of audit log entries to be returned, between 1 and 20. | [optional] 
+ **spec** | **String**| A resource specifier, allowing you to filter audit log listings by resource. | [optional] 
 
 ### Return type
 
@@ -57,7 +72,7 @@ This endpoint does not need any parameter.
 # **get_audit_log_entry**
 > AuditLogEntry get_audit_log_entry(resource_id, )
 
-Get an audit log entry by ID
+Use this endpoint to fetch a single audit log entry by its resouce ID.
 
 ### Example
 ```ruby
@@ -73,11 +88,11 @@ end
 
 api_instance = SwaggerClient::AuditLogApi.new
 
-resource_id = "resource_id_example" # String | The resource ID
+resource_id = "resource_id_example" # String | The resource ID.
 
 
 begin
-  #Get an audit log entry by ID
+  #Use this endpoint to fetch a single audit log entry by its resouce ID.
   result = api_instance.get_audit_log_entry(resource_id, )
   p result
 rescue SwaggerClient::ApiError => e
@@ -89,7 +104,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource_id** | **String**| The resource ID | 
+ **resource_id** | **String**| The resource ID. | 
 
 ### Return type
 

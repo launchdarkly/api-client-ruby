@@ -1,4 +1,4 @@
-# SwaggerClient::FeatureFlagConfigFallthrough
+# SwaggerClient::Fallthrough
 
 ## Properties
 Name | Type | Description | Notes

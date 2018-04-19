@@ -4,17 +4,17 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_project**](ProjectsApi.md#delete_project) | **DELETE** /projects/{projectKey} | Delete a project by ID
+[**delete_project**](ProjectsApi.md#delete_project) | **DELETE** /projects/{projectKey} | Delete a project by key. Caution-- deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
 [**get_project**](ProjectsApi.md#get_project) | **GET** /projects/{projectKey} | Fetch a single project by key.
 [**get_projects**](ProjectsApi.md#get_projects) | **GET** /projects | Returns a list of all projects in the account.
-[**patch_project**](ProjectsApi.md#patch_project) | **PATCH** /projects/{projectKey} | Modify a project by ID
-[**post_project**](ProjectsApi.md#post_project) | **POST** /projects | Create a project
+[**patch_project**](ProjectsApi.md#patch_project) | **PATCH** /projects/{projectKey} | Modify a project by ID.
+[**post_project**](ProjectsApi.md#post_project) | **POST** /projects | Create a new project with the given key and name.
 
 
 # **delete_project**
 > delete_project(project_key, )
 
-Delete a project by ID
+Delete a project by key. Caution-- deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
 
 ### Example
 ```ruby
@@ -34,7 +34,7 @@ project_key = "project_key_example" # String | The project key, used to tie the 
 
 
 begin
-  #Delete a project by ID
+  #Delete a project by key. Caution-- deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
   api_instance.delete_project(project_key, )
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ProjectsApi->delete_project: #{e}"
@@ -161,9 +161,9 @@ This endpoint does not need any parameter.
 
 
 # **patch_project**
-> patch_project(project_key, patch_delta)
+> Project patch_project(project_key, patch_delta)
 
-Modify a project by ID
+Modify a project by ID.
 
 ### Example
 ```ruby
@@ -181,12 +181,13 @@ api_instance = SwaggerClient::ProjectsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-patch_delta = [SwaggerClient::PatchDelta.new] # Array<PatchDelta> | http://jsonpatch.com/
+patch_delta = [SwaggerClient::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
 
 begin
-  #Modify a project by ID
-  api_instance.patch_project(project_key, patch_delta)
+  #Modify a project by ID.
+  result = api_instance.patch_project(project_key, patch_delta)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ProjectsApi->patch_project: #{e}"
 end
@@ -197,11 +198,11 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **patch_delta** | [**Array&lt;PatchDelta&gt;**](PatchDelta.md)| http://jsonpatch.com/ | 
+ **patch_delta** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
 
 ### Return type
 
-nil (empty response body)
+[**Project**](Project.md)
 
 ### Authorization
 
@@ -217,7 +218,7 @@ nil (empty response body)
 # **post_project**
 > post_project(project_body)
 
-Create a project
+Create a new project with the given key and name.
 
 ### Example
 ```ruby
@@ -233,11 +234,11 @@ end
 
 api_instance = SwaggerClient::ProjectsApi.new
 
-project_body = SwaggerClient::ProjectBody.new # ProjectBody | New project
+project_body = SwaggerClient::ProjectBody.new # ProjectBody | Project keys must be unique within an account.
 
 
 begin
-  #Create a project
+  #Create a new project with the given key and name.
   api_instance.post_project(project_body)
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ProjectsApi->post_project: #{e}"
@@ -248,7 +249,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_body** | [**ProjectBody**](ProjectBody.md)| New project | 
+ **project_body** | [**ProjectBody**](ProjectBody.md)| Project keys must be unique within an account. | 
 
 ### Return type
 

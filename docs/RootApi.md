@@ -4,13 +4,15 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_root**](RootApi.md#get_root) | **GET** / | Get the root resource
+[**get_root**](RootApi.md#get_root) | **GET** / | 
 
 
 # **get_root**
 > Links get_root
 
-Get the root resource
+
+
+You can issue a GET request to the root resource to find all of the resource categories supported by the API.
 
 ### Example
 ```ruby
@@ -27,7 +29,6 @@ end
 api_instance = SwaggerClient::RootApi.new
 
 begin
-  #Get the root resource
   result = api_instance.get_root
   p result
 rescue SwaggerClient::ApiError => e

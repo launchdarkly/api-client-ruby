@@ -4,16 +4,16 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_environment**](EnvironmentsApi.md#delete_environment) | **DELETE** /environments/{projectKey}/{environmentKey} | Delete an environment by ID
-[**get_environment**](EnvironmentsApi.md#get_environment) | **GET** /environments/{projectKey}/{environmentKey} | Get an environment given a project and key.
-[**patch_environment**](EnvironmentsApi.md#patch_environment) | **PATCH** /environments/{projectKey}/{environmentKey} | Modify an environment by ID
-[**post_environment**](EnvironmentsApi.md#post_environment) | **POST** /environments/{projectKey} | Create a new environment in a specified project with a given name, key, and swatch color.
+[**delete_environment**](EnvironmentsApi.md#delete_environment) | **DELETE** /projects/{projectKey}/environments/{environmentKey} | Delete an environment in a specific project.
+[**get_environment**](EnvironmentsApi.md#get_environment) | **GET** /projects/{projectKey}/environments/{environmentKey} | Get an environment given a project and key.
+[**patch_environment**](EnvironmentsApi.md#patch_environment) | **PATCH** /projects/{projectKey}/environments/{environmentKey} | Modify an environment by ID.
+[**post_environment**](EnvironmentsApi.md#post_environment) | **POST** /projects/{projectKey}/environments | Create a new environment in a specified project with a given name, key, and swatch color.
 
 
 # **delete_environment**
 > delete_environment(project_key, environment_key, )
 
-Delete an environment by ID
+Delete an environment in a specific project.
 
 ### Example
 ```ruby
@@ -31,11 +31,11 @@ api_instance = SwaggerClient::EnvironmentsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key
+environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
 
 begin
-  #Delete an environment by ID
+  #Delete an environment in a specific project.
   api_instance.delete_environment(project_key, environment_key, )
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling EnvironmentsApi->delete_environment: #{e}"
@@ -47,7 +47,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key | 
+ **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
 
 ### Return type
 
@@ -85,7 +85,7 @@ api_instance = SwaggerClient::EnvironmentsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key
+environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
 
 begin
@@ -102,7 +102,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key | 
+ **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
 
 ### Return type
 
@@ -120,9 +120,9 @@ Name | Type | Description  | Notes
 
 
 # **patch_environment**
-> patch_environment(project_key, environment_key, patch_delta)
+> Environment patch_environment(project_key, environment_key, patch_delta)
 
-Modify an environment by ID
+Modify an environment by ID.
 
 ### Example
 ```ruby
@@ -140,14 +140,15 @@ api_instance = SwaggerClient::EnvironmentsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key
+environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-patch_delta = [SwaggerClient::PatchDelta.new] # Array<PatchDelta> | http://jsonpatch.com/
+patch_delta = [SwaggerClient::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
 
 begin
-  #Modify an environment by ID
-  api_instance.patch_environment(project_key, environment_key, patch_delta)
+  #Modify an environment by ID.
+  result = api_instance.patch_environment(project_key, environment_key, patch_delta)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling EnvironmentsApi->patch_environment: #{e}"
 end
@@ -158,12 +159,12 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key | 
- **patch_delta** | [**Array&lt;PatchDelta&gt;**](PatchDelta.md)| http://jsonpatch.com/ | 
+ **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **patch_delta** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
 
 ### Return type
 
-nil (empty response body)
+[**Environment**](Environment.md)
 
 ### Authorization
 
@@ -197,7 +198,7 @@ api_instance = SwaggerClient::EnvironmentsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_body = SwaggerClient::EnvironmentBody.new # EnvironmentBody | New environment
+environment_body = SwaggerClient::EnvironmentBody.new # EnvironmentBody | New environment.
 
 
 begin
@@ -213,7 +214,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_body** | [**EnvironmentBody**](EnvironmentBody.md)| New environment | 
+ **environment_body** | [**EnvironmentBody**](EnvironmentBody.md)| New environment. | 
 
 ### Return type
 

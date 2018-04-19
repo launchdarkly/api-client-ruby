@@ -4,6 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_links** | [**Links**](Links.md) |  | [optional] 
-**items** | [**Array&lt;Environment&gt;**](Environment.md) |  | [optional] 
+**_id** | [**Id**](Id.md) |  | [optional] 
+**key** | **String** |  | [optional] 
+**name** | **String** |  | [optional] 
+**environments** | [**Array&lt;Environment&gt;**](Environment.md) |  | [optional] 
 
 

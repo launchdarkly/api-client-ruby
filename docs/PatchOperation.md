@@ -1,4 +1,4 @@
-# SwaggerClient::PatchDelta
+# SwaggerClient::PatchOperation
 
 ## Properties
 Name | Type | Description | Notes
