@@ -12,5 +12,6 @@ Name | Type | Description | Notes
 **color** | **String** | The swatch color for the environment. | [optional] 
 **default_ttl** | **Float** | The default TTL. | [optional] 
 **secure_mode** | **BOOLEAN** | Determines if this environment is in safe mode. | [optional] 
+**default_track_events** | **BOOLEAN** | Set to true to send detailed event information for new flags. | [optional] 
 
 
