@@ -127,10 +127,9 @@ one_hour_ago = current_time_millis - (60 * 60 * 1000)
 opts = {
   after: one_hour_ago,
   limit: 10
-}
+} # see API documentation for other options you can use here
 
 begin
-  #Get a list of all audit log entries. The query parameters allow you to restrict the returned results by date ranges, resource specifiers, or a full-text search query.
   result = audit_log_api.get_audit_log_entries(opts)
   puts "Audit log entries from the last hour:"
   result.items.each { |item|
