@@ -1,4 +1,4 @@
-# SwaggerClient::Users
+# LaunchDarklyApi::Users
 
 ## Properties
 Name | Type | Description | Notes

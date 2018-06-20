@@ -1,4 +1,4 @@
-# SwaggerClient::UserFlagSettings
+# LaunchDarklyApi::UserFlagSettings
 
 ## Properties
 Name | Type | Description | Notes

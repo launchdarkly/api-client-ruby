@@ -1,4 +1,4 @@
-# SwaggerClient::UserSegmentsApi
+# LaunchDarklyApi::UserSegmentsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -19,16 +19,16 @@ Delete a user segment.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::UserSegmentsApi.new
+api_instance = LaunchDarklyApi::UserSegmentsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -40,7 +40,7 @@ user_segment_key = "user_segment_key_example" # String | The user segment's key.
 begin
   #Delete a user segment.
   api_instance.delete_user_segment(project_key, environment_key, user_segment_key, )
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling UserSegmentsApi->delete_user_segment: #{e}"
 end
 ```
@@ -76,16 +76,16 @@ Get a single user segment by key.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::UserSegmentsApi.new
+api_instance = LaunchDarklyApi::UserSegmentsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -98,7 +98,7 @@ begin
   #Get a single user segment by key.
   result = api_instance.get_user_segment(project_key, environment_key, user_segment_key, )
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling UserSegmentsApi->get_user_segment: #{e}"
 end
 ```
@@ -134,16 +134,16 @@ Get a list of all user segments in the given project.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::UserSegmentsApi.new
+api_instance = LaunchDarklyApi::UserSegmentsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -157,7 +157,7 @@ begin
   #Get a list of all user segments in the given project.
   result = api_instance.get_user_segments(project_key, environment_key, , opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling UserSegmentsApi->get_user_segments: #{e}"
 end
 ```
@@ -193,16 +193,16 @@ Perform a partial update to a user segment.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::UserSegmentsApi.new
+api_instance = LaunchDarklyApi::UserSegmentsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -210,14 +210,14 @@ environment_key = "environment_key_example" # String | The environment key, used
 
 user_segment_key = "user_segment_key_example" # String | The user segment's key. The key identifies the user segment in your code.
 
-patch_only = [SwaggerClient::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
+patch_only = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
 
 
 begin
   #Perform a partial update to a user segment.
   result = api_instance.patch_user_segment(project_key, environment_key, user_segment_key, patch_only)
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling UserSegmentsApi->patch_user_segment: #{e}"
 end
 ```
@@ -254,28 +254,28 @@ Creates a new user segment.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::UserSegmentsApi.new
+api_instance = LaunchDarklyApi::UserSegmentsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
 environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-user_segment_body = SwaggerClient::UserSegmentBody.new # UserSegmentBody | Create a new user segment.
+user_segment_body = LaunchDarklyApi::UserSegmentBody.new # UserSegmentBody | Create a new user segment.
 
 
 begin
   #Creates a new user segment.
   api_instance.post_user_segment(project_key, environment_key, user_segment_body)
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling UserSegmentsApi->post_user_segment: #{e}"
 end
 ```

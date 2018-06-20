@@ -1,4 +1,4 @@
-# SwaggerClient::UserSettingsApi
+# LaunchDarklyApi::UserSettingsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -17,16 +17,16 @@ Fetch a single flag setting for a user by key.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::UserSettingsApi.new
+api_instance = LaunchDarklyApi::UserSettingsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -41,7 +41,7 @@ begin
   #Fetch a single flag setting for a user by key.
   result = api_instance.get_user_flag_setting(project_key, environment_key, user_key, feature_flag_key, )
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling UserSettingsApi->get_user_flag_setting: #{e}"
 end
 ```
@@ -78,16 +78,16 @@ Fetch a single flag setting for a user by key.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::UserSettingsApi.new
+api_instance = LaunchDarklyApi::UserSettingsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -100,7 +100,7 @@ begin
   #Fetch a single flag setting for a user by key.
   result = api_instance.get_user_flag_settings(project_key, environment_key, user_key, )
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling UserSettingsApi->get_user_flag_settings: #{e}"
 end
 ```
@@ -136,16 +136,16 @@ Specifically enable or disable a feature flag for a user based on their key.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::UserSettingsApi.new
+api_instance = LaunchDarklyApi::UserSettingsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -155,13 +155,13 @@ user_key = "user_key_example" # String | The user's key.
 
 feature_flag_key = "feature_flag_key_example" # String | The feature flag's key. The key identifies the flag in your code.
 
-user_settings_body = SwaggerClient::UserSettingsBody.new # UserSettingsBody | 
+user_settings_body = LaunchDarklyApi::UserSettingsBody.new # UserSettingsBody | 
 
 
 begin
   #Specifically enable or disable a feature flag for a user based on their key.
   api_instance.put_flag_setting(project_key, environment_key, user_key, feature_flag_key, user_settings_body)
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling UserSettingsApi->put_flag_setting: #{e}"
 end
 ```

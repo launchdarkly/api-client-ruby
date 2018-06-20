@@ -1,4 +1,4 @@
-# SwaggerClient::ProjectsApi
+# LaunchDarklyApi::ProjectsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -19,16 +19,16 @@ Delete a project by key. Caution-- deleting a project will delete all associated
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ProjectsApi.new
+api_instance = LaunchDarklyApi::ProjectsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -36,7 +36,7 @@ project_key = "project_key_example" # String | The project key, used to tie the 
 begin
   #Delete a project by key. Caution-- deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
   api_instance.delete_project(project_key, )
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling ProjectsApi->delete_project: #{e}"
 end
 ```
@@ -70,16 +70,16 @@ Fetch a single project by key.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ProjectsApi.new
+api_instance = LaunchDarklyApi::ProjectsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -88,7 +88,7 @@ begin
   #Fetch a single project by key.
   result = api_instance.get_project(project_key, )
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling ProjectsApi->get_project: #{e}"
 end
 ```
@@ -122,22 +122,22 @@ Returns a list of all projects in the account.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ProjectsApi.new
+api_instance = LaunchDarklyApi::ProjectsApi.new
 
 begin
   #Returns a list of all projects in the account.
   result = api_instance.get_projects
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling ProjectsApi->get_projects: #{e}"
 end
 ```
@@ -168,27 +168,27 @@ Modify a project by ID.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ProjectsApi.new
+api_instance = LaunchDarklyApi::ProjectsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-patch_delta = [SwaggerClient::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
+patch_delta = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
 
 begin
   #Modify a project by ID.
   result = api_instance.patch_project(project_key, patch_delta)
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling ProjectsApi->patch_project: #{e}"
 end
 ```
@@ -223,24 +223,24 @@ Create a new project with the given key and name.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ProjectsApi.new
+api_instance = LaunchDarklyApi::ProjectsApi.new
 
-project_body = SwaggerClient::ProjectBody.new # ProjectBody | Project keys must be unique within an account.
+project_body = LaunchDarklyApi::ProjectBody.new # ProjectBody | Project keys must be unique within an account.
 
 
 begin
   #Create a new project with the given key and name.
   api_instance.post_project(project_body)
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling ProjectsApi->post_project: #{e}"
 end
 ```

@@ -1,4 +1,4 @@
-# SwaggerClient::TeamMembersApi
+# LaunchDarklyApi::TeamMembersApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -19,16 +19,16 @@ Delete a team member by ID.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TeamMembersApi.new
+api_instance = LaunchDarklyApi::TeamMembersApi.new
 
 member_id = "member_id_example" # String | The member ID.
 
@@ -36,7 +36,7 @@ member_id = "member_id_example" # String | The member ID.
 begin
   #Delete a team member by ID.
   api_instance.delete_member(member_id, )
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling TeamMembersApi->delete_member: #{e}"
 end
 ```
@@ -70,16 +70,16 @@ Get a single team member by ID.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TeamMembersApi.new
+api_instance = LaunchDarklyApi::TeamMembersApi.new
 
 member_id = "member_id_example" # String | The member ID.
 
@@ -88,7 +88,7 @@ begin
   #Get a single team member by ID.
   result = api_instance.get_member(member_id, )
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling TeamMembersApi->get_member: #{e}"
 end
 ```
@@ -122,22 +122,22 @@ Returns a list of all members in the account.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TeamMembersApi.new
+api_instance = LaunchDarklyApi::TeamMembersApi.new
 
 begin
   #Returns a list of all members in the account.
   result = api_instance.get_members
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling TeamMembersApi->get_members: #{e}"
 end
 ```
@@ -168,27 +168,27 @@ Modify a team member by ID.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TeamMembersApi.new
+api_instance = LaunchDarklyApi::TeamMembersApi.new
 
 member_id = "member_id_example" # String | The member ID.
 
-patch_delta = [SwaggerClient::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
+patch_delta = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
 
 begin
   #Modify a team member by ID.
   result = api_instance.patch_member(member_id, patch_delta)
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling TeamMembersApi->patch_member: #{e}"
 end
 ```
@@ -223,24 +223,24 @@ Invite new members.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TeamMembersApi.new
+api_instance = LaunchDarklyApi::TeamMembersApi.new
 
-members_body = [SwaggerClient::MembersBody.new] # Array<MembersBody> | New members to invite.
+members_body = [LaunchDarklyApi::MembersBody.new] # Array<MembersBody> | New members to invite.
 
 
 begin
   #Invite new members.
   api_instance.post_members(members_body)
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling TeamMembersApi->post_members: #{e}"
 end
 ```

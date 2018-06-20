@@ -1,4 +1,4 @@
-# SwaggerClient::Links
+# LaunchDarklyApi::Links
 
 ## Properties
 Name | Type | Description | Notes

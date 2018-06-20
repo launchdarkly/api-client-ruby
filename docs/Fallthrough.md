@@ -1,4 +1,4 @@
-# SwaggerClient::Fallthrough
+# LaunchDarklyApi::Fallthrough
 
 ## Properties
 Name | Type | Description | Notes

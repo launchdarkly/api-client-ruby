@@ -1,4 +1,4 @@
-# SwaggerClient::CustomRolesApi
+# LaunchDarklyApi::CustomRolesApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -19,16 +19,16 @@ Delete a custom role by key.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::CustomRolesApi.new
+api_instance = LaunchDarklyApi::CustomRolesApi.new
 
 custom_role_key = "custom_role_key_example" # String | The custom role key.
 
@@ -36,7 +36,7 @@ custom_role_key = "custom_role_key_example" # String | The custom role key.
 begin
   #Delete a custom role by key.
   api_instance.delete_custom_role(custom_role_key, )
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling CustomRolesApi->delete_custom_role: #{e}"
 end
 ```
@@ -70,16 +70,16 @@ Get one custom role by key.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::CustomRolesApi.new
+api_instance = LaunchDarklyApi::CustomRolesApi.new
 
 custom_role_key = "custom_role_key_example" # String | The custom role key.
 
@@ -88,7 +88,7 @@ begin
   #Get one custom role by key.
   result = api_instance.get_custom_role(custom_role_key, )
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling CustomRolesApi->get_custom_role: #{e}"
 end
 ```
@@ -122,22 +122,22 @@ Return a complete list of custom roles.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::CustomRolesApi.new
+api_instance = LaunchDarklyApi::CustomRolesApi.new
 
 begin
   #Return a complete list of custom roles.
   result = api_instance.get_custom_roles
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling CustomRolesApi->get_custom_roles: #{e}"
 end
 ```
@@ -168,27 +168,27 @@ Modify a custom role by key.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::CustomRolesApi.new
+api_instance = LaunchDarklyApi::CustomRolesApi.new
 
 custom_role_key = "custom_role_key_example" # String | The custom role key.
 
-patch_delta = [SwaggerClient::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
+patch_delta = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
 
 begin
   #Modify a custom role by key.
   result = api_instance.patch_custom_role(custom_role_key, patch_delta)
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling CustomRolesApi->patch_custom_role: #{e}"
 end
 ```
@@ -223,24 +223,24 @@ Create a new custom role.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::CustomRolesApi.new
+api_instance = LaunchDarklyApi::CustomRolesApi.new
 
-custom_role_body = SwaggerClient::CustomRoleBody.new # CustomRoleBody | New role or roles to create.
+custom_role_body = LaunchDarklyApi::CustomRoleBody.new # CustomRoleBody | New role or roles to create.
 
 
 begin
   #Create a new custom role.
   api_instance.post_custom_role(custom_role_body)
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling CustomRolesApi->post_custom_role: #{e}"
 end
 ```

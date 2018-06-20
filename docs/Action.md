@@ -1,4 +1,4 @@
-# SwaggerClient::Action
+# LaunchDarklyApi::Action
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# SwaggerClient::CustomRoles
+# LaunchDarklyApi::CustomRoles
 
 ## Properties
 Name | Type | Description | Notes

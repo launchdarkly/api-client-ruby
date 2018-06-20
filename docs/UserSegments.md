@@ -1,4 +1,4 @@
-# SwaggerClient::UserSegments
+# LaunchDarklyApi::UserSegments
 
 ## Properties
 Name | Type | Description | Notes

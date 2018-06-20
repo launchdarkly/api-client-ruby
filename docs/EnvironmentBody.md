@@ -1,4 +1,4 @@
-# SwaggerClient::EnvironmentBody
+# LaunchDarklyApi::EnvironmentBody
 
 ## Properties
 Name | Type | Description | Notes

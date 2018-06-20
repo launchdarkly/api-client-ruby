@@ -1,4 +1,4 @@
-# SwaggerClient::WebhookBody
+# LaunchDarklyApi::WebhookBody
 
 ## Properties
 Name | Type | Description | Notes

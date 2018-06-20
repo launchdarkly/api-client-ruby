@@ -1,4 +1,4 @@
-# SwaggerClient::AuditLogApi
+# LaunchDarklyApi::AuditLogApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -16,16 +16,16 @@ Get a list of all audit log entries. The query parameters allow you to restrict 
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AuditLogApi.new
+api_instance = LaunchDarklyApi::AuditLogApi.new
 
 opts = { 
   before: 8.14, # Float | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have before this timestamp.
@@ -39,7 +39,7 @@ begin
   #Get a list of all audit log entries. The query parameters allow you to restrict the returned results by date ranges, resource specifiers, or a full-text search query.
   result = api_instance.get_audit_log_entries(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling AuditLogApi->get_audit_log_entries: #{e}"
 end
 ```
@@ -77,16 +77,16 @@ Use this endpoint to fetch a single audit log entry by its resouce ID.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AuditLogApi.new
+api_instance = LaunchDarklyApi::AuditLogApi.new
 
 resource_id = "resource_id_example" # String | The resource ID.
 
@@ -95,7 +95,7 @@ begin
   #Use this endpoint to fetch a single audit log entry by its resouce ID.
   result = api_instance.get_audit_log_entry(resource_id, )
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling AuditLogApi->get_audit_log_entry: #{e}"
 end
 ```

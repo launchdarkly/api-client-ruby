@@ -1,4 +1,4 @@
-# SwaggerClient::FeatureFlagsApi
+# LaunchDarklyApi::FeatureFlagsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -21,16 +21,16 @@ Delete a feature flag in all environments. Be careful-- only delete feature flag
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FeatureFlagsApi.new
+api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -40,7 +40,7 @@ feature_flag_key = "feature_flag_key_example" # String | The feature flag's key.
 begin
   #Delete a feature flag in all environments. Be careful-- only delete feature flags that are no longer being used by your application.
   api_instance.delete_feature_flag(project_key, feature_flag_key, )
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling FeatureFlagsApi->delete_feature_flag: #{e}"
 end
 ```
@@ -75,16 +75,16 @@ Get a single feature flag by key.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FeatureFlagsApi.new
+api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -98,7 +98,7 @@ begin
   #Get a single feature flag by key.
   result = api_instance.get_feature_flag(project_key, feature_flag_key, , opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling FeatureFlagsApi->get_feature_flag: #{e}"
 end
 ```
@@ -134,16 +134,16 @@ Get the status for a particular feature flag.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FeatureFlagsApi.new
+api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -156,7 +156,7 @@ begin
   #Get the status for a particular feature flag.
   result = api_instance.get_feature_flag_status(project_key, environment_key, feature_flag_key, )
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling FeatureFlagsApi->get_feature_flag_status: #{e}"
 end
 ```
@@ -192,16 +192,16 @@ Get a list of statuses for all feature flags. The status includes the last time 
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FeatureFlagsApi.new
+api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -212,7 +212,7 @@ begin
   #Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag.
   result = api_instance.get_feature_flag_statuses(project_key, environment_key, )
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling FeatureFlagsApi->get_feature_flag_statuses: #{e}"
 end
 ```
@@ -247,16 +247,16 @@ Get a list of all features in the given project.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FeatureFlagsApi.new
+api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -269,7 +269,7 @@ begin
   #Get a list of all features in the given project.
   result = api_instance.get_feature_flags(project_key, , opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling FeatureFlagsApi->get_feature_flags: #{e}"
 end
 ```
@@ -305,29 +305,29 @@ Perform a partial update to a feature.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FeatureFlagsApi.new
+api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
 feature_flag_key = "feature_flag_key_example" # String | The feature flag's key. The key identifies the flag in your code.
 
-patch_comment = SwaggerClient::PatchComment.new # PatchComment | Requires a JSON Patch representation of the desired changes to the project, and an optional comment. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
+patch_comment = LaunchDarklyApi::PatchComment.new # PatchComment | Requires a JSON Patch representation of the desired changes to the project, and an optional comment. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
 
 
 begin
   #Perform a partial update to a feature.
   result = api_instance.patch_feature_flag(project_key, feature_flag_key, patch_comment)
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling FeatureFlagsApi->patch_feature_flag: #{e}"
 end
 ```
@@ -363,26 +363,26 @@ Creates a new feature flag.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FeatureFlagsApi.new
+api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-feature_flag_body = SwaggerClient::FeatureFlagBody.new # FeatureFlagBody | Create a new feature flag.
+feature_flag_body = LaunchDarklyApi::FeatureFlagBody.new # FeatureFlagBody | Create a new feature flag.
 
 
 begin
   #Creates a new feature flag.
   api_instance.post_feature_flag(project_key, feature_flag_body)
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling FeatureFlagsApi->post_feature_flag: #{e}"
 end
 ```

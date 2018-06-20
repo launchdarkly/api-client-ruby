@@ -1,4 +1,4 @@
-# SwaggerClient::CustomRoleKeyOrId
+# LaunchDarklyApi::CustomRoleKeyOrId
 
 ## Properties
 Name | Type | Description | Notes

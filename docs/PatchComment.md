@@ -1,4 +1,4 @@
-# SwaggerClient::PatchComment
+# LaunchDarklyApi::PatchComment
 
 ## Properties
 Name | Type | Description | Notes

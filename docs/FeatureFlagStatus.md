@@ -1,4 +1,4 @@
-# SwaggerClient::FeatureFlagStatus
+# LaunchDarklyApi::FeatureFlagStatus
 
 ## Properties
 Name | Type | Description | Notes

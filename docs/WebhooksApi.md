@@ -1,4 +1,4 @@
-# SwaggerClient::WebhooksApi
+# LaunchDarklyApi::WebhooksApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -19,16 +19,16 @@ Delete a webhook by ID.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhooksApi.new
+api_instance = LaunchDarklyApi::WebhooksApi.new
 
 resource_id = "resource_id_example" # String | The resource ID.
 
@@ -36,7 +36,7 @@ resource_id = "resource_id_example" # String | The resource ID.
 begin
   #Delete a webhook by ID.
   api_instance.delete_webhook(resource_id, )
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling WebhooksApi->delete_webhook: #{e}"
 end
 ```
@@ -70,16 +70,16 @@ Get a webhook by ID.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhooksApi.new
+api_instance = LaunchDarklyApi::WebhooksApi.new
 
 resource_id = "resource_id_example" # String | The resource ID.
 
@@ -88,7 +88,7 @@ begin
   #Get a webhook by ID.
   result = api_instance.get_webhook(resource_id, )
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling WebhooksApi->get_webhook: #{e}"
 end
 ```
@@ -122,22 +122,22 @@ Fetch a list of all webhooks.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhooksApi.new
+api_instance = LaunchDarklyApi::WebhooksApi.new
 
 begin
   #Fetch a list of all webhooks.
   result = api_instance.get_webhooks
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling WebhooksApi->get_webhooks: #{e}"
 end
 ```
@@ -168,27 +168,27 @@ Modify a webhook by ID.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhooksApi.new
+api_instance = LaunchDarklyApi::WebhooksApi.new
 
 resource_id = "resource_id_example" # String | The resource ID.
 
-patch_delta = [SwaggerClient::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
+patch_delta = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
 
 begin
   #Modify a webhook by ID.
   result = api_instance.patch_webhook(resource_id, patch_delta)
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling WebhooksApi->patch_webhook: #{e}"
 end
 ```
@@ -223,24 +223,24 @@ Create a webhook.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhooksApi.new
+api_instance = LaunchDarklyApi::WebhooksApi.new
 
-webhook_body = SwaggerClient::WebhookBody.new # WebhookBody | New webhook.
+webhook_body = LaunchDarklyApi::WebhookBody.new # WebhookBody | New webhook.
 
 
 begin
   #Create a webhook.
   api_instance.post_webhook(webhook_body)
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling WebhooksApi->post_webhook: #{e}"
 end
 ```

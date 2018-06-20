@@ -1,4 +1,4 @@
-# SwaggerClient::UsersApi
+# LaunchDarklyApi::UsersApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -18,16 +18,16 @@ Delete a user by ID.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::UsersApi.new
+api_instance = LaunchDarklyApi::UsersApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -39,7 +39,7 @@ user_key = "user_key_example" # String | The user's key.
 begin
   #Delete a user by ID.
   api_instance.delete_user(project_key, environment_key, user_key, )
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling UsersApi->delete_user: #{e}"
 end
 ```
@@ -75,16 +75,16 @@ Search users in LaunchDarkly based on their last active date, or a search query.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::UsersApi.new
+api_instance = LaunchDarklyApi::UsersApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -101,7 +101,7 @@ begin
   #Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly-- use the List users API resource.
   result = api_instance.get_search_users(project_key, environment_key, , opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling UsersApi->get_search_users: #{e}"
 end
 ```
@@ -140,16 +140,16 @@ Get a user by key.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::UsersApi.new
+api_instance = LaunchDarklyApi::UsersApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -162,7 +162,7 @@ begin
   #Get a user by key.
   result = api_instance.get_user(project_key, environment_key, user_key, )
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling UsersApi->get_user: #{e}"
 end
 ```
@@ -198,16 +198,16 @@ List all users in the environment. Includes the total count of users. In each pa
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'launchdarkly_api'
 # setup authorization
-SwaggerClient.configure do |config|
+LaunchDarklyApi.configure do |config|
   # Configure API key authorization: Token
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::UsersApi.new
+api_instance = LaunchDarklyApi::UsersApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
@@ -223,7 +223,7 @@ begin
   #List all users in the environment. Includes the total count of users. In each page, there will be up to 'limit' users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
   result = api_instance.get_users(project_key, environment_key, , opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling UsersApi->get_users: #{e}"
 end
 ```

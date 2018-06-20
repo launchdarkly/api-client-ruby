@@ -1,4 +1,4 @@
-# SwaggerClient::Policy
+# LaunchDarklyApi::Policy
 
 ## Properties
 Name | Type | Description | Notes
