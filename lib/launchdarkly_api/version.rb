@@ -11,5 +11,5 @@ Swagger Codegen version: 2.3.1
 =end
 
 module LaunchDarklyApi
-  VERSION = ""
+  VERSION = "2.0.4"
 end
