@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **key** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **environments** | [**Array&lt;Environment&gt;**](Environment.md) |  | [optional] 
+**tags** | **Array&lt;String&gt;** | An array of tags for this project. | [optional] 
 
 
