@@ -198,7 +198,7 @@ api_instance = LaunchDarklyApi::EnvironmentsApi.new
 
 project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_body = LaunchDarklyApi::EnvironmentBody.new # EnvironmentBody | New environment.
+environment_body = LaunchDarklyApi::EnvironmentPost.new # EnvironmentPost | New environment.
 
 
 begin
@@ -214,7 +214,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_body** | [**EnvironmentBody**](EnvironmentBody.md)| New environment. | 
+ **environment_body** | [**EnvironmentPost**](EnvironmentPost.md)| New environment. | 
 
 ### Return type
 

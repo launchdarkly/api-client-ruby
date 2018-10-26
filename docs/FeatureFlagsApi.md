@@ -356,7 +356,7 @@ Name | Type | Description  | Notes
 
 
 # **post_feature_flag**
-> post_feature_flag(project_key, feature_flag_body)
+> post_feature_flag(project_key, feature_flag_body, opts)
 
 Creates a new feature flag.
 
@@ -378,10 +378,13 @@ project_key = "project_key_example" # String | The project key, used to tie the 
 
 feature_flag_body = LaunchDarklyApi::FeatureFlagBody.new # FeatureFlagBody | Create a new feature flag.
 
+opts = { 
+  clone: "clone_example" # String | The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone=flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag.
+}
 
 begin
   #Creates a new feature flag.
-  api_instance.post_feature_flag(project_key, feature_flag_body)
+  api_instance.post_feature_flag(project_key, feature_flag_body, opts)
 rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling FeatureFlagsApi->post_feature_flag: #{e}"
 end
@@ -393,6 +396,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **feature_flag_body** | [**FeatureFlagBody**](FeatureFlagBody.md)| Create a new feature flag. | 
+ **clone** | **String**| The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone&#x3D;flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag. | [optional] 
 
 ### Return type
 
