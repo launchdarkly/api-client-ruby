@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **maintainer_id** | **String** | The ID of the member that should maintain this flag. | [optional] 
 **tags** | **Array&lt;String&gt;** | An array of tags for this feature flag. | [optional] 
 **variations** | [**Array&lt;Variation&gt;**](Variation.md) | The variations for this feature flag. | [optional] 
+**_version** | **Integer** |  | [optional] 
 **custom_properties** | [**CustomProperties**](CustomProperties.md) |  | [optional] 
 **_links** | [**Links**](Links.md) |  | [optional] 
 **_maintainer** | [**Member**](Member.md) |  | [optional] 

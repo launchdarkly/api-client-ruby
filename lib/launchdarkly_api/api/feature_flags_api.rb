@@ -406,10 +406,10 @@ module LaunchDarklyApi
     # @param feature_flag_body Create a new feature flag.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :clone The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone&#x3D;flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag.
-    # @return [nil]
+    # @return [FeatureFlag]
     def post_feature_flag(project_key, feature_flag_body, opts = {})
-      post_feature_flag_with_http_info(project_key, feature_flag_body, opts)
-      return nil
+      data, _status_code, _headers = post_feature_flag_with_http_info(project_key, feature_flag_body, opts)
+      return data
     end
 
     # Creates a new feature flag.
@@ -418,7 +418,7 @@ module LaunchDarklyApi
     # @param feature_flag_body Create a new feature flag.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :clone The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone&#x3D;flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag.
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(FeatureFlag, Fixnum, Hash)>] FeatureFlag data, response status code and response headers
     def post_feature_flag_with_http_info(project_key, feature_flag_body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: FeatureFlagsApi.post_feature_flag ..."
@@ -456,7 +456,8 @@ module LaunchDarklyApi
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'FeatureFlag')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FeatureFlagsApi#post_feature_flag\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

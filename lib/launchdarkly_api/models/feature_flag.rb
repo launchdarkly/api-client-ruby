@@ -43,6 +43,8 @@ module LaunchDarklyApi
     # The variations for this feature flag.
     attr_accessor :variations
 
+    attr_accessor :_version
+
     attr_accessor :custom_properties
 
     attr_accessor :_links
@@ -65,6 +67,7 @@ module LaunchDarklyApi
         :'maintainer_id' => :'maintainerId',
         :'tags' => :'tags',
         :'variations' => :'variations',
+        :'_version' => :'_version',
         :'custom_properties' => :'customProperties',
         :'_links' => :'_links',
         :'_maintainer' => :'_maintainer',
@@ -85,6 +88,7 @@ module LaunchDarklyApi
         :'maintainer_id' => :'String',
         :'tags' => :'Array<String>',
         :'variations' => :'Array<Variation>',
+        :'_version' => :'Integer',
         :'custom_properties' => :'CustomProperties',
         :'_links' => :'Links',
         :'_maintainer' => :'Member',
@@ -144,6 +148,10 @@ module LaunchDarklyApi
         end
       end
 
+      if attributes.has_key?(:'_version')
+        self._version = attributes[:'_version']
+      end
+
       if attributes.has_key?(:'customProperties')
         self.custom_properties = attributes[:'customProperties']
       end
@@ -192,6 +200,7 @@ module LaunchDarklyApi
           maintainer_id == o.maintainer_id &&
           tags == o.tags &&
           variations == o.variations &&
+          _version == o._version &&
           custom_properties == o.custom_properties &&
           _links == o._links &&
           _maintainer == o._maintainer &&
@@ -207,7 +216,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [key, name, description, kind, creation_date, include_in_snippet, temporary, maintainer_id, tags, variations, custom_properties, _links, _maintainer, environments].hash
+      [key, name, description, kind, creation_date, include_in_snippet, temporary, maintainer_id, tags, variations, _version, custom_properties, _links, _maintainer, environments].hash
     end
 
     # Builds the object from hash

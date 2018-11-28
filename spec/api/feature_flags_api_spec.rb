@@ -121,7 +121,7 @@ describe 'FeatureFlagsApi' do
   # @param feature_flag_body Create a new feature flag.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :clone The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone&#x3D;flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag.
-  # @return [nil]
+  # @return [FeatureFlag]
   describe 'post_feature_flag test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

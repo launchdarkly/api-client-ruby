@@ -356,7 +356,7 @@ Name | Type | Description  | Notes
 
 
 # **post_feature_flag**
-> post_feature_flag(project_key, feature_flag_body, opts)
+> FeatureFlag post_feature_flag(project_key, feature_flag_body, opts)
 
 Creates a new feature flag.
 
@@ -384,7 +384,8 @@ opts = {
 
 begin
   #Creates a new feature flag.
-  api_instance.post_feature_flag(project_key, feature_flag_body, opts)
+  result = api_instance.post_feature_flag(project_key, feature_flag_body, opts)
+  p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling FeatureFlagsApi->post_feature_flag: #{e}"
 end
@@ -400,7 +401,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**FeatureFlag**](FeatureFlag.md)
 
 ### Authorization
 
