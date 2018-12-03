@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.name        = "launchdarkly_api"
   s.version     = LaunchDarklyApi::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Swagger-Codegen"]
+  s.authors     = ["LaunchDarkly"]
   s.email       = ["support@launchdarkly.com"]
   s.homepage    = "https://github.com/launchdarkly/api-client-ruby"
   s.summary     = "LaunchDarkly REST API Ruby Gem"
