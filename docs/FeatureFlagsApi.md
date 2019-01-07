@@ -4,6 +4,7 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**copy_feature_flag**](FeatureFlagsApi.md#copy_feature_flag) | **POST** /flags/{projectKey}/{environmentKey}/{featureFlagKey}/copy | Copies the feature flag configuration from one environment to the same feature flag in another environment.
 [**delete_feature_flag**](FeatureFlagsApi.md#delete_feature_flag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag in all environments. Be careful-- only delete feature flags that are no longer being used by your application.
 [**get_feature_flag**](FeatureFlagsApi.md#get_feature_flag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
 [**get_feature_flag_status**](FeatureFlagsApi.md#get_feature_flag_status) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get the status for a particular feature flag.
@@ -11,6 +12,64 @@ Method | HTTP request | Description
 [**get_feature_flags**](FeatureFlagsApi.md#get_feature_flags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
 [**patch_feature_flag**](FeatureFlagsApi.md#patch_feature_flag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Perform a partial update to a feature.
 [**post_feature_flag**](FeatureFlagsApi.md#post_feature_flag) | **POST** /flags/{projectKey} | Creates a new feature flag.
+
+
+# **copy_feature_flag**
+> FeatureFlag copy_feature_flag(project_key, environment_key, feature_flag_key, )
+
+Copies the feature flag configuration from one environment to the same feature flag in another environment.
+
+### Example
+```ruby
+# load the gem
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: Token
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::FeatureFlagsApi.new
+
+project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+
+environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+
+feature_flag_key = "feature_flag_key_example" # String | The feature flag's key. The key identifies the flag in your code.
+
+
+begin
+  #Copies the feature flag configuration from one environment to the same feature flag in another environment.
+  result = api_instance.copy_feature_flag(project_key, environment_key, feature_flag_key, )
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Exception when calling FeatureFlagsApi->copy_feature_flag: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **feature_flag_key** | **String**| The feature flag&#39;s key. The key identifies the flag in your code. | 
+
+### Return type
+
+[**FeatureFlag**](FeatureFlag.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 
 
 # **delete_feature_flag**
