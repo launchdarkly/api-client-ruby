@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **maintainer_id** | **String** | The ID of the member that should maintain this flag. | [optional] 
 **tags** | **Array&lt;String&gt;** | An array of tags for this feature flag. | [optional] 
 **variations** | [**Array&lt;Variation&gt;**](Variation.md) | The variations for this feature flag. | [optional] 
+**goal_ids** | **Array&lt;String&gt;** | An array goals from all environments associated with this feature flag | [optional] 
 **_version** | **Integer** |  | [optional] 
 **custom_properties** | [**Hash&lt;String, CustomProperty&gt;**](CustomProperty.md) | A mapping of keys to CustomProperty entries. | [optional] 
 **_links** | [**Links**](Links.md) |  | [optional] 
