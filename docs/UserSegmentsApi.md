@@ -30,11 +30,11 @@ end
 
 api_instance = LaunchDarklyApi::UserSegmentsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-user_segment_key = "user_segment_key_example" # String | The user segment's key. The key identifies the user segment in your code.
+user_segment_key = 'user_segment_key_example' # String | The user segment's key. The key identifies the user segment in your code.
 
 
 begin
@@ -87,11 +87,11 @@ end
 
 api_instance = LaunchDarklyApi::UserSegmentsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-user_segment_key = "user_segment_key_example" # String | The user segment's key. The key identifies the user segment in your code.
+user_segment_key = 'user_segment_key_example' # String | The user segment's key. The key identifies the user segment in your code.
 
 
 begin
@@ -145,12 +145,12 @@ end
 
 api_instance = LaunchDarklyApi::UserSegmentsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
 opts = { 
-  tag: "tag_example" # String | Filter by tag. A tag can be used to group flags across projects.
+  tag: 'tag_example' # String | Filter by tag. A tag can be used to group flags across projects.
 }
 
 begin
@@ -204,11 +204,11 @@ end
 
 api_instance = LaunchDarklyApi::UserSegmentsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-user_segment_key = "user_segment_key_example" # String | The user segment's key. The key identifies the user segment in your code.
+user_segment_key = 'user_segment_key_example' # String | The user segment's key. The key identifies the user segment in your code.
 
 patch_only = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
 
@@ -265,9 +265,9 @@ end
 
 api_instance = LaunchDarklyApi::UserSegmentsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
 user_segment_body = LaunchDarklyApi::UserSegmentBody.new # UserSegmentBody | Create a new user segment.
 

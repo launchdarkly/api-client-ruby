@@ -30,7 +30,7 @@ end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
 
-custom_role_key = "custom_role_key_example" # String | The custom role key.
+custom_role_key = 'custom_role_key_example' # String | The custom role key.
 
 
 begin
@@ -81,7 +81,7 @@ end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
 
-custom_role_key = "custom_role_key_example" # String | The custom role key.
+custom_role_key = 'custom_role_key_example' # String | The custom role key.
 
 
 begin
@@ -179,7 +179,7 @@ end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
 
-custom_role_key = "custom_role_key_example" # String | The custom role key.
+custom_role_key = 'custom_role_key_example' # String | The custom role key.
 
 patch_delta = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 

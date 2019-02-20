@@ -29,9 +29,9 @@ end
 
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
 
 begin
@@ -83,9 +83,9 @@ end
 
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
 
 begin
@@ -138,9 +138,9 @@ end
 
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
 patch_delta = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
@@ -196,7 +196,7 @@ end
 
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
 environment_body = LaunchDarklyApi::EnvironmentPost.new # EnvironmentPost | New environment.
 

@@ -30,7 +30,7 @@ end
 
 api_instance = LaunchDarklyApi::WebhooksApi.new
 
-resource_id = "resource_id_example" # String | The resource ID.
+resource_id = 'resource_id_example' # String | The resource ID.
 
 
 begin
@@ -81,7 +81,7 @@ end
 
 api_instance = LaunchDarklyApi::WebhooksApi.new
 
-resource_id = "resource_id_example" # String | The resource ID.
+resource_id = 'resource_id_example' # String | The resource ID.
 
 
 begin
@@ -179,7 +179,7 @@ end
 
 api_instance = LaunchDarklyApi::WebhooksApi.new
 
-resource_id = "resource_id_example" # String | The resource ID.
+resource_id = 'resource_id_example' # String | The resource ID.
 
 patch_delta = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 

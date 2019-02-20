@@ -28,13 +28,13 @@ end
 
 api_instance = LaunchDarklyApi::UserSettingsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-user_key = "user_key_example" # String | The user's key.
+user_key = 'user_key_example' # String | The user's key.
 
-feature_flag_key = "feature_flag_key_example" # String | The feature flag's key. The key identifies the flag in your code.
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key. The key identifies the flag in your code.
 
 
 begin
@@ -89,11 +89,11 @@ end
 
 api_instance = LaunchDarklyApi::UserSettingsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-user_key = "user_key_example" # String | The user's key.
+user_key = 'user_key_example' # String | The user's key.
 
 
 begin
@@ -147,13 +147,13 @@ end
 
 api_instance = LaunchDarklyApi::UserSettingsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-user_key = "user_key_example" # String | The user's key.
+user_key = 'user_key_example' # String | The user's key.
 
-feature_flag_key = "feature_flag_key_example" # String | The feature flag's key. The key identifies the flag in your code.
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key. The key identifies the flag in your code.
 
 user_settings_body = LaunchDarklyApi::UserSettingsBody.new # UserSettingsBody | 
 

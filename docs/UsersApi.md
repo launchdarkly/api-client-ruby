@@ -29,11 +29,11 @@ end
 
 api_instance = LaunchDarklyApi::UsersApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-user_key = "user_key_example" # String | The user's key.
+user_key = 'user_key_example' # String | The user's key.
 
 
 begin
@@ -86,12 +86,12 @@ end
 
 api_instance = LaunchDarklyApi::UsersApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
 opts = { 
-  q: "q_example", # String | Search query.
+  q: 'q_example', # String | Search query.
   limit: 56, # Integer | Pagination limit.
   offset: 56, # Integer | Specifies the first item to return in the collection.
   after: 8.14, # Float | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.
@@ -151,11 +151,11 @@ end
 
 api_instance = LaunchDarklyApi::UsersApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-user_key = "user_key_example" # String | The user's key.
+user_key = 'user_key_example' # String | The user's key.
 
 
 begin
@@ -209,14 +209,14 @@ end
 
 api_instance = LaunchDarklyApi::UsersApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
 opts = { 
   limit: 56, # Integer | Pagination limit.
-  h: "h_example", # String | This parameter is required when following \"next\" links.
-  scroll_id: "scroll_id_example" # String | This parameter is required when following \"next\" links.
+  h: 'h_example', # String | This parameter is required when following \"next\" links.
+  scroll_id: 'scroll_id_example' # String | This parameter is required when following \"next\" links.
 }
 
 begin

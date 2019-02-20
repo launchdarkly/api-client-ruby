@@ -33,11 +33,11 @@ end
 
 api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-feature_flag_key = "feature_flag_key_example" # String | The feature flag's key. The key identifies the flag in your code.
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key. The key identifies the flag in your code.
 
 
 begin
@@ -91,9 +91,9 @@ end
 
 api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-feature_flag_key = "feature_flag_key_example" # String | The feature flag's key. The key identifies the flag in your code.
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key. The key identifies the flag in your code.
 
 
 begin
@@ -145,12 +145,12 @@ end
 
 api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-feature_flag_key = "feature_flag_key_example" # String | The feature flag's key. The key identifies the flag in your code.
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key. The key identifies the flag in your code.
 
 opts = { 
-  env: "env_example" # String | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=production will restrict the returned configurations to just your production environment.
+  env: 'env_example' # String | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=production will restrict the returned configurations to just your production environment.
 }
 
 begin
@@ -204,11 +204,11 @@ end
 
 api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-feature_flag_key = "feature_flag_key_example" # String | The feature flag's key. The key identifies the flag in your code.
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key. The key identifies the flag in your code.
 
 
 begin
@@ -262,9 +262,9 @@ end
 
 api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = "environment_key_example" # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
 
 begin
@@ -317,11 +317,11 @@ end
 
 api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
 opts = { 
-  env: "env_example" # String | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=production will restrict the returned configurations to just your production environment.
-  tag: "tag_example" # String | Filter by tag. A tag can be used to group flags across projects.
+  env: 'env_example' # String | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=production will restrict the returned configurations to just your production environment.
+  tag: 'tag_example' # String | Filter by tag. A tag can be used to group flags across projects.
 }
 
 begin
@@ -375,9 +375,9 @@ end
 
 api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-feature_flag_key = "feature_flag_key_example" # String | The feature flag's key. The key identifies the flag in your code.
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key. The key identifies the flag in your code.
 
 patch_comment = LaunchDarklyApi::PatchComment.new # PatchComment | Requires a JSON Patch representation of the desired changes to the project, and an optional comment. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
 
@@ -433,12 +433,12 @@ end
 
 api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
-project_key = "project_key_example" # String | The project key, used to tie the flags together under one project so they can be managed together.
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
 feature_flag_body = LaunchDarklyApi::FeatureFlagBody.new # FeatureFlagBody | Create a new feature flag.
 
 opts = { 
-  clone: "clone_example" # String | The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone=flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag.
+  clone: 'clone_example' # String | The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone=flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag.
 }
 
 begin
