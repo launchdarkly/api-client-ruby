@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 
 
 # **post_user_segment**
-> post_user_segment(project_key, environment_key, user_segment_body)
+> UserSegment post_user_segment(project_key, environment_key, user_segment_body)
 
 Creates a new user segment.
 
@@ -274,7 +274,8 @@ user_segment_body = LaunchDarklyApi::UserSegmentBody.new # UserSegmentBody | Cre
 
 begin
   #Creates a new user segment.
-  api_instance.post_user_segment(project_key, environment_key, user_segment_body)
+  result = api_instance.post_user_segment(project_key, environment_key, user_segment_body)
+  p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling UserSegmentsApi->post_user_segment: #{e}"
 end
@@ -290,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**UserSegment**](UserSegment.md)
 
 ### Authorization
 

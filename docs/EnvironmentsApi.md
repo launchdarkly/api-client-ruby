@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 
 
 # **post_environment**
-> post_environment(project_key, environment_body)
+> Environment post_environment(project_key, environment_body)
 
 Create a new environment in a specified project with a given name, key, and swatch color.
 
@@ -203,7 +203,8 @@ environment_body = LaunchDarklyApi::EnvironmentPost.new # EnvironmentPost | New 
 
 begin
   #Create a new environment in a specified project with a given name, key, and swatch color.
-  api_instance.post_environment(project_key, environment_body)
+  result = api_instance.post_environment(project_key, environment_body)
+  p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling EnvironmentsApi->post_environment: #{e}"
 end
@@ -218,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**Environment**](Environment.md)
 
 ### Authorization
 

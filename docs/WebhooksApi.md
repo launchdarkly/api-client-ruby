@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 
 # **post_webhook**
-> post_webhook(webhook_body)
+> Webhook post_webhook(webhook_body)
 
 Create a webhook.
 
@@ -239,7 +239,8 @@ webhook_body = LaunchDarklyApi::WebhookBody.new # WebhookBody | New webhook.
 
 begin
   #Create a webhook.
-  api_instance.post_webhook(webhook_body)
+  result = api_instance.post_webhook(webhook_body)
+  p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling WebhooksApi->post_webhook: #{e}"
 end
@@ -253,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**Webhook**](Webhook.md)
 
 ### Authorization
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **first_name** | **String** |  | [optional] 
 **last_name** | **String** |  | [optional] 
 **role** | [**Role**](Role.md) |  | [optional] 
-**custom_roles** | [**Array&lt;CustomRoleKeyOrId&gt;**](CustomRoleKeyOrId.md) |  | [optional] 
+**custom_roles** | **Array&lt;String&gt;** |  | [optional] 
 **inline_role** | [**Statements**](Statements.md) |  | [optional] 
 
 

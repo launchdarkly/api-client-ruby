@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 
 # **post_project**
-> post_project(project_body)
+> Project post_project(project_body)
 
 Create a new project with the given key and name.
 
@@ -239,7 +239,8 @@ project_body = LaunchDarklyApi::ProjectBody.new # ProjectBody | Project keys mus
 
 begin
   #Create a new project with the given key and name.
-  api_instance.post_project(project_body)
+  result = api_instance.post_project(project_body)
+  p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling ProjectsApi->post_project: #{e}"
 end
@@ -253,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**Project**](Project.md)
 
 ### Authorization
 

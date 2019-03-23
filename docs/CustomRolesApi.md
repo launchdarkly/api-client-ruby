@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 
 # **post_custom_role**
-> post_custom_role(custom_role_body)
+> CustomRole post_custom_role(custom_role_body)
 
 Create a new custom role.
 
@@ -239,7 +239,8 @@ custom_role_body = LaunchDarklyApi::CustomRoleBody.new # CustomRoleBody | New ro
 
 begin
   #Create a new custom role.
-  api_instance.post_custom_role(custom_role_body)
+  result = api_instance.post_custom_role(custom_role_body)
+  p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling CustomRolesApi->post_custom_role: #{e}"
 end
@@ -253,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**CustomRole**](CustomRole.md)
 
 ### Authorization
 

@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 
 # **post_members**
-> post_members(members_body)
+> Members post_members(members_body)
 
 Invite new members.
 
@@ -239,7 +239,8 @@ members_body = [LaunchDarklyApi::MembersBody.new] # Array<MembersBody> | New mem
 
 begin
   #Invite new members.
-  api_instance.post_members(members_body)
+  result = api_instance.post_members(members_body)
+  p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling TeamMembersApi->post_members: #{e}"
 end
@@ -253,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**Members**](Members.md)
 
 ### Authorization
 
