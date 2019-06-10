@@ -28,8 +28,8 @@ end
 api_instance = LaunchDarklyApi::AuditLogApi.new
 
 opts = { 
-  before: 8.14, # Float | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have before this timestamp.
-  after: 8.14, # Float | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.
+  before: 789, # Integer | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have before this timestamp.
+  after: 789, # Integer | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.
   q: 'q_example', # String | Text to search for. You can search for the full or partial name of the resource involved or fullpartial email address of the member who made the change.
   limit: 8.14, # Float | A limit on the number of audit log entries to be returned, between 1 and 20.
   spec: 'spec_example' # String | A resource specifier, allowing you to filter audit log listings by resource.
@@ -48,8 +48,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **before** | **Float**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have before this timestamp. | [optional] 
- **after** | **Float**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. | [optional] 
+ **before** | **Integer**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have before this timestamp. | [optional] 
+ **after** | **Integer**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. | [optional] 
  **q** | **String**| Text to search for. You can search for the full or partial name of the resource involved or fullpartial email address of the member who made the change. | [optional] 
  **limit** | **Float**| A limit on the number of audit log entries to be returned, between 1 and 20. | [optional] 
  **spec** | **String**| A resource specifier, allowing you to filter audit log listings by resource. | [optional] 

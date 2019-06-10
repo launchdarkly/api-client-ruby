@@ -53,7 +53,7 @@ describe 'UsersApi' do
   # @option opts [String] :q Search query.
   # @option opts [Integer] :limit Pagination limit.
   # @option opts [Integer] :offset Specifies the first item to return in the collection.
-  # @option opts [Float] :after A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.
+  # @option opts [Integer] :after A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.
   # @return [Users]
   describe 'get_search_users test' do
     it 'should work' do

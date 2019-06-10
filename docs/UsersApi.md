@@ -94,7 +94,7 @@ opts = {
   q: 'q_example', # String | Search query.
   limit: 56, # Integer | Pagination limit.
   offset: 56, # Integer | Specifies the first item to return in the collection.
-  after: 8.14, # Float | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.
+  after: 789, # Integer | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.
 }
 
 begin
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
  **q** | **String**| Search query. | [optional] 
  **limit** | **Integer**| Pagination limit. | [optional] 
  **offset** | **Integer**| Specifies the first item to return in the collection. | [optional] 
- **after** | **Float**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. | [optional] 
+ **after** | **Integer**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. | [optional] 
 
 ### Return type
 
