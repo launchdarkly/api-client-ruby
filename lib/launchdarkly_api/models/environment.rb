@@ -45,6 +45,12 @@ module LaunchDarklyApi
     # An array of tags for this environment.
     attr_accessor :tags
 
+    # Determines if this environment requires comments for flag and segment changes.
+    attr_accessor :require_comments
+
+    # Determines if this environment requires confirmation for flag and segment changes.
+    attr_accessor :confirm_changes
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -58,7 +64,9 @@ module LaunchDarklyApi
         :'default_ttl' => :'defaultTtl',
         :'secure_mode' => :'secureMode',
         :'default_track_events' => :'defaultTrackEvents',
-        :'tags' => :'tags'
+        :'tags' => :'tags',
+        :'require_comments' => :'requireComments',
+        :'confirm_changes' => :'confirmChanges'
       }
     end
 
@@ -75,7 +83,9 @@ module LaunchDarklyApi
         :'default_ttl' => :'Float',
         :'secure_mode' => :'BOOLEAN',
         :'default_track_events' => :'BOOLEAN',
-        :'tags' => :'Array<String>'
+        :'tags' => :'Array<String>',
+        :'require_comments' => :'BOOLEAN',
+        :'confirm_changes' => :'BOOLEAN'
       }
     end
 
@@ -132,6 +142,14 @@ module LaunchDarklyApi
           self.tags = value
         end
       end
+
+      if attributes.has_key?(:'requireComments')
+        self.require_comments = attributes[:'requireComments']
+      end
+
+      if attributes.has_key?(:'confirmChanges')
+        self.confirm_changes = attributes[:'confirmChanges']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -162,7 +180,9 @@ module LaunchDarklyApi
           default_ttl == o.default_ttl &&
           secure_mode == o.secure_mode &&
           default_track_events == o.default_track_events &&
-          tags == o.tags
+          tags == o.tags &&
+          require_comments == o.require_comments &&
+          confirm_changes == o.confirm_changes
     end
 
     # @see the `==` method
@@ -174,7 +194,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_links, _id, key, name, api_key, mobile_key, color, default_ttl, secure_mode, default_track_events, tags].hash
+      [_links, _id, key, name, api_key, mobile_key, color, default_ttl, secure_mode, default_track_events, tags, require_comments, confirm_changes].hash
     end
 
     # Builds the object from hash
