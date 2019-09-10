@@ -4,7 +4,7 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**copy_feature_flag**](FeatureFlagsApi.md#copy_feature_flag) | **POST** /flags/{projectKey}/{environmentKey}/{featureFlagKey}/copy | Copies the feature flag configuration from one environment to the same feature flag in another environment.
+[**copy_feature_flag**](FeatureFlagsApi.md#copy_feature_flag) | **POST** /flags/{projectKey}/{featureFlagKey}/copy | Copies the feature flag configuration from one environment to the same feature flag in another environment.
 [**delete_feature_flag**](FeatureFlagsApi.md#delete_feature_flag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag in all environments. Be careful-- only delete feature flags that are no longer being used by your application.
 [**get_feature_flag**](FeatureFlagsApi.md#get_feature_flag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
 [**get_feature_flag_status**](FeatureFlagsApi.md#get_feature_flag_status) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get the status for a particular feature flag.
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **copy_feature_flag**
-> FeatureFlag copy_feature_flag(project_key, environment_key, feature_flag_key, )
+> FeatureFlag copy_feature_flag(project_key, feature_flag_key, feature_flag_copy_body)
 
 Copies the feature flag configuration from one environment to the same feature flag in another environment.
 
@@ -35,14 +35,14 @@ api_instance = LaunchDarklyApi::FeatureFlagsApi.new
 
 project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
 
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
 feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key. The key identifies the flag in your code.
+
+feature_flag_copy_body = LaunchDarklyApi::FeatureFlagCopyBody.new # FeatureFlagCopyBody | Copy feature flag configurations between environments.
 
 
 begin
   #Copies the feature flag configuration from one environment to the same feature flag in another environment.
-  result = api_instance.copy_feature_flag(project_key, environment_key, feature_flag_key, )
+  result = api_instance.copy_feature_flag(project_key, feature_flag_key, feature_flag_copy_body)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling FeatureFlagsApi->copy_feature_flag: #{e}"
@@ -54,8 +54,8 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
  **feature_flag_key** | **String**| The feature flag&#39;s key. The key identifies the flag in your code. | 
+ **feature_flag_copy_body** | [**FeatureFlagCopyBody**](FeatureFlagCopyBody.md)| Copy feature flag configurations between environments. | 
 
 ### Return type
 
