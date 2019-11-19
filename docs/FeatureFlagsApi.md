@@ -377,8 +377,8 @@ project_key = 'project_key_example' # String | The project key, used to tie the 
 
 opts = { 
   env: 'env_example' # String | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=production will restrict the returned configurations to just your production environment.
-  summary: 'summary_example', # String | By default in api version >= 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary=0 to include these fields for each flag returned.
-  archived: 'archived_example', # String | When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.
+  summary: true, # BOOLEAN | By default in api version >= 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary=0 to include these fields for each flag returned.
+  archived: true, # BOOLEAN | When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.
   tag: 'tag_example' # String | Filter by tag. A tag can be used to group flags across projects.
 }
 
@@ -397,8 +397,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **env** | **String**| By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;production will restrict the returned configurations to just your production environment. | [optional] 
- **summary** | **String**| By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned. | [optional] 
- **archived** | **String**| When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags. | [optional] 
+ **summary** | **BOOLEAN**| By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned. | [optional] 
+ **archived** | **BOOLEAN**| When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags. | [optional] 
  **tag** | **String**| Filter by tag. A tag can be used to group flags across projects. | [optional] 
 
 ### Return type
