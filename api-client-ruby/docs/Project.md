@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **_id** | [**Id**](Id.md) |  | [optional] 
 **key** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
+**include_in_snippet_by_default** | **BOOLEAN** |  | [optional] 
 **environments** | [**Array&lt;Environment&gt;**](Environment.md) |  | [optional] 
 **tags** | **Array&lt;String&gt;** | An array of tags for this project. | [optional] 
 
