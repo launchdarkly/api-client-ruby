@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **last_name** | **String** |  | [optional] 
 **role** | [**Role**](Role.md) |  | [optional] 
 **custom_roles** | **Array&lt;String&gt;** |  | [optional] 
-**inline_role** | [**Statements**](Statements.md) |  | [optional] 
+**inline_role** | [**Array&lt;Statement&gt;**](Statement.md) |  | [optional] 
 
 

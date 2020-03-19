@@ -13,5 +13,6 @@ Name | Type | Description | Notes
 **rules** | [**Array&lt;UserSegmentRule&gt;**](UserSegmentRule.md) | An array of rules that can cause a user to be included in this segment. | [optional] 
 **version** | **Integer** |  | [optional] 
 **_links** | [**Links**](Links.md) |  | [optional] 
+**_flags** | [**Array&lt;FlagListItem&gt;**](FlagListItem.md) |  | [optional] 
 
 
