@@ -5,6 +5,7 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_member**](TeamMembersApi.md#delete_member) | **DELETE** /members/{memberId} | Delete a team member by ID.
+[**get_me**](TeamMembersApi.md#get_me) | **GET** /members/me | Get the current team member associated with the token
 [**get_member**](TeamMembersApi.md#get_member) | **GET** /members/{memberId} | Get a single team member by ID.
 [**get_members**](TeamMembersApi.md#get_members) | **GET** /members | Returns a list of all members in the account.
 [**patch_member**](TeamMembersApi.md#patch_member) | **PATCH** /members/{memberId} | Modify a team member by ID.
@@ -50,6 +51,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_me**
+> Member get_me
+
+Get the current team member associated with the token
+
+### Example
+```ruby
+# load the gem
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: Token
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::TeamMembersApi.new
+
+begin
+  #Get the current team member associated with the token
+  result = api_instance.get_me
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Exception when calling TeamMembersApi->get_me: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Member**](Member.md)
 
 ### Authorization
 
@@ -115,7 +162,7 @@ Name | Type | Description  | Notes
 
 
 # **get_members**
-> Members get_members
+> Members get_members(opts)
 
 Returns a list of all members in the account.
 
@@ -133,9 +180,16 @@ end
 
 api_instance = LaunchDarklyApi::TeamMembersApi.new
 
+opts = { 
+  limit: 8.14, # Float | The number of objects to return. Defaults to -1, which returns everything.
+  number: true, # BOOLEAN | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.
+  filter: 'filter_example', # String | A comma-separated list of filters. Each filter is of the form field:value.
+  sort: 'sort_example' # String | A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order.
+}
+
 begin
   #Returns a list of all members in the account.
-  result = api_instance.get_members
+  result = api_instance.get_members(opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling TeamMembersApi->get_members: #{e}"
@@ -143,7 +197,13 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **Float**| The number of objects to return. Defaults to -1, which returns everything. | [optional] 
+ **number** | **BOOLEAN**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional] 
+ **filter** | **String**| A comma-separated list of filters. Each filter is of the form field:value. | [optional] 
+ **sort** | **String**| A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order. | [optional] 
 
 ### Return type
 

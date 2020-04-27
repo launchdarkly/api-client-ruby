@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **email** | **String** |  | [optional] 
 **first_name** | **String** |  | [optional] 
 **last_name** | **String** |  | [optional] 
+**_verified** | **BOOLEAN** |  | [optional] 
 **_pending_invite** | **BOOLEAN** |  | [optional] 
 **is_beta** | **BOOLEAN** |  | [optional] 
 **custom_roles** | [**Array&lt;Id&gt;**](Id.md) |  | [optional] 
