@@ -6,11 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**copy_feature_flag**](FeatureFlagsApi.md#copy_feature_flag) | **POST** /flags/{projectKey}/{featureFlagKey}/copy | Copies the feature flag configuration from one environment to the same feature flag in another environment.
 [**delete_feature_flag**](FeatureFlagsApi.md#delete_feature_flag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag in all environments. Be careful-- only delete feature flags that are no longer being used by your application.
+[**get_expiring_user_targets**](FeatureFlagsApi.md#get_expiring_user_targets) | **GET** /flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey} | Get expiring user targets for feature flag
 [**get_feature_flag**](FeatureFlagsApi.md#get_feature_flag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
 [**get_feature_flag_status**](FeatureFlagsApi.md#get_feature_flag_status) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get the status for a particular feature flag.
 [**get_feature_flag_status_across_environments**](FeatureFlagsApi.md#get_feature_flag_status_across_environments) | **GET** /flag-status/{projectKey}/{featureFlagKey} | Get the status for a particular feature flag across environments
 [**get_feature_flag_statuses**](FeatureFlagsApi.md#get_feature_flag_statuses) | **GET** /flag-statuses/{projectKey}/{environmentKey} | Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag.
 [**get_feature_flags**](FeatureFlagsApi.md#get_feature_flags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
+[**patch_expiring_user_targets**](FeatureFlagsApi.md#patch_expiring_user_targets) | **PATCH** /flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey} | Update, add, or delete expiring user targets on feature flag
 [**patch_feature_flag**](FeatureFlagsApi.md#patch_feature_flag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Perform a partial update to a feature.
 [**post_feature_flag**](FeatureFlagsApi.md#post_feature_flag) | **POST** /flags/{projectKey} | Creates a new feature flag.
 
@@ -115,6 +117,64 @@ Name | Type | Description  | Notes
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_expiring_user_targets**
+> UserTargetingExpirationForFlags get_expiring_user_targets(project_key, environment_key, feature_flag_key, )
+
+Get expiring user targets for feature flag
+
+### Example
+```ruby
+# load the gem
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: Token
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::FeatureFlagsApi.new
+
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
+
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key. The key identifies the flag in your code.
+
+
+begin
+  #Get expiring user targets for feature flag
+  result = api_instance.get_expiring_user_targets(project_key, environment_key, feature_flag_key, )
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Exception when calling FeatureFlagsApi->get_expiring_user_targets: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **feature_flag_key** | **String**| The feature flag&#39;s key. The key identifies the flag in your code. | 
+
+### Return type
+
+[**UserTargetingExpirationForFlags**](UserTargetingExpirationForFlags.md)
 
 ### Authorization
 
@@ -412,6 +472,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FeatureFlags**](FeatureFlags.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **patch_expiring_user_targets**
+> UserTargetingExpirationForFlags patch_expiring_user_targets(project_key, environment_key, feature_flag_key, patch_comment)
+
+Update, add, or delete expiring user targets on feature flag
+
+### Example
+```ruby
+# load the gem
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: Token
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::FeatureFlagsApi.new
+
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
+
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key. The key identifies the flag in your code.
+
+patch_comment = LaunchDarklyApi::PatchComment.new # PatchComment | Requires a JSON Patch representation of the desired changes to the project, and an optional comment. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
+
+
+begin
+  #Update, add, or delete expiring user targets on feature flag
+  result = api_instance.patch_expiring_user_targets(project_key, environment_key, feature_flag_key, patch_comment)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Exception when calling FeatureFlagsApi->patch_expiring_user_targets: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **feature_flag_key** | **String**| The feature flag&#39;s key. The key identifies the flag in your code. | 
+ **patch_comment** | [**PatchComment**](PatchComment.md)| Requires a JSON Patch representation of the desired changes to the project, and an optional comment. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported. | 
+
+### Return type
+
+[**UserTargetingExpirationForFlags**](UserTargetingExpirationForFlags.md)
 
 ### Authorization
 
