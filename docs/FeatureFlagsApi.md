@@ -440,7 +440,7 @@ opts = {
   summary: true, # BOOLEAN | By default in api version >= 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary=0 to include these fields for each flag returned.
   archived: true, # BOOLEAN | When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.
   limit: 8.14, # Float | The number of objects to return. Defaults to -1, which returns everything.
-  number: true, # BOOLEAN | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.
+  offset: 8.14, # Float | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.
   filter: 'filter_example', # String | A comma-separated list of filters. Each filter is of the form field:value.
   sort: 'sort_example' # String | A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order.
   tag: 'tag_example' # String | Filter by tag. A tag can be used to group flags across projects.
@@ -464,7 +464,7 @@ Name | Type | Description  | Notes
  **summary** | **BOOLEAN**| By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned. | [optional] 
  **archived** | **BOOLEAN**| When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags. | [optional] 
  **limit** | **Float**| The number of objects to return. Defaults to -1, which returns everything. | [optional] 
- **number** | **BOOLEAN**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional] 
+ **offset** | **Float**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional] 
  **filter** | **String**| A comma-separated list of filters. Each filter is of the form field:value. | [optional] 
  **sort** | **String**| A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order. | [optional] 
  **tag** | **String**| Filter by tag. A tag can be used to group flags across projects. | [optional] 
@@ -485,7 +485,7 @@ Name | Type | Description  | Notes
 
 
 # **patch_expiring_user_targets**
-> UserTargetingExpirationForFlags patch_expiring_user_targets(project_key, environment_key, feature_flag_key, patch_comment)
+> UserTargetingExpirationForFlags patch_expiring_user_targets(project_key, environment_key, feature_flag_key, semantic_patch_with_comment)
 
 Update, add, or delete expiring user targets on feature flag
 
@@ -509,12 +509,12 @@ environment_key = 'environment_key_example' # String | The environment key, used
 
 feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key. The key identifies the flag in your code.
 
-patch_comment = LaunchDarklyApi::PatchComment.new # PatchComment | Requires a JSON Patch representation of the desired changes to the project, and an optional comment. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
+semantic_patch_with_comment = nil # Object | Requires a Semantic Patch representation of the desired changes to the resource. 'https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches'. The addition of comments is also supported.
 
 
 begin
   #Update, add, or delete expiring user targets on feature flag
-  result = api_instance.patch_expiring_user_targets(project_key, environment_key, feature_flag_key, patch_comment)
+  result = api_instance.patch_expiring_user_targets(project_key, environment_key, feature_flag_key, semantic_patch_with_comment)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Exception when calling FeatureFlagsApi->patch_expiring_user_targets: #{e}"
@@ -528,7 +528,7 @@ Name | Type | Description  | Notes
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
  **feature_flag_key** | **String**| The feature flag&#39;s key. The key identifies the flag in your code. | 
- **patch_comment** | [**PatchComment**](PatchComment.md)| Requires a JSON Patch representation of the desired changes to the project, and an optional comment. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported. | 
+ **semantic_patch_with_comment** | **Object**| Requires a Semantic Patch representation of the desired changes to the resource. &#39;https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches&#39;. The addition of comments is also supported. | 
 
 ### Return type
 

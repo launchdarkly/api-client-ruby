@@ -182,7 +182,7 @@ api_instance = LaunchDarklyApi::TeamMembersApi.new
 
 opts = { 
   limit: 8.14, # Float | The number of objects to return. Defaults to -1, which returns everything.
-  number: true, # BOOLEAN | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.
+  offset: 8.14, # Float | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.
   filter: 'filter_example', # String | A comma-separated list of filters. Each filter is of the form field:value.
   sort: 'sort_example' # String | A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order.
 }
@@ -201,7 +201,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **Float**| The number of objects to return. Defaults to -1, which returns everything. | [optional] 
- **number** | **BOOLEAN**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional] 
+ **offset** | **Float**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional] 
  **filter** | **String**| A comma-separated list of filters. Each filter is of the form field:value. | [optional] 
  **sort** | **String**| A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order. | [optional] 
 
