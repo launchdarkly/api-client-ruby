@@ -13,58 +13,26 @@ Swagger Codegen version: 2.4.8
 require 'date'
 
 module LaunchDarklyApi
-  class DestinationBody
-    # A human-readable name for your data export destination.
-    attr_accessor :name
+  class ClientSideAvailability
+    # When set to true, this flag will be available to SDKs using the client-side id.
+    attr_accessor :using_environment_id
 
-    # The data export destination type. Available choices are kinesis, google-pubsub, mparticle, or segment.
-    attr_accessor :kind
-
-    # destination-specific configuration.
-    attr_accessor :config
-
-    # Whether the data export destination is on or not.
-    attr_accessor :on
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # When set to true, this flag will be available to SDKS using a mobile key.
+    attr_accessor :using_mobile_key
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'kind' => :'kind',
-        :'config' => :'config',
-        :'on' => :'on'
+        :'using_environment_id' => :'usingEnvironmentId',
+        :'using_mobile_key' => :'usingMobileKey'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'kind' => :'String',
-        :'config' => :'Object',
-        :'on' => :'BOOLEAN'
+        :'using_environment_id' => :'BOOLEAN',
+        :'using_mobile_key' => :'BOOLEAN'
       }
     end
 
@@ -76,20 +44,12 @@ module LaunchDarklyApi
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'usingEnvironmentId')
+        self.using_environment_id = attributes[:'usingEnvironmentId']
       end
 
-      if attributes.has_key?(:'kind')
-        self.kind = attributes[:'kind']
-      end
-
-      if attributes.has_key?(:'config')
-        self.config = attributes[:'config']
-      end
-
-      if attributes.has_key?(:'on')
-        self.on = attributes[:'on']
+      if attributes.has_key?(:'usingMobileKey')
+        self.using_mobile_key = attributes[:'usingMobileKey']
       end
     end
 
@@ -97,40 +57,13 @@ module LaunchDarklyApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @kind.nil?
-        invalid_properties.push('invalid value for "kind", kind cannot be nil.')
-      end
-
-      if @config.nil?
-        invalid_properties.push('invalid value for "config", config cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @name.nil?
-      return false if @kind.nil?
-      kind_validator = EnumAttributeValidator.new('String', ['google-pubsub', 'kinesis', 'mparticle', 'segment'])
-      return false unless kind_validator.valid?(@kind)
-      return false if @config.nil?
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] kind Object to be assigned
-    def kind=(kind)
-      validator = EnumAttributeValidator.new('String', ['google-pubsub', 'kinesis', 'mparticle', 'segment'])
-      unless validator.valid?(kind)
-        fail ArgumentError, 'invalid value for "kind", must be one of #{validator.allowable_values}.'
-      end
-      @kind = kind
     end
 
     # Checks equality by comparing each attribute.
@@ -138,10 +71,8 @@ module LaunchDarklyApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          kind == o.kind &&
-          config == o.config &&
-          on == o.on
+          using_environment_id == o.using_environment_id &&
+          using_mobile_key == o.using_mobile_key
     end
 
     # @see the `==` method
@@ -153,7 +84,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, kind, config, on].hash
+      [using_environment_id, using_mobile_key].hash
     end
 
     # Builds the object from hash

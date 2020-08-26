@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **environments** | [**Hash&lt;String, FeatureFlagConfig&gt;**](FeatureFlagConfig.md) |  | [optional] 
 **archived_date** | **Integer** | A unix epoch time in milliseconds specifying the archived time of this flag. | [optional] 
 **archived** | **BOOLEAN** | Whether or not this flag is archived. | [optional] 
+**client_side_availability** | [**ClientSideAvailability**](ClientSideAvailability.md) |  | [optional] 
 **defaults** | [**Defaults**](Defaults.md) |  | [optional] 
 
 

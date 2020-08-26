@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **temporary** | **BOOLEAN** | Whether or not the flag is a temporary flag. | [optional] 
 **tags** | **Array&lt;String&gt;** | Tags for the feature flag. | [optional] 
 **include_in_snippet** | **BOOLEAN** | Whether or not this flag should be made available to the client-side JavaScript SDK. | [optional] 
+**client_side_availability** | [**ClientSideAvailability**](ClientSideAvailability.md) |  | [optional] 
 **defaults** | [**Defaults**](Defaults.md) |  | [optional] 
 
 
