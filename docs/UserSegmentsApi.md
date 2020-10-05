@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**patch_expiring_user_targets_on_segment**](UserSegmentsApi.md#patch_expiring_user_targets_on_segment) | **PATCH** /segments/{projectKey}/{userSegmentKey}/expiring-user-targets/{environmentKey} | Update, add, or delete expiring user targets on user segment
 [**patch_user_segment**](UserSegmentsApi.md#patch_user_segment) | **PATCH** /segments/{projectKey}/{environmentKey}/{userSegmentKey} | Perform a partial update to a user segment.
 [**post_user_segment**](UserSegmentsApi.md#post_user_segment) | **POST** /segments/{projectKey}/{environmentKey} | Creates a new user segment.
+[**updated_unbounded_segment_targets**](UserSegmentsApi.md#updated_unbounded_segment_targets) | **POST** /segments/{projectKey}/{environmentKey}/{userSegmentKey}/unbounded-users | Update targets included or excluded in an unbounded segment
 
 
 # **delete_user_segment**
@@ -413,6 +414,66 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UserSegment**](UserSegment.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **updated_unbounded_segment_targets**
+> updated_unbounded_segment_targets(project_key, environment_key, user_segment_key, unbounded_segment_targets_body)
+
+Update targets included or excluded in an unbounded segment
+
+### Example
+```ruby
+# load the gem
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: Token
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::UserSegmentsApi.new
+
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
+
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+
+user_segment_key = 'user_segment_key_example' # String | The user segment's key. The key identifies the user segment in your code.
+
+unbounded_segment_targets_body = LaunchDarklyApi::UnboundedSegmentTargetsBody.new # UnboundedSegmentTargetsBody | Add or remove user targets to the included or excluded lists on an unbounded segment
+
+
+begin
+  #Update targets included or excluded in an unbounded segment
+  api_instance.updated_unbounded_segment_targets(project_key, environment_key, user_segment_key, unbounded_segment_targets_body)
+rescue LaunchDarklyApi::ApiError => e
+  puts "Exception when calling UserSegmentsApi->updated_unbounded_segment_targets: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **user_segment_key** | **String**| The user segment&#39;s key. The key identifies the user segment in your code. | 
+ **unbounded_segment_targets_body** | [**UnboundedSegmentTargetsBody**](UnboundedSegmentTargetsBody.md)| Add or remove user targets to the included or excluded lists on an unbounded segment | 
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
