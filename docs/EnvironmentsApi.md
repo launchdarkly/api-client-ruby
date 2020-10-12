@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**get_environment**](EnvironmentsApi.md#get_environment) | **GET** /projects/{projectKey}/environments/{environmentKey} | Get an environment given a project and key.
 [**patch_environment**](EnvironmentsApi.md#patch_environment) | **PATCH** /projects/{projectKey}/environments/{environmentKey} | Modify an environment by ID.
 [**post_environment**](EnvironmentsApi.md#post_environment) | **POST** /projects/{projectKey}/environments | Create a new environment in a specified project with a given name, key, and swatch color.
+[**reset_environment_mobile_key**](EnvironmentsApi.md#reset_environment_mobile_key) | **POST** /projects/{projectKey}/environments/{environmentKey}/mobileKey | Reset an environment&#39;s mobile key with an optional expiry time for the old key.
+[**reset_environment_sdk_key**](EnvironmentsApi.md#reset_environment_sdk_key) | **POST** /projects/{projectKey}/environments/{environmentKey}/apiKey | Reset an environment&#39;s SDK key with an optional expiry time for the old key.
 
 
 # **delete_environment**
@@ -216,6 +218,124 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environment_body** | [**EnvironmentPost**](EnvironmentPost.md)| New environment. | 
+
+### Return type
+
+[**Environment**](Environment.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **reset_environment_mobile_key**
+> Environment reset_environment_mobile_key(project_key, environment_key, , opts)
+
+Reset an environment's mobile key with an optional expiry time for the old key.
+
+### Example
+```ruby
+# load the gem
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: Token
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::EnvironmentsApi.new
+
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
+
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+
+opts = { 
+  expiry: 789 # Integer | An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately
+}
+
+begin
+  #Reset an environment's mobile key with an optional expiry time for the old key.
+  result = api_instance.reset_environment_mobile_key(project_key, environment_key, , opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Exception when calling EnvironmentsApi->reset_environment_mobile_key: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **expiry** | **Integer**| An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately | [optional] 
+
+### Return type
+
+[**Environment**](Environment.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **reset_environment_sdk_key**
+> Environment reset_environment_sdk_key(project_key, environment_key, , opts)
+
+Reset an environment's SDK key with an optional expiry time for the old key.
+
+### Example
+```ruby
+# load the gem
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: Token
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::EnvironmentsApi.new
+
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
+
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+
+opts = { 
+  expiry: 789 # Integer | An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately
+}
+
+begin
+  #Reset an environment's SDK key with an optional expiry time for the old key.
+  result = api_instance.reset_environment_sdk_key(project_key, environment_key, , opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Exception when calling EnvironmentsApi->reset_environment_sdk_key: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **expiry** | **Integer**| An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately | [optional] 
 
 ### Return type
 
