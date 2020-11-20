@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **track_events** | **BOOLEAN** |  | [optional] 
 **rollout** | [**Rollout**](Rollout.md) |  | [optional] 
 **clauses** | [**Array&lt;Clause&gt;**](Clause.md) |  | [optional] 
+**description** | **String** |  | [optional] 
 
 
