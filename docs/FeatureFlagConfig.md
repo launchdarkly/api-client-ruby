@@ -16,5 +16,7 @@ Name | Type | Description | Notes
 **prerequisites** | [**Array&lt;Prerequisite&gt;**](Prerequisite.md) |  | [optional] 
 **track_events** | **BOOLEAN** | Set to true to send detailed event information for this flag. | [optional] 
 **track_events_fallthrough** | **BOOLEAN** | Set to true to send detailed event information when targeting is enabled but no individual targeting rule is matched. | [optional] 
+**_site** | [**Site**](Site.md) |  | [optional] 
+**_environment_name** | **String** |  | [optional] 
 
 
