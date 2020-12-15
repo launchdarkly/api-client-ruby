@@ -6,20 +6,21 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**copy_feature_flag**](FeatureFlagsApi.md#copy_feature_flag) | **POST** /flags/{projectKey}/{featureFlagKey}/copy | Copies the feature flag configuration from one environment to the same feature flag in another environment.
 [**delete_feature_flag**](FeatureFlagsApi.md#delete_feature_flag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag in all environments. Be careful-- only delete feature flags that are no longer being used by your application.
+[**delete_feature_flag_approval_request**](FeatureFlagsApi.md#delete_feature_flag_approval_request) | **DELETE** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId} | Delete an approval request for a feature flag
 [**get_expiring_user_targets**](FeatureFlagsApi.md#get_expiring_user_targets) | **GET** /flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey} | Get expiring user targets for feature flag
 [**get_feature_flag**](FeatureFlagsApi.md#get_feature_flag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
-[**get_feature_flag_change_request**](FeatureFlagsApi.md#get_feature_flag_change_request) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagChangeRequestId} | Get a single change request for a feature flag
-[**get_feature_flag_change_requests**](FeatureFlagsApi.md#get_feature_flag_change_requests) | **GET** /{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | Get all change requests for a feature flag
+[**get_feature_flag_approval_request**](FeatureFlagsApi.md#get_feature_flag_approval_request) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId} | Get a single approval request for a feature flag
+[**get_feature_flag_approval_requests**](FeatureFlagsApi.md#get_feature_flag_approval_requests) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | Get all approval requests for a feature flag
 [**get_feature_flag_status**](FeatureFlagsApi.md#get_feature_flag_status) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get the status for a particular feature flag.
 [**get_feature_flag_status_across_environments**](FeatureFlagsApi.md#get_feature_flag_status_across_environments) | **GET** /flag-status/{projectKey}/{featureFlagKey} | Get the status for a particular feature flag across environments
 [**get_feature_flag_statuses**](FeatureFlagsApi.md#get_feature_flag_statuses) | **GET** /flag-statuses/{projectKey}/{environmentKey} | Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag.
 [**get_feature_flags**](FeatureFlagsApi.md#get_feature_flags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
 [**patch_expiring_user_targets**](FeatureFlagsApi.md#patch_expiring_user_targets) | **PATCH** /flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey} | Update, add, or delete expiring user targets on feature flag
 [**patch_feature_flag**](FeatureFlagsApi.md#patch_feature_flag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Perform a partial update to a feature.
-[**post_apply_feature_flag_change_request**](FeatureFlagsApi.md#post_apply_feature_flag_change_request) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagChangeRequestId}/apply | Apply change request for a feature flag
+[**post_apply_feature_flag_approval_request**](FeatureFlagsApi.md#post_apply_feature_flag_approval_request) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId}/apply | Apply approval request for a feature flag
 [**post_feature_flag**](FeatureFlagsApi.md#post_feature_flag) | **POST** /flags/{projectKey} | Creates a new feature flag.
-[**post_feature_flag_change_request**](FeatureFlagsApi.md#post_feature_flag_change_request) | **POST** /{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | 
-[**post_review_feature_flag_change_request**](FeatureFlagsApi.md#post_review_feature_flag_change_request) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagChangeRequestId}/review | Review change request for a feature flag
+[**post_feature_flag_approval_request**](FeatureFlagsApi.md#post_feature_flag_approval_request) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId} | Create an approval request for a feature flag
+[**post_review_feature_flag_approval_request**](FeatureFlagsApi.md#post_review_feature_flag_approval_request) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId}/review | Review approval request for a feature flag
 
 
 # **copy_feature_flag**
@@ -118,6 +119,70 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **feature_flag_key** | **String**| The feature flag&#39;s key. The key identifies the flag in your code. | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_feature_flag_approval_request**
+> delete_feature_flag_approval_request(project_key, environment_key, feature_flag_key, feature_flag_approval_request_id, , opts)
+
+Delete an approval request for a feature flag
+
+### Example
+```ruby
+# load the gem
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: Token
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::FeatureFlagsApi.new
+
+project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
+
+environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key. The key identifies the flag in your code.
+
+feature_flag_approval_request_id = 'feature_flag_approval_request_id_example' # String | The feature flag approval request ID
+
+opts = { 
+  feature_flag_approval_request_config_body: LaunchDarklyApi::FeatureFlagApprovalRequestConfigBody.new # FeatureFlagApprovalRequestConfigBody | Create a new feature flag approval request
+}
+
+begin
+  #Delete an approval request for a feature flag
+  api_instance.delete_feature_flag_approval_request(project_key, environment_key, feature_flag_key, feature_flag_approval_request_id, , opts)
+rescue LaunchDarklyApi::ApiError => e
+  puts "Exception when calling FeatureFlagsApi->delete_feature_flag_approval_request: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **feature_flag_key** | **String**| The feature flag&#39;s key. The key identifies the flag in your code. | 
+ **feature_flag_approval_request_id** | **String**| The feature flag approval request ID | 
+ **feature_flag_approval_request_config_body** | [**FeatureFlagApprovalRequestConfigBody**](FeatureFlagApprovalRequestConfigBody.md)| Create a new feature flag approval request | [optional] 
 
 ### Return type
 
@@ -251,10 +316,10 @@ Name | Type | Description  | Notes
 
 
 
-# **get_feature_flag_change_request**
-> FeatureFlagChangeRequests get_feature_flag_change_request(project_key, feature_flag_key, environment_key, feature_flag_change_request_id, )
+# **get_feature_flag_approval_request**
+> FeatureFlagApprovalRequests get_feature_flag_approval_request(project_key, feature_flag_key, environment_key, feature_flag_approval_request_id, )
 
-Get a single change request for a feature flag
+Get a single approval request for a feature flag
 
 ### Example
 ```ruby
@@ -276,15 +341,15 @@ feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key.
 
 environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-feature_flag_change_request_id = 'feature_flag_change_request_id_example' # String | The feature flag change request ID
+feature_flag_approval_request_id = 'feature_flag_approval_request_id_example' # String | The feature flag approval request ID
 
 
 begin
-  #Get a single change request for a feature flag
-  result = api_instance.get_feature_flag_change_request(project_key, feature_flag_key, environment_key, feature_flag_change_request_id, )
+  #Get a single approval request for a feature flag
+  result = api_instance.get_feature_flag_approval_request(project_key, feature_flag_key, environment_key, feature_flag_approval_request_id, )
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling FeatureFlagsApi->get_feature_flag_change_request: #{e}"
+  puts "Exception when calling FeatureFlagsApi->get_feature_flag_approval_request: #{e}"
 end
 ```
 
@@ -295,11 +360,11 @@ Name | Type | Description  | Notes
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **feature_flag_key** | **String**| The feature flag&#39;s key. The key identifies the flag in your code. | 
  **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **feature_flag_change_request_id** | **String**| The feature flag change request ID | 
+ **feature_flag_approval_request_id** | **String**| The feature flag approval request ID | 
 
 ### Return type
 
-[**FeatureFlagChangeRequests**](FeatureFlagChangeRequests.md)
+[**FeatureFlagApprovalRequests**](FeatureFlagApprovalRequests.md)
 
 ### Authorization
 
@@ -312,10 +377,10 @@ Name | Type | Description  | Notes
 
 
 
-# **get_feature_flag_change_requests**
-> FeatureFlagChangeRequests get_feature_flag_change_requests(project_key, feature_flag_key, environment_key, )
+# **get_feature_flag_approval_requests**
+> FeatureFlagApprovalRequests get_feature_flag_approval_requests(project_key, feature_flag_key, environment_key, )
 
-Get all change requests for a feature flag
+Get all approval requests for a feature flag
 
 ### Example
 ```ruby
@@ -339,11 +404,11 @@ environment_key = 'environment_key_example' # String | The environment key, used
 
 
 begin
-  #Get all change requests for a feature flag
-  result = api_instance.get_feature_flag_change_requests(project_key, feature_flag_key, environment_key, )
+  #Get all approval requests for a feature flag
+  result = api_instance.get_feature_flag_approval_requests(project_key, feature_flag_key, environment_key, )
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling FeatureFlagsApi->get_feature_flag_change_requests: #{e}"
+  puts "Exception when calling FeatureFlagsApi->get_feature_flag_approval_requests: #{e}"
 end
 ```
 
@@ -357,7 +422,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FeatureFlagChangeRequests**](FeatureFlagChangeRequests.md)
+[**FeatureFlagApprovalRequests**](FeatureFlagApprovalRequests.md)
 
 ### Authorization
 
@@ -727,10 +792,10 @@ Name | Type | Description  | Notes
 
 
 
-# **post_apply_feature_flag_change_request**
-> FeatureFlagChangeRequests post_apply_feature_flag_change_request(project_key, feature_flag_key, environment_key, feature_flag_change_request_id, feature_flag_change_request_apply_config_body)
+# **post_apply_feature_flag_approval_request**
+> FeatureFlagApprovalRequests post_apply_feature_flag_approval_request(project_key, feature_flag_key, environment_key, feature_flag_approval_request_id, feature_flag_approval_request_apply_config_body)
 
-Apply change request for a feature flag
+Apply approval request for a feature flag
 
 ### Example
 ```ruby
@@ -752,17 +817,17 @@ feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key.
 
 environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-feature_flag_change_request_id = 'feature_flag_change_request_id_example' # String | The feature flag change request ID
+feature_flag_approval_request_id = 'feature_flag_approval_request_id_example' # String | The feature flag approval request ID
 
-feature_flag_change_request_apply_config_body = LaunchDarklyApi::FeatureFlagChangeRequestApplyConfigBody.new # FeatureFlagChangeRequestApplyConfigBody | Apply a new feature flag change request
+feature_flag_approval_request_apply_config_body = LaunchDarklyApi::FeatureFlagApprovalRequestApplyConfigBody.new # FeatureFlagApprovalRequestApplyConfigBody | Apply a new feature flag approval request
 
 
 begin
-  #Apply change request for a feature flag
-  result = api_instance.post_apply_feature_flag_change_request(project_key, feature_flag_key, environment_key, feature_flag_change_request_id, feature_flag_change_request_apply_config_body)
+  #Apply approval request for a feature flag
+  result = api_instance.post_apply_feature_flag_approval_request(project_key, feature_flag_key, environment_key, feature_flag_approval_request_id, feature_flag_approval_request_apply_config_body)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling FeatureFlagsApi->post_apply_feature_flag_change_request: #{e}"
+  puts "Exception when calling FeatureFlagsApi->post_apply_feature_flag_approval_request: #{e}"
 end
 ```
 
@@ -773,12 +838,12 @@ Name | Type | Description  | Notes
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **feature_flag_key** | **String**| The feature flag&#39;s key. The key identifies the flag in your code. | 
  **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **feature_flag_change_request_id** | **String**| The feature flag change request ID | 
- **feature_flag_change_request_apply_config_body** | [**FeatureFlagChangeRequestApplyConfigBody**](FeatureFlagChangeRequestApplyConfigBody.md)| Apply a new feature flag change request | 
+ **feature_flag_approval_request_id** | **String**| The feature flag approval request ID | 
+ **feature_flag_approval_request_apply_config_body** | [**FeatureFlagApprovalRequestApplyConfigBody**](FeatureFlagApprovalRequestApplyConfigBody.md)| Apply a new feature flag approval request | 
 
 ### Return type
 
-[**FeatureFlagChangeRequests**](FeatureFlagChangeRequests.md)
+[**FeatureFlagApprovalRequests**](FeatureFlagApprovalRequests.md)
 
 ### Authorization
 
@@ -850,10 +915,10 @@ Name | Type | Description  | Notes
 
 
 
-# **post_feature_flag_change_request**
-> FeatureFlagChangeRequest post_feature_flag_change_request(project_key, feature_flag_key, environment_key, , opts)
+# **post_feature_flag_approval_request**
+> FeatureFlagApprovalRequest post_feature_flag_approval_request(project_key, feature_flag_key, environment_key, feature_flag_approval_request_id, , opts)
 
-
+Create an approval request for a feature flag
 
 ### Example
 ```ruby
@@ -875,15 +940,18 @@ feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key.
 
 environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
+feature_flag_approval_request_id = 'feature_flag_approval_request_id_example' # String | The feature flag approval request ID
+
 opts = { 
-  feature_flag_change_request_config_body: LaunchDarklyApi::FeatureFlagChangeRequestConfigBody.new # FeatureFlagChangeRequestConfigBody | Create a new feature flag change request
+  feature_flag_approval_request_config_body: LaunchDarklyApi::FeatureFlagApprovalRequestConfigBody.new # FeatureFlagApprovalRequestConfigBody | Create a new feature flag approval request
 }
 
 begin
-  result = api_instance.post_feature_flag_change_request(project_key, feature_flag_key, environment_key, , opts)
+  #Create an approval request for a feature flag
+  result = api_instance.post_feature_flag_approval_request(project_key, feature_flag_key, environment_key, feature_flag_approval_request_id, , opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling FeatureFlagsApi->post_feature_flag_change_request: #{e}"
+  puts "Exception when calling FeatureFlagsApi->post_feature_flag_approval_request: #{e}"
 end
 ```
 
@@ -894,11 +962,12 @@ Name | Type | Description  | Notes
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **feature_flag_key** | **String**| The feature flag&#39;s key. The key identifies the flag in your code. | 
  **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **feature_flag_change_request_config_body** | [**FeatureFlagChangeRequestConfigBody**](FeatureFlagChangeRequestConfigBody.md)| Create a new feature flag change request | [optional] 
+ **feature_flag_approval_request_id** | **String**| The feature flag approval request ID | 
+ **feature_flag_approval_request_config_body** | [**FeatureFlagApprovalRequestConfigBody**](FeatureFlagApprovalRequestConfigBody.md)| Create a new feature flag approval request | [optional] 
 
 ### Return type
 
-[**FeatureFlagChangeRequest**](FeatureFlagChangeRequest.md)
+[**FeatureFlagApprovalRequest**](FeatureFlagApprovalRequest.md)
 
 ### Authorization
 
@@ -911,10 +980,10 @@ Name | Type | Description  | Notes
 
 
 
-# **post_review_feature_flag_change_request**
-> FeatureFlagChangeRequests post_review_feature_flag_change_request(project_key, feature_flag_key, environment_key, feature_flag_change_request_id, feature_flag_change_request_review_config_body)
+# **post_review_feature_flag_approval_request**
+> FeatureFlagApprovalRequests post_review_feature_flag_approval_request(project_key, feature_flag_key, environment_key, feature_flag_approval_request_id, feature_flag_approval_request_review_config_body)
 
-Review change request for a feature flag
+Review approval request for a feature flag
 
 ### Example
 ```ruby
@@ -936,17 +1005,17 @@ feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key.
 
 environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
-feature_flag_change_request_id = 'feature_flag_change_request_id_example' # String | The feature flag change request ID
+feature_flag_approval_request_id = 'feature_flag_approval_request_id_example' # String | The feature flag approval request ID
 
-feature_flag_change_request_review_config_body = LaunchDarklyApi::FeatureFlagChangeRequestReviewConfigBody.new # FeatureFlagChangeRequestReviewConfigBody | Review a feature flag change request
+feature_flag_approval_request_review_config_body = LaunchDarklyApi::FeatureFlagApprovalRequestReviewConfigBody.new # FeatureFlagApprovalRequestReviewConfigBody | Review a feature flag approval request
 
 
 begin
-  #Review change request for a feature flag
-  result = api_instance.post_review_feature_flag_change_request(project_key, feature_flag_key, environment_key, feature_flag_change_request_id, feature_flag_change_request_review_config_body)
+  #Review approval request for a feature flag
+  result = api_instance.post_review_feature_flag_approval_request(project_key, feature_flag_key, environment_key, feature_flag_approval_request_id, feature_flag_approval_request_review_config_body)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling FeatureFlagsApi->post_review_feature_flag_change_request: #{e}"
+  puts "Exception when calling FeatureFlagsApi->post_review_feature_flag_approval_request: #{e}"
 end
 ```
 
@@ -957,12 +1026,12 @@ Name | Type | Description  | Notes
  **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **feature_flag_key** | **String**| The feature flag&#39;s key. The key identifies the flag in your code. | 
  **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **feature_flag_change_request_id** | **String**| The feature flag change request ID | 
- **feature_flag_change_request_review_config_body** | [**FeatureFlagChangeRequestReviewConfigBody**](FeatureFlagChangeRequestReviewConfigBody.md)| Review a feature flag change request | 
+ **feature_flag_approval_request_id** | **String**| The feature flag approval request ID | 
+ **feature_flag_approval_request_review_config_body** | [**FeatureFlagApprovalRequestReviewConfigBody**](FeatureFlagApprovalRequestReviewConfigBody.md)| Review a feature flag approval request | 
 
 ### Return type
 
-[**FeatureFlagChangeRequests**](FeatureFlagChangeRequests.md)
+[**FeatureFlagApprovalRequests**](FeatureFlagApprovalRequests.md)
 
 ### Authorization
 
