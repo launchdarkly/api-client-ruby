@@ -13,5 +13,7 @@ Name | Type | Description | Notes
 **_pending_invite** | **BOOLEAN** |  | [optional] 
 **is_beta** | **BOOLEAN** |  | [optional] 
 **custom_roles** | [**Array&lt;Id&gt;**](Id.md) |  | [optional] 
+**_last_seen** | **Integer** | A unix epoch time in milliseconds specifying the last time this member was active in LaunchDarkly. | [optional] 
+**_last_seen_metadata** | [**MemberLastSeenMetadata**](MemberLastSeenMetadata.md) |  | [optional] 
 
 
