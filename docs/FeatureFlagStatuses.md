@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_links** | [**Links**](Links.md) |  | [optional] 
+**_links** | [**FeatureFlagStatusLinks**](FeatureFlagStatusLinks.md) |  | [optional] 
 **items** | [**Array&lt;FeatureFlagStatus&gt;**](FeatureFlagStatus.md) |  | [optional] 
 
 
