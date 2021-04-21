@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**patch_expiring_user_targets_on_segment**](UserSegmentsApi.md#patch_expiring_user_targets_on_segment) | **PATCH** /segments/{projectKey}/{userSegmentKey}/expiring-user-targets/{environmentKey} | Update, add, or delete expiring user targets on user segment
 [**patch_user_segment**](UserSegmentsApi.md#patch_user_segment) | **PATCH** /segments/{projectKey}/{environmentKey}/{userSegmentKey} | Perform a partial update to a user segment.
 [**post_user_segment**](UserSegmentsApi.md#post_user_segment) | **POST** /segments/{projectKey}/{environmentKey} | Creates a new user segment.
-[**updated_big_segment_targets**](UserSegmentsApi.md#updated_big_segment_targets) | **POST** /segments/{projectKey}/{environmentKey}/{userSegmentKey}/users | Update targets included or excluded in a big segment
+[**update_big_segment_targets**](UserSegmentsApi.md#update_big_segment_targets) | **POST** /segments/{projectKey}/{environmentKey}/{userSegmentKey}/users | Update targets included or excluded in a big segment
 
 
 # **delete_user_segment**
@@ -426,8 +426,8 @@ Name | Type | Description  | Notes
 
 
 
-# **updated_big_segment_targets**
-> updated_big_segment_targets(project_key, environment_key, user_segment_key, big_segment_targets_body)
+# **update_big_segment_targets**
+> update_big_segment_targets(project_key, environment_key, user_segment_key, big_segment_targets_body)
 
 Update targets included or excluded in a big segment
 
@@ -456,9 +456,9 @@ big_segment_targets_body = LaunchDarklyApi::BigSegmentTargetsBody.new # BigSegme
 
 begin
   #Update targets included or excluded in a big segment
-  api_instance.updated_big_segment_targets(project_key, environment_key, user_segment_key, big_segment_targets_body)
+  api_instance.update_big_segment_targets(project_key, environment_key, user_segment_key, big_segment_targets_body)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling UserSegmentsApi->updated_big_segment_targets: #{e}"
+  puts "Exception when calling UserSegmentsApi->update_big_segment_targets: #{e}"
 end
 ```
 
