@@ -1,22 +1,52 @@
 # LaunchDarklyApi::FeatureFlagConfig
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**on** | **BOOLEAN** |  | [optional] 
-**archived** | **BOOLEAN** |  | [optional] 
-**salt** | **String** |  | [optional] 
-**sel** | **String** |  | [optional] 
-**last_modified** | **Integer** |  | [optional] 
-**version** | **Integer** |  | [optional] 
-**targets** | [**Array&lt;Target&gt;**](Target.md) |  | [optional] 
-**rules** | [**Array&lt;Rule&gt;**](Rule.md) |  | [optional] 
-**fallthrough** | [**Fallthrough**](Fallthrough.md) |  | [optional] 
-**off_variation** | **Integer** |  | [optional] 
-**prerequisites** | [**Array&lt;Prerequisite&gt;**](Prerequisite.md) |  | [optional] 
-**track_events** | **BOOLEAN** | Set to true to send detailed event information for this flag. | [optional] 
-**track_events_fallthrough** | **BOOLEAN** | Set to true to send detailed event information when targeting is enabled but no individual targeting rule is matched. | [optional] 
-**_site** | [**Site**](Site.md) |  | [optional] 
-**_environment_name** | **String** |  | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **on** | **Boolean** |  |  |
+| **archived** | **Boolean** |  |  |
+| **salt** | **String** |  |  |
+| **sel** | **String** |  |  |
+| **last_modified** | **Integer** |  |  |
+| **version** | **Integer** |  |  |
+| **targets** | [**Array&lt;Target&gt;**](Target.md) |  |  |
+| **rules** | [**Array&lt;Rule&gt;**](Rule.md) |  |  |
+| **fallthrough** | [**VariationOrRolloutRep**](VariationOrRolloutRep.md) |  |  |
+| **off_variation** | **Integer** |  | [optional] |
+| **prerequisites** | [**Array&lt;Prerequisite&gt;**](Prerequisite.md) |  |  |
+| **_site** | [**Link**](Link.md) |  |  |
+| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **_environment_name** | **String** |  |  |
+| **track_events** | **Boolean** |  |  |
+| **track_events_fallthrough** | **Boolean** |  |  |
+| **_debug_events_until_date** | **Integer** |  | [optional] |
+| **_summary** | [**FlagSummary**](FlagSummary.md) |  | [optional] |
+
+## Example
+
+```ruby
+require 'launchdarkly_api'
+
+instance = LaunchDarklyApi::FeatureFlagConfig.new(
+  on: null,
+  archived: null,
+  salt: null,
+  sel: null,
+  last_modified: null,
+  version: null,
+  targets: null,
+  rules: null,
+  fallthrough: null,
+  off_variation: null,
+  prerequisites: null,
+  _site: null,
+  _access: null,
+  _environment_name: null,
+  track_events: null,
+  track_events_fallthrough: null,
+  _debug_events_until_date: null,
+  _summary: null
+)
+```
 

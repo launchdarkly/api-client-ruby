@@ -1,16 +1,34 @@
 # LaunchDarklyApi::EnvironmentPost
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **String** | The name of the new environment. | 
-**key** | **String** | A project-unique key for the new environment. | 
-**color** | **String** | A color swatch (as an RGB hex value with no leading &#39;#&#39;, e.g. C8C8C8). | 
-**default_ttl** | **Float** | The default TTL for the new environment. | [optional] 
-**secure_mode** | **BOOLEAN** | Determines whether the environment is in secure mode. | [optional] 
-**default_track_events** | **BOOLEAN** | Set to true to send detailed event information for newly created flags. | [optional] 
-**tags** | **Array&lt;String&gt;** | An array of tags for this environment. | [optional] 
-**require_comments** | **BOOLEAN** | Determines if this environment requires comments for flag and segment changes. | [optional] 
-**confirm_changes** | **BOOLEAN** | Determines if this environment requires confirmation for flag and segment changes. | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **name** | **String** | A human-friendly name for the new environment. |  |
+| **key** | **String** | A project-unique key for the new environment. |  |
+| **color** | **String** | A color to indicate this environment in the UI. |  |
+| **default_ttl** | **Integer** | The default time (in minutes) that the PHP SDK can cache feature flag rules locally. | [optional] |
+| **secure_mode** | **Boolean** | Secure mode ensures that a user of the client-side SDK cannot impersonate another user. | [optional] |
+| **default_track_events** | **Boolean** | Enables tracking detailed information for new flags by default. | [optional] |
+| **confirm_changes** | **Boolean** | Require confirmation for all flag and segment changes via the UI in this environment. | [optional] |
+| **require_comments** | **Boolean** | Require comments for all flag and segment changes via the UI in this environment. | [optional] |
+| **tags** | **Array&lt;String&gt;** | Tags to apply to the new environment. | [optional] |
+
+## Example
+
+```ruby
+require 'launchdarkly_api'
+
+instance = LaunchDarklyApi::EnvironmentPost.new(
+  name: My Environment,
+  key: my-environment,
+  color: F5A623,
+  default_ttl: 5,
+  secure_mode: true,
+  default_track_events: false,
+  confirm_changes: false,
+  require_comments: false,
+  tags: [&quot;ops&quot;]
+)
+```
 

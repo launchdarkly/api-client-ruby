@@ -1,10 +1,22 @@
 # LaunchDarklyApi::PatchOperation
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**op** | **String** |  | 
-**path** | **String** |  | 
-**value** | **Object** |  | 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **op** | **String** | The type of operation to perform |  |
+| **path** | **String** | A JSON Pointer string specifying the part of the document to operate on |  |
+| **value** | **Object** | A JSON value used in \&quot;add\&quot;, \&quot;replace\&quot;, and \&quot;test\&quot; operations |  |
+
+## Example
+
+```ruby
+require 'launchdarkly_api'
+
+instance = LaunchDarklyApi::PatchOperation.new(
+  op: replace,
+  path: /biscuits,
+  value: Chocolate Digestive
+)
+```
 

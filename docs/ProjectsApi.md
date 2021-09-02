@@ -1,51 +1,71 @@
 # LaunchDarklyApi::ProjectsApi
 
-All URIs are relative to *https://app.launchdarkly.com/api/v2*
+All URIs are relative to *https://app.launchdarkly.com*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**delete_project**](ProjectsApi.md#delete_project) | **DELETE** /projects/{projectKey} | Delete a project by key. Caution-- deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
-[**get_project**](ProjectsApi.md#get_project) | **GET** /projects/{projectKey} | Fetch a single project by key.
-[**get_projects**](ProjectsApi.md#get_projects) | **GET** /projects | Returns a list of all projects in the account.
-[**patch_project**](ProjectsApi.md#patch_project) | **PATCH** /projects/{projectKey} | Modify a project by ID.
-[**post_project**](ProjectsApi.md#post_project) | **POST** /projects | Create a new project with the given key and name.
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**delete_project**](ProjectsApi.md#delete_project) | **DELETE** /api/v2/projects/{projectKey} | Delete project |
+| [**get_project**](ProjectsApi.md#get_project) | **GET** /api/v2/projects/{projectKey} | Get project |
+| [**get_projects**](ProjectsApi.md#get_projects) | **GET** /api/v2/projects | List projects |
+| [**patch_project**](ProjectsApi.md#patch_project) | **PATCH** /api/v2/projects/{projectKey} | Update project |
+| [**post_project**](ProjectsApi.md#post_project) | **POST** /api/v2/projects | Create project |
 
 
-# **delete_project**
-> delete_project(project_key, )
+## delete_project
 
-Delete a project by key. Caution-- deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
+> delete_project(project_key)
 
-### Example
+Delete project
+
+Delete a project by key. Caution: deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::ProjectsApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
+project_key = 'project_key_example' # String | The project key
 
 begin
-  #Delete a project by key. Caution-- deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
-  api_instance.delete_project(project_key, )
+  # Delete project
+  api_instance.delete_project(project_key)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling ProjectsApi->delete_project: #{e}"
+  puts "Error when calling ProjectsApi->delete_project: #{e}"
+end
+```
+
+#### Using the delete_project_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_project_with_http_info(project_key)
+
+```ruby
+begin
+  # Delete project
+  data, status_code, headers = api_instance.delete_project_with_http_info(project_key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ProjectsApi->delete_project_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
 
 ### Return type
 
@@ -53,51 +73,70 @@ nil (empty response body)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## get_project
 
-# **get_project**
-> Project get_project(project_key, )
+> <Project> get_project(project_key)
 
-Fetch a single project by key.
+Get project
 
-### Example
+Get a single project by key.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::ProjectsApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
+project_key = 'project_key_example' # String | The project key
 
 begin
-  #Fetch a single project by key.
-  result = api_instance.get_project(project_key, )
+  # Get project
+  result = api_instance.get_project(project_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling ProjectsApi->get_project: #{e}"
+  puts "Error when calling ProjectsApi->get_project: #{e}"
+end
+```
+
+#### Using the get_project_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Project>, Integer, Hash)> get_project_with_http_info(project_key)
+
+```ruby
+begin
+  # Get project
+  data, status_code, headers = api_instance.get_project_with_http_info(project_key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Project>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ProjectsApi->get_project_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
 
 ### Return type
 
@@ -105,44 +144,66 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_projects
 
-# **get_projects**
-> Projects get_projects
+> <Projects> get_projects
 
-Returns a list of all projects in the account.
+List projects
 
-### Example
+Get a list of all projects in the account.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::ProjectsApi.new
 
 begin
-  #Returns a list of all projects in the account.
+  # List projects
   result = api_instance.get_projects
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling ProjectsApi->get_projects: #{e}"
+  puts "Error when calling ProjectsApi->get_projects: #{e}"
+end
+```
+
+#### Using the get_projects_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Projects>, Integer, Hash)> get_projects_with_http_info
+
+```ruby
+begin
+  # List projects
+  data, status_code, headers = api_instance.get_projects_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Projects>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ProjectsApi->get_projects_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -151,54 +212,72 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## patch_project
 
-# **patch_project**
-> Project patch_project(project_key, patch_delta)
+> <Project> patch_project(project_key, patch_operation)
 
-Modify a project by ID.
+Update project
 
-### Example
+Update a project. Requires a [JSON Patch](http://tools.ietf.org/html/rfc6902) representation of the desired changes to the project.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::ProjectsApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-patch_delta = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
-
+project_key = 'project_key_example' # String | The project key
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})] # Array<PatchOperation> | 
 
 begin
-  #Modify a project by ID.
-  result = api_instance.patch_project(project_key, patch_delta)
+  # Update project
+  result = api_instance.patch_project(project_key, patch_operation)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling ProjectsApi->patch_project: #{e}"
+  puts "Error when calling ProjectsApi->patch_project: #{e}"
+end
+```
+
+#### Using the patch_project_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Project>, Integer, Hash)> patch_project_with_http_info(project_key, patch_operation)
+
+```ruby
+begin
+  # Update project
+  data, status_code, headers = api_instance.patch_project_with_http_info(project_key, patch_operation)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Project>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ProjectsApi->patch_project_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **patch_delta** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **patch_operation** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md) |  |  |
 
 ### Return type
 
@@ -206,51 +285,70 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## post_project
 
-# **post_project**
-> Project post_project(project_body)
+> <Project> post_project(project_post)
 
-Create a new project with the given key and name.
+Create project
 
-### Example
+Create a new project with the given key and name. Project keys must be unique within an account.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::ProjectsApi.new
-
-project_body = LaunchDarklyApi::ProjectBody.new # ProjectBody | Project keys must be unique within an account.
-
+project_post = LaunchDarklyApi::ProjectPost.new({name: 'My Project', key: 'my-project'}) # ProjectPost | 
 
 begin
-  #Create a new project with the given key and name.
-  result = api_instance.post_project(project_body)
+  # Create project
+  result = api_instance.post_project(project_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling ProjectsApi->post_project: #{e}"
+  puts "Error when calling ProjectsApi->post_project: #{e}"
+end
+```
+
+#### Using the post_project_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Project>, Integer, Hash)> post_project_with_http_info(project_post)
+
+```ruby
+begin
+  # Create project
+  data, status_code, headers = api_instance.post_project_with_http_info(project_post)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Project>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ProjectsApi->post_project_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_body** | [**ProjectBody**](ProjectBody.md)| Project keys must be unique within an account. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_post** | [**ProjectPost**](ProjectPost.md) |  |  |
 
 ### Return type
 
@@ -258,12 +356,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
+- **Content-Type**: application/json
+- **Accept**: application/json
 

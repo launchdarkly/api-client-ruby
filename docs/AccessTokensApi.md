@@ -1,52 +1,72 @@
 # LaunchDarklyApi::AccessTokensApi
 
-All URIs are relative to *https://app.launchdarkly.com/api/v2*
+All URIs are relative to *https://app.launchdarkly.com*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**delete_token**](AccessTokensApi.md#delete_token) | **DELETE** /tokens/{tokenId} | Delete an access token by ID.
-[**get_token**](AccessTokensApi.md#get_token) | **GET** /tokens/{tokenId} | Get a single access token by ID.
-[**get_tokens**](AccessTokensApi.md#get_tokens) | **GET** /tokens | Returns a list of tokens in the account.
-[**patch_token**](AccessTokensApi.md#patch_token) | **PATCH** /tokens/{tokenId} | Modify an access token by ID.
-[**post_token**](AccessTokensApi.md#post_token) | **POST** /tokens | Create a new token.
-[**reset_token**](AccessTokensApi.md#reset_token) | **POST** /tokens/{tokenId}/reset | Reset an access token&#39;s secret key with an optional expiry time for the old key.
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**delete_token**](AccessTokensApi.md#delete_token) | **DELETE** /api/v2/tokens/{id} | Delete access token |
+| [**get_token**](AccessTokensApi.md#get_token) | **GET** /api/v2/tokens/{id} | Get access token |
+| [**get_tokens**](AccessTokensApi.md#get_tokens) | **GET** /api/v2/tokens | List access tokens |
+| [**patch_token**](AccessTokensApi.md#patch_token) | **PATCH** /api/v2/tokens/{id} | Patch access token |
+| [**post_token**](AccessTokensApi.md#post_token) | **POST** /api/v2/tokens | Create access token |
+| [**reset_token**](AccessTokensApi.md#reset_token) | **POST** /api/v2/tokens/{id}/reset | Reset access token |
 
 
-# **delete_token**
-> delete_token(token_id)
+## delete_token
+
+> delete_token(id)
+
+Delete access token
 
 Delete an access token by ID.
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::AccessTokensApi.new
-
-token_id = 'token_id_example' # String | The access token ID.
-
+id = 'id_example' # String | The ID of the access token to update
 
 begin
-  #Delete an access token by ID.
-  api_instance.delete_token(token_id)
+  # Delete access token
+  api_instance.delete_token(id)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling AccessTokensApi->delete_token: #{e}"
+  puts "Error when calling AccessTokensApi->delete_token: #{e}"
+end
+```
+
+#### Using the delete_token_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_token_with_http_info(id)
+
+```ruby
+begin
+  # Delete access token
+  data, status_code, headers = api_instance.delete_token_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccessTokensApi->delete_token_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **token_id** | **String**| The access token ID. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The ID of the access token to update |  |
 
 ### Return type
 
@@ -54,51 +74,70 @@ nil (empty response body)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## get_token
 
-# **get_token**
-> Token get_token(token_id)
+> <Token> get_token(id)
+
+Get access token
 
 Get a single access token by ID.
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::AccessTokensApi.new
-
-token_id = 'token_id_example' # String | The access token ID.
-
+id = 'id_example' # String | The ID of the access token
 
 begin
-  #Get a single access token by ID.
-  result = api_instance.get_token(token_id)
+  # Get access token
+  result = api_instance.get_token(id)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling AccessTokensApi->get_token: #{e}"
+  puts "Error when calling AccessTokensApi->get_token: #{e}"
+end
+```
+
+#### Using the get_token_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Token>, Integer, Hash)> get_token_with_http_info(id)
+
+```ruby
+begin
+  # Get access token
+  data, status_code, headers = api_instance.get_token_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Token>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccessTokensApi->get_token_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **token_id** | **String**| The access token ID. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The ID of the access token |  |
 
 ### Return type
 
@@ -106,52 +145,72 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_tokens
 
-# **get_tokens**
-> Tokens get_tokens(opts)
+> <Tokens> get_tokens(opts)
 
-Returns a list of tokens in the account.
+List access tokens
 
-### Example
+Fetch a list of all access tokens.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::AccessTokensApi.new
-
-opts = { 
-  show_all: true # BOOLEAN | If set to true, and the authentication access token has the \"Admin\" role, personal access tokens for all members will be retrieved.
+opts = {
+  show_all: true # Boolean | If set to true, and the authentication access token has the 'Admin' role, personal access tokens for all members will be retrieved.
 }
 
 begin
-  #Returns a list of tokens in the account.
+  # List access tokens
   result = api_instance.get_tokens(opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling AccessTokensApi->get_tokens: #{e}"
+  puts "Error when calling AccessTokensApi->get_tokens: #{e}"
+end
+```
+
+#### Using the get_tokens_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Tokens>, Integer, Hash)> get_tokens_with_http_info(opts)
+
+```ruby
+begin
+  # List access tokens
+  data, status_code, headers = api_instance.get_tokens_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Tokens>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccessTokensApi->get_tokens_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **show_all** | **BOOLEAN**| If set to true, and the authentication access token has the \&quot;Admin\&quot; role, personal access tokens for all members will be retrieved. | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **show_all** | **Boolean** | If set to true, and the authentication access token has the &#39;Admin&#39; role, personal access tokens for all members will be retrieved. | [optional] |
 
 ### Return type
 
@@ -159,54 +218,72 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## patch_token
 
-# **patch_token**
-> Token patch_token(token_idpatch_delta)
+> <Token> patch_token(id, patch_operation)
 
-Modify an access token by ID.
+Patch access token
 
-### Example
+Update an access token's settings. The request should be a valid JSON Patch document describing the changes to be made to the access token.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::AccessTokensApi.new
-
-token_id = 'token_id_example' # String | The access token ID.
-
-patch_delta = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
-
+id = 'id_example' # String | The ID of the access token to update
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})] # Array<PatchOperation> | 
 
 begin
-  #Modify an access token by ID.
-  result = api_instance.patch_token(token_idpatch_delta)
+  # Patch access token
+  result = api_instance.patch_token(id, patch_operation)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling AccessTokensApi->patch_token: #{e}"
+  puts "Error when calling AccessTokensApi->patch_token: #{e}"
+end
+```
+
+#### Using the patch_token_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Token>, Integer, Hash)> patch_token_with_http_info(id, patch_operation)
+
+```ruby
+begin
+  # Patch access token
+  data, status_code, headers = api_instance.patch_token_with_http_info(id, patch_operation)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Token>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccessTokensApi->patch_token_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **token_id** | **String**| The access token ID. | 
- **patch_delta** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The ID of the access token to update |  |
+| **patch_operation** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md) |  |  |
 
 ### Return type
 
@@ -214,51 +291,70 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## post_token
 
-# **post_token**
-> Token post_token(token_body)
+> <Token> post_token(access_token_post)
 
-Create a new token.
+Create access token
 
-### Example
+Create a new access token.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::AccessTokensApi.new
-
-token_body = LaunchDarklyApi::TokenBody.new # TokenBody | Create a new access token.
-
+access_token_post = LaunchDarklyApi::AccessTokenPost.new # AccessTokenPost | 
 
 begin
-  #Create a new token.
-  result = api_instance.post_token(token_body)
+  # Create access token
+  result = api_instance.post_token(access_token_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling AccessTokensApi->post_token: #{e}"
+  puts "Error when calling AccessTokensApi->post_token: #{e}"
+end
+```
+
+#### Using the post_token_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Token>, Integer, Hash)> post_token_with_http_info(access_token_post)
+
+```ruby
+begin
+  # Create access token
+  data, status_code, headers = api_instance.post_token_with_http_info(access_token_post)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Token>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccessTokensApi->post_token_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **token_body** | [**TokenBody**](TokenBody.md)| Create a new access token. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **access_token_post** | [**AccessTokenPost**](AccessTokenPost.md) |  |  |
 
 ### Return type
 
@@ -266,55 +362,74 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## reset_token
 
-# **reset_token**
-> Token reset_token(token_id, opts)
+> <Token> reset_token(id, opts)
+
+Reset access token
 
 Reset an access token's secret key with an optional expiry time for the old key.
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::AccessTokensApi.new
-
-token_id = 'token_id_example' # String | The access token ID.
-
-opts = { 
+id = 'id_example' # String | The ID of the access token to update
+opts = {
   expiry: 789 # Integer | An expiration time for the old token key, expressed as a Unix epoch time in milliseconds. By default, the token will expire immediately.
 }
 
 begin
-  #Reset an access token's secret key with an optional expiry time for the old key.
-  result = api_instance.reset_token(token_id, opts)
+  # Reset access token
+  result = api_instance.reset_token(id, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling AccessTokensApi->reset_token: #{e}"
+  puts "Error when calling AccessTokensApi->reset_token: #{e}"
+end
+```
+
+#### Using the reset_token_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Token>, Integer, Hash)> reset_token_with_http_info(id, opts)
+
+```ruby
+begin
+  # Reset access token
+  data, status_code, headers = api_instance.reset_token_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Token>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccessTokensApi->reset_token_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **token_id** | **String**| The access token ID. | 
- **expiry** | **Integer**| An expiration time for the old token key, expressed as a Unix epoch time in milliseconds. By default, the token will expire immediately. | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The ID of the access token to update |  |
+| **expiry** | **Integer** | An expiration time for the old token key, expressed as a Unix epoch time in milliseconds. By default, the token will expire immediately. | [optional] |
 
 ### Return type
 
@@ -322,12 +437,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

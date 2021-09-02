@@ -1,51 +1,71 @@
 # LaunchDarklyApi::CustomRolesApi
 
-All URIs are relative to *https://app.launchdarkly.com/api/v2*
+All URIs are relative to *https://app.launchdarkly.com*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**delete_custom_role**](CustomRolesApi.md#delete_custom_role) | **DELETE** /roles/{customRoleKey} | Delete a custom role by key.
-[**get_custom_role**](CustomRolesApi.md#get_custom_role) | **GET** /roles/{customRoleKey} | Get one custom role by key.
-[**get_custom_roles**](CustomRolesApi.md#get_custom_roles) | **GET** /roles | Return a complete list of custom roles.
-[**patch_custom_role**](CustomRolesApi.md#patch_custom_role) | **PATCH** /roles/{customRoleKey} | Modify a custom role by key.
-[**post_custom_role**](CustomRolesApi.md#post_custom_role) | **POST** /roles | Create a new custom role.
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**delete_custom_role**](CustomRolesApi.md#delete_custom_role) | **DELETE** /api/v2/roles/{key} | Delete custom role |
+| [**get_custom_role**](CustomRolesApi.md#get_custom_role) | **GET** /api/v2/roles/{key} | Get custom role |
+| [**get_custom_roles**](CustomRolesApi.md#get_custom_roles) | **GET** /api/v2/roles | List custom roles |
+| [**patch_custom_role**](CustomRolesApi.md#patch_custom_role) | **PATCH** /api/v2/roles/{key} | Update custom role |
+| [**post_custom_role**](CustomRolesApi.md#post_custom_role) | **POST** /api/v2/roles | Create custom role |
 
 
-# **delete_custom_role**
-> delete_custom_role(custom_role_key, )
+## delete_custom_role
 
-Delete a custom role by key.
+> delete_custom_role(key)
 
-### Example
+Delete custom role
+
+Delete a custom role by key
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
-
-custom_role_key = 'custom_role_key_example' # String | The custom role key.
-
+key = 'key_example' # String | The key of the custom role to delete
 
 begin
-  #Delete a custom role by key.
-  api_instance.delete_custom_role(custom_role_key, )
+  # Delete custom role
+  api_instance.delete_custom_role(key)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling CustomRolesApi->delete_custom_role: #{e}"
+  puts "Error when calling CustomRolesApi->delete_custom_role: #{e}"
+end
+```
+
+#### Using the delete_custom_role_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_custom_role_with_http_info(key)
+
+```ruby
+begin
+  # Delete custom role
+  data, status_code, headers = api_instance.delete_custom_role_with_http_info(key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling CustomRolesApi->delete_custom_role_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **custom_role_key** | **String**| The custom role key. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **key** | **String** | The key of the custom role to delete |  |
 
 ### Return type
 
@@ -53,96 +73,137 @@ nil (empty response body)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## get_custom_role
 
-# **get_custom_role**
-> CustomRole get_custom_role(custom_role_key, )
+> <CustomRolePost> get_custom_role(key)
 
-Get one custom role by key.
+Get custom role
 
-### Example
+Get a single custom role by key or ID
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
-
-custom_role_key = 'custom_role_key_example' # String | The custom role key.
-
+key = 'key_example' # String | The custom role's key or ID
 
 begin
-  #Get one custom role by key.
-  result = api_instance.get_custom_role(custom_role_key, )
+  # Get custom role
+  result = api_instance.get_custom_role(key)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling CustomRolesApi->get_custom_role: #{e}"
+  puts "Error when calling CustomRolesApi->get_custom_role: #{e}"
+end
+```
+
+#### Using the get_custom_role_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomRolePost>, Integer, Hash)> get_custom_role_with_http_info(key)
+
+```ruby
+begin
+  # Get custom role
+  data, status_code, headers = api_instance.get_custom_role_with_http_info(key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomRolePost>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling CustomRolesApi->get_custom_role_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **custom_role_key** | **String**| The custom role key. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **key** | **String** | The custom role&#39;s key or ID |  |
 
 ### Return type
 
-[**CustomRole**](CustomRole.md)
+[**CustomRolePost**](CustomRolePost.md)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_custom_roles
 
-# **get_custom_roles**
-> CustomRoles get_custom_roles
+> <CustomRoles> get_custom_roles
 
-Return a complete list of custom roles.
+List custom roles
 
-### Example
+Get a complete list of custom roles. Custom roles let you create flexible policies providing fine-grained access control to everything in LaunchDarkly, from feature flags to goals, environments, and teams. With custom roles, it's possible to enforce access policies that meet your exact workflow needs. Custom roles are available to customers on our enterprise plans. If you're interested in learning more about our enterprise plans, contact sales@launchdarkly.com.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
 
 begin
-  #Return a complete list of custom roles.
+  # List custom roles
   result = api_instance.get_custom_roles
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling CustomRolesApi->get_custom_roles: #{e}"
+  puts "Error when calling CustomRolesApi->get_custom_roles: #{e}"
+end
+```
+
+#### Using the get_custom_roles_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomRoles>, Integer, Hash)> get_custom_roles_with_http_info
+
+```ruby
+begin
+  # List custom roles
+  data, status_code, headers = api_instance.get_custom_roles_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomRoles>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling CustomRolesApi->get_custom_roles_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -151,54 +212,72 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## patch_custom_role
 
-# **patch_custom_role**
-> CustomRole patch_custom_role(custom_role_key, patch_delta)
+> <CustomRole> patch_custom_role(key, patch_with_comment)
 
-Modify a custom role by key.
+Update custom role
 
-### Example
+Update a single custom role. The request must be a valid JSON Patch document describing the changes to be made to the custom role.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
-
-custom_role_key = 'custom_role_key_example' # String | The custom role key.
-
-patch_delta = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
-
+key = 'key_example' # String | The key of the custom role to update
+patch_with_comment = LaunchDarklyApi::PatchWithComment.new({patch: [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})]}) # PatchWithComment | 
 
 begin
-  #Modify a custom role by key.
-  result = api_instance.patch_custom_role(custom_role_key, patch_delta)
+  # Update custom role
+  result = api_instance.patch_custom_role(key, patch_with_comment)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling CustomRolesApi->patch_custom_role: #{e}"
+  puts "Error when calling CustomRolesApi->patch_custom_role: #{e}"
+end
+```
+
+#### Using the patch_custom_role_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomRole>, Integer, Hash)> patch_custom_role_with_http_info(key, patch_with_comment)
+
+```ruby
+begin
+  # Update custom role
+  data, status_code, headers = api_instance.patch_custom_role_with_http_info(key, patch_with_comment)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomRole>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling CustomRolesApi->patch_custom_role_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **custom_role_key** | **String**| The custom role key. | 
- **patch_delta** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **key** | **String** | The key of the custom role to update |  |
+| **patch_with_comment** | [**PatchWithComment**](PatchWithComment.md) |  |  |
 
 ### Return type
 
@@ -206,51 +285,70 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## post_custom_role
 
-# **post_custom_role**
-> CustomRole post_custom_role(custom_role_body)
+> <CustomRole> post_custom_role(statement_post)
 
-Create a new custom role.
+Create custom role
 
-### Example
+Create a new custom role
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
-
-custom_role_body = LaunchDarklyApi::CustomRoleBody.new # CustomRoleBody | New role or roles to create.
-
+statement_post = [LaunchDarklyApi::StatementPost.new({effect: 'effect_example'})] # Array<StatementPost> | 
 
 begin
-  #Create a new custom role.
-  result = api_instance.post_custom_role(custom_role_body)
+  # Create custom role
+  result = api_instance.post_custom_role(statement_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling CustomRolesApi->post_custom_role: #{e}"
+  puts "Error when calling CustomRolesApi->post_custom_role: #{e}"
+end
+```
+
+#### Using the post_custom_role_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomRole>, Integer, Hash)> post_custom_role_with_http_info(statement_post)
+
+```ruby
+begin
+  # Create custom role
+  data, status_code, headers = api_instance.post_custom_role_with_http_info(statement_post)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomRole>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling CustomRolesApi->post_custom_role_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **custom_role_body** | [**CustomRoleBody**](CustomRoleBody.md)| New role or roles to create. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **statement_post** | [**Array&lt;StatementPost&gt;**](StatementPost.md) |  |  |
 
 ### Return type
 
@@ -258,12 +356,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
+- **Content-Type**: application/json
+- **Accept**: application/json
 

@@ -1,9 +1,20 @@
 # LaunchDarklyApi::UserSegments
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**_links** | [**Links**](Links.md) |  | [optional] 
-**items** | [**Array&lt;UserSegment&gt;**](UserSegment.md) |  | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **items** | [**Array&lt;UserSegment&gt;**](UserSegment.md) |  |  |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
+
+## Example
+
+```ruby
+require 'launchdarkly_api'
+
+instance = LaunchDarklyApi::UserSegments.new(
+  items: null,
+  _links: null
+)
+```
 

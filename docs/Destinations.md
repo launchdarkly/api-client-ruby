@@ -1,9 +1,20 @@
 # LaunchDarklyApi::Destinations
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**_links** | [**Links**](Links.md) |  | [optional] 
-**items** | [**Array&lt;Destination&gt;**](Destination.md) |  | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
+| **items** | [**Array&lt;Destination&gt;**](Destination.md) |  | [optional] |
+
+## Example
+
+```ruby
+require 'launchdarkly_api'
+
+instance = LaunchDarklyApi::Destinations.new(
+  _links: {&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/destinations&quot;,&quot;type&quot;:&quot;application/json&quot;}},
+  items: null
+)
+```
 

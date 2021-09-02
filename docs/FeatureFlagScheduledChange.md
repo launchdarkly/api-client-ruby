@@ -1,11 +1,32 @@
 # LaunchDarklyApi::FeatureFlagScheduledChange
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**execution_date** | **Integer** | A unix epoch time in milliseconds specifying the date the scheduled changes will be applied | [optional] 
-**_version** | **Integer** |  | [optional] 
-**_id** | **String** |  | [optional] 
-**instructions** | [**SemanticPatchInstruction**](SemanticPatchInstruction.md) |  | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **_id** | **String** |  |  |
+| **_creation_date** | **Integer** |  |  |
+| **_maintainer_id** | **String** |  |  |
+| **_version** | **Integer** |  |  |
+| **execution_date** | **Integer** |  |  |
+| **instructions** | **Array&lt;Hash&gt;** |  |  |
+| **conflicts** | **Object** |  | [optional] |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
+
+## Example
+
+```ruby
+require 'launchdarkly_api'
+
+instance = LaunchDarklyApi::FeatureFlagScheduledChange.new(
+  _id: null,
+  _creation_date: null,
+  _maintainer_id: null,
+  _version: null,
+  execution_date: null,
+  instructions: null,
+  conflicts: null,
+  _links: null
+)
+```
 

@@ -1,9 +1,20 @@
 # LaunchDarklyApi::Tokens
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**_links** | [**Links**](Links.md) |  | [optional] 
-**items** | [**Array&lt;Token&gt;**](Token.md) |  | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **items** | [**Array&lt;Token&gt;**](Token.md) |  | [optional] |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
+
+## Example
+
+```ruby
+require 'launchdarkly_api'
+
+instance = LaunchDarklyApi::Tokens.new(
+  items: null,
+  _links: null
+)
+```
 

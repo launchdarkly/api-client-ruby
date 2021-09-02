@@ -1,55 +1,74 @@
 # LaunchDarklyApi::EnvironmentsApi
 
-All URIs are relative to *https://app.launchdarkly.com/api/v2*
+All URIs are relative to *https://app.launchdarkly.com*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**delete_environment**](EnvironmentsApi.md#delete_environment) | **DELETE** /projects/{projectKey}/environments/{environmentKey} | Delete an environment in a specific project.
-[**get_environment**](EnvironmentsApi.md#get_environment) | **GET** /projects/{projectKey}/environments/{environmentKey} | Get an environment given a project and key.
-[**patch_environment**](EnvironmentsApi.md#patch_environment) | **PATCH** /projects/{projectKey}/environments/{environmentKey} | Modify an environment by ID. If you try to patch the environment by setting both required and requiredApprovalTags, it will result in an error. Users can specify either required approvals for all flags in an environment or those with specific tags, but not both. Only customers on an Enterprise plan can require approval for flag updates with either mechanism.
-[**post_environment**](EnvironmentsApi.md#post_environment) | **POST** /projects/{projectKey}/environments | Create a new environment in a specified project with a given name, key, and swatch color.
-[**reset_environment_mobile_key**](EnvironmentsApi.md#reset_environment_mobile_key) | **POST** /projects/{projectKey}/environments/{environmentKey}/mobileKey | Reset an environment&#39;s mobile key. The optional expiry for the old key is deprecated for this endpoint, so the old key will always expire immediately.
-[**reset_environment_sdk_key**](EnvironmentsApi.md#reset_environment_sdk_key) | **POST** /projects/{projectKey}/environments/{environmentKey}/apiKey | Reset an environment&#39;s SDK key with an optional expiry time for the old key.
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**delete_environment**](EnvironmentsApi.md#delete_environment) | **DELETE** /api/v2/projects/{projectKey}/environments/{environmentKey} | Delete environment |
+| [**get_environment**](EnvironmentsApi.md#get_environment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey} | Get environment |
+| [**patch_environment**](EnvironmentsApi.md#patch_environment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey} | Update environment |
+| [**post_environment**](EnvironmentsApi.md#post_environment) | **POST** /api/v2/projects/{projectKey}/environments | Create environment |
+| [**reset_environment_mobile_key**](EnvironmentsApi.md#reset_environment_mobile_key) | **POST** /api/v2/projects/{projectKey}/environments/{envKey}/mobileKey | Reset environment mobile SDK key |
+| [**reset_environment_sdk_key**](EnvironmentsApi.md#reset_environment_sdk_key) | **POST** /api/v2/projects/{projectKey}/environments/{envKey}/apiKey | Reset environment SDK key |
 
 
-# **delete_environment**
-> delete_environment(project_key, environment_key, )
+## delete_environment
 
-Delete an environment in a specific project.
+> delete_environment(project_key, environment_key)
 
-### Example
+Delete environment
+
+Delete a environment by key.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
 
 begin
-  #Delete an environment in a specific project.
-  api_instance.delete_environment(project_key, environment_key, )
+  # Delete environment
+  api_instance.delete_environment(project_key, environment_key)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling EnvironmentsApi->delete_environment: #{e}"
+  puts "Error when calling EnvironmentsApi->delete_environment: #{e}"
+end
+```
+
+#### Using the delete_environment_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_environment_with_http_info(project_key, environment_key)
+
+```ruby
+begin
+  # Delete environment
+  data, status_code, headers = api_instance.delete_environment_with_http_info(project_key, environment_key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling EnvironmentsApi->delete_environment_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
 
 ### Return type
 
@@ -57,54 +76,72 @@ nil (empty response body)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## get_environment
 
-# **get_environment**
-> Environment get_environment(project_key, environment_key, )
+> <Environment> get_environment(project_key, environment_key)
 
-Get an environment given a project and key.
+Get environment
 
-### Example
+> ### Approval settings > > The `approvalSettings` key is only returned when the Flag Approvals feature is enabled.  Get an environment given a project and key. 
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
 
 begin
-  #Get an environment given a project and key.
-  result = api_instance.get_environment(project_key, environment_key, )
+  # Get environment
+  result = api_instance.get_environment(project_key, environment_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling EnvironmentsApi->get_environment: #{e}"
+  puts "Error when calling EnvironmentsApi->get_environment: #{e}"
+end
+```
+
+#### Using the get_environment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Environment>, Integer, Hash)> get_environment_with_http_info(project_key, environment_key)
+
+```ruby
+begin
+  # Get environment
+  data, status_code, headers = api_instance.get_environment_with_http_info(project_key, environment_key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Environment>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling EnvironmentsApi->get_environment_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
 
 ### Return type
 
@@ -112,57 +149,74 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## patch_environment
 
-# **patch_environment**
-> Environment patch_environment(project_key, environment_key, patch_delta)
+> <Environment> patch_environment(project_key, environment_key, patch_operation)
 
-Modify an environment by ID. If you try to patch the environment by setting both required and requiredApprovalTags, it will result in an error. Users can specify either required approvals for all flags in an environment or those with specific tags, but not both. Only customers on an Enterprise plan can require approval for flag updates with either mechanism.
+Update environment
 
-### Example
+> ### Approval settings > > The `approvalSettings` key is only returned when the Flag Approvals feature is enabled. > > Only the `canReviewOwnRequest`, `canApplyDeclinedChanges`, `minNumApprovals`, `required` and `requiredApprovalTagsfields` are editable. > > If you try to patch the environment by setting both `required` and `requiredApprovalTags`, it fails and an error appears. Users can specify either required approvals for all flags in an environment or those with specific tags, but not both. Only customers on an Enterprise plan can require approval for flag updates by either mechanism. 
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
-patch_delta = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
-
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})] # Array<PatchOperation> | 
 
 begin
-  #Modify an environment by ID. If you try to patch the environment by setting both required and requiredApprovalTags, it will result in an error. Users can specify either required approvals for all flags in an environment or those with specific tags, but not both. Only customers on an Enterprise plan can require approval for flag updates with either mechanism.
-  result = api_instance.patch_environment(project_key, environment_key, patch_delta)
+  # Update environment
+  result = api_instance.patch_environment(project_key, environment_key, patch_operation)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling EnvironmentsApi->patch_environment: #{e}"
+  puts "Error when calling EnvironmentsApi->patch_environment: #{e}"
+end
+```
+
+#### Using the patch_environment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Environment>, Integer, Hash)> patch_environment_with_http_info(project_key, environment_key, patch_operation)
+
+```ruby
+begin
+  # Update environment
+  data, status_code, headers = api_instance.patch_environment_with_http_info(project_key, environment_key, patch_operation)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Environment>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling EnvironmentsApi->patch_environment_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **patch_delta** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
+| **patch_operation** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md) |  |  |
 
 ### Return type
 
@@ -170,54 +224,72 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## post_environment
 
-# **post_environment**
-> Environment post_environment(project_key, environment_body)
+> <Environment> post_environment(project_key, environment_post)
 
-Create a new environment in a specified project with a given name, key, and swatch color.
+Create environment
 
-### Example
+> ### Approval settings > > The `approvalSettings` key is only returned when the Flag Approvals feature is enabled.  Create a new environment in a specified project with a given name, key, swatch color, and default TTL. 
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_body = LaunchDarklyApi::EnvironmentPost.new # EnvironmentPost | New environment.
-
+project_key = 'project_key_example' # String | The project key
+environment_post = LaunchDarklyApi::EnvironmentPost.new({name: 'My Environment', key: 'my-environment', color: 'F5A623'}) # EnvironmentPost | 
 
 begin
-  #Create a new environment in a specified project with a given name, key, and swatch color.
-  result = api_instance.post_environment(project_key, environment_body)
+  # Create environment
+  result = api_instance.post_environment(project_key, environment_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling EnvironmentsApi->post_environment: #{e}"
+  puts "Error when calling EnvironmentsApi->post_environment: #{e}"
+end
+```
+
+#### Using the post_environment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Environment>, Integer, Hash)> post_environment_with_http_info(project_key, environment_post)
+
+```ruby
+begin
+  # Create environment
+  data, status_code, headers = api_instance.post_environment_with_http_info(project_key, environment_post)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Environment>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling EnvironmentsApi->post_environment_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_body** | [**EnvironmentPost**](EnvironmentPost.md)| New environment. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **environment_post** | [**EnvironmentPost**](EnvironmentPost.md) |  |  |
 
 ### Return type
 
@@ -225,58 +297,72 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## reset_environment_mobile_key
 
-# **reset_environment_mobile_key**
-> Environment reset_environment_mobile_key(project_key, environment_key, , opts)
+> <Environment> reset_environment_mobile_key(project_key, env_key)
+
+Reset environment mobile SDK key
 
 Reset an environment's mobile key. The optional expiry for the old key is deprecated for this endpoint, so the old key will always expire immediately.
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
-opts = { 
-  expiry: 789 # Integer | The expiry parameter is deprecated for this endpoint, so the old mobile key will always expire immediately. This parameter will be removed in an upcoming major API client version.
-}
+project_key = 'project_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
 
 begin
-  #Reset an environment's mobile key. The optional expiry for the old key is deprecated for this endpoint, so the old key will always expire immediately.
-  result = api_instance.reset_environment_mobile_key(project_key, environment_key, , opts)
+  # Reset environment mobile SDK key
+  result = api_instance.reset_environment_mobile_key(project_key, env_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling EnvironmentsApi->reset_environment_mobile_key: #{e}"
+  puts "Error when calling EnvironmentsApi->reset_environment_mobile_key: #{e}"
+end
+```
+
+#### Using the reset_environment_mobile_key_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Environment>, Integer, Hash)> reset_environment_mobile_key_with_http_info(project_key, env_key)
+
+```ruby
+begin
+  # Reset environment mobile SDK key
+  data, status_code, headers = api_instance.reset_environment_mobile_key_with_http_info(project_key, env_key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Environment>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling EnvironmentsApi->reset_environment_mobile_key_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **expiry** | **Integer**| The expiry parameter is deprecated for this endpoint, so the old mobile key will always expire immediately. This parameter will be removed in an upcoming major API client version. | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
 
 ### Return type
 
@@ -284,58 +370,76 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## reset_environment_sdk_key
 
-# **reset_environment_sdk_key**
-> Environment reset_environment_sdk_key(project_key, environment_key, , opts)
+> <Environment> reset_environment_sdk_key(project_key, env_key, opts)
+
+Reset environment SDK key
 
 Reset an environment's SDK key with an optional expiry time for the old key.
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
-opts = { 
-  expiry: 789 # Integer | An expiration time for the old environment SDK key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately.
+project_key = 'project_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
+opts = {
+  expiry: 789 # Integer | The time at which you want the old SDK key to expire, in UNIX milliseconds. By default, the key expires immediately.
 }
 
 begin
-  #Reset an environment's SDK key with an optional expiry time for the old key.
-  result = api_instance.reset_environment_sdk_key(project_key, environment_key, , opts)
+  # Reset environment SDK key
+  result = api_instance.reset_environment_sdk_key(project_key, env_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling EnvironmentsApi->reset_environment_sdk_key: #{e}"
+  puts "Error when calling EnvironmentsApi->reset_environment_sdk_key: #{e}"
+end
+```
+
+#### Using the reset_environment_sdk_key_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Environment>, Integer, Hash)> reset_environment_sdk_key_with_http_info(project_key, env_key, opts)
+
+```ruby
+begin
+  # Reset environment SDK key
+  data, status_code, headers = api_instance.reset_environment_sdk_key_with_http_info(project_key, env_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Environment>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling EnvironmentsApi->reset_environment_sdk_key_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **expiry** | **Integer**| An expiration time for the old environment SDK key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately. | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
+| **expiry** | **Integer** | The time at which you want the old SDK key to expire, in UNIX milliseconds. By default, the key expires immediately. | [optional] |
 
 ### Return type
 
@@ -343,12 +447,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

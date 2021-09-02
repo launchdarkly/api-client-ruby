@@ -1,57 +1,75 @@
 # LaunchDarklyApi::DataExportDestinationsApi
 
-All URIs are relative to *https://app.launchdarkly.com/api/v2*
+All URIs are relative to *https://app.launchdarkly.com*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**delete_destination**](DataExportDestinationsApi.md#delete_destination) | **DELETE** /destinations/{projectKey}/{environmentKey}/{destinationId} | Get a single data export destination by ID
-[**get_destination**](DataExportDestinationsApi.md#get_destination) | **GET** /destinations/{projectKey}/{environmentKey}/{destinationId} | Get a single data export destination by ID
-[**get_destinations**](DataExportDestinationsApi.md#get_destinations) | **GET** /destinations | Returns a list of all data export destinations.
-[**patch_destination**](DataExportDestinationsApi.md#patch_destination) | **PATCH** /destinations/{projectKey}/{environmentKey}/{destinationId} | Perform a partial update to a data export destination.
-[**post_destination**](DataExportDestinationsApi.md#post_destination) | **POST** /destinations/{projectKey}/{environmentKey} | Create a new data export destination
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**delete_destination**](DataExportDestinationsApi.md#delete_destination) | **DELETE** /api/v2/destinations/{projKey}/{envKey}/{id} | Delete Data Export destination |
+| [**get_destination**](DataExportDestinationsApi.md#get_destination) | **GET** /api/v2/destinations/{projKey}/{envKey}/{id} | Get destination |
+| [**get_destinations**](DataExportDestinationsApi.md#get_destinations) | **GET** /api/v2/destinations | List destinations |
+| [**patch_destination**](DataExportDestinationsApi.md#patch_destination) | **PATCH** /api/v2/destinations/{projKey}/{envKey}/{id} | Update Data Export destination |
+| [**post_destination**](DataExportDestinationsApi.md#post_destination) | **POST** /api/v2/destinations/{projKey}/{envKey} | Create data export destination |
 
 
-# **delete_destination**
-> delete_destination(project_key, environment_key, destination_id, )
+## delete_destination
 
-Get a single data export destination by ID
+> delete_destination(proj_key, env_key, id)
 
-### Example
+Delete Data Export destination
+
+Delete Data Export destination by ID
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::DataExportDestinationsApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
-destination_id = 'destination_id_example' # String | The data export destination ID.
-
+proj_key = 'proj_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
+id = 'id_example' # String | The Data Export destination ID
 
 begin
-  #Get a single data export destination by ID
-  api_instance.delete_destination(project_key, environment_key, destination_id, )
+  # Delete Data Export destination
+  api_instance.delete_destination(proj_key, env_key, id)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling DataExportDestinationsApi->delete_destination: #{e}"
+  puts "Error when calling DataExportDestinationsApi->delete_destination: #{e}"
+end
+```
+
+#### Using the delete_destination_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_destination_with_http_info(proj_key, env_key, id)
+
+```ruby
+begin
+  # Delete Data Export destination
+  data, status_code, headers = api_instance.delete_destination_with_http_info(proj_key, env_key, id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling DataExportDestinationsApi->delete_destination_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **destination_id** | **String**| The data export destination ID. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **proj_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
+| **id** | **String** | The Data Export destination ID |  |
 
 ### Return type
 
@@ -59,57 +77,74 @@ nil (empty response body)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## get_destination
 
-# **get_destination**
-> Destination get_destination(project_key, environment_key, destination_id, )
+> <Destination> get_destination(proj_key, env_key, id)
 
-Get a single data export destination by ID
+Get destination
 
-### Example
+Get a single Data Export destination by ID
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::DataExportDestinationsApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
-destination_id = 'destination_id_example' # String | The data export destination ID.
-
+proj_key = 'proj_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
+id = 'id_example' # String | The Data Export destination ID
 
 begin
-  #Get a single data export destination by ID
-  result = api_instance.get_destination(project_key, environment_key, destination_id, )
+  # Get destination
+  result = api_instance.get_destination(proj_key, env_key, id)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling DataExportDestinationsApi->get_destination: #{e}"
+  puts "Error when calling DataExportDestinationsApi->get_destination: #{e}"
+end
+```
+
+#### Using the get_destination_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Destination>, Integer, Hash)> get_destination_with_http_info(proj_key, env_key, id)
+
+```ruby
+begin
+  # Get destination
+  data, status_code, headers = api_instance.get_destination_with_http_info(proj_key, env_key, id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Destination>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling DataExportDestinationsApi->get_destination_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **destination_id** | **String**| The data export destination ID. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **proj_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
+| **id** | **String** | The Data Export destination ID |  |
 
 ### Return type
 
@@ -117,44 +152,66 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_destinations
 
-# **get_destinations**
-> Destinations get_destinations
+> <Destinations> get_destinations
 
-Returns a list of all data export destinations.
+List destinations
 
-### Example
+Get a list of Data Export destinations configured across all projects and environments.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::DataExportDestinationsApi.new
 
 begin
-  #Returns a list of all data export destinations.
+  # List destinations
   result = api_instance.get_destinations
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling DataExportDestinationsApi->get_destinations: #{e}"
+  puts "Error when calling DataExportDestinationsApi->get_destinations: #{e}"
+end
+```
+
+#### Using the get_destinations_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Destinations>, Integer, Hash)> get_destinations_with_http_info
+
+```ruby
+begin
+  # List destinations
+  data, status_code, headers = api_instance.get_destinations_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Destinations>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling DataExportDestinationsApi->get_destinations_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -163,60 +220,76 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## patch_destination
 
-# **patch_destination**
-> Destination patch_destination(project_key, environment_key, destination_id, patch_only)
+> <Destination> patch_destination(proj_key, env_key, id, patch_operation)
 
-Perform a partial update to a data export destination.
+Update Data Export destination
 
-### Example
+Update a Data Export destination. This requires a JSON Patch representation of the modified destination.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::DataExportDestinationsApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
-destination_id = 'destination_id_example' # String | The data export destination ID.
-
-patch_only = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
-
+proj_key = 'proj_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
+id = 'id_example' # String | The Data Export destination ID
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})] # Array<PatchOperation> | 
 
 begin
-  #Perform a partial update to a data export destination.
-  result = api_instance.patch_destination(project_key, environment_key, destination_id, patch_only)
+  # Update Data Export destination
+  result = api_instance.patch_destination(proj_key, env_key, id, patch_operation)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling DataExportDestinationsApi->patch_destination: #{e}"
+  puts "Error when calling DataExportDestinationsApi->patch_destination: #{e}"
+end
+```
+
+#### Using the patch_destination_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Destination>, Integer, Hash)> patch_destination_with_http_info(proj_key, env_key, id, patch_operation)
+
+```ruby
+begin
+  # Update Data Export destination
+  data, status_code, headers = api_instance.patch_destination_with_http_info(proj_key, env_key, id, patch_operation)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Destination>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling DataExportDestinationsApi->patch_destination_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **destination_id** | **String**| The data export destination ID. | 
- **patch_only** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **proj_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
+| **id** | **String** | The Data Export destination ID |  |
+| **patch_operation** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md) |  |  |
 
 ### Return type
 
@@ -224,57 +297,74 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## post_destination
 
-# **post_destination**
-> Destination post_destination(project_key, environment_key, destination_body)
+> <Destination> post_destination(proj_key, env_key, destination_post)
 
-Create a new data export destination
+Create data export destination
 
-### Example
+Create a new destination. The `config` body parameter represents the configuration parameters required for a destination type.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::DataExportDestinationsApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
-destination_body = LaunchDarklyApi::DestinationBody.new # DestinationBody | Create a new data export destination.
-
+proj_key = 'proj_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
+destination_post = LaunchDarklyApi::DestinationPost.new # DestinationPost | 
 
 begin
-  #Create a new data export destination
-  result = api_instance.post_destination(project_key, environment_key, destination_body)
+  # Create data export destination
+  result = api_instance.post_destination(proj_key, env_key, destination_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling DataExportDestinationsApi->post_destination: #{e}"
+  puts "Error when calling DataExportDestinationsApi->post_destination: #{e}"
+end
+```
+
+#### Using the post_destination_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Destination>, Integer, Hash)> post_destination_with_http_info(proj_key, env_key, destination_post)
+
+```ruby
+begin
+  # Create data export destination
+  data, status_code, headers = api_instance.post_destination_with_http_info(proj_key, env_key, destination_post)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Destination>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling DataExportDestinationsApi->post_destination_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **destination_body** | [**DestinationBody**](DestinationBody.md)| Create a new data export destination. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **proj_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
+| **destination_post** | [**DestinationPost**](DestinationPost.md) |  |  |
 
 ### Return type
 
@@ -282,12 +372,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
+- **Content-Type**: application/json
+- **Accept**: application/json
 

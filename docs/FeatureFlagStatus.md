@@ -1,11 +1,22 @@
 # LaunchDarklyApi::FeatureFlagStatus
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **String** | | Name     | Description | | --------:| ----------- | | new      | the feature flag was created within the last 7 days, and has not been requested yet | | active   | the feature flag was requested by your servers or clients within the last 7 days | | inactive | the feature flag was created more than 7 days ago, and hasn&#39;t been requested by your servers or clients within the past 7 days | | launched | one variation of the feature flag has been rolled out to all your users for at least 7 days |  | [optional] 
-**last_requested** | **String** |  | [optional] 
-**default** | **Object** |  | [optional] 
-**_links** | [**FeatureFlagStatusLinks**](FeatureFlagStatusLinks.md) |  | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **name** | **String** | Status of the flag |  |
+| **last_requested** | **Time** | Timestamp of last time flag was requested | [optional] |
+| **default** | **Object** | Default value seen from code | [optional] |
+
+## Example
+
+```ruby
+require 'launchdarkly_api'
+
+instance = LaunchDarklyApi::FeatureFlagStatus.new(
+  name: inactive,
+  last_requested: 2020-02-05T18:17:01.514Z,
+  default: null
+)
+```
 

@@ -1,56 +1,74 @@
 # LaunchDarklyApi::UsersApi
 
-All URIs are relative to *https://app.launchdarkly.com/api/v2*
+All URIs are relative to *https://app.launchdarkly.com*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**delete_user**](UsersApi.md#delete_user) | **DELETE** /users/{projectKey}/{environmentKey}/{userKey} | Delete a user by ID.
-[**get_search_users**](UsersApi.md#get_search_users) | **GET** /user-search/{projectKey}/{environmentKey} | Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly-- use the List users API resource.
-[**get_user**](UsersApi.md#get_user) | **GET** /users/{projectKey}/{environmentKey}/{userKey} | Get a user by key.
-[**get_users**](UsersApi.md#get_users) | **GET** /users/{projectKey}/{environmentKey} | List all users in the environment. Includes the total count of users. In each page, there will be up to &#39;limit&#39; users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**delete_user**](UsersApi.md#delete_user) | **DELETE** /api/v2/users/{projKey}/{envKey}/{key} | Delete user |
+| [**get_search_users**](UsersApi.md#get_search_users) | **GET** /api/v2/user-search/{projKey}/{envKey} | Find users |
+| [**get_user**](UsersApi.md#get_user) | **GET** /api/v2/users/{projKey}/{envKey}/{key} | Get user |
+| [**get_users**](UsersApi.md#get_users) | **GET** /api/v2/users/{projKey}/{envKey} | List users |
 
 
-# **delete_user**
-> delete_user(project_key, environment_key, user_key, )
+## delete_user
 
-Delete a user by ID.
+> delete_user(proj_key, env_key, key)
 
-### Example
+Delete user
+
+Delete a user by key
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::UsersApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
-user_key = 'user_key_example' # String | The user's key.
-
+proj_key = 'proj_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
+key = 'key_example' # String | The user key
 
 begin
-  #Delete a user by ID.
-  api_instance.delete_user(project_key, environment_key, user_key, )
+  # Delete user
+  api_instance.delete_user(proj_key, env_key, key)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling UsersApi->delete_user: #{e}"
+  puts "Error when calling UsersApi->delete_user: #{e}"
+end
+```
+
+#### Using the delete_user_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_user_with_http_info(proj_key, env_key, key)
+
+```ruby
+begin
+  # Delete user
+  data, status_code, headers = api_instance.delete_user_with_http_info(proj_key, env_key, key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling UsersApi->delete_user_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **user_key** | **String**| The user&#39;s key. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **proj_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
+| **key** | **String** | The user key |  |
 
 ### Return type
 
@@ -58,64 +76,84 @@ nil (empty response body)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## get_search_users
 
-# **get_search_users**
-> Users get_search_users(project_key, environment_key, , opts)
+> <Users> get_search_users(proj_key, env_key, opts)
 
-Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly-- use the List users API resource.
+Find users
 
-### Example
+Search users in LaunchDarkly based on their last active date, or a search query. Do not use to enumerate all users in LaunchDarkly. Instead use the [List users](getUsers) API resource.  > ### `offset` is deprecated > > `offset` is deprecated and will be removed in a future API version. You can still use `offset` and `limit` for pagination, but we recommend you use `sort` and `searchAfter` instead. `searchAfter` allows you to page through more than 10,000 users, but `offset` and `limit` do not. 
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::UsersApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
-opts = { 
-  q: 'q_example', # String | Search query.
-  limit: 56, # Integer | Pagination limit.
-  offset: 56, # Integer | Specifies the first item to return in the collection.
-  after: 789, # Integer | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occurred after this timestamp.
+proj_key = 'proj_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
+opts = {
+  q: 'q_example', # String | Full-text search for users based on name, first name, last name, e-mail address, or key
+  limit: 789, # Integer | Specifies the maximum number of items in the collection to return (max: 50, default: 20)
+  offset: 789, # Integer | Specifies the first item to return in the collection
+  after: 789, # Integer | A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag from LaunchDarkly
+  search_after: 'search_after_example' # String | Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the `next` link we provide instead.
 }
 
 begin
-  #Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly-- use the List users API resource.
-  result = api_instance.get_search_users(project_key, environment_key, , opts)
+  # Find users
+  result = api_instance.get_search_users(proj_key, env_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling UsersApi->get_search_users: #{e}"
+  puts "Error when calling UsersApi->get_search_users: #{e}"
+end
+```
+
+#### Using the get_search_users_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Users>, Integer, Hash)> get_search_users_with_http_info(proj_key, env_key, opts)
+
+```ruby
+begin
+  # Find users
+  data, status_code, headers = api_instance.get_search_users_with_http_info(proj_key, env_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Users>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling UsersApi->get_search_users_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **q** | **String**| Search query. | [optional] 
- **limit** | **Integer**| Pagination limit. | [optional] 
- **offset** | **Integer**| Specifies the first item to return in the collection. | [optional] 
- **after** | **Integer**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occurred after this timestamp. | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **proj_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
+| **q** | **String** | Full-text search for users based on name, first name, last name, e-mail address, or key | [optional] |
+| **limit** | **Integer** | Specifies the maximum number of items in the collection to return (max: 50, default: 20) | [optional] |
+| **offset** | **Integer** | Specifies the first item to return in the collection | [optional] |
+| **after** | **Integer** | A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag from LaunchDarkly | [optional] |
+| **search_after** | **String** | Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the &#x60;next&#x60; link we provide instead. | [optional] |
 
 ### Return type
 
@@ -123,120 +161,153 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_user
 
-# **get_user**
-> UserRecord get_user(project_key, environment_key, user_key, )
+> <User> get_user(proj_key, env_key, key)
 
-Get a user by key.
+Get user
 
-### Example
+Get a user by key. The `user` object contains all attributes sent in `variation` calls for that key.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::UsersApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
-user_key = 'user_key_example' # String | The user's key.
-
+proj_key = 'proj_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
+key = 'key_example' # String | The user key
 
 begin
-  #Get a user by key.
-  result = api_instance.get_user(project_key, environment_key, user_key, )
+  # Get user
+  result = api_instance.get_user(proj_key, env_key, key)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling UsersApi->get_user: #{e}"
+  puts "Error when calling UsersApi->get_user: #{e}"
+end
+```
+
+#### Using the get_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<User>, Integer, Hash)> get_user_with_http_info(proj_key, env_key, key)
+
+```ruby
+begin
+  # Get user
+  data, status_code, headers = api_instance.get_user_with_http_info(proj_key, env_key, key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <User>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling UsersApi->get_user_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **user_key** | **String**| The user&#39;s key. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **proj_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
+| **key** | **String** | The user key |  |
 
 ### Return type
 
-[**UserRecord**](UserRecord.md)
+[**User**](User.md)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_users
 
-# **get_users**
-> Users get_users(project_key, environment_key, , opts)
+> <Users> get_users(proj_key, env_key, opts)
 
-List all users in the environment. Includes the total count of users. In each page, there will be up to 'limit' users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
+List users
 
-### Example
+List all users in the environment. Includes the total count of users. In each page, there is up to `limit` users returned. The default is 20. This is useful for exporting all users in the system for further analysis. To paginate through, follow the `next` link in the `_links` object, as [described in Representations](/#section/Representations). 
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::UsersApi.new
-
-project_key = 'project_key_example' # String | The project key, used to tie the flags together under one project so they can be managed together.
-
-environment_key = 'environment_key_example' # String | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
-opts = { 
-  limit: 56, # Integer | Pagination limit.
-  h: 'h_example', # String | This parameter is required when following \"next\" links.
-  scroll_id: 'scroll_id_example' # String | This parameter is required when following \"next\" links.
+proj_key = 'proj_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
+opts = {
+  limit: 789, # Integer | The number of elements to return per page
+  search_after: 'search_after_example' # String | Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the `next` link we provide instead.
 }
 
 begin
-  #List all users in the environment. Includes the total count of users. In each page, there will be up to 'limit' users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
-  result = api_instance.get_users(project_key, environment_key, , opts)
+  # List users
+  result = api_instance.get_users(proj_key, env_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling UsersApi->get_users: #{e}"
+  puts "Error when calling UsersApi->get_users: #{e}"
+end
+```
+
+#### Using the get_users_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Users>, Integer, Hash)> get_users_with_http_info(proj_key, env_key, opts)
+
+```ruby
+begin
+  # List users
+  data, status_code, headers = api_instance.get_users_with_http_info(proj_key, env_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Users>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling UsersApi->get_users_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **String**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environment_key** | **String**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **limit** | **Integer**| Pagination limit. | [optional] 
- **h** | **String**| This parameter is required when following \&quot;next\&quot; links. | [optional] 
- **scroll_id** | **String**| This parameter is required when following \&quot;next\&quot; links. | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **proj_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
+| **limit** | **Integer** | The number of elements to return per page | [optional] |
+| **search_after** | **String** | Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the &#x60;next&#x60; link we provide instead. | [optional] |
 
 ### Return type
 
@@ -244,12 +315,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

@@ -1,21 +1,40 @@
 # LaunchDarklyApi::Environment
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**_links** | [**Links**](Links.md) |  | [optional] 
-**_id** | [**Id**](Id.md) |  | [optional] 
-**key** | **String** | The key for the environment. | [optional] 
-**name** | **String** | The name of the environment. | [optional] 
-**api_key** | **String** | The SDK key for backend LaunchDarkly SDKs. | [optional] 
-**mobile_key** | **String** | The SDK key for mobile LaunchDarkly SDKs. | [optional] 
-**color** | **String** | The swatch color for the environment. | [optional] 
-**default_ttl** | **Float** | The default TTL. | [optional] 
-**secure_mode** | **BOOLEAN** | Determines if this environment is in safe mode. | [optional] 
-**default_track_events** | **BOOLEAN** | Set to true to send detailed event information for new flags. | [optional] 
-**tags** | **Array&lt;String&gt;** | An array of tags for this environment. | [optional] 
-**require_comments** | **BOOLEAN** | Determines if this environment requires comments for flag and segment changes. | [optional] 
-**confirm_changes** | **BOOLEAN** | Determines if this environment requires confirmation for flag and segment changes. | [optional] 
-**approval_settings** | [**EnvironmentApprovalSettings**](EnvironmentApprovalSettings.md) |  | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | Links to related resources. |  |
+| **_id** | **String** |  |  |
+| **key** | **String** | A project-unique key for the new environment. |  |
+| **name** | **String** | A human-friendly name for the new environment. |  |
+| **api_key** | **String** | API key to use with client-side SDKs. |  |
+| **mobile_key** | **String** | API key to use with mobile SDKs. |  |
+| **color** | **String** | The color used to indicate this environment in the UI. |  |
+| **default_ttl** | **Integer** | The default time (in minutes) that the PHP SDK can cache feature flag rules locally. |  |
+| **secure_mode** | **Boolean** | Secure mode ensures that a user of the client-side SDK cannot impersonate another user. |  |
+| **default_track_events** | **Boolean** | Enables tracking detailed information for new flags by default. |  |
+| **tags** | **Array&lt;String&gt;** |  |  |
+| **approval_settings** | [**ApprovalSettings**](ApprovalSettings.md) |  | [optional] |
+
+## Example
+
+```ruby
+require 'launchdarkly_api'
+
+instance = LaunchDarklyApi::Environment.new(
+  _links: {&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/projects/my-project/environments/my-environment&quot;,&quot;type&quot;:&quot;application/json&quot;}},
+  _id: 57be1db38b75bf0772d11384,
+  key: my-environment,
+  name: My Environment,
+  api_key: XYZ,
+  mobile_key: XYZ,
+  color: F5A623,
+  default_ttl: 5,
+  secure_mode: true,
+  default_track_events: false,
+  tags: [&quot;ops&quot;],
+  approval_settings: null
+)
+```
 

@@ -1,10 +1,22 @@
 # LaunchDarklyApi::UserFlagSetting
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**_links** | [**Links**](Links.md) |  | [optional] 
-**_value** | **BOOLEAN** | The most important attribute in the response. The _value is the current setting for the user. For a boolean feature toggle, this will be true, false, or null if there is no defined fallthrough value. | [optional] 
-**setting** | **BOOLEAN** | The setting attribute indicates whether you&#39;ve explicitly targeted this user to receive a particular variation. For example, if you have explicitly turned off a feature toggle for a user, setting will be false. A setting of null means that you haven&#39;t assigned that user to a specific variation. | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
+| **_value** | **Object** |  |  |
+| **setting** | **Object** |  |  |
+
+## Example
+
+```ruby
+require 'launchdarkly_api'
+
+instance = LaunchDarklyApi::UserFlagSetting.new(
+  _links: {&quot;sort.order&quot;:{&quot;href&quot;:&quot;/api/v2/users/lacuna/production/Abbie_Braun/flags/sort.order&quot;,&quot;type&quot;:&quot;application/json&quot;}},
+  _value: true,
+  setting: null
+)
+```
 

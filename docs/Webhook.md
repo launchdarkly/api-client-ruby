@@ -1,15 +1,34 @@
 # LaunchDarklyApi::Webhook
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**_links** | [**Links**](Links.md) |  | [optional] 
-**_id** | [**Id**](Id.md) |  | [optional] 
-**url** | **String** | The URL of the remote webhook. | [optional] 
-**secret** | **String** | If defined, the webhooks post request will include a X-LD-Signature header whose value will contain an HMAC SHA256 hex digest of the webhook payload, using the secret as the key. | [optional] 
-**on** | **BOOLEAN** | Whether this webhook is enabled or not. | [optional] 
-**name** | **String** | The name of the webhook. | [optional] 
-**statements** | [**Array&lt;Statement&gt;**](Statement.md) |  | [optional] 
-**tags** | **Array&lt;String&gt;** | Tags assigned to this webhook. | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
+| **_id** | **String** |  |  |
+| **name** | **String** |  | [optional] |
+| **url** | **String** |  |  |
+| **secret** | **String** |  | [optional] |
+| **statements** | [**Array&lt;StatementRep&gt;**](StatementRep.md) |  | [optional] |
+| **on** | **Boolean** |  |  |
+| **tags** | **Array&lt;String&gt;** |  |  |
+| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+
+## Example
+
+```ruby
+require 'launchdarkly_api'
+
+instance = LaunchDarklyApi::Webhook.new(
+  _links: null,
+  _id: 57be1db38b75bf0772d11384,
+  name: Example hook,
+  url: http://www.example.com,
+  secret: frobozz,
+  statements: null,
+  on: true,
+  tags: [],
+  _access: null
+)
+```
 

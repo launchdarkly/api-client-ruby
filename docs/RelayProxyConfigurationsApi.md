@@ -1,52 +1,72 @@
 # LaunchDarklyApi::RelayProxyConfigurationsApi
 
-All URIs are relative to *https://app.launchdarkly.com/api/v2*
+All URIs are relative to *https://app.launchdarkly.com*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**delete_relay_proxy_config**](RelayProxyConfigurationsApi.md#delete_relay_proxy_config) | **DELETE** /account/relay-auto-configs/{id} | Delete a relay proxy configuration by ID.
-[**get_relay_proxy_config**](RelayProxyConfigurationsApi.md#get_relay_proxy_config) | **GET** /account/relay-auto-configs/{id} | Get a single relay proxy configuration by ID.
-[**get_relay_proxy_configs**](RelayProxyConfigurationsApi.md#get_relay_proxy_configs) | **GET** /account/relay-auto-configs | Returns a list of relay proxy configurations in the account.
-[**patch_relay_proxy_config**](RelayProxyConfigurationsApi.md#patch_relay_proxy_config) | **PATCH** /account/relay-auto-configs/{id} | Modify a relay proxy configuration by ID.
-[**post_relay_auto_config**](RelayProxyConfigurationsApi.md#post_relay_auto_config) | **POST** /account/relay-auto-configs | Create a new relay proxy config.
-[**reset_relay_proxy_config**](RelayProxyConfigurationsApi.md#reset_relay_proxy_config) | **POST** /account/relay-auto-configs/{id}/reset | Reset a relay proxy configuration&#39;s secret key with an optional expiry time for the old key.
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**delete_relay_auto_config**](RelayProxyConfigurationsApi.md#delete_relay_auto_config) | **DELETE** /api/v2/account/relay-auto-configs/{id} | Delete Relay Proxy config by ID |
+| [**get_relay_proxy_config**](RelayProxyConfigurationsApi.md#get_relay_proxy_config) | **GET** /api/v2/account/relay-auto-configs/{id} | Get Relay Proxy config |
+| [**get_relay_proxy_configs**](RelayProxyConfigurationsApi.md#get_relay_proxy_configs) | **GET** /api/v2/account/relay-auto-configs | List Relay Proxy configs |
+| [**patch_relay_auto_config**](RelayProxyConfigurationsApi.md#patch_relay_auto_config) | **PATCH** /api/v2/account/relay-auto-configs/{id} | Update a Relay Proxy config |
+| [**post_relay_auto_config**](RelayProxyConfigurationsApi.md#post_relay_auto_config) | **POST** /api/v2/account/relay-auto-configs | Create a new Relay Proxy config |
+| [**reset_relay_auto_config**](RelayProxyConfigurationsApi.md#reset_relay_auto_config) | **POST** /api/v2/account/relay-auto-configs/{id}/reset | Reset Relay Proxy configuration key |
 
 
-# **delete_relay_proxy_config**
-> delete_relay_proxy_config(id)
+## delete_relay_auto_config
 
-Delete a relay proxy configuration by ID.
+> delete_relay_auto_config(id)
 
-### Example
+Delete Relay Proxy config by ID
+
+Delete a Relay Proxy config
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::RelayProxyConfigurationsApi.new
-
-id = 'id_example' # String | The relay proxy configuration ID
-
+id = 'id_example' # String | The relay auto config id
 
 begin
-  #Delete a relay proxy configuration by ID.
-  api_instance.delete_relay_proxy_config(id)
+  # Delete Relay Proxy config by ID
+  api_instance.delete_relay_auto_config(id)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling RelayProxyConfigurationsApi->delete_relay_proxy_config: #{e}"
+  puts "Error when calling RelayProxyConfigurationsApi->delete_relay_auto_config: #{e}"
+end
+```
+
+#### Using the delete_relay_auto_config_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_relay_auto_config_with_http_info(id)
+
+```ruby
+begin
+  # Delete Relay Proxy config by ID
+  data, status_code, headers = api_instance.delete_relay_auto_config_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling RelayProxyConfigurationsApi->delete_relay_auto_config_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The relay proxy configuration ID | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The relay auto config id |  |
 
 ### Return type
 
@@ -54,273 +74,368 @@ nil (empty response body)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## get_relay_proxy_config
 
-# **get_relay_proxy_config**
-> RelayProxyConfig get_relay_proxy_config(id)
+> <RelayAutoConfigRep> get_relay_proxy_config(id)
 
-Get a single relay proxy configuration by ID.
+Get Relay Proxy config
 
-### Example
+Get a single Relay Proxy Auto Config by ID
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::RelayProxyConfigurationsApi.new
-
-id = 'id_example' # String | The relay proxy configuration ID
-
+id = 'id_example' # String | The relay auto config id
 
 begin
-  #Get a single relay proxy configuration by ID.
+  # Get Relay Proxy config
   result = api_instance.get_relay_proxy_config(id)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling RelayProxyConfigurationsApi->get_relay_proxy_config: #{e}"
+  puts "Error when calling RelayProxyConfigurationsApi->get_relay_proxy_config: #{e}"
+end
+```
+
+#### Using the get_relay_proxy_config_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RelayAutoConfigRep>, Integer, Hash)> get_relay_proxy_config_with_http_info(id)
+
+```ruby
+begin
+  # Get Relay Proxy config
+  data, status_code, headers = api_instance.get_relay_proxy_config_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RelayAutoConfigRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling RelayProxyConfigurationsApi->get_relay_proxy_config_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The relay proxy configuration ID | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The relay auto config id |  |
 
 ### Return type
 
-[**RelayProxyConfig**](RelayProxyConfig.md)
+[**RelayAutoConfigRep**](RelayAutoConfigRep.md)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_relay_proxy_configs
 
-# **get_relay_proxy_configs**
-> RelayProxyConfigs get_relay_proxy_configs
+> <RelayAutoConfigCollectionRep> get_relay_proxy_configs
 
-Returns a list of relay proxy configurations in the account.
+List Relay Proxy configs
 
-### Example
+Get a list of Relay Proxy configurations in the account.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::RelayProxyConfigurationsApi.new
 
 begin
-  #Returns a list of relay proxy configurations in the account.
+  # List Relay Proxy configs
   result = api_instance.get_relay_proxy_configs
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling RelayProxyConfigurationsApi->get_relay_proxy_configs: #{e}"
+  puts "Error when calling RelayProxyConfigurationsApi->get_relay_proxy_configs: #{e}"
+end
+```
+
+#### Using the get_relay_proxy_configs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RelayAutoConfigCollectionRep>, Integer, Hash)> get_relay_proxy_configs_with_http_info
+
+```ruby
+begin
+  # List Relay Proxy configs
+  data, status_code, headers = api_instance.get_relay_proxy_configs_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RelayAutoConfigCollectionRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling RelayProxyConfigurationsApi->get_relay_proxy_configs_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**RelayProxyConfigs**](RelayProxyConfigs.md)
+[**RelayAutoConfigCollectionRep**](RelayAutoConfigCollectionRep.md)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## patch_relay_auto_config
 
-# **patch_relay_proxy_config**
-> RelayProxyConfig patch_relay_proxy_config(idpatch_delta)
+> <RelayAutoConfigRep> patch_relay_auto_config(id, patch_with_comment)
 
-Modify a relay proxy configuration by ID.
+Update a Relay Proxy config
 
-### Example
+Update a Relay Proxy config.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::RelayProxyConfigurationsApi.new
-
-id = 'id_example' # String | The relay proxy configuration ID
-
-patch_delta = [LaunchDarklyApi::PatchOperation.new] # Array<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
-
+id = 'id_example' # String | The relay auto config id
+patch_with_comment = LaunchDarklyApi::PatchWithComment.new({patch: [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})]}) # PatchWithComment | 
 
 begin
-  #Modify a relay proxy configuration by ID.
-  result = api_instance.patch_relay_proxy_config(idpatch_delta)
+  # Update a Relay Proxy config
+  result = api_instance.patch_relay_auto_config(id, patch_with_comment)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling RelayProxyConfigurationsApi->patch_relay_proxy_config: #{e}"
+  puts "Error when calling RelayProxyConfigurationsApi->patch_relay_auto_config: #{e}"
+end
+```
+
+#### Using the patch_relay_auto_config_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RelayAutoConfigRep>, Integer, Hash)> patch_relay_auto_config_with_http_info(id, patch_with_comment)
+
+```ruby
+begin
+  # Update a Relay Proxy config
+  data, status_code, headers = api_instance.patch_relay_auto_config_with_http_info(id, patch_with_comment)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RelayAutoConfigRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling RelayProxyConfigurationsApi->patch_relay_auto_config_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The relay proxy configuration ID | 
- **patch_delta** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The relay auto config id |  |
+| **patch_with_comment** | [**PatchWithComment**](PatchWithComment.md) |  |  |
 
 ### Return type
 
-[**RelayProxyConfig**](RelayProxyConfig.md)
+[**RelayAutoConfigRep**](RelayAutoConfigRep.md)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## post_relay_auto_config
 
-# **post_relay_auto_config**
-> RelayProxyConfig post_relay_auto_config(relay_proxy_config_body)
+> <RelayAutoConfigRep> post_relay_auto_config(relay_auto_config_post)
 
-Create a new relay proxy config.
+Create a new Relay Proxy config
 
-### Example
+Create a Relay Proxy config
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::RelayProxyConfigurationsApi.new
-
-relay_proxy_config_body = LaunchDarklyApi::RelayProxyConfigBody.new # RelayProxyConfigBody | Create a new relay proxy configuration
-
+relay_auto_config_post = LaunchDarklyApi::RelayAutoConfigPost.new({name: 'name_example', policy: [LaunchDarklyApi::StatementRep.new]}) # RelayAutoConfigPost | 
 
 begin
-  #Create a new relay proxy config.
-  result = api_instance.post_relay_auto_config(relay_proxy_config_body)
+  # Create a new Relay Proxy config
+  result = api_instance.post_relay_auto_config(relay_auto_config_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling RelayProxyConfigurationsApi->post_relay_auto_config: #{e}"
+  puts "Error when calling RelayProxyConfigurationsApi->post_relay_auto_config: #{e}"
+end
+```
+
+#### Using the post_relay_auto_config_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RelayAutoConfigRep>, Integer, Hash)> post_relay_auto_config_with_http_info(relay_auto_config_post)
+
+```ruby
+begin
+  # Create a new Relay Proxy config
+  data, status_code, headers = api_instance.post_relay_auto_config_with_http_info(relay_auto_config_post)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RelayAutoConfigRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling RelayProxyConfigurationsApi->post_relay_auto_config_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **relay_proxy_config_body** | [**RelayProxyConfigBody**](RelayProxyConfigBody.md)| Create a new relay proxy configuration | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **relay_auto_config_post** | [**RelayAutoConfigPost**](RelayAutoConfigPost.md) |  |  |
 
 ### Return type
 
-[**RelayProxyConfig**](RelayProxyConfig.md)
+[**RelayAutoConfigRep**](RelayAutoConfigRep.md)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## reset_relay_auto_config
 
-# **reset_relay_proxy_config**
-> RelayProxyConfig reset_relay_proxy_config(id, opts)
+> <RelayAutoConfigRep> reset_relay_auto_config(id, opts)
 
-Reset a relay proxy configuration's secret key with an optional expiry time for the old key.
+Reset Relay Proxy configuration key
 
-### Example
+Reset a Relay Proxy configuration's secret key with an optional expiry time for the old key.
+
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'launchdarkly_api'
 # setup authorization
 LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: Token
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
 api_instance = LaunchDarklyApi::RelayProxyConfigurationsApi.new
-
-id = 'id_example' # String | The relay proxy configuration ID
-
-opts = { 
-  expiry: 789 # Integer | An expiration time for the old relay proxy configuration key, expressed as a Unix epoch time in milliseconds. By default, the relay proxy configuration will expire immediately
+id = 'id_example' # String | The Relay Proxy configuration ID
+opts = {
+  expiry: 789 # Integer | An expiration time for the old Relay Proxy configuration key, expressed as a Unix epoch time in milliseconds. By default, the Relay Proxy configuration will expire immediately.
 }
 
 begin
-  #Reset a relay proxy configuration's secret key with an optional expiry time for the old key.
-  result = api_instance.reset_relay_proxy_config(id, opts)
+  # Reset Relay Proxy configuration key
+  result = api_instance.reset_relay_auto_config(id, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling RelayProxyConfigurationsApi->reset_relay_proxy_config: #{e}"
+  puts "Error when calling RelayProxyConfigurationsApi->reset_relay_auto_config: #{e}"
+end
+```
+
+#### Using the reset_relay_auto_config_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RelayAutoConfigRep>, Integer, Hash)> reset_relay_auto_config_with_http_info(id, opts)
+
+```ruby
+begin
+  # Reset Relay Proxy configuration key
+  data, status_code, headers = api_instance.reset_relay_auto_config_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RelayAutoConfigRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling RelayProxyConfigurationsApi->reset_relay_auto_config_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The relay proxy configuration ID | 
- **expiry** | **Integer**| An expiration time for the old relay proxy configuration key, expressed as a Unix epoch time in milliseconds. By default, the relay proxy configuration will expire immediately | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The Relay Proxy configuration ID |  |
+| **expiry** | **Integer** | An expiration time for the old Relay Proxy configuration key, expressed as a Unix epoch time in milliseconds. By default, the Relay Proxy configuration will expire immediately. | [optional] |
 
 ### Return type
 
-[**RelayProxyConfig**](RelayProxyConfig.md)
+[**RelayAutoConfigRep**](RelayAutoConfigRep.md)
 
 ### Authorization
 
-[Token](../README.md#Token)
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

@@ -1,19 +1,52 @@
 # LaunchDarklyApi::UserSegment
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**key** | **String** | Unique identifier for the user segment. | 
-**name** | **String** | Name of the user segment. | 
-**description** | **String** | Description of the user segment. | [optional] 
-**tags** | **Array&lt;String&gt;** | An array of tags for this user segment. | [optional] 
-**creation_date** | **Integer** | A unix epoch time in milliseconds specifying the creation time of this flag. | 
-**included** | **Array&lt;String&gt;** | An array of user keys that are included in this segment. | [optional] 
-**excluded** | **Array&lt;String&gt;** | An array of user keys that should not be included in this segment, unless they are also listed in \&quot;included\&quot;. | [optional] 
-**rules** | [**Array&lt;UserSegmentRule&gt;**](UserSegmentRule.md) | An array of rules that can cause a user to be included in this segment. | [optional] 
-**unbounded** | **BOOLEAN** | Controls whether this is considered a \&quot;big segment\&quot; which can support an unlimited numbers of users. Include/exclude lists sent with this payload are not used in big segments. Contact your account manager for early access to this feature. | [optional] 
-**version** | **Integer** |  | [optional] 
-**_links** | [**Links**](Links.md) |  | [optional] 
-**_flags** | [**Array&lt;FlagListItem&gt;**](FlagListItem.md) |  | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **name** | **String** | A human-friendly name for the segment |  |
+| **description** | **String** | A description of the segment&#39;s purpose | [optional] |
+| **tags** | **Array&lt;String&gt;** | Tags for the segment |  |
+| **creation_date** | **Integer** |  |  |
+| **key** | **String** | A unique key used to reference the segment |  |
+| **included** | **Array&lt;String&gt;** | Included users are always segment members, regardless of segment rules. For Big Segments this array is either empty or omitted entirely. | [optional] |
+| **excluded** | **Array&lt;String&gt;** | Segment rules bypass excluded users, so they will never be included based on rules. Excluded users may still be included explicitly. This value is omitted for Big Segments. | [optional] |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
+| **rules** | [**Array&lt;UserSegmentRule&gt;**](UserSegmentRule.md) |  |  |
+| **version** | **Integer** |  |  |
+| **deleted** | **Boolean** |  |  |
+| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **_flags** | [**Array&lt;FlagListingRep&gt;**](FlagListingRep.md) |  | [optional] |
+| **unbounded** | **Boolean** |  | [optional] |
+| **generation** | **Integer** |  |  |
+| **_unbounded_metadata** | [**SegmentMetadata**](SegmentMetadata.md) |  | [optional] |
+| **_external** | **String** |  | [optional] |
+| **_external_link** | **String** |  | [optional] |
+
+## Example
+
+```ruby
+require 'launchdarkly_api'
+
+instance = LaunchDarklyApi::UserSegment.new(
+  name: null,
+  description: null,
+  tags: null,
+  creation_date: null,
+  key: null,
+  included: null,
+  excluded: null,
+  _links: null,
+  rules: null,
+  version: null,
+  deleted: null,
+  _access: null,
+  _flags: null,
+  unbounded: null,
+  generation: null,
+  _unbounded_metadata: null,
+  _external: null,
+  _external_link: null
+)
+```
 
