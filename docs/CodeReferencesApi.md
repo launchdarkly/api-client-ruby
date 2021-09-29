@@ -11,7 +11,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_extinctions**](CodeReferencesApi.md#get_extinctions) | **GET** /api/v2/code-refs/extinctions | List extinctions |
 | [**get_repositories**](CodeReferencesApi.md#get_repositories) | **GET** /api/v2/code-refs/repositories | List repositories |
 | [**get_repository**](CodeReferencesApi.md#get_repository) | **GET** /api/v2/code-refs/repositories/{repo} | Get repository |
-| [**get_root_statistic**](CodeReferencesApi.md#get_root_statistic) | **GET** /api/v2/code-refs/statistics | Get number of code references for flags |
+| [**get_root_statistic**](CodeReferencesApi.md#get_root_statistic) | **GET** /api/v2/code-refs/statistics | Get links to code reference repositories for each project |
 | [**get_statistics**](CodeReferencesApi.md#get_statistics) | **GET** /api/v2/code-refs/statistics/{projKey} | Get number of code references for flags |
 | [**patch_repository**](CodeReferencesApi.md#patch_repository) | **PATCH** /api/v2/code-refs/repositories/{repo} | Update repository |
 | [**post_extinction**](CodeReferencesApi.md#post_extinction) | **POST** /api/v2/code-refs/repositories/{repo}/branches/{branch} | Create extinction |
@@ -544,7 +544,7 @@ end
 
 > <StatisticsRoot> get_root_statistic
 
-Get number of code references for flags
+Get links to code reference repositories for each project
 
 Get links for all projects that have Code References.
 
@@ -564,7 +564,7 @@ end
 api_instance = LaunchDarklyApi::CodeReferencesApi.new
 
 begin
-  # Get number of code references for flags
+  # Get links to code reference repositories for each project
   result = api_instance.get_root_statistic
   p result
 rescue LaunchDarklyApi::ApiError => e
@@ -580,7 +580,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get number of code references for flags
+  # Get links to code reference repositories for each project
   data, status_code, headers = api_instance.get_root_statistic_with_http_info
   p status_code # => 2xx
   p headers # => { ... }

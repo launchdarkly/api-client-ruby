@@ -38,6 +38,8 @@ docs/CustomRolePost.md
 docs/CustomRolePostData.md
 docs/CustomRoles.md
 docs/CustomRolesApi.md
+docs/CustomWorkflowMeta.md
+docs/CustomWorkflowStageMeta.md
 docs/DataExportDestinationsApi.md
 docs/DefaultClientSideAvailabilityPost.md
 docs/Defaults.md
@@ -119,6 +121,8 @@ docs/PatchOperation.md
 docs/PatchSegmentInstruction.md
 docs/PatchSegmentRequest.md
 docs/PatchWithComment.md
+docs/PermissionGrantInput.md
+docs/PermissionGrantRep.md
 docs/PostApprovalRequestApplyRequest.md
 docs/PostApprovalRequestReviewRequest.md
 docs/PostFlagScheduledChangesInput.md
@@ -163,6 +167,11 @@ docs/StatisticsRoot.md
 docs/SubjectDataRep.md
 docs/Target.md
 docs/TargetResourceRep.md
+docs/TeamCollectionRep.md
+docs/TeamPatchInput.md
+docs/TeamPostInput.md
+docs/TeamRep.md
+docs/TeamsBetaApi.md
 docs/TitleRep.md
 docs/Token.md
 docs/TokenDataRep.md
@@ -212,6 +221,7 @@ lib/launchdarkly_api/api/projects_api.rb
 lib/launchdarkly_api/api/relay_proxy_configurations_api.rb
 lib/launchdarkly_api/api/scheduled_changes_api.rb
 lib/launchdarkly_api/api/segments_api.rb
+lib/launchdarkly_api/api/teams_beta_api.rb
 lib/launchdarkly_api/api/user_settings_api.rb
 lib/launchdarkly_api/api/users_api.rb
 lib/launchdarkly_api/api/users_beta_api.rb
@@ -244,6 +254,8 @@ lib/launchdarkly_api/models/custom_role.rb
 lib/launchdarkly_api/models/custom_role_post.rb
 lib/launchdarkly_api/models/custom_role_post_data.rb
 lib/launchdarkly_api/models/custom_roles.rb
+lib/launchdarkly_api/models/custom_workflow_meta.rb
+lib/launchdarkly_api/models/custom_workflow_stage_meta.rb
 lib/launchdarkly_api/models/default_client_side_availability_post.rb
 lib/launchdarkly_api/models/defaults.rb
 lib/launchdarkly_api/models/dependent_flag.rb
@@ -318,6 +330,8 @@ lib/launchdarkly_api/models/patch_operation.rb
 lib/launchdarkly_api/models/patch_segment_instruction.rb
 lib/launchdarkly_api/models/patch_segment_request.rb
 lib/launchdarkly_api/models/patch_with_comment.rb
+lib/launchdarkly_api/models/permission_grant_input.rb
+lib/launchdarkly_api/models/permission_grant_rep.rb
 lib/launchdarkly_api/models/post_approval_request_apply_request.rb
 lib/launchdarkly_api/models/post_approval_request_review_request.rb
 lib/launchdarkly_api/models/post_flag_scheduled_changes_input.rb
@@ -358,6 +372,10 @@ lib/launchdarkly_api/models/statistics_root.rb
 lib/launchdarkly_api/models/subject_data_rep.rb
 lib/launchdarkly_api/models/target.rb
 lib/launchdarkly_api/models/target_resource_rep.rb
+lib/launchdarkly_api/models/team_collection_rep.rb
+lib/launchdarkly_api/models/team_patch_input.rb
+lib/launchdarkly_api/models/team_post_input.rb
+lib/launchdarkly_api/models/team_rep.rb
 lib/launchdarkly_api/models/title_rep.rb
 lib/launchdarkly_api/models/token.rb
 lib/launchdarkly_api/models/token_data_rep.rb
@@ -401,6 +419,7 @@ spec/api/projects_api_spec.rb
 spec/api/relay_proxy_configurations_api_spec.rb
 spec/api/scheduled_changes_api_spec.rb
 spec/api/segments_api_spec.rb
+spec/api/teams_beta_api_spec.rb
 spec/api/user_settings_api_spec.rb
 spec/api/users_api_spec.rb
 spec/api/users_beta_api_spec.rb
@@ -432,6 +451,8 @@ spec/models/custom_role_post_data_spec.rb
 spec/models/custom_role_post_spec.rb
 spec/models/custom_role_spec.rb
 spec/models/custom_roles_spec.rb
+spec/models/custom_workflow_meta_spec.rb
+spec/models/custom_workflow_stage_meta_spec.rb
 spec/models/default_client_side_availability_post_spec.rb
 spec/models/defaults_spec.rb
 spec/models/dependent_flag_environment_spec.rb
@@ -506,6 +527,8 @@ spec/models/patch_operation_spec.rb
 spec/models/patch_segment_instruction_spec.rb
 spec/models/patch_segment_request_spec.rb
 spec/models/patch_with_comment_spec.rb
+spec/models/permission_grant_input_spec.rb
+spec/models/permission_grant_rep_spec.rb
 spec/models/post_approval_request_apply_request_spec.rb
 spec/models/post_approval_request_review_request_spec.rb
 spec/models/post_flag_scheduled_changes_input_spec.rb
@@ -546,6 +569,10 @@ spec/models/statistics_root_spec.rb
 spec/models/subject_data_rep_spec.rb
 spec/models/target_resource_rep_spec.rb
 spec/models/target_spec.rb
+spec/models/team_collection_rep_spec.rb
+spec/models/team_patch_input_spec.rb
+spec/models/team_post_input_spec.rb
+spec/models/team_rep_spec.rb
 spec/models/title_rep_spec.rb
 spec/models/token_data_rep_spec.rb
 spec/models/token_spec.rb
