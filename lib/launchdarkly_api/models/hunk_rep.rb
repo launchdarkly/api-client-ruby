@@ -15,14 +15,19 @@ require 'time'
 
 module LaunchDarklyApi
   class HunkRep
+    # Line number of beginning of code reference hunk
     attr_accessor :starting_line_number
 
+    # Contextual lines of code that include the referenced feature flag
     attr_accessor :lines
 
+    # The project key
     attr_accessor :proj_key
 
+    # The feature flag key
     attr_accessor :flag_key
 
+    # An array of flag key aliases
     attr_accessor :aliases
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -100,12 +105,17 @@ module LaunchDarklyApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @starting_line_number.nil?
+        invalid_properties.push('invalid value for "starting_line_number", starting_line_number cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @starting_line_number.nil?
       true
     end
 

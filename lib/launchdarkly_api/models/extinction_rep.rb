@@ -15,14 +15,18 @@ require 'time'
 
 module LaunchDarklyApi
   class ExtinctionRep
+    # The identifier for the revision where flag became extinct. For example, a commit SHA.
     attr_accessor :revision
 
+    # Description of the extinction. For example, the commit message for the revision.
     attr_accessor :message
 
     attr_accessor :time
 
+    # The feature flag key
     attr_accessor :flag_key
 
+    # The project key
     attr_accessor :proj_key
 
     # Attribute mapping from ruby-style variable name to JSON key.

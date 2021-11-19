@@ -15,30 +15,33 @@ require 'time'
 
 module LaunchDarklyApi
   class CustomRole
+    attr_accessor :_id
+
     attr_accessor :_links
 
-    attr_accessor :name
-
-    attr_accessor :key
+    attr_accessor :_access
 
     attr_accessor :description
 
-    attr_accessor :_id
+    attr_accessor :key
+
+    attr_accessor :name
 
     attr_accessor :policy
 
-    attr_accessor :_access
+    attr_accessor :base_permissions
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_links' => :'_links',
-        :'name' => :'name',
-        :'key' => :'key',
-        :'description' => :'description',
         :'_id' => :'_id',
+        :'_links' => :'_links',
+        :'_access' => :'_access',
+        :'description' => :'description',
+        :'key' => :'key',
+        :'name' => :'name',
         :'policy' => :'policy',
-        :'_access' => :'_access'
+        :'base_permissions' => :'basePermissions'
       }
     end
 
@@ -50,13 +53,14 @@ module LaunchDarklyApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'_links' => :'Hash<String, Link>',
-        :'name' => :'String',
-        :'key' => :'String',
-        :'description' => :'String',
         :'_id' => :'String',
+        :'_links' => :'Hash<String, Link>',
+        :'_access' => :'AccessRep',
+        :'description' => :'String',
+        :'key' => :'String',
+        :'name' => :'String',
         :'policy' => :'Array<Statement>',
-        :'_access' => :'AccessRep'
+        :'base_permissions' => :'String'
       }
     end
 
@@ -81,26 +85,30 @@ module LaunchDarklyApi
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'_id')
+        self._id = attributes[:'_id']
+      end
+
       if attributes.key?(:'_links')
         if (value = attributes[:'_links']).is_a?(Hash)
           self._links = value
         end
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'key')
-        self.key = attributes[:'key']
+      if attributes.key?(:'_access')
+        self._access = attributes[:'_access']
       end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'_id')
-        self._id = attributes[:'_id']
+      if attributes.key?(:'key')
+        self.key = attributes[:'key']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
       if attributes.key?(:'policy')
@@ -109,8 +117,8 @@ module LaunchDarklyApi
         end
       end
 
-      if attributes.key?(:'_access')
-        self._access = attributes[:'_access']
+      if attributes.key?(:'base_permissions')
+        self.base_permissions = attributes[:'base_permissions']
       end
     end
 
@@ -118,20 +126,20 @@ module LaunchDarklyApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @_links.nil?
-        invalid_properties.push('invalid value for "_links", _links cannot be nil.')
+      if @_id.nil?
+        invalid_properties.push('invalid value for "_id", _id cannot be nil.')
       end
 
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      if @_links.nil?
+        invalid_properties.push('invalid value for "_links", _links cannot be nil.')
       end
 
       if @key.nil?
         invalid_properties.push('invalid value for "key", key cannot be nil.')
       end
 
-      if @_id.nil?
-        invalid_properties.push('invalid value for "_id", _id cannot be nil.')
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
       if @policy.nil?
@@ -144,10 +152,10 @@ module LaunchDarklyApi
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @_links.nil?
-      return false if @name.nil?
-      return false if @key.nil?
       return false if @_id.nil?
+      return false if @_links.nil?
+      return false if @key.nil?
+      return false if @name.nil?
       return false if @policy.nil?
       true
     end
@@ -157,13 +165,14 @@ module LaunchDarklyApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _links == o._links &&
-          name == o.name &&
-          key == o.key &&
-          description == o.description &&
           _id == o._id &&
+          _links == o._links &&
+          _access == o._access &&
+          description == o.description &&
+          key == o.key &&
+          name == o.name &&
           policy == o.policy &&
-          _access == o._access
+          base_permissions == o.base_permissions
     end
 
     # @see the `==` method
@@ -175,7 +184,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_links, name, key, description, _id, policy, _access].hash
+      [_id, _links, _access, description, key, name, policy, base_permissions].hash
     end
 
     # Builds the object from hash

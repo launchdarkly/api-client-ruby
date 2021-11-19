@@ -8,6 +8,7 @@
 | **key** | **String** | The custom role key |  |
 | **description** | **String** | Description of custom role | [optional] |
 | **policy** | [**Array&lt;StatementPost&gt;**](StatementPost.md) |  |  |
+| **base_permissions** | **String** |  | [optional] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = LaunchDarklyApi::CustomRolePostData.new(
   name: null,
   key: null,
   description: null,
-  policy: null
+  policy: null,
+  base_permissions: null
 )
 ```
 

@@ -81,7 +81,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## get_environment
@@ -238,7 +238,7 @@ end
 
 Create environment
 
-> ### Approval settings > > The `approvalSettings` key is only returned when the Flag Approvals feature is enabled.  Create a new environment in a specified project with a given name, key, swatch color, and default TTL. 
+> ### Approval settings > > The `approvalSettings` key is only returned when the Flag Approvals feature is enabled. > > You cannot update approval settings when creating new environments. Update approval settings with the PATCH Environment API.  Create a new environment in a specified project with a given name, key, swatch color, and default TTL. 
 
 ### Examples
 

@@ -40,7 +40,7 @@ module LaunchDarklyApi
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'required' => :'Required',
+        :'required' => :'required',
         :'bypass_approvals_for_pending_changes' => :'bypassApprovalsForPendingChanges',
         :'min_num_approvals' => :'minNumApprovals',
         :'can_review_own_request' => :'canReviewOwnRequest',

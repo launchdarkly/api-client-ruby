@@ -34,7 +34,7 @@ describe 'AccountMembersApi' do
 
   # unit tests for delete_member
   # Delete account member
-  # Delete a single account member by ID
+  # Delete a single account member by ID. Requests to delete account members will not work if SCIM is enabled for the account.
   # @param id The member ID
   # @param [Hash] opts the optional parameters
   # @return [nil]
@@ -62,7 +62,7 @@ describe 'AccountMembersApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :limit The number of members to return in the response. Defaults to 20.
   # @option opts [Integer] :offset Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next &#x60;limit&#x60; items.
-  # @option opts [String] :filter A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained below.
+  # @option opts [String] :filter A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above.
   # @option opts [String] :sort A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order.
   # @return [Members]
   describe 'get_members test' do
@@ -73,7 +73,7 @@ describe 'AccountMembersApi' do
 
   # unit tests for patch_member
   # Modify an account member
-  # Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member.
+  # Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member. Requests to update account members will not work if SCIM is enabled for the account.
   # @param id The member ID
   # @param patch_operation 
   # @param [Hash] opts the optional parameters
@@ -86,8 +86,8 @@ describe 'AccountMembersApi' do
 
   # unit tests for post_members
   # Invite new members
-  # &gt; ### Full use of this API resource is only available to accounts with paid subscriptions &gt; &gt; The ability to bulk invite members is a paid feature. Single members may be invited if not on a paid plan.  Invite one or more new members to join an account. Each member is sent an invitation. Members with \&quot;admin\&quot; or \&quot;owner\&quot; roles may create new members, as well as anyone with a \&quot;createMember\&quot; permission for \&quot;member/\\*\&quot;. If a member cannot be invited, the entire request is rejected and no members are invited from that request.  Each member _must_ have an &#x60;email&#x60; field and either a &#x60;role&#x60; or a &#x60;customRoles&#x60; field. If any of the fields are not populated correctly, the request is rejected with the reason specified in the \&quot;message\&quot; field of the response.  _No more than 50 members may be created per request._  A request may also fail because of conflicts with existing members. These conflicts are reported using the additional &#x60;code&#x60; and &#x60;invalid_emails&#x60; response fields with the following possible values for &#x60;code&#x60;:  - **email_already_exists_in_account**: A member with this email address already exists in this account. - **email_taken_in_different_account**: A member with this email address exists in another account. - **duplicate_email**s: This request contains two or more members with the same email address.  A request that fails for one of the above reasons returns an HTTP response code of 400 (Bad Request). 
-  # @param inline_object1 
+  # &gt; ### Full use of this API resource is only available to accounts with paid subscriptions &gt; &gt; The ability to bulk invite members is a paid feature. Single members may be invited if not on a paid plan.  Invite one or more new members to join an account. Each member is sent an invitation. Members with \&quot;admin\&quot; or \&quot;owner\&quot; roles may create new members, as well as anyone with a \&quot;createMember\&quot; permission for \&quot;member/\\*\&quot;. If a member cannot be invited, the entire request is rejected and no members are invited from that request.  Each member _must_ have an &#x60;email&#x60; field and either a &#x60;role&#x60; or a &#x60;customRoles&#x60; field. If any of the fields are not populated correctly, the request is rejected with the reason specified in the \&quot;message\&quot; field of the response.  Requests to create account members will not work if SCIM is enabled for the account.  _No more than 50 members may be created per request._  A request may also fail because of conflicts with existing members. These conflicts are reported using the additional &#x60;code&#x60; and &#x60;invalid_emails&#x60; response fields with the following possible values for &#x60;code&#x60;:  - **email_already_exists_in_account**: A member with this email address already exists in this account. - **email_taken_in_different_account**: A member with this email address exists in another account. - **duplicate_email**s: This request contains two or more members with the same email address.  A request that fails for one of the above reasons returns an HTTP response code of 400 (Bad Request). 
+  # @param new_member_form 
   # @param [Hash] opts the optional parameters
   # @return [Members]
   describe 'post_members test' do

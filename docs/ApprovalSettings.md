@@ -23,7 +23,7 @@ instance = LaunchDarklyApi::ApprovalSettings.new(
   bypass_approvals_for_pending_changes: false,
   min_num_approvals: 1,
   can_review_own_request: false,
-  can_apply_declined_changes: false,
+  can_apply_declined_changes: true,
   service_kind: launchdarkly,
   service_config: {},
   required_approval_tags: [&quot;require-approval&quot;]

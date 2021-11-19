@@ -59,6 +59,8 @@ module LaunchDarklyApi
 
     attr_accessor :permission_grants
 
+    attr_accessor :creation_date
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -78,7 +80,8 @@ module LaunchDarklyApi
         :'_last_seen_metadata' => :'_lastSeenMetadata',
         :'_integration_metadata' => :'_integrationMetadata',
         :'teams' => :'teams',
-        :'permission_grants' => :'permissionGrants'
+        :'permission_grants' => :'permissionGrants',
+        :'creation_date' => :'creationDate'
       }
     end
 
@@ -106,7 +109,8 @@ module LaunchDarklyApi
         :'_last_seen_metadata' => :'LastSeenMetadata',
         :'_integration_metadata' => :'IntegrationMetadata',
         :'teams' => :'Array<MemberTeamSummaryRep>',
-        :'permission_grants' => :'Array<MemberPermissionGrantSummaryRep>'
+        :'permission_grants' => :'Array<MemberPermissionGrantSummaryRep>',
+        :'creation_date' => :'Integer'
       }
     end
 
@@ -208,6 +212,10 @@ module LaunchDarklyApi
           self.permission_grants = value
         end
       end
+
+      if attributes.key?(:'creation_date')
+        self.creation_date = attributes[:'creation_date']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -254,6 +262,10 @@ module LaunchDarklyApi
         invalid_properties.push('invalid value for "_last_seen", _last_seen cannot be nil.')
       end
 
+      if @creation_date.nil?
+        invalid_properties.push('invalid value for "creation_date", creation_date cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -270,6 +282,7 @@ module LaunchDarklyApi
       return false if @mfa.nil?
       return false if @excluded_dashboards.nil?
       return false if @_last_seen.nil?
+      return false if @creation_date.nil?
       true
     end
 
@@ -294,7 +307,8 @@ module LaunchDarklyApi
           _last_seen_metadata == o._last_seen_metadata &&
           _integration_metadata == o._integration_metadata &&
           teams == o.teams &&
-          permission_grants == o.permission_grants
+          permission_grants == o.permission_grants &&
+          creation_date == o.creation_date
     end
 
     # @see the `==` method
@@ -306,7 +320,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_links, _id, first_name, last_name, role, email, _pending_invite, _verified, _pending_email, custom_roles, mfa, excluded_dashboards, _last_seen, _last_seen_metadata, _integration_metadata, teams, permission_grants].hash
+      [_links, _id, first_name, last_name, role, email, _pending_invite, _verified, _pending_email, custom_roles, mfa, excluded_dashboards, _last_seen, _last_seen_metadata, _integration_metadata, teams, permission_grants, creation_date].hash
     end
 
     # Builds the object from hash

@@ -20,7 +20,7 @@ module LaunchDarklyApi
       @api_client = api_client
     end
     # Delete account member
-    # Delete a single account member by ID
+    # Delete a single account member by ID. Requests to delete account members will not work if SCIM is enabled for the account.
     # @param id [String] The member ID
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -30,7 +30,7 @@ module LaunchDarklyApi
     end
 
     # Delete account member
-    # Delete a single account member by ID
+    # Delete a single account member by ID. Requests to delete account members will not work if SCIM is enabled for the account.
     # @param id [String] The member ID
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -50,6 +50,8 @@ module LaunchDarklyApi
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -148,7 +150,7 @@ module LaunchDarklyApi
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :limit The number of members to return in the response. Defaults to 20.
     # @option opts [Integer] :offset Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next &#x60;limit&#x60; items.
-    # @option opts [String] :filter A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained below.
+    # @option opts [String] :filter A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above.
     # @option opts [String] :sort A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order.
     # @return [Members]
     def get_members(opts = {})
@@ -161,7 +163,7 @@ module LaunchDarklyApi
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :limit The number of members to return in the response. Defaults to 20.
     # @option opts [Integer] :offset Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next &#x60;limit&#x60; items.
-    # @option opts [String] :filter A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained below.
+    # @option opts [String] :filter A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above.
     # @option opts [String] :sort A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order.
     # @return [Array<(Members, Integer, Hash)>] Members data, response status code and response headers
     def get_members_with_http_info(opts = {})
@@ -213,7 +215,7 @@ module LaunchDarklyApi
     end
 
     # Modify an account member
-    # Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member.
+    # Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member. Requests to update account members will not work if SCIM is enabled for the account.
     # @param id [String] The member ID
     # @param patch_operation [Array<PatchOperation>] 
     # @param [Hash] opts the optional parameters
@@ -224,7 +226,7 @@ module LaunchDarklyApi
     end
 
     # Modify an account member
-    # Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member.
+    # Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member. Requests to update account members will not work if SCIM is enabled for the account.
     # @param id [String] The member ID
     # @param patch_operation [Array<PatchOperation>] 
     # @param [Hash] opts the optional parameters
@@ -284,27 +286,27 @@ module LaunchDarklyApi
     end
 
     # Invite new members
-    # > ### Full use of this API resource is only available to accounts with paid subscriptions > > The ability to bulk invite members is a paid feature. Single members may be invited if not on a paid plan.  Invite one or more new members to join an account. Each member is sent an invitation. Members with \"admin\" or \"owner\" roles may create new members, as well as anyone with a \"createMember\" permission for \"member/\\*\". If a member cannot be invited, the entire request is rejected and no members are invited from that request.  Each member _must_ have an `email` field and either a `role` or a `customRoles` field. If any of the fields are not populated correctly, the request is rejected with the reason specified in the \"message\" field of the response.  _No more than 50 members may be created per request._  A request may also fail because of conflicts with existing members. These conflicts are reported using the additional `code` and `invalid_emails` response fields with the following possible values for `code`:  - **email_already_exists_in_account**: A member with this email address already exists in this account. - **email_taken_in_different_account**: A member with this email address exists in another account. - **duplicate_email**s: This request contains two or more members with the same email address.  A request that fails for one of the above reasons returns an HTTP response code of 400 (Bad Request). 
-    # @param inline_object1 [Array<InlineObject1>] 
+    # > ### Full use of this API resource is only available to accounts with paid subscriptions > > The ability to bulk invite members is a paid feature. Single members may be invited if not on a paid plan.  Invite one or more new members to join an account. Each member is sent an invitation. Members with \"admin\" or \"owner\" roles may create new members, as well as anyone with a \"createMember\" permission for \"member/\\*\". If a member cannot be invited, the entire request is rejected and no members are invited from that request.  Each member _must_ have an `email` field and either a `role` or a `customRoles` field. If any of the fields are not populated correctly, the request is rejected with the reason specified in the \"message\" field of the response.  Requests to create account members will not work if SCIM is enabled for the account.  _No more than 50 members may be created per request._  A request may also fail because of conflicts with existing members. These conflicts are reported using the additional `code` and `invalid_emails` response fields with the following possible values for `code`:  - **email_already_exists_in_account**: A member with this email address already exists in this account. - **email_taken_in_different_account**: A member with this email address exists in another account. - **duplicate_email**s: This request contains two or more members with the same email address.  A request that fails for one of the above reasons returns an HTTP response code of 400 (Bad Request). 
+    # @param new_member_form [Array<NewMemberForm>] 
     # @param [Hash] opts the optional parameters
     # @return [Members]
-    def post_members(inline_object1, opts = {})
-      data, _status_code, _headers = post_members_with_http_info(inline_object1, opts)
+    def post_members(new_member_form, opts = {})
+      data, _status_code, _headers = post_members_with_http_info(new_member_form, opts)
       data
     end
 
     # Invite new members
-    # &gt; ### Full use of this API resource is only available to accounts with paid subscriptions &gt; &gt; The ability to bulk invite members is a paid feature. Single members may be invited if not on a paid plan.  Invite one or more new members to join an account. Each member is sent an invitation. Members with \&quot;admin\&quot; or \&quot;owner\&quot; roles may create new members, as well as anyone with a \&quot;createMember\&quot; permission for \&quot;member/\\*\&quot;. If a member cannot be invited, the entire request is rejected and no members are invited from that request.  Each member _must_ have an &#x60;email&#x60; field and either a &#x60;role&#x60; or a &#x60;customRoles&#x60; field. If any of the fields are not populated correctly, the request is rejected with the reason specified in the \&quot;message\&quot; field of the response.  _No more than 50 members may be created per request._  A request may also fail because of conflicts with existing members. These conflicts are reported using the additional &#x60;code&#x60; and &#x60;invalid_emails&#x60; response fields with the following possible values for &#x60;code&#x60;:  - **email_already_exists_in_account**: A member with this email address already exists in this account. - **email_taken_in_different_account**: A member with this email address exists in another account. - **duplicate_email**s: This request contains two or more members with the same email address.  A request that fails for one of the above reasons returns an HTTP response code of 400 (Bad Request). 
-    # @param inline_object1 [Array<InlineObject1>] 
+    # &gt; ### Full use of this API resource is only available to accounts with paid subscriptions &gt; &gt; The ability to bulk invite members is a paid feature. Single members may be invited if not on a paid plan.  Invite one or more new members to join an account. Each member is sent an invitation. Members with \&quot;admin\&quot; or \&quot;owner\&quot; roles may create new members, as well as anyone with a \&quot;createMember\&quot; permission for \&quot;member/\\*\&quot;. If a member cannot be invited, the entire request is rejected and no members are invited from that request.  Each member _must_ have an &#x60;email&#x60; field and either a &#x60;role&#x60; or a &#x60;customRoles&#x60; field. If any of the fields are not populated correctly, the request is rejected with the reason specified in the \&quot;message\&quot; field of the response.  Requests to create account members will not work if SCIM is enabled for the account.  _No more than 50 members may be created per request._  A request may also fail because of conflicts with existing members. These conflicts are reported using the additional &#x60;code&#x60; and &#x60;invalid_emails&#x60; response fields with the following possible values for &#x60;code&#x60;:  - **email_already_exists_in_account**: A member with this email address already exists in this account. - **email_taken_in_different_account**: A member with this email address exists in another account. - **duplicate_email**s: This request contains two or more members with the same email address.  A request that fails for one of the above reasons returns an HTTP response code of 400 (Bad Request). 
+    # @param new_member_form [Array<NewMemberForm>] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Members, Integer, Hash)>] Members data, response status code and response headers
-    def post_members_with_http_info(inline_object1, opts = {})
+    def post_members_with_http_info(new_member_form, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AccountMembersApi.post_members ...'
       end
-      # verify the required parameter 'inline_object1' is set
-      if @api_client.config.client_side_validation && inline_object1.nil?
-        fail ArgumentError, "Missing the required parameter 'inline_object1' when calling AccountMembersApi.post_members"
+      # verify the required parameter 'new_member_form' is set
+      if @api_client.config.client_side_validation && new_member_form.nil?
+        fail ArgumentError, "Missing the required parameter 'new_member_form' when calling AccountMembersApi.post_members"
       end
       # resource path
       local_var_path = '/api/v2/members'
@@ -323,7 +325,7 @@ module LaunchDarklyApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(inline_object1)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(new_member_form)
 
       # return_type
       return_type = opts[:debug_return_type] || 'Members'

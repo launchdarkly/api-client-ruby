@@ -68,6 +68,8 @@ module LaunchDarklyApi
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -557,7 +559,7 @@ module LaunchDarklyApi
         fail ArgumentError, "Missing the required parameter 'create_copy_flag_config_approval_request_request' when calling ApprovalsApi.post_flag_copy_config_approval_request"
       end
       # resource path
-      local_var_path = '/api/v2/projects/{projectKey}/flags/{featureFlagKey}/copy/environments/{environmentKey}/approval-requests-flag-copy'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'featureFlagKey' + '}', CGI.escape(feature_flag_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s))
+      local_var_path = '/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests-flag-copy'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'featureFlagKey' + '}', CGI.escape(feature_flag_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

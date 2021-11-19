@@ -56,6 +56,8 @@ module LaunchDarklyApi
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
@@ -119,6 +121,8 @@ module LaunchDarklyApi
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -291,7 +295,7 @@ module LaunchDarklyApi
     # Get a list of all extinctions.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :repo_name Filter results to a specific repository
-    # @option opts [String] :branch_name Filter results to a specific branch
+    # @option opts [String] :branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions.
     # @option opts [String] :proj_key Filter results to a specific project
     # @option opts [String] :flag_key Filter results to a specific flag key
     # @return [ExtinctionCollectionRep]
@@ -304,7 +308,7 @@ module LaunchDarklyApi
     # Get a list of all extinctions.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :repo_name Filter results to a specific repository
-    # @option opts [String] :branch_name Filter results to a specific branch
+    # @option opts [String] :branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions.
     # @option opts [String] :proj_key Filter results to a specific project
     # @option opts [String] :flag_key Filter results to a specific flag key
     # @return [Array<(ExtinctionCollectionRep, Integer, Hash)>] ExtinctionCollectionRep data, response status code and response headers
@@ -686,11 +690,11 @@ module LaunchDarklyApi
     # Create a new extinction
     # @param repo [String] The repository name
     # @param branch [String] The url-encoded branch name
-    # @param inline_object [Array<InlineObject>] 
+    # @param extinction_rep [Array<ExtinctionRep>] 
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def post_extinction(repo, branch, inline_object, opts = {})
-      post_extinction_with_http_info(repo, branch, inline_object, opts)
+    def post_extinction(repo, branch, extinction_rep, opts = {})
+      post_extinction_with_http_info(repo, branch, extinction_rep, opts)
       nil
     end
 
@@ -698,10 +702,10 @@ module LaunchDarklyApi
     # Create a new extinction
     # @param repo [String] The repository name
     # @param branch [String] The url-encoded branch name
-    # @param inline_object [Array<InlineObject>] 
+    # @param extinction_rep [Array<ExtinctionRep>] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def post_extinction_with_http_info(repo, branch, inline_object, opts = {})
+    def post_extinction_with_http_info(repo, branch, extinction_rep, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CodeReferencesApi.post_extinction ...'
       end
@@ -713,18 +717,20 @@ module LaunchDarklyApi
       if @api_client.config.client_side_validation && branch.nil?
         fail ArgumentError, "Missing the required parameter 'branch' when calling CodeReferencesApi.post_extinction"
       end
-      # verify the required parameter 'inline_object' is set
-      if @api_client.config.client_side_validation && inline_object.nil?
-        fail ArgumentError, "Missing the required parameter 'inline_object' when calling CodeReferencesApi.post_extinction"
+      # verify the required parameter 'extinction_rep' is set
+      if @api_client.config.client_side_validation && extinction_rep.nil?
+        fail ArgumentError, "Missing the required parameter 'extinction_rep' when calling CodeReferencesApi.post_extinction"
       end
       # resource path
-      local_var_path = '/api/v2/code-refs/repositories/{repo}/branches/{branch}'.sub('{' + 'repo' + '}', CGI.escape(repo.to_s)).sub('{' + 'branch' + '}', CGI.escape(branch.to_s))
+      local_var_path = '/api/v2/code-refs/repositories/{repo}/branches/{branch}/extinction-events'.sub('{' + 'repo' + '}', CGI.escape(repo.to_s)).sub('{' + 'branch' + '}', CGI.escape(branch.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
@@ -732,7 +738,7 @@ module LaunchDarklyApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(inline_object)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(extinction_rep)
 
       # return_type
       return_type = opts[:debug_return_type]
@@ -761,17 +767,17 @@ module LaunchDarklyApi
     # Create a repository with the specified name.
     # @param repository_post [RepositoryPost] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [RepositoryRep]
     def post_repository(repository_post, opts = {})
-      post_repository_with_http_info(repository_post, opts)
-      nil
+      data, _status_code, _headers = post_repository_with_http_info(repository_post, opts)
+      data
     end
 
     # Create repository
     # Create a repository with the specified name.
     # @param repository_post [RepositoryPost] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(RepositoryRep, Integer, Hash)>] RepositoryRep data, response status code and response headers
     def post_repository_with_http_info(repository_post, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CodeReferencesApi.post_repository ...'
@@ -788,6 +794,8 @@ module LaunchDarklyApi
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
@@ -798,7 +806,7 @@ module LaunchDarklyApi
       post_body = opts[:debug_body] || @api_client.object_to_http_body(repository_post)
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'RepositoryRep'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']
@@ -824,11 +832,11 @@ module LaunchDarklyApi
     # Create a new branch if it doesn't exist, or updates the branch if it already exists.
     # @param repo [String] The repository name
     # @param branch [String] The url-encoded branch name
-    # @param branch_rep [BranchRep] 
+    # @param put_branch [PutBranch] 
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def put_branch(repo, branch, branch_rep, opts = {})
-      put_branch_with_http_info(repo, branch, branch_rep, opts)
+    def put_branch(repo, branch, put_branch, opts = {})
+      put_branch_with_http_info(repo, branch, put_branch, opts)
       nil
     end
 
@@ -836,10 +844,10 @@ module LaunchDarklyApi
     # Create a new branch if it doesn&#39;t exist, or updates the branch if it already exists.
     # @param repo [String] The repository name
     # @param branch [String] The url-encoded branch name
-    # @param branch_rep [BranchRep] 
+    # @param put_branch [PutBranch] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def put_branch_with_http_info(repo, branch, branch_rep, opts = {})
+    def put_branch_with_http_info(repo, branch, put_branch, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CodeReferencesApi.put_branch ...'
       end
@@ -851,9 +859,9 @@ module LaunchDarklyApi
       if @api_client.config.client_side_validation && branch.nil?
         fail ArgumentError, "Missing the required parameter 'branch' when calling CodeReferencesApi.put_branch"
       end
-      # verify the required parameter 'branch_rep' is set
-      if @api_client.config.client_side_validation && branch_rep.nil?
-        fail ArgumentError, "Missing the required parameter 'branch_rep' when calling CodeReferencesApi.put_branch"
+      # verify the required parameter 'put_branch' is set
+      if @api_client.config.client_side_validation && put_branch.nil?
+        fail ArgumentError, "Missing the required parameter 'put_branch' when calling CodeReferencesApi.put_branch"
       end
       # resource path
       local_var_path = '/api/v2/code-refs/repositories/{repo}/branches/{branch}'.sub('{' + 'repo' + '}', CGI.escape(repo.to_s)).sub('{' + 'branch' + '}', CGI.escape(branch.to_s))
@@ -863,6 +871,8 @@ module LaunchDarklyApi
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
@@ -870,7 +880,7 @@ module LaunchDarklyApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(branch_rep)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(put_branch)
 
       # return_type
       return_type = opts[:debug_return_type]

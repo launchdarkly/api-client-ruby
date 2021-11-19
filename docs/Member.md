@@ -21,6 +21,7 @@
 | **_integration_metadata** | [**IntegrationMetadata**](IntegrationMetadata.md) |  | [optional] |
 | **teams** | [**Array&lt;MemberTeamSummaryRep&gt;**](MemberTeamSummaryRep.md) |  | [optional] |
 | **permission_grants** | [**Array&lt;MemberPermissionGrantSummaryRep&gt;**](MemberPermissionGrantSummaryRep.md) |  | [optional] |
+| **creation_date** | **Integer** |  |  |
 
 ## Example
 
@@ -44,7 +45,8 @@ instance = LaunchDarklyApi::Member.new(
   _last_seen_metadata: null,
   _integration_metadata: null,
   teams: null,
-  permission_grants: null
+  permission_grants: null,
+  creation_date: null
 )
 ```
 

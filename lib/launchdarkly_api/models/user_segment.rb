@@ -57,6 +57,8 @@ module LaunchDarklyApi
 
     attr_accessor :_external_link
 
+    attr_accessor :_import_in_progress
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -77,7 +79,8 @@ module LaunchDarklyApi
         :'generation' => :'generation',
         :'_unbounded_metadata' => :'_unboundedMetadata',
         :'_external' => :'_external',
-        :'_external_link' => :'_externalLink'
+        :'_external_link' => :'_externalLink',
+        :'_import_in_progress' => :'_importInProgress'
       }
     end
 
@@ -106,7 +109,8 @@ module LaunchDarklyApi
         :'generation' => :'Integer',
         :'_unbounded_metadata' => :'SegmentMetadata',
         :'_external' => :'String',
-        :'_external_link' => :'String'
+        :'_external_link' => :'String',
+        :'_import_in_progress' => :'Boolean'
       }
     end
 
@@ -214,6 +218,10 @@ module LaunchDarklyApi
       if attributes.key?(:'_external_link')
         self._external_link = attributes[:'_external_link']
       end
+
+      if attributes.key?(:'_import_in_progress')
+        self._import_in_progress = attributes[:'_import_in_progress']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -296,7 +304,8 @@ module LaunchDarklyApi
           generation == o.generation &&
           _unbounded_metadata == o._unbounded_metadata &&
           _external == o._external &&
-          _external_link == o._external_link
+          _external_link == o._external_link &&
+          _import_in_progress == o._import_in_progress
     end
 
     # @see the `==` method
@@ -308,7 +317,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, tags, creation_date, key, included, excluded, _links, rules, version, deleted, _access, _flags, unbounded, generation, _unbounded_metadata, _external, _external_link].hash
+      [name, description, tags, creation_date, key, included, excluded, _links, rules, version, deleted, _access, _flags, unbounded, generation, _unbounded_metadata, _external, _external_link, _import_in_progress].hash
     end
 
     # Builds the object from hash

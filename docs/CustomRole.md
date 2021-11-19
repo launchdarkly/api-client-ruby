@@ -4,13 +4,14 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
-| **name** | **String** |  |  |
-| **key** | **String** |  |  |
-| **description** | **String** |  | [optional] |
 | **_id** | **String** |  |  |
-| **policy** | [**Array&lt;Statement&gt;**](Statement.md) |  |  |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
 | **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **description** | **String** |  | [optional] |
+| **key** | **String** |  |  |
+| **name** | **String** |  |  |
+| **policy** | [**Array&lt;Statement&gt;**](Statement.md) |  |  |
+| **base_permissions** | **String** |  | [optional] |
 
 ## Example
 
@@ -18,13 +19,14 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::CustomRole.new(
-  _links: null,
-  name: null,
-  key: null,
-  description: null,
   _id: null,
+  _links: null,
+  _access: null,
+  description: null,
+  key: null,
+  name: null,
   policy: null,
-  _access: null
+  base_permissions: null
 )
 ```
 

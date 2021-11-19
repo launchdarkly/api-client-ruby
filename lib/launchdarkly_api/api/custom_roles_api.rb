@@ -50,6 +50,8 @@ module LaunchDarklyApi
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -84,7 +86,7 @@ module LaunchDarklyApi
     # Get a single custom role by key or ID
     # @param key [String] The custom role&#39;s key or ID
     # @param [Hash] opts the optional parameters
-    # @return [CustomRolePost]
+    # @return [CustomRole]
     def get_custom_role(key, opts = {})
       data, _status_code, _headers = get_custom_role_with_http_info(key, opts)
       data
@@ -94,7 +96,7 @@ module LaunchDarklyApi
     # Get a single custom role by key or ID
     # @param key [String] The custom role&#39;s key or ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(CustomRolePost, Integer, Hash)>] CustomRolePost data, response status code and response headers
+    # @return [Array<(CustomRole, Integer, Hash)>] CustomRole data, response status code and response headers
     def get_custom_role_with_http_info(key, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CustomRolesApi.get_custom_role ...'
@@ -121,7 +123,7 @@ module LaunchDarklyApi
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'CustomRolePost'
+      return_type = opts[:debug_return_type] || 'CustomRole'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']
@@ -273,26 +275,26 @@ module LaunchDarklyApi
 
     # Create custom role
     # Create a new custom role
-    # @param statement_post [Array<StatementPost>] 
+    # @param custom_role_post [CustomRolePost] 
     # @param [Hash] opts the optional parameters
     # @return [CustomRole]
-    def post_custom_role(statement_post, opts = {})
-      data, _status_code, _headers = post_custom_role_with_http_info(statement_post, opts)
+    def post_custom_role(custom_role_post, opts = {})
+      data, _status_code, _headers = post_custom_role_with_http_info(custom_role_post, opts)
       data
     end
 
     # Create custom role
     # Create a new custom role
-    # @param statement_post [Array<StatementPost>] 
+    # @param custom_role_post [CustomRolePost] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(CustomRole, Integer, Hash)>] CustomRole data, response status code and response headers
-    def post_custom_role_with_http_info(statement_post, opts = {})
+    def post_custom_role_with_http_info(custom_role_post, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CustomRolesApi.post_custom_role ...'
       end
-      # verify the required parameter 'statement_post' is set
-      if @api_client.config.client_side_validation && statement_post.nil?
-        fail ArgumentError, "Missing the required parameter 'statement_post' when calling CustomRolesApi.post_custom_role"
+      # verify the required parameter 'custom_role_post' is set
+      if @api_client.config.client_side_validation && custom_role_post.nil?
+        fail ArgumentError, "Missing the required parameter 'custom_role_post' when calling CustomRolesApi.post_custom_role"
       end
       # resource path
       local_var_path = '/api/v2/roles'
@@ -311,7 +313,7 @@ module LaunchDarklyApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(statement_post)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(custom_role_post)
 
       # return_type
       return_type = opts[:debug_return_type] || 'CustomRole'

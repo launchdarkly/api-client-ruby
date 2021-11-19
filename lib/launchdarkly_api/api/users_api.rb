@@ -62,6 +62,8 @@ module LaunchDarklyApi
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -93,7 +95,7 @@ module LaunchDarklyApi
     end
 
     # Find users
-    # Search users in LaunchDarkly based on their last active date, or a search query. Do not use to enumerate all users in LaunchDarkly. Instead use the [List users](getUsers) API resource.  > ### `offset` is deprecated > > `offset` is deprecated and will be removed in a future API version. You can still use `offset` and `limit` for pagination, but we recommend you use `sort` and `searchAfter` instead. `searchAfter` allows you to page through more than 10,000 users, but `offset` and `limit` do not. 
+    # Search users in LaunchDarkly based on their last active date, a user attribute filter set, or a search query. Do not use to list all users in LaunchDarkly. Instead, use the [List users](getUsers) API resource.  An example user attribute filter set is `filter=firstName:Anna,activeTrial:false`. This matches users that have the user attribute `firstName` set to `Anna`, that also have the attribute `activeTrial` set to `false`.  > ### `offset` is deprecated > > `offset` is deprecated and will be removed in a future API version. You can still use `offset` and `limit` for pagination, but we recommend you use `sort` and `searchAfter` instead. `searchAfter` allows you to page through more than 10,000 users, but `offset` and `limit` do not. 
     # @param proj_key [String] The project key
     # @param env_key [String] The environment key
     # @param [Hash] opts the optional parameters
@@ -101,7 +103,9 @@ module LaunchDarklyApi
     # @option opts [Integer] :limit Specifies the maximum number of items in the collection to return (max: 50, default: 20)
     # @option opts [Integer] :offset Specifies the first item to return in the collection
     # @option opts [Integer] :after A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag from LaunchDarkly
+    # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports the &#x60;userKey&#x60; and &#x60;lastSeen&#x60; fields. Fields prefixed by a dash ( - ) sort in descending order.
     # @option opts [String] :search_after Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the &#x60;next&#x60; link we provide instead.
+    # @option opts [String] :filter A comma-separated list of user attribute filters. Each filter is in the form of attributeKey:attributeValue
     # @return [Users]
     def get_search_users(proj_key, env_key, opts = {})
       data, _status_code, _headers = get_search_users_with_http_info(proj_key, env_key, opts)
@@ -109,7 +113,7 @@ module LaunchDarklyApi
     end
 
     # Find users
-    # Search users in LaunchDarkly based on their last active date, or a search query. Do not use to enumerate all users in LaunchDarkly. Instead use the [List users](getUsers) API resource.  &gt; ### &#x60;offset&#x60; is deprecated &gt; &gt; &#x60;offset&#x60; is deprecated and will be removed in a future API version. You can still use &#x60;offset&#x60; and &#x60;limit&#x60; for pagination, but we recommend you use &#x60;sort&#x60; and &#x60;searchAfter&#x60; instead. &#x60;searchAfter&#x60; allows you to page through more than 10,000 users, but &#x60;offset&#x60; and &#x60;limit&#x60; do not. 
+    # Search users in LaunchDarkly based on their last active date, a user attribute filter set, or a search query. Do not use to list all users in LaunchDarkly. Instead, use the [List users](getUsers) API resource.  An example user attribute filter set is &#x60;filter&#x3D;firstName:Anna,activeTrial:false&#x60;. This matches users that have the user attribute &#x60;firstName&#x60; set to &#x60;Anna&#x60;, that also have the attribute &#x60;activeTrial&#x60; set to &#x60;false&#x60;.  &gt; ### &#x60;offset&#x60; is deprecated &gt; &gt; &#x60;offset&#x60; is deprecated and will be removed in a future API version. You can still use &#x60;offset&#x60; and &#x60;limit&#x60; for pagination, but we recommend you use &#x60;sort&#x60; and &#x60;searchAfter&#x60; instead. &#x60;searchAfter&#x60; allows you to page through more than 10,000 users, but &#x60;offset&#x60; and &#x60;limit&#x60; do not. 
     # @param proj_key [String] The project key
     # @param env_key [String] The environment key
     # @param [Hash] opts the optional parameters
@@ -117,7 +121,9 @@ module LaunchDarklyApi
     # @option opts [Integer] :limit Specifies the maximum number of items in the collection to return (max: 50, default: 20)
     # @option opts [Integer] :offset Specifies the first item to return in the collection
     # @option opts [Integer] :after A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag from LaunchDarkly
+    # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports the &#x60;userKey&#x60; and &#x60;lastSeen&#x60; fields. Fields prefixed by a dash ( - ) sort in descending order.
     # @option opts [String] :search_after Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the &#x60;next&#x60; link we provide instead.
+    # @option opts [String] :filter A comma-separated list of user attribute filters. Each filter is in the form of attributeKey:attributeValue
     # @return [Array<(Users, Integer, Hash)>] Users data, response status code and response headers
     def get_search_users_with_http_info(proj_key, env_key, opts = {})
       if @api_client.config.debugging
@@ -140,7 +146,9 @@ module LaunchDarklyApi
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'after'] = opts[:'after'] if !opts[:'after'].nil?
+      query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'searchAfter'] = opts[:'search_after'] if !opts[:'search_after'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

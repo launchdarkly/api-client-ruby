@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
-| **items** | [**Array&lt;BranchRep&gt;**](BranchRep.md) |  |  |
+| **items** | [**Array&lt;BranchRep&gt;**](BranchRep.md) | An array of branches |  |
 
 ## Example
 

@@ -22,6 +22,7 @@
 | **_unbounded_metadata** | [**SegmentMetadata**](SegmentMetadata.md) |  | [optional] |
 | **_external** | **String** |  | [optional] |
 | **_external_link** | **String** |  | [optional] |
+| **_import_in_progress** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -46,7 +47,8 @@ instance = LaunchDarklyApi::UserSegment.new(
   generation: null,
   _unbounded_metadata: null,
   _external: null,
-  _external_link: null
+  _external_link: null,
+  _import_in_progress: null
 )
 ```
 

@@ -17,6 +17,7 @@ module LaunchDarklyApi
   class RepositoryCollectionRep
     attr_accessor :_links
 
+    # An array of repositories
     attr_accessor :items
 
     # Attribute mapping from ruby-style variable name to JSON key.

@@ -17,6 +17,7 @@ module LaunchDarklyApi
   class ExtinctionCollectionRep
     attr_accessor :_links
 
+    # An array of extinction events
     attr_accessor :items
 
     # Attribute mapping from ruby-style variable name to JSON key.

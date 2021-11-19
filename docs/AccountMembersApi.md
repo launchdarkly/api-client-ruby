@@ -17,7 +17,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Delete account member
 
-Delete a single account member by ID
+Delete a single account member by ID. Requests to delete account members will not work if SCIM is enabled for the account.
 
 ### Examples
 
@@ -78,7 +78,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## get_member
@@ -177,7 +177,7 @@ api_instance = LaunchDarklyApi::AccountMembersApi.new
 opts = {
   limit: 789, # Integer | The number of members to return in the response. Defaults to 20.
   offset: 789, # Integer | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next `limit` items.
-  filter: 'filter_example', # String | A comma-separated list of filters. Each filter is of the form `field:value`. Supported fields are explained below.
+  filter: 'filter_example', # String | A comma-separated list of filters. Each filter is of the form `field:value`. Supported fields are explained above.
   sort: 'sort_example' # String | A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order.
 }
 
@@ -214,7 +214,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **limit** | **Integer** | The number of members to return in the response. Defaults to 20. | [optional] |
 | **offset** | **Integer** | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next &#x60;limit&#x60; items. | [optional] |
-| **filter** | **String** | A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained below. | [optional] |
+| **filter** | **String** | A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above. | [optional] |
 | **sort** | **String** | A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. | [optional] |
 
 ### Return type
@@ -237,7 +237,7 @@ end
 
 Modify an account member
 
-Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member.
+Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member. Requests to update account members will not work if SCIM is enabled for the account.
 
 ### Examples
 
@@ -306,11 +306,11 @@ end
 
 ## post_members
 
-> <Members> post_members(inline_object1)
+> <Members> post_members(new_member_form)
 
 Invite new members
 
-> ### Full use of this API resource is only available to accounts with paid subscriptions > > The ability to bulk invite members is a paid feature. Single members may be invited if not on a paid plan.  Invite one or more new members to join an account. Each member is sent an invitation. Members with \"admin\" or \"owner\" roles may create new members, as well as anyone with a \"createMember\" permission for \"member/\\*\". If a member cannot be invited, the entire request is rejected and no members are invited from that request.  Each member _must_ have an `email` field and either a `role` or a `customRoles` field. If any of the fields are not populated correctly, the request is rejected with the reason specified in the \"message\" field of the response.  _No more than 50 members may be created per request._  A request may also fail because of conflicts with existing members. These conflicts are reported using the additional `code` and `invalid_emails` response fields with the following possible values for `code`:  - **email_already_exists_in_account**: A member with this email address already exists in this account. - **email_taken_in_different_account**: A member with this email address exists in another account. - **duplicate_email**s: This request contains two or more members with the same email address.  A request that fails for one of the above reasons returns an HTTP response code of 400 (Bad Request). 
+> ### Full use of this API resource is only available to accounts with paid subscriptions > > The ability to bulk invite members is a paid feature. Single members may be invited if not on a paid plan.  Invite one or more new members to join an account. Each member is sent an invitation. Members with \"admin\" or \"owner\" roles may create new members, as well as anyone with a \"createMember\" permission for \"member/\\*\". If a member cannot be invited, the entire request is rejected and no members are invited from that request.  Each member _must_ have an `email` field and either a `role` or a `customRoles` field. If any of the fields are not populated correctly, the request is rejected with the reason specified in the \"message\" field of the response.  Requests to create account members will not work if SCIM is enabled for the account.  _No more than 50 members may be created per request._  A request may also fail because of conflicts with existing members. These conflicts are reported using the additional `code` and `invalid_emails` response fields with the following possible values for `code`:  - **email_already_exists_in_account**: A member with this email address already exists in this account. - **email_taken_in_different_account**: A member with this email address exists in another account. - **duplicate_email**s: This request contains two or more members with the same email address.  A request that fails for one of the above reasons returns an HTTP response code of 400 (Bad Request). 
 
 ### Examples
 
@@ -326,11 +326,11 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AccountMembersApi.new
-inline_object1 = [LaunchDarklyApi::InlineObject1.new({email: 'email_example'})] # Array<InlineObject1> | 
+new_member_form = [LaunchDarklyApi::NewMemberForm.new({email: 'email_example'})] # Array<NewMemberForm> | 
 
 begin
   # Invite new members
-  result = api_instance.post_members(inline_object1)
+  result = api_instance.post_members(new_member_form)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling AccountMembersApi->post_members: #{e}"
@@ -341,12 +341,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Members>, Integer, Hash)> post_members_with_http_info(inline_object1)
+> <Array(<Members>, Integer, Hash)> post_members_with_http_info(new_member_form)
 
 ```ruby
 begin
   # Invite new members
-  data, status_code, headers = api_instance.post_members_with_http_info(inline_object1)
+  data, status_code, headers = api_instance.post_members_with_http_info(new_member_form)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Members>
@@ -359,7 +359,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **inline_object1** | [**Array&lt;InlineObject1&gt;**](InlineObject1.md) |  |  |
+| **new_member_form** | [**Array&lt;NewMemberForm&gt;**](NewMemberForm.md) |  |  |
 
 ### Return type
 

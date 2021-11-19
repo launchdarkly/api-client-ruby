@@ -139,7 +139,7 @@ describe LaunchDarklyApi::FlagConfigApprovalRequestResponse do
     end
   end
 
-  describe 'test attribute "custom_workflow_meta_data"' do
+  describe 'test attribute "custom_workflow_metadata"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

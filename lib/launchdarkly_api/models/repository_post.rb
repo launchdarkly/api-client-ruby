@@ -19,8 +19,10 @@ module LaunchDarklyApi
 
     attr_accessor :source_link
 
+    # A template for constructing a valid URL to view the commit
     attr_accessor :commit_url_template
 
+    # A template for constructing a valid URL to view the hunk
     attr_accessor :hunk_url_template
 
     # Optionally specify a repository type. The default value is <code>custom</code>

@@ -56,7 +56,7 @@ module LaunchDarklyApi
 
     attr_accessor :source
 
-    attr_accessor :custom_workflow_meta_data
+    attr_accessor :custom_workflow_metadata
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -80,7 +80,7 @@ module LaunchDarklyApi
         :'operating_on_id' => :'operatingOnId',
         :'integration_metadata' => :'integrationMetadata',
         :'source' => :'source',
-        :'custom_workflow_meta_data' => :'customWorkflowMetaData'
+        :'custom_workflow_metadata' => :'customWorkflowMetadata'
       }
     end
 
@@ -111,7 +111,7 @@ module LaunchDarklyApi
         :'operating_on_id' => :'String',
         :'integration_metadata' => :'IntegrationMetadata',
         :'source' => :'CopiedFromEnv',
-        :'custom_workflow_meta_data' => :'CustomWorkflowMeta'
+        :'custom_workflow_metadata' => :'CustomWorkflowMeta'
       }
     end
 
@@ -222,8 +222,8 @@ module LaunchDarklyApi
         self.source = attributes[:'source']
       end
 
-      if attributes.key?(:'custom_workflow_meta_data')
-        self.custom_workflow_meta_data = attributes[:'custom_workflow_meta_data']
+      if attributes.key?(:'custom_workflow_metadata')
+        self.custom_workflow_metadata = attributes[:'custom_workflow_metadata']
       end
     end
 
@@ -319,7 +319,7 @@ module LaunchDarklyApi
           operating_on_id == o.operating_on_id &&
           integration_metadata == o.integration_metadata &&
           source == o.source &&
-          custom_workflow_meta_data == o.custom_workflow_meta_data
+          custom_workflow_metadata == o.custom_workflow_metadata
     end
 
     # @see the `==` method
@@ -331,7 +331,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_id, _version, creation_date, service_kind, requestor_id, description, review_status, all_reviews, notify_member_ids, applied_date, applied_by_member_id, status, instructions, conflicts, _links, execution_date, operating_on_id, integration_metadata, source, custom_workflow_meta_data].hash
+      [_id, _version, creation_date, service_kind, requestor_id, description, review_status, all_reviews, notify_member_ids, applied_date, applied_by_member_id, status, instructions, conflicts, _links, execution_date, operating_on_id, integration_metadata, source, custom_workflow_metadata].hash
     end
 
     # Builds the object from hash

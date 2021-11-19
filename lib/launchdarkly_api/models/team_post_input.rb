@@ -15,16 +15,22 @@ require 'time'
 
 module LaunchDarklyApi
   class TeamPostInput
+    # List of custom role keys the team will access
     attr_accessor :custom_role_keys
 
+    # A description of the team
     attr_accessor :description
 
+    # The team's key or ID
     attr_accessor :key
 
+    # A list of member IDs who belong to the team
     attr_accessor :member_ids
 
+    # A human-friendly name for the team
     attr_accessor :name
 
+    # A list of permission grants to apply to the team. Can use \"maintainTeam\" to add team maintainers
     attr_accessor :permission_grants
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -112,12 +118,22 @@ module LaunchDarklyApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @key.nil?
+        invalid_properties.push('invalid value for "key", key cannot be nil.')
+      end
+
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @key.nil?
+      return false if @name.nil?
       true
     end
 

@@ -4,10 +4,10 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**delete_team**](TeamsBetaApi.md#delete_team) | **DELETE** /api/v2/teams/{key} | Delete team by key |
-| [**get_team**](TeamsBetaApi.md#get_team) | **GET** /api/v2/teams/{key} | Get team by key |
-| [**get_teams**](TeamsBetaApi.md#get_teams) | **GET** /api/v2/teams | Get all teams |
-| [**patch_team**](TeamsBetaApi.md#patch_team) | **PATCH** /api/v2/teams/{key} | Patch team by key |
+| [**delete_team**](TeamsBetaApi.md#delete_team) | **DELETE** /api/v2/teams/{key} | Delete team |
+| [**get_team**](TeamsBetaApi.md#get_team) | **GET** /api/v2/teams/{key} | Get team |
+| [**get_teams**](TeamsBetaApi.md#get_teams) | **GET** /api/v2/teams | List teams |
+| [**patch_team**](TeamsBetaApi.md#patch_team) | **PATCH** /api/v2/teams/{key} | Update team |
 | [**post_team**](TeamsBetaApi.md#post_team) | **POST** /api/v2/teams | Create team |
 
 
@@ -15,9 +15,9 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 > delete_team(key)
 
-Delete team by key
+Delete team
 
-Delete a team by key.
+Delete a team by key
 
 ### Examples
 
@@ -36,7 +36,7 @@ api_instance = LaunchDarklyApi::TeamsBetaApi.new
 key = 'key_example' # String | The team key
 
 begin
-  # Delete team by key
+  # Delete team
   api_instance.delete_team(key)
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling TeamsBetaApi->delete_team: #{e}"
@@ -51,7 +51,7 @@ This returns an Array which contains the response data (`nil` in this case), sta
 
 ```ruby
 begin
-  # Delete team by key
+  # Delete team
   data, status_code, headers = api_instance.delete_team_with_http_info(key)
   p status_code # => 2xx
   p headers # => { ... }
@@ -78,16 +78,16 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## get_team
 
 > <TeamRep> get_team(key)
 
-Get team by key
+Get team
 
-Fetch a team by key.
+Fetch a team by key
 
 ### Examples
 
@@ -106,7 +106,7 @@ api_instance = LaunchDarklyApi::TeamsBetaApi.new
 key = 'key_example' # String | The team key
 
 begin
-  # Get team by key
+  # Get team
   result = api_instance.get_team(key)
   p result
 rescue LaunchDarklyApi::ApiError => e
@@ -122,7 +122,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get team by key
+  # Get team
   data, status_code, headers = api_instance.get_team_with_http_info(key)
   p status_code # => 2xx
   p headers # => { ... }
@@ -154,11 +154,11 @@ end
 
 ## get_teams
 
-> <TeamCollectionRep> get_teams
+> <TeamCollectionRep> get_teams(opts)
 
-Get all teams
+List teams
 
-Fetch all teams.
+Return a list of teams.  By default, this returns the first 20 teams. Page through this list with the `limit` parameter and by following the `first`, `prev`, `next`, and `last` links in the returned `_links` field. These links are not present if the pages they refer to don't exist. For example, the `first` and `prev` links will be missing from the response on the first page.  ### Filtering teams  LaunchDarkly supports the `query` field for filtering. `query` is a string that matches against the teams' names and keys. It is not case sensitive. For example, the filter `query:abc` matches teams with the string `abc` in their name or key. 
 
 ### Examples
 
@@ -174,10 +174,15 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::TeamsBetaApi.new
+opts = {
+  limit: 789, # Integer | The number of teams to return in the response. Defaults to 20.
+  offset: 789, # Integer | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next `limit` items.
+  filter: 'filter_example' # String | A comma-separated list of filters. Each filter is of the form `field:value`. Supported fields are explained above.
+}
 
 begin
-  # Get all teams
-  result = api_instance.get_teams
+  # List teams
+  result = api_instance.get_teams(opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling TeamsBetaApi->get_teams: #{e}"
@@ -188,12 +193,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<TeamCollectionRep>, Integer, Hash)> get_teams_with_http_info
+> <Array(<TeamCollectionRep>, Integer, Hash)> get_teams_with_http_info(opts)
 
 ```ruby
 begin
-  # Get all teams
-  data, status_code, headers = api_instance.get_teams_with_http_info
+  # List teams
+  data, status_code, headers = api_instance.get_teams_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <TeamCollectionRep>
@@ -204,7 +209,11 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **limit** | **Integer** | The number of teams to return in the response. Defaults to 20. | [optional] |
+| **offset** | **Integer** | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next &#x60;limit&#x60; items. | [optional] |
+| **filter** | **String** | A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above. | [optional] |
 
 ### Return type
 
@@ -224,9 +233,9 @@ This endpoint does not need any parameter.
 
 > <TeamCollectionRep> patch_team(key, team_patch_input)
 
-Patch team by key
+Update team
 
-Perform a partial update to a team.  The body of a semantic patch request takes the following three properties:  1. comment `string`: (Optional) A description of the update. 1. environmentKey `string`: (Required) The key of the LaunchDarkly environment. 1. instructions `array`: (Required) The action or list of actions to be performed by the update. Each update action in the list must be an object/hash table with a `kind` property, although depending on the action, other properties may be necessary. Read below for more information on the specific supported semantic patch instructions.  If any instruction in the patch encounters an error, the error will be returned and the flag will not be changed. In general, instructions will silently do nothing if the flag is already in the state requested by the patch instruction. They will generally error if a parameter refers to something that does not exist. Other specific error conditions are noted in the instruction descriptions.  ### Instructions  #### `addCustomRoles`  Adds custom roles to the team. Team members will have these custom roles granted to them.  ##### Parameters  - `values`: list of custom role keys  #### `removeCustomRoles`  Removes the custom roles on the team. Team members will no longer have these custom roles granted to them.  ##### Parameters  - `values`: list of custom role keys  #### `addMembers`  Adds members to the team.  ##### Parameters  - `values`: list of member IDs  #### `removeMembers`  Removes members from the team.  ##### Parameters  - `values`: list of member IDs  #### `addPermissionGrants`  Adds permission grants to members for the team, allowing them to, for example, act as a team maintainer. A permission grant may have either an `actionSet` or a list of `actions` but not both at the same time. The members do not have to be team members to have a permission grant for the team.  ##### Parameters  - `actionSet`: name of the action set - `actions`: list of actions - `memberIDs`: list of member IDs  #### `removePermissionGrants`  Removes permission grants from members for the team. The `actionSet` and `actions` must match an existing permission grant.  ##### Parameters  - `actionSet`: name of the action set - `actions`: list of actions - `memberIDs`: list of member IDs  #### `updateDescription`  Updates the team's description.  ##### Parameters  - `value`: the team's new description  #### `updateName`  Updates the team's name.  ##### Parameters  - `value`: the team's new name 
+Perform a partial update to a team.  The body of a semantic patch request takes the following three properties:  1. comment `string`: (Optional) A description of the update. 1. instructions `array`: (Required) The action or list of actions to be performed by the update. Each update action in the list must be an object/hash table with a `kind` property, although depending on the action, other properties may be necessary. Read below for more information on the specific supported semantic patch instructions.  If any instruction in the patch encounters an error, the error will be returned and the flag will not be changed. In general, instructions will silently do nothing if the flag is already in the state requested by the patch instruction. They will generally error if a parameter refers to something that does not exist. Other specific error conditions are noted in the instruction descriptions.  ### Instructions  #### `addCustomRoles`  Adds custom roles to the team. Team members will have these custom roles granted to them.  ##### Parameters  - `values`: list of custom role keys  #### `removeCustomRoles`  Removes the custom roles on the team. Team members will no longer have these custom roles granted to them.  ##### Parameters  - `values`: list of custom role keys  #### `addMembers`  Adds members to the team.  ##### Parameters  - `values`: list of member IDs  #### `removeMembers`  Removes members from the team.  ##### Parameters  - `values`: list of member IDs  #### `addPermissionGrants`  Adds permission grants to members for the team, allowing them to, for example, act as a team maintainer. A permission grant may have either an `actionSet` or a list of `actions` but not both at the same time. The members do not have to be team members to have a permission grant for the team.  ##### Parameters  - `actionSet`: name of the action set - `actions`: list of actions - `memberIDs`: list of member IDs  #### `removePermissionGrants`  Removes permission grants from members for the team. The `actionSet` and `actions` must match an existing permission grant.  ##### Parameters  - `actionSet`: name of the action set - `actions`: list of actions - `memberIDs`: list of member IDs  #### `updateDescription`  Updates the team's description.  ##### Parameters  - `value`: the team's new description  #### `updateName`  Updates the team's name.  ##### Parameters  - `value`: the team's new name 
 
 ### Examples
 
@@ -246,7 +255,7 @@ key = 'key_example' # String | The team key
 team_patch_input = LaunchDarklyApi::TeamPatchInput.new # TeamPatchInput | 
 
 begin
-  # Patch team by key
+  # Update team
   result = api_instance.patch_team(key, team_patch_input)
   p result
 rescue LaunchDarklyApi::ApiError => e
@@ -262,7 +271,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Patch team by key
+  # Update team
   data, status_code, headers = api_instance.patch_team_with_http_info(key, team_patch_input)
   p status_code # => 2xx
   p headers # => { ... }
@@ -299,7 +308,7 @@ end
 
 Create team
 
-Create a team.
+Create a team
 
 ### Examples
 
@@ -315,7 +324,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::TeamsBetaApi.new
-team_post_input = LaunchDarklyApi::TeamPostInput.new # TeamPostInput | 
+team_post_input = LaunchDarklyApi::TeamPostInput.new({key: 'key_example', name: 'name_example'}) # TeamPostInput | 
 
 begin
   # Create team

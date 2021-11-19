@@ -23,7 +23,7 @@
 | **operating_on_id** | **String** | ID of scheduled change to edit or delete | [optional] |
 | **integration_metadata** | [**IntegrationMetadata**](IntegrationMetadata.md) |  | [optional] |
 | **source** | [**CopiedFromEnv**](CopiedFromEnv.md) |  | [optional] |
-| **custom_workflow_meta_data** | [**CustomWorkflowMeta**](CustomWorkflowMeta.md) |  | [optional] |
+| **custom_workflow_metadata** | [**CustomWorkflowMeta**](CustomWorkflowMeta.md) |  | [optional] |
 
 ## Example
 
@@ -50,7 +50,7 @@ instance = LaunchDarklyApi::FlagConfigApprovalRequestResponse.new(
   operating_on_id: null,
   integration_metadata: null,
   source: null,
-  custom_workflow_meta_data: null
+  custom_workflow_metadata: null
 )
 ```
 

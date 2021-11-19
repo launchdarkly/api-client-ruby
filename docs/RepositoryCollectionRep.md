@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
-| **items** | [**Array&lt;RepositoryRep&gt;**](RepositoryRep.md) |  |  |
+| **items** | [**Array&lt;RepositoryRep&gt;**](RepositoryRep.md) | An array of repositories |  |
 
 ## Example
 

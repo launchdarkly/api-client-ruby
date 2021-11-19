@@ -78,12 +78,12 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## get_custom_role
 
-> <CustomRolePost> get_custom_role(key)
+> <CustomRole> get_custom_role(key)
 
 Get custom role
 
@@ -118,7 +118,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CustomRolePost>, Integer, Hash)> get_custom_role_with_http_info(key)
+> <Array(<CustomRole>, Integer, Hash)> get_custom_role_with_http_info(key)
 
 ```ruby
 begin
@@ -126,7 +126,7 @@ begin
   data, status_code, headers = api_instance.get_custom_role_with_http_info(key)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CustomRolePost>
+  p data # => <CustomRole>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling CustomRolesApi->get_custom_role_with_http_info: #{e}"
 end
@@ -140,7 +140,7 @@ end
 
 ### Return type
 
-[**CustomRolePost**](CustomRolePost.md)
+[**CustomRole**](CustomRole.md)
 
 ### Authorization
 
@@ -295,7 +295,7 @@ end
 
 ## post_custom_role
 
-> <CustomRole> post_custom_role(statement_post)
+> <CustomRole> post_custom_role(custom_role_post)
 
 Create custom role
 
@@ -315,11 +315,11 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
-statement_post = [LaunchDarklyApi::StatementPost.new({effect: 'effect_example'})] # Array<StatementPost> | 
+custom_role_post = LaunchDarklyApi::CustomRolePost.new({name: 'name_example', key: 'key_example', policy: [LaunchDarklyApi::StatementPost.new({resources: ['resources_example'], actions: ['actions_example'], effect: 'effect_example'})]}) # CustomRolePost | 
 
 begin
   # Create custom role
-  result = api_instance.post_custom_role(statement_post)
+  result = api_instance.post_custom_role(custom_role_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling CustomRolesApi->post_custom_role: #{e}"
@@ -330,12 +330,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CustomRole>, Integer, Hash)> post_custom_role_with_http_info(statement_post)
+> <Array(<CustomRole>, Integer, Hash)> post_custom_role_with_http_info(custom_role_post)
 
 ```ruby
 begin
   # Create custom role
-  data, status_code, headers = api_instance.post_custom_role_with_http_info(statement_post)
+  data, status_code, headers = api_instance.post_custom_role_with_http_info(custom_role_post)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <CustomRole>
@@ -348,7 +348,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **statement_post** | [**Array&lt;StatementPost&gt;**](StatementPost.md) |  |  |
+| **custom_role_post** | [**CustomRolePost**](CustomRolePost.md) |  |  |
 
 ### Return type
 

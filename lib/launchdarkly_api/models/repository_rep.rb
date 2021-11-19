@@ -15,27 +15,58 @@ require 'time'
 
 module LaunchDarklyApi
   class RepositoryRep
+    # The repository name
     attr_accessor :name
 
+    # A URL to access the repository
     attr_accessor :source_link
 
+    # A template for constructing a valid URL to view the commit
     attr_accessor :commit_url_template
 
+    # A template for constructing a valid URL to view the hunk
     attr_accessor :hunk_url_template
 
+    # The type of repository
     attr_accessor :type
 
+    # The repository's default branch
     attr_accessor :default_branch
 
+    # Whether or not a repository is enabled for code reference scanning
     attr_accessor :enabled
 
+    # The version of the repository's saved information
     attr_accessor :version
 
+    # An array of the repository's branches that have been scanned for code references
     attr_accessor :branches
 
     attr_accessor :_links
 
     attr_accessor :_access
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -182,11 +213,23 @@ module LaunchDarklyApi
     def valid?
       return false if @name.nil?
       return false if @type.nil?
+      type_validator = EnumAttributeValidator.new('String', ["github", "bitbucket", "custom"])
+      return false unless type_validator.valid?(@type)
       return false if @default_branch.nil?
       return false if @enabled.nil?
       return false if @version.nil?
       return false if @_links.nil?
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ["github", "bitbucket", "custom"])
+      unless validator.valid?(type)
+        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
+      end
+      @type = type
     end
 
     # Checks equality by comparing each attribute.

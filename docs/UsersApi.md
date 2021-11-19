@@ -81,7 +81,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## get_search_users
@@ -90,7 +90,7 @@ nil (empty response body)
 
 Find users
 
-Search users in LaunchDarkly based on their last active date, or a search query. Do not use to enumerate all users in LaunchDarkly. Instead use the [List users](getUsers) API resource.  > ### `offset` is deprecated > > `offset` is deprecated and will be removed in a future API version. You can still use `offset` and `limit` for pagination, but we recommend you use `sort` and `searchAfter` instead. `searchAfter` allows you to page through more than 10,000 users, but `offset` and `limit` do not. 
+Search users in LaunchDarkly based on their last active date, a user attribute filter set, or a search query. Do not use to list all users in LaunchDarkly. Instead, use the [List users](getUsers) API resource.  An example user attribute filter set is `filter=firstName:Anna,activeTrial:false`. This matches users that have the user attribute `firstName` set to `Anna`, that also have the attribute `activeTrial` set to `false`.  > ### `offset` is deprecated > > `offset` is deprecated and will be removed in a future API version. You can still use `offset` and `limit` for pagination, but we recommend you use `sort` and `searchAfter` instead. `searchAfter` allows you to page through more than 10,000 users, but `offset` and `limit` do not. 
 
 ### Examples
 
@@ -113,7 +113,9 @@ opts = {
   limit: 789, # Integer | Specifies the maximum number of items in the collection to return (max: 50, default: 20)
   offset: 789, # Integer | Specifies the first item to return in the collection
   after: 789, # Integer | A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag from LaunchDarkly
-  search_after: 'search_after_example' # String | Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the `next` link we provide instead.
+  sort: 'sort_example', # String | Specifies a field by which to sort. LaunchDarkly supports the `userKey` and `lastSeen` fields. Fields prefixed by a dash ( - ) sort in descending order.
+  search_after: 'search_after_example', # String | Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the `next` link we provide instead.
+  filter: 'filter_example' # String | A comma-separated list of user attribute filters. Each filter is in the form of attributeKey:attributeValue
 }
 
 begin
@@ -153,7 +155,9 @@ end
 | **limit** | **Integer** | Specifies the maximum number of items in the collection to return (max: 50, default: 20) | [optional] |
 | **offset** | **Integer** | Specifies the first item to return in the collection | [optional] |
 | **after** | **Integer** | A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag from LaunchDarkly | [optional] |
+| **sort** | **String** | Specifies a field by which to sort. LaunchDarkly supports the &#x60;userKey&#x60; and &#x60;lastSeen&#x60; fields. Fields prefixed by a dash ( - ) sort in descending order. | [optional] |
 | **search_after** | **String** | Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the &#x60;next&#x60; link we provide instead. | [optional] |
+| **filter** | **String** | A comma-separated list of user attribute filters. Each filter is in the form of attributeKey:attributeValue | [optional] |
 
 ### Return type
 

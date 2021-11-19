@@ -15,8 +15,10 @@ require 'time'
 
 module LaunchDarklyApi
   class ReferenceRep
+    # File path of the reference
     attr_accessor :path
 
+    # Programming language used in the file
     attr_accessor :hint
 
     attr_accessor :hunks
@@ -84,12 +86,22 @@ module LaunchDarklyApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @path.nil?
+        invalid_properties.push('invalid value for "path", path cannot be nil.')
+      end
+
+      if @hunks.nil?
+        invalid_properties.push('invalid value for "hunks", hunks cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @path.nil?
+      return false if @hunks.nil?
       true
     end
 

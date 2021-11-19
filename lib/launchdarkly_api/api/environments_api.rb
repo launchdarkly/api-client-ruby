@@ -56,6 +56,8 @@ module LaunchDarklyApi
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -233,7 +235,7 @@ module LaunchDarklyApi
     end
 
     # Create environment
-    # > ### Approval settings > > The `approvalSettings` key is only returned when the Flag Approvals feature is enabled.  Create a new environment in a specified project with a given name, key, swatch color, and default TTL. 
+    # > ### Approval settings > > The `approvalSettings` key is only returned when the Flag Approvals feature is enabled. > > You cannot update approval settings when creating new environments. Update approval settings with the PATCH Environment API.  Create a new environment in a specified project with a given name, key, swatch color, and default TTL. 
     # @param project_key [String] The project key
     # @param environment_post [EnvironmentPost] 
     # @param [Hash] opts the optional parameters
@@ -244,7 +246,7 @@ module LaunchDarklyApi
     end
 
     # Create environment
-    # &gt; ### Approval settings &gt; &gt; The &#x60;approvalSettings&#x60; key is only returned when the Flag Approvals feature is enabled.  Create a new environment in a specified project with a given name, key, swatch color, and default TTL. 
+    # &gt; ### Approval settings &gt; &gt; The &#x60;approvalSettings&#x60; key is only returned when the Flag Approvals feature is enabled. &gt; &gt; You cannot update approval settings when creating new environments. Update approval settings with the PATCH Environment API.  Create a new environment in a specified project with a given name, key, swatch color, and default TTL. 
     # @param project_key [String] The project key
     # @param environment_post [EnvironmentPost] 
     # @param [Hash] opts the optional parameters

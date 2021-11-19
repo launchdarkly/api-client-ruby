@@ -25,19 +25,19 @@ describe LaunchDarklyApi::CustomRole do
       expect(instance).to be_instance_of(LaunchDarklyApi::CustomRole)
     end
   end
+  describe 'test attribute "_id"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "_links"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "name"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "key"' do
+  describe 'test attribute "_access"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -49,7 +49,13 @@ describe LaunchDarklyApi::CustomRole do
     end
   end
 
-  describe 'test attribute "_id"' do
+  describe 'test attribute "key"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "name"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -61,7 +67,7 @@ describe LaunchDarklyApi::CustomRole do
     end
   end
 
-  describe 'test attribute "_access"' do
+  describe 'test attribute "base_permissions"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

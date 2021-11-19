@@ -49,7 +49,7 @@ describe 'CustomRolesApi' do
   # Get a single custom role by key or ID
   # @param key The custom role&#39;s key or ID
   # @param [Hash] opts the optional parameters
-  # @return [CustomRolePost]
+  # @return [CustomRole]
   describe 'get_custom_role test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -83,7 +83,7 @@ describe 'CustomRolesApi' do
   # unit tests for post_custom_role
   # Create custom role
   # Create a new custom role
-  # @param statement_post 
+  # @param custom_role_post 
   # @param [Hash] opts the optional parameters
   # @return [CustomRole]
   describe 'post_custom_role test' do

@@ -89,7 +89,7 @@ describe 'CodeReferencesApi' do
   # Get a list of all extinctions.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :repo_name Filter results to a specific repository
-  # @option opts [String] :branch_name Filter results to a specific branch
+  # @option opts [String] :branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions.
   # @option opts [String] :proj_key Filter results to a specific project
   # @option opts [String] :flag_key Filter results to a specific flag key
   # @return [ExtinctionCollectionRep]
@@ -168,7 +168,7 @@ describe 'CodeReferencesApi' do
   # Create a new extinction
   # @param repo The repository name
   # @param branch The url-encoded branch name
-  # @param inline_object 
+  # @param extinction_rep 
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'post_extinction test' do
@@ -182,7 +182,7 @@ describe 'CodeReferencesApi' do
   # Create a repository with the specified name.
   # @param repository_post 
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [RepositoryRep]
   describe 'post_repository test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -194,7 +194,7 @@ describe 'CodeReferencesApi' do
   # Create a new branch if it doesn&#39;t exist, or updates the branch if it already exists.
   # @param repo The repository name
   # @param branch The url-encoded branch name
-  # @param branch_rep 
+  # @param put_branch 
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'put_branch test' do

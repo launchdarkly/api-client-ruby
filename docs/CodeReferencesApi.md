@@ -14,7 +14,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_root_statistic**](CodeReferencesApi.md#get_root_statistic) | **GET** /api/v2/code-refs/statistics | Get links to code reference repositories for each project |
 | [**get_statistics**](CodeReferencesApi.md#get_statistics) | **GET** /api/v2/code-refs/statistics/{projKey} | Get number of code references for flags |
 | [**patch_repository**](CodeReferencesApi.md#patch_repository) | **PATCH** /api/v2/code-refs/repositories/{repo} | Update repository |
-| [**post_extinction**](CodeReferencesApi.md#post_extinction) | **POST** /api/v2/code-refs/repositories/{repo}/branches/{branch} | Create extinction |
+| [**post_extinction**](CodeReferencesApi.md#post_extinction) | **POST** /api/v2/code-refs/repositories/{repo}/branches/{branch}/extinction-events | Create extinction |
 | [**post_repository**](CodeReferencesApi.md#post_repository) | **POST** /api/v2/code-refs/repositories | Create repository |
 | [**put_branch**](CodeReferencesApi.md#put_branch) | **PUT** /api/v2/code-refs/repositories/{repo}/branches/{branch} | Upsert branch |
 
@@ -88,7 +88,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## delete_repository
@@ -158,7 +158,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## get_branch
@@ -335,7 +335,7 @@ end
 api_instance = LaunchDarklyApi::CodeReferencesApi.new
 opts = {
   repo_name: 'repo_name_example', # String | Filter results to a specific repository
-  branch_name: 'branch_name_example', # String | Filter results to a specific branch
+  branch_name: 'branch_name_example', # String | Filter results to a specific branch. By default, only the default branch will be queried for extinctions.
   proj_key: 'proj_key_example', # String | Filter results to a specific project
   flag_key: 'flag_key_example' # String | Filter results to a specific flag key
 }
@@ -372,7 +372,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **repo_name** | **String** | Filter results to a specific repository | [optional] |
-| **branch_name** | **String** | Filter results to a specific branch | [optional] |
+| **branch_name** | **String** | Filter results to a specific branch. By default, only the default branch will be queried for extinctions. | [optional] |
 | **proj_key** | **String** | Filter results to a specific project | [optional] |
 | **flag_key** | **String** | Filter results to a specific flag key | [optional] |
 
@@ -758,7 +758,7 @@ end
 
 ## post_extinction
 
-> post_extinction(repo, branch, inline_object)
+> post_extinction(repo, branch, extinction_rep)
 
 Create extinction
 
@@ -780,11 +780,11 @@ end
 api_instance = LaunchDarklyApi::CodeReferencesApi.new
 repo = 'repo_example' # String | The repository name
 branch = 'branch_example' # String | The url-encoded branch name
-inline_object = [LaunchDarklyApi::InlineObject.new({revision: 'revision_example', time: 3.56, flag_key: 'flag_key_example', project_key: 'project_key_example'})] # Array<InlineObject> | 
+extinction_rep = [LaunchDarklyApi::ExtinctionRep.new({revision: 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', message: 'Remove flag for launched feature', time: 3.56, flag_key: 'enable-feature', proj_key: 'default'})] # Array<ExtinctionRep> | 
 
 begin
   # Create extinction
-  api_instance.post_extinction(repo, branch, inline_object)
+  api_instance.post_extinction(repo, branch, extinction_rep)
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling CodeReferencesApi->post_extinction: #{e}"
 end
@@ -794,12 +794,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> post_extinction_with_http_info(repo, branch, inline_object)
+> <Array(nil, Integer, Hash)> post_extinction_with_http_info(repo, branch, extinction_rep)
 
 ```ruby
 begin
   # Create extinction
-  data, status_code, headers = api_instance.post_extinction_with_http_info(repo, branch, inline_object)
+  data, status_code, headers = api_instance.post_extinction_with_http_info(repo, branch, extinction_rep)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -814,7 +814,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **repo** | **String** | The repository name |  |
 | **branch** | **String** | The url-encoded branch name |  |
-| **inline_object** | [**Array&lt;InlineObject&gt;**](InlineObject.md) |  |  |
+| **extinction_rep** | [**Array&lt;ExtinctionRep&gt;**](ExtinctionRep.md) |  |  |
 
 ### Return type
 
@@ -827,12 +827,12 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## post_repository
 
-> post_repository(repository_post)
+> <RepositoryRep> post_repository(repository_post)
 
 Create repository
 
@@ -852,11 +852,12 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::CodeReferencesApi.new
-repository_post = LaunchDarklyApi::RepositoryPost.new({name: 'name_example'}) # RepositoryPost | 
+repository_post = LaunchDarklyApi::RepositoryPost.new({name: 'LaunchDarkly-Docs'}) # RepositoryPost | 
 
 begin
   # Create repository
-  api_instance.post_repository(repository_post)
+  result = api_instance.post_repository(repository_post)
+  p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling CodeReferencesApi->post_repository: #{e}"
 end
@@ -864,9 +865,9 @@ end
 
 #### Using the post_repository_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> post_repository_with_http_info(repository_post)
+> <Array(<RepositoryRep>, Integer, Hash)> post_repository_with_http_info(repository_post)
 
 ```ruby
 begin
@@ -874,7 +875,7 @@ begin
   data, status_code, headers = api_instance.post_repository_with_http_info(repository_post)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <RepositoryRep>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling CodeReferencesApi->post_repository_with_http_info: #{e}"
 end
@@ -888,7 +889,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**RepositoryRep**](RepositoryRep.md)
 
 ### Authorization
 
@@ -897,12 +898,12 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## put_branch
 
-> put_branch(repo, branch, branch_rep)
+> put_branch(repo, branch, put_branch)
 
 Upsert branch
 
@@ -924,11 +925,11 @@ end
 api_instance = LaunchDarklyApi::CodeReferencesApi.new
 repo = 'repo_example' # String | The repository name
 branch = 'branch_example' # String | The url-encoded branch name
-branch_rep = LaunchDarklyApi::BranchRep.new # BranchRep | 
+put_branch = LaunchDarklyApi::PutBranch.new({name: 'main', head: 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', sync_time: 3.56}) # PutBranch | 
 
 begin
   # Upsert branch
-  api_instance.put_branch(repo, branch, branch_rep)
+  api_instance.put_branch(repo, branch, put_branch)
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling CodeReferencesApi->put_branch: #{e}"
 end
@@ -938,12 +939,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> put_branch_with_http_info(repo, branch, branch_rep)
+> <Array(nil, Integer, Hash)> put_branch_with_http_info(repo, branch, put_branch)
 
 ```ruby
 begin
   # Upsert branch
-  data, status_code, headers = api_instance.put_branch_with_http_info(repo, branch, branch_rep)
+  data, status_code, headers = api_instance.put_branch_with_http_info(repo, branch, put_branch)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -958,7 +959,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **repo** | **String** | The repository name |  |
 | **branch** | **String** | The url-encoded branch name |  |
-| **branch_rep** | [**BranchRep**](BranchRep.md) |  |  |
+| **put_branch** | [**PutBranch**](PutBranch.md) |  |  |
 
 ### Return type
 
@@ -971,5 +972,5 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 

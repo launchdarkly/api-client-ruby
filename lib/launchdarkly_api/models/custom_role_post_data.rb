@@ -26,13 +26,16 @@ module LaunchDarklyApi
 
     attr_accessor :policy
 
+    attr_accessor :base_permissions
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
         :'key' => :'key',
         :'description' => :'description',
-        :'policy' => :'policy'
+        :'policy' => :'policy',
+        :'base_permissions' => :'basePermissions'
       }
     end
 
@@ -47,7 +50,8 @@ module LaunchDarklyApi
         :'name' => :'String',
         :'key' => :'String',
         :'description' => :'String',
-        :'policy' => :'Array<StatementPost>'
+        :'policy' => :'Array<StatementPost>',
+        :'base_permissions' => :'String'
       }
     end
 
@@ -89,6 +93,10 @@ module LaunchDarklyApi
           self.policy = value
         end
       end
+
+      if attributes.key?(:'base_permissions')
+        self.base_permissions = attributes[:'base_permissions']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -127,7 +135,8 @@ module LaunchDarklyApi
           name == o.name &&
           key == o.key &&
           description == o.description &&
-          policy == o.policy
+          policy == o.policy &&
+          base_permissions == o.base_permissions
     end
 
     # @see the `==` method
@@ -139,7 +148,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, key, description, policy].hash
+      [name, key, description, policy, base_permissions].hash
     end
 
     # Builds the object from hash
