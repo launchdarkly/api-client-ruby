@@ -14,6 +14,8 @@
 | **default_ttl** | **Integer** | The default time (in minutes) that the PHP SDK can cache feature flag rules locally. |  |
 | **secure_mode** | **Boolean** | Secure mode ensures that a user of the client-side SDK cannot impersonate another user. |  |
 | **default_track_events** | **Boolean** | Enables tracking detailed information for new flags by default. |  |
+| **require_comments** | **Boolean** |  |  |
+| **confirm_changes** | **Boolean** |  |  |
 | **tags** | **Array&lt;String&gt;** |  |  |
 | **approval_settings** | [**ApprovalSettings**](ApprovalSettings.md) |  | [optional] |
 
@@ -33,6 +35,8 @@ instance = LaunchDarklyApi::Environment.new(
   default_ttl: 5,
   secure_mode: true,
   default_track_events: false,
+  require_comments: null,
+  confirm_changes: null,
   tags: [&quot;ops&quot;],
   approval_settings: null
 )

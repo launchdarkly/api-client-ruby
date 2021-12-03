@@ -316,7 +316,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::RelayProxyConfigurationsApi.new
-relay_auto_config_post = LaunchDarklyApi::RelayAutoConfigPost.new({name: 'name_example', policy: [LaunchDarklyApi::StatementRep.new]}) # RelayAutoConfigPost | 
+relay_auto_config_post = LaunchDarklyApi::RelayAutoConfigPost.new({name: 'name_example', policy: [LaunchDarklyApi::StatementRep.new({effect: 'effect_example'})]}) # RelayAutoConfigPost | 
 
 begin
   # Create a new Relay Proxy config

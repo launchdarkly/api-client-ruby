@@ -57,6 +57,7 @@ docs/Defaults.md
 docs/DependentFlag.md
 docs/DependentFlagEnvironment.md
 docs/DependentFlagsByEnvironment.md
+docs/DerivedAttribute.md
 docs/Destination.md
 docs/DestinationPost.md
 docs/Destinations.md
@@ -80,8 +81,8 @@ docs/ExpiringUserTargetError.md
 docs/ExpiringUserTargetGetResponse.md
 docs/ExpiringUserTargetItem.md
 docs/ExpiringUserTargetPatchResponse.md
+docs/Extinction.md
 docs/ExtinctionCollectionRep.md
-docs/ExtinctionRep.md
 docs/FeatureFlag.md
 docs/FeatureFlagBody.md
 docs/FeatureFlagConfig.md
@@ -104,7 +105,6 @@ docs/FlagStatusRep.md
 docs/FlagSummary.md
 docs/ForbiddenErrorRep.md
 docs/HunkRep.md
-docs/InlineResponse200.md
 docs/IntegrationMetadata.md
 docs/IntegrationStatus.md
 docs/InvalidRequestErrorRep.md
@@ -122,6 +122,7 @@ docs/MetricCollectionRep.md
 docs/MetricListingRep.md
 docs/MetricPost.md
 docs/MetricRep.md
+docs/MetricSeen.md
 docs/MetricsApi.md
 docs/Modification.md
 docs/MultiEnvironmentDependentFlag.md
@@ -205,6 +206,7 @@ docs/UserAttributeNamesRep.md
 docs/UserFlagSetting.md
 docs/UserFlagSettings.md
 docs/UserRecord.md
+docs/UserRecordRep.md
 docs/UserSegment.md
 docs/UserSegmentRule.md
 docs/UserSegments.md
@@ -213,7 +215,6 @@ docs/Users.md
 docs/UsersApi.md
 docs/UsersBetaApi.md
 docs/ValuePut.md
-docs/Variate.md
 docs/Variation.md
 docs/VariationOrRolloutRep.md
 docs/VariationSummary.md
@@ -297,6 +298,7 @@ lib/launchdarkly_api/models/defaults.rb
 lib/launchdarkly_api/models/dependent_flag.rb
 lib/launchdarkly_api/models/dependent_flag_environment.rb
 lib/launchdarkly_api/models/dependent_flags_by_environment.rb
+lib/launchdarkly_api/models/derived_attribute.rb
 lib/launchdarkly_api/models/destination.rb
 lib/launchdarkly_api/models/destination_post.rb
 lib/launchdarkly_api/models/destinations.rb
@@ -318,8 +320,8 @@ lib/launchdarkly_api/models/expiring_user_target_error.rb
 lib/launchdarkly_api/models/expiring_user_target_get_response.rb
 lib/launchdarkly_api/models/expiring_user_target_item.rb
 lib/launchdarkly_api/models/expiring_user_target_patch_response.rb
+lib/launchdarkly_api/models/extinction.rb
 lib/launchdarkly_api/models/extinction_collection_rep.rb
-lib/launchdarkly_api/models/extinction_rep.rb
 lib/launchdarkly_api/models/feature_flag.rb
 lib/launchdarkly_api/models/feature_flag_body.rb
 lib/launchdarkly_api/models/feature_flag_config.rb
@@ -340,7 +342,6 @@ lib/launchdarkly_api/models/flag_status_rep.rb
 lib/launchdarkly_api/models/flag_summary.rb
 lib/launchdarkly_api/models/forbidden_error_rep.rb
 lib/launchdarkly_api/models/hunk_rep.rb
-lib/launchdarkly_api/models/inline_response200.rb
 lib/launchdarkly_api/models/integration_metadata.rb
 lib/launchdarkly_api/models/integration_status.rb
 lib/launchdarkly_api/models/invalid_request_error_rep.rb
@@ -358,6 +359,7 @@ lib/launchdarkly_api/models/metric_collection_rep.rb
 lib/launchdarkly_api/models/metric_listing_rep.rb
 lib/launchdarkly_api/models/metric_post.rb
 lib/launchdarkly_api/models/metric_rep.rb
+lib/launchdarkly_api/models/metric_seen.rb
 lib/launchdarkly_api/models/modification.rb
 lib/launchdarkly_api/models/multi_environment_dependent_flag.rb
 lib/launchdarkly_api/models/multi_environment_dependent_flags.rb
@@ -434,12 +436,12 @@ lib/launchdarkly_api/models/user_attribute_names_rep.rb
 lib/launchdarkly_api/models/user_flag_setting.rb
 lib/launchdarkly_api/models/user_flag_settings.rb
 lib/launchdarkly_api/models/user_record.rb
+lib/launchdarkly_api/models/user_record_rep.rb
 lib/launchdarkly_api/models/user_segment.rb
 lib/launchdarkly_api/models/user_segment_rule.rb
 lib/launchdarkly_api/models/user_segments.rb
 lib/launchdarkly_api/models/users.rb
 lib/launchdarkly_api/models/value_put.rb
-lib/launchdarkly_api/models/variate.rb
 lib/launchdarkly_api/models/variation.rb
 lib/launchdarkly_api/models/variation_or_rollout_rep.rb
 lib/launchdarkly_api/models/variation_summary.rb
@@ -518,6 +520,7 @@ spec/models/defaults_spec.rb
 spec/models/dependent_flag_environment_spec.rb
 spec/models/dependent_flag_spec.rb
 spec/models/dependent_flags_by_environment_spec.rb
+spec/models/derived_attribute_spec.rb
 spec/models/destination_post_spec.rb
 spec/models/destination_spec.rb
 spec/models/destinations_spec.rb
@@ -540,7 +543,7 @@ spec/models/expiring_user_target_get_response_spec.rb
 spec/models/expiring_user_target_item_spec.rb
 spec/models/expiring_user_target_patch_response_spec.rb
 spec/models/extinction_collection_rep_spec.rb
-spec/models/extinction_rep_spec.rb
+spec/models/extinction_spec.rb
 spec/models/feature_flag_body_spec.rb
 spec/models/feature_flag_config_spec.rb
 spec/models/feature_flag_scheduled_change_spec.rb
@@ -561,7 +564,6 @@ spec/models/flag_status_rep_spec.rb
 spec/models/flag_summary_spec.rb
 spec/models/forbidden_error_rep_spec.rb
 spec/models/hunk_rep_spec.rb
-spec/models/inline_response200_spec.rb
 spec/models/integration_metadata_spec.rb
 spec/models/integration_status_spec.rb
 spec/models/invalid_request_error_rep_spec.rb
@@ -579,6 +581,7 @@ spec/models/metric_collection_rep_spec.rb
 spec/models/metric_listing_rep_spec.rb
 spec/models/metric_post_spec.rb
 spec/models/metric_rep_spec.rb
+spec/models/metric_seen_spec.rb
 spec/models/modification_spec.rb
 spec/models/multi_environment_dependent_flag_spec.rb
 spec/models/multi_environment_dependent_flags_spec.rb
@@ -653,6 +656,7 @@ spec/models/url_post_spec.rb
 spec/models/user_attribute_names_rep_spec.rb
 spec/models/user_flag_setting_spec.rb
 spec/models/user_flag_settings_spec.rb
+spec/models/user_record_rep_spec.rb
 spec/models/user_record_spec.rb
 spec/models/user_segment_rule_spec.rb
 spec/models/user_segment_spec.rb
@@ -660,7 +664,6 @@ spec/models/user_segments_spec.rb
 spec/models/user_spec.rb
 spec/models/users_spec.rb
 spec/models/value_put_spec.rb
-spec/models/variate_spec.rb
 spec/models/variation_or_rollout_rep_spec.rb
 spec/models/variation_spec.rb
 spec/models/variation_summary_spec.rb

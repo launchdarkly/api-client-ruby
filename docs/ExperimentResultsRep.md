@@ -10,6 +10,7 @@
 | **series** | [**Array&lt;ExperimentTimeSeriesSlice&gt;**](ExperimentTimeSeriesSlice.md) |  | [optional] |
 | **stats** | [**ExperimentStatsRep**](ExperimentStatsRep.md) |  | [optional] |
 | **granularity** | **String** |  | [optional] |
+| **metric_seen** | [**MetricSeen**](MetricSeen.md) |  | [optional] |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = LaunchDarklyApi::ExperimentResultsRep.new(
   totals: null,
   series: null,
   stats: null,
-  granularity: null
+  granularity: null,
+  metric_seen: null
 )
 ```
 

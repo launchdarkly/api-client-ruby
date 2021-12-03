@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
-| **items** | **Hash&lt;String, Array&lt;ExtinctionRep&gt;&gt;** | An array of extinction events |  |
+| **items** | **Hash&lt;String, Array&lt;Extinction&gt;&gt;** | An array of extinction events |  |
 
 ## Example
 

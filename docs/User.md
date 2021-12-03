@@ -4,13 +4,19 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **last_ping** | **Time** |  | [optional] |
-| **environment_id** | **String** |  | [optional] |
-| **owner_id** | **String** |  | [optional] |
-| **user** | [**User**](User.md) |  | [optional] |
-| **sort_value** | **Object** |  | [optional] |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
-| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **key** | **String** |  | [optional] |
+| **secondary** | **String** |  | [optional] |
+| **ip** | **String** |  | [optional] |
+| **country** | **String** |  | [optional] |
+| **email** | **String** |  | [optional] |
+| **first_name** | **String** |  | [optional] |
+| **last_name** | **String** |  | [optional] |
+| **avatar** | **String** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **anonymous** | **Boolean** |  | [optional] |
+| **custom** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **derived** | [**Hash&lt;String, DerivedAttribute&gt;**](DerivedAttribute.md) |  | [optional] |
+| **private_attrs** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example
 
@@ -18,13 +24,19 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::User.new(
-  last_ping: null,
-  environment_id: null,
-  owner_id: null,
-  user: null,
-  sort_value: null,
-  _links: null,
-  _access: null
+  key: null,
+  secondary: null,
+  ip: null,
+  country: null,
+  email: null,
+  first_name: null,
+  last_name: null,
+  avatar: null,
+  name: null,
+  anonymous: null,
+  custom: null,
+  derived: null,
+  private_attrs: null
 )
 ```
 

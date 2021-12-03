@@ -5,6 +5,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**delete_workflow**](WorkflowsBetaApi.md#delete_workflow) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows/{workflowId} | Delete workflow |
+| [**get_custom_workflow**](WorkflowsBetaApi.md#get_custom_workflow) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows/{workflowId} | Get custom workflow |
 | [**get_workflows**](WorkflowsBetaApi.md#get_workflows) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows | Get workflows |
 | [**post_workflow**](WorkflowsBetaApi.md#post_workflow) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows | Create workflow |
 
@@ -74,6 +75,83 @@ end
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_custom_workflow
+
+> <CustomWorkflowOutputRep> get_custom_workflow(project_key, feature_flag_key, environment_key, workflow_id)
+
+Get custom workflow
+
+Get a specific workflow by ID
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::WorkflowsBetaApi.new
+project_key = 'project_key_example' # String | The project key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+environment_key = 'environment_key_example' # String | The environment key
+workflow_id = 'workflow_id_example' # String | The workflow ID
+
+begin
+  # Get custom workflow
+  result = api_instance.get_custom_workflow(project_key, feature_flag_key, environment_key, workflow_id)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling WorkflowsBetaApi->get_custom_workflow: #{e}"
+end
+```
+
+#### Using the get_custom_workflow_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomWorkflowOutputRep>, Integer, Hash)> get_custom_workflow_with_http_info(project_key, feature_flag_key, environment_key, workflow_id)
+
+```ruby
+begin
+  # Get custom workflow
+  data, status_code, headers = api_instance.get_custom_workflow_with_http_info(project_key, feature_flag_key, environment_key, workflow_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomWorkflowOutputRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling WorkflowsBetaApi->get_custom_workflow_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **environment_key** | **String** | The environment key |  |
+| **workflow_id** | **String** | The workflow ID |  |
+
+### Return type
+
+[**CustomWorkflowOutputRep**](CustomWorkflowOutputRep.md)
 
 ### Authorization
 
@@ -185,7 +263,7 @@ api_instance = LaunchDarklyApi::WorkflowsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
 environment_key = 'environment_key_example' # String | The environment key
-custom_workflow_input_rep = LaunchDarklyApi::CustomWorkflowInputRep.new # CustomWorkflowInputRep | 
+custom_workflow_input_rep = LaunchDarklyApi::CustomWorkflowInputRep.new({description: 'description_example'}) # CustomWorkflowInputRep | 
 
 begin
   # Create workflow

@@ -9,7 +9,7 @@
 | **include_in_snippet_by_default** | **Boolean** | Whether or not flags created in this project are made available to the client-side JavaScript SDK by default. | [optional] |
 | **default_client_side_availability** | [**DefaultClientSideAvailabilityPost**](DefaultClientSideAvailabilityPost.md) |  | [optional] |
 | **tags** | **Array&lt;String&gt;** |  | [optional] |
-| **environments** | **Array&lt;Object&gt;** | Creates the provided environments for this project. If omitted default environments will be created instead. | [optional] |
+| **environments** | [**Array&lt;EnvironmentPost&gt;**](EnvironmentPost.md) | Creates the provided environments for this project. If omitted default environments will be created instead. | [optional] |
 
 ## Example
 

@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
 | **total_count** | **Integer** |  |  |
-| **items** | [**Array&lt;User&gt;**](User.md) |  |  |
+| **items** | [**Array&lt;UserRecord&gt;**](UserRecord.md) |  |  |
 
 ## Example
 

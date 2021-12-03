@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **maintainer_id** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
-| **description** | **String** |  | [optional] |
+| **description** | **String** |  |  |
 | **stages** | [**Array&lt;StageInputRep&gt;**](StageInputRep.md) |  | [optional] |
 
 ## Example

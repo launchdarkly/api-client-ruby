@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **comment** | **String** | A comment describing the approval request | [optional] |
-| **description** | **String** |  | [optional] |
+| **description** | **String** |  |  |
 | **notify_member_ids** | **Array&lt;String&gt;** | An array of member IDs. These members are notified to review the approval request. |  |
 | **source** | [**SourceFlag**](SourceFlag.md) |  |  |
 | **included_actions** | **Array&lt;String&gt;** |  | [optional] |

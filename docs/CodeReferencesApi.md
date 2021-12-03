@@ -758,7 +758,7 @@ end
 
 ## post_extinction
 
-> post_extinction(repo, branch, extinction_rep)
+> post_extinction(repo, branch, extinction)
 
 Create extinction
 
@@ -780,11 +780,11 @@ end
 api_instance = LaunchDarklyApi::CodeReferencesApi.new
 repo = 'repo_example' # String | The repository name
 branch = 'branch_example' # String | The url-encoded branch name
-extinction_rep = [LaunchDarklyApi::ExtinctionRep.new({revision: 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', message: 'Remove flag for launched feature', time: 3.56, flag_key: 'enable-feature', proj_key: 'default'})] # Array<ExtinctionRep> | 
+extinction = [LaunchDarklyApi::Extinction.new({revision: 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', message: 'Remove flag for launched feature', time: 3.56, flag_key: 'enable-feature', proj_key: 'default'})] # Array<Extinction> | 
 
 begin
   # Create extinction
-  api_instance.post_extinction(repo, branch, extinction_rep)
+  api_instance.post_extinction(repo, branch, extinction)
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling CodeReferencesApi->post_extinction: #{e}"
 end
@@ -794,12 +794,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> post_extinction_with_http_info(repo, branch, extinction_rep)
+> <Array(nil, Integer, Hash)> post_extinction_with_http_info(repo, branch, extinction)
 
 ```ruby
 begin
   # Create extinction
-  data, status_code, headers = api_instance.post_extinction_with_http_info(repo, branch, extinction_rep)
+  data, status_code, headers = api_instance.post_extinction_with_http_info(repo, branch, extinction)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -814,7 +814,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **repo** | **String** | The repository name |  |
 | **branch** | **String** | The url-encoded branch name |  |
-| **extinction_rep** | [**Array&lt;ExtinctionRep&gt;**](ExtinctionRep.md) |  |  |
+| **extinction** | [**Array&lt;Extinction&gt;**](Extinction.md) |  |  |
 
 ### Return type
 

@@ -501,7 +501,7 @@ api_instance = LaunchDarklyApi::ApprovalsApi.new
 project_key = 'project_key_example' # String | The project key
 feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
 environment_key = 'environment_key_example' # String | The environment key
-create_copy_flag_config_approval_request_request = LaunchDarklyApi::CreateCopyFlagConfigApprovalRequestRequest.new({notify_member_ids: ['notify_member_ids_example'], source: LaunchDarklyApi::SourceFlag.new({key: 'key_example'})}) # CreateCopyFlagConfigApprovalRequestRequest | 
+create_copy_flag_config_approval_request_request = LaunchDarklyApi::CreateCopyFlagConfigApprovalRequestRequest.new({description: 'description_example', notify_member_ids: ['notify_member_ids_example'], source: LaunchDarklyApi::SourceFlag.new({key: 'key_example'})}) # CreateCopyFlagConfigApprovalRequestRequest | 
 
 begin
   # Create approval request to copy flag configurations across environments
