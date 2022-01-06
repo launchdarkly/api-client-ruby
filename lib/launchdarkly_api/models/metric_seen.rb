@@ -17,13 +17,13 @@ module LaunchDarklyApi
   class MetricSeen
     attr_accessor :ever
 
-    attr_accessor :minutes_ago
+    attr_accessor :timestamp
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'ever' => :'ever',
-        :'minutes_ago' => :'minutesAgo'
+        :'timestamp' => :'timestamp'
       }
     end
 
@@ -36,7 +36,7 @@ module LaunchDarklyApi
     def self.openapi_types
       {
         :'ever' => :'Boolean',
-        :'minutes_ago' => :'Integer'
+        :'timestamp' => :'Integer'
       }
     end
 
@@ -65,8 +65,8 @@ module LaunchDarklyApi
         self.ever = attributes[:'ever']
       end
 
-      if attributes.key?(:'minutes_ago')
-        self.minutes_ago = attributes[:'minutes_ago']
+      if attributes.key?(:'timestamp')
+        self.timestamp = attributes[:'timestamp']
       end
     end
 
@@ -89,7 +89,7 @@ module LaunchDarklyApi
       return true if self.equal?(o)
       self.class == o.class &&
           ever == o.ever &&
-          minutes_ago == o.minutes_ago
+          timestamp == o.timestamp
     end
 
     # @see the `==` method
@@ -101,7 +101,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ever, minutes_ago].hash
+      [ever, timestamp].hash
     end
 
     # Builds the object from hash

@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ever** | **Boolean** |  | [optional] |
-| **minutes_ago** | **Integer** |  | [optional] |
+| **timestamp** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -14,7 +14,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MetricSeen.new(
   ever: null,
-  minutes_ago: null
+  timestamp: null
 )
 ```
 

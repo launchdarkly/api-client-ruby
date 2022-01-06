@@ -301,6 +301,8 @@ module LaunchDarklyApi
     # @option opts [String] :branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions.
     # @option opts [String] :proj_key Filter results to a specific project
     # @option opts [String] :flag_key Filter results to a specific flag key
+    # @option opts [Integer] :from Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;to&#x60;.
+    # @option opts [Integer] :to Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;from&#x60;.
     # @return [ExtinctionCollectionRep]
     def get_extinctions(opts = {})
       data, _status_code, _headers = get_extinctions_with_http_info(opts)
@@ -314,6 +316,8 @@ module LaunchDarklyApi
     # @option opts [String] :branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions.
     # @option opts [String] :proj_key Filter results to a specific project
     # @option opts [String] :flag_key Filter results to a specific flag key
+    # @option opts [Integer] :from Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;to&#x60;.
+    # @option opts [Integer] :to Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;from&#x60;.
     # @return [Array<(ExtinctionCollectionRep, Integer, Hash)>] ExtinctionCollectionRep data, response status code and response headers
     def get_extinctions_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -328,6 +332,8 @@ module LaunchDarklyApi
       query_params[:'branchName'] = opts[:'branch_name'] if !opts[:'branch_name'].nil?
       query_params[:'projKey'] = opts[:'proj_key'] if !opts[:'proj_key'].nil?
       query_params[:'flagKey'] = opts[:'flag_key'] if !opts[:'flag_key'].nil?
+      query_params[:'from'] = opts[:'from'] if !opts[:'from'].nil?
+      query_params[:'to'] = opts[:'to'] if !opts[:'to'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

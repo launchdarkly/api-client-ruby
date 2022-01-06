@@ -135,7 +135,7 @@ module LaunchDarklyApi
         :'_maintainer' => :'MemberSummaryRep',
         :'description' => :'String',
         :'is_numeric' => :'Boolean',
-        :'success_criteria' => :'Integer',
+        :'success_criteria' => :'String',
         :'unit' => :'String',
         :'event_key' => :'String',
         :'is_active' => :'Boolean',
@@ -315,6 +315,8 @@ module LaunchDarklyApi
       return false if @_links.nil?
       return false if @tags.nil?
       return false if @_creation_date.nil?
+      success_criteria_validator = EnumAttributeValidator.new('String', ["HigherThanBaseline", "LowerThanBaseline"])
+      return false unless success_criteria_validator.valid?(@success_criteria)
       true
     end
 
@@ -326,6 +328,16 @@ module LaunchDarklyApi
         fail ArgumentError, "invalid value for \"kind\", must be one of #{validator.allowable_values}."
       end
       @kind = kind
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] success_criteria Object to be assigned
+    def success_criteria=(success_criteria)
+      validator = EnumAttributeValidator.new('String', ["HigherThanBaseline", "LowerThanBaseline"])
+      unless validator.valid?(success_criteria)
+        fail ArgumentError, "invalid value for \"success_criteria\", must be one of #{validator.allowable_values}."
+      end
+      @success_criteria = success_criteria
     end
 
     # Checks equality by comparing each attribute.

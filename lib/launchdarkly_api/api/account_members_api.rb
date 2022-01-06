@@ -215,7 +215,7 @@ module LaunchDarklyApi
     end
 
     # Modify an account member
-    # Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member. Requests to update account members will not work if SCIM is enabled for the account.
+    #  Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member.  To update fields in the account member object that are arrays, set the `path` to the name of the field and then append `/<array index>`. Using `/0` appends to the beginning of the array. For example, to add a new custom role to a member, use the following request body:  ```   [     {       \"op\": \"add\",       \"path\": \"/customRoles/0\",       \"value\": \"some-role-id\"     }   ] ```  Requests to update account members will not work if SCIM is enabled for the account. 
     # @param id [String] The member ID
     # @param patch_operation [Array<PatchOperation>] 
     # @param [Hash] opts the optional parameters
@@ -226,7 +226,7 @@ module LaunchDarklyApi
     end
 
     # Modify an account member
-    # Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member. Requests to update account members will not work if SCIM is enabled for the account.
+    #  Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member.  To update fields in the account member object that are arrays, set the &#x60;path&#x60; to the name of the field and then append &#x60;/&lt;array index&gt;&#x60;. Using &#x60;/0&#x60; appends to the beginning of the array. For example, to add a new custom role to a member, use the following request body:  &#x60;&#x60;&#x60;   [     {       \&quot;op\&quot;: \&quot;add\&quot;,       \&quot;path\&quot;: \&quot;/customRoles/0\&quot;,       \&quot;value\&quot;: \&quot;some-role-id\&quot;     }   ] &#x60;&#x60;&#x60;  Requests to update account members will not work if SCIM is enabled for the account. 
     # @param id [String] The member ID
     # @param patch_operation [Array<PatchOperation>] 
     # @param [Hash] opts the optional parameters
@@ -284,6 +284,80 @@ module LaunchDarklyApi
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AccountMembersApi#patch_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add member to teams
+    # Add member to team(s)
+    # @param id [String] The member ID
+    # @param member_teams_form_post [MemberTeamsFormPost] 
+    # @param [Hash] opts the optional parameters
+    # @return [Member]
+    def post_member_teams(id, member_teams_form_post, opts = {})
+      data, _status_code, _headers = post_member_teams_with_http_info(id, member_teams_form_post, opts)
+      data
+    end
+
+    # Add member to teams
+    # Add member to team(s)
+    # @param id [String] The member ID
+    # @param member_teams_form_post [MemberTeamsFormPost] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Member, Integer, Hash)>] Member data, response status code and response headers
+    def post_member_teams_with_http_info(id, member_teams_form_post, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountMembersApi.post_member_teams ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling AccountMembersApi.post_member_teams"
+      end
+      # verify the required parameter 'member_teams_form_post' is set
+      if @api_client.config.client_side_validation && member_teams_form_post.nil?
+        fail ArgumentError, "Missing the required parameter 'member_teams_form_post' when calling AccountMembersApi.post_member_teams"
+      end
+      # resource path
+      local_var_path = '/api/v2/members/{id}/teams'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(member_teams_form_post)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Member'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AccountMembersApi.post_member_teams",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountMembersApi#post_member_teams\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

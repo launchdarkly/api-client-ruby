@@ -8,6 +8,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_member**](AccountMembersApi.md#get_member) | **GET** /api/v2/members/{id} | Get account member |
 | [**get_members**](AccountMembersApi.md#get_members) | **GET** /api/v2/members | List account members |
 | [**patch_member**](AccountMembersApi.md#patch_member) | **PATCH** /api/v2/members/{id} | Modify an account member |
+| [**post_member_teams**](AccountMembersApi.md#post_member_teams) | **POST** /api/v2/members/{id}/teams | Add member to teams |
 | [**post_members**](AccountMembersApi.md#post_members) | **POST** /api/v2/members | Invite new members |
 
 
@@ -237,7 +238,7 @@ end
 
 Modify an account member
 
-Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member. Requests to update account members will not work if SCIM is enabled for the account.
+ Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member.  To update fields in the account member object that are arrays, set the `path` to the name of the field and then append `/<array index>`. Using `/0` appends to the beginning of the array. For example, to add a new custom role to a member, use the following request body:  ```   [     {       \"op\": \"add\",       \"path\": \"/customRoles/0\",       \"value\": \"some-role-id\"     }   ] ```  Requests to update account members will not work if SCIM is enabled for the account. 
 
 ### Examples
 
@@ -289,6 +290,79 @@ end
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | The member ID |  |
 | **patch_operation** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md) |  |  |
+
+### Return type
+
+[**Member**](Member.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## post_member_teams
+
+> <Member> post_member_teams(id, member_teams_form_post)
+
+Add member to teams
+
+Add member to team(s)
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AccountMembersApi.new
+id = 'id_example' # String | The member ID
+member_teams_form_post = LaunchDarklyApi::MemberTeamsFormPost.new({team_keys: ['team_keys_example']}) # MemberTeamsFormPost | 
+
+begin
+  # Add member to teams
+  result = api_instance.post_member_teams(id, member_teams_form_post)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountMembersApi->post_member_teams: #{e}"
+end
+```
+
+#### Using the post_member_teams_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Member>, Integer, Hash)> post_member_teams_with_http_info(id, member_teams_form_post)
+
+```ruby
+begin
+  # Add member to teams
+  data, status_code, headers = api_instance.post_member_teams_with_http_info(id, member_teams_form_post)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Member>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountMembersApi->post_member_teams_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The member ID |  |
+| **member_teams_form_post** | [**MemberTeamsFormPost**](MemberTeamsFormPost.md) |  |  |
 
 ### Return type
 

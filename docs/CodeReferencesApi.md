@@ -337,7 +337,9 @@ opts = {
   repo_name: 'repo_name_example', # String | Filter results to a specific repository
   branch_name: 'branch_name_example', # String | Filter results to a specific branch. By default, only the default branch will be queried for extinctions.
   proj_key: 'proj_key_example', # String | Filter results to a specific project
-  flag_key: 'flag_key_example' # String | Filter results to a specific flag key
+  flag_key: 'flag_key_example', # String | Filter results to a specific flag key
+  from: 789, # Integer | Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with `to`.
+  to: 789 # Integer | Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with `from`.
 }
 
 begin
@@ -375,6 +377,8 @@ end
 | **branch_name** | **String** | Filter results to a specific branch. By default, only the default branch will be queried for extinctions. | [optional] |
 | **proj_key** | **String** | Filter results to a specific project | [optional] |
 | **flag_key** | **String** | Filter results to a specific flag key | [optional] |
+| **from** | **Integer** | Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;to&#x60;. | [optional] |
+| **to** | **Integer** | Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;from&#x60;. | [optional] |
 
 ### Return type
 

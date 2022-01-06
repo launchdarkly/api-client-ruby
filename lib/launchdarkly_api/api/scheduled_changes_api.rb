@@ -257,7 +257,7 @@ module LaunchDarklyApi
     end
 
     # Update scheduled changes workflow
-    # Update a scheduled change, overriding existing instructions with the new ones.<br /><br />Requires a semantic patch representation of the desired changes to the resource. To learn more about semantic patches, read [Updates](/#section/Updates/Updates-via-semantic-patches)
+    # Update a scheduled change, overriding existing instructions with the new ones.<br /><br />Requires a semantic patch representation of the desired changes to the resource. To learn more about semantic patches, read [Updates](/reference#updates-via-semantic-patches).
     # @param project_key [String] The project key
     # @param feature_flag_key [String] The feature flag&#39;s key
     # @param environment_key [String] The environment key
@@ -272,7 +272,7 @@ module LaunchDarklyApi
     end
 
     # Update scheduled changes workflow
-    # Update a scheduled change, overriding existing instructions with the new ones.&lt;br /&gt;&lt;br /&gt;Requires a semantic patch representation of the desired changes to the resource. To learn more about semantic patches, read [Updates](/#section/Updates/Updates-via-semantic-patches)
+    # Update a scheduled change, overriding existing instructions with the new ones.&lt;br /&gt;&lt;br /&gt;Requires a semantic patch representation of the desired changes to the resource. To learn more about semantic patches, read [Updates](/reference#updates-via-semantic-patches).
     # @param project_key [String] The project key
     # @param feature_flag_key [String] The feature flag&#39;s key
     # @param environment_key [String] The environment key

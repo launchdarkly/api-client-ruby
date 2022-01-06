@@ -29,6 +29,8 @@ module LaunchDarklyApi
     # An array of flag references found on the branch
     attr_accessor :references
 
+    attr_accessor :commit_time
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -36,7 +38,8 @@ module LaunchDarklyApi
         :'head' => :'head',
         :'update_sequence_id' => :'updateSequenceId',
         :'sync_time' => :'syncTime',
-        :'references' => :'references'
+        :'references' => :'references',
+        :'commit_time' => :'commitTime'
       }
     end
 
@@ -52,7 +55,8 @@ module LaunchDarklyApi
         :'head' => :'String',
         :'update_sequence_id' => :'Integer',
         :'sync_time' => :'Integer',
-        :'references' => :'Array<ReferenceRep>'
+        :'references' => :'Array<ReferenceRep>',
+        :'commit_time' => :'Integer'
       }
     end
 
@@ -98,6 +102,10 @@ module LaunchDarklyApi
           self.references = value
         end
       end
+
+      if attributes.key?(:'commit_time')
+        self.commit_time = attributes[:'commit_time']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -137,7 +145,8 @@ module LaunchDarklyApi
           head == o.head &&
           update_sequence_id == o.update_sequence_id &&
           sync_time == o.sync_time &&
-          references == o.references
+          references == o.references &&
+          commit_time == o.commit_time
     end
 
     # @see the `==` method
@@ -149,7 +158,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, head, update_sequence_id, sync_time, references].hash
+      [name, head, update_sequence_id, sync_time, references, commit_time].hash
     end
 
     # Builds the object from hash

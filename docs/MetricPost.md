@@ -14,7 +14,7 @@
 | **is_numeric** | **Boolean** |  | [optional] |
 | **unit** | **String** |  | [optional] |
 | **event_key** | **String** | Required for custom metrics | [optional] |
-| **success_criteria** | **Integer** |  | [optional] |
+| **success_criteria** | **String** |  | [optional] |
 | **tags** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example

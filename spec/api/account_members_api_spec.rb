@@ -73,12 +73,25 @@ describe 'AccountMembersApi' do
 
   # unit tests for patch_member
   # Modify an account member
-  # Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member. Requests to update account members will not work if SCIM is enabled for the account.
+  #  Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member.  To update fields in the account member object that are arrays, set the &#x60;path&#x60; to the name of the field and then append &#x60;/&lt;array index&gt;&#x60;. Using &#x60;/0&#x60; appends to the beginning of the array. For example, to add a new custom role to a member, use the following request body:  &#x60;&#x60;&#x60;   [     {       \&quot;op\&quot;: \&quot;add\&quot;,       \&quot;path\&quot;: \&quot;/customRoles/0\&quot;,       \&quot;value\&quot;: \&quot;some-role-id\&quot;     }   ] &#x60;&#x60;&#x60;  Requests to update account members will not work if SCIM is enabled for the account. 
   # @param id The member ID
   # @param patch_operation 
   # @param [Hash] opts the optional parameters
   # @return [Member]
   describe 'patch_member test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for post_member_teams
+  # Add member to teams
+  # Add member to team(s)
+  # @param id The member ID
+  # @param member_teams_form_post 
+  # @param [Hash] opts the optional parameters
+  # @return [Member]
+  describe 'post_member_teams test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

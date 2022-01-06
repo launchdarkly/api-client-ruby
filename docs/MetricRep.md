@@ -19,7 +19,7 @@
 | **_maintainer** | [**MemberSummaryRep**](MemberSummaryRep.md) |  | [optional] |
 | **description** | **String** |  | [optional] |
 | **is_numeric** | **Boolean** |  | [optional] |
-| **success_criteria** | **Integer** |  | [optional] |
+| **success_criteria** | **String** |  | [optional] |
 | **unit** | **String** |  | [optional] |
 | **event_key** | **String** |  | [optional] |
 | **is_active** | **Boolean** |  | [optional] |

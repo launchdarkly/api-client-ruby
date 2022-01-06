@@ -92,6 +92,8 @@ describe 'CodeReferencesApi' do
   # @option opts [String] :branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions.
   # @option opts [String] :proj_key Filter results to a specific project
   # @option opts [String] :flag_key Filter results to a specific flag key
+  # @option opts [Integer] :from Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;to&#x60;.
+  # @option opts [Integer] :to Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;from&#x60;.
   # @return [ExtinctionCollectionRep]
   describe 'get_extinctions test' do
     it 'should work' do

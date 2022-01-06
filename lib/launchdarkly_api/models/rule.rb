@@ -27,6 +27,8 @@ module LaunchDarklyApi
 
     attr_accessor :description
 
+    attr_accessor :ref
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -35,7 +37,8 @@ module LaunchDarklyApi
         :'rollout' => :'rollout',
         :'clauses' => :'clauses',
         :'track_events' => :'trackEvents',
-        :'description' => :'description'
+        :'description' => :'description',
+        :'ref' => :'ref'
       }
     end
 
@@ -52,7 +55,8 @@ module LaunchDarklyApi
         :'rollout' => :'Rollout',
         :'clauses' => :'Array<Clause>',
         :'track_events' => :'Boolean',
-        :'description' => :'String'
+        :'description' => :'String',
+        :'ref' => :'String'
       }
     end
 
@@ -102,6 +106,10 @@ module LaunchDarklyApi
       if attributes.key?(:'description')
         self.description = attributes[:'description']
       end
+
+      if attributes.key?(:'ref')
+        self.ref = attributes[:'ref']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -137,7 +145,8 @@ module LaunchDarklyApi
           rollout == o.rollout &&
           clauses == o.clauses &&
           track_events == o.track_events &&
-          description == o.description
+          description == o.description &&
+          ref == o.ref
     end
 
     # @see the `==` method
@@ -149,7 +158,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_id, variation, rollout, clauses, track_events, description].hash
+      [_id, variation, rollout, clauses, track_events, description, ref].hash
     end
 
     # Builds the object from hash

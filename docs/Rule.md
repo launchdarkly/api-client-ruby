@@ -10,6 +10,7 @@
 | **clauses** | [**Array&lt;Clause&gt;**](Clause.md) |  |  |
 | **track_events** | **Boolean** |  |  |
 | **description** | **String** |  | [optional] |
+| **ref** | **String** |  | [optional] |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = LaunchDarklyApi::Rule.new(
   rollout: null,
   clauses: null,
   track_events: null,
-  description: null
+  description: null,
+  ref: null
 )
 ```
 
