@@ -11,5 +11,5 @@ OpenAPI Generator version: 5.3.0
 =end
 
 module LaunchDarklyApi
-  VERSION = '7.1.0'
+  VERSION = '7.1.1'
 end

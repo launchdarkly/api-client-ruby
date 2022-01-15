@@ -88,7 +88,7 @@ describe 'AccountMembersApi' do
   # Add member to teams
   # Add member to team(s)
   # @param id The member ID
-  # @param member_teams_form_post 
+  # @param member_teams_post_input 
   # @param [Hash] opts the optional parameters
   # @return [Member]
   describe 'post_member_teams test' do

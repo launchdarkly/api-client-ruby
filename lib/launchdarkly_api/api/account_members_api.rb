@@ -291,21 +291,21 @@ module LaunchDarklyApi
     # Add member to teams
     # Add member to team(s)
     # @param id [String] The member ID
-    # @param member_teams_form_post [MemberTeamsFormPost] 
+    # @param member_teams_post_input [MemberTeamsPostInput] 
     # @param [Hash] opts the optional parameters
     # @return [Member]
-    def post_member_teams(id, member_teams_form_post, opts = {})
-      data, _status_code, _headers = post_member_teams_with_http_info(id, member_teams_form_post, opts)
+    def post_member_teams(id, member_teams_post_input, opts = {})
+      data, _status_code, _headers = post_member_teams_with_http_info(id, member_teams_post_input, opts)
       data
     end
 
     # Add member to teams
     # Add member to team(s)
     # @param id [String] The member ID
-    # @param member_teams_form_post [MemberTeamsFormPost] 
+    # @param member_teams_post_input [MemberTeamsPostInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Member, Integer, Hash)>] Member data, response status code and response headers
-    def post_member_teams_with_http_info(id, member_teams_form_post, opts = {})
+    def post_member_teams_with_http_info(id, member_teams_post_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AccountMembersApi.post_member_teams ...'
       end
@@ -313,9 +313,9 @@ module LaunchDarklyApi
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling AccountMembersApi.post_member_teams"
       end
-      # verify the required parameter 'member_teams_form_post' is set
-      if @api_client.config.client_side_validation && member_teams_form_post.nil?
-        fail ArgumentError, "Missing the required parameter 'member_teams_form_post' when calling AccountMembersApi.post_member_teams"
+      # verify the required parameter 'member_teams_post_input' is set
+      if @api_client.config.client_side_validation && member_teams_post_input.nil?
+        fail ArgumentError, "Missing the required parameter 'member_teams_post_input' when calling AccountMembersApi.post_member_teams"
       end
       # resource path
       local_var_path = '/api/v2/members/{id}/teams'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
@@ -337,7 +337,7 @@ module LaunchDarklyApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(member_teams_form_post)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(member_teams_post_input)
 
       # return_type
       return_type = opts[:debug_return_type] || 'Member'

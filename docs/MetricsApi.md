@@ -233,7 +233,7 @@ end
 
 Update metric
 
-Patch a environment by key.
+Patch a metric by key.
 
 ### Examples
 

@@ -307,7 +307,7 @@ end
 
 ## post_member_teams
 
-> <Member> post_member_teams(id, member_teams_form_post)
+> <Member> post_member_teams(id, member_teams_post_input)
 
 Add member to teams
 
@@ -328,11 +328,11 @@ end
 
 api_instance = LaunchDarklyApi::AccountMembersApi.new
 id = 'id_example' # String | The member ID
-member_teams_form_post = LaunchDarklyApi::MemberTeamsFormPost.new({team_keys: ['team_keys_example']}) # MemberTeamsFormPost | 
+member_teams_post_input = LaunchDarklyApi::MemberTeamsPostInput.new({team_keys: ['team_keys_example']}) # MemberTeamsPostInput | 
 
 begin
   # Add member to teams
-  result = api_instance.post_member_teams(id, member_teams_form_post)
+  result = api_instance.post_member_teams(id, member_teams_post_input)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling AccountMembersApi->post_member_teams: #{e}"
@@ -343,12 +343,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Member>, Integer, Hash)> post_member_teams_with_http_info(id, member_teams_form_post)
+> <Array(<Member>, Integer, Hash)> post_member_teams_with_http_info(id, member_teams_post_input)
 
 ```ruby
 begin
   # Add member to teams
-  data, status_code, headers = api_instance.post_member_teams_with_http_info(id, member_teams_form_post)
+  data, status_code, headers = api_instance.post_member_teams_with_http_info(id, member_teams_post_input)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Member>
@@ -362,7 +362,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | The member ID |  |
-| **member_teams_form_post** | [**MemberTeamsFormPost**](MemberTeamsFormPost.md) |  |  |
+| **member_teams_post_input** | [**MemberTeamsPostInput**](MemberTeamsPostInput.md) |  |  |
 
 ### Return type
 

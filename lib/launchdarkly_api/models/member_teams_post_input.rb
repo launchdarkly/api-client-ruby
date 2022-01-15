@@ -10,266 +10,217 @@ OpenAPI Generator version: 5.3.0
 
 =end
 
-# Common files
-require 'launchdarkly_api/api_client'
-require 'launchdarkly_api/api_error'
-require 'launchdarkly_api/version'
-require 'launchdarkly_api/configuration'
-
-# Models
-require 'launchdarkly_api/models/access_denied_reason_rep'
-require 'launchdarkly_api/models/access_denied_rep'
-require 'launchdarkly_api/models/access_rep'
-require 'launchdarkly_api/models/access_token_post'
-require 'launchdarkly_api/models/action_input_rep'
-require 'launchdarkly_api/models/action_output_rep'
-require 'launchdarkly_api/models/approval_condition_input_rep'
-require 'launchdarkly_api/models/approval_condition_output_rep'
-require 'launchdarkly_api/models/approval_settings'
-require 'launchdarkly_api/models/audit_log_entry_listing_rep'
-require 'launchdarkly_api/models/audit_log_entry_listing_rep_collection'
-require 'launchdarkly_api/models/audit_log_entry_rep'
-require 'launchdarkly_api/models/authorized_app_data_rep'
-require 'launchdarkly_api/models/big_segment_target'
-require 'launchdarkly_api/models/branch_collection_rep'
-require 'launchdarkly_api/models/branch_rep'
-require 'launchdarkly_api/models/clause'
-require 'launchdarkly_api/models/client_side_availability'
-require 'launchdarkly_api/models/client_side_availability_post'
-require 'launchdarkly_api/models/condition_base_output_rep'
-require 'launchdarkly_api/models/condition_input_rep'
-require 'launchdarkly_api/models/condition_output_rep'
-require 'launchdarkly_api/models/confidence_interval_rep'
-require 'launchdarkly_api/models/conflict'
-require 'launchdarkly_api/models/conflict_output_rep'
-require 'launchdarkly_api/models/copied_from_env'
-require 'launchdarkly_api/models/create_copy_flag_config_approval_request_request'
-require 'launchdarkly_api/models/create_flag_config_approval_request_request'
-require 'launchdarkly_api/models/custom_property'
-require 'launchdarkly_api/models/custom_role'
-require 'launchdarkly_api/models/custom_role_post'
-require 'launchdarkly_api/models/custom_role_post_data'
-require 'launchdarkly_api/models/custom_roles'
-require 'launchdarkly_api/models/custom_roles_rep'
-require 'launchdarkly_api/models/custom_workflow_input_rep'
-require 'launchdarkly_api/models/custom_workflow_meta'
-require 'launchdarkly_api/models/custom_workflow_output_rep'
-require 'launchdarkly_api/models/custom_workflow_stage_meta'
-require 'launchdarkly_api/models/custom_workflows_listing_output_rep'
-require 'launchdarkly_api/models/default_client_side_availability_post'
-require 'launchdarkly_api/models/defaults'
-require 'launchdarkly_api/models/dependent_flag'
-require 'launchdarkly_api/models/dependent_flag_environment'
-require 'launchdarkly_api/models/dependent_flags_by_environment'
-require 'launchdarkly_api/models/derived_attribute'
-require 'launchdarkly_api/models/destination'
-require 'launchdarkly_api/models/destination_post'
-require 'launchdarkly_api/models/destinations'
-require 'launchdarkly_api/models/environment'
-require 'launchdarkly_api/models/environment_post'
-require 'launchdarkly_api/models/execution_output_rep'
-require 'launchdarkly_api/models/expanded_team_rep'
-require 'launchdarkly_api/models/experiment_allocation_rep'
-require 'launchdarkly_api/models/experiment_enabled_period_rep'
-require 'launchdarkly_api/models/experiment_environment_setting_rep'
-require 'launchdarkly_api/models/experiment_info_rep'
-require 'launchdarkly_api/models/experiment_metadata_rep'
-require 'launchdarkly_api/models/experiment_rep'
-require 'launchdarkly_api/models/experiment_results_rep'
-require 'launchdarkly_api/models/experiment_stats_rep'
-require 'launchdarkly_api/models/experiment_time_series_slice'
-require 'launchdarkly_api/models/experiment_time_series_variation_slice'
-require 'launchdarkly_api/models/experiment_totals_rep'
-require 'launchdarkly_api/models/expiring_user_target_error'
-require 'launchdarkly_api/models/expiring_user_target_get_response'
-require 'launchdarkly_api/models/expiring_user_target_item'
-require 'launchdarkly_api/models/expiring_user_target_patch_response'
-require 'launchdarkly_api/models/extinction'
-require 'launchdarkly_api/models/extinction_collection_rep'
-require 'launchdarkly_api/models/feature_flag'
-require 'launchdarkly_api/models/feature_flag_body'
-require 'launchdarkly_api/models/feature_flag_config'
-require 'launchdarkly_api/models/feature_flag_scheduled_change'
-require 'launchdarkly_api/models/feature_flag_scheduled_changes'
-require 'launchdarkly_api/models/feature_flag_status'
-require 'launchdarkly_api/models/feature_flag_status_across_environments'
-require 'launchdarkly_api/models/feature_flag_statuses'
-require 'launchdarkly_api/models/feature_flags'
-require 'launchdarkly_api/models/flag_config_approval_request_response'
-require 'launchdarkly_api/models/flag_config_approval_requests_response'
-require 'launchdarkly_api/models/flag_copy_config_environment'
-require 'launchdarkly_api/models/flag_copy_config_post'
-require 'launchdarkly_api/models/flag_global_attributes_rep'
-require 'launchdarkly_api/models/flag_listing_rep'
-require 'launchdarkly_api/models/flag_scheduled_changes_input'
-require 'launchdarkly_api/models/flag_status_rep'
-require 'launchdarkly_api/models/flag_summary'
-require 'launchdarkly_api/models/flag_trigger_input'
-require 'launchdarkly_api/models/forbidden_error_rep'
-require 'launchdarkly_api/models/hunk_rep'
-require 'launchdarkly_api/models/integration'
-require 'launchdarkly_api/models/integration_metadata'
-require 'launchdarkly_api/models/integration_status'
-require 'launchdarkly_api/models/integration_status_rep'
-require 'launchdarkly_api/models/integration_subscription_status_rep'
-require 'launchdarkly_api/models/integrations'
-require 'launchdarkly_api/models/invalid_request_error_rep'
-require 'launchdarkly_api/models/ip_list'
-require 'launchdarkly_api/models/last_seen_metadata'
-require 'launchdarkly_api/models/link'
-require 'launchdarkly_api/models/member'
-require 'launchdarkly_api/models/member_data_rep'
-require 'launchdarkly_api/models/member_import_item_rep'
-require 'launchdarkly_api/models/member_permission_grant_summary_rep'
-require 'launchdarkly_api/models/member_summary_rep'
-require 'launchdarkly_api/models/member_team_summary_rep'
-require 'launchdarkly_api/models/member_teams_post_input'
-require 'launchdarkly_api/models/members'
-require 'launchdarkly_api/models/method_not_allowed_error_rep'
-require 'launchdarkly_api/models/metric_collection_rep'
-require 'launchdarkly_api/models/metric_listing_rep'
-require 'launchdarkly_api/models/metric_post'
-require 'launchdarkly_api/models/metric_rep'
-require 'launchdarkly_api/models/metric_seen'
-require 'launchdarkly_api/models/modification'
-require 'launchdarkly_api/models/multi_environment_dependent_flag'
-require 'launchdarkly_api/models/multi_environment_dependent_flags'
-require 'launchdarkly_api/models/new_member_form'
-require 'launchdarkly_api/models/not_found_error_rep'
-require 'launchdarkly_api/models/parent_resource_rep'
-require 'launchdarkly_api/models/patch_failed_error_rep'
-require 'launchdarkly_api/models/patch_operation'
-require 'launchdarkly_api/models/patch_segment_instruction'
-require 'launchdarkly_api/models/patch_segment_request'
-require 'launchdarkly_api/models/patch_with_comment'
-require 'launchdarkly_api/models/permission_grant_input'
-require 'launchdarkly_api/models/permission_grant_rep'
-require 'launchdarkly_api/models/post_approval_request_apply_request'
-require 'launchdarkly_api/models/post_approval_request_review_request'
-require 'launchdarkly_api/models/post_flag_scheduled_changes_input'
-require 'launchdarkly_api/models/prerequisite'
-require 'launchdarkly_api/models/project'
-require 'launchdarkly_api/models/project_listing_rep'
-require 'launchdarkly_api/models/project_post'
-require 'launchdarkly_api/models/projects'
-require 'launchdarkly_api/models/pub_nub_detail_rep'
-require 'launchdarkly_api/models/put_branch'
-require 'launchdarkly_api/models/rate_limited_error_rep'
-require 'launchdarkly_api/models/recent_trigger_body'
-require 'launchdarkly_api/models/reference_rep'
-require 'launchdarkly_api/models/relay_auto_config_collection_rep'
-require 'launchdarkly_api/models/relay_auto_config_post'
-require 'launchdarkly_api/models/relay_auto_config_rep'
-require 'launchdarkly_api/models/repository_collection_rep'
-require 'launchdarkly_api/models/repository_post'
-require 'launchdarkly_api/models/repository_rep'
-require 'launchdarkly_api/models/resource_access'
-require 'launchdarkly_api/models/resource_id_response'
-require 'launchdarkly_api/models/review_output_rep'
-require 'launchdarkly_api/models/review_response'
-require 'launchdarkly_api/models/rollout'
-require 'launchdarkly_api/models/rule'
-require 'launchdarkly_api/models/schedule_condition_input_rep'
-require 'launchdarkly_api/models/schedule_condition_output_rep'
-require 'launchdarkly_api/models/sdk_list_rep'
-require 'launchdarkly_api/models/sdk_version_list_rep'
-require 'launchdarkly_api/models/sdk_version_rep'
-require 'launchdarkly_api/models/segment_body'
-require 'launchdarkly_api/models/segment_metadata'
-require 'launchdarkly_api/models/segment_user_list'
-require 'launchdarkly_api/models/segment_user_state'
-require 'launchdarkly_api/models/series_list_rep'
-require 'launchdarkly_api/models/source_flag'
-require 'launchdarkly_api/models/stage_input_rep'
-require 'launchdarkly_api/models/stage_output_rep'
-require 'launchdarkly_api/models/statement'
-require 'launchdarkly_api/models/statement_post'
-require 'launchdarkly_api/models/statement_post_data'
-require 'launchdarkly_api/models/statement_rep'
-require 'launchdarkly_api/models/statistic_collection_rep'
-require 'launchdarkly_api/models/statistic_rep'
-require 'launchdarkly_api/models/statistics_root'
-require 'launchdarkly_api/models/status_conflict_error_rep'
-require 'launchdarkly_api/models/subject_data_rep'
-require 'launchdarkly_api/models/subscription_post'
-require 'launchdarkly_api/models/target'
-require 'launchdarkly_api/models/target_resource_rep'
-require 'launchdarkly_api/models/team_collection_rep'
-require 'launchdarkly_api/models/team_imports_rep'
-require 'launchdarkly_api/models/team_patch_input'
-require 'launchdarkly_api/models/team_post_input'
-require 'launchdarkly_api/models/team_rep'
-require 'launchdarkly_api/models/title_rep'
-require 'launchdarkly_api/models/token'
-require 'launchdarkly_api/models/token_data_rep'
-require 'launchdarkly_api/models/tokens'
-require 'launchdarkly_api/models/trigger_post'
-require 'launchdarkly_api/models/trigger_workflow_collection_rep'
-require 'launchdarkly_api/models/trigger_workflow_rep'
-require 'launchdarkly_api/models/unauthorized_error_rep'
-require 'launchdarkly_api/models/url_post'
-require 'launchdarkly_api/models/user'
-require 'launchdarkly_api/models/user_attribute_names_rep'
-require 'launchdarkly_api/models/user_flag_setting'
-require 'launchdarkly_api/models/user_flag_settings'
-require 'launchdarkly_api/models/user_record'
-require 'launchdarkly_api/models/user_record_rep'
-require 'launchdarkly_api/models/user_segment'
-require 'launchdarkly_api/models/user_segment_rule'
-require 'launchdarkly_api/models/user_segments'
-require 'launchdarkly_api/models/users'
-require 'launchdarkly_api/models/value_put'
-require 'launchdarkly_api/models/variation'
-require 'launchdarkly_api/models/variation_or_rollout_rep'
-require 'launchdarkly_api/models/variation_summary'
-require 'launchdarkly_api/models/versions_rep'
-require 'launchdarkly_api/models/webhook'
-require 'launchdarkly_api/models/webhook_post'
-require 'launchdarkly_api/models/webhooks'
-require 'launchdarkly_api/models/weighted_variation'
-
-# APIs
-require 'launchdarkly_api/api/access_tokens_api'
-require 'launchdarkly_api/api/account_members_api'
-require 'launchdarkly_api/api/account_usage_beta_api'
-require 'launchdarkly_api/api/approvals_api'
-require 'launchdarkly_api/api/audit_log_api'
-require 'launchdarkly_api/api/code_references_api'
-require 'launchdarkly_api/api/custom_roles_api'
-require 'launchdarkly_api/api/data_export_destinations_api'
-require 'launchdarkly_api/api/environments_api'
-require 'launchdarkly_api/api/experiments_beta_api'
-require 'launchdarkly_api/api/feature_flags_api'
-require 'launchdarkly_api/api/feature_flags_beta_api'
-require 'launchdarkly_api/api/flag_triggers_api'
-require 'launchdarkly_api/api/integration_audit_log_subscriptions_api'
-require 'launchdarkly_api/api/metrics_api'
-require 'launchdarkly_api/api/other_api'
-require 'launchdarkly_api/api/projects_api'
-require 'launchdarkly_api/api/relay_proxy_configurations_api'
-require 'launchdarkly_api/api/scheduled_changes_api'
-require 'launchdarkly_api/api/segments_api'
-require 'launchdarkly_api/api/teams_beta_api'
-require 'launchdarkly_api/api/user_settings_api'
-require 'launchdarkly_api/api/users_api'
-require 'launchdarkly_api/api/users_beta_api'
-require 'launchdarkly_api/api/webhooks_api'
-require 'launchdarkly_api/api/workflows_beta_api'
+require 'date'
+require 'time'
 
 module LaunchDarklyApi
-  class << self
-    # Customize default settings for the SDK using block.
-    #   LaunchDarklyApi.configure do |config|
-    #     config.username = "xxx"
-    #     config.password = "xxx"
-    #   end
-    # If no block given, return the default Configuration object.
-    def configure
-      if block_given?
-        yield(Configuration.default)
-      else
-        Configuration.default
+  class MemberTeamsPostInput
+    # List of team keys
+    attr_accessor :team_keys
+
+    # Attribute mapping from ruby-style variable name to JSON key.
+    def self.attribute_map
+      {
+        :'team_keys' => :'teamKeys'
+      }
+    end
+
+    # Returns all the JSON keys this model knows about
+    def self.acceptable_attributes
+      attribute_map.values
+    end
+
+    # Attribute type mapping.
+    def self.openapi_types
+      {
+        :'team_keys' => :'Array<String>'
+      }
+    end
+
+    # List of attributes with nullable: true
+    def self.openapi_nullable
+      Set.new([
+      ])
+    end
+
+    # Initializes the object
+    # @param [Hash] attributes Model attributes in the form of hash
+    def initialize(attributes = {})
+      if (!attributes.is_a?(Hash))
+        fail ArgumentError, "The input argument (attributes) must be a hash in `LaunchDarklyApi::MemberTeamsPostInput` initialize method"
+      end
+
+      # check to see if the attribute exists and convert string to symbol for hash key
+      attributes = attributes.each_with_object({}) { |(k, v), h|
+        if (!self.class.attribute_map.key?(k.to_sym))
+          fail ArgumentError, "`#{k}` is not a valid attribute in `LaunchDarklyApi::MemberTeamsPostInput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+        end
+        h[k.to_sym] = v
+      }
+
+      if attributes.key?(:'team_keys')
+        if (value = attributes[:'team_keys']).is_a?(Array)
+          self.team_keys = value
+        end
       end
     end
+
+    # Show invalid properties with the reasons. Usually used together with valid?
+    # @return Array for valid properties with the reasons
+    def list_invalid_properties
+      invalid_properties = Array.new
+      if @team_keys.nil?
+        invalid_properties.push('invalid value for "team_keys", team_keys cannot be nil.')
+      end
+
+      invalid_properties
+    end
+
+    # Check to see if the all the properties in the model are valid
+    # @return true if the model is valid
+    def valid?
+      return false if @team_keys.nil?
+      true
+    end
+
+    # Checks equality by comparing each attribute.
+    # @param [Object] Object to be compared
+    def ==(o)
+      return true if self.equal?(o)
+      self.class == o.class &&
+          team_keys == o.team_keys
+    end
+
+    # @see the `==` method
+    # @param [Object] Object to be compared
+    def eql?(o)
+      self == o
+    end
+
+    # Calculates hash code according to all attributes.
+    # @return [Integer] Hash code
+    def hash
+      [team_keys].hash
+    end
+
+    # Builds the object from hash
+    # @param [Hash] attributes Model attributes in the form of hash
+    # @return [Object] Returns the model itself
+    def self.build_from_hash(attributes)
+      new.build_from_hash(attributes)
+    end
+
+    # Builds the object from hash
+    # @param [Hash] attributes Model attributes in the form of hash
+    # @return [Object] Returns the model itself
+    def build_from_hash(attributes)
+      return nil unless attributes.is_a?(Hash)
+      self.class.openapi_types.each_pair do |key, type|
+        if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
+          self.send("#{key}=", nil)
+        elsif type =~ /\AArray<(.*)>/i
+          # check to ensure the input is an array given that the attribute
+          # is documented as an array but the input is not
+          if attributes[self.class.attribute_map[key]].is_a?(Array)
+            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
+          end
+        elsif !attributes[self.class.attribute_map[key]].nil?
+          self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
+        end
+      end
+
+      self
+    end
+
+    # Deserializes the data based on type
+    # @param string type Data type
+    # @param string value Value to be deserialized
+    # @return [Object] Deserialized data
+    def _deserialize(type, value)
+      case type.to_sym
+      when :Time
+        Time.parse(value)
+      when :Date
+        Date.parse(value)
+      when :String
+        value.to_s
+      when :Integer
+        value.to_i
+      when :Float
+        value.to_f
+      when :Boolean
+        if value.to_s =~ /\A(true|t|yes|y|1)\z/i
+          true
+        else
+          false
+        end
+      when :Object
+        # generic object (usually a Hash), return directly
+        value
+      when /\AArray<(?<inner_type>.+)>\z/
+        inner_type = Regexp.last_match[:inner_type]
+        value.map { |v| _deserialize(inner_type, v) }
+      when /\AHash<(?<k_type>.+?), (?<v_type>.+)>\z/
+        k_type = Regexp.last_match[:k_type]
+        v_type = Regexp.last_match[:v_type]
+        {}.tap do |hash|
+          value.each do |k, v|
+            hash[_deserialize(k_type, k)] = _deserialize(v_type, v)
+          end
+        end
+      else # model
+        # models (e.g. Pet) or oneOf
+        klass = LaunchDarklyApi.const_get(type)
+        klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
+      end
+    end
+
+    # Returns the string representation of the object
+    # @return [String] String presentation of the object
+    def to_s
+      to_hash.to_s
+    end
+
+    # to_body is an alias to to_hash (backward compatibility)
+    # @return [Hash] Returns the object in the form of hash
+    def to_body
+      to_hash
+    end
+
+    # Returns the object in the form of hash
+    # @return [Hash] Returns the object in the form of hash
+    def to_hash
+      hash = {}
+      self.class.attribute_map.each_pair do |attr, param|
+        value = self.send(attr)
+        if value.nil?
+          is_nullable = self.class.openapi_nullable.include?(attr)
+          next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
+        end
+
+        hash[param] = _to_hash(value)
+      end
+      hash
+    end
+
+    # Outputs non-array value in the form of hash
+    # For object, use to_hash. Otherwise, just return the value
+    # @param [Object] value Any valid value
+    # @return [Hash] Returns the value in the form of hash
+    def _to_hash(value)
+      if value.is_a?(Array)
+        value.compact.map { |v| _to_hash(v) }
+      elsif value.is_a?(Hash)
+        {}.tap do |hash|
+          value.each { |k, v| hash[k] = _to_hash(v) }
+        end
+      elsif value.respond_to? :to_hash
+        value.to_hash
+      else
+        value
+      end
+    end
+
   end
+
 end

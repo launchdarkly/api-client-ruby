@@ -221,7 +221,7 @@ module LaunchDarklyApi
     end
 
     # Update metric
-    # Patch a environment by key.
+    # Patch a metric by key.
     # @param project_key [String] The project key
     # @param key [String] The metric key
     # @param patch_operation [Array<PatchOperation>] 
@@ -233,7 +233,7 @@ module LaunchDarklyApi
     end
 
     # Update metric
-    # Patch a environment by key.
+    # Patch a metric by key.
     # @param project_key [String] The project key
     # @param key [String] The metric key
     # @param patch_operation [Array<PatchOperation>] 

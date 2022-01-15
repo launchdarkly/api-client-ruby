@@ -126,7 +126,7 @@ docs/MemberImportItemRep.md
 docs/MemberPermissionGrantSummaryRep.md
 docs/MemberSummaryRep.md
 docs/MemberTeamSummaryRep.md
-docs/MemberTeamsFormPost.md
+docs/MemberTeamsPostInput.md
 docs/Members.md
 docs/MethodNotAllowedErrorRep.md
 docs/MetricCollectionRep.md
@@ -380,7 +380,7 @@ lib/launchdarkly_api/models/member_import_item_rep.rb
 lib/launchdarkly_api/models/member_permission_grant_summary_rep.rb
 lib/launchdarkly_api/models/member_summary_rep.rb
 lib/launchdarkly_api/models/member_team_summary_rep.rb
-lib/launchdarkly_api/models/member_teams_form_post.rb
+lib/launchdarkly_api/models/member_teams_post_input.rb
 lib/launchdarkly_api/models/members.rb
 lib/launchdarkly_api/models/method_not_allowed_error_rep.rb
 lib/launchdarkly_api/models/metric_collection_rep.rb
@@ -619,7 +619,7 @@ spec/models/member_permission_grant_summary_rep_spec.rb
 spec/models/member_spec.rb
 spec/models/member_summary_rep_spec.rb
 spec/models/member_team_summary_rep_spec.rb
-spec/models/member_teams_form_post_spec.rb
+spec/models/member_teams_post_input_spec.rb
 spec/models/members_spec.rb
 spec/models/method_not_allowed_error_rep_spec.rb
 spec/models/metric_collection_rep_spec.rb

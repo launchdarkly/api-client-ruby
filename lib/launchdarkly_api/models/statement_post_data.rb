@@ -110,14 +110,6 @@ module LaunchDarklyApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @resources.nil?
-        invalid_properties.push('invalid value for "resources", resources cannot be nil.')
-      end
-
-      if @actions.nil?
-        invalid_properties.push('invalid value for "actions", actions cannot be nil.')
-      end
-
       if @effect.nil?
         invalid_properties.push('invalid value for "effect", effect cannot be nil.')
       end
@@ -128,8 +120,6 @@ module LaunchDarklyApi
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @resources.nil?
-      return false if @actions.nil?
       return false if @effect.nil?
       true
     end

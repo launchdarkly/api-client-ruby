@@ -72,7 +72,7 @@ describe 'MetricsApi' do
 
   # unit tests for patch_metric
   # Update metric
-  # Patch a environment by key.
+  # Patch a metric by key.
   # @param project_key The project key
   # @param key The metric key
   # @param patch_operation 
