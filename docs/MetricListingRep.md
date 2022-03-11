@@ -11,12 +11,12 @@
 | **_attached_flag_count** | **Integer** |  | [optional] |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
 | **_site** | [**Link**](Link.md) |  | [optional] |
-| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **_access** | [**Access**](Access.md) |  | [optional] |
 | **tags** | **Array&lt;String&gt;** |  |  |
 | **_creation_date** | **Integer** |  |  |
 | **last_modified** | [**Modification**](Modification.md) |  | [optional] |
 | **maintainer_id** | **String** |  | [optional] |
-| **_maintainer** | [**MemberSummaryRep**](MemberSummaryRep.md) |  | [optional] |
+| **_maintainer** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
 | **description** | **String** |  | [optional] |
 | **is_numeric** | **Boolean** |  | [optional] |
 | **success_criteria** | **String** |  | [optional] |

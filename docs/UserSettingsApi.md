@@ -4,16 +4,16 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**get_expiring_flags_for_user**](UserSettingsApi.md#get_expiring_flags_for_user) | **GET** /api/v2/users/{projKey}/{userKey}/expiring-user-targets/{envKey} | Get expiring dates on flags for user |
-| [**get_user_flag_setting**](UserSettingsApi.md#get_user_flag_setting) | **GET** /api/v2/users/{projKey}/{envKey}/{key}/flags/{featureKey} | Get flag setting for user |
-| [**get_user_flag_settings**](UserSettingsApi.md#get_user_flag_settings) | **GET** /api/v2/users/{projKey}/{envKey}/{key}/flags | List flag settings for user |
-| [**patch_expiring_flags_for_user**](UserSettingsApi.md#patch_expiring_flags_for_user) | **PATCH** /api/v2/users/{projKey}/{userKey}/expiring-user-targets/{envKey} | Update expiring user target for flags |
-| [**put_flag_setting**](UserSettingsApi.md#put_flag_setting) | **PUT** /api/v2/users/{projKey}/{envKey}/{key}/flags/{featureKey} | Update flag settings for user |
+| [**get_expiring_flags_for_user**](UserSettingsApi.md#get_expiring_flags_for_user) | **GET** /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey} | Get expiring dates on flags for user |
+| [**get_user_flag_setting**](UserSettingsApi.md#get_user_flag_setting) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Get flag setting for user |
+| [**get_user_flag_settings**](UserSettingsApi.md#get_user_flag_settings) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags | List flag settings for user |
+| [**patch_expiring_flags_for_user**](UserSettingsApi.md#patch_expiring_flags_for_user) | **PATCH** /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey} | Update expiring user target for flags |
+| [**put_flag_setting**](UserSettingsApi.md#put_flag_setting) | **PUT** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Update flag settings for user |
 
 
 ## get_expiring_flags_for_user
 
-> <ExpiringUserTargetGetResponse> get_expiring_flags_for_user(proj_key, user_key, env_key)
+> <ExpiringUserTargetGetResponse> get_expiring_flags_for_user(project_key, user_key, environment_key)
 
 Get expiring dates on flags for user
 
@@ -33,13 +33,13 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::UserSettingsApi.new
-proj_key = 'proj_key_example' # String | The project key.
-user_key = 'user_key_example' # String | The user key.
-env_key = 'env_key_example' # String | The environment key.
+project_key = 'project_key_example' # String | The project key
+user_key = 'user_key_example' # String | The user key
+environment_key = 'environment_key_example' # String | The environment key
 
 begin
   # Get expiring dates on flags for user
-  result = api_instance.get_expiring_flags_for_user(proj_key, user_key, env_key)
+  result = api_instance.get_expiring_flags_for_user(project_key, user_key, environment_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling UserSettingsApi->get_expiring_flags_for_user: #{e}"
@@ -50,12 +50,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ExpiringUserTargetGetResponse>, Integer, Hash)> get_expiring_flags_for_user_with_http_info(proj_key, user_key, env_key)
+> <Array(<ExpiringUserTargetGetResponse>, Integer, Hash)> get_expiring_flags_for_user_with_http_info(project_key, user_key, environment_key)
 
 ```ruby
 begin
   # Get expiring dates on flags for user
-  data, status_code, headers = api_instance.get_expiring_flags_for_user_with_http_info(proj_key, user_key, env_key)
+  data, status_code, headers = api_instance.get_expiring_flags_for_user_with_http_info(project_key, user_key, environment_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ExpiringUserTargetGetResponse>
@@ -68,9 +68,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key. |  |
-| **user_key** | **String** | The user key. |  |
-| **env_key** | **String** | The environment key. |  |
+| **project_key** | **String** | The project key |  |
+| **user_key** | **String** | The user key |  |
+| **environment_key** | **String** | The environment key |  |
 
 ### Return type
 
@@ -88,7 +88,7 @@ end
 
 ## get_user_flag_setting
 
-> <UserFlagSetting> get_user_flag_setting(proj_key, env_key, key, feature_key)
+> <UserFlagSetting> get_user_flag_setting(project_key, environment_key, user_key, feature_flag_key)
 
 Get flag setting for user
 
@@ -108,14 +108,14 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::UserSettingsApi.new
-proj_key = 'proj_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
-key = 'key_example' # String | The user key
-feature_key = 'feature_key_example' # String | The feature flag key
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
+user_key = 'user_key_example' # String | The user key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 
 begin
   # Get flag setting for user
-  result = api_instance.get_user_flag_setting(proj_key, env_key, key, feature_key)
+  result = api_instance.get_user_flag_setting(project_key, environment_key, user_key, feature_flag_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling UserSettingsApi->get_user_flag_setting: #{e}"
@@ -126,12 +126,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UserFlagSetting>, Integer, Hash)> get_user_flag_setting_with_http_info(proj_key, env_key, key, feature_key)
+> <Array(<UserFlagSetting>, Integer, Hash)> get_user_flag_setting_with_http_info(project_key, environment_key, user_key, feature_flag_key)
 
 ```ruby
 begin
   # Get flag setting for user
-  data, status_code, headers = api_instance.get_user_flag_setting_with_http_info(proj_key, env_key, key, feature_key)
+  data, status_code, headers = api_instance.get_user_flag_setting_with_http_info(project_key, environment_key, user_key, feature_flag_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <UserFlagSetting>
@@ -144,10 +144,10 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
-| **key** | **String** | The user key |  |
-| **feature_key** | **String** | The feature flag key |  |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
+| **user_key** | **String** | The user key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 
 ### Return type
 
@@ -165,7 +165,7 @@ end
 
 ## get_user_flag_settings
 
-> <UserFlagSettings> get_user_flag_settings(proj_key, env_key, key)
+> <UserFlagSettings> get_user_flag_settings(project_key, environment_key, user_key)
 
 List flag settings for user
 
@@ -185,13 +185,13 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::UserSettingsApi.new
-proj_key = 'proj_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
-key = 'key_example' # String | The user key
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
+user_key = 'user_key_example' # String | The user key
 
 begin
   # List flag settings for user
-  result = api_instance.get_user_flag_settings(proj_key, env_key, key)
+  result = api_instance.get_user_flag_settings(project_key, environment_key, user_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling UserSettingsApi->get_user_flag_settings: #{e}"
@@ -202,12 +202,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UserFlagSettings>, Integer, Hash)> get_user_flag_settings_with_http_info(proj_key, env_key, key)
+> <Array(<UserFlagSettings>, Integer, Hash)> get_user_flag_settings_with_http_info(project_key, environment_key, user_key)
 
 ```ruby
 begin
   # List flag settings for user
-  data, status_code, headers = api_instance.get_user_flag_settings_with_http_info(proj_key, env_key, key)
+  data, status_code, headers = api_instance.get_user_flag_settings_with_http_info(project_key, environment_key, user_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <UserFlagSettings>
@@ -220,9 +220,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
-| **key** | **String** | The user key |  |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
+| **user_key** | **String** | The user key |  |
 
 ### Return type
 
@@ -240,7 +240,7 @@ end
 
 ## patch_expiring_flags_for_user
 
-> <ExpiringUserTargetPatchResponse> patch_expiring_flags_for_user(proj_key, user_key, env_key, patch_with_comment)
+> <ExpiringUserTargetPatchResponse> patch_expiring_flags_for_user(project_key, user_key, environment_key, patch_with_comment)
 
 Update expiring user target for flags
 
@@ -260,14 +260,14 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::UserSettingsApi.new
-proj_key = 'proj_key_example' # String | The project key.
-user_key = 'user_key_example' # String | The user key.
-env_key = 'env_key_example' # String | The environment key.
-patch_with_comment = LaunchDarklyApi::PatchWithComment.new({patch: [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})]}) # PatchWithComment | 
+project_key = 'project_key_example' # String | The project key
+user_key = 'user_key_example' # String | The user key
+environment_key = 'environment_key_example' # String | The environment key
+patch_with_comment = LaunchDarklyApi::PatchWithComment.new({patch: [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})]}) # PatchWithComment | 
 
 begin
   # Update expiring user target for flags
-  result = api_instance.patch_expiring_flags_for_user(proj_key, user_key, env_key, patch_with_comment)
+  result = api_instance.patch_expiring_flags_for_user(project_key, user_key, environment_key, patch_with_comment)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling UserSettingsApi->patch_expiring_flags_for_user: #{e}"
@@ -278,12 +278,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ExpiringUserTargetPatchResponse>, Integer, Hash)> patch_expiring_flags_for_user_with_http_info(proj_key, user_key, env_key, patch_with_comment)
+> <Array(<ExpiringUserTargetPatchResponse>, Integer, Hash)> patch_expiring_flags_for_user_with_http_info(project_key, user_key, environment_key, patch_with_comment)
 
 ```ruby
 begin
   # Update expiring user target for flags
-  data, status_code, headers = api_instance.patch_expiring_flags_for_user_with_http_info(proj_key, user_key, env_key, patch_with_comment)
+  data, status_code, headers = api_instance.patch_expiring_flags_for_user_with_http_info(project_key, user_key, environment_key, patch_with_comment)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ExpiringUserTargetPatchResponse>
@@ -296,9 +296,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key. |  |
-| **user_key** | **String** | The user key. |  |
-| **env_key** | **String** | The environment key. |  |
+| **project_key** | **String** | The project key |  |
+| **user_key** | **String** | The user key |  |
+| **environment_key** | **String** | The environment key |  |
 | **patch_with_comment** | [**PatchWithComment**](PatchWithComment.md) |  |  |
 
 ### Return type
@@ -317,7 +317,7 @@ end
 
 ## put_flag_setting
 
-> put_flag_setting(proj_key, env_key, key, feature_key, value_put)
+> put_flag_setting(project_key, environment_key, user_key, feature_flag_key, value_put)
 
 Update flag settings for user
 
@@ -337,15 +337,15 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::UserSettingsApi.new
-proj_key = 'proj_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
-key = 'key_example' # String | The user key
-feature_key = 'feature_key_example' # String | The feature flag key
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
+user_key = 'user_key_example' # String | The user key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 value_put = LaunchDarklyApi::ValuePut.new # ValuePut | 
 
 begin
   # Update flag settings for user
-  api_instance.put_flag_setting(proj_key, env_key, key, feature_key, value_put)
+  api_instance.put_flag_setting(project_key, environment_key, user_key, feature_flag_key, value_put)
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling UserSettingsApi->put_flag_setting: #{e}"
 end
@@ -355,12 +355,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> put_flag_setting_with_http_info(proj_key, env_key, key, feature_key, value_put)
+> <Array(nil, Integer, Hash)> put_flag_setting_with_http_info(project_key, environment_key, user_key, feature_flag_key, value_put)
 
 ```ruby
 begin
   # Update flag settings for user
-  data, status_code, headers = api_instance.put_flag_setting_with_http_info(proj_key, env_key, key, feature_key, value_put)
+  data, status_code, headers = api_instance.put_flag_setting_with_http_info(project_key, environment_key, user_key, feature_flag_key, value_put)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -373,10 +373,10 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
-| **key** | **String** | The user key |  |
-| **feature_key** | **String** | The feature flag key |  |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
+| **user_key** | **String** | The user key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **value_put** | [**ValuePut**](ValuePut.md) |  |  |
 
 ### Return type

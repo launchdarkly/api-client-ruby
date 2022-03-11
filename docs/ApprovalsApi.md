@@ -36,7 +36,7 @@ end
 
 api_instance = LaunchDarklyApi::ApprovalsApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 id = 'id_example' # String | The feature flag approval request ID
 
@@ -71,7 +71,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 | **id** | **String** | The feature flag approval request ID |  |
 
@@ -112,7 +112,7 @@ end
 
 api_instance = LaunchDarklyApi::ApprovalsApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 id = 'id_example' # String | The feature flag approval request ID
 
@@ -148,7 +148,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 | **id** | **String** | The feature flag approval request ID |  |
 
@@ -189,7 +189,7 @@ end
 
 api_instance = LaunchDarklyApi::ApprovalsApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 
 begin
@@ -224,7 +224,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 
 ### Return type
@@ -264,7 +264,7 @@ end
 
 api_instance = LaunchDarklyApi::ApprovalsApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 create_flag_config_approval_request_request = LaunchDarklyApi::CreateFlagConfigApprovalRequestRequest.new({description: 'description_example', instructions: [{ key: 3.56}], notify_member_ids: ['notify_member_ids_example']}) # CreateFlagConfigApprovalRequestRequest | 
 
@@ -300,7 +300,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 | **create_flag_config_approval_request_request** | [**CreateFlagConfigApprovalRequestRequest**](CreateFlagConfigApprovalRequestRequest.md) |  |  |
 
@@ -341,7 +341,7 @@ end
 
 api_instance = LaunchDarklyApi::ApprovalsApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 id = 'id_example' # String | The feature flag approval request ID
 post_approval_request_apply_request = LaunchDarklyApi::PostApprovalRequestApplyRequest.new # PostApprovalRequestApplyRequest | 
@@ -378,7 +378,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 | **id** | **String** | The feature flag approval request ID |  |
 | **post_approval_request_apply_request** | [**PostApprovalRequestApplyRequest**](PostApprovalRequestApplyRequest.md) |  |  |
@@ -420,7 +420,7 @@ end
 
 api_instance = LaunchDarklyApi::ApprovalsApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 id = 'id_example' # String | The feature flag approval request ID
 post_approval_request_review_request = LaunchDarklyApi::PostApprovalRequestReviewRequest.new # PostApprovalRequestReviewRequest | 
@@ -457,7 +457,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 | **id** | **String** | The feature flag approval request ID |  |
 | **post_approval_request_review_request** | [**PostApprovalRequestReviewRequest**](PostApprovalRequestReviewRequest.md) |  |  |
@@ -499,7 +499,7 @@ end
 
 api_instance = LaunchDarklyApi::ApprovalsApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 create_copy_flag_config_approval_request_request = LaunchDarklyApi::CreateCopyFlagConfigApprovalRequestRequest.new({description: 'description_example', notify_member_ids: ['notify_member_ids_example'], source: LaunchDarklyApi::SourceFlag.new({key: 'key_example'})}) # CreateCopyFlagConfigApprovalRequestRequest | 
 
@@ -535,7 +535,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 | **create_copy_flag_config_approval_request_request** | [**CreateCopyFlagConfigApprovalRequestRequest**](CreateCopyFlagConfigApprovalRequestRequest.md) |  |  |
 

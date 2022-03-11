@@ -255,7 +255,7 @@ end
 
 api_instance = LaunchDarklyApi::AccountMembersApi.new
 id = 'id_example' # String | The member ID
-patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})] # Array<PatchOperation> | 
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
 
 begin
   # Modify an account member

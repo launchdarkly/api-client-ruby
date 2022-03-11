@@ -11,7 +11,7 @@
 | **version** | **Float** |  | [optional] |
 | **config** | **Object** |  | [optional] |
 | **on** | **Boolean** |  | [optional] |
-| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **_access** | [**Access**](Access.md) |  | [optional] |
 
 ## Example
 

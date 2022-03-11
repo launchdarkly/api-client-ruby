@@ -4,17 +4,19 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**delete_team**](TeamsBetaApi.md#delete_team) | **DELETE** /api/v2/teams/{key} | Delete team |
-| [**get_team**](TeamsBetaApi.md#get_team) | **GET** /api/v2/teams/{key} | Get team |
+| [**delete_team**](TeamsBetaApi.md#delete_team) | **DELETE** /api/v2/teams/{teamKey} | Delete team |
+| [**get_team**](TeamsBetaApi.md#get_team) | **GET** /api/v2/teams/{teamKey} | Get team |
+| [**get_team_maintainers**](TeamsBetaApi.md#get_team_maintainers) | **GET** /api/v2/teams/{teamKey}/maintainers | Get team maintainers |
+| [**get_team_roles**](TeamsBetaApi.md#get_team_roles) | **GET** /api/v2/teams/{teamKey}/roles | Get team custom roles |
 | [**get_teams**](TeamsBetaApi.md#get_teams) | **GET** /api/v2/teams | List teams |
-| [**patch_team**](TeamsBetaApi.md#patch_team) | **PATCH** /api/v2/teams/{key} | Update team |
+| [**patch_team**](TeamsBetaApi.md#patch_team) | **PATCH** /api/v2/teams/{teamKey} | Update team |
 | [**post_team**](TeamsBetaApi.md#post_team) | **POST** /api/v2/teams | Create team |
-| [**post_team_members**](TeamsBetaApi.md#post_team_members) | **POST** /api/v2/teams/{key}/members | Add members to team |
+| [**post_team_members**](TeamsBetaApi.md#post_team_members) | **POST** /api/v2/teams/{teamKey}/members | Add members to team |
 
 
 ## delete_team
 
-> delete_team(key)
+> delete_team(team_key)
 
 Delete team
 
@@ -34,11 +36,11 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::TeamsBetaApi.new
-key = 'key_example' # String | The team key
+team_key = 'team_key_example' # String | The team key
 
 begin
   # Delete team
-  api_instance.delete_team(key)
+  api_instance.delete_team(team_key)
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling TeamsBetaApi->delete_team: #{e}"
 end
@@ -48,12 +50,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_team_with_http_info(key)
+> <Array(nil, Integer, Hash)> delete_team_with_http_info(team_key)
 
 ```ruby
 begin
   # Delete team
-  data, status_code, headers = api_instance.delete_team_with_http_info(key)
+  data, status_code, headers = api_instance.delete_team_with_http_info(team_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -66,7 +68,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** | The team key |  |
+| **team_key** | **String** | The team key |  |
 
 ### Return type
 
@@ -84,7 +86,7 @@ nil (empty response body)
 
 ## get_team
 
-> <ExpandedTeamRep> get_team(key)
+> <Team> get_team(team_key)
 
 Get team
 
@@ -104,11 +106,11 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::TeamsBetaApi.new
-key = 'key_example' # String | The team key
+team_key = 'team_key_example' # String | The team key
 
 begin
   # Get team
-  result = api_instance.get_team(key)
+  result = api_instance.get_team(team_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling TeamsBetaApi->get_team: #{e}"
@@ -119,15 +121,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ExpandedTeamRep>, Integer, Hash)> get_team_with_http_info(key)
+> <Array(<Team>, Integer, Hash)> get_team_with_http_info(team_key)
 
 ```ruby
 begin
   # Get team
-  data, status_code, headers = api_instance.get_team_with_http_info(key)
+  data, status_code, headers = api_instance.get_team_with_http_info(team_key)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ExpandedTeamRep>
+  p data # => <Team>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling TeamsBetaApi->get_team_with_http_info: #{e}"
 end
@@ -137,11 +139,165 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** | The team key |  |
+| **team_key** | **String** | The team key |  |
 
 ### Return type
 
-[**ExpandedTeamRep**](ExpandedTeamRep.md)
+[**Team**](Team.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_team_maintainers
+
+> <TeamMaintainers> get_team_maintainers(team_key, opts)
+
+Get team maintainers
+
+Fetch the maintainers that have been assigned to the team.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::TeamsBetaApi.new
+team_key = 'team_key_example' # String | The team key
+opts = {
+  limit: 789, # Integer | The number of maintainers to return in the response. Defaults to 20.
+  offset: 789 # Integer | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next `limit` items.
+}
+
+begin
+  # Get team maintainers
+  result = api_instance.get_team_maintainers(team_key, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling TeamsBetaApi->get_team_maintainers: #{e}"
+end
+```
+
+#### Using the get_team_maintainers_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamMaintainers>, Integer, Hash)> get_team_maintainers_with_http_info(team_key, opts)
+
+```ruby
+begin
+  # Get team maintainers
+  data, status_code, headers = api_instance.get_team_maintainers_with_http_info(team_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamMaintainers>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling TeamsBetaApi->get_team_maintainers_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **team_key** | **String** | The team key |  |
+| **limit** | **Integer** | The number of maintainers to return in the response. Defaults to 20. | [optional] |
+| **offset** | **Integer** | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next &#x60;limit&#x60; items. | [optional] |
+
+### Return type
+
+[**TeamMaintainers**](TeamMaintainers.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_team_roles
+
+> <TeamCustomRoles> get_team_roles(team_key, opts)
+
+Get team custom roles
+
+Fetch the custom roles that have been assigned to the team.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::TeamsBetaApi.new
+team_key = 'team_key_example' # String | The team key
+opts = {
+  limit: 789, # Integer | The number of roles to return in the response. Defaults to 20.
+  offset: 789 # Integer | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next `limit` items.
+}
+
+begin
+  # Get team custom roles
+  result = api_instance.get_team_roles(team_key, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling TeamsBetaApi->get_team_roles: #{e}"
+end
+```
+
+#### Using the get_team_roles_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamCustomRoles>, Integer, Hash)> get_team_roles_with_http_info(team_key, opts)
+
+```ruby
+begin
+  # Get team custom roles
+  data, status_code, headers = api_instance.get_team_roles_with_http_info(team_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamCustomRoles>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling TeamsBetaApi->get_team_roles_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **team_key** | **String** | The team key |  |
+| **limit** | **Integer** | The number of roles to return in the response. Defaults to 20. | [optional] |
+| **offset** | **Integer** | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next &#x60;limit&#x60; items. | [optional] |
+
+### Return type
+
+[**TeamCustomRoles**](TeamCustomRoles.md)
 
 ### Authorization
 
@@ -155,7 +311,7 @@ end
 
 ## get_teams
 
-> <TeamCollectionRep> get_teams(opts)
+> <Teams> get_teams(opts)
 
 List teams
 
@@ -194,7 +350,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<TeamCollectionRep>, Integer, Hash)> get_teams_with_http_info(opts)
+> <Array(<Teams>, Integer, Hash)> get_teams_with_http_info(opts)
 
 ```ruby
 begin
@@ -202,7 +358,7 @@ begin
   data, status_code, headers = api_instance.get_teams_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <TeamCollectionRep>
+  p data # => <Teams>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling TeamsBetaApi->get_teams_with_http_info: #{e}"
 end
@@ -218,7 +374,7 @@ end
 
 ### Return type
 
-[**TeamCollectionRep**](TeamCollectionRep.md)
+[**Teams**](Teams.md)
 
 ### Authorization
 
@@ -232,7 +388,7 @@ end
 
 ## patch_team
 
-> <ExpandedTeamRep> patch_team(key, team_patch_input)
+> <Team> patch_team(team_key, team_patch_input)
 
 Update team
 
@@ -252,12 +408,12 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::TeamsBetaApi.new
-key = 'key_example' # String | The team key
+team_key = 'team_key_example' # String | The team key
 team_patch_input = LaunchDarklyApi::TeamPatchInput.new # TeamPatchInput | 
 
 begin
   # Update team
-  result = api_instance.patch_team(key, team_patch_input)
+  result = api_instance.patch_team(team_key, team_patch_input)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling TeamsBetaApi->patch_team: #{e}"
@@ -268,15 +424,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ExpandedTeamRep>, Integer, Hash)> patch_team_with_http_info(key, team_patch_input)
+> <Array(<Team>, Integer, Hash)> patch_team_with_http_info(team_key, team_patch_input)
 
 ```ruby
 begin
   # Update team
-  data, status_code, headers = api_instance.patch_team_with_http_info(key, team_patch_input)
+  data, status_code, headers = api_instance.patch_team_with_http_info(team_key, team_patch_input)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ExpandedTeamRep>
+  p data # => <Team>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling TeamsBetaApi->patch_team_with_http_info: #{e}"
 end
@@ -286,12 +442,12 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** | The team key |  |
+| **team_key** | **String** | The team key |  |
 | **team_patch_input** | [**TeamPatchInput**](TeamPatchInput.md) |  |  |
 
 ### Return type
 
-[**ExpandedTeamRep**](ExpandedTeamRep.md)
+[**Team**](Team.md)
 
 ### Authorization
 
@@ -305,7 +461,7 @@ end
 
 ## post_team
 
-> <TeamRep> post_team(team_post_input)
+> <Team> post_team(team_post_input)
 
 Create team
 
@@ -340,7 +496,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<TeamRep>, Integer, Hash)> post_team_with_http_info(team_post_input)
+> <Array(<Team>, Integer, Hash)> post_team_with_http_info(team_post_input)
 
 ```ruby
 begin
@@ -348,7 +504,7 @@ begin
   data, status_code, headers = api_instance.post_team_with_http_info(team_post_input)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <TeamRep>
+  p data # => <Team>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling TeamsBetaApi->post_team_with_http_info: #{e}"
 end
@@ -362,7 +518,7 @@ end
 
 ### Return type
 
-[**TeamRep**](TeamRep.md)
+[**Team**](Team.md)
 
 ### Authorization
 
@@ -376,7 +532,7 @@ end
 
 ## post_team_members
 
-> <TeamImportsRep> post_team_members(key, opts)
+> <TeamImportsRep> post_team_members(team_key, opts)
 
 Add members to team
 
@@ -396,14 +552,14 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::TeamsBetaApi.new
-key = 'key_example' # String | The team key
+team_key = 'team_key_example' # String | The team key
 opts = {
   file: File.new('/path/to/some/file') # File | CSV file containing email addresses
 }
 
 begin
   # Add members to team
-  result = api_instance.post_team_members(key, opts)
+  result = api_instance.post_team_members(team_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling TeamsBetaApi->post_team_members: #{e}"
@@ -414,12 +570,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<TeamImportsRep>, Integer, Hash)> post_team_members_with_http_info(key, opts)
+> <Array(<TeamImportsRep>, Integer, Hash)> post_team_members_with_http_info(team_key, opts)
 
 ```ruby
 begin
   # Add members to team
-  data, status_code, headers = api_instance.post_team_members_with_http_info(key, opts)
+  data, status_code, headers = api_instance.post_team_members_with_http_info(team_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <TeamImportsRep>
@@ -432,7 +588,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** | The team key |  |
+| **team_key** | **String** | The team key |  |
 | **file** | **File** | CSV file containing email addresses | [optional] |
 
 ### Return type

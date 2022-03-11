@@ -4,13 +4,13 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**get_experiment**](ExperimentsBetaApi.md#get_experiment) | **GET** /api/v2/flags/{projKey}/{flagKey}/experiments/{envKey}/{metricKey} | Get experiment results |
-| [**reset_experiment**](ExperimentsBetaApi.md#reset_experiment) | **DELETE** /api/v2/flags/{projKey}/{flagKey}/experiments/{envKey}/{metricKey}/results | Reset experiment results |
+| [**get_experiment**](ExperimentsBetaApi.md#get_experiment) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get experiment results |
+| [**reset_experiment**](ExperimentsBetaApi.md#reset_experiment) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey}/results | Reset experiment results |
 
 
 ## get_experiment
 
-> <ExperimentResultsRep> get_experiment(proj_key, flag_key, env_key, metric_key, opts)
+> <ExperimentResultsRep> get_experiment(project_key, feature_flag_key, environment_key, metric_key, opts)
 
 Get experiment results
 
@@ -30,9 +30,9 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
-proj_key = 'proj_key_example' # String | The project key
-flag_key = 'flag_key_example' # String | The flag key
-env_key = 'env_key_example' # String | The environment key
+project_key = 'project_key_example' # String | The project key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
+environment_key = 'environment_key_example' # String | The environment key
 metric_key = 'metric_key_example' # String | The metric key
 opts = {
   from: 789, # Integer | A timestamp denoting the start of the data collection period, expressed as a Unix epoch time in milliseconds.
@@ -41,7 +41,7 @@ opts = {
 
 begin
   # Get experiment results
-  result = api_instance.get_experiment(proj_key, flag_key, env_key, metric_key, opts)
+  result = api_instance.get_experiment(project_key, feature_flag_key, environment_key, metric_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ExperimentsBetaApi->get_experiment: #{e}"
@@ -52,12 +52,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ExperimentResultsRep>, Integer, Hash)> get_experiment_with_http_info(proj_key, flag_key, env_key, metric_key, opts)
+> <Array(<ExperimentResultsRep>, Integer, Hash)> get_experiment_with_http_info(project_key, feature_flag_key, environment_key, metric_key, opts)
 
 ```ruby
 begin
   # Get experiment results
-  data, status_code, headers = api_instance.get_experiment_with_http_info(proj_key, flag_key, env_key, metric_key, opts)
+  data, status_code, headers = api_instance.get_experiment_with_http_info(project_key, feature_flag_key, environment_key, metric_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ExperimentResultsRep>
@@ -70,9 +70,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **flag_key** | **String** | The flag key |  |
-| **env_key** | **String** | The environment key |  |
+| **project_key** | **String** | The project key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
+| **environment_key** | **String** | The environment key |  |
 | **metric_key** | **String** | The metric key |  |
 | **from** | **Integer** | A timestamp denoting the start of the data collection period, expressed as a Unix epoch time in milliseconds. | [optional] |
 | **to** | **Integer** | A timestamp denoting the end of the data collection period, expressed as a Unix epoch time in milliseconds. | [optional] |
@@ -93,7 +93,7 @@ end
 
 ## reset_experiment
 
-> reset_experiment(proj_key, flag_key, env_key, metric_key)
+> reset_experiment(project_key, feature_flag_key, environment_key, metric_key)
 
 Reset experiment results
 
@@ -113,14 +113,14 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
-proj_key = 'proj_key_example' # String | The project key
-flag_key = 'flag_key_example' # String | The feature flag's key
-env_key = 'env_key_example' # String | The environment key
+project_key = 'project_key_example' # String | The project key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
+environment_key = 'environment_key_example' # String | The environment key
 metric_key = 'metric_key_example' # String | The metric's key
 
 begin
   # Reset experiment results
-  api_instance.reset_experiment(proj_key, flag_key, env_key, metric_key)
+  api_instance.reset_experiment(project_key, feature_flag_key, environment_key, metric_key)
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ExperimentsBetaApi->reset_experiment: #{e}"
 end
@@ -130,12 +130,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> reset_experiment_with_http_info(proj_key, flag_key, env_key, metric_key)
+> <Array(nil, Integer, Hash)> reset_experiment_with_http_info(project_key, feature_flag_key, environment_key, metric_key)
 
 ```ruby
 begin
   # Reset experiment results
-  data, status_code, headers = api_instance.reset_experiment_with_http_info(proj_key, flag_key, env_key, metric_key)
+  data, status_code, headers = api_instance.reset_experiment_with_http_info(project_key, feature_flag_key, environment_key, metric_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -148,9 +148,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **flag_key** | **String** | The feature flag&#39;s key |  |
-| **env_key** | **String** | The environment key |  |
+| **project_key** | **String** | The project key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
+| **environment_key** | **String** | The environment key |  |
 | **metric_key** | **String** | The metric&#39;s key |  |
 
 ### Return type

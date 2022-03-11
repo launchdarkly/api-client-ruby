@@ -12,7 +12,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_repositories**](CodeReferencesApi.md#get_repositories) | **GET** /api/v2/code-refs/repositories | List repositories |
 | [**get_repository**](CodeReferencesApi.md#get_repository) | **GET** /api/v2/code-refs/repositories/{repo} | Get repository |
 | [**get_root_statistic**](CodeReferencesApi.md#get_root_statistic) | **GET** /api/v2/code-refs/statistics | Get links to code reference repositories for each project |
-| [**get_statistics**](CodeReferencesApi.md#get_statistics) | **GET** /api/v2/code-refs/statistics/{projKey} | Get number of code references for flags |
+| [**get_statistics**](CodeReferencesApi.md#get_statistics) | **GET** /api/v2/code-refs/statistics/{projectKey} | Get number of code references for flags |
 | [**patch_repository**](CodeReferencesApi.md#patch_repository) | **PATCH** /api/v2/code-refs/repositories/{repo} | Update repository |
 | [**post_extinction**](CodeReferencesApi.md#post_extinction) | **POST** /api/v2/code-refs/repositories/{repo}/branches/{branch}/extinction-events | Create extinction |
 | [**post_repository**](CodeReferencesApi.md#post_repository) | **POST** /api/v2/code-refs/repositories | Create repository |
@@ -614,7 +614,7 @@ This endpoint does not need any parameter.
 
 ## get_statistics
 
-> <StatisticCollectionRep> get_statistics(proj_key, opts)
+> <StatisticCollectionRep> get_statistics(project_key, opts)
 
 Get number of code references for flags
 
@@ -634,14 +634,14 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::CodeReferencesApi.new
-proj_key = 'proj_key_example' # String | The project key
+project_key = 'project_key_example' # String | The project key
 opts = {
   flag_key: 'flag_key_example' # String | Filter results to a specific flag key
 }
 
 begin
   # Get number of code references for flags
-  result = api_instance.get_statistics(proj_key, opts)
+  result = api_instance.get_statistics(project_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling CodeReferencesApi->get_statistics: #{e}"
@@ -652,12 +652,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<StatisticCollectionRep>, Integer, Hash)> get_statistics_with_http_info(proj_key, opts)
+> <Array(<StatisticCollectionRep>, Integer, Hash)> get_statistics_with_http_info(project_key, opts)
 
 ```ruby
 begin
   # Get number of code references for flags
-  data, status_code, headers = api_instance.get_statistics_with_http_info(proj_key, opts)
+  data, status_code, headers = api_instance.get_statistics_with_http_info(project_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <StatisticCollectionRep>
@@ -670,7 +670,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
+| **project_key** | **String** | The project key |  |
 | **flag_key** | **String** | Filter results to a specific flag key | [optional] |
 
 ### Return type
@@ -710,7 +710,7 @@ end
 
 api_instance = LaunchDarklyApi::CodeReferencesApi.new
 repo = 'repo_example' # String | The repository name
-patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})] # Array<PatchOperation> | 
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
 
 begin
   # Update repository

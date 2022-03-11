@@ -243,7 +243,7 @@ end
 
 api_instance = LaunchDarklyApi::ProjectsApi.new
 project_key = 'project_key_example' # String | The project key
-patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})] # Array<PatchOperation> | 
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
 
 begin
   # Update project

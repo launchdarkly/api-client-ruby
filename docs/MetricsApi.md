@@ -4,16 +4,16 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**delete_metric**](MetricsApi.md#delete_metric) | **DELETE** /api/v2/metrics/{projectKey}/{key} | Delete metric |
-| [**get_metric**](MetricsApi.md#get_metric) | **GET** /api/v2/metrics/{projectKey}/{key} | Get metric |
+| [**delete_metric**](MetricsApi.md#delete_metric) | **DELETE** /api/v2/metrics/{projectKey}/{metricKey} | Delete metric |
+| [**get_metric**](MetricsApi.md#get_metric) | **GET** /api/v2/metrics/{projectKey}/{metricKey} | Get metric |
 | [**get_metrics**](MetricsApi.md#get_metrics) | **GET** /api/v2/metrics/{projectKey} | List metrics |
-| [**patch_metric**](MetricsApi.md#patch_metric) | **PATCH** /api/v2/metrics/{projectKey}/{key} | Update metric |
+| [**patch_metric**](MetricsApi.md#patch_metric) | **PATCH** /api/v2/metrics/{projectKey}/{metricKey} | Update metric |
 | [**post_metric**](MetricsApi.md#post_metric) | **POST** /api/v2/metrics/{projectKey} | Create metric |
 
 
 ## delete_metric
 
-> delete_metric(project_key, key)
+> delete_metric(project_key, metric_key)
 
 Delete metric
 
@@ -34,11 +34,11 @@ end
 
 api_instance = LaunchDarklyApi::MetricsApi.new
 project_key = 'project_key_example' # String | The project key
-key = 'key_example' # String | The metric key
+metric_key = 'metric_key_example' # String | The metric key
 
 begin
   # Delete metric
-  api_instance.delete_metric(project_key, key)
+  api_instance.delete_metric(project_key, metric_key)
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling MetricsApi->delete_metric: #{e}"
 end
@@ -48,12 +48,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_metric_with_http_info(project_key, key)
+> <Array(nil, Integer, Hash)> delete_metric_with_http_info(project_key, metric_key)
 
 ```ruby
 begin
   # Delete metric
-  data, status_code, headers = api_instance.delete_metric_with_http_info(project_key, key)
+  data, status_code, headers = api_instance.delete_metric_with_http_info(project_key, metric_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -67,7 +67,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **key** | **String** | The metric key |  |
+| **metric_key** | **String** | The metric key |  |
 
 ### Return type
 
@@ -85,7 +85,7 @@ nil (empty response body)
 
 ## get_metric
 
-> <MetricRep> get_metric(project_key, key)
+> <MetricRep> get_metric(project_key, metric_key)
 
 Get metric
 
@@ -106,11 +106,11 @@ end
 
 api_instance = LaunchDarklyApi::MetricsApi.new
 project_key = 'project_key_example' # String | The project key
-key = 'key_example' # String | The metric key
+metric_key = 'metric_key_example' # String | The metric key
 
 begin
   # Get metric
-  result = api_instance.get_metric(project_key, key)
+  result = api_instance.get_metric(project_key, metric_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling MetricsApi->get_metric: #{e}"
@@ -121,12 +121,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<MetricRep>, Integer, Hash)> get_metric_with_http_info(project_key, key)
+> <Array(<MetricRep>, Integer, Hash)> get_metric_with_http_info(project_key, metric_key)
 
 ```ruby
 begin
   # Get metric
-  data, status_code, headers = api_instance.get_metric_with_http_info(project_key, key)
+  data, status_code, headers = api_instance.get_metric_with_http_info(project_key, metric_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <MetricRep>
@@ -140,7 +140,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **key** | **String** | The metric key |  |
+| **metric_key** | **String** | The metric key |  |
 
 ### Return type
 
@@ -229,7 +229,7 @@ end
 
 ## patch_metric
 
-> <MetricRep> patch_metric(project_key, key, patch_operation)
+> <MetricRep> patch_metric(project_key, metric_key, patch_operation)
 
 Update metric
 
@@ -250,12 +250,12 @@ end
 
 api_instance = LaunchDarklyApi::MetricsApi.new
 project_key = 'project_key_example' # String | The project key
-key = 'key_example' # String | The metric key
-patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})] # Array<PatchOperation> | 
+metric_key = 'metric_key_example' # String | The metric key
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
 
 begin
   # Update metric
-  result = api_instance.patch_metric(project_key, key, patch_operation)
+  result = api_instance.patch_metric(project_key, metric_key, patch_operation)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling MetricsApi->patch_metric: #{e}"
@@ -266,12 +266,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<MetricRep>, Integer, Hash)> patch_metric_with_http_info(project_key, key, patch_operation)
+> <Array(<MetricRep>, Integer, Hash)> patch_metric_with_http_info(project_key, metric_key, patch_operation)
 
 ```ruby
 begin
   # Update metric
-  data, status_code, headers = api_instance.patch_metric_with_http_info(project_key, key, patch_operation)
+  data, status_code, headers = api_instance.patch_metric_with_http_info(project_key, metric_key, patch_operation)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <MetricRep>
@@ -285,7 +285,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **key** | **String** | The metric key |  |
+| **metric_key** | **String** | The metric key |  |
 | **patch_operation** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md) |  |  |
 
 ### Return type

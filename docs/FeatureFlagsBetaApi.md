@@ -4,13 +4,13 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**get_dependent_flags**](FeatureFlagsBetaApi.md#get_dependent_flags) | **GET** /api/v2/flags/{projKey}/{flagKey}/dependent-flags | List dependent feature flags |
-| [**get_dependent_flags_by_env**](FeatureFlagsBetaApi.md#get_dependent_flags_by_env) | **GET** /api/v2/flags/{projKey}/{envKey}/{flagKey}/dependent-flags | List dependent feature flags by environment |
+| [**get_dependent_flags**](FeatureFlagsBetaApi.md#get_dependent_flags) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/dependent-flags | List dependent feature flags |
+| [**get_dependent_flags_by_env**](FeatureFlagsBetaApi.md#get_dependent_flags_by_env) | **GET** /api/v2/flags/{projectKey}/{environmentKey}/{featureFlagKey}/dependent-flags | List dependent feature flags by environment |
 
 
 ## get_dependent_flags
 
-> <MultiEnvironmentDependentFlags> get_dependent_flags(proj_key, flag_key)
+> <MultiEnvironmentDependentFlags> get_dependent_flags(project_key, feature_flag_key)
 
 List dependent feature flags
 
@@ -30,12 +30,12 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::FeatureFlagsBetaApi.new
-proj_key = 'proj_key_example' # String | The project key
-flag_key = 'flag_key_example' # String | The flag key
+project_key = 'project_key_example' # String | The project key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 
 begin
   # List dependent feature flags
-  result = api_instance.get_dependent_flags(proj_key, flag_key)
+  result = api_instance.get_dependent_flags(project_key, feature_flag_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling FeatureFlagsBetaApi->get_dependent_flags: #{e}"
@@ -46,12 +46,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<MultiEnvironmentDependentFlags>, Integer, Hash)> get_dependent_flags_with_http_info(proj_key, flag_key)
+> <Array(<MultiEnvironmentDependentFlags>, Integer, Hash)> get_dependent_flags_with_http_info(project_key, feature_flag_key)
 
 ```ruby
 begin
   # List dependent feature flags
-  data, status_code, headers = api_instance.get_dependent_flags_with_http_info(proj_key, flag_key)
+  data, status_code, headers = api_instance.get_dependent_flags_with_http_info(project_key, feature_flag_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <MultiEnvironmentDependentFlags>
@@ -64,8 +64,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **flag_key** | **String** | The flag key |  |
+| **project_key** | **String** | The project key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 
 ### Return type
 
@@ -83,7 +83,7 @@ end
 
 ## get_dependent_flags_by_env
 
-> <DependentFlagsByEnvironment> get_dependent_flags_by_env(proj_key, env_key, flag_key)
+> <DependentFlagsByEnvironment> get_dependent_flags_by_env(project_key, environment_key, feature_flag_key)
 
 List dependent feature flags by environment
 
@@ -103,13 +103,13 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::FeatureFlagsBetaApi.new
-proj_key = 'proj_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
-flag_key = 'flag_key_example' # String | The flag key
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 
 begin
   # List dependent feature flags by environment
-  result = api_instance.get_dependent_flags_by_env(proj_key, env_key, flag_key)
+  result = api_instance.get_dependent_flags_by_env(project_key, environment_key, feature_flag_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling FeatureFlagsBetaApi->get_dependent_flags_by_env: #{e}"
@@ -120,12 +120,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DependentFlagsByEnvironment>, Integer, Hash)> get_dependent_flags_by_env_with_http_info(proj_key, env_key, flag_key)
+> <Array(<DependentFlagsByEnvironment>, Integer, Hash)> get_dependent_flags_by_env_with_http_info(project_key, environment_key, feature_flag_key)
 
 ```ruby
 begin
   # List dependent feature flags by environment
-  data, status_code, headers = api_instance.get_dependent_flags_by_env_with_http_info(proj_key, env_key, flag_key)
+  data, status_code, headers = api_instance.get_dependent_flags_by_env_with_http_info(project_key, environment_key, feature_flag_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <DependentFlagsByEnvironment>
@@ -138,9 +138,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
-| **flag_key** | **String** | The flag key |  |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 
 ### Return type
 

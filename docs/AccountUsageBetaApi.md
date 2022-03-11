@@ -4,7 +4,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**get_evaluations_usage**](AccountUsageBetaApi.md#get_evaluations_usage) | **GET** /api/v2/usage/evaluations/{projKey}/{envKey}/{flagKey} | Get evaluations usage |
+| [**get_evaluations_usage**](AccountUsageBetaApi.md#get_evaluations_usage) | **GET** /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey} | Get evaluations usage |
 | [**get_events_usage**](AccountUsageBetaApi.md#get_events_usage) | **GET** /api/v2/usage/events/{type} | Get events usage |
 | [**get_mau_sdks_by_type**](AccountUsageBetaApi.md#get_mau_sdks_by_type) | **GET** /api/v2/usage/mau/sdks | Get MAU SDKs by type |
 | [**get_mau_usage**](AccountUsageBetaApi.md#get_mau_usage) | **GET** /api/v2/usage/mau | Get MAU usage |
@@ -16,7 +16,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 ## get_evaluations_usage
 
-> <SeriesListRep> get_evaluations_usage(proj_key, env_key, flag_key, opts)
+> <SeriesListRep> get_evaluations_usage(project_key, environment_key, feature_flag_key, opts)
 
 Get evaluations usage
 
@@ -36,9 +36,9 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
-proj_key = 'proj_key_example' # String | The project key.
-env_key = 'env_key_example' # String | The environment key.
-flag_key = 'flag_key_example' # String | The feature flag's key.
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 opts = {
   from: 'from_example', # String | The series of data returned starts from this timestamp. Defaults to 30 days ago.
   to: 'to_example', # String | The series of data returned ends at this timestamp. Defaults to the current time.
@@ -47,7 +47,7 @@ opts = {
 
 begin
   # Get evaluations usage
-  result = api_instance.get_evaluations_usage(proj_key, env_key, flag_key, opts)
+  result = api_instance.get_evaluations_usage(project_key, environment_key, feature_flag_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling AccountUsageBetaApi->get_evaluations_usage: #{e}"
@@ -58,12 +58,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SeriesListRep>, Integer, Hash)> get_evaluations_usage_with_http_info(proj_key, env_key, flag_key, opts)
+> <Array(<SeriesListRep>, Integer, Hash)> get_evaluations_usage_with_http_info(project_key, environment_key, feature_flag_key, opts)
 
 ```ruby
 begin
   # Get evaluations usage
-  data, status_code, headers = api_instance.get_evaluations_usage_with_http_info(proj_key, env_key, flag_key, opts)
+  data, status_code, headers = api_instance.get_evaluations_usage_with_http_info(project_key, environment_key, feature_flag_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SeriesListRep>
@@ -76,9 +76,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key. |  |
-| **env_key** | **String** | The environment key. |  |
-| **flag_key** | **String** | The feature flag&#39;s key. |  |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **from** | **String** | The series of data returned starts from this timestamp. Defaults to 30 days ago. | [optional] |
 | **to** | **String** | The series of data returned ends at this timestamp. Defaults to the current time. | [optional] |
 | **tz** | **String** | The timezone to use for breaks between days when returning daily data. | [optional] |

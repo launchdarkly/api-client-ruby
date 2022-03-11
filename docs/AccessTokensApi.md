@@ -249,7 +249,7 @@ end
 
 api_instance = LaunchDarklyApi::AccessTokensApi.new
 id = 'id_example' # String | The ID of the access token to update
-patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})] # Array<PatchOperation> | 
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
 
 begin
   # Patch access token

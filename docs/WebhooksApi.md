@@ -243,7 +243,7 @@ end
 
 api_instance = LaunchDarklyApi::WebhooksApi.new
 id = 'id_example' # String | The ID of the webhook to update
-patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})] # Array<PatchOperation> | 
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
 
 begin
   # Update webhook

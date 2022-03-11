@@ -10,7 +10,7 @@
 | **user** | [**User**](User.md) |  | [optional] |
 | **sort_value** | **Object** |  | [optional] |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
-| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **_access** | [**Access**](Access.md) |  | [optional] |
 
 ## Example
 

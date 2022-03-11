@@ -4,15 +4,15 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**delete_user**](UsersApi.md#delete_user) | **DELETE** /api/v2/users/{projKey}/{envKey}/{key} | Delete user |
-| [**get_search_users**](UsersApi.md#get_search_users) | **GET** /api/v2/user-search/{projKey}/{envKey} | Find users |
-| [**get_user**](UsersApi.md#get_user) | **GET** /api/v2/users/{projKey}/{envKey}/{key} | Get user |
-| [**get_users**](UsersApi.md#get_users) | **GET** /api/v2/users/{projKey}/{envKey} | List users |
+| [**delete_user**](UsersApi.md#delete_user) | **DELETE** /api/v2/users/{projectKey}/{environmentKey}/{userKey} | Delete user |
+| [**get_search_users**](UsersApi.md#get_search_users) | **GET** /api/v2/user-search/{projectKey}/{environmentKey} | Find users |
+| [**get_user**](UsersApi.md#get_user) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey} | Get user |
+| [**get_users**](UsersApi.md#get_users) | **GET** /api/v2/users/{projectKey}/{environmentKey} | List users |
 
 
 ## delete_user
 
-> delete_user(proj_key, env_key, key)
+> delete_user(project_key, environment_key, user_key)
 
 Delete user
 
@@ -32,13 +32,13 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::UsersApi.new
-proj_key = 'proj_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
-key = 'key_example' # String | The user key
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
+user_key = 'user_key_example' # String | The user key
 
 begin
   # Delete user
-  api_instance.delete_user(proj_key, env_key, key)
+  api_instance.delete_user(project_key, environment_key, user_key)
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling UsersApi->delete_user: #{e}"
 end
@@ -48,12 +48,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_user_with_http_info(proj_key, env_key, key)
+> <Array(nil, Integer, Hash)> delete_user_with_http_info(project_key, environment_key, user_key)
 
 ```ruby
 begin
   # Delete user
-  data, status_code, headers = api_instance.delete_user_with_http_info(proj_key, env_key, key)
+  data, status_code, headers = api_instance.delete_user_with_http_info(project_key, environment_key, user_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -66,9 +66,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
-| **key** | **String** | The user key |  |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
+| **user_key** | **String** | The user key |  |
 
 ### Return type
 
@@ -86,11 +86,11 @@ nil (empty response body)
 
 ## get_search_users
 
-> <Users> get_search_users(proj_key, env_key, opts)
+> <Users> get_search_users(project_key, environment_key, opts)
 
 Find users
 
-Search users in LaunchDarkly based on their last active date, a user attribute filter set, or a search query. Do not use to list all users in LaunchDarkly. Instead, use the [List users](getUsers) API resource.  An example user attribute filter set is `filter=firstName:Anna,activeTrial:false`. This matches users that have the user attribute `firstName` set to `Anna`, that also have the attribute `activeTrial` set to `false`.  > ### `offset` is deprecated > > `offset` is deprecated and will be removed in a future API version. You can still use `offset` and `limit` for pagination, but we recommend you use `sort` and `searchAfter` instead. `searchAfter` allows you to page through more than 10,000 users, but `offset` and `limit` do not. 
+Search users in LaunchDarkly based on their last active date, a user attribute filter set, or a search query.  An example user attribute filter set is `filter=firstName:Anna,activeTrial:false`. This matches users that have the user attribute `firstName` set to `Anna`, that also have the attribute `activeTrial` set to `false`.  To paginate through results, follow the `next` link in the `_links` object. To learn more, read [Representations](/#section/Representations).  > ### `offset` is deprecated > > `offset` is deprecated and will be removed in a future API version. You can still use `offset` and `limit` for pagination, but we recommend you use `sort` and `searchAfter` instead. `searchAfter` allows you to page through more than 10,000 users, but `offset` and `limit` do not. 
 
 ### Examples
 
@@ -106,8 +106,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::UsersApi.new
-proj_key = 'proj_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
 opts = {
   q: 'q_example', # String | Full-text search for users based on name, first name, last name, e-mail address, or key
   limit: 789, # Integer | Specifies the maximum number of items in the collection to return (max: 50, default: 20)
@@ -120,7 +120,7 @@ opts = {
 
 begin
   # Find users
-  result = api_instance.get_search_users(proj_key, env_key, opts)
+  result = api_instance.get_search_users(project_key, environment_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling UsersApi->get_search_users: #{e}"
@@ -131,12 +131,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Users>, Integer, Hash)> get_search_users_with_http_info(proj_key, env_key, opts)
+> <Array(<Users>, Integer, Hash)> get_search_users_with_http_info(project_key, environment_key, opts)
 
 ```ruby
 begin
   # Find users
-  data, status_code, headers = api_instance.get_search_users_with_http_info(proj_key, env_key, opts)
+  data, status_code, headers = api_instance.get_search_users_with_http_info(project_key, environment_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Users>
@@ -149,8 +149,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
 | **q** | **String** | Full-text search for users based on name, first name, last name, e-mail address, or key | [optional] |
 | **limit** | **Integer** | Specifies the maximum number of items in the collection to return (max: 50, default: 20) | [optional] |
 | **offset** | **Integer** | Specifies the first item to return in the collection | [optional] |
@@ -175,7 +175,7 @@ end
 
 ## get_user
 
-> <UserRecord> get_user(proj_key, env_key, key)
+> <UserRecord> get_user(project_key, environment_key, user_key)
 
 Get user
 
@@ -195,13 +195,13 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::UsersApi.new
-proj_key = 'proj_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
-key = 'key_example' # String | The user key
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
+user_key = 'user_key_example' # String | The user key
 
 begin
   # Get user
-  result = api_instance.get_user(proj_key, env_key, key)
+  result = api_instance.get_user(project_key, environment_key, user_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling UsersApi->get_user: #{e}"
@@ -212,12 +212,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UserRecord>, Integer, Hash)> get_user_with_http_info(proj_key, env_key, key)
+> <Array(<UserRecord>, Integer, Hash)> get_user_with_http_info(project_key, environment_key, user_key)
 
 ```ruby
 begin
   # Get user
-  data, status_code, headers = api_instance.get_user_with_http_info(proj_key, env_key, key)
+  data, status_code, headers = api_instance.get_user_with_http_info(project_key, environment_key, user_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <UserRecord>
@@ -230,9 +230,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
-| **key** | **String** | The user key |  |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
+| **user_key** | **String** | The user key |  |
 
 ### Return type
 
@@ -250,7 +250,7 @@ end
 
 ## get_users
 
-> <Users> get_users(proj_key, env_key, opts)
+> <Users> get_users(project_key, environment_key, opts)
 
 List users
 
@@ -270,8 +270,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::UsersApi.new
-proj_key = 'proj_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
 opts = {
   limit: 789, # Integer | The number of elements to return per page
   search_after: 'search_after_example' # String | Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the `next` link we provide instead.
@@ -279,7 +279,7 @@ opts = {
 
 begin
   # List users
-  result = api_instance.get_users(proj_key, env_key, opts)
+  result = api_instance.get_users(project_key, environment_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling UsersApi->get_users: #{e}"
@@ -290,12 +290,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Users>, Integer, Hash)> get_users_with_http_info(proj_key, env_key, opts)
+> <Array(<Users>, Integer, Hash)> get_users_with_http_info(project_key, environment_key, opts)
 
 ```ruby
 begin
   # List users
-  data, status_code, headers = api_instance.get_users_with_http_info(proj_key, env_key, opts)
+  data, status_code, headers = api_instance.get_users_with_http_info(project_key, environment_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Users>
@@ -308,8 +308,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
 | **limit** | **Integer** | The number of elements to return per page | [optional] |
 | **search_after** | **String** | Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the &#x60;next&#x60; link we provide instead. | [optional] |
 

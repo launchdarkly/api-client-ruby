@@ -15,8 +15,8 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::PatchOperation.new(
   op: replace,
-  path: /biscuits,
-  value: Chocolate Digestive
+  path: /exampleField,
+  value: new example value
 )
 ```
 

@@ -8,7 +8,7 @@
 | **_version** | **Integer** |  | [optional] |
 | **_creation_date** | **Integer** |  | [optional] |
 | **_maintainer_id** | **String** |  | [optional] |
-| **_maintainer** | [**MemberSummaryRep**](MemberSummaryRep.md) |  | [optional] |
+| **_maintainer** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **_integration_key** | **String** |  | [optional] |
 | **instructions** | **Array&lt;Hash&gt;** |  | [optional] |

@@ -324,7 +324,7 @@ end
 api_instance = LaunchDarklyApi::IntegrationAuditLogSubscriptionsApi.new
 integration_key = 'integration_key_example' # String | The integration key
 id = 'id_example' # String | The ID of the audit log subscription
-patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})] # Array<PatchOperation> | 
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
 
 begin
   # Update audit log subscription

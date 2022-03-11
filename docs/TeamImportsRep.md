@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;MemberImportItemRep&gt;**](MemberImportItemRep.md) |  | [optional] |
+| **items** | [**Array&lt;MemberImportItem&gt;**](MemberImportItem.md) |  | [optional] |
 
 ## Example
 

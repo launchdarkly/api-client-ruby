@@ -34,7 +34,7 @@ end
 
 api_instance = LaunchDarklyApi::ScheduledChangesApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 id = 'id_example' # String | The scheduled change id
 
@@ -69,7 +69,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 | **id** | **String** | The scheduled change id |  |
 
@@ -110,7 +110,7 @@ end
 
 api_instance = LaunchDarklyApi::ScheduledChangesApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 id = 'id_example' # String | The scheduled change id
 
@@ -146,7 +146,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 | **id** | **String** | The scheduled change id |  |
 
@@ -187,7 +187,7 @@ end
 
 api_instance = LaunchDarklyApi::ScheduledChangesApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 
 begin
@@ -222,7 +222,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 
 ### Return type
@@ -262,7 +262,7 @@ end
 
 api_instance = LaunchDarklyApi::ScheduledChangesApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 id = 'id_example' # String | The scheduled change ID
 flag_scheduled_changes_input = LaunchDarklyApi::FlagScheduledChangesInput.new({instructions: [{ key: 3.56}]}) # FlagScheduledChangesInput | 
@@ -302,7 +302,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 | **id** | **String** | The scheduled change ID |  |
 | **flag_scheduled_changes_input** | [**FlagScheduledChangesInput**](FlagScheduledChangesInput.md) |  |  |
@@ -345,7 +345,7 @@ end
 
 api_instance = LaunchDarklyApi::ScheduledChangesApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 post_flag_scheduled_changes_input = LaunchDarklyApi::PostFlagScheduledChangesInput.new({execution_date: 3.56, instructions: [{ key: 3.56}]}) # PostFlagScheduledChangesInput | 
 opts = {
@@ -384,7 +384,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 | **post_flag_scheduled_changes_input** | [**PostFlagScheduledChangesInput**](PostFlagScheduledChangesInput.md) |  |  |
 | **ignore_conflicts** | **Boolean** | Whether or not to succeed or fail when the new instructions conflict with existing scheduled changes | [optional] |

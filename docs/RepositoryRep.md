@@ -14,7 +14,7 @@
 | **version** | **Integer** | The version of the repository&#39;s saved information |  |
 | **branches** | [**Array&lt;BranchRep&gt;**](BranchRep.md) | An array of the repository&#39;s branches that have been scanned for code references | [optional] |
 | **_links** | **Hash&lt;String, Object&gt;** |  |  |
-| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **_access** | [**Access**](Access.md) |  | [optional] |
 
 ## Example
 

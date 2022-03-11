@@ -18,7 +18,7 @@
 | **tags** | **Array&lt;String&gt;** | Tags for the feature flag |  |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
 | **maintainer_id** | **String** | Associated maintainerId for the feature flag | [optional] |
-| **_maintainer** | [**MemberSummaryRep**](MemberSummaryRep.md) |  | [optional] |
+| **_maintainer** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
 | **goal_ids** | **Array&lt;String&gt;** |  | [optional] |
 | **experiments** | [**ExperimentInfoRep**](ExperimentInfoRep.md) |  |  |
 | **custom_properties** | [**Hash&lt;String, CustomProperty&gt;**](CustomProperty.md) |  |  |

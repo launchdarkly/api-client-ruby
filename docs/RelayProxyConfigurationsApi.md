@@ -244,7 +244,7 @@ end
 
 api_instance = LaunchDarklyApi::RelayProxyConfigurationsApi.new
 id = 'id_example' # String | The relay auto config id
-patch_with_comment = LaunchDarklyApi::PatchWithComment.new({patch: [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})]}) # PatchWithComment | 
+patch_with_comment = LaunchDarklyApi::PatchWithComment.new({patch: [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})]}) # PatchWithComment | 
 
 begin
   # Update a Relay Proxy config

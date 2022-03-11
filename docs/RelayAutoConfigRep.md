@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **_id** | **String** |  |  |
-| **_creator** | [**MemberSummaryRep**](MemberSummaryRep.md) |  | [optional] |
-| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **_creator** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
+| **_access** | [**Access**](Access.md) |  | [optional] |
 | **name** | **String** |  |  |
 | **policy** | [**Array&lt;StatementRep&gt;**](StatementRep.md) |  |  |
 | **full_key** | **String** |  |  |

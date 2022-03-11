@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **_id** | **String** |  |  |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
-| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **_access** | [**Access**](Access.md) |  | [optional] |
 | **description** | **String** |  | [optional] |
 | **key** | **String** |  |  |
 | **name** | **String** |  |  |

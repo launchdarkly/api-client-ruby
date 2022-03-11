@@ -7,7 +7,7 @@
 | **_id** | **String** |  |  |
 | **owner_id** | **String** |  |  |
 | **member_id** | **String** |  |  |
-| **_member** | [**MemberSummaryRep**](MemberSummaryRep.md) |  | [optional] |
+| **_member** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
 | **creation_date** | **Integer** |  |  |

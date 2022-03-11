@@ -4,16 +4,16 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_trigger_workflow**](FlagTriggersApi.md#create_trigger_workflow) | **POST** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey} | Create flag trigger |
-| [**delete_trigger_workflow**](FlagTriggersApi.md#delete_trigger_workflow) | **DELETE** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey}/{id} | Delete flag trigger |
-| [**get_trigger_workflow_by_id**](FlagTriggersApi.md#get_trigger_workflow_by_id) | **GET** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey}/{id} | Get flag trigger by ID |
-| [**get_trigger_workflows**](FlagTriggersApi.md#get_trigger_workflows) | **GET** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey} | List flag triggers |
-| [**patch_trigger_workflow**](FlagTriggersApi.md#patch_trigger_workflow) | **PATCH** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey}/{id} | Update flag trigger |
+| [**create_trigger_workflow**](FlagTriggersApi.md#create_trigger_workflow) | **POST** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey} | Create flag trigger |
+| [**delete_trigger_workflow**](FlagTriggersApi.md#delete_trigger_workflow) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Delete flag trigger |
+| [**get_trigger_workflow_by_id**](FlagTriggersApi.md#get_trigger_workflow_by_id) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Get flag trigger by ID |
+| [**get_trigger_workflows**](FlagTriggersApi.md#get_trigger_workflows) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey} | List flag triggers |
+| [**patch_trigger_workflow**](FlagTriggersApi.md#patch_trigger_workflow) | **PATCH** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Update flag trigger |
 
 
 ## create_trigger_workflow
 
-> <TriggerWorkflowRep> create_trigger_workflow(proj_key, env_key, flag_key, trigger_post)
+> <TriggerWorkflowRep> create_trigger_workflow(project_key, environment_key, feature_flag_key, trigger_post)
 
 Create flag trigger
 
@@ -33,14 +33,14 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::FlagTriggersApi.new
-proj_key = 'proj_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
-flag_key = 'flag_key_example' # String | The flag key
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 trigger_post = LaunchDarklyApi::TriggerPost.new({integration_key: 'integration_key_example'}) # TriggerPost | 
 
 begin
   # Create flag trigger
-  result = api_instance.create_trigger_workflow(proj_key, env_key, flag_key, trigger_post)
+  result = api_instance.create_trigger_workflow(project_key, environment_key, feature_flag_key, trigger_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling FlagTriggersApi->create_trigger_workflow: #{e}"
@@ -51,12 +51,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<TriggerWorkflowRep>, Integer, Hash)> create_trigger_workflow_with_http_info(proj_key, env_key, flag_key, trigger_post)
+> <Array(<TriggerWorkflowRep>, Integer, Hash)> create_trigger_workflow_with_http_info(project_key, environment_key, feature_flag_key, trigger_post)
 
 ```ruby
 begin
   # Create flag trigger
-  data, status_code, headers = api_instance.create_trigger_workflow_with_http_info(proj_key, env_key, flag_key, trigger_post)
+  data, status_code, headers = api_instance.create_trigger_workflow_with_http_info(project_key, environment_key, feature_flag_key, trigger_post)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <TriggerWorkflowRep>
@@ -69,9 +69,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
-| **flag_key** | **String** | The flag key |  |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **trigger_post** | [**TriggerPost**](TriggerPost.md) |  |  |
 
 ### Return type
@@ -90,7 +90,7 @@ end
 
 ## delete_trigger_workflow
 
-> delete_trigger_workflow(proj_key, env_key, flag_key, id)
+> delete_trigger_workflow(project_key, environment_key, feature_flag_key, id)
 
 Delete flag trigger
 
@@ -110,14 +110,14 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::FlagTriggersApi.new
-proj_key = 'proj_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
-flag_key = 'flag_key_example' # String | The flag key
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 id = 'id_example' # String | The flag trigger ID
 
 begin
   # Delete flag trigger
-  api_instance.delete_trigger_workflow(proj_key, env_key, flag_key, id)
+  api_instance.delete_trigger_workflow(project_key, environment_key, feature_flag_key, id)
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling FlagTriggersApi->delete_trigger_workflow: #{e}"
 end
@@ -127,12 +127,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_trigger_workflow_with_http_info(proj_key, env_key, flag_key, id)
+> <Array(nil, Integer, Hash)> delete_trigger_workflow_with_http_info(project_key, environment_key, feature_flag_key, id)
 
 ```ruby
 begin
   # Delete flag trigger
-  data, status_code, headers = api_instance.delete_trigger_workflow_with_http_info(proj_key, env_key, flag_key, id)
+  data, status_code, headers = api_instance.delete_trigger_workflow_with_http_info(project_key, environment_key, feature_flag_key, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -145,9 +145,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
-| **flag_key** | **String** | The flag key |  |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **id** | **String** | The flag trigger ID |  |
 
 ### Return type
@@ -166,7 +166,7 @@ nil (empty response body)
 
 ## get_trigger_workflow_by_id
 
-> <TriggerWorkflowRep> get_trigger_workflow_by_id(proj_key, flag_key, env_key, id)
+> <TriggerWorkflowRep> get_trigger_workflow_by_id(project_key, feature_flag_key, environment_key, id)
 
 Get flag trigger by ID
 
@@ -186,14 +186,14 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::FlagTriggersApi.new
-proj_key = 'proj_key_example' # String | The project key
-flag_key = 'flag_key_example' # String | The flag key
-env_key = 'env_key_example' # String | The environment key
+project_key = 'project_key_example' # String | The project key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
+environment_key = 'environment_key_example' # String | The environment key
 id = 'id_example' # String | The flag trigger ID
 
 begin
   # Get flag trigger by ID
-  result = api_instance.get_trigger_workflow_by_id(proj_key, flag_key, env_key, id)
+  result = api_instance.get_trigger_workflow_by_id(project_key, feature_flag_key, environment_key, id)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling FlagTriggersApi->get_trigger_workflow_by_id: #{e}"
@@ -204,12 +204,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<TriggerWorkflowRep>, Integer, Hash)> get_trigger_workflow_by_id_with_http_info(proj_key, flag_key, env_key, id)
+> <Array(<TriggerWorkflowRep>, Integer, Hash)> get_trigger_workflow_by_id_with_http_info(project_key, feature_flag_key, environment_key, id)
 
 ```ruby
 begin
   # Get flag trigger by ID
-  data, status_code, headers = api_instance.get_trigger_workflow_by_id_with_http_info(proj_key, flag_key, env_key, id)
+  data, status_code, headers = api_instance.get_trigger_workflow_by_id_with_http_info(project_key, feature_flag_key, environment_key, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <TriggerWorkflowRep>
@@ -222,9 +222,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **flag_key** | **String** | The flag key |  |
-| **env_key** | **String** | The environment key |  |
+| **project_key** | **String** | The project key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
+| **environment_key** | **String** | The environment key |  |
 | **id** | **String** | The flag trigger ID |  |
 
 ### Return type
@@ -243,7 +243,7 @@ end
 
 ## get_trigger_workflows
 
-> <TriggerWorkflowCollectionRep> get_trigger_workflows(proj_key, env_key, flag_key)
+> <TriggerWorkflowCollectionRep> get_trigger_workflows(project_key, environment_key, feature_flag_key)
 
 List flag triggers
 
@@ -263,13 +263,13 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::FlagTriggersApi.new
-proj_key = 'proj_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
-flag_key = 'flag_key_example' # String | The flag key
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 
 begin
   # List flag triggers
-  result = api_instance.get_trigger_workflows(proj_key, env_key, flag_key)
+  result = api_instance.get_trigger_workflows(project_key, environment_key, feature_flag_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling FlagTriggersApi->get_trigger_workflows: #{e}"
@@ -280,12 +280,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<TriggerWorkflowCollectionRep>, Integer, Hash)> get_trigger_workflows_with_http_info(proj_key, env_key, flag_key)
+> <Array(<TriggerWorkflowCollectionRep>, Integer, Hash)> get_trigger_workflows_with_http_info(project_key, environment_key, feature_flag_key)
 
 ```ruby
 begin
   # List flag triggers
-  data, status_code, headers = api_instance.get_trigger_workflows_with_http_info(proj_key, env_key, flag_key)
+  data, status_code, headers = api_instance.get_trigger_workflows_with_http_info(project_key, environment_key, feature_flag_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <TriggerWorkflowCollectionRep>
@@ -298,9 +298,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
-| **flag_key** | **String** | The flag key |  |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 
 ### Return type
 
@@ -318,7 +318,7 @@ end
 
 ## patch_trigger_workflow
 
-> <TriggerWorkflowRep> patch_trigger_workflow(proj_key, env_key, flag_key, id, flag_trigger_input)
+> <TriggerWorkflowRep> patch_trigger_workflow(project_key, environment_key, feature_flag_key, id, flag_trigger_input)
 
 Update flag trigger
 
@@ -338,15 +338,15 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::FlagTriggersApi.new
-proj_key = 'proj_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
-flag_key = 'flag_key_example' # String | The flag key
+project_key = 'project_key_example' # String | The project key
+environment_key = 'environment_key_example' # String | The environment key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 id = 'id_example' # String | The flag trigger ID
 flag_trigger_input = LaunchDarklyApi::FlagTriggerInput.new # FlagTriggerInput | 
 
 begin
   # Update flag trigger
-  result = api_instance.patch_trigger_workflow(proj_key, env_key, flag_key, id, flag_trigger_input)
+  result = api_instance.patch_trigger_workflow(project_key, environment_key, feature_flag_key, id, flag_trigger_input)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling FlagTriggersApi->patch_trigger_workflow: #{e}"
@@ -357,12 +357,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<TriggerWorkflowRep>, Integer, Hash)> patch_trigger_workflow_with_http_info(proj_key, env_key, flag_key, id, flag_trigger_input)
+> <Array(<TriggerWorkflowRep>, Integer, Hash)> patch_trigger_workflow_with_http_info(project_key, environment_key, feature_flag_key, id, flag_trigger_input)
 
 ```ruby
 begin
   # Update flag trigger
-  data, status_code, headers = api_instance.patch_trigger_workflow_with_http_info(proj_key, env_key, flag_key, id, flag_trigger_input)
+  data, status_code, headers = api_instance.patch_trigger_workflow_with_http_info(project_key, environment_key, feature_flag_key, id, flag_trigger_input)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <TriggerWorkflowRep>
@@ -375,9 +375,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **proj_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
-| **flag_key** | **String** | The flag key |  |
+| **project_key** | **String** | The project key |  |
+| **environment_key** | **String** | The environment key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **id** | **String** | The flag trigger ID |  |
 | **flag_trigger_input** | [**FlagTriggerInput**](FlagTriggerInput.md) |  |  |
 

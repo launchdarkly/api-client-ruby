@@ -8,8 +8,8 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_environment**](EnvironmentsApi.md#get_environment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey} | Get environment |
 | [**patch_environment**](EnvironmentsApi.md#patch_environment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey} | Update environment |
 | [**post_environment**](EnvironmentsApi.md#post_environment) | **POST** /api/v2/projects/{projectKey}/environments | Create environment |
-| [**reset_environment_mobile_key**](EnvironmentsApi.md#reset_environment_mobile_key) | **POST** /api/v2/projects/{projectKey}/environments/{envKey}/mobileKey | Reset environment mobile SDK key |
-| [**reset_environment_sdk_key**](EnvironmentsApi.md#reset_environment_sdk_key) | **POST** /api/v2/projects/{projectKey}/environments/{envKey}/apiKey | Reset environment SDK key |
+| [**reset_environment_mobile_key**](EnvironmentsApi.md#reset_environment_mobile_key) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/mobileKey | Reset environment mobile SDK key |
+| [**reset_environment_sdk_key**](EnvironmentsApi.md#reset_environment_sdk_key) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/apiKey | Reset environment SDK key |
 
 
 ## delete_environment
@@ -181,7 +181,7 @@ end
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
-patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})] # Array<PatchOperation> | 
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
 
 begin
   # Update environment
@@ -307,7 +307,7 @@ end
 
 ## reset_environment_mobile_key
 
-> <Environment> reset_environment_mobile_key(project_key, env_key)
+> <Environment> reset_environment_mobile_key(project_key, environment_key)
 
 Reset environment mobile SDK key
 
@@ -328,11 +328,11 @@ end
 
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
 project_key = 'project_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
+environment_key = 'environment_key_example' # String | The environment key
 
 begin
   # Reset environment mobile SDK key
-  result = api_instance.reset_environment_mobile_key(project_key, env_key)
+  result = api_instance.reset_environment_mobile_key(project_key, environment_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling EnvironmentsApi->reset_environment_mobile_key: #{e}"
@@ -343,12 +343,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Environment>, Integer, Hash)> reset_environment_mobile_key_with_http_info(project_key, env_key)
+> <Array(<Environment>, Integer, Hash)> reset_environment_mobile_key_with_http_info(project_key, environment_key)
 
 ```ruby
 begin
   # Reset environment mobile SDK key
-  data, status_code, headers = api_instance.reset_environment_mobile_key_with_http_info(project_key, env_key)
+  data, status_code, headers = api_instance.reset_environment_mobile_key_with_http_info(project_key, environment_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Environment>
@@ -362,7 +362,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
+| **environment_key** | **String** | The environment key |  |
 
 ### Return type
 
@@ -380,7 +380,7 @@ end
 
 ## reset_environment_sdk_key
 
-> <Environment> reset_environment_sdk_key(project_key, env_key, opts)
+> <Environment> reset_environment_sdk_key(project_key, environment_key, opts)
 
 Reset environment SDK key
 
@@ -401,14 +401,14 @@ end
 
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
 project_key = 'project_key_example' # String | The project key
-env_key = 'env_key_example' # String | The environment key
+environment_key = 'environment_key_example' # String | The environment key
 opts = {
   expiry: 789 # Integer | The time at which you want the old SDK key to expire, in UNIX milliseconds. By default, the key expires immediately.
 }
 
 begin
   # Reset environment SDK key
-  result = api_instance.reset_environment_sdk_key(project_key, env_key, opts)
+  result = api_instance.reset_environment_sdk_key(project_key, environment_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling EnvironmentsApi->reset_environment_sdk_key: #{e}"
@@ -419,12 +419,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Environment>, Integer, Hash)> reset_environment_sdk_key_with_http_info(project_key, env_key, opts)
+> <Array(<Environment>, Integer, Hash)> reset_environment_sdk_key_with_http_info(project_key, environment_key, opts)
 
 ```ruby
 begin
   # Reset environment SDK key
-  data, status_code, headers = api_instance.reset_environment_sdk_key_with_http_info(project_key, env_key, opts)
+  data, status_code, headers = api_instance.reset_environment_sdk_key_with_http_info(project_key, environment_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Environment>
@@ -438,7 +438,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **env_key** | **String** | The environment key |  |
+| **environment_key** | **String** | The environment key |  |
 | **expiry** | **Integer** | The time at which you want the old SDK key to expire, in UNIX milliseconds. By default, the key expires immediately. | [optional] |
 
 ### Return type

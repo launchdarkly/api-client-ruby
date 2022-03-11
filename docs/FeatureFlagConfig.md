@@ -16,7 +16,7 @@
 | **off_variation** | **Integer** |  | [optional] |
 | **prerequisites** | [**Array&lt;Prerequisite&gt;**](Prerequisite.md) |  |  |
 | **_site** | [**Link**](Link.md) |  |  |
-| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **_access** | [**Access**](Access.md) |  | [optional] |
 | **_environment_name** | **String** |  |  |
 | **track_events** | **Boolean** |  |  |
 | **track_events_fallthrough** | **Boolean** |  |  |

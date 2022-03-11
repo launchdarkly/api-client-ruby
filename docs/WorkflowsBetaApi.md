@@ -33,7 +33,7 @@ end
 
 api_instance = LaunchDarklyApi::WorkflowsBetaApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 workflow_id = 'workflow_id_example' # String | The workflow id
 
@@ -68,7 +68,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 | **workflow_id** | **String** | The workflow id |  |
 
@@ -109,7 +109,7 @@ end
 
 api_instance = LaunchDarklyApi::WorkflowsBetaApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 workflow_id = 'workflow_id_example' # String | The workflow ID
 
@@ -145,7 +145,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 | **workflow_id** | **String** | The workflow ID |  |
 
@@ -186,7 +186,7 @@ end
 
 api_instance = LaunchDarklyApi::WorkflowsBetaApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 
 begin
@@ -221,7 +221,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 
 ### Return type
@@ -261,7 +261,7 @@ end
 
 api_instance = LaunchDarklyApi::WorkflowsBetaApi.new
 project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag's key
+feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 custom_workflow_input_rep = LaunchDarklyApi::CustomWorkflowInputRep.new({description: 'description_example'}) # CustomWorkflowInputRep | 
 
@@ -297,7 +297,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag&#39;s key |  |
+| **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
 | **custom_workflow_input_rep** | [**CustomWorkflowInputRep**](CustomWorkflowInputRep.md) |  |  |
 

@@ -15,7 +15,6 @@
 | **name** | **String** |  | [optional] |
 | **anonymous** | **Boolean** |  | [optional] |
 | **custom** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **derived** | [**Hash&lt;String, DerivedAttribute&gt;**](DerivedAttribute.md) |  | [optional] |
 | **private_attrs** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example
@@ -35,7 +34,6 @@ instance = LaunchDarklyApi::User.new(
   name: null,
   anonymous: null,
   custom: null,
-  derived: null,
   private_attrs: null
 )
 ```

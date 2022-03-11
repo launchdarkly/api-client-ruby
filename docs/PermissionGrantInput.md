@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **member_ids** | **Array&lt;String&gt;** |  | [optional] |
-| **actions** | **Array&lt;String&gt;** |  | [optional] |
 | **action_set** | **String** |  | [optional] |
+| **actions** | **Array&lt;String&gt;** |  | [optional] |
+| **member_ids** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example
 
@@ -14,9 +14,9 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::PermissionGrantInput.new(
-  member_ids: null,
+  action_set: null,
   actions: null,
-  action_set: null
+  member_ids: null
 )
 ```
 

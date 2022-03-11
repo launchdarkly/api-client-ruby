@@ -4,16 +4,16 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**delete_custom_role**](CustomRolesApi.md#delete_custom_role) | **DELETE** /api/v2/roles/{key} | Delete custom role |
-| [**get_custom_role**](CustomRolesApi.md#get_custom_role) | **GET** /api/v2/roles/{key} | Get custom role |
+| [**delete_custom_role**](CustomRolesApi.md#delete_custom_role) | **DELETE** /api/v2/roles/{customRoleKey} | Delete custom role |
+| [**get_custom_role**](CustomRolesApi.md#get_custom_role) | **GET** /api/v2/roles/{customRoleKey} | Get custom role |
 | [**get_custom_roles**](CustomRolesApi.md#get_custom_roles) | **GET** /api/v2/roles | List custom roles |
-| [**patch_custom_role**](CustomRolesApi.md#patch_custom_role) | **PATCH** /api/v2/roles/{key} | Update custom role |
+| [**patch_custom_role**](CustomRolesApi.md#patch_custom_role) | **PATCH** /api/v2/roles/{customRoleKey} | Update custom role |
 | [**post_custom_role**](CustomRolesApi.md#post_custom_role) | **POST** /api/v2/roles | Create custom role |
 
 
 ## delete_custom_role
 
-> delete_custom_role(key)
+> delete_custom_role(custom_role_key)
 
 Delete custom role
 
@@ -33,11 +33,11 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
-key = 'key_example' # String | The key of the custom role to delete
+custom_role_key = 'custom_role_key_example' # String | The custom role key
 
 begin
   # Delete custom role
-  api_instance.delete_custom_role(key)
+  api_instance.delete_custom_role(custom_role_key)
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling CustomRolesApi->delete_custom_role: #{e}"
 end
@@ -47,12 +47,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_custom_role_with_http_info(key)
+> <Array(nil, Integer, Hash)> delete_custom_role_with_http_info(custom_role_key)
 
 ```ruby
 begin
   # Delete custom role
-  data, status_code, headers = api_instance.delete_custom_role_with_http_info(key)
+  data, status_code, headers = api_instance.delete_custom_role_with_http_info(custom_role_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -65,7 +65,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** | The key of the custom role to delete |  |
+| **custom_role_key** | **String** | The custom role key |  |
 
 ### Return type
 
@@ -83,7 +83,7 @@ nil (empty response body)
 
 ## get_custom_role
 
-> <CustomRole> get_custom_role(key)
+> <CustomRole> get_custom_role(custom_role_key)
 
 Get custom role
 
@@ -103,11 +103,11 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
-key = 'key_example' # String | The custom role's key or ID
+custom_role_key = 'custom_role_key_example' # String | The custom role key or ID
 
 begin
   # Get custom role
-  result = api_instance.get_custom_role(key)
+  result = api_instance.get_custom_role(custom_role_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling CustomRolesApi->get_custom_role: #{e}"
@@ -118,12 +118,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CustomRole>, Integer, Hash)> get_custom_role_with_http_info(key)
+> <Array(<CustomRole>, Integer, Hash)> get_custom_role_with_http_info(custom_role_key)
 
 ```ruby
 begin
   # Get custom role
-  data, status_code, headers = api_instance.get_custom_role_with_http_info(key)
+  data, status_code, headers = api_instance.get_custom_role_with_http_info(custom_role_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <CustomRole>
@@ -136,7 +136,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** | The custom role&#39;s key or ID |  |
+| **custom_role_key** | **String** | The custom role key or ID |  |
 
 ### Return type
 
@@ -222,11 +222,11 @@ This endpoint does not need any parameter.
 
 ## patch_custom_role
 
-> <CustomRole> patch_custom_role(key, patch_with_comment)
+> <CustomRole> patch_custom_role(custom_role_key, patch_with_comment)
 
 Update custom role
 
-Update a single custom role. The request must be a valid JSON Patch document describing the changes to be made to the custom role.
+Update a single custom role. The request must be a valid JSON Patch document describing the changes to be made to the custom role. To add an element to the `policy` array, set the `path` to `/policy` and then append `/<array index>`. Using `/0` adds to the beginning of the array.
 
 ### Examples
 
@@ -242,12 +242,12 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
-key = 'key_example' # String | The key of the custom role to update
-patch_with_comment = LaunchDarklyApi::PatchWithComment.new({patch: [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/biscuits', value: Chocolate Digestive})]}) # PatchWithComment | 
+custom_role_key = 'custom_role_key_example' # String | The custom role key
+patch_with_comment = LaunchDarklyApi::PatchWithComment.new({patch: [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})]}) # PatchWithComment | 
 
 begin
   # Update custom role
-  result = api_instance.patch_custom_role(key, patch_with_comment)
+  result = api_instance.patch_custom_role(custom_role_key, patch_with_comment)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling CustomRolesApi->patch_custom_role: #{e}"
@@ -258,12 +258,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CustomRole>, Integer, Hash)> patch_custom_role_with_http_info(key, patch_with_comment)
+> <Array(<CustomRole>, Integer, Hash)> patch_custom_role_with_http_info(custom_role_key, patch_with_comment)
 
 ```ruby
 begin
   # Update custom role
-  data, status_code, headers = api_instance.patch_custom_role_with_http_info(key, patch_with_comment)
+  data, status_code, headers = api_instance.patch_custom_role_with_http_info(custom_role_key, patch_with_comment)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <CustomRole>
@@ -276,7 +276,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** | The key of the custom role to update |  |
+| **custom_role_key** | **String** | The custom role key |  |
 | **patch_with_comment** | [**PatchWithComment**](PatchWithComment.md) |  |  |
 
 ### Return type

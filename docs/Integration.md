@@ -12,7 +12,7 @@
 | **statements** | [**Array&lt;StatementRep&gt;**](StatementRep.md) |  | [optional] |
 | **on** | **Boolean** |  | [optional] |
 | **tags** | **Array&lt;String&gt;** |  | [optional] |
-| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **_access** | [**Access**](Access.md) |  | [optional] |
 | **_status** | [**IntegrationSubscriptionStatusRep**](IntegrationSubscriptionStatusRep.md) |  | [optional] |
 | **url** | **String** |  | [optional] |
 | **api_key** | **String** |  | [optional] |

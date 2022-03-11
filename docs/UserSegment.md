@@ -15,7 +15,7 @@
 | **rules** | [**Array&lt;UserSegmentRule&gt;**](UserSegmentRule.md) |  |  |
 | **version** | **Integer** |  |  |
 | **deleted** | **Boolean** |  |  |
-| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **_access** | [**Access**](Access.md) |  | [optional] |
 | **_flags** | [**Array&lt;FlagListingRep&gt;**](FlagListingRep.md) |  | [optional] |
 | **unbounded** | **Boolean** |  | [optional] |
 | **generation** | **Integer** |  |  |

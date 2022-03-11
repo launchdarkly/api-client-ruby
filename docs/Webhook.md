@@ -12,7 +12,7 @@
 | **statements** | [**Array&lt;StatementRep&gt;**](StatementRep.md) |  | [optional] |
 | **on** | **Boolean** |  |  |
 | **tags** | **Array&lt;String&gt;** |  |  |
-| **_access** | [**AccessRep**](AccessRep.md) |  | [optional] |
+| **_access** | [**Access**](Access.md) |  | [optional] |
 
 ## Example
 
