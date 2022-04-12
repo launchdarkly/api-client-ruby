@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **kind** | **String** |  |  |
-| **instructions** | **Array&lt;Hash&gt;** |  |  |
+| **instructions** | **Array&lt;Object&gt;** |  |  |
 
 ## Example
 

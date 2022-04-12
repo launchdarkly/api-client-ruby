@@ -10,6 +10,7 @@
 | **enabled** | **Boolean** |  |  |
 | **version** | **Integer** |  |  |
 | **hunk_count** | **Integer** |  |  |
+| **file_count** | **Integer** |  |  |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
 
 ## Example
@@ -24,6 +25,7 @@ instance = LaunchDarklyApi::StatisticRep.new(
   enabled: null,
   version: null,
   hunk_count: null,
+  file_count: null,
   _links: null
 )
 ```

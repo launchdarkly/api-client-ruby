@@ -7,6 +7,7 @@
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
 | **_value** | **Object** |  |  |
 | **setting** | **Object** |  |  |
+| **reason** | [**EvaluationReason**](EvaluationReason.md) |  | [optional] |
 
 ## Example
 
@@ -16,7 +17,8 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::UserFlagSetting.new(
   _links: {&quot;sort.order&quot;:{&quot;href&quot;:&quot;/api/v2/users/lacuna/production/Abbie_Braun/flags/sort.order&quot;,&quot;type&quot;:&quot;application/json&quot;}},
   _value: true,
-  setting: null
+  setting: null,
+  reason: null
 )
 ```
 

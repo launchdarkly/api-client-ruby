@@ -86,7 +86,7 @@ nil (empty response body)
 
 ## create_big_segment_import
 
-> create_big_segment_import(project_key, environment_key, segment_key)
+> create_big_segment_import(project_key, environment_key, segment_key, opts)
 
 Create Big Segment import
 
@@ -109,10 +109,14 @@ api_instance = LaunchDarklyApi::SegmentsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 segment_key = 'segment_key_example' # String | The segment key
+opts = {
+  file: File.new('/path/to/some/file'), # File | CSV file containing keys
+  mode: 'mode_example' # String | Import mode. Use either `merge` or `replace`
+}
 
 begin
   # Create Big Segment import
-  api_instance.create_big_segment_import(project_key, environment_key, segment_key)
+  api_instance.create_big_segment_import(project_key, environment_key, segment_key, opts)
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling SegmentsBetaApi->create_big_segment_import: #{e}"
 end
@@ -122,12 +126,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> create_big_segment_import_with_http_info(project_key, environment_key, segment_key)
+> <Array(nil, Integer, Hash)> create_big_segment_import_with_http_info(project_key, environment_key, segment_key, opts)
 
 ```ruby
 begin
   # Create Big Segment import
-  data, status_code, headers = api_instance.create_big_segment_import_with_http_info(project_key, environment_key, segment_key)
+  data, status_code, headers = api_instance.create_big_segment_import_with_http_info(project_key, environment_key, segment_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -143,6 +147,8 @@ end
 | **project_key** | **String** | The project key |  |
 | **environment_key** | **String** | The environment key |  |
 | **segment_key** | **String** | The segment key |  |
+| **file** | **File** | CSV file containing keys | [optional] |
+| **mode** | **String** | Import mode. Use either &#x60;merge&#x60; or &#x60;replace&#x60; | [optional] |
 
 ### Return type
 
@@ -154,7 +160,7 @@ nil (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 

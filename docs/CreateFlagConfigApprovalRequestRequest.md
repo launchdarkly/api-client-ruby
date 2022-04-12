@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **comment** | **String** | A comment describing the approval request | [optional] |
 | **description** | **String** | A human-friendly name for the approval request |  |
-| **instructions** | **Array&lt;Hash&gt;** |  |  |
+| **instructions** | **Array&lt;Object&gt;** |  |  |
 | **notify_member_ids** | **Array&lt;String&gt;** | An array of member IDs. These members are notified to review the approval request |  |
 | **execution_date** | **Integer** |  | [optional] |
 | **operating_on_id** | **String** | ID of scheduled change to edit or delete | [optional] |

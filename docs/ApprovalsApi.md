@@ -266,7 +266,7 @@ api_instance = LaunchDarklyApi::ApprovalsApi.new
 project_key = 'project_key_example' # String | The project key
 feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
-create_flag_config_approval_request_request = LaunchDarklyApi::CreateFlagConfigApprovalRequestRequest.new({description: 'description_example', instructions: [{ key: 3.56}], notify_member_ids: ['notify_member_ids_example']}) # CreateFlagConfigApprovalRequestRequest | 
+create_flag_config_approval_request_request = LaunchDarklyApi::CreateFlagConfigApprovalRequestRequest.new({description: 'description_example', instructions: [3.56], notify_member_ids: ['notify_member_ids_example']}) # CreateFlagConfigApprovalRequestRequest | 
 
 begin
   # Create approval request

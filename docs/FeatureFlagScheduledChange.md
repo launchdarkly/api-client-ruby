@@ -9,7 +9,7 @@
 | **_maintainer_id** | **String** |  |  |
 | **_version** | **Integer** |  |  |
 | **execution_date** | **Integer** |  |  |
-| **instructions** | **Array&lt;Hash&gt;** |  |  |
+| **instructions** | **Array&lt;Object&gt;** |  |  |
 | **conflicts** | **Object** |  | [optional] |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
 

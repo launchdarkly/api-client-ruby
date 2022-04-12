@@ -16,7 +16,7 @@
 | **applied_date** | **Integer** |  | [optional] |
 | **applied_by_member_id** | **String** |  | [optional] |
 | **status** | **String** |  |  |
-| **instructions** | **Array&lt;Hash&gt;** |  |  |
+| **instructions** | **Array&lt;Object&gt;** |  |  |
 | **conflicts** | [**Array&lt;Conflict&gt;**](Conflict.md) |  |  |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
 | **execution_date** | **Integer** |  | [optional] |

@@ -11,7 +11,7 @@
 | **_maintainer** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **_integration_key** | **String** |  | [optional] |
-| **instructions** | **Array&lt;Hash&gt;** |  | [optional] |
+| **instructions** | **Array&lt;Object&gt;** |  | [optional] |
 | **_last_triggered_at** | **Integer** |  | [optional] |
 | **_recent_trigger_bodies** | [**Array&lt;RecentTriggerBody&gt;**](RecentTriggerBody.md) |  | [optional] |
 | **_trigger_count** | **Integer** |  | [optional] |

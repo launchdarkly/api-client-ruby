@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **comment** | **String** |  | [optional] |
 | **execution_date** | **Integer** |  |  |
-| **instructions** | **Array&lt;Hash&gt;** |  |  |
+| **instructions** | **Array&lt;Object&gt;** |  |  |
 
 ## Example
 
