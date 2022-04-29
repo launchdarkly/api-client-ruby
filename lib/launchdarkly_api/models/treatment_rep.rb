@@ -46,7 +46,7 @@ module LaunchDarklyApi
       {
         :'_id' => :'String',
         :'name' => :'String',
-        :'allocation_percent' => :'NullDecimal',
+        :'allocation_percent' => :'String',
         :'baseline' => :'Boolean',
         :'parameters' => :'Array<ParameterRep>'
       }

@@ -25,7 +25,7 @@ module LaunchDarklyApi
     # @param environment_key [String] The environment key
     # @param experiment_post [ExperimentPost] 
     # @param [Hash] opts the optional parameters
-    # @return [ExperimentRep]
+    # @return [Experiment]
     def create_experiment(project_key, environment_key, experiment_post, opts = {})
       data, _status_code, _headers = create_experiment_with_http_info(project_key, environment_key, experiment_post, opts)
       data
@@ -37,7 +37,7 @@ module LaunchDarklyApi
     # @param environment_key [String] The environment key
     # @param experiment_post [ExperimentPost] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ExperimentRep, Integer, Hash)>] ExperimentRep data, response status code and response headers
+    # @return [Array<(Experiment, Integer, Hash)>] Experiment data, response status code and response headers
     def create_experiment_with_http_info(project_key, environment_key, experiment_post, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ExperimentsBetaApi.create_experiment ...'
@@ -77,7 +77,7 @@ module LaunchDarklyApi
       post_body = opts[:debug_body] || @api_client.object_to_http_body(experiment_post)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'ExperimentRep'
+      return_type = opts[:debug_return_type] || 'Experiment'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']
@@ -191,7 +191,7 @@ module LaunchDarklyApi
     # @param environment_key [String] The environment key
     # @param experiment_key [String] The experiment key
     # @param [Hash] opts the optional parameters
-    # @return [ExperimentRep]
+    # @return [Experiment]
     def get_experiment(project_key, environment_key, experiment_key, opts = {})
       data, _status_code, _headers = get_experiment_with_http_info(project_key, environment_key, experiment_key, opts)
       data
@@ -203,7 +203,7 @@ module LaunchDarklyApi
     # @param environment_key [String] The environment key
     # @param experiment_key [String] The experiment key
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ExperimentRep, Integer, Hash)>] ExperimentRep data, response status code and response headers
+    # @return [Array<(Experiment, Integer, Hash)>] Experiment data, response status code and response headers
     def get_experiment_with_http_info(project_key, environment_key, experiment_key, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ExperimentsBetaApi.get_experiment ...'
@@ -238,7 +238,7 @@ module LaunchDarklyApi
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'ExperimentRep'
+      return_type = opts[:debug_return_type] || 'Experiment'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']
@@ -504,7 +504,7 @@ module LaunchDarklyApi
     # @param experiment_key [String] The experiment key
     # @param experiment_patch_input [ExperimentPatchInput] 
     # @param [Hash] opts the optional parameters
-    # @return [ExperimentRep]
+    # @return [Experiment]
     def patch_experiment(project_key, environment_key, experiment_key, experiment_patch_input, opts = {})
       data, _status_code, _headers = patch_experiment_with_http_info(project_key, environment_key, experiment_key, experiment_patch_input, opts)
       data
@@ -517,7 +517,7 @@ module LaunchDarklyApi
     # @param experiment_key [String] The experiment key
     # @param experiment_patch_input [ExperimentPatchInput] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ExperimentRep, Integer, Hash)>] ExperimentRep data, response status code and response headers
+    # @return [Array<(Experiment, Integer, Hash)>] Experiment data, response status code and response headers
     def patch_experiment_with_http_info(project_key, environment_key, experiment_key, experiment_patch_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ExperimentsBetaApi.patch_experiment ...'
@@ -561,7 +561,7 @@ module LaunchDarklyApi
       post_body = opts[:debug_body] || @api_client.object_to_http_body(experiment_patch_input)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'ExperimentRep'
+      return_type = opts[:debug_return_type] || 'Experiment'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']

@@ -38,7 +38,7 @@ module LaunchDarklyApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'items' => :'Array<ExperimentRep>',
+        :'items' => :'Array<Experiment>',
         :'total_count' => :'Integer',
         :'_links' => :'Hash<String, Link>'
       }

@@ -36,7 +36,7 @@ module LaunchDarklyApi
     def self.openapi_types
       {
         :'baseline_idx' => :'Integer',
-        :'items' => :'Array<ExperimentRep>'
+        :'items' => :'Array<LegacyExperimentRep>'
       }
     end
 

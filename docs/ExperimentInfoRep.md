@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **baseline_idx** | **Integer** |  |  |
-| **items** | [**Array&lt;ExperimentRep&gt;**](ExperimentRep.md) |  |  |
+| **items** | [**Array&lt;LegacyExperimentRep&gt;**](LegacyExperimentRep.md) |  |  |
 
 ## Example
 

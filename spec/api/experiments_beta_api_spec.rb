@@ -39,7 +39,7 @@ describe 'ExperimentsBetaApi' do
   # @param environment_key The environment key
   # @param experiment_post 
   # @param [Hash] opts the optional parameters
-  # @return [ExperimentRep]
+  # @return [Experiment]
   describe 'create_experiment test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -68,7 +68,7 @@ describe 'ExperimentsBetaApi' do
   # @param environment_key The environment key
   # @param experiment_key The experiment key
   # @param [Hash] opts the optional parameters
-  # @return [ExperimentRep]
+  # @return [Experiment]
   describe 'get_experiment test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -128,7 +128,7 @@ describe 'ExperimentsBetaApi' do
   # @param experiment_key The experiment key
   # @param experiment_patch_input 
   # @param [Hash] opts the optional parameters
-  # @return [ExperimentRep]
+  # @return [Experiment]
   describe 'patch_experiment test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

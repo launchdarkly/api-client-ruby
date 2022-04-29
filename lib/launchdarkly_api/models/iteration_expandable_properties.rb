@@ -36,7 +36,7 @@ module LaunchDarklyApi
     def self.openapi_types
       {
         :'treatments' => :'Array<TreatmentRep>',
-        :'secondary_metrics' => :'Array<MetricRep>'
+        :'secondary_metrics' => :'Array<MetricV2Rep>'
       }
     end
 

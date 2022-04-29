@@ -16,7 +16,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 ## create_experiment
 
-> <ExperimentRep> create_experiment(project_key, environment_key, experiment_post)
+> <Experiment> create_experiment(project_key, environment_key, experiment_post)
 
 Create experiment
 
@@ -53,7 +53,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ExperimentRep>, Integer, Hash)> create_experiment_with_http_info(project_key, environment_key, experiment_post)
+> <Array(<Experiment>, Integer, Hash)> create_experiment_with_http_info(project_key, environment_key, experiment_post)
 
 ```ruby
 begin
@@ -61,7 +61,7 @@ begin
   data, status_code, headers = api_instance.create_experiment_with_http_info(project_key, environment_key, experiment_post)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ExperimentRep>
+  p data # => <Experiment>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ExperimentsBetaApi->create_experiment_with_http_info: #{e}"
 end
@@ -77,7 +77,7 @@ end
 
 ### Return type
 
-[**ExperimentRep**](ExperimentRep.md)
+[**Experiment**](Experiment.md)
 
 ### Authorization
 
@@ -168,7 +168,7 @@ end
 
 ## get_experiment
 
-> <ExperimentRep> get_experiment(project_key, environment_key, experiment_key)
+> <Experiment> get_experiment(project_key, environment_key, experiment_key)
 
 Get experiment
 
@@ -205,7 +205,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ExperimentRep>, Integer, Hash)> get_experiment_with_http_info(project_key, environment_key, experiment_key)
+> <Array(<Experiment>, Integer, Hash)> get_experiment_with_http_info(project_key, environment_key, experiment_key)
 
 ```ruby
 begin
@@ -213,7 +213,7 @@ begin
   data, status_code, headers = api_instance.get_experiment_with_http_info(project_key, environment_key, experiment_key)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ExperimentRep>
+  p data # => <Experiment>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ExperimentsBetaApi->get_experiment_with_http_info: #{e}"
 end
@@ -229,7 +229,7 @@ end
 
 ### Return type
 
-[**ExperimentRep**](ExperimentRep.md)
+[**Experiment**](Experiment.md)
 
 ### Authorization
 
@@ -476,7 +476,7 @@ end
 
 ## patch_experiment
 
-> <ExperimentRep> patch_experiment(project_key, environment_key, experiment_key, experiment_patch_input)
+> <Experiment> patch_experiment(project_key, environment_key, experiment_key, experiment_patch_input)
 
 Patch experiment
 
@@ -514,7 +514,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ExperimentRep>, Integer, Hash)> patch_experiment_with_http_info(project_key, environment_key, experiment_key, experiment_patch_input)
+> <Array(<Experiment>, Integer, Hash)> patch_experiment_with_http_info(project_key, environment_key, experiment_key, experiment_patch_input)
 
 ```ruby
 begin
@@ -522,7 +522,7 @@ begin
   data, status_code, headers = api_instance.patch_experiment_with_http_info(project_key, environment_key, experiment_key, experiment_patch_input)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ExperimentRep>
+  p data # => <Experiment>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ExperimentsBetaApi->patch_experiment_with_http_info: #{e}"
 end
@@ -539,7 +539,7 @@ end
 
 ### Return type
 
-[**ExperimentRep**](ExperimentRep.md)
+[**Experiment**](Experiment.md)
 
 ### Authorization
 

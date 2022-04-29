@@ -83,7 +83,7 @@ module LaunchDarklyApi
     end
 
     # Get account member
-    # Get a single account member by ID
+    # Get a single account member by ID.  `me` is a reserved value for the `id` parameter and returns the caller's member information. 
     # @param id [String] The member ID
     # @param [Hash] opts the optional parameters
     # @return [Member]
@@ -93,7 +93,7 @@ module LaunchDarklyApi
     end
 
     # Get account member
-    # Get a single account member by ID
+    # Get a single account member by ID.  &#x60;me&#x60; is a reserved value for the &#x60;id&#x60; parameter and returns the caller&#39;s member information. 
     # @param id [String] The member ID
     # @param [Hash] opts the optional parameters
     # @return [Array<(Member, Integer, Hash)>] Member data, response status code and response headers
@@ -288,8 +288,8 @@ module LaunchDarklyApi
       return data, status_code, headers
     end
 
-    # Add member to teams
-    # Add member to team(s)
+    # Add a member to teams
+    # Add one member to one or more teams.
     # @param id [String] The member ID
     # @param member_teams_post_input [MemberTeamsPostInput] 
     # @param [Hash] opts the optional parameters
@@ -299,8 +299,8 @@ module LaunchDarklyApi
       data
     end
 
-    # Add member to teams
-    # Add member to team(s)
+    # Add a member to teams
+    # Add one member to one or more teams.
     # @param id [String] The member ID
     # @param member_teams_post_input [MemberTeamsPostInput] 
     # @param [Hash] opts the optional parameters

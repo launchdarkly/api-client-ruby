@@ -27,6 +27,8 @@ module LaunchDarklyApi
 
     attr_accessor :winning_treatment_id
 
+    attr_accessor :winning_reason
+
     attr_accessor :can_reshuffle_traffic
 
     attr_accessor :flags
@@ -46,6 +48,7 @@ module LaunchDarklyApi
         :'started_at' => :'startedAt',
         :'ended_at' => :'endedAt',
         :'winning_treatment_id' => :'winningTreatmentId',
+        :'winning_reason' => :'winningReason',
         :'can_reshuffle_traffic' => :'canReshuffleTraffic',
         :'flags' => :'flags',
         :'primary_metric' => :'primaryMetric',
@@ -68,11 +71,12 @@ module LaunchDarklyApi
         :'started_at' => :'Integer',
         :'ended_at' => :'Integer',
         :'winning_treatment_id' => :'String',
+        :'winning_reason' => :'String',
         :'can_reshuffle_traffic' => :'Boolean',
         :'flags' => :'Hash<String, FlagRep>',
-        :'primary_metric' => :'MetricRep',
+        :'primary_metric' => :'MetricV2Rep',
         :'treatments' => :'Array<TreatmentRep>',
-        :'secondary_metrics' => :'Array<MetricRep>'
+        :'secondary_metrics' => :'Array<MetricV2Rep>'
       }
     end
 
@@ -119,6 +123,10 @@ module LaunchDarklyApi
 
       if attributes.key?(:'winning_treatment_id')
         self.winning_treatment_id = attributes[:'winning_treatment_id']
+      end
+
+      if attributes.key?(:'winning_reason')
+        self.winning_reason = attributes[:'winning_reason']
       end
 
       if attributes.key?(:'can_reshuffle_traffic')
@@ -182,6 +190,7 @@ module LaunchDarklyApi
           started_at == o.started_at &&
           ended_at == o.ended_at &&
           winning_treatment_id == o.winning_treatment_id &&
+          winning_reason == o.winning_reason &&
           can_reshuffle_traffic == o.can_reshuffle_traffic &&
           flags == o.flags &&
           primary_metric == o.primary_metric &&
@@ -198,7 +207,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_id, hypothesis, status, started_at, ended_at, winning_treatment_id, can_reshuffle_traffic, flags, primary_metric, treatments, secondary_metrics].hash
+      [_id, hypothesis, status, started_at, ended_at, winning_treatment_id, winning_reason, can_reshuffle_traffic, flags, primary_metric, treatments, secondary_metrics].hash
     end
 
     # Builds the object from hash

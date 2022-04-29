@@ -15,18 +15,100 @@ require 'time'
 
 module LaunchDarklyApi
   class MetricRep
+    attr_accessor :_id
+
     attr_accessor :key
 
     attr_accessor :name
 
+    attr_accessor :kind
+
+    attr_accessor :_attached_flag_count
+
     attr_accessor :_links
+
+    attr_accessor :_site
+
+    attr_accessor :_access
+
+    attr_accessor :tags
+
+    attr_accessor :_creation_date
+
+    attr_accessor :last_modified
+
+    attr_accessor :maintainer_id
+
+    attr_accessor :_maintainer
+
+    attr_accessor :description
+
+    attr_accessor :is_numeric
+
+    attr_accessor :success_criteria
+
+    attr_accessor :unit
+
+    attr_accessor :event_key
+
+    attr_accessor :is_active
+
+    attr_accessor :_attached_features
+
+    attr_accessor :_version
+
+    attr_accessor :selector
+
+    attr_accessor :urls
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'_id' => :'_id',
         :'key' => :'key',
         :'name' => :'name',
-        :'_links' => :'_links'
+        :'kind' => :'kind',
+        :'_attached_flag_count' => :'_attachedFlagCount',
+        :'_links' => :'_links',
+        :'_site' => :'_site',
+        :'_access' => :'_access',
+        :'tags' => :'tags',
+        :'_creation_date' => :'_creationDate',
+        :'last_modified' => :'lastModified',
+        :'maintainer_id' => :'maintainerId',
+        :'_maintainer' => :'_maintainer',
+        :'description' => :'description',
+        :'is_numeric' => :'isNumeric',
+        :'success_criteria' => :'successCriteria',
+        :'unit' => :'unit',
+        :'event_key' => :'eventKey',
+        :'is_active' => :'isActive',
+        :'_attached_features' => :'_attachedFeatures',
+        :'_version' => :'_version',
+        :'selector' => :'selector',
+        :'urls' => :'urls'
       }
     end
 
@@ -38,9 +120,29 @@ module LaunchDarklyApi
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'_id' => :'String',
         :'key' => :'String',
         :'name' => :'String',
-        :'_links' => :'Hash<String, Link>'
+        :'kind' => :'String',
+        :'_attached_flag_count' => :'Integer',
+        :'_links' => :'Hash<String, Link>',
+        :'_site' => :'Link',
+        :'_access' => :'Access',
+        :'tags' => :'Array<String>',
+        :'_creation_date' => :'Integer',
+        :'last_modified' => :'Modification',
+        :'maintainer_id' => :'String',
+        :'_maintainer' => :'MemberSummary',
+        :'description' => :'String',
+        :'is_numeric' => :'Boolean',
+        :'success_criteria' => :'String',
+        :'unit' => :'String',
+        :'event_key' => :'String',
+        :'is_active' => :'Boolean',
+        :'_attached_features' => :'Array<FlagListingRep>',
+        :'_version' => :'Integer',
+        :'selector' => :'String',
+        :'urls' => :'Array<Object>'
       }
     end
 
@@ -65,6 +167,10 @@ module LaunchDarklyApi
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'_id')
+        self._id = attributes[:'_id']
+      end
+
       if attributes.key?(:'key')
         self.key = attributes[:'key']
       end
@@ -73,9 +179,91 @@ module LaunchDarklyApi
         self.name = attributes[:'name']
       end
 
+      if attributes.key?(:'kind')
+        self.kind = attributes[:'kind']
+      end
+
+      if attributes.key?(:'_attached_flag_count')
+        self._attached_flag_count = attributes[:'_attached_flag_count']
+      end
+
       if attributes.key?(:'_links')
         if (value = attributes[:'_links']).is_a?(Hash)
           self._links = value
+        end
+      end
+
+      if attributes.key?(:'_site')
+        self._site = attributes[:'_site']
+      end
+
+      if attributes.key?(:'_access')
+        self._access = attributes[:'_access']
+      end
+
+      if attributes.key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
+      end
+
+      if attributes.key?(:'_creation_date')
+        self._creation_date = attributes[:'_creation_date']
+      end
+
+      if attributes.key?(:'last_modified')
+        self.last_modified = attributes[:'last_modified']
+      end
+
+      if attributes.key?(:'maintainer_id')
+        self.maintainer_id = attributes[:'maintainer_id']
+      end
+
+      if attributes.key?(:'_maintainer')
+        self._maintainer = attributes[:'_maintainer']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'is_numeric')
+        self.is_numeric = attributes[:'is_numeric']
+      end
+
+      if attributes.key?(:'success_criteria')
+        self.success_criteria = attributes[:'success_criteria']
+      end
+
+      if attributes.key?(:'unit')
+        self.unit = attributes[:'unit']
+      end
+
+      if attributes.key?(:'event_key')
+        self.event_key = attributes[:'event_key']
+      end
+
+      if attributes.key?(:'is_active')
+        self.is_active = attributes[:'is_active']
+      end
+
+      if attributes.key?(:'_attached_features')
+        if (value = attributes[:'_attached_features']).is_a?(Array)
+          self._attached_features = value
+        end
+      end
+
+      if attributes.key?(:'_version')
+        self._version = attributes[:'_version']
+      end
+
+      if attributes.key?(:'selector')
+        self.selector = attributes[:'selector']
+      end
+
+      if attributes.key?(:'urls')
+        if (value = attributes[:'urls']).is_a?(Array)
+          self.urls = value
         end
       end
     end
@@ -84,6 +272,10 @@ module LaunchDarklyApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @_id.nil?
+        invalid_properties.push('invalid value for "_id", _id cannot be nil.')
+      end
+
       if @key.nil?
         invalid_properties.push('invalid value for "key", key cannot be nil.')
       end
@@ -92,8 +284,20 @@ module LaunchDarklyApi
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
+      if @kind.nil?
+        invalid_properties.push('invalid value for "kind", kind cannot be nil.')
+      end
+
       if @_links.nil?
         invalid_properties.push('invalid value for "_links", _links cannot be nil.')
+      end
+
+      if @tags.nil?
+        invalid_properties.push('invalid value for "tags", tags cannot be nil.')
+      end
+
+      if @_creation_date.nil?
+        invalid_properties.push('invalid value for "_creation_date", _creation_date cannot be nil.')
       end
 
       invalid_properties
@@ -102,10 +306,38 @@ module LaunchDarklyApi
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @_id.nil?
       return false if @key.nil?
       return false if @name.nil?
+      return false if @kind.nil?
+      kind_validator = EnumAttributeValidator.new('String', ["pageview", "click", "custom"])
+      return false unless kind_validator.valid?(@kind)
       return false if @_links.nil?
+      return false if @tags.nil?
+      return false if @_creation_date.nil?
+      success_criteria_validator = EnumAttributeValidator.new('String', ["HigherThanBaseline", "LowerThanBaseline"])
+      return false unless success_criteria_validator.valid?(@success_criteria)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] kind Object to be assigned
+    def kind=(kind)
+      validator = EnumAttributeValidator.new('String', ["pageview", "click", "custom"])
+      unless validator.valid?(kind)
+        fail ArgumentError, "invalid value for \"kind\", must be one of #{validator.allowable_values}."
+      end
+      @kind = kind
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] success_criteria Object to be assigned
+    def success_criteria=(success_criteria)
+      validator = EnumAttributeValidator.new('String', ["HigherThanBaseline", "LowerThanBaseline"])
+      unless validator.valid?(success_criteria)
+        fail ArgumentError, "invalid value for \"success_criteria\", must be one of #{validator.allowable_values}."
+      end
+      @success_criteria = success_criteria
     end
 
     # Checks equality by comparing each attribute.
@@ -113,9 +345,29 @@ module LaunchDarklyApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          _id == o._id &&
           key == o.key &&
           name == o.name &&
-          _links == o._links
+          kind == o.kind &&
+          _attached_flag_count == o._attached_flag_count &&
+          _links == o._links &&
+          _site == o._site &&
+          _access == o._access &&
+          tags == o.tags &&
+          _creation_date == o._creation_date &&
+          last_modified == o.last_modified &&
+          maintainer_id == o.maintainer_id &&
+          _maintainer == o._maintainer &&
+          description == o.description &&
+          is_numeric == o.is_numeric &&
+          success_criteria == o.success_criteria &&
+          unit == o.unit &&
+          event_key == o.event_key &&
+          is_active == o.is_active &&
+          _attached_features == o._attached_features &&
+          _version == o._version &&
+          selector == o.selector &&
+          urls == o.urls
     end
 
     # @see the `==` method
@@ -127,7 +379,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [key, name, _links].hash
+      [_id, key, name, kind, _attached_flag_count, _links, _site, _access, tags, _creation_date, last_modified, maintainer_id, _maintainer, description, is_numeric, success_criteria, unit, event_key, is_active, _attached_features, _version, selector, urls].hash
     end
 
     # Builds the object from hash

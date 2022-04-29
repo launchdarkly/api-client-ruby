@@ -8,7 +8,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_member**](AccountMembersApi.md#get_member) | **GET** /api/v2/members/{id} | Get account member |
 | [**get_members**](AccountMembersApi.md#get_members) | **GET** /api/v2/members | List account members |
 | [**patch_member**](AccountMembersApi.md#patch_member) | **PATCH** /api/v2/members/{id} | Modify an account member |
-| [**post_member_teams**](AccountMembersApi.md#post_member_teams) | **POST** /api/v2/members/{id}/teams | Add member to teams |
+| [**post_member_teams**](AccountMembersApi.md#post_member_teams) | **POST** /api/v2/members/{id}/teams | Add a member to teams |
 | [**post_members**](AccountMembersApi.md#post_members) | **POST** /api/v2/members | Invite new members |
 
 
@@ -88,7 +88,7 @@ nil (empty response body)
 
 Get account member
 
-Get a single account member by ID
+Get a single account member by ID.  `me` is a reserved value for the `id` parameter and returns the caller's member information. 
 
 ### Examples
 
@@ -309,9 +309,9 @@ end
 
 > <Member> post_member_teams(id, member_teams_post_input)
 
-Add member to teams
+Add a member to teams
 
-Add member to team(s)
+Add one member to one or more teams.
 
 ### Examples
 
@@ -331,7 +331,7 @@ id = 'id_example' # String | The member ID
 member_teams_post_input = LaunchDarklyApi::MemberTeamsPostInput.new({team_keys: ['team_keys_example']}) # MemberTeamsPostInput | 
 
 begin
-  # Add member to teams
+  # Add a member to teams
   result = api_instance.post_member_teams(id, member_teams_post_input)
   p result
 rescue LaunchDarklyApi::ApiError => e
@@ -347,7 +347,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Add member to teams
+  # Add a member to teams
   data, status_code, headers = api_instance.post_member_teams_with_http_info(id, member_teams_post_input)
   p status_code # => 2xx
   p headers # => { ... }

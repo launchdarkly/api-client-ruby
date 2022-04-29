@@ -266,7 +266,7 @@ module LaunchDarklyApi
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :limit The number of elements to return per page
     # @option opts [String] :search_after Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the &#x60;next&#x60; link we provide instead.
-    # @return [Users]
+    # @return [UsersRep]
     def get_users(project_key, environment_key, opts = {})
       data, _status_code, _headers = get_users_with_http_info(project_key, environment_key, opts)
       data
@@ -279,7 +279,7 @@ module LaunchDarklyApi
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :limit The number of elements to return per page
     # @option opts [String] :search_after Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the &#x60;next&#x60; link we provide instead.
-    # @return [Array<(Users, Integer, Hash)>] Users data, response status code and response headers
+    # @return [Array<(UsersRep, Integer, Hash)>] UsersRep data, response status code and response headers
     def get_users_with_http_info(project_key, environment_key, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UsersApi.get_users ...'
@@ -312,7 +312,7 @@ module LaunchDarklyApi
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Users'
+      return_type = opts[:debug_return_type] || 'UsersRep'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']

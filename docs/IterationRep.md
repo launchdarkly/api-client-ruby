@@ -10,11 +10,12 @@
 | **started_at** | **Integer** |  | [optional] |
 | **ended_at** | **Integer** |  | [optional] |
 | **winning_treatment_id** | **String** |  | [optional] |
+| **winning_reason** | **String** |  | [optional] |
 | **can_reshuffle_traffic** | **Boolean** |  | [optional] |
 | **flags** | [**Hash&lt;String, FlagRep&gt;**](FlagRep.md) |  | [optional] |
-| **primary_metric** | [**MetricRep**](MetricRep.md) |  | [optional] |
+| **primary_metric** | [**MetricV2Rep**](MetricV2Rep.md) |  | [optional] |
 | **treatments** | [**Array&lt;TreatmentRep&gt;**](TreatmentRep.md) |  | [optional] |
-| **secondary_metrics** | [**Array&lt;MetricRep&gt;**](MetricRep.md) |  | [optional] |
+| **secondary_metrics** | [**Array&lt;MetricV2Rep&gt;**](MetricV2Rep.md) |  | [optional] |
 
 ## Example
 
@@ -28,6 +29,7 @@ instance = LaunchDarklyApi::IterationRep.new(
   started_at: null,
   ended_at: null,
   winning_treatment_id: null,
+  winning_reason: null,
   can_reshuffle_traffic: null,
   flags: null,
   primary_metric: null,

@@ -88,7 +88,7 @@ describe 'UsersApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :limit The number of elements to return per page
   # @option opts [String] :search_after Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the &#x60;next&#x60; link we provide instead.
-  # @return [Users]
+  # @return [UsersRep]
   describe 'get_users test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

@@ -23,7 +23,7 @@ instance = LaunchDarklyApi::UserRecord.new(
   owner_id: null,
   user: null,
   sort_value: null,
-  _links: null,
+  _links: {&quot;parent&quot;:{&quot;href&quot;:&quot;/api/v2/users/my-project/my-environment&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/users/my-project/my-environment/my-user&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;settings&quot;:{&quot;href&quot;:&quot;/api/v2/users/my-project/my-environment/my-user/flags&quot;,&quot;type&quot;:&quot;text/html&quot;},&quot;site&quot;:{&quot;href&quot;:&quot;/my-project/my-environment/users/my-user&quot;,&quot;type&quot;:&quot;text/html&quot;}},
   _access: null
 )
 ```

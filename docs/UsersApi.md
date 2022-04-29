@@ -250,7 +250,7 @@ end
 
 ## get_users
 
-> <Users> get_users(project_key, environment_key, opts)
+> <UsersRep> get_users(project_key, environment_key, opts)
 
 List users
 
@@ -290,7 +290,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Users>, Integer, Hash)> get_users_with_http_info(project_key, environment_key, opts)
+> <Array(<UsersRep>, Integer, Hash)> get_users_with_http_info(project_key, environment_key, opts)
 
 ```ruby
 begin
@@ -298,7 +298,7 @@ begin
   data, status_code, headers = api_instance.get_users_with_http_info(project_key, environment_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Users>
+  p data # => <UsersRep>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling UsersApi->get_users_with_http_info: #{e}"
 end
@@ -315,7 +315,7 @@ end
 
 ### Return type
 
-[**Users**](Users.md)
+[**UsersRep**](UsersRep.md)
 
 ### Authorization
 

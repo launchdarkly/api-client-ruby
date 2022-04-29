@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **_id** | **String** |  | [optional] |
 | **name** | **String** |  |  |
-| **allocation_percent** | [**NullDecimal**](NullDecimal.md) |  |  |
+| **allocation_percent** | **String** |  |  |
 | **baseline** | **Boolean** |  | [optional] |
 | **parameters** | [**Array&lt;ParameterRep&gt;**](ParameterRep.md) |  | [optional] |
 

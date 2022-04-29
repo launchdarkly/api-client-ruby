@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **treatments** | [**Array&lt;TreatmentRep&gt;**](TreatmentRep.md) |  | [optional] |
-| **secondary_metrics** | [**Array&lt;MetricRep&gt;**](MetricRep.md) |  | [optional] |
+| **secondary_metrics** | [**Array&lt;MetricV2Rep&gt;**](MetricV2Rep.md) |  | [optional] |
 
 ## Example
 
