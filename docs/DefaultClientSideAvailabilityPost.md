@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **using_environment_id** | **Boolean** |  |  |
-| **using_mobile_key** | **Boolean** |  |  |
+| **using_environment_id** | **Boolean** | Whether to enable availability for client-side SDKs. |  |
+| **using_mobile_key** | **Boolean** | Whether to enable availability for mobile SDKs. |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::DefaultClientSideAvailabilityPost.new(
-  using_environment_id: null,
-  using_mobile_key: null
+  using_environment_id: true,
+  using_mobile_key: true
 )
 ```
 

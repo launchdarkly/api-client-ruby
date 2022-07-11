@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **code** | **String** |  | [optional] |
-| **message** | **String** |  | [optional] |
+| **code** | **String** | Specific error code encountered | [optional] |
+| **message** | **String** | Description of the error | [optional] |
 
 ## Example
 
@@ -14,7 +14,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::StatusConflictErrorRep.new(
   code: optimistic_locking_error,
-  message: Optimistic lock error. Please try again later.
+  message: Conflict. Optimistic lock error. Try again later.
 )
 ```
 

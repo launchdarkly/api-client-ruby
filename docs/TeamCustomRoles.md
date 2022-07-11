@@ -14,9 +14,9 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::TeamCustomRoles.new(
-  total_count: null,
+  total_count: 1,
   items: null,
-  _links: null
+  _links: {&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/teams/example-team/roles?limit&#x3D;25&quot;,&quot;type&quot;:&quot;application/json&quot;}}
 )
 ```
 

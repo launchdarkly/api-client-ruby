@@ -96,7 +96,7 @@ end
 
 Delete delivery configuration
 
-Delete a delivery configuration
+Delete a delivery configuration.
 
 ### Examples
 

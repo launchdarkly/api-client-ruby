@@ -299,7 +299,7 @@ end
 
 Creates a webhook
 
-Create a new webhook
+Create a new webhook.
 
 ### Examples
 

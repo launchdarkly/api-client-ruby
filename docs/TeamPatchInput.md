@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** |  | [optional] |
-| **instructions** | **Array&lt;Object&gt;** |  | [optional] |
+| **comment** | **String** | Optional comment describing the update | [optional] |
+| **instructions** | **Array&lt;Hash&gt;** |  |  |
 
 ## Example
 
@@ -13,7 +13,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::TeamPatchInput.new(
-  comment: null,
+  comment: Optional comment about the update,
   instructions: null
 )
 ```

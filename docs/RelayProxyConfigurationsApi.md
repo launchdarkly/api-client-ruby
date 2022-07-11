@@ -18,7 +18,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Delete Relay Proxy config by ID
 
-Delete a Relay Proxy config
+Delete a Relay Proxy config.
 
 ### Examples
 
@@ -88,7 +88,7 @@ nil (empty response body)
 
 Get Relay Proxy config
 
-Get a single Relay Proxy Auto Config by ID
+Get a single Relay Proxy auto config by ID.
 
 ### Examples
 
@@ -227,7 +227,7 @@ This endpoint does not need any parameter.
 
 Update a Relay Proxy config
 
-Update a Relay Proxy config.
+Update a Relay Proxy config using the JSON patch format.
 
 ### Examples
 
@@ -300,7 +300,7 @@ end
 
 Create a new Relay Proxy config
 
-Create a Relay Proxy config
+Create a Relay Proxy config.
 
 ### Examples
 
@@ -316,7 +316,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::RelayProxyConfigurationsApi.new
-relay_auto_config_post = LaunchDarklyApi::RelayAutoConfigPost.new({name: 'name_example', policy: [LaunchDarklyApi::StatementRep.new({effect: 'effect_example'})]}) # RelayAutoConfigPost | 
+relay_auto_config_post = LaunchDarklyApi::RelayAutoConfigPost.new({name: 'name_example', policy: [LaunchDarklyApi::Statement.new({effect: 'effect_example'})]}) # RelayAutoConfigPost | 
 
 begin
   # Create a new Relay Proxy config

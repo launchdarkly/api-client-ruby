@@ -13,7 +13,7 @@
 | **creation_date** | **Integer** |  |  |
 | **last_modified** | **Integer** |  |  |
 | **custom_role_ids** | **Array&lt;String&gt;** |  | [optional] |
-| **inline_role** | [**Array&lt;StatementRep&gt;**](StatementRep.md) |  | [optional] |
+| **inline_role** | [**Array&lt;Statement&gt;**](Statement.md) |  | [optional] |
 | **role** | **String** |  | [optional] |
 | **token** | **String** |  | [optional] |
 | **service_token** | **Boolean** |  | [optional] |

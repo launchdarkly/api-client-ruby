@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;FeatureFlagScheduledChange&gt;**](FeatureFlagScheduledChange.md) |  |  |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
+| **items** | [**Array&lt;FeatureFlagScheduledChange&gt;**](FeatureFlagScheduledChange.md) | Array of scheduled changes |  |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | Links to other resources within the API. Includes the URL and content type of those resources. | [optional] |
 
 ## Example
 

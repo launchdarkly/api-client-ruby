@@ -11,7 +11,7 @@
 | **default_client_side_availability** | [**ClientSideAvailability**](ClientSideAvailability.md) |  | [optional] |
 | **name** | **String** |  |  |
 | **tags** | **Array&lt;String&gt;** |  |  |
-| **environments** | [**Array&lt;Environment&gt;**](Environment.md) |  |  |
+| **environments** | [**Environments**](Environments.md) |  | [optional] |
 
 ## Example
 

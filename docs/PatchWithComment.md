@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **patch** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md) |  |  |
-| **comment** | **String** |  | [optional] |
+| **comment** | **String** | Optional comment | [optional] |
 
 ## Example
 

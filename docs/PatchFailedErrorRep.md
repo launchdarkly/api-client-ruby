@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **code** | **String** |  | [optional] |
-| **message** | **String** |  | [optional] |
+| **code** | **String** | Specific error code encountered | [optional] |
+| **message** | **String** | Description of the error | [optional] |
 
 ## Example
 
@@ -14,7 +14,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::PatchFailedErrorRep.new(
   code: patch_failed,
-  message: could not apply patch
+  message: Unprocessable entity. Could not apply patch.
 )
 ```
 

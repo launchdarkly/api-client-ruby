@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Hash&lt;String, UserFlagSetting&gt;**](UserFlagSetting.md) |  |  |
+| **items** | [**Hash&lt;String, UserFlagSetting&gt;**](UserFlagSetting.md) | An array of flag settings for the user. |  |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
 
 ## Example

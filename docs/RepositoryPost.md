@@ -4,12 +4,12 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** |  |  |
-| **source_link** | **String** |  | [optional] |
+| **name** | **String** | The repository name |  |
+| **source_link** | **String** | A URL to access the repository | [optional] |
 | **commit_url_template** | **String** | A template for constructing a valid URL to view the commit | [optional] |
 | **hunk_url_template** | **String** | A template for constructing a valid URL to view the hunk | [optional] |
-| **type** | **String** | Optionally specify a repository type. The default value is &lt;code&gt;custom&lt;/code&gt; | [optional] |
-| **default_branch** | **String** | The default branch, if not specified, is &lt;code&gt;master&lt;/code&gt; | [optional] |
+| **type** | **String** | The type of repository. If not specified, the default value is &lt;code&gt;custom&lt;/code&gt;. | [optional] |
+| **default_branch** | **String** | The repository&#39;s default branch. If not specified, the default value is &lt;code&gt;master&lt;/code&gt;. | [optional] |
 
 ## Example
 

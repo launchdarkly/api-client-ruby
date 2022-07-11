@@ -6,12 +6,12 @@
 | ---- | ---- | ----------- | ----- |
 | **_id** | **String** |  |  |
 | **_creation_date** | **Integer** |  |  |
-| **_maintainer_id** | **String** |  |  |
-| **_version** | **Integer** |  |  |
+| **_maintainer_id** | **String** | The ID of the scheduled change maintainer |  |
+| **_version** | **Integer** | Version of the scheduled change |  |
 | **execution_date** | **Integer** |  |  |
-| **instructions** | **Array&lt;Object&gt;** |  |  |
-| **conflicts** | **Object** |  | [optional] |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
+| **instructions** | **Array&lt;Hash&gt;** |  |  |
+| **conflicts** | **Object** | Details on any conflicting scheduled changes | [optional] |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | Links to other resources within the API. Includes the URL and content type of those resources. | [optional] |
 
 ## Example
 
@@ -21,8 +21,8 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::FeatureFlagScheduledChange.new(
   _id: null,
   _creation_date: null,
-  _maintainer_id: null,
-  _version: null,
+  _maintainer_id: 12ab3c45de678910abc12345,
+  _version: 1,
   execution_date: null,
   instructions: null,
   conflicts: null,

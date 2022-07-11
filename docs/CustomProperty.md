@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** |  |  |
-| **value** | **Array&lt;String&gt;** |  |  |
+| **name** | **String** | The name of the custom property of this type. |  |
+| **value** | **Array&lt;String&gt;** | An array of values for the custom property data to associate with this flag. |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::CustomProperty.new(
-  name: null,
-  value: null
+  name: Jira issues,
+  value: [&quot;is-123&quot;,&quot;is-456&quot;]
 )
 ```
 

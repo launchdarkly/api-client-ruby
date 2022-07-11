@@ -19,7 +19,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Delete approval request
 
-Delete an approval request for a feature flag
+Delete an approval request for a feature flag.
 
 ### Examples
 
@@ -95,7 +95,7 @@ nil (empty response body)
 
 Get approval request
 
-Get a single approval request for a feature flag
+Get a single approval request for a feature flag.
 
 ### Examples
 
@@ -172,7 +172,7 @@ end
 
 List all approval requests
 
-Get all approval requests for a feature flag
+Get all approval requests for a feature flag.
 
 ### Examples
 
@@ -247,7 +247,7 @@ end
 
 Create approval request
 
-Create an approval request for a feature flag
+Create an approval request for a feature flag.
 
 ### Examples
 
@@ -266,7 +266,7 @@ api_instance = LaunchDarklyApi::ApprovalsApi.new
 project_key = 'project_key_example' # String | The project key
 feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
-create_flag_config_approval_request_request = LaunchDarklyApi::CreateFlagConfigApprovalRequestRequest.new({description: 'description_example', instructions: [3.56], notify_member_ids: ['notify_member_ids_example']}) # CreateFlagConfigApprovalRequestRequest | 
+create_flag_config_approval_request_request = LaunchDarklyApi::CreateFlagConfigApprovalRequestRequest.new({description: 'Requesting to update targeting', instructions: [{ key: 3.56}]}) # CreateFlagConfigApprovalRequestRequest | 
 
 begin
   # Create approval request
@@ -324,7 +324,7 @@ end
 
 Apply approval request
 
-Apply approval request by either approving or declining changes.
+Apply an approval request that has been approved.
 
 ### Examples
 
@@ -403,7 +403,7 @@ end
 
 Review approval request
 
-Review approval request by either approving or declining changes.
+Review an approval request by approving or denying changes.
 
 ### Examples
 
@@ -500,8 +500,8 @@ end
 api_instance = LaunchDarklyApi::ApprovalsApi.new
 project_key = 'project_key_example' # String | The project key
 feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
-environment_key = 'environment_key_example' # String | The environment key
-create_copy_flag_config_approval_request_request = LaunchDarklyApi::CreateCopyFlagConfigApprovalRequestRequest.new({description: 'description_example', notify_member_ids: ['notify_member_ids_example'], source: LaunchDarklyApi::SourceFlag.new({key: 'key_example'})}) # CreateCopyFlagConfigApprovalRequestRequest | 
+environment_key = 'environment_key_example' # String | The environment key for the target environment
+create_copy_flag_config_approval_request_request = LaunchDarklyApi::CreateCopyFlagConfigApprovalRequestRequest.new({description: 'copy flag settings to another environment', source: LaunchDarklyApi::SourceFlag.new({key: 'example-environment-key'})}) # CreateCopyFlagConfigApprovalRequestRequest | 
 
 begin
   # Create approval request to copy flag configurations across environments
@@ -536,7 +536,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
 | **feature_flag_key** | **String** | The feature flag key |  |
-| **environment_key** | **String** | The environment key |  |
+| **environment_key** | **String** | The environment key for the target environment |  |
 | **create_copy_flag_config_approval_request_request** | [**CreateCopyFlagConfigApprovalRequestRequest**](CreateCopyFlagConfigApprovalRequestRequest.md) |  |  |
 
 ### Return type

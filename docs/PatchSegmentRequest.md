@@ -13,7 +13,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::PatchSegmentRequest.new(
-  comment: null,
+  comment: optional comment,
   instructions: [{&quot;kind&quot;:&quot;updateExpireUserTargetDate&quot;,&quot;targetType&quot;:&quot;included&quot;,&quot;userKey&quot;:&quot;userKey&quot;,&quot;value&quot;:1587582000000,&quot;version&quot;:0}]
 )
 ```

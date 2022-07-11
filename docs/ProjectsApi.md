@@ -17,7 +17,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Delete project
 
-Delete a project by key. Caution: deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
+Delete a project by key. Use this endpoint with caution. Deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
 
 ### Examples
 
@@ -83,11 +83,11 @@ nil (empty response body)
 
 ## get_project
 
-> <Project> get_project(project_key)
+> <Project> get_project(project_key, opts)
 
 Get project
 
-Get a single project by key.
+Get a single project by key.  ### Expanding the project response  LaunchDarkly supports one field for expanding the \"Get project\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields: * `environments` includes a paginated list of the project environments.  For example, `expand=environments` includes the `environments` field for the project in the response. 
 
 ### Examples
 
@@ -103,11 +103,14 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::ProjectsApi.new
-project_key = 'project_key_example' # String | The project key
+project_key = 'project_key_example' # String | The project key.
+opts = {
+  expand: 'expand_example' # String | A comma-separated list of properties that can reveal additional information in the response.
+}
 
 begin
   # Get project
-  result = api_instance.get_project(project_key)
+  result = api_instance.get_project(project_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ProjectsApi->get_project: #{e}"
@@ -118,12 +121,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Project>, Integer, Hash)> get_project_with_http_info(project_key)
+> <Array(<Project>, Integer, Hash)> get_project_with_http_info(project_key, opts)
 
 ```ruby
 begin
   # Get project
-  data, status_code, headers = api_instance.get_project_with_http_info(project_key)
+  data, status_code, headers = api_instance.get_project_with_http_info(project_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Project>
@@ -136,7 +139,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** | The project key |  |
+| **project_key** | **String** | The project key. |  |
+| **expand** | **String** | A comma-separated list of properties that can reveal additional information in the response. | [optional] |
 
 ### Return type
 
@@ -154,11 +158,11 @@ end
 
 ## get_projects
 
-> <Projects> get_projects
+> <Projects> get_projects(opts)
 
 List projects
 
-Get a list of all projects in the account.
+Return a list of projects.  By default, this returns the first 20 projects. Page through this list with the `limit` parameter and by following the `first`, `prev`, `next`, and `last` links in the `_links` field that returns. If those links do not appear, the pages they refer to don't exist. For example, the `first` and `prev` links will be missing from the response on the first page, because there is no previous page and you cannot return to the first page when you are already on the first page.  ### Filtering projects  LaunchDarkly supports two fields for filters: - `query` is a string that matches against the projects' names and keys. It is not case sensitive. - `tags` is a `+` separate list of project tags. It filters the list of projects that have all of the tags in the list.  For example, the filter `query:abc,tags:tag-1+tag-2` matches projects with the string `abc` in their name or key and also are tagged with `tag-1` and `tag-2`. The filter is not case-sensitive.  ### Sorting projects  LaunchDarkly supports two fields for sorting: - `name` sorts by project name. - `createdOn` sorts by the creation date of the project.  For example, `sort=name` sorts the response by project name in ascending order.  ### Expanding the projects response  LaunchDarkly supports one field for expanding the \"List projects\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with the `environments` field.  `Environments` includes a paginated list of the project environments. * `environments` includes a paginated list of the project environments.  For example, `expand=environments` includes the `environments` field for each project in the response. 
 
 ### Examples
 
@@ -174,10 +178,16 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::ProjectsApi.new
+opts = {
+  limit: 789, # Integer | The number of projects to return in the response. Defaults to 20.
+  offset: 789, # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next `limit` items.
+  filter: 'filter_example', # String | A comma-separated list of filters. Each filter is constructed as `field:value`.
+  expand: 'expand_example' # String | A comma-separated list of properties that can reveal additional information in the response.
+}
 
 begin
   # List projects
-  result = api_instance.get_projects
+  result = api_instance.get_projects(opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ProjectsApi->get_projects: #{e}"
@@ -188,12 +198,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Projects>, Integer, Hash)> get_projects_with_http_info
+> <Array(<Projects>, Integer, Hash)> get_projects_with_http_info(opts)
 
 ```ruby
 begin
   # List projects
-  data, status_code, headers = api_instance.get_projects_with_http_info
+  data, status_code, headers = api_instance.get_projects_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Projects>
@@ -204,7 +214,12 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **limit** | **Integer** | The number of projects to return in the response. Defaults to 20. | [optional] |
+| **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. | [optional] |
+| **filter** | **String** | A comma-separated list of filters. Each filter is constructed as &#x60;field:value&#x60;. | [optional] |
+| **expand** | **String** | A comma-separated list of properties that can reveal additional information in the response. | [optional] |
 
 ### Return type
 
@@ -222,7 +237,7 @@ This endpoint does not need any parameter.
 
 ## patch_project
 
-> <Project> patch_project(project_key, patch_operation)
+> <ProjectRep> patch_project(project_key, patch_operation)
 
 Update project
 
@@ -258,7 +273,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Project>, Integer, Hash)> patch_project_with_http_info(project_key, patch_operation)
+> <Array(<ProjectRep>, Integer, Hash)> patch_project_with_http_info(project_key, patch_operation)
 
 ```ruby
 begin
@@ -266,7 +281,7 @@ begin
   data, status_code, headers = api_instance.patch_project_with_http_info(project_key, patch_operation)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Project>
+  p data # => <ProjectRep>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ProjectsApi->patch_project_with_http_info: #{e}"
 end
@@ -281,7 +296,7 @@ end
 
 ### Return type
 
-[**Project**](Project.md)
+[**ProjectRep**](ProjectRep.md)
 
 ### Authorization
 
@@ -295,7 +310,7 @@ end
 
 ## post_project
 
-> <Project> post_project(project_post)
+> <ProjectRep> post_project(project_post)
 
 Create project
 
@@ -330,7 +345,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Project>, Integer, Hash)> post_project_with_http_info(project_post)
+> <Array(<ProjectRep>, Integer, Hash)> post_project_with_http_info(project_post)
 
 ```ruby
 begin
@@ -338,7 +353,7 @@ begin
   data, status_code, headers = api_instance.post_project_with_http_info(project_post)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Project>
+  p data # => <ProjectRep>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ProjectsApi->post_project_with_http_info: #{e}"
 end
@@ -352,7 +367,7 @@ end
 
 ### Return type
 
-[**Project**](Project.md)
+[**ProjectRep**](ProjectRep.md)
 
 ### Authorization
 

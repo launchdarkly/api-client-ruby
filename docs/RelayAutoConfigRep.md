@@ -8,7 +8,7 @@
 | **_creator** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
 | **_access** | [**Access**](Access.md) |  | [optional] |
 | **name** | **String** |  |  |
-| **policy** | [**Array&lt;StatementRep&gt;**](StatementRep.md) |  |  |
+| **policy** | [**Array&lt;Statement&gt;**](Statement.md) |  |  |
 | **full_key** | **String** |  |  |
 | **display_key** | **String** |  |  |
 | **creation_date** | **Integer** |  |  |

@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **code** | **String** |  | [optional] |
-| **message** | **String** |  | [optional] |
+| **code** | **String** | Specific error code encountered | [optional] |
+| **message** | **String** | Description of the error | [optional] |
 
 ## Example
 
@@ -14,7 +14,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ForbiddenErrorRep.new(
   code: forbidden,
-  message: access to the requested resource was denied
+  message: Forbidden. Access to the requested resource was denied.
 )
 ```
 

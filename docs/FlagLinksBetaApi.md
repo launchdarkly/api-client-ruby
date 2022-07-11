@@ -91,7 +91,7 @@ end
 
 Delete flag link
 
-Delete a flag link by ID or Key.
+Delete a flag link by ID or key.
 
 ### Examples
 

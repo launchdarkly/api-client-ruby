@@ -12,7 +12,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MemberTeamsPostInput.new(
-  team_keys: null
+  team_keys: [&quot;team1&quot;,&quot;team2&quot;]
 )
 ```
 

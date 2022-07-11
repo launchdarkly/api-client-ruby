@@ -7,6 +7,7 @@
 | **_id** | **String** |  | [optional] |
 | **hypothesis** | **String** |  |  |
 | **status** | **String** |  |  |
+| **created_at** | **Integer** |  |  |
 | **started_at** | **Integer** |  | [optional] |
 | **ended_at** | **Integer** |  | [optional] |
 | **winning_treatment_id** | **String** |  | [optional] |
@@ -26,6 +27,7 @@ instance = LaunchDarklyApi::IterationRep.new(
   _id: null,
   hypothesis: null,
   status: null,
+  created_at: null,
   started_at: null,
   ended_at: null,
   winning_treatment_id: null,

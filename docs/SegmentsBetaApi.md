@@ -90,7 +90,7 @@ nil (empty response body)
 
 Create Big Segment import
 
-Starts a new import process for a Big Segment
+Start a new import process for a Big Segment.
 
 ### Examples
 

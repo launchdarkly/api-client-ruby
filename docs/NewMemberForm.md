@@ -9,7 +9,7 @@
 | **first_name** | **String** | The member&#39;s first name | [optional] |
 | **last_name** | **String** | The member&#39;s last name | [optional] |
 | **role** | **String** | The member&#39;s built-in role | [optional] |
-| **custom_roles** | **Array&lt;String&gt;** | The member&#39;s custom role | [optional] |
+| **custom_roles** | **Array&lt;String&gt;** | An array of the member&#39;s custom roles | [optional] |
 
 ## Example
 
@@ -17,12 +17,12 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::NewMemberForm.new(
-  email: null,
-  password: null,
-  first_name: null,
-  last_name: null,
-  role: null,
-  custom_roles: null
+  email: sandy@acme.com,
+  password: ***,
+  first_name: Sandy,
+  last_name: Smith,
+  role: reader,
+  custom_roles: [&quot;customRole1&quot;,&quot;customRole2&quot;]
 )
 ```
 

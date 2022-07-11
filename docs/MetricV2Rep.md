@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **key** | **String** |  |  |
 | **name** | **String** |  |  |
+| **kind** | **String** |  |  |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
 
 ## Example
@@ -16,6 +17,7 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::MetricV2Rep.new(
   key: null,
   name: null,
+  kind: null,
   _links: {&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/metrics/my-project/my-metric&quot;,&quot;type&quot;:&quot;application/json&quot;}}
 )
 ```

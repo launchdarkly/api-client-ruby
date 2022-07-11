@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** |  | [optional] |
+| **comment** | **String** | Optional comment about the approval request | [optional] |
 
 ## Example
 
@@ -12,7 +12,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::PostApprovalRequestApplyRequest.new(
-  comment: null
+  comment: Looks good, thanks for updating
 )
 ```
 

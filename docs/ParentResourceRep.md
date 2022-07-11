@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
-| **resource** | **Object** |  | [optional] |
+| **resource** | **Hash&lt;String, Object&gt;** |  | [optional] |
 
 ## Example
 

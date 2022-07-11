@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** |  | [optional] |
-| **instructions** | **Array&lt;Object&gt;** |  |  |
+| **comment** | **String** | Optional comment describing the update to the scheduled changes | [optional] |
+| **instructions** | **Array&lt;Hash&gt;** |  |  |
 
 ## Example
 
@@ -13,7 +13,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::FlagScheduledChangesInput.new(
-  comment: null,
+  comment: optional comment,
   instructions: null
 )
 ```

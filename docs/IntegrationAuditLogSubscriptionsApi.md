@@ -17,7 +17,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Create audit log subscription
 
-Create an audit log subscription.
+Create an audit log subscription.<br /><br />For each subscription, you must specify the set of resources you wish to subscribe to audit log notifications for. You can describe these resources using a custom role policy. To learn more, read [Custom role concepts](https://docs.launchdarkly.com/home/members/role-concepts).
 
 ### Examples
 
@@ -34,7 +34,7 @@ end
 
 api_instance = LaunchDarklyApi::IntegrationAuditLogSubscriptionsApi.new
 integration_key = 'integration_key_example' # String | The integration key
-subscription_post = LaunchDarklyApi::SubscriptionPost.new({name: 'name_example', config: { key: 3.56}}) # SubscriptionPost | 
+subscription_post = LaunchDarklyApi::SubscriptionPost.new({name: 'Example audit log subscription.', config: { key: 3.56}}) # SubscriptionPost | 
 
 begin
   # Create audit log subscription

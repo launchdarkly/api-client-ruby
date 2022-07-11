@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** | Flag key to copy |  |
-| **version** | **Integer** |  | [optional] |
+| **key** | **String** | The environment key for the source environment |  |
+| **version** | **Integer** | The version of the source flag from which to copy | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::SourceFlag.new(
-  key: null,
-  version: null
+  key: example-environment-key,
+  version: 1
 )
 ```
 

@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
-| **items** | [**Array&lt;Destination&gt;**](Destination.md) |  | [optional] |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | Links to other resources within the API. Includes the URL and content type of those resources. | [optional] |
+| **items** | [**Array&lt;Destination&gt;**](Destination.md) | An array of Data Export destinations | [optional] |
 
 ## Example
 

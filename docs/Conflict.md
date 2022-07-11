@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **instruction** | **Object** |  | [optional] |
+| **instruction** | **Hash&lt;String, Object&gt;** |  | [optional] |
 | **reason** | **String** | Reason why the conflict exists | [optional] |
 
 ## Example

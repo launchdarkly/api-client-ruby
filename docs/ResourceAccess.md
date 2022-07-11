@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **action** | **String** |  | [optional] |
-| **resource** | **Object** |  | [optional] |
+| **resource** | **Hash&lt;String, Object&gt;** |  | [optional] |
 
 ## Example
 

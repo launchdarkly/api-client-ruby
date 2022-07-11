@@ -16,9 +16,9 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::CustomRolePost.new(
-  name: null,
-  key: null,
-  description: null,
+  name: Ops team,
+  key: ops-team,
+  description: An example role for members of the ops team,
   policy: null,
   base_permissions: null
 )

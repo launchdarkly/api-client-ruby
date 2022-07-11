@@ -16,7 +16,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Delete workflow
 
-Delete a workflow from a feature flag
+Delete a workflow from a feature flag.
 
 ### Examples
 
@@ -92,7 +92,7 @@ nil (empty response body)
 
 Get custom workflow
 
-Get a specific workflow by ID
+Get a specific workflow by ID.
 
 ### Examples
 
@@ -169,7 +169,7 @@ end
 
 Get workflows
 
-Get workflows from a feature flag
+Display workflows associated with a feature flag.
 
 ### Examples
 
@@ -244,7 +244,7 @@ end
 
 Create workflow
 
-Create a workflow for a feature flag
+Create a workflow for a feature flag.
 
 ### Examples
 
@@ -263,7 +263,7 @@ api_instance = LaunchDarklyApi::WorkflowsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
-custom_workflow_input_rep = LaunchDarklyApi::CustomWorkflowInputRep.new({description: 'description_example'}) # CustomWorkflowInputRep | 
+custom_workflow_input_rep = LaunchDarklyApi::CustomWorkflowInputRep.new({description: 'Turn flag on for 10% of users each day'}) # CustomWorkflowInputRep | 
 
 begin
   # Create workflow

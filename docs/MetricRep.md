@@ -26,7 +26,7 @@
 | **_attached_features** | [**Array&lt;FlagListingRep&gt;**](FlagListingRep.md) |  | [optional] |
 | **_version** | **Integer** |  | [optional] |
 | **selector** | **String** |  | [optional] |
-| **urls** | **Array&lt;Object&gt;** |  | [optional] |
+| **urls** | **Array&lt;Hash&gt;** |  | [optional] |
 
 ## Example
 

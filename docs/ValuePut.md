@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **setting** | **Object** | The variation value to set for the user | [optional] |
-| **comment** | **String** |  | [optional] |
+| **setting** | **Object** | The variation value to set for the user. Must match the flag&#39;s variation type. | [optional] |
+| **comment** | **String** | Optional comment describing the change | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ValuePut.new(
-  setting: null,
-  comment: null
+  setting: existing_variation_value_to_use,
+  comment: make sure this user experiences a specific variation
 )
 ```
 

@@ -4,18 +4,18 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** |  |  |
-| **name** | **String** |  | [optional] |
-| **description** | **String** |  | [optional] |
-| **kind** | **String** |  |  |
-| **selector** | **String** | Required for click metrics | [optional] |
-| **urls** | [**Array&lt;UrlPost&gt;**](UrlPost.md) | Required for click and pageview metrics | [optional] |
-| **is_active** | **Boolean** |  | [optional] |
-| **is_numeric** | **Boolean** |  | [optional] |
-| **unit** | **String** |  | [optional] |
-| **event_key** | **String** | Required for custom metrics | [optional] |
-| **success_criteria** | **String** |  | [optional] |
-| **tags** | **Array&lt;String&gt;** |  | [optional] |
+| **key** | **String** | A unique key to reference the metric |  |
+| **name** | **String** | A human-friendly name for the metric | [optional] |
+| **description** | **String** | Description of the metric | [optional] |
+| **kind** | **String** | The kind of event your metric will track |  |
+| **selector** | **String** | One or more CSS selectors. Required for click metrics. | [optional] |
+| **urls** | [**Array&lt;UrlPost&gt;**](UrlPost.md) | One or more target URLs. Required for click and pageview metrics. | [optional] |
+| **is_active** | **Boolean** | Whether to track a conversion when users take an action. Required for custom metrics. Either &lt;code&gt;isActive&lt;/code&gt; or &lt;code&gt;isNumeric&lt;/code&gt; may be true, but not both. | [optional] |
+| **is_numeric** | **Boolean** | Whether to track numeric changes in value against a baseline. Required for custom metrics. Either &lt;code&gt;isActive&lt;/code&gt; or &lt;code&gt;isNumeric&lt;/code&gt; may be true, but not both. | [optional] |
+| **unit** | **String** | The unit of measure. Only for numeric custom metrics. | [optional] |
+| **event_key** | **String** | The event name to use in your code. Required for custom metrics. | [optional] |
+| **success_criteria** | **String** | Success criteria. Required for numeric custom metrics. | [optional] |
+| **tags** | **Array&lt;String&gt;** | Tags for the metric | [optional] |
 
 ## Example
 
@@ -23,18 +23,18 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MetricPost.new(
-  key: null,
-  name: null,
-  description: null,
-  kind: null,
-  selector: null,
-  urls: null,
-  is_active: null,
-  is_numeric: null,
-  unit: null,
-  event_key: null,
-  success_criteria: null,
-  tags: null
+  key: example-metric,
+  name: Example metric,
+  description: optional description,
+  kind: custom,
+  selector: .dropdown-toggle,
+  urls: invalid example,
+  is_active: true,
+  is_numeric: false,
+  unit: orders,
+  event_key: sales generated,
+  success_criteria: Higher than baseline,
+  tags: [&quot;example-tag&quot;]
 )
 ```
 

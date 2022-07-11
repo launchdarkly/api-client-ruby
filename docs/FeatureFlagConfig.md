@@ -10,11 +10,11 @@
 | **sel** | **String** |  |  |
 | **last_modified** | **Integer** |  |  |
 | **version** | **Integer** |  |  |
-| **targets** | [**Array&lt;Target&gt;**](Target.md) |  |  |
-| **rules** | [**Array&lt;Rule&gt;**](Rule.md) |  |  |
-| **fallthrough** | [**VariationOrRolloutRep**](VariationOrRolloutRep.md) |  |  |
+| **targets** | [**Array&lt;Target&gt;**](Target.md) |  | [optional] |
+| **rules** | [**Array&lt;Rule&gt;**](Rule.md) |  | [optional] |
+| **fallthrough** | [**VariationOrRolloutRep**](VariationOrRolloutRep.md) |  | [optional] |
 | **off_variation** | **Integer** |  | [optional] |
-| **prerequisites** | [**Array&lt;Prerequisite&gt;**](Prerequisite.md) |  |  |
+| **prerequisites** | [**Array&lt;Prerequisite&gt;**](Prerequisite.md) |  | [optional] |
 | **_site** | [**Link**](Link.md) |  |  |
 | **_access** | [**Access**](Access.md) |  | [optional] |
 | **_environment_name** | **String** |  |  |

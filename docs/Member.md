@@ -15,13 +15,14 @@
 | **_pending_email** | **String** |  | [optional] |
 | **custom_roles** | **Array&lt;String&gt;** | The set of custom roles (as keys) assigned to the member |  |
 | **mfa** | **String** | Whether or not multi-factor authentication is enabled for this member |  |
-| **excluded_dashboards** | **Array&lt;String&gt;** | Default dashboards that the member has chosen to ignore |  |
+| **excluded_dashboards** | **Array&lt;String&gt;** | Default dashboards that the member has chosen to ignore | [optional] |
 | **_last_seen** | **Integer** |  |  |
 | **_last_seen_metadata** | [**LastSeenMetadata**](LastSeenMetadata.md) |  | [optional] |
 | **_integration_metadata** | [**IntegrationMetadata**](IntegrationMetadata.md) |  | [optional] |
 | **teams** | [**Array&lt;MemberTeamSummaryRep&gt;**](MemberTeamSummaryRep.md) |  | [optional] |
 | **permission_grants** | [**Array&lt;MemberPermissionGrantSummaryRep&gt;**](MemberPermissionGrantSummaryRep.md) |  | [optional] |
 | **creation_date** | **Integer** |  |  |
+| **oauth_providers** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example
 
@@ -46,7 +47,8 @@ instance = LaunchDarklyApi::Member.new(
   _integration_metadata: null,
   teams: null,
   permission_grants: null,
-  creation_date: null
+  creation_date: null,
+  oauth_providers: null
 )
 ```
 

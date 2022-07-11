@@ -20,7 +20,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Create experiment
 
-Create an experiment
+Create an experiment. To learn more, read [Creating experiments](https://docs.launchdarkly.com/home/creating-experiments).
 
 ### Examples
 
@@ -38,7 +38,7 @@ end
 api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
-experiment_post = LaunchDarklyApi::ExperimentPost.new({name: 'name_example', description: 'description_example', maintainer_id: 'maintainer_id_example', key: 'key_example', iteration: LaunchDarklyApi::IterationInput.new({hypothesis: 'hypothesis_example', metrics: [LaunchDarklyApi::MetricInput.new({key: 'key_example', primary: false})], treatments: [LaunchDarklyApi::TreatmentInput.new({name: 'name_example', baseline: false, allocation_percent: 'allocation_percent_example', parameters: [LaunchDarklyApi::TreatmentParameterInput.new({flag_key: 'flag_key_example', variation_id: 'variation_id_example'})]})], flags: { key: LaunchDarklyApi::FlagInput.new({rule_id: 'rule_id_example', flag_config_version: 37})}})}) # ExperimentPost | 
+experiment_post = LaunchDarklyApi::ExperimentPost.new({name: 'name_example', maintainer_id: 'maintainer_id_example', key: 'key_example', iteration: LaunchDarklyApi::IterationInput.new({hypothesis: 'hypothesis_example', metrics: [LaunchDarklyApi::MetricInput.new({key: 'key_example', primary: false})], treatments: [LaunchDarklyApi::TreatmentInput.new({name: 'name_example', baseline: false, allocation_percent: 'allocation_percent_example', parameters: [LaunchDarklyApi::TreatmentParameterInput.new({flag_key: 'flag_key_example', variation_id: 'variation_id_example'})]})], flags: { key: LaunchDarklyApi::FlagInput.new({rule_id: 'rule_id_example', flag_config_version: 37})}})}) # ExperimentPost | 
 
 begin
   # Create experiment
@@ -95,7 +95,7 @@ end
 
 Create iteration
 
-Create an experiment iteration
+Create an experiment iteration. Experiment iterations let you record experiments in discrete blocks of time. To learn more, read [Starting experiment iterations](https://docs.launchdarkly.com/home/creating-experiments#starting-experiment-iterations).
 
 ### Examples
 
@@ -172,7 +172,7 @@ end
 
 Get experiment
 
-Get details about an experiment
+Get details about an experiment.
 
 ### Examples
 
@@ -243,11 +243,11 @@ end
 
 ## get_experiment_results
 
-> <ExperimentResults> get_experiment_results(project_key, environment_key, experiment_key, metric_key)
+> <ExperimentBayesianResultsRep> get_experiment_results(project_key, environment_key, experiment_key, metric_key)
 
 Get experiment results
 
-Get results from an experiment for a particular metric
+Get results from an experiment for a particular metric.
 
 ### Examples
 
@@ -281,7 +281,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ExperimentResults>, Integer, Hash)> get_experiment_results_with_http_info(project_key, environment_key, experiment_key, metric_key)
+> <Array(<ExperimentBayesianResultsRep>, Integer, Hash)> get_experiment_results_with_http_info(project_key, environment_key, experiment_key, metric_key)
 
 ```ruby
 begin
@@ -289,7 +289,7 @@ begin
   data, status_code, headers = api_instance.get_experiment_results_with_http_info(project_key, environment_key, experiment_key, metric_key)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ExperimentResults>
+  p data # => <ExperimentBayesianResultsRep>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ExperimentsBetaApi->get_experiment_results_with_http_info: #{e}"
 end
@@ -306,7 +306,7 @@ end
 
 ### Return type
 
-[**ExperimentResults**](ExperimentResults.md)
+[**ExperimentBayesianResultsRep**](ExperimentBayesianResultsRep.md)
 
 ### Authorization
 
@@ -320,11 +320,11 @@ end
 
 ## get_experiments
 
-> <ExperimentCollectionRep> get_experiments(project_key, environment_key)
+> <ExperimentCollectionRep> get_experiments(project_key, environment_key, opts)
 
 Get experiments
 
-Get details about all experiments in an environment
+Get details about all experiments in an environment.  ### Filtering experiments  LaunchDarkly supports the `filter` query param for filtering, with the following fields:  - `flagKey` filters for only experiments that use the flag with the given key. - `metricKey` filters for only experiments that use the metric with the given key. - `status` filters for only experiments with an iteration with the given status. An iteration can have the status `not_started`, `running` or `stopped`.  For example, `filter=flagKey:my-flag,status:running,metricKey:page-load-ms` filters for experiments for the given flag key and the given metric key which have a currently running iteration.  ### Expanding the experiments response LaunchDarkly supports four fields for expanding the \"List experiments\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  - `previousIterations` includes all iterations prior to the current iteration.  By default only the current iteration will be included in the response. - `draftIteration` includes a draft of an iteration which has not been started yet, if any. - `secondaryMetrics` includes secondary metrics.  By default only the primary metric is included in the response. - `treatments` includes all treatment and parameter details.  By default treatment data will not be included in the response.  For example, `expand=draftIteration,treatments` includes the `draftIteration` and `treatments` fields in the response. 
 
 ### Examples
 
@@ -342,10 +342,16 @@ end
 api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
+opts = {
+  limit: 789, # Integer | The maximum number of experiments to return. Defaults to 20
+  offset: 789, # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+  filter: 'filter_example', # String | A comma-separated list of filters. Each filter is of the form `field:value`. Supported fields are explained above.
+  expand: 'expand_example' # String | A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above.
+}
 
 begin
   # Get experiments
-  result = api_instance.get_experiments(project_key, environment_key)
+  result = api_instance.get_experiments(project_key, environment_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ExperimentsBetaApi->get_experiments: #{e}"
@@ -356,12 +362,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ExperimentCollectionRep>, Integer, Hash)> get_experiments_with_http_info(project_key, environment_key)
+> <Array(<ExperimentCollectionRep>, Integer, Hash)> get_experiments_with_http_info(project_key, environment_key, opts)
 
 ```ruby
 begin
   # Get experiments
-  data, status_code, headers = api_instance.get_experiments_with_http_info(project_key, environment_key)
+  data, status_code, headers = api_instance.get_experiments_with_http_info(project_key, environment_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ExperimentCollectionRep>
@@ -376,6 +382,10 @@ end
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
 | **environment_key** | **String** | The environment key |  |
+| **limit** | **Integer** | The maximum number of experiments to return. Defaults to 20 | [optional] |
+| **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
+| **filter** | **String** | A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above. | [optional] |
+| **expand** | **String** | A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above. | [optional] |
 
 ### Return type
 
@@ -397,7 +407,7 @@ end
 
 Get legacy experiment results (deprecated)
 
-Get detailed experiment result data for legacy experiments
+Get detailed experiment result data for legacy experiments.
 
 ### Examples
 
@@ -480,7 +490,7 @@ end
 
 Patch experiment
 
-Patch an Experiment
+Update an experiment. Updating an experiment uses the semantic patch format.  To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](/reference#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following `kind` instructions for updating experiments.  #### updateName  Updates the experiment name.  ##### Parameters  - `value`: The new name.  #### updateDescription  Updates the experiment description.  ##### Parameters  - `value`: The new description.  #### startIteration  Starts a new iteration for this experiment.  #### stopIteration  Stops the current iteration for this experiment. 
 
 ### Examples
 
@@ -499,7 +509,7 @@ api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 experiment_key = 'experiment_key_example' # String | The experiment key
-experiment_patch_input = LaunchDarklyApi::ExperimentPatchInput.new # ExperimentPatchInput | 
+experiment_patch_input = LaunchDarklyApi::ExperimentPatchInput.new({instructions: [{ key: 3.56}]}) # ExperimentPatchInput | 
 
 begin
   # Patch experiment
@@ -557,7 +567,7 @@ end
 
 Reset experiment results
 
-Reset all experiment results by deleting all existing data for an experiment
+Reset all experiment results by deleting all existing data for an experiment.
 
 ### Examples
 

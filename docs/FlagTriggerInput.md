@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** |  | [optional] |
-| **instructions** | **Array&lt;Object&gt;** | The action to perform when triggering. It should pass an array with a single {\&quot;kind\&quot;: &lt;flag_action&gt;} object. Currently supported flag actions are \&quot;turnFlagOn\&quot; and \&quot;turnFlagOff\&quot;. | [optional] |
+| **comment** | **String** | Optional comment describing the update | [optional] |
+| **instructions** | **Array&lt;Hash&gt;** | The instructions to perform when updating. This should be an array with objects that look like &lt;code&gt;{\&quot;kind\&quot;: \&quot;trigger_action\&quot;}&lt;/code&gt;. | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::FlagTriggerInput.new(
-  comment: null,
-  instructions: null
+  comment: optional comment,
+  instructions: [{&quot;kind&quot;:&quot;disableTrigger&quot;}]
 )
 ```
 

@@ -13,7 +13,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::TeamProjects.new(
-  total_count: null,
+  total_count: 1,
   items: null
 )
 ```

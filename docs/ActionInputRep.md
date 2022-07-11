@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **instructions** | **Object** |  | [optional] |
+| **instructions** | **Object** | An array of instructions for the stage. Each object in the array uses the semantic patch format for updating a feature flag. | [optional] |
 
 ## Example
 
@@ -12,7 +12,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ActionInputRep.new(
-  instructions: null
+  instructions: {&quot;instructions&quot;: [{ &quot;kind&quot;: &quot;turnFlagOn&quot;}]}
 )
 ```
 

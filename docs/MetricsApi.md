@@ -308,7 +308,7 @@ end
 
 Create metric
 
-Create a new metric in the specified project. Note that the expected POST body differs depending on the specified kind property.
+Create a new metric in the specified project. The expected `POST` body differs depending on the specified `kind` property.
 
 ### Examples
 
@@ -325,7 +325,7 @@ end
 
 api_instance = LaunchDarklyApi::MetricsApi.new
 project_key = 'project_key_example' # String | The project key
-metric_post = LaunchDarklyApi::MetricPost.new({key: 'key_example', kind: 'pageview'}) # MetricPost | 
+metric_post = LaunchDarklyApi::MetricPost.new({key: 'example-metric', kind: 'pageview'}) # MetricPost | 
 
 begin
   # Create metric

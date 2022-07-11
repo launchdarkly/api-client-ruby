@@ -16,7 +16,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Delete user
 
-Delete a user by key
+Delete a user by key.
 
 ### Examples
 
@@ -254,7 +254,7 @@ end
 
 List users
 
-List all users in the environment. Includes the total count of users. In each page, there is up to `limit` users returned. The default is 20. This is useful for exporting all users in the system for further analysis. To paginate through, follow the `next` link in the `_links` object, as [described in Representations](/#section/Representations). 
+List all users in the environment. Includes the total count of users. This is useful for exporting all users in the system for further analysis.  Each page displays users up to a set `limit`. The default is 20. To page through, follow the `next` link in the `_links` object. To learn more, read [Representations](/#section/Representations). 
 
 ### Examples
 
