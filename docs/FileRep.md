@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **filename** | **String** |  | [optional] |
-| **status** | **String** |  | [optional] |
+| **filename** | **String** | The imported file name, including the extension | [optional] |
+| **status** | **String** | The imported file status | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::FileRep.new(
-  filename: null,
-  status: null
+  filename: bigsegimport.csv,
+  status: complete
 )
 ```
 

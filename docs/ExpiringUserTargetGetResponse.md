@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;ExpiringUserTargetItem&gt;**](ExpiringUserTargetItem.md) |  |  |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
+| **items** | [**Array&lt;ExpiringUserTargetItem&gt;**](ExpiringUserTargetItem.md) | An array of expiring user targets |  |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources | [optional] |
 
 ## Example
 

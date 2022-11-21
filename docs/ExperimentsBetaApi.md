@@ -38,7 +38,7 @@ end
 api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
-experiment_post = LaunchDarklyApi::ExperimentPost.new({name: 'name_example', maintainer_id: 'maintainer_id_example', key: 'key_example', iteration: LaunchDarklyApi::IterationInput.new({hypothesis: 'hypothesis_example', metrics: [LaunchDarklyApi::MetricInput.new({key: 'key_example', primary: false})], treatments: [LaunchDarklyApi::TreatmentInput.new({name: 'name_example', baseline: false, allocation_percent: 'allocation_percent_example', parameters: [LaunchDarklyApi::TreatmentParameterInput.new({flag_key: 'flag_key_example', variation_id: 'variation_id_example'})]})], flags: { key: LaunchDarklyApi::FlagInput.new({rule_id: 'rule_id_example', flag_config_version: 37})}})}) # ExperimentPost | 
+experiment_post = LaunchDarklyApi::ExperimentPost.new({name: 'Example experiment', maintainer_id: '12ab3c45de678910fgh12345', key: 'example-experiment', iteration: LaunchDarklyApi::IterationInput.new({hypothesis: 'Example hypothesis, the new button placement will increase conversion', metrics: [LaunchDarklyApi::MetricInput.new({key: 'example-metric', primary: true})], treatments: [LaunchDarklyApi::TreatmentInput.new({name: 'Treatment 1', baseline: true, allocation_percent: '10', parameters: [LaunchDarklyApi::TreatmentParameterInput.new({flag_key: 'example-flag-for-experiment', variation_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05'})]})], flags: { key: LaunchDarklyApi::FlagInput.new({rule_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05', flag_config_version: 12})}})}) # ExperimentPost | 
 
 begin
   # Create experiment
@@ -114,7 +114,7 @@ api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 experiment_key = 'experiment_key_example' # String | The experiment key
-iteration_input = LaunchDarklyApi::IterationInput.new({hypothesis: 'hypothesis_example', metrics: [LaunchDarklyApi::MetricInput.new({key: 'key_example', primary: false})], treatments: [LaunchDarklyApi::TreatmentInput.new({name: 'name_example', baseline: false, allocation_percent: 'allocation_percent_example', parameters: [LaunchDarklyApi::TreatmentParameterInput.new({flag_key: 'flag_key_example', variation_id: 'variation_id_example'})]})], flags: { key: LaunchDarklyApi::FlagInput.new({rule_id: 'rule_id_example', flag_config_version: 37})}}) # IterationInput | 
+iteration_input = LaunchDarklyApi::IterationInput.new({hypothesis: 'Example hypothesis, the new button placement will increase conversion', metrics: [LaunchDarklyApi::MetricInput.new({key: 'example-metric', primary: true})], treatments: [LaunchDarklyApi::TreatmentInput.new({name: 'Treatment 1', baseline: true, allocation_percent: '10', parameters: [LaunchDarklyApi::TreatmentParameterInput.new({flag_key: 'example-flag-for-experiment', variation_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05'})]})], flags: { key: LaunchDarklyApi::FlagInput.new({rule_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05', flag_config_version: 12})}}) # IterationInput | 
 
 begin
   # Create iteration
@@ -172,7 +172,7 @@ end
 
 Get experiment
 
-Get details about an experiment.
+Get details about an experiment.  ### Expanding the experiment response LaunchDarkly supports four fields for expanding the \"Get experiment\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  - `previousIterations` includes all iterations prior to the current iteration. By default only the current iteration is included in the response. - `draftIteration` includes a draft of an iteration which has not been started yet, if any. - `secondaryMetrics` includes secondary metrics. By default only the primary metric is included in the response. - `treatments` includes all treatment and parameter details. By default treatment data is not included in the response.  For example, `expand=draftIteration,treatments` includes the `draftIteration` and `treatments` fields in the response. 
 
 ### Examples
 
@@ -324,7 +324,7 @@ end
 
 Get experiments
 
-Get details about all experiments in an environment.  ### Filtering experiments  LaunchDarkly supports the `filter` query param for filtering, with the following fields:  - `flagKey` filters for only experiments that use the flag with the given key. - `metricKey` filters for only experiments that use the metric with the given key. - `status` filters for only experiments with an iteration with the given status. An iteration can have the status `not_started`, `running` or `stopped`.  For example, `filter=flagKey:my-flag,status:running,metricKey:page-load-ms` filters for experiments for the given flag key and the given metric key which have a currently running iteration.  ### Expanding the experiments response LaunchDarkly supports four fields for expanding the \"List experiments\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  - `previousIterations` includes all iterations prior to the current iteration.  By default only the current iteration will be included in the response. - `draftIteration` includes a draft of an iteration which has not been started yet, if any. - `secondaryMetrics` includes secondary metrics.  By default only the primary metric is included in the response. - `treatments` includes all treatment and parameter details.  By default treatment data will not be included in the response.  For example, `expand=draftIteration,treatments` includes the `draftIteration` and `treatments` fields in the response. 
+Get details about all experiments in an environment.  ### Filtering experiments  LaunchDarkly supports the `filter` query param for filtering, with the following fields:  - `flagKey` filters for only experiments that use the flag with the given key. - `metricKey` filters for only experiments that use the metric with the given key. - `status` filters for only experiments with an iteration with the given status. An iteration can have the status `not_started`, `running` or `stopped`.  For example, `filter=flagKey:my-flag,status:running,metricKey:page-load-ms` filters for experiments for the given flag key and the given metric key which have a currently running iteration. 
 
 ### Examples
 
@@ -343,10 +343,11 @@ api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 opts = {
-  limit: 789, # Integer | The maximum number of experiments to return. Defaults to 20
+  limit: 789, # Integer | The maximum number of experiments to return. Defaults to 20.
   offset: 789, # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
   filter: 'filter_example', # String | A comma-separated list of filters. Each filter is of the form `field:value`. Supported fields are explained above.
-  expand: 'expand_example' # String | A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above.
+  expand: 'expand_example', # String | A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above.
+  lifecycle_state: 'lifecycle_state_example' # String | A comma-separated list of experiment archived states. Supports `archived`, `active`, or both. Defaults to `active` experiments
 }
 
 begin
@@ -382,10 +383,11 @@ end
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
 | **environment_key** | **String** | The environment key |  |
-| **limit** | **Integer** | The maximum number of experiments to return. Defaults to 20 | [optional] |
+| **limit** | **Integer** | The maximum number of experiments to return. Defaults to 20. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 | **filter** | **String** | A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above. | [optional] |
 | **expand** | **String** | A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above. | [optional] |
+| **lifecycle_state** | **String** | A comma-separated list of experiment archived states. Supports &#x60;archived&#x60;, &#x60;active&#x60;, or both. Defaults to &#x60;active&#x60; experiments | [optional] |
 
 ### Return type
 
@@ -490,7 +492,7 @@ end
 
 Patch experiment
 
-Update an experiment. Updating an experiment uses the semantic patch format.  To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](/reference#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following `kind` instructions for updating experiments.  #### updateName  Updates the experiment name.  ##### Parameters  - `value`: The new name.  #### updateDescription  Updates the experiment description.  ##### Parameters  - `value`: The new description.  #### startIteration  Starts a new iteration for this experiment.  #### stopIteration  Stops the current iteration for this experiment. 
+Update an experiment. Updating an experiment uses the semantic patch format.  To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](/reference#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following `kind` instructions for updating experiments.  #### updateName  Updates the experiment name.  ##### Parameters  - `value`: The new name.  #### updateDescription  Updates the experiment description.  ##### Parameters  - `value`: The new description.  #### startIteration  Starts a new iteration for this experiment.  #### stopIteration  Stops the current iteration for this experiment.  ##### Parameters  - `winningTreatmentId`: The ID of the winning treatment - `winningReason`: The reason for the winner 
 
 ### Examples
 

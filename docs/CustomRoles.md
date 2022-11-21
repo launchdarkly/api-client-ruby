@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
-| **items** | [**Array&lt;CustomRole&gt;**](CustomRole.md) |  | [optional] |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources | [optional] |
+| **items** | [**Array&lt;CustomRole&gt;**](CustomRole.md) | An array of custom roles | [optional] |
 
 ## Example
 

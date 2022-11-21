@@ -469,7 +469,7 @@ end
 
 Validate delivery configuration
 
-Validate the saved delivery configuration.
+Validate the saved delivery configuration, using the `validationRequest` in the integration's `manifest.json` file.
 
 ### Examples
 

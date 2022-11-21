@@ -88,7 +88,7 @@ nil (empty response body)
 
 ## get_custom_workflow
 
-> <CustomWorkflowOutputRep> get_custom_workflow(project_key, feature_flag_key, environment_key, workflow_id)
+> <CustomWorkflowOutput> get_custom_workflow(project_key, feature_flag_key, environment_key, workflow_id)
 
 Get custom workflow
 
@@ -126,7 +126,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CustomWorkflowOutputRep>, Integer, Hash)> get_custom_workflow_with_http_info(project_key, feature_flag_key, environment_key, workflow_id)
+> <Array(<CustomWorkflowOutput>, Integer, Hash)> get_custom_workflow_with_http_info(project_key, feature_flag_key, environment_key, workflow_id)
 
 ```ruby
 begin
@@ -134,7 +134,7 @@ begin
   data, status_code, headers = api_instance.get_custom_workflow_with_http_info(project_key, feature_flag_key, environment_key, workflow_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CustomWorkflowOutputRep>
+  p data # => <CustomWorkflowOutput>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling WorkflowsBetaApi->get_custom_workflow_with_http_info: #{e}"
 end
@@ -151,7 +151,7 @@ end
 
 ### Return type
 
-[**CustomWorkflowOutputRep**](CustomWorkflowOutputRep.md)
+[**CustomWorkflowOutput**](CustomWorkflowOutput.md)
 
 ### Authorization
 
@@ -165,7 +165,7 @@ end
 
 ## get_workflows
 
-> <CustomWorkflowsListingOutputRep> get_workflows(project_key, feature_flag_key, environment_key)
+> <CustomWorkflowsListingOutput> get_workflows(project_key, feature_flag_key, environment_key)
 
 Get workflows
 
@@ -202,7 +202,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CustomWorkflowsListingOutputRep>, Integer, Hash)> get_workflows_with_http_info(project_key, feature_flag_key, environment_key)
+> <Array(<CustomWorkflowsListingOutput>, Integer, Hash)> get_workflows_with_http_info(project_key, feature_flag_key, environment_key)
 
 ```ruby
 begin
@@ -210,7 +210,7 @@ begin
   data, status_code, headers = api_instance.get_workflows_with_http_info(project_key, feature_flag_key, environment_key)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CustomWorkflowsListingOutputRep>
+  p data # => <CustomWorkflowsListingOutput>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling WorkflowsBetaApi->get_workflows_with_http_info: #{e}"
 end
@@ -226,7 +226,7 @@ end
 
 ### Return type
 
-[**CustomWorkflowsListingOutputRep**](CustomWorkflowsListingOutputRep.md)
+[**CustomWorkflowsListingOutput**](CustomWorkflowsListingOutput.md)
 
 ### Authorization
 
@@ -240,11 +240,11 @@ end
 
 ## post_workflow
 
-> <CustomWorkflowOutputRep> post_workflow(project_key, feature_flag_key, environment_key, custom_workflow_input_rep)
+> <CustomWorkflowOutput> post_workflow(project_key, feature_flag_key, environment_key, custom_workflow_input, opts)
 
 Create workflow
 
-Create a workflow for a feature flag.
+Create a workflow for a feature flag. You can create a workflow directly, or you can apply a template to create a new workflow.  ### Creating a workflow  You can use the create workflow endpoint to create a workflow directly by adding a `stages` array to the request body.  _Example request body_ ```json {   \"name\": \"Progressive rollout starting in two days\",   \"description\": \"Turn flag on for 10% of users each day\",   \"stages\": [     {       \"name\": \"10% rollout on day 1\",       \"conditions\": [         {           \"kind\": \"schedule\",           \"scheduleKind\": \"relative\",           \"waitDuration\": 2,           \"waitDurationUnit\": \"calendarDay\"         }       ],       \"action\": {         \"instructions\": [           {             \"kind\": \"turnFlagOn\"           },           {             \"kind\": \"updateFallthroughVariationOrRollout\",             \"rolloutWeights\": {               \"452f5fb5-7320-4ba3-81a1-8f4324f79d49\": 90000,               \"fc15f6a4-05d3-4aa4-a997-446be461345d\": 10000             }           }         ]       }     }   ] } ```  ### Creating a workflow by applying a workflow template  You can also create a workflow by applying a workflow template. If you pass a valid workflow template key as the `templateKey` query parameter with the request, the API will attempt to create a new workflow with the stages defined in the workflow template with the corresponding key.  #### Applicability of stages Templates are created in the context of a particular flag in a particular environment in a particular project. However, because workflows created from a template can be applied to any project, environment, and flag, some steps of the workflow may need to be updated in order to be applicable for the target resource.  You can pass a `dry-run` query parameter to tell the API to return a report of which steps of the workflow template are applicable in the target project/environment/flag, and which will need to be updated. When the `dry-run` query parameter is present the response body includes a `meta` property that holds a list of parameters that could potentially be inapplicable for the target resource. Each of these parameters will include a `valid` field. You will need to update any invalid parameters in order to create the new workflow. You can do this using the `parameters` property, which overrides the workflow template parameters.  #### Overriding template parameters You can use the `parameters` property in the request body to tell the API to override the specified workflow template parameters with new values that are specific to your target project/environment/flag.  _Example request body_ ```json {  \"name\": \"workflow created from my-template\",  \"description\": \"description of my workflow\",  \"parameters\": [   {    \"_id\": \"62cf2bc4cadbeb7697943f3b\",    \"path\": \"/clauses/0/values\",    \"default\": {     \"value\": [\"updated-segment\"]    }   },   {    \"_id\": \"62cf2bc4cadbeb7697943f3d\",    \"path\": \"/variationId\",    \"default\": {     \"value\": \"abcd1234-abcd-1234-abcd-1234abcd12\"    }   }  ] } ```  If there are any steps in the template that are not applicable to the target resource, the workflow will not be created, and the `meta` property will be included in the response body detailing which parameters need to be updated. 
 
 ### Examples
 
@@ -263,11 +263,14 @@ api_instance = LaunchDarklyApi::WorkflowsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
-custom_workflow_input_rep = LaunchDarklyApi::CustomWorkflowInputRep.new({description: 'Turn flag on for 10% of users each day'}) # CustomWorkflowInputRep | 
+custom_workflow_input = LaunchDarklyApi::CustomWorkflowInput.new({description: 'Turn flag on for 10% of users each day'}) # CustomWorkflowInput | 
+opts = {
+  template_key: 'template_key_example' # String | The template key to apply as a starting point for the new workflow
+}
 
 begin
   # Create workflow
-  result = api_instance.post_workflow(project_key, feature_flag_key, environment_key, custom_workflow_input_rep)
+  result = api_instance.post_workflow(project_key, feature_flag_key, environment_key, custom_workflow_input, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling WorkflowsBetaApi->post_workflow: #{e}"
@@ -278,15 +281,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CustomWorkflowOutputRep>, Integer, Hash)> post_workflow_with_http_info(project_key, feature_flag_key, environment_key, custom_workflow_input_rep)
+> <Array(<CustomWorkflowOutput>, Integer, Hash)> post_workflow_with_http_info(project_key, feature_flag_key, environment_key, custom_workflow_input, opts)
 
 ```ruby
 begin
   # Create workflow
-  data, status_code, headers = api_instance.post_workflow_with_http_info(project_key, feature_flag_key, environment_key, custom_workflow_input_rep)
+  data, status_code, headers = api_instance.post_workflow_with_http_info(project_key, feature_flag_key, environment_key, custom_workflow_input, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CustomWorkflowOutputRep>
+  p data # => <CustomWorkflowOutput>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling WorkflowsBetaApi->post_workflow_with_http_info: #{e}"
 end
@@ -299,11 +302,12 @@ end
 | **project_key** | **String** | The project key |  |
 | **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
-| **custom_workflow_input_rep** | [**CustomWorkflowInputRep**](CustomWorkflowInputRep.md) |  |  |
+| **custom_workflow_input** | [**CustomWorkflowInput**](CustomWorkflowInput.md) |  |  |
+| **template_key** | **String** | The template key to apply as a starting point for the new workflow | [optional] |
 
 ### Return type
 
-[**CustomWorkflowOutputRep**](CustomWorkflowOutputRep.md)
+[**CustomWorkflowOutput**](CustomWorkflowOutput.md)
 
 ### Authorization
 

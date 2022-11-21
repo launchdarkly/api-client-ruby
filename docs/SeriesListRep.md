@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **_links** | **Hash&lt;String, Object&gt;** |  |  |
-| **metadata** | **Array&lt;Hash&gt;** |  |  |
-| **series** | **Array&lt;Hash&gt;** |  |  |
+| **_links** | **Hash&lt;String, Object&gt;** | The location and content type of related resources |  |
+| **metadata** | **Array&lt;Hash&gt;** | Metadata about each series |  |
+| **series** | **Array&lt;Hash&gt;** | An array of data points with timestamps |  |
 
 ## Example
 

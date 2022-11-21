@@ -5,8 +5,8 @@ All URIs are relative to *https://app.launchdarkly.com*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**delete_approval_request**](ApprovalsApi.md#delete_approval_request) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id} | Delete approval request |
-| [**get_approval**](ApprovalsApi.md#get_approval) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id} | Get approval request |
-| [**get_approvals**](ApprovalsApi.md#get_approvals) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | List all approval requests |
+| [**get_approval_for_flag**](ApprovalsApi.md#get_approval_for_flag) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id} | Get approval request for a flag |
+| [**get_approvals_for_flag**](ApprovalsApi.md#get_approvals_for_flag) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | List approval requests for a flag |
 | [**post_approval_request**](ApprovalsApi.md#post_approval_request) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | Create approval request |
 | [**post_approval_request_apply_request**](ApprovalsApi.md#post_approval_request_apply_request) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/apply | Apply approval request |
 | [**post_approval_request_review**](ApprovalsApi.md#post_approval_request_review) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/reviews | Review approval request |
@@ -89,11 +89,11 @@ nil (empty response body)
 - **Accept**: application/json
 
 
-## get_approval
+## get_approval_for_flag
 
-> <FlagConfigApprovalRequestResponse> get_approval(project_key, feature_flag_key, environment_key, id)
+> <FlagConfigApprovalRequestResponse> get_approval_for_flag(project_key, feature_flag_key, environment_key, id)
 
-Get approval request
+Get approval request for a flag
 
 Get a single approval request for a feature flag.
 
@@ -117,29 +117,29 @@ environment_key = 'environment_key_example' # String | The environment key
 id = 'id_example' # String | The feature flag approval request ID
 
 begin
-  # Get approval request
-  result = api_instance.get_approval(project_key, feature_flag_key, environment_key, id)
+  # Get approval request for a flag
+  result = api_instance.get_approval_for_flag(project_key, feature_flag_key, environment_key, id)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ApprovalsApi->get_approval: #{e}"
+  puts "Error when calling ApprovalsApi->get_approval_for_flag: #{e}"
 end
 ```
 
-#### Using the get_approval_with_http_info variant
+#### Using the get_approval_for_flag_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<FlagConfigApprovalRequestResponse>, Integer, Hash)> get_approval_with_http_info(project_key, feature_flag_key, environment_key, id)
+> <Array(<FlagConfigApprovalRequestResponse>, Integer, Hash)> get_approval_for_flag_with_http_info(project_key, feature_flag_key, environment_key, id)
 
 ```ruby
 begin
-  # Get approval request
-  data, status_code, headers = api_instance.get_approval_with_http_info(project_key, feature_flag_key, environment_key, id)
+  # Get approval request for a flag
+  data, status_code, headers = api_instance.get_approval_for_flag_with_http_info(project_key, feature_flag_key, environment_key, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <FlagConfigApprovalRequestResponse>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ApprovalsApi->get_approval_with_http_info: #{e}"
+  puts "Error when calling ApprovalsApi->get_approval_for_flag_with_http_info: #{e}"
 end
 ```
 
@@ -166,11 +166,11 @@ end
 - **Accept**: application/json
 
 
-## get_approvals
+## get_approvals_for_flag
 
-> <FlagConfigApprovalRequestsResponse> get_approvals(project_key, feature_flag_key, environment_key)
+> <FlagConfigApprovalRequestsResponse> get_approvals_for_flag(project_key, feature_flag_key, environment_key)
 
-List all approval requests
+List approval requests for a flag
 
 Get all approval requests for a feature flag.
 
@@ -193,29 +193,29 @@ feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 
 begin
-  # List all approval requests
-  result = api_instance.get_approvals(project_key, feature_flag_key, environment_key)
+  # List approval requests for a flag
+  result = api_instance.get_approvals_for_flag(project_key, feature_flag_key, environment_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ApprovalsApi->get_approvals: #{e}"
+  puts "Error when calling ApprovalsApi->get_approvals_for_flag: #{e}"
 end
 ```
 
-#### Using the get_approvals_with_http_info variant
+#### Using the get_approvals_for_flag_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<FlagConfigApprovalRequestsResponse>, Integer, Hash)> get_approvals_with_http_info(project_key, feature_flag_key, environment_key)
+> <Array(<FlagConfigApprovalRequestsResponse>, Integer, Hash)> get_approvals_for_flag_with_http_info(project_key, feature_flag_key, environment_key)
 
 ```ruby
 begin
-  # List all approval requests
-  data, status_code, headers = api_instance.get_approvals_with_http_info(project_key, feature_flag_key, environment_key)
+  # List approval requests for a flag
+  data, status_code, headers = api_instance.get_approvals_for_flag_with_http_info(project_key, feature_flag_key, environment_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <FlagConfigApprovalRequestsResponse>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ApprovalsApi->get_approvals_with_http_info: #{e}"
+  puts "Error when calling ApprovalsApi->get_approvals_for_flag_with_http_info: #{e}"
 end
 ```
 

@@ -4,10 +4,10 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** |  |  |
-| **description** | **String** |  | [optional] |
-| **maintainer_id** | **String** |  |  |
-| **key** | **String** |  |  |
+| **name** | **String** | The experiment name |  |
+| **description** | **String** | The experiment description | [optional] |
+| **maintainer_id** | **String** | The ID of the member who maintains this experiment. |  |
+| **key** | **String** | The experiment key |  |
 | **iteration** | [**IterationInput**](IterationInput.md) |  |  |
 
 ## Example
@@ -16,10 +16,10 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ExperimentPost.new(
-  name: null,
-  description: null,
-  maintainer_id: null,
-  key: null,
+  name: Example experiment,
+  description: An example experiment, used in testing,
+  maintainer_id: 12ab3c45de678910fgh12345,
+  key: example-experiment,
   iteration: null
 )
 ```

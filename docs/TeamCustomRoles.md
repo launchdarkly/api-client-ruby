@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **total_count** | **Integer** |  | [optional] |
-| **items** | [**Array&lt;TeamCustomRole&gt;**](TeamCustomRole.md) |  | [optional] |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
+| **total_count** | **Integer** | The number of custom roles assigned to this team | [optional] |
+| **items** | [**Array&lt;TeamCustomRole&gt;**](TeamCustomRole.md) | An array of the custom roles that have been assigned to this team | [optional] |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources | [optional] |
 
 ## Example
 

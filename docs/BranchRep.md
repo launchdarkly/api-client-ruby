@@ -9,7 +9,7 @@
 | **update_sequence_id** | **Integer** | An optional ID used to prevent older data from overwriting newer data | [optional] |
 | **sync_time** | **Integer** |  |  |
 | **references** | [**Array&lt;ReferenceRep&gt;**](ReferenceRep.md) | An array of flag references found on the branch | [optional] |
-| **_links** | **Hash&lt;String, Object&gt;** |  |  |
+| **_links** | **Hash&lt;String, Object&gt;** | The location and content type of related resources |  |
 
 ## Example
 

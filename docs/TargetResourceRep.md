@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
-| **name** | **String** |  | [optional] |
-| **resources** | **Array&lt;Hash&gt;** |  | [optional] |
+| **name** | **String** | The name of the resource | [optional] |
+| **resources** | **Array&lt;String&gt;** | The resource specifier | [optional] |
 
 ## Example
 
@@ -15,8 +15,8 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::TargetResourceRep.new(
   _links: null,
-  name: null,
-  resources: null
+  name: Example flag name,
+  resources: [&quot;proj/example-project:env/production:flag/example-flag&quot;]
 )
 ```
 

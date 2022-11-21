@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;MemberImportItem&gt;**](MemberImportItem.md) |  | [optional] |
+| **items** | [**Array&lt;MemberImportItem&gt;**](MemberImportItem.md) | An array of details about the members requested to be added to this team | [optional] |
 
 ## Example
 

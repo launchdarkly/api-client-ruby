@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
 | **items** | [**Array&lt;BranchRep&gt;**](BranchRep.md) | An array of branches |  |
 
 ## Example

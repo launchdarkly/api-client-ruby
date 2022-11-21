@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **custom_role_keys** | **Array&lt;String&gt;** |  |  |
-| **key** | **String** |  |  |
-| **name** | **String** |  |  |
+| **custom_role_keys** | **Array&lt;String&gt;** | A list of keys of the custom roles this team has access to |  |
+| **key** | **String** | The team key |  |
+| **name** | **String** | The team name |  |
 
 ## Example
 
@@ -14,9 +14,9 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MemberTeamSummaryRep.new(
-  custom_role_keys: null,
-  key: null,
-  name: null
+  custom_role_keys: [&quot;access-to-test-projects&quot;],
+  key: qa-team,
+  name: QA Team
 )
 ```
 

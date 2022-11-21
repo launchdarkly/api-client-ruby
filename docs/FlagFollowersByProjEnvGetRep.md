@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
-| **items** | [**Array&lt;FollowersPerFlag&gt;**](FollowersPerFlag.md) |  | [optional] |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
+| **items** | [**Array&lt;FollowersPerFlag&gt;**](FollowersPerFlag.md) | An array of flags and their followers | [optional] |
 
 ## Example
 

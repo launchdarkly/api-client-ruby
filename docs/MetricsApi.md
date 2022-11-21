@@ -85,11 +85,11 @@ nil (empty response body)
 
 ## get_metric
 
-> <MetricRep> get_metric(project_key, metric_key)
+> <MetricRep> get_metric(project_key, metric_key, opts)
 
 Get metric
 
-Get information for a single metric from the specific project.
+Get information for a single metric from the specific project.  ### Expanding the metric response LaunchDarkly supports two fields for expanding the \"Get metric\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  - `experiments` includes all experiments from the specific project that use the metric - `experimentCount` includes the number of experiments from the specific project that use the metric  For example, `expand=experiments` includes the `experiments` field in the response. 
 
 ### Examples
 
@@ -107,10 +107,13 @@ end
 api_instance = LaunchDarklyApi::MetricsApi.new
 project_key = 'project_key_example' # String | The project key
 metric_key = 'metric_key_example' # String | The metric key
+opts = {
+  expand: 'expand_example' # String | A comma-separated list of properties that can reveal additional information in the response.
+}
 
 begin
   # Get metric
-  result = api_instance.get_metric(project_key, metric_key)
+  result = api_instance.get_metric(project_key, metric_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling MetricsApi->get_metric: #{e}"
@@ -121,12 +124,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<MetricRep>, Integer, Hash)> get_metric_with_http_info(project_key, metric_key)
+> <Array(<MetricRep>, Integer, Hash)> get_metric_with_http_info(project_key, metric_key, opts)
 
 ```ruby
 begin
   # Get metric
-  data, status_code, headers = api_instance.get_metric_with_http_info(project_key, metric_key)
+  data, status_code, headers = api_instance.get_metric_with_http_info(project_key, metric_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <MetricRep>
@@ -141,6 +144,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
 | **metric_key** | **String** | The metric key |  |
+| **expand** | **String** | A comma-separated list of properties that can reveal additional information in the response. | [optional] |
 
 ### Return type
 
@@ -158,11 +162,11 @@ end
 
 ## get_metrics
 
-> <MetricCollectionRep> get_metrics(project_key)
+> <MetricCollectionRep> get_metrics(project_key, opts)
 
 List metrics
 
-Get a list of all metrics for the specified project.
+Get a list of all metrics for the specified project.  ### Expanding the metric list response LaunchDarkly supports expanding the \"List metrics\" response. By default, the expandable field is **not** included in the response.  To expand the response, append the `expand` query parameter and add the following supported field:  - `experimentCount` includes the number of experiments from the specific project that use the metric  For example, `expand=experimentCount` includes the `experimentCount` field for each metric in the response. 
 
 ### Examples
 
@@ -179,10 +183,13 @@ end
 
 api_instance = LaunchDarklyApi::MetricsApi.new
 project_key = 'project_key_example' # String | The project key
+opts = {
+  expand: 'expand_example' # String | A comma-separated list of properties that can reveal additional information in the response.
+}
 
 begin
   # List metrics
-  result = api_instance.get_metrics(project_key)
+  result = api_instance.get_metrics(project_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling MetricsApi->get_metrics: #{e}"
@@ -193,12 +200,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<MetricCollectionRep>, Integer, Hash)> get_metrics_with_http_info(project_key)
+> <Array(<MetricCollectionRep>, Integer, Hash)> get_metrics_with_http_info(project_key, opts)
 
 ```ruby
 begin
   # List metrics
-  data, status_code, headers = api_instance.get_metrics_with_http_info(project_key)
+  data, status_code, headers = api_instance.get_metrics_with_http_info(project_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <MetricCollectionRep>
@@ -212,6 +219,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
+| **expand** | **String** | A comma-separated list of properties that can reveal additional information in the response. | [optional] |
 
 ### Return type
 

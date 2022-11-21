@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
-| **name** | **String** |  | [optional] |
-| **avatar_url** | **String** |  | [optional] |
+| **name** | **String** | The subject&#39;s name | [optional] |
+| **avatar_url** | **String** | The subject&#39;s avatar | [optional] |
 
 ## Example
 

@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** |  |  |
-| **primary** | **Boolean** |  |  |
+| **key** | **String** | The metric key |  |
+| **primary** | **Boolean** | Whether this is a primary metric (true) or a secondary metric (false) |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MetricInput.new(
-  key: null,
-  primary: null
+  key: example-metric,
+  primary: true
 )
 ```
 

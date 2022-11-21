@@ -4,12 +4,12 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
-| **_id** | **String** |  |  |
-| **first_name** | **String** |  | [optional] |
-| **last_name** | **String** |  | [optional] |
-| **role** | **String** |  |  |
-| **email** | **String** |  |  |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
+| **_id** | **String** | The member&#39;s ID |  |
+| **first_name** | **String** | The member&#39;s first name | [optional] |
+| **last_name** | **String** | The member&#39;s last name | [optional] |
+| **role** | **String** | The member&#39;s built-in role. If the member has no custom roles, this role will be in effect. |  |
+| **email** | **String** | The member&#39;s email address |  |
 
 ## Example
 
@@ -21,7 +21,7 @@ instance = LaunchDarklyApi::MemberSummary.new(
   _id: 569f183514f4432160000007,
   first_name: An,
   last_name: Example,
-  role: owner,
+  role: admin,
   email: a.example@example.com
 )
 ```

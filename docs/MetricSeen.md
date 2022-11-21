@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ever** | **Boolean** |  | [optional] |
-| **timestamp** | **Integer** |  | [optional] |
+| **ever** | **Boolean** | Whether the metric has received an event for this iteration | [optional] |
+| **timestamp** | **Integer** | Timestamp of when the metric most recently received an event for this iteration | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MetricSeen.new(
-  ever: null,
-  timestamp: null
+  ever: true,
+  timestamp: 1657129307
 )
 ```
 

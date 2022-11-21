@@ -24,8 +24,8 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::RepositoryRep.new(
   name: LaunchDarkly-Docs,
   source_link: https://github.com/launchdarkly/LaunchDarkly-Docs,
-  commit_url_template: /commit/${sha},
-  hunk_url_template: /blob/${sha}/${filePath}#L${lineNumber},
+  commit_url_template: https://github.com/launchdarkly/LaunchDarkly-Docs/commit/${sha},
+  hunk_url_template: https://github.com/launchdarkly/LaunchDarkly-Docs/blob/${sha}/${filePath}#L${lineNumber},
   type: github,
   default_branch: main,
   enabled: true,

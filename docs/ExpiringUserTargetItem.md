@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **_id** | **String** |  |  |
-| **_version** | **Integer** |  |  |
+| **_id** | **String** | The ID of this expiring user target |  |
+| **_version** | **Integer** | The version of this expiring user target |  |
 | **expiration_date** | **Integer** |  |  |
 | **user_key** | **String** | A unique key used to represent the user |  |
 | **target_type** | **String** | A segment&#39;s target type. Included when expiring user targets are updated on a user segment. | [optional] |
@@ -18,12 +18,12 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ExpiringUserTargetItem.new(
-  _id: null,
-  _version: null,
+  _id: 12ab3c45de678910fgh12345,
+  _version: 1,
   expiration_date: null,
-  user_key: null,
-  target_type: null,
-  variation_id: null,
+  user_key: example-user-key,
+  target_type: included,
+  variation_id: ce67d625-a8b9-4fb5-a344-ab909d9d4f4d,
   _resource_id: null
 )
 ```

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | Links to related resources. |  |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | Links to other resources within the API. Includes the URL and content type of those resources |  |
 | **_id** | **String** |  |  |
 | **key** | **String** | A project-unique key for the new environment. |  |
 | **name** | **String** | A human-friendly name for the new environment. |  |
@@ -14,9 +14,9 @@
 | **default_ttl** | **Integer** | The default time (in minutes) that the PHP SDK can cache feature flag rules locally. |  |
 | **secure_mode** | **Boolean** | Secure mode ensures that a user of the client-side SDK cannot impersonate another user. |  |
 | **default_track_events** | **Boolean** | Enables tracking detailed information for new flags by default. |  |
-| **require_comments** | **Boolean** |  |  |
-| **confirm_changes** | **Boolean** |  |  |
-| **tags** | **Array&lt;String&gt;** |  |  |
+| **require_comments** | **Boolean** | Whether members who modify flags and user segments through the LaunchDarkly user interface are required to add a comment |  |
+| **confirm_changes** | **Boolean** | Whether members who modify flags and user segments through the LaunchDarkly user interface are required to confirm those changes |  |
+| **tags** | **Array&lt;String&gt;** | A list of tags for this environment |  |
 | **approval_settings** | [**ApprovalSettings**](ApprovalSettings.md) |  | [optional] |
 
 ## Example
@@ -35,8 +35,8 @@ instance = LaunchDarklyApi::Environment.new(
   default_ttl: 5,
   secure_mode: true,
   default_track_events: false,
-  require_comments: null,
-  confirm_changes: null,
+  require_comments: true,
+  confirm_changes: true,
   tags: [&quot;ops&quot;],
   approval_settings: null
 )

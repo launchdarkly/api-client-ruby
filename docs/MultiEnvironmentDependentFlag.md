@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** |  | [optional] |
-| **key** | **String** |  |  |
-| **environments** | [**Array&lt;DependentFlagEnvironment&gt;**](DependentFlagEnvironment.md) |  |  |
+| **name** | **String** | The flag name | [optional] |
+| **key** | **String** | The flag key |  |
+| **environments** | [**Array&lt;DependentFlagEnvironment&gt;**](DependentFlagEnvironment.md) | A list of environments in which the dependent flag appears |  |
 
 ## Example
 
@@ -14,8 +14,8 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MultiEnvironmentDependentFlag.new(
-  name: null,
-  key: null,
+  name: Example dependent flag,
+  key: example-dependent-flag,
   environments: null
 )
 ```

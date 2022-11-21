@@ -9,7 +9,7 @@
 | **commit_url_template** | **String** | A template for constructing a valid URL to view the commit | [optional] |
 | **hunk_url_template** | **String** | A template for constructing a valid URL to view the hunk | [optional] |
 | **type** | **String** | The type of repository. If not specified, the default value is &lt;code&gt;custom&lt;/code&gt;. | [optional] |
-| **default_branch** | **String** | The repository&#39;s default branch. If not specified, the default value is &lt;code&gt;master&lt;/code&gt;. | [optional] |
+| **default_branch** | **String** | The repository&#39;s default branch. If not specified, the default value is &lt;code&gt;main&lt;/code&gt;. | [optional] |
 
 ## Example
 
@@ -19,8 +19,8 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::RepositoryPost.new(
   name: LaunchDarkly-Docs,
   source_link: https://github.com/launchdarkly/LaunchDarkly-Docs,
-  commit_url_template: /commit/${sha},
-  hunk_url_template: /blob/${sha}/${filePath}#L${lineNumber},
+  commit_url_template: https://github.com/launchdarkly/LaunchDarkly-Docs/commit/${sha},
+  hunk_url_template: https://github.com/launchdarkly/LaunchDarkly-Docs/blob/${sha}/${filePath}#L${lineNumber},
   type: github,
   default_branch: main
 )

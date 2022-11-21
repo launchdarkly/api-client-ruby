@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;MetricListingRep&gt;**](MetricListingRep.md) |  | [optional] |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
+| **items** | [**Array&lt;MetricListingRep&gt;**](MetricListingRep.md) | An array of metrics | [optional] |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources | [optional] |
 
 ## Example
 

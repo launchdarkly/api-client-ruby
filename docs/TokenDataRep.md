@@ -6,9 +6,9 @@
 | ---- | ---- | ----------- | ----- |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
 | **_id** | **String** |  | [optional] |
-| **name** | **String** |  | [optional] |
-| **ending** | **String** |  | [optional] |
-| **service_token** | **Boolean** |  | [optional] |
+| **name** | **String** | The name of the token | [optional] |
+| **ending** | **String** | The last few characters of the token | [optional] |
+| **service_token** | **Boolean** | Whether this is a service token | [optional] |
 
 ## Example
 
@@ -18,9 +18,9 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::TokenDataRep.new(
   _links: null,
   _id: null,
-  name: null,
-  ending: null,
-  service_token: null
+  name: DevOps token,
+  ending: 2345,
+  service_token: false
 )
 ```
 

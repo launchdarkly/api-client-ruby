@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **_id** | **String** | The ID of this Data Export destination | [optional] |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | Links to other resources within the API. Includes the URL and content type of those resources. | [optional] |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources | [optional] |
 | **name** | **String** | A human-readable name for your Data Export destination | [optional] |
 | **kind** | **String** | The type of Data Export destination | [optional] |
 | **version** | **Float** |  | [optional] |

@@ -15,16 +15,16 @@
 | **variations** | [**Array&lt;Variation&gt;**](Variation.md) | An array of possible variations for the flag |  |
 | **temporary** | **Boolean** | Whether the flag is a temporary flag |  |
 | **tags** | **Array&lt;String&gt;** | Tags for the feature flag |  |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
 | **maintainer_id** | **String** | Associated maintainerId for the feature flag | [optional] |
 | **_maintainer** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
-| **goal_ids** | **Array&lt;String&gt;** |  | [optional] |
+| **goal_ids** | **Array&lt;String&gt;** | Deprecated | [optional] |
 | **experiments** | [**ExperimentInfoRep**](ExperimentInfoRep.md) |  |  |
 | **custom_properties** | [**Hash&lt;String, CustomProperty&gt;**](CustomProperty.md) |  |  |
 | **archived** | **Boolean** | Boolean indicating if the feature flag is archived |  |
 | **archived_date** | **Integer** |  | [optional] |
 | **defaults** | [**Defaults**](Defaults.md) |  | [optional] |
-| **environments** | [**Hash&lt;String, FeatureFlagConfig&gt;**](FeatureFlagConfig.md) |  |  |
+| **environments** | [**Hash&lt;String, FeatureFlagConfig&gt;**](FeatureFlagConfig.md) | Details on the environments for this flag |  |
 
 ## Example
 

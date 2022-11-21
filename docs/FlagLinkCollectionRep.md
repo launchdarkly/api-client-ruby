@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;FlagLinkRep&gt;**](FlagLinkRep.md) |  |  |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
+| **items** | [**Array&lt;FlagLinkRep&gt;**](FlagLinkRep.md) | An array of flag links |  |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
 
 ## Example
 

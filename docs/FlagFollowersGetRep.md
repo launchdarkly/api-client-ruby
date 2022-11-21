@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
-| **items** | [**Array&lt;FollowFlagMember&gt;**](FollowFlagMember.md) |  | [optional] |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
+| **items** | [**Array&lt;FollowFlagMember&gt;**](FollowFlagMember.md) | An array of members who are following this flag | [optional] |
 
 ## Example
 

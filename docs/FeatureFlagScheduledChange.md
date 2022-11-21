@@ -11,7 +11,7 @@
 | **execution_date** | **Integer** |  |  |
 | **instructions** | **Array&lt;Hash&gt;** |  |  |
 | **conflicts** | **Object** | Details on any conflicting scheduled changes | [optional] |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | Links to other resources within the API. Includes the URL and content type of those resources. | [optional] |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources | [optional] |
 
 ## Example
 

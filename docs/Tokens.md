@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;Token&gt;**](Token.md) |  | [optional] |
+| **items** | [**Array&lt;Token&gt;**](Token.md) | An array of access tokens | [optional] |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
 
 ## Example

@@ -5,10 +5,10 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
-| **_id** | **String** |  | [optional] |
-| **is_scim** | **Boolean** |  | [optional] |
-| **name** | **String** |  | [optional] |
-| **maintainer_name** | **String** |  | [optional] |
+| **_id** | **String** | The ID of the authorized application | [optional] |
+| **is_scim** | **Boolean** | Whether the application is authorized through SCIM | [optional] |
+| **name** | **String** | The authorized application name | [optional] |
+| **maintainer_name** | **String** | The name of the maintainer for this authorized application | [optional] |
 
 ## Example
 

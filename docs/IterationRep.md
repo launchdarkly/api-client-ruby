@@ -4,19 +4,19 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **_id** | **String** |  | [optional] |
-| **hypothesis** | **String** |  |  |
-| **status** | **String** |  |  |
+| **_id** | **String** | The iteration ID | [optional] |
+| **hypothesis** | **String** | The expected outcome of this experiment |  |
+| **status** | **String** | The status of the iteration: &lt;code&gt;not_started&lt;/code&gt;, &lt;code&gt;running&lt;/code&gt;, &lt;code&gt;stopped&lt;/code&gt; |  |
 | **created_at** | **Integer** |  |  |
 | **started_at** | **Integer** |  | [optional] |
 | **ended_at** | **Integer** |  | [optional] |
-| **winning_treatment_id** | **String** |  | [optional] |
-| **winning_reason** | **String** |  | [optional] |
-| **can_reshuffle_traffic** | **Boolean** |  | [optional] |
-| **flags** | [**Hash&lt;String, FlagRep&gt;**](FlagRep.md) |  | [optional] |
+| **winning_treatment_id** | **String** | The ID of the treatment with the probability to be best | [optional] |
+| **winning_reason** | **String** | The reason you stopped the experiment | [optional] |
+| **can_reshuffle_traffic** | **Boolean** | Whether the experiment is allowed to reassign users to different variations (true) or must keep users assigned to their initial variation (false). | [optional] |
+| **flags** | [**Hash&lt;String, FlagRep&gt;**](FlagRep.md) | Details on the flag used in this experiment | [optional] |
 | **primary_metric** | [**MetricV2Rep**](MetricV2Rep.md) |  | [optional] |
-| **treatments** | [**Array&lt;TreatmentRep&gt;**](TreatmentRep.md) |  | [optional] |
-| **secondary_metrics** | [**Array&lt;MetricV2Rep&gt;**](MetricV2Rep.md) |  | [optional] |
+| **treatments** | [**Array&lt;TreatmentRep&gt;**](TreatmentRep.md) | Details on the variations you are testing in the experiment | [optional] |
+| **secondary_metrics** | [**Array&lt;MetricV2Rep&gt;**](MetricV2Rep.md) | Details on the secondary metrics for this experiment | [optional] |
 
 ## Example
 
@@ -24,15 +24,15 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::IterationRep.new(
-  _id: null,
-  hypothesis: null,
-  status: null,
+  _id: 12ab3c45de678910fgh12345,
+  hypothesis: Example hypothesis, the new button placement will increase conversion,
+  status: running,
   created_at: null,
   started_at: null,
   ended_at: null,
-  winning_treatment_id: null,
-  winning_reason: null,
-  can_reshuffle_traffic: null,
+  winning_treatment_id: 122c9f3e-da26-4321-ba68-e0fc02eced58,
+  winning_reason: We ran this iteration for two weeks and the winning variation was clear,
+  can_reshuffle_traffic: true,
   flags: null,
   primary_metric: null,
   treatments: null,

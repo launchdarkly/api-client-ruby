@@ -5,10 +5,13 @@ All URIs are relative to *https://app.launchdarkly.com*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**delete_project**](ProjectsApi.md#delete_project) | **DELETE** /api/v2/projects/{projectKey} | Delete project |
+| [**get_flag_defaults_by_project**](ProjectsApi.md#get_flag_defaults_by_project) | **GET** /api/v2/projects/{projectKey}/flag-defaults | Get flag defaults for project |
 | [**get_project**](ProjectsApi.md#get_project) | **GET** /api/v2/projects/{projectKey} | Get project |
 | [**get_projects**](ProjectsApi.md#get_projects) | **GET** /api/v2/projects | List projects |
+| [**patch_flag_defaults_by_project**](ProjectsApi.md#patch_flag_defaults_by_project) | **PATCH** /api/v2/projects/{projectKey}/flag-defaults | Update flag default for project |
 | [**patch_project**](ProjectsApi.md#patch_project) | **PATCH** /api/v2/projects/{projectKey} | Update project |
 | [**post_project**](ProjectsApi.md#post_project) | **POST** /api/v2/projects | Create project |
+| [**put_flag_defaults_by_project**](ProjectsApi.md#put_flag_defaults_by_project) | **PUT** /api/v2/projects/{projectKey}/flag-defaults | Create or update flag defaults for project |
 
 
 ## delete_project
@@ -70,6 +73,77 @@ end
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_flag_defaults_by_project
+
+> <FlagDefaultsRep> get_flag_defaults_by_project(project_key)
+
+Get flag defaults for project
+
+Get the flag defaults for a specific project.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::ProjectsApi.new
+project_key = 'project_key_example' # String | The project key
+
+begin
+  # Get flag defaults for project
+  result = api_instance.get_flag_defaults_by_project(project_key)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ProjectsApi->get_flag_defaults_by_project: #{e}"
+end
+```
+
+#### Using the get_flag_defaults_by_project_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FlagDefaultsRep>, Integer, Hash)> get_flag_defaults_by_project_with_http_info(project_key)
+
+```ruby
+begin
+  # Get flag defaults for project
+  data, status_code, headers = api_instance.get_flag_defaults_by_project_with_http_info(project_key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FlagDefaultsRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ProjectsApi->get_flag_defaults_by_project_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+
+### Return type
+
+[**FlagDefaultsRep**](FlagDefaultsRep.md)
 
 ### Authorization
 
@@ -182,6 +256,7 @@ opts = {
   limit: 789, # Integer | The number of projects to return in the response. Defaults to 20.
   offset: 789, # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next `limit` items.
   filter: 'filter_example', # String | A comma-separated list of filters. Each filter is constructed as `field:value`.
+  sort: 'sort_example', # String | A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order.
   expand: 'expand_example' # String | A comma-separated list of properties that can reveal additional information in the response.
 }
 
@@ -219,6 +294,7 @@ end
 | **limit** | **Integer** | The number of projects to return in the response. Defaults to 20. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. | [optional] |
 | **filter** | **String** | A comma-separated list of filters. Each filter is constructed as &#x60;field:value&#x60;. | [optional] |
+| **sort** | **String** | A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. | [optional] |
 | **expand** | **String** | A comma-separated list of properties that can reveal additional information in the response. | [optional] |
 
 ### Return type
@@ -232,6 +308,79 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## patch_flag_defaults_by_project
+
+> <UpsertPayloadRep> patch_flag_defaults_by_project(project_key, patch_operation)
+
+Update flag default for project
+
+Update a flag default. Requires a [JSON Patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes to the flag default.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::ProjectsApi.new
+project_key = 'project_key_example' # String | The project key
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
+
+begin
+  # Update flag default for project
+  result = api_instance.patch_flag_defaults_by_project(project_key, patch_operation)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ProjectsApi->patch_flag_defaults_by_project: #{e}"
+end
+```
+
+#### Using the patch_flag_defaults_by_project_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpsertPayloadRep>, Integer, Hash)> patch_flag_defaults_by_project_with_http_info(project_key, patch_operation)
+
+```ruby
+begin
+  # Update flag default for project
+  data, status_code, headers = api_instance.patch_flag_defaults_by_project_with_http_info(project_key, patch_operation)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpsertPayloadRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ProjectsApi->patch_flag_defaults_by_project_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **patch_operation** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md) |  |  |
+
+### Return type
+
+[**UpsertPayloadRep**](UpsertPayloadRep.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -368,6 +517,79 @@ end
 ### Return type
 
 [**ProjectRep**](ProjectRep.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## put_flag_defaults_by_project
+
+> <UpsertPayloadRep> put_flag_defaults_by_project(project_key, upsert_flag_defaults_payload)
+
+Create or update flag defaults for project
+
+Create or update flag defaults for a project.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::ProjectsApi.new
+project_key = 'project_key_example' # String | The project key
+upsert_flag_defaults_payload = LaunchDarklyApi::UpsertFlagDefaultsPayload.new({tags: ['tags_example'], temporary: false, default_client_side_availability: LaunchDarklyApi::DefaultClientSideAvailability.new({using_mobile_key: false, using_environment_id: false}), boolean_defaults: LaunchDarklyApi::BooleanFlagDefaults.new({true_display_name: 'true_display_name_example', false_display_name: 'false_display_name_example', true_description: 'true_description_example', false_description: 'false_description_example', on_variation: 37, off_variation: 37})}) # UpsertFlagDefaultsPayload | 
+
+begin
+  # Create or update flag defaults for project
+  result = api_instance.put_flag_defaults_by_project(project_key, upsert_flag_defaults_payload)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ProjectsApi->put_flag_defaults_by_project: #{e}"
+end
+```
+
+#### Using the put_flag_defaults_by_project_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpsertPayloadRep>, Integer, Hash)> put_flag_defaults_by_project_with_http_info(project_key, upsert_flag_defaults_payload)
+
+```ruby
+begin
+  # Create or update flag defaults for project
+  data, status_code, headers = api_instance.put_flag_defaults_by_project_with_http_info(project_key, upsert_flag_defaults_payload)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpsertPayloadRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ProjectsApi->put_flag_defaults_by_project_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **upsert_flag_defaults_payload** | [**UpsertFlagDefaultsPayload**](UpsertFlagDefaultsPayload.md) |  |  |
+
+### Return type
+
+[**UpsertPayloadRep**](UpsertPayloadRep.md)
 
 ### Authorization
 

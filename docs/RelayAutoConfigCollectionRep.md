@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;RelayAutoConfigRep&gt;**](RelayAutoConfigRep.md) |  |  |
+| **items** | [**Array&lt;RelayAutoConfigRep&gt;**](RelayAutoConfigRep.md) | An array of Relay Proxy configurations |  |
 
 ## Example
 
