@@ -7,6 +7,7 @@
 | **_id** | **String** |  | [optional] |
 | **clauses** | [**Array&lt;Clause&gt;**](Clause.md) |  |  |
 | **weight** | **Integer** |  | [optional] |
+| **rollout_context_kind** | **String** |  | [optional] |
 | **bucket_by** | **String** |  | [optional] |
 
 ## Example
@@ -18,6 +19,7 @@ instance = LaunchDarklyApi::UserSegmentRule.new(
   _id: null,
   clauses: null,
   weight: null,
+  rollout_context_kind: null,
   bucket_by: null
 )
 ```

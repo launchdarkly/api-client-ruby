@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **items** | [**Array&lt;FlagConfigApprovalRequestResponse&gt;**](FlagConfigApprovalRequestResponse.md) | An array of approval requests |  |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
 
 ## Example
 

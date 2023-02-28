@@ -1,4 +1,4 @@
-# LaunchDarklyApi::IterationExpandableProperties
+# LaunchDarklyApi::DesignExpandableProperties
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'launchdarkly_api'
 
-instance = LaunchDarklyApi::IterationExpandableProperties.new(
+instance = LaunchDarklyApi::DesignExpandableProperties.new(
   treatments: null,
   secondary_metrics: null
 )

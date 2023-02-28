@@ -10,11 +10,12 @@
 | **created_at** | **Integer** |  |  |
 | **started_at** | **Integer** |  | [optional] |
 | **ended_at** | **Integer** |  | [optional] |
-| **winning_treatment_id** | **String** | The ID of the treatment with the probability to be best | [optional] |
+| **winning_treatment_id** | **String** | The ID of the treatment chosen when the experiment stopped | [optional] |
 | **winning_reason** | **String** | The reason you stopped the experiment | [optional] |
-| **can_reshuffle_traffic** | **Boolean** | Whether the experiment is allowed to reassign users to different variations (true) or must keep users assigned to their initial variation (false). | [optional] |
+| **can_reshuffle_traffic** | **Boolean** | Whether the experiment may reassign traffic to different variations when the experiment audience changes (true) or must keep all traffic assigned to its initial variation (false). | [optional] |
 | **flags** | [**Hash&lt;String, FlagRep&gt;**](FlagRep.md) | Details on the flag used in this experiment | [optional] |
 | **primary_metric** | [**MetricV2Rep**](MetricV2Rep.md) |  | [optional] |
+| **randomization_unit** | **String** | The unit of randomization for this iteration | [optional] |
 | **treatments** | [**Array&lt;TreatmentRep&gt;**](TreatmentRep.md) | Details on the variations you are testing in the experiment | [optional] |
 | **secondary_metrics** | [**Array&lt;MetricV2Rep&gt;**](MetricV2Rep.md) | Details on the secondary metrics for this experiment | [optional] |
 
@@ -35,6 +36,7 @@ instance = LaunchDarklyApi::IterationRep.new(
   can_reshuffle_traffic: true,
   flags: null,
   primary_metric: null,
+  randomization_unit: user,
   treatments: null,
   secondary_metrics: null
 )

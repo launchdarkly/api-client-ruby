@@ -173,6 +173,7 @@ end
 
 api_instance = LaunchDarklyApi::WorkflowTemplatesBetaApi.new
 opts = {
+  summary: true, # Boolean | Whether the entire template object or just a summary should be returned
   search: 'search_example' # String | The substring in either the name or description of a template
 }
 
@@ -207,6 +208,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **summary** | **Boolean** | Whether the entire template object or just a summary should be returned | [optional] |
 | **search** | **String** | The substring in either the name or description of a template | [optional] |
 
 ### Return type

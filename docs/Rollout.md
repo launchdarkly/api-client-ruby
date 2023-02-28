@@ -8,6 +8,7 @@
 | **experiment_allocation** | [**ExperimentAllocationRep**](ExperimentAllocationRep.md) |  | [optional] |
 | **seed** | **Integer** |  | [optional] |
 | **bucket_by** | **String** |  | [optional] |
+| **context_kind** | **String** |  | [optional] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = LaunchDarklyApi::Rollout.new(
   variations: null,
   experiment_allocation: null,
   seed: null,
-  bucket_by: null
+  bucket_by: null,
+  context_kind: null
 )
 ```
 

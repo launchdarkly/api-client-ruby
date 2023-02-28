@@ -19,10 +19,11 @@
 | **maintainer_id** | **String** | The ID of the member who maintains this metric | [optional] |
 | **_maintainer** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
 | **description** | **String** | Description of the metric | [optional] |
-| **is_numeric** | **Boolean** | For custom metrics, whether to track numeric changes in value against a baseline (&lt;code&gt;true&lt;/code&gt;) or to track a conversion when users taken an action (&lt;code&gt;false&lt;/code&gt;). | [optional] |
+| **is_numeric** | **Boolean** | For custom metrics, whether to track numeric changes in value against a baseline (&lt;code&gt;true&lt;/code&gt;) or to track a conversion when an end user takes an action (&lt;code&gt;false&lt;/code&gt;). | [optional] |
 | **success_criteria** | **String** | For numeric custom metrics, the success criteria | [optional] |
 | **unit** | **String** | For numeric custom metrics, the unit of measure | [optional] |
 | **event_key** | **String** | For custom metrics, the event name to use in your code | [optional] |
+| **randomization_units** | **Array&lt;String&gt;** | An array of randomization units allowed for this metric | [optional] |
 
 ## Example
 
@@ -48,7 +49,8 @@ instance = LaunchDarklyApi::MetricListingRep.new(
   is_numeric: true,
   success_criteria: null,
   unit: null,
-  event_key: null
+  event_key: null,
+  randomization_units: [&quot;user&quot;]
 )
 ```
 

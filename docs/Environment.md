@@ -12,10 +12,10 @@
 | **mobile_key** | **String** | API key to use with mobile SDKs. |  |
 | **color** | **String** | The color used to indicate this environment in the UI. |  |
 | **default_ttl** | **Integer** | The default time (in minutes) that the PHP SDK can cache feature flag rules locally. |  |
-| **secure_mode** | **Boolean** | Secure mode ensures that a user of the client-side SDK cannot impersonate another user. |  |
+| **secure_mode** | **Boolean** | Ensures that one end user of the client-side SDK cannot inspect the variations for another end user. |  |
 | **default_track_events** | **Boolean** | Enables tracking detailed information for new flags by default. |  |
-| **require_comments** | **Boolean** | Whether members who modify flags and user segments through the LaunchDarkly user interface are required to add a comment |  |
-| **confirm_changes** | **Boolean** | Whether members who modify flags and user segments through the LaunchDarkly user interface are required to confirm those changes |  |
+| **require_comments** | **Boolean** | Whether members who modify flags and segments through the LaunchDarkly user interface are required to add a comment |  |
+| **confirm_changes** | **Boolean** | Whether members who modify flags and segments through the LaunchDarkly user interface are required to confirm those changes |  |
 | **tags** | **Array&lt;String&gt;** | A list of tags for this environment |  |
 | **approval_settings** | [**ApprovalSettings**](ApprovalSettings.md) |  | [optional] |
 

@@ -8,7 +8,7 @@
 | **key** | **String** | A project-unique key for the new environment. |  |
 | **color** | **String** | A color to indicate this environment in the UI. |  |
 | **default_ttl** | **Integer** | The default time (in minutes) that the PHP SDK can cache feature flag rules locally. | [optional] |
-| **secure_mode** | **Boolean** | Ensures that a user of the client-side SDK cannot impersonate another user. | [optional] |
+| **secure_mode** | **Boolean** | Ensures that one end user of the client-side SDK cannot inspect the variations for another end user. | [optional] |
 | **default_track_events** | **Boolean** | Enables tracking detailed information for new flags by default. | [optional] |
 | **confirm_changes** | **Boolean** | Requires confirmation for all flag and segment changes via the UI in this environment. | [optional] |
 | **require_comments** | **Boolean** | Requires comments for all flag and segment changes via the UI in this environment. | [optional] |

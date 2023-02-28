@@ -31,7 +31,7 @@ instance = LaunchDarklyApi::CustomWorkflowOutput.new(
   _maintainer_id: 12ab3c45de678910abc12345,
   _links: null,
   name: Progressive rollout starting in two days,
-  description: Turn flag on for 10% of users each day,
+  description: Turn flag on for 10% of customers each day,
   kind: custom,
   stages: null,
   _execution: null,

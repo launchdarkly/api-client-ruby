@@ -8,6 +8,7 @@
 | **attribute** | **String** |  |  |
 | **op** | **String** |  |  |
 | **values** | **Array&lt;Object&gt;** |  |  |
+| **context_kind** | **String** |  | [optional] |
 | **negate** | **Boolean** |  |  |
 
 ## Example
@@ -20,6 +21,7 @@ instance = LaunchDarklyApi::Clause.new(
   attribute: null,
   op: null,
   values: null,
+  context_kind: null,
   negate: null
 )
 ```

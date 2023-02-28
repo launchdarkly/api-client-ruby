@@ -18,7 +18,7 @@ instance = LaunchDarklyApi::ExperimentBayesianResultsRep.new(
   _links: null,
   treatment_results: null,
   metric_seen: null,
-  probability_of_mismatch: null
+  probability_of_mismatch: 0.9999999999999738
 )
 ```
 

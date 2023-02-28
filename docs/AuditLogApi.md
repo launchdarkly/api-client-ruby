@@ -4,7 +4,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**get_audit_log_entries**](AuditLogApi.md#get_audit_log_entries) | **GET** /api/v2/auditlog | List audit log feature flag entries |
+| [**get_audit_log_entries**](AuditLogApi.md#get_audit_log_entries) | **GET** /api/v2/auditlog | List audit log entries |
 | [**get_audit_log_entry**](AuditLogApi.md#get_audit_log_entry) | **GET** /api/v2/auditlog/{id} | Get audit log entry |
 
 
@@ -12,9 +12,9 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 > <AuditLogEntryListingRepCollection> get_audit_log_entries(opts)
 
-List audit log feature flag entries
+List audit log entries
 
-Get a list of all audit log entries. The query parameters let you restrict the results that return by date ranges, resource specifiers, or a full-text search query.
+Get a list of all audit log entries. The query parameters let you restrict the results that return by date ranges, resource specifiers, or a full-text search query.  LaunchDarkly uses a resource specifier syntax to name resources or collections of resources. To learn more, read [Understanding the resource specifier syntax](https://docs.launchdarkly.com/home/members/role-resources#understanding-the-resource-specifier-syntax). 
 
 ### Examples
 
@@ -34,12 +34,12 @@ opts = {
   before: 789, # Integer | A timestamp filter, expressed as a Unix epoch time in milliseconds.  All entries this returns occurred before the timestamp.
   after: 789, # Integer | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries this returns occurred after the timestamp.
   q: 'q_example', # String | Text to search for. You can search for the full or partial name of the resource, or full or partial email address of the member who made a change.
-  limit: 789, # Integer | A limit on the number of audit log entries that return. Set between 1 and 20.
+  limit: 789, # Integer | A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10.
   spec: 'spec_example' # String | A resource specifier that lets you filter audit log listings by resource
 }
 
 begin
-  # List audit log feature flag entries
+  # List audit log entries
   result = api_instance.get_audit_log_entries(opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
@@ -55,7 +55,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # List audit log feature flag entries
+  # List audit log entries
   data, status_code, headers = api_instance.get_audit_log_entries_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -72,7 +72,7 @@ end
 | **before** | **Integer** | A timestamp filter, expressed as a Unix epoch time in milliseconds.  All entries this returns occurred before the timestamp. | [optional] |
 | **after** | **Integer** | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries this returns occurred after the timestamp. | [optional] |
 | **q** | **String** | Text to search for. You can search for the full or partial name of the resource, or full or partial email address of the member who made a change. | [optional] |
-| **limit** | **Integer** | A limit on the number of audit log entries that return. Set between 1 and 20. | [optional] |
+| **limit** | **Integer** | A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10. | [optional] |
 | **spec** | **String** | A resource specifier that lets you filter audit log listings by resource | [optional] |
 
 ### Return type

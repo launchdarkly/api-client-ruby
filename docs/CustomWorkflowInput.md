@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **maintainer_id** | **String** |  | [optional] |
-| **name** | **String** | The workflow name | [optional] |
-| **description** | **String** | The workflow description |  |
+| **name** | **String** | The workflow name |  |
+| **description** | **String** | The workflow description | [optional] |
 | **stages** | [**Array&lt;StageInput&gt;**](StageInput.md) | A list of the workflow stages | [optional] |
 | **template_key** | **String** | The template key | [optional] |
 

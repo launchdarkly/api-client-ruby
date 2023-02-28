@@ -8,9 +8,11 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**create_iteration**](ExperimentsBetaApi.md#create_iteration) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations | Create iteration |
 | [**get_experiment**](ExperimentsBetaApi.md#get_experiment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Get experiment |
 | [**get_experiment_results**](ExperimentsBetaApi.md#get_experiment_results) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results | Get experiment results |
+| [**get_experimentation_settings**](ExperimentsBetaApi.md#get_experimentation_settings) | **GET** /api/v2/projects/{projectKey}/experimentation-settings | Get experimentation settings |
 | [**get_experiments**](ExperimentsBetaApi.md#get_experiments) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Get experiments |
 | [**get_legacy_experiment_results**](ExperimentsBetaApi.md#get_legacy_experiment_results) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get legacy experiment results (deprecated) |
 | [**patch_experiment**](ExperimentsBetaApi.md#patch_experiment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Patch experiment |
+| [**put_experimentation_settings**](ExperimentsBetaApi.md#put_experimentation_settings) | **PUT** /api/v2/projects/{projectKey}/experimentation-settings | Update experimentation settings |
 | [**reset_experiment**](ExperimentsBetaApi.md#reset_experiment) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey}/results | Reset experiment results |
 
 
@@ -172,7 +174,7 @@ end
 
 Get experiment
 
-Get details about an experiment.  ### Expanding the experiment response LaunchDarkly supports four fields for expanding the \"Get experiment\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  - `previousIterations` includes all iterations prior to the current iteration. By default only the current iteration is included in the response. - `draftIteration` includes a draft of an iteration which has not been started yet, if any. - `secondaryMetrics` includes secondary metrics. By default only the primary metric is included in the response. - `treatments` includes all treatment and parameter details. By default treatment data is not included in the response.  For example, `expand=draftIteration,treatments` includes the `draftIteration` and `treatments` fields in the response. 
+Get details about an experiment.  ### Expanding the experiment response  LaunchDarkly supports four fields for expanding the \"Get experiment\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  - `previousIterations` includes all iterations prior to the current iteration. By default only the current iteration is included in the response. - `draftIteration` includes a draft of an iteration which has not been started yet, if any. - `secondaryMetrics` includes secondary metrics. By default only the primary metric is included in the response. - `treatments` includes all treatment and parameter details. By default treatment data is not included in the response.  For example, `expand=draftIteration,treatments` includes the `draftIteration` and `treatments` fields in the response. If fields that you request with the `expand` query parameter are empty, they are not included in the response. 
 
 ### Examples
 
@@ -318,13 +320,84 @@ end
 - **Accept**: application/json
 
 
+## get_experimentation_settings
+
+> <ExperimentationSettingsRep> get_experimentation_settings(project_key)
+
+Get experimentation settings
+
+Get current experimentation settings for the given project
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
+project_key = 'project_key_example' # String | The project key
+
+begin
+  # Get experimentation settings
+  result = api_instance.get_experimentation_settings(project_key)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ExperimentsBetaApi->get_experimentation_settings: #{e}"
+end
+```
+
+#### Using the get_experimentation_settings_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ExperimentationSettingsRep>, Integer, Hash)> get_experimentation_settings_with_http_info(project_key)
+
+```ruby
+begin
+  # Get experimentation settings
+  data, status_code, headers = api_instance.get_experimentation_settings_with_http_info(project_key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ExperimentationSettingsRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ExperimentsBetaApi->get_experimentation_settings_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+
+### Return type
+
+[**ExperimentationSettingsRep**](ExperimentationSettingsRep.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_experiments
 
 > <ExperimentCollectionRep> get_experiments(project_key, environment_key, opts)
 
 Get experiments
 
-Get details about all experiments in an environment.  ### Filtering experiments  LaunchDarkly supports the `filter` query param for filtering, with the following fields:  - `flagKey` filters for only experiments that use the flag with the given key. - `metricKey` filters for only experiments that use the metric with the given key. - `status` filters for only experiments with an iteration with the given status. An iteration can have the status `not_started`, `running` or `stopped`.  For example, `filter=flagKey:my-flag,status:running,metricKey:page-load-ms` filters for experiments for the given flag key and the given metric key which have a currently running iteration. 
+Get details about all experiments in an environment.  ### Filtering experiments  LaunchDarkly supports the `filter` query param for filtering, with the following fields:  - `flagKey` filters for only experiments that use the flag with the given key. - `metricKey` filters for only experiments that use the metric with the given key. - `status` filters for only experiments with an iteration with the given status. An iteration can have the status `not_started`, `running` or `stopped`.  For example, `filter=flagKey:my-flag,status:running,metricKey:page-load-ms` filters for experiments for the given flag key and the given metric key which have a currently running iteration.  ### Expanding the experiments response  LaunchDarkly supports four fields for expanding the \"Get experiments\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  - `previousIterations` includes all iterations prior to the current iteration. By default only the current iteration is included in the response. - `draftIteration` includes a draft of an iteration which has not been started yet, if any. - `secondaryMetrics` includes secondary metrics. By default only the primary metric is included in the response. - `treatments` includes all treatment and parameter details. By default treatment data is not included in the response.  For example, `expand=draftIteration,treatments` includes the `draftIteration` and `treatments` fields in the response. If fields that you request with the `expand` query parameter are empty, they are not included in the response. 
 
 ### Examples
 
@@ -347,7 +420,7 @@ opts = {
   offset: 789, # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
   filter: 'filter_example', # String | A comma-separated list of filters. Each filter is of the form `field:value`. Supported fields are explained above.
   expand: 'expand_example', # String | A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above.
-  lifecycle_state: 'lifecycle_state_example' # String | A comma-separated list of experiment archived states. Supports `archived`, `active`, or both. Defaults to `active` experiments
+  lifecycle_state: 'lifecycle_state_example' # String | A comma-separated list of experiment archived states. Supports `archived`, `active`, or both. Defaults to `active` experiments.
 }
 
 begin
@@ -387,7 +460,7 @@ end
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 | **filter** | **String** | A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above. | [optional] |
 | **expand** | **String** | A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above. | [optional] |
-| **lifecycle_state** | **String** | A comma-separated list of experiment archived states. Supports &#x60;archived&#x60;, &#x60;active&#x60;, or both. Defaults to &#x60;active&#x60; experiments | [optional] |
+| **lifecycle_state** | **String** | A comma-separated list of experiment archived states. Supports &#x60;archived&#x60;, &#x60;active&#x60;, or both. Defaults to &#x60;active&#x60; experiments. | [optional] |
 
 ### Return type
 
@@ -492,7 +565,7 @@ end
 
 Patch experiment
 
-Update an experiment. Updating an experiment uses the semantic patch format.  To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](/reference#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following `kind` instructions for updating experiments.  #### updateName  Updates the experiment name.  ##### Parameters  - `value`: The new name.  #### updateDescription  Updates the experiment description.  ##### Parameters  - `value`: The new description.  #### startIteration  Starts a new iteration for this experiment.  #### stopIteration  Stops the current iteration for this experiment.  ##### Parameters  - `winningTreatmentId`: The ID of the winning treatment - `winningReason`: The reason for the winner 
+Update an experiment. Updating an experiment uses the semantic patch format.  To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](/reference#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following `kind` instructions for updating experiments.  #### updateName  Updates the experiment name.  ##### Parameters  - `value`: The new name.  #### updateDescription  Updates the experiment description.  ##### Parameters  - `value`: The new description.  #### startIteration  Starts a new iteration for this experiment. You must [create a new iteration](/tag/Experiments-(beta)#operation/createIteration) before calling this instruction.  ##### Parameters  - `changeJustification`: The reason for starting a new iteration. Required when you call `startIteration` on an already running experiment, otherwise optional.  #### stopIteration  Stops the current iteration for this experiment.  ##### Parameters  - `winningTreatmentId`: The ID of the winning treatment - `winningReason`: The reason for the winner  #### archiveExperiment  Archives this experiment. Archived experiments are hidden by default in the LaunchDarkly user interface. You cannot start new iterations for archived experiments.  #### restoreExperiment  Restores an archived experiment. After restoring an experiment, you can start new iterations for it again. 
 
 ### Examples
 
@@ -552,6 +625,79 @@ end
 ### Return type
 
 [**Experiment**](Experiment.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## put_experimentation_settings
+
+> <ExperimentationSettingsRep> put_experimentation_settings(project_key, experimentation_settings_put)
+
+Update experimentation settings
+
+Update experimentation settings for the given project
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
+project_key = 'project_key_example' # String | The project key
+experimentation_settings_put = LaunchDarklyApi::ExperimentationSettingsPut.new({randomization_units: [LaunchDarklyApi::RandomizationUnitInput.new({randomization_unit: 'user', default: true, standard_randomization_unit: 'guest'})]}) # ExperimentationSettingsPut | 
+
+begin
+  # Update experimentation settings
+  result = api_instance.put_experimentation_settings(project_key, experimentation_settings_put)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ExperimentsBetaApi->put_experimentation_settings: #{e}"
+end
+```
+
+#### Using the put_experimentation_settings_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ExperimentationSettingsRep>, Integer, Hash)> put_experimentation_settings_with_http_info(project_key, experimentation_settings_put)
+
+```ruby
+begin
+  # Update experimentation settings
+  data, status_code, headers = api_instance.put_experimentation_settings_with_http_info(project_key, experimentation_settings_put)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ExperimentationSettingsRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ExperimentsBetaApi->put_experimentation_settings_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **experimentation_settings_put** | [**ExperimentationSettingsPut**](ExperimentationSettingsPut.md) |  |  |
+
+### Return type
+
+[**ExperimentationSettingsRep**](ExperimentationSettingsRep.md)
 
 ### Authorization
 

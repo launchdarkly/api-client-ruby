@@ -18,6 +18,8 @@
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
 | **maintainer_id** | **String** | Associated maintainerId for the feature flag | [optional] |
 | **_maintainer** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
+| **maintainer_team_key** | **String** | The key of the associated team that maintains this feature flag | [optional] |
+| **_maintainer_team** | [**MaintainerTeam**](MaintainerTeam.md) |  | [optional] |
 | **goal_ids** | **Array&lt;String&gt;** | Deprecated | [optional] |
 | **experiments** | [**ExperimentInfoRep**](ExperimentInfoRep.md) |  |  |
 | **custom_properties** | [**Hash&lt;String, CustomProperty&gt;**](CustomProperty.md) |  |  |
@@ -46,6 +48,8 @@ instance = LaunchDarklyApi::FeatureFlag.new(
   _links: {&quot;parent&quot;:{&quot;href&quot;:&quot;/api/v2/flags/my-project&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/flags/my-project/my-flag&quot;,&quot;type&quot;:&quot;application/json&quot;}},
   maintainer_id: 569f183514f4432160000007,
   _maintainer: null,
+  maintainer_team_key: team-1,
+  _maintainer_team: null,
   goal_ids: [],
   experiments: null,
   custom_properties: null,

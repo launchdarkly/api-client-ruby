@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **key** | **String** | Key of feature flag copied |  |
-| **version** | **Integer** |  | [optional] |
+| **version** | **Integer** | Version of feature flag copied | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::CopiedFromEnv.new(
-  key: null,
-  version: null
+  key: example-source-feature-flag,
+  version: 1
 )
 ```
 

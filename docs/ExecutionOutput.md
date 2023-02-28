@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **status** | **String** | The status of the execution of this workflow stage |  |
+| **stop_date** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -12,7 +13,8 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ExecutionOutput.new(
-  status: completed
+  status: completed,
+  stop_date: null
 )
 ```
 
