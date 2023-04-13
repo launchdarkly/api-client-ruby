@@ -15,7 +15,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MultiEnvironmentDependentFlag.new(
   name: Example dependent flag,
-  key: example-dependent-flag,
+  key: dependent-flag-key-123abc,
   environments: null
 )
 ```

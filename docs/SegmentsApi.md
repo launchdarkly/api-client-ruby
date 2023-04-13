@@ -800,7 +800,7 @@ end
 api_instance = LaunchDarklyApi::SegmentsApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
-segment_body = LaunchDarklyApi::SegmentBody.new({name: 'Example segment', key: 'example-segment'}) # SegmentBody | 
+segment_body = LaunchDarklyApi::SegmentBody.new({name: 'Example segment', key: 'segment-key-123abc'}) # SegmentBody | 
 
 begin
   # Create segment

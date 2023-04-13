@@ -15,7 +15,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ProjectSummary.new(
   _links: {&quot;environments&quot;:{&quot;href&quot;:&quot;/api/v2/projects/example-project/environments&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/projects/example-project&quot;,&quot;type&quot;:&quot;application/json&quot;}},
-  key: example-project,
+  key: project-key-123abc,
   name: Example project
 )
 ```

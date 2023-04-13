@@ -32,10 +32,10 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::Member.new(
   _links: null,
   _id: 507f1f77bcf86cd799439011,
-  first_name: Bob,
-  last_name: Loblaw,
+  first_name: Ariel,
+  last_name: Flores,
   role: reader,
-  email: bob@loblaw.com,
+  email: ariel@acme.com,
   _pending_invite: false,
   _verified: true,
   _pending_email: null,

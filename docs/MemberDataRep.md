@@ -18,9 +18,9 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::MemberDataRep.new(
   _links: null,
   _id: 507f1f77bcf86cd799439011,
-  email: bob@loblaw.com,
-  first_name: Bob,
-  last_name: Loblaw
+  email: ariel@acme.com,
+  first_name: Ariel,
+  last_name: Flores
 )
 ```
 

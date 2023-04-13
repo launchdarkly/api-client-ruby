@@ -16,7 +16,7 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::MemberImportItem.new(
   message: null,
   status: error,
-  value: a-valid-email@launchdarkly.com
+  value: new-team-member@acme.com
 )
 ```
 

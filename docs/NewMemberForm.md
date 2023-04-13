@@ -20,8 +20,8 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::NewMemberForm.new(
   email: sandy@acme.com,
   password: ***,
-  first_name: Sandy,
-  last_name: Smith,
+  first_name: Ariel,
+  last_name: Flores,
   role: reader,
   custom_roles: [&quot;customRole1&quot;,&quot;customRole2&quot;],
   team_keys: [&quot;team-1&quot;,&quot;team-2&quot;]

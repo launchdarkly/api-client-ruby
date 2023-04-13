@@ -20,7 +20,7 @@ instance = LaunchDarklyApi::UserRecordRep.new(
   environment_id: null,
   owner_id: null,
   user: null,
-  sort_value: example-user-key
+  sort_value: user-key-123abc
 )
 ```
 

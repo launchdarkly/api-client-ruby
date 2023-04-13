@@ -315,7 +315,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
-custom_role_post = LaunchDarklyApi::CustomRolePost.new({name: 'Ops team', key: 'ops-team', policy: [LaunchDarklyApi::StatementPost.new({effect: 'effect_example'})]}) # CustomRolePost | 
+custom_role_post = LaunchDarklyApi::CustomRolePost.new({name: 'Ops team', key: 'role-key-123abc', policy: [LaunchDarklyApi::StatementPost.new({effect: 'effect_example'})]}) # CustomRolePost | 
 
 begin
   # Create custom role

@@ -14,7 +14,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MaintainerTeam.new(
-  key: example-team,
+  key: team-key-123abc,
   name: Example team,
   _links: {&quot;parent&quot;:{&quot;href&quot;:&quot;/api/v2/teams&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;roles&quot;:{&quot;href&quot;:&quot;/api/v2/teams/example-team/roles&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/teams/example-team&quot;,&quot;type&quot;:&quot;application/json&quot;}}
 )

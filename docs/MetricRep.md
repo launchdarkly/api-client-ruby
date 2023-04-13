@@ -20,7 +20,7 @@
 | **_maintainer** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
 | **description** | **String** | Description of the metric | [optional] |
 | **is_numeric** | **Boolean** | For custom metrics, whether to track numeric changes in value against a baseline (&lt;code&gt;true&lt;/code&gt;) or to track a conversion when an end user takes an action (&lt;code&gt;false&lt;/code&gt;). | [optional] |
-| **success_criteria** | **String** | For numeric custom metrics, the success criteria | [optional] |
+| **success_criteria** | **String** | For custom metrics, the success criteria | [optional] |
 | **unit** | **String** | For numeric custom metrics, the unit of measure | [optional] |
 | **event_key** | **String** | For custom metrics, the event name to use in your code | [optional] |
 | **randomization_units** | **Array&lt;String&gt;** | An array of randomization units allowed for this metric | [optional] |
@@ -39,8 +39,8 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::MetricRep.new(
   experiment_count: 0,
   _id: 5902deadbeef667524a01290,
-  key: my-metric,
-  name: my-metric,
+  key: metric-key-123abc,
+  name: My metric,
   kind: custom,
   _attached_flag_count: 0,
   _links: {&quot;parent&quot;:{&quot;href&quot;:&quot;/api/v2/metrics/my-project&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/metrics/my-project/my-metric&quot;,&quot;type&quot;:&quot;application/json&quot;}},

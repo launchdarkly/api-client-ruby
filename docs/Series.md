@@ -13,8 +13,8 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::Series.new(
-  time: null,
-  value: null
+  time: 1676332800000,
+  value: 92
 )
 ```
 

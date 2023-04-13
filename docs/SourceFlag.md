@@ -13,7 +13,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::SourceFlag.new(
-  key: example-environment-key,
+  key: environment-key-123abc,
   version: 1
 )
 ```

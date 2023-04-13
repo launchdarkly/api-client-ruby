@@ -17,7 +17,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ContextInstanceEvaluation.new(
   name: My Flag,
-  key: my-flag,
+  key: flag-key-123abc,
   _value: true,
   reason: null,
   _links: {&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/projects/{projectKey}/environments/{environmentKey}/flags/evaluate&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;site&quot;:{&quot;href&quot;:&quot;/my-project/my-environment/features/sort.order/targeting&quot;,&quot;type&quot;:&quot;text/html&quot;}}

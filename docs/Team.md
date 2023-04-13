@@ -25,7 +25,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::Team.new(
   description: Description for this team.,
-  key: example-team,
+  key: team-key-123abc,
   name: Example team,
   _access: null,
   _creation_date: null,

@@ -18,7 +18,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::SegmentBody.new(
   name: Example segment,
-  key: example-segment,
+  key: segment-key-123abc,
   description: Bundle our sample customers together,
   tags: [&quot;testing&quot;],
   unbounded: false,

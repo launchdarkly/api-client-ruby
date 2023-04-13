@@ -14,7 +14,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::InitiatorRep.new(
   name: Bob Loblaw,
-  email: bob@loblaw.com
+  email: ariel@acme.com
 )
 ```
 

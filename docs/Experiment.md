@@ -23,7 +23,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::Experiment.new(
   _id: 12ab3c45de678910fgh12345,
-  key: example-experiment,
+  key: experiment-key-123abc,
   name: Example experiment,
   description: An example experiment, used in testing,
   _maintainer_id: 12ab3c45de678910fgh12345,

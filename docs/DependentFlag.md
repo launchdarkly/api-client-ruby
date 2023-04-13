@@ -16,7 +16,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::DependentFlag.new(
   name: Example dependent flag,
-  key: example-dependent-flag,
+  key: dependent-flag-key-123abc,
   _links: null,
   _site: null
 )

@@ -27,7 +27,7 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::Environment.new(
   _links: {&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/projects/my-project/environments/my-environment&quot;,&quot;type&quot;:&quot;application/json&quot;}},
   _id: 57be1db38b75bf0772d11384,
-  key: my-environment,
+  key: environment-key-123abc,
   name: My Environment,
   api_key: XYZ,
   mobile_key: XYZ,

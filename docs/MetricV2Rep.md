@@ -15,7 +15,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MetricV2Rep.new(
-  key: example-metric,
+  key: metric-key-123abc,
   name: Example metric,
   kind: custom,
   _links: {&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/metrics/my-project/my-metric&quot;,&quot;type&quot;:&quot;application/json&quot;}}

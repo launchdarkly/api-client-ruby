@@ -22,7 +22,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::FeatureFlagBody.new(
   name: My flag,
-  key: my-flag,
+  key: flag-key-123abc,
   description: This flag controls the example widgets,
   include_in_snippet: null,
   client_side_availability: null,

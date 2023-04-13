@@ -37,7 +37,7 @@ instance = LaunchDarklyApi::FeatureFlag.new(
   name: My Flag,
   kind: boolean,
   description: This flag controls the example widgets,
-  key: my-flag,
+  key: flag-key-123abc,
   _version: 1,
   creation_date: null,
   include_in_snippet: true,
@@ -56,7 +56,7 @@ instance = LaunchDarklyApi::FeatureFlag.new(
   archived: false,
   archived_date: null,
   defaults: null,
-  environments: {&quot;my-environment&quot;:{&quot;_environmentName&quot;:&quot;My Environment&quot;,&quot;_site&quot;:{&quot;href&quot;:&quot;/default/my-environment/features/client-side-flag&quot;,&quot;type&quot;:&quot;text/html&quot;},&quot;_summary&quot;:{&quot;prerequisites&quot;:0,&quot;variations&quot;:{&quot;0&quot;:{&quot;isFallthrough&quot;:true,&quot;nullRules&quot;:0,&quot;rules&quot;:0,&quot;targets&quot;:0},&quot;1&quot;:{&quot;isOff&quot;:true,&quot;nullRules&quot;:0,&quot;rules&quot;:0,&quot;targets&quot;:0}}},&quot;archived&quot;:false,&quot;fallthrough&quot;:{&quot;variation&quot;:0},&quot;lastModified&quot;:1627071171347,&quot;offVariation&quot;:1,&quot;on&quot;:false,&quot;prerequisites&quot;:[],&quot;rules&quot;:[],&quot;salt&quot;:&quot;61eddeadbeef4da1facecafe3a60a397&quot;,&quot;sel&quot;:&quot;810edeadbeef4844facecafe438f2999492&quot;,&quot;targets&quot;:[],&quot;trackEvents&quot;:false,&quot;trackEventsFallthrough&quot;:false,&quot;version&quot;:1}}
+  environments: {&quot;my-environment&quot;:{&quot;_environmentName&quot;:&quot;My Environment&quot;,&quot;_site&quot;:{&quot;href&quot;:&quot;/default/my-environment/features/client-side-flag&quot;,&quot;type&quot;:&quot;text/html&quot;},&quot;_summary&quot;:{&quot;prerequisites&quot;:0,&quot;variations&quot;:{&quot;0&quot;:{&quot;contextTargets&quot;:1,&quot;isFallthrough&quot;:true,&quot;nullRules&quot;:0,&quot;rules&quot;:0,&quot;targets&quot;:1},&quot;1&quot;:{&quot;isOff&quot;:true,&quot;nullRules&quot;:0,&quot;rules&quot;:0,&quot;targets&quot;:0}}},&quot;archived&quot;:false,&quot;contextTargets&quot;:[{&quot;contextKind&quot;:&quot;device&quot;,&quot;values&quot;:[&quot;device-key-123abc&quot;],&quot;variation&quot;:0}],&quot;fallthrough&quot;:{&quot;variation&quot;:0},&quot;lastModified&quot;:1627071171347,&quot;offVariation&quot;:1,&quot;on&quot;:false,&quot;prerequisites&quot;:[],&quot;rules&quot;:[],&quot;salt&quot;:&quot;61eddeadbeef4da1facecafe3a60a397&quot;,&quot;sel&quot;:&quot;810edeadbeef4844facecafe438f2999492&quot;,&quot;targets&quot;:[{&quot;contextKind&quot;:&quot;user&quot;,&quot;values&quot;:[&quot;user-key-123abc&quot;],&quot;variation&quot;:0}],&quot;trackEvents&quot;:false,&quot;trackEventsFallthrough&quot;:false,&quot;version&quot;:1}}
 )
 ```
 

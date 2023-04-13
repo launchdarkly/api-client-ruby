@@ -35,7 +35,7 @@ api_instance = LaunchDarklyApi::FollowFlagsApi.new
 project_key = 'project_key_example' # String | The project key
 feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
-member_id = 'member_id_example' # String | The memberId of the member to remove as a follower of the flag
+member_id = 'member_id_example' # String | The memberId of the member to remove as a follower of the flag. Reader roles can only remove themselves.
 
 begin
   # Remove a member as a follower of a flag in a project and environment
@@ -70,7 +70,7 @@ end
 | **project_key** | **String** | The project key |  |
 | **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
-| **member_id** | **String** | The memberId of the member to remove as a follower of the flag |  |
+| **member_id** | **String** | The memberId of the member to remove as a follower of the flag. Reader roles can only remove themselves. |  |
 
 ### Return type
 
@@ -259,7 +259,7 @@ api_instance = LaunchDarklyApi::FollowFlagsApi.new
 project_key = 'project_key_example' # String | The project key
 feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
-member_id = 'member_id_example' # String | The memberId of the member to add as a follower of the flag
+member_id = 'member_id_example' # String | The memberId of the member to add as a follower of the flag. Reader roles can only add themselves.
 
 begin
   # Add a member as a follower of a flag in a project and environment
@@ -294,7 +294,7 @@ end
 | **project_key** | **String** | The project key |  |
 | **feature_flag_key** | **String** | The feature flag key |  |
 | **environment_key** | **String** | The environment key |  |
-| **member_id** | **String** | The memberId of the member to add as a follower of the flag |  |
+| **member_id** | **String** | The memberId of the member to add as a follower of the flag. Reader roles can only add themselves. |  |
 
 ### Return type
 

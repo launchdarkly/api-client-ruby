@@ -15,7 +15,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MemberTeamSummaryRep.new(
   custom_role_keys: [&quot;access-to-test-projects&quot;],
-  key: qa-team,
+  key: team-key-123abc,
   name: QA Team
 )
 ```

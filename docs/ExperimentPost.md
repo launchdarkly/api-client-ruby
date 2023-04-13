@@ -19,7 +19,7 @@ instance = LaunchDarklyApi::ExperimentPost.new(
   name: Example experiment,
   description: An example experiment, used in testing,
   maintainer_id: 12ab3c45de678910fgh12345,
-  key: example-experiment,
+  key: experiment-key-123abc,
   iteration: null
 )
 ```

@@ -71,6 +71,7 @@ docs/ContextSettingsBetaApi.md
 docs/Contexts.md
 docs/ContextsBetaApi.md
 docs/CopiedFromEnv.md
+docs/CreateApprovalRequestRequest.md
 docs/CreateCopyFlagConfigApprovalRequestRequest.md
 docs/CreateFlagConfigApprovalRequestRequest.md
 docs/CreateWorkflowTemplateInput.md
@@ -79,6 +80,7 @@ docs/CustomProperty.md
 docs/CustomRole.md
 docs/CustomRolePost.md
 docs/CustomRolePostData.md
+docs/CustomRoleSummary.md
 docs/CustomRoles.md
 docs/CustomRolesApi.md
 docs/CustomWorkflowInput.md
@@ -483,6 +485,7 @@ lib/launchdarkly_api/models/context_record.rb
 lib/launchdarkly_api/models/context_search.rb
 lib/launchdarkly_api/models/contexts.rb
 lib/launchdarkly_api/models/copied_from_env.rb
+lib/launchdarkly_api/models/create_approval_request_request.rb
 lib/launchdarkly_api/models/create_copy_flag_config_approval_request_request.rb
 lib/launchdarkly_api/models/create_flag_config_approval_request_request.rb
 lib/launchdarkly_api/models/create_workflow_template_input.rb
@@ -491,6 +494,7 @@ lib/launchdarkly_api/models/custom_property.rb
 lib/launchdarkly_api/models/custom_role.rb
 lib/launchdarkly_api/models/custom_role_post.rb
 lib/launchdarkly_api/models/custom_role_post_data.rb
+lib/launchdarkly_api/models/custom_role_summary.rb
 lib/launchdarkly_api/models/custom_roles.rb
 lib/launchdarkly_api/models/custom_workflow_input.rb
 lib/launchdarkly_api/models/custom_workflow_meta.rb
@@ -864,6 +868,7 @@ spec/models/context_record_spec.rb
 spec/models/context_search_spec.rb
 spec/models/contexts_spec.rb
 spec/models/copied_from_env_spec.rb
+spec/models/create_approval_request_request_spec.rb
 spec/models/create_copy_flag_config_approval_request_request_spec.rb
 spec/models/create_flag_config_approval_request_request_spec.rb
 spec/models/create_workflow_template_input_spec.rb
@@ -872,6 +877,7 @@ spec/models/custom_property_spec.rb
 spec/models/custom_role_post_data_spec.rb
 spec/models/custom_role_post_spec.rb
 spec/models/custom_role_spec.rb
+spec/models/custom_role_summary_spec.rb
 spec/models/custom_roles_spec.rb
 spec/models/custom_workflow_input_spec.rb
 spec/models/custom_workflow_meta_spec.rb

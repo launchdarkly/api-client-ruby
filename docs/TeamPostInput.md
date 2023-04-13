@@ -19,7 +19,7 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::TeamPostInput.new(
   custom_role_keys: [&quot;example-role1&quot;,&quot;example-role2&quot;],
   description: An example team,
-  key: example-team,
+  key: team-key-123abc,
   member_ids: [&quot;12ab3c45de678910fgh12345&quot;],
   name: Example team,
   permission_grants: null

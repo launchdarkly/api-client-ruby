@@ -15,7 +15,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::TeamCustomRole.new(
-  key: example-role,
+  key: role-key-123abc,
   name: Example role,
   projects: null,
   applied_on: null

@@ -19,7 +19,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ContextKind.new(
-  key: organization,
+  key: organization-key-123abc,
   name: Organization,
   description: An example context kind, to enable targeting based on organization,
   version: 4,

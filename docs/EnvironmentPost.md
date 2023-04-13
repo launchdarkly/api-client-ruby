@@ -22,7 +22,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::EnvironmentPost.new(
   name: My Environment,
-  key: my-environment,
+  key: environment-key-123abc,
   color: F5A623,
   default_ttl: 5,
   secure_mode: true,

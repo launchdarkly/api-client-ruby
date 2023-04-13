@@ -32,7 +32,7 @@ instance = LaunchDarklyApi::ExpandedFlagRep.new(
   name: My Flag,
   kind: boolean,
   description: This flag controls the example widgets,
-  key: my-flag,
+  key: flag-key-123abc,
   _version: 1,
   creation_date: null,
   include_in_snippet: true,

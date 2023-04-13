@@ -13,7 +13,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MetricInput.new(
-  key: example-metric,
+  key: metric-key-123abc,
   primary: true
 )
 ```

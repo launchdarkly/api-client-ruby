@@ -337,7 +337,7 @@ end
 
 api_instance = LaunchDarklyApi::EnvironmentsApi.new
 project_key = 'project_key_example' # String | The project key
-environment_post = LaunchDarklyApi::EnvironmentPost.new({name: 'My Environment', key: 'my-environment', color: 'F5A623'}) # EnvironmentPost | 
+environment_post = LaunchDarklyApi::EnvironmentPost.new({name: 'My Environment', key: 'environment-key-123abc', color: 'F5A623'}) # EnvironmentPost | 
 
 begin
   # Create environment

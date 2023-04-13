@@ -16,7 +16,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::DependentFlagEnvironment.new(
   name: Example environment,
-  key: example-environment,
+  key: environment-key-123abc,
   _links: null,
   _site: null
 )

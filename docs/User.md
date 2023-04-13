@@ -23,15 +23,15 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::User.new(
-  key: example-user-key,
+  key: user-key-123abc,
   secondary: 2398127,
   ip: 10.10.10.10,
   country: United States,
-  email: bob@loblaw.com,
-  first_name: Bob,
-  last_name: Loblaw,
+  email: sandy@example.com,
+  first_name: Sandy,
+  last_name: Smith,
   avatar: http://example.com/avatar.png,
-  name: Bob Loblaw,
+  name: Sandy Smith,
   anonymous: false,
   custom: null,
   private_attrs: null

@@ -18,7 +18,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ProjectPost.new(
   name: My Project,
-  key: my-project,
+  key: project-key-123abc,
   include_in_snippet_by_default: true,
   default_client_side_availability: null,
   tags: [&quot;ops&quot;],

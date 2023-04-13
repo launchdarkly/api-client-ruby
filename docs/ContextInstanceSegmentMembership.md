@@ -21,7 +21,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ContextInstanceSegmentMembership.new(
   name: Segment Name,
-  key: segment-key,
+  key: segment-key-123abc,
   description: Segment description,
   unbounded: false,
   external: https://amplitude.com/myCohort,

@@ -27,7 +27,7 @@
 | **resource_id** | **String** | String representation of a resource | [optional] |
 | **approval_settings** | [**ApprovalSettings**](ApprovalSettings.md) |  | [optional] |
 | **project** | [**Project**](Project.md) |  | [optional] |
-| **environment** | [**Environment**](Environment.md) |  | [optional] |
+| **environments** | [**Array&lt;Environment&gt;**](Environment.md) | List of environments the approval impacts | [optional] |
 | **flag** | [**ExpandedFlagRep**](ExpandedFlagRep.md) |  | [optional] |
 
 ## Example
@@ -59,7 +59,7 @@ instance = LaunchDarklyApi::ExpandableApprovalRequestResponse.new(
   resource_id: null,
   approval_settings: null,
   project: null,
-  environment: null,
+  environments: null,
   flag: null
 )
 ```

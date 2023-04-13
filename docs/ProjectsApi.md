@@ -479,7 +479,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::ProjectsApi.new
-project_post = LaunchDarklyApi::ProjectPost.new({name: 'My Project', key: 'my-project'}) # ProjectPost | 
+project_post = LaunchDarklyApi::ProjectPost.new({name: 'My Project', key: 'project-key-123abc'}) # ProjectPost | 
 
 begin
   # Create project

@@ -18,7 +18,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::FlagLinkPost.new(
-  key: example-flag-link,
+  key: flag-link-key-123abc,
   integration_key: null,
   timestamp: null,
   deep_link: https://example.com/archives/123123123,

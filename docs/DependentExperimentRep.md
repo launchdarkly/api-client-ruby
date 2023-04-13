@@ -17,7 +17,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::DependentExperimentRep.new(
-  key: example-experiment,
+  key: experiment-key-123abc,
   name: Example experiment,
   environment_id: 1234a56b7c89d012345e678f,
   creation_date: null,

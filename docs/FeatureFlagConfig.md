@@ -10,8 +10,8 @@
 | **sel** | **String** |  |  |
 | **last_modified** | **Integer** |  |  |
 | **version** | **Integer** | Version of the feature flag |  |
-| **targets** | [**Array&lt;Target&gt;**](Target.md) | An array of the individual targets that will receive a specific variation based on their key | [optional] |
-| **context_targets** | [**Array&lt;Target&gt;**](Target.md) |  | [optional] |
+| **targets** | [**Array&lt;Target&gt;**](Target.md) | An array of the individual targets that will receive a specific variation based on their key. Individual targets with a context kind of &#39;user&#39; are included here. | [optional] |
+| **context_targets** | [**Array&lt;Target&gt;**](Target.md) | An array of the individual targets that will receive a specific variation based on their key. Individual targets with context kinds other than &#39;user&#39; are included here. | [optional] |
 | **rules** | [**Array&lt;Rule&gt;**](Rule.md) | An array of the rules for how to serve a variation to specific targets based on their attributes | [optional] |
 | **fallthrough** | [**VariationOrRolloutRep**](VariationOrRolloutRep.md) |  | [optional] |
 | **off_variation** | **Integer** | The ID of the variation to serve when the flag is off | [optional] |
@@ -23,6 +23,7 @@
 | **track_events_fallthrough** | **Boolean** | Whether LaunchDarkly tracks events for the feature flag, for the default rule |  |
 | **_debug_events_until_date** | **Integer** |  | [optional] |
 | **_summary** | [**FlagSummary**](FlagSummary.md) |  | [optional] |
+| **evaluation** | [**FlagConfigEvaluation**](FlagConfigEvaluation.md) |  | [optional] |
 
 ## Example
 
@@ -48,7 +49,8 @@ instance = LaunchDarklyApi::FeatureFlagConfig.new(
   track_events: null,
   track_events_fallthrough: null,
   _debug_events_until_date: null,
-  _summary: null
+  _summary: null,
+  evaluation: null
 )
 ```
 

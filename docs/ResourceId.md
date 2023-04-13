@@ -16,11 +16,11 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ResourceId.new(
-  environment_key: staging,
+  environment_key: environment-key-123abc,
   flag_key: null,
-  key: example-key,
+  key: segment-key-123abc,
   kind: null,
-  project_key: example-project
+  project_key: project-key-123abc
 )
 ```
 

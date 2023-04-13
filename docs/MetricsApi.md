@@ -333,7 +333,7 @@ end
 
 api_instance = LaunchDarklyApi::MetricsApi.new
 project_key = 'project_key_example' # String | The project key
-metric_post = LaunchDarklyApi::MetricPost.new({key: 'example-metric', kind: 'pageview'}) # MetricPost | 
+metric_post = LaunchDarklyApi::MetricPost.new({key: 'metric-key-123abc', kind: 'pageview'}) # MetricPost | 
 
 begin
   # Create metric
