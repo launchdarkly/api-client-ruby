@@ -1,10 +1,10 @@
-# LaunchDarklyApi::ContextSettingsBetaApi
+# LaunchDarklyApi::ContextSettingsApi
 
 All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**put_context_flag_setting**](ContextSettingsBetaApi.md#put_context_flag_setting) | **PUT** /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{contextKind}/{contextKey}/flags/{featureFlagKey} | Update flag settings for context |
+| [**put_context_flag_setting**](ContextSettingsApi.md#put_context_flag_setting) | **PUT** /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{contextKind}/{contextKey}/flags/{featureFlagKey} | Update flag settings for context |
 
 
 ## put_context_flag_setting
@@ -28,7 +28,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::ContextSettingsBetaApi.new
+api_instance = LaunchDarklyApi::ContextSettingsApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 context_kind = 'context_kind_example' # String | The context kind
@@ -40,7 +40,7 @@ begin
   # Update flag settings for context
   api_instance.put_context_flag_setting(project_key, environment_key, context_kind, context_key, feature_flag_key, value_put)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ContextSettingsBetaApi->put_context_flag_setting: #{e}"
+  puts "Error when calling ContextSettingsApi->put_context_flag_setting: #{e}"
 end
 ```
 
@@ -58,7 +58,7 @@ begin
   p headers # => { ... }
   p data # => nil
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ContextSettingsBetaApi->put_context_flag_setting_with_http_info: #{e}"
+  puts "Error when calling ContextSettingsApi->put_context_flag_setting_with_http_info: #{e}"
 end
 ```
 

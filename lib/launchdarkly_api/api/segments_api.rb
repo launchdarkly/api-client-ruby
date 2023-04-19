@@ -94,6 +94,86 @@ module LaunchDarklyApi
       return data, status_code, headers
     end
 
+    # List segment memberships for context instance
+    # For a given context instance with attributes, get membership details for all segments
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param request_body [Hash<String, Object>] 
+    # @param [Hash] opts the optional parameters
+    # @return [ContextInstanceSegmentMemberships]
+    def get_context_instance_segments_membership_by_env(project_key, environment_key, request_body, opts = {})
+      data, _status_code, _headers = get_context_instance_segments_membership_by_env_with_http_info(project_key, environment_key, request_body, opts)
+      data
+    end
+
+    # List segment memberships for context instance
+    # For a given context instance with attributes, get membership details for all segments
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param request_body [Hash<String, Object>] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ContextInstanceSegmentMemberships, Integer, Hash)>] ContextInstanceSegmentMemberships data, response status code and response headers
+    def get_context_instance_segments_membership_by_env_with_http_info(project_key, environment_key, request_body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SegmentsApi.get_context_instance_segments_membership_by_env ...'
+      end
+      # verify the required parameter 'project_key' is set
+      if @api_client.config.client_side_validation && project_key.nil?
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling SegmentsApi.get_context_instance_segments_membership_by_env"
+      end
+      # verify the required parameter 'environment_key' is set
+      if @api_client.config.client_side_validation && environment_key.nil?
+        fail ArgumentError, "Missing the required parameter 'environment_key' when calling SegmentsApi.get_context_instance_segments_membership_by_env"
+      end
+      # verify the required parameter 'request_body' is set
+      if @api_client.config.client_side_validation && request_body.nil?
+        fail ArgumentError, "Missing the required parameter 'request_body' when calling SegmentsApi.get_context_instance_segments_membership_by_env"
+      end
+      # resource path
+      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/segments/evaluate'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(request_body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ContextInstanceSegmentMemberships'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SegmentsApi.get_context_instance_segments_membership_by_env",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SegmentsApi#get_context_instance_segments_membership_by_env\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get expiring targets for segment
     # Get a list of a segment's context targets that are scheduled for removal.
     # @param project_key [String] The project key

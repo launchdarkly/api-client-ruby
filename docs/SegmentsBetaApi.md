@@ -8,7 +8,6 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**create_big_segment_import**](SegmentsBetaApi.md#create_big_segment_import) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports | Create Big Segment import |
 | [**get_big_segment_export**](SegmentsBetaApi.md#get_big_segment_export) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports/{exportID} | Get Big Segment export |
 | [**get_big_segment_import**](SegmentsBetaApi.md#get_big_segment_import) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports/{importID} | Get Big Segment import |
-| [**get_context_instance_segments_membership_by_env**](SegmentsBetaApi.md#get_context_instance_segments_membership_by_env) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/segments/evaluate | List segment memberships for context instance |
 
 
 ## create_big_segment_export
@@ -316,80 +315,5 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_context_instance_segments_membership_by_env
-
-> <ContextInstanceSegmentMemberships> get_context_instance_segments_membership_by_env(project_key, environment_key, request_body)
-
-List segment memberships for context instance
-
-For a given context instance with attributes, get membership details for all segments
-
-### Examples
-
-```ruby
-require 'time'
-require 'launchdarkly_api'
-# setup authorization
-LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
-end
-
-api_instance = LaunchDarklyApi::SegmentsBetaApi.new
-project_key = 'project_key_example' # String | The project key
-environment_key = 'environment_key_example' # String | The environment key
-request_body = { key: 3.56} # Hash<String, Object> | 
-
-begin
-  # List segment memberships for context instance
-  result = api_instance.get_context_instance_segments_membership_by_env(project_key, environment_key, request_body)
-  p result
-rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling SegmentsBetaApi->get_context_instance_segments_membership_by_env: #{e}"
-end
-```
-
-#### Using the get_context_instance_segments_membership_by_env_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ContextInstanceSegmentMemberships>, Integer, Hash)> get_context_instance_segments_membership_by_env_with_http_info(project_key, environment_key, request_body)
-
-```ruby
-begin
-  # List segment memberships for context instance
-  data, status_code, headers = api_instance.get_context_instance_segments_membership_by_env_with_http_info(project_key, environment_key, request_body)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ContextInstanceSegmentMemberships>
-rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling SegmentsBetaApi->get_context_instance_segments_membership_by_env_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **project_key** | **String** | The project key |  |
-| **environment_key** | **String** | The environment key |  |
-| **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  |  |
-
-### Return type
-
-[**ContextInstanceSegmentMemberships**](ContextInstanceSegmentMemberships.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 

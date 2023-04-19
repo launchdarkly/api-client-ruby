@@ -13,771 +13,49 @@ OpenAPI Generator version: 6.0.0
 require 'cgi'
 
 module LaunchDarklyApi
-  class ExperimentsBetaApi
+  class ContextsApi
     attr_accessor :api_client
 
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create experiment
-    # Create an experiment.  To run this experiment, you'll need to [create an iteration](/tag/Experiments-(beta)#operation/createIteration) and then [update the experiment](/tag/Experiments-(beta)#operation/patchExperiment) with the `startIteration` instruction.  To learn more, read [Creating experiments](https://docs.launchdarkly.com/home/creating-experiments). 
+    # Delete context instances
+    # Delete context instances by ID.
     # @param project_key [String] The project key
     # @param environment_key [String] The environment key
-    # @param experiment_post [ExperimentPost] 
-    # @param [Hash] opts the optional parameters
-    # @return [Experiment]
-    def create_experiment(project_key, environment_key, experiment_post, opts = {})
-      data, _status_code, _headers = create_experiment_with_http_info(project_key, environment_key, experiment_post, opts)
-      data
-    end
-
-    # Create experiment
-    # Create an experiment.  To run this experiment, you&#39;ll need to [create an iteration](/tag/Experiments-(beta)#operation/createIteration) and then [update the experiment](/tag/Experiments-(beta)#operation/patchExperiment) with the &#x60;startIteration&#x60; instruction.  To learn more, read [Creating experiments](https://docs.launchdarkly.com/home/creating-experiments). 
-    # @param project_key [String] The project key
-    # @param environment_key [String] The environment key
-    # @param experiment_post [ExperimentPost] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Experiment, Integer, Hash)>] Experiment data, response status code and response headers
-    def create_experiment_with_http_info(project_key, environment_key, experiment_post, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ExperimentsBetaApi.create_experiment ...'
-      end
-      # verify the required parameter 'project_key' is set
-      if @api_client.config.client_side_validation && project_key.nil?
-        fail ArgumentError, "Missing the required parameter 'project_key' when calling ExperimentsBetaApi.create_experiment"
-      end
-      # verify the required parameter 'environment_key' is set
-      if @api_client.config.client_side_validation && environment_key.nil?
-        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ExperimentsBetaApi.create_experiment"
-      end
-      # verify the required parameter 'experiment_post' is set
-      if @api_client.config.client_side_validation && experiment_post.nil?
-        fail ArgumentError, "Missing the required parameter 'experiment_post' when calling ExperimentsBetaApi.create_experiment"
-      end
-      # resource path
-      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(experiment_post)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Experiment'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey']
-
-      new_options = opts.merge(
-        :operation => :"ExperimentsBetaApi.create_experiment",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ExperimentsBetaApi#create_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Create iteration
-    # Create an experiment iteration.  Experiment iterations let you record experiments in individual blocks of time. Initially, iterations are created with a status of `not_started` and appear in the `draftIteration` field of an experiment. To start or stop an iteration, [update the experiment](/tag/Experiments-(beta)#operation/patchExperiment) with the `startIteration` or `stopIteration` instruction.   To learn more, read [Starting experiment iterations](https://docs.launchdarkly.com/home/creating-experiments#starting-experiment-iterations). 
-    # @param project_key [String] The project key
-    # @param environment_key [String] The environment key
-    # @param experiment_key [String] The experiment key
-    # @param iteration_input [IterationInput] 
-    # @param [Hash] opts the optional parameters
-    # @return [IterationRep]
-    def create_iteration(project_key, environment_key, experiment_key, iteration_input, opts = {})
-      data, _status_code, _headers = create_iteration_with_http_info(project_key, environment_key, experiment_key, iteration_input, opts)
-      data
-    end
-
-    # Create iteration
-    # Create an experiment iteration.  Experiment iterations let you record experiments in individual blocks of time. Initially, iterations are created with a status of &#x60;not_started&#x60; and appear in the &#x60;draftIteration&#x60; field of an experiment. To start or stop an iteration, [update the experiment](/tag/Experiments-(beta)#operation/patchExperiment) with the &#x60;startIteration&#x60; or &#x60;stopIteration&#x60; instruction.   To learn more, read [Starting experiment iterations](https://docs.launchdarkly.com/home/creating-experiments#starting-experiment-iterations). 
-    # @param project_key [String] The project key
-    # @param environment_key [String] The environment key
-    # @param experiment_key [String] The experiment key
-    # @param iteration_input [IterationInput] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(IterationRep, Integer, Hash)>] IterationRep data, response status code and response headers
-    def create_iteration_with_http_info(project_key, environment_key, experiment_key, iteration_input, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ExperimentsBetaApi.create_iteration ...'
-      end
-      # verify the required parameter 'project_key' is set
-      if @api_client.config.client_side_validation && project_key.nil?
-        fail ArgumentError, "Missing the required parameter 'project_key' when calling ExperimentsBetaApi.create_iteration"
-      end
-      # verify the required parameter 'environment_key' is set
-      if @api_client.config.client_side_validation && environment_key.nil?
-        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ExperimentsBetaApi.create_iteration"
-      end
-      # verify the required parameter 'experiment_key' is set
-      if @api_client.config.client_side_validation && experiment_key.nil?
-        fail ArgumentError, "Missing the required parameter 'experiment_key' when calling ExperimentsBetaApi.create_iteration"
-      end
-      # verify the required parameter 'iteration_input' is set
-      if @api_client.config.client_side_validation && iteration_input.nil?
-        fail ArgumentError, "Missing the required parameter 'iteration_input' when calling ExperimentsBetaApi.create_iteration"
-      end
-      # resource path
-      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s)).sub('{' + 'experimentKey' + '}', CGI.escape(experiment_key.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(iteration_input)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'IterationRep'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey']
-
-      new_options = opts.merge(
-        :operation => :"ExperimentsBetaApi.create_iteration",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ExperimentsBetaApi#create_iteration\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get experiment
-    # Get details about an experiment.  ### Expanding the experiment response  LaunchDarkly supports four fields for expanding the \"Get experiment\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  - `previousIterations` includes all iterations prior to the current iteration. By default only the current iteration is included in the response. - `draftIteration` includes the iteration which has not been started yet, if any. - `secondaryMetrics` includes secondary metrics. By default only the primary metric is included in the response. - `treatments` includes all treatment and parameter details. By default treatment data is not included in the response.  For example, `expand=draftIteration,treatments` includes the `draftIteration` and `treatments` fields in the response. If fields that you request with the `expand` query parameter are empty, they are not included in the response. 
-    # @param project_key [String] The project key
-    # @param environment_key [String] The environment key
-    # @param experiment_key [String] The experiment key
-    # @param [Hash] opts the optional parameters
-    # @return [Experiment]
-    def get_experiment(project_key, environment_key, experiment_key, opts = {})
-      data, _status_code, _headers = get_experiment_with_http_info(project_key, environment_key, experiment_key, opts)
-      data
-    end
-
-    # Get experiment
-    # Get details about an experiment.  ### Expanding the experiment response  LaunchDarkly supports four fields for expanding the \&quot;Get experiment\&quot; response. By default, these fields are **not** included in the response.  To expand the response, append the &#x60;expand&#x60; query parameter and add a comma-separated list with any of the following fields:  - &#x60;previousIterations&#x60; includes all iterations prior to the current iteration. By default only the current iteration is included in the response. - &#x60;draftIteration&#x60; includes the iteration which has not been started yet, if any. - &#x60;secondaryMetrics&#x60; includes secondary metrics. By default only the primary metric is included in the response. - &#x60;treatments&#x60; includes all treatment and parameter details. By default treatment data is not included in the response.  For example, &#x60;expand&#x3D;draftIteration,treatments&#x60; includes the &#x60;draftIteration&#x60; and &#x60;treatments&#x60; fields in the response. If fields that you request with the &#x60;expand&#x60; query parameter are empty, they are not included in the response. 
-    # @param project_key [String] The project key
-    # @param environment_key [String] The environment key
-    # @param experiment_key [String] The experiment key
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Experiment, Integer, Hash)>] Experiment data, response status code and response headers
-    def get_experiment_with_http_info(project_key, environment_key, experiment_key, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ExperimentsBetaApi.get_experiment ...'
-      end
-      # verify the required parameter 'project_key' is set
-      if @api_client.config.client_side_validation && project_key.nil?
-        fail ArgumentError, "Missing the required parameter 'project_key' when calling ExperimentsBetaApi.get_experiment"
-      end
-      # verify the required parameter 'environment_key' is set
-      if @api_client.config.client_side_validation && environment_key.nil?
-        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ExperimentsBetaApi.get_experiment"
-      end
-      # verify the required parameter 'experiment_key' is set
-      if @api_client.config.client_side_validation && experiment_key.nil?
-        fail ArgumentError, "Missing the required parameter 'experiment_key' when calling ExperimentsBetaApi.get_experiment"
-      end
-      # resource path
-      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s)).sub('{' + 'experimentKey' + '}', CGI.escape(experiment_key.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Experiment'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey']
-
-      new_options = opts.merge(
-        :operation => :"ExperimentsBetaApi.get_experiment",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ExperimentsBetaApi#get_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get experiment results
-    # Get results from an experiment for a particular metric.
-    # @param project_key [String] The project key
-    # @param environment_key [String] The environment key
-    # @param experiment_key [String] The experiment key
-    # @param metric_key [String] The metric key
-    # @param [Hash] opts the optional parameters
-    # @return [ExperimentBayesianResultsRep]
-    def get_experiment_results(project_key, environment_key, experiment_key, metric_key, opts = {})
-      data, _status_code, _headers = get_experiment_results_with_http_info(project_key, environment_key, experiment_key, metric_key, opts)
-      data
-    end
-
-    # Get experiment results
-    # Get results from an experiment for a particular metric.
-    # @param project_key [String] The project key
-    # @param environment_key [String] The environment key
-    # @param experiment_key [String] The experiment key
-    # @param metric_key [String] The metric key
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ExperimentBayesianResultsRep, Integer, Hash)>] ExperimentBayesianResultsRep data, response status code and response headers
-    def get_experiment_results_with_http_info(project_key, environment_key, experiment_key, metric_key, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ExperimentsBetaApi.get_experiment_results ...'
-      end
-      # verify the required parameter 'project_key' is set
-      if @api_client.config.client_side_validation && project_key.nil?
-        fail ArgumentError, "Missing the required parameter 'project_key' when calling ExperimentsBetaApi.get_experiment_results"
-      end
-      # verify the required parameter 'environment_key' is set
-      if @api_client.config.client_side_validation && environment_key.nil?
-        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ExperimentsBetaApi.get_experiment_results"
-      end
-      # verify the required parameter 'experiment_key' is set
-      if @api_client.config.client_side_validation && experiment_key.nil?
-        fail ArgumentError, "Missing the required parameter 'experiment_key' when calling ExperimentsBetaApi.get_experiment_results"
-      end
-      # verify the required parameter 'metric_key' is set
-      if @api_client.config.client_side_validation && metric_key.nil?
-        fail ArgumentError, "Missing the required parameter 'metric_key' when calling ExperimentsBetaApi.get_experiment_results"
-      end
-      # resource path
-      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s)).sub('{' + 'experimentKey' + '}', CGI.escape(experiment_key.to_s)).sub('{' + 'metricKey' + '}', CGI.escape(metric_key.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ExperimentBayesianResultsRep'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey']
-
-      new_options = opts.merge(
-        :operation => :"ExperimentsBetaApi.get_experiment_results",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ExperimentsBetaApi#get_experiment_results\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get experimentation settings
-    # Get current experimentation settings for the given project
-    # @param project_key [String] The project key
-    # @param [Hash] opts the optional parameters
-    # @return [ExperimentationSettingsRep]
-    def get_experimentation_settings(project_key, opts = {})
-      data, _status_code, _headers = get_experimentation_settings_with_http_info(project_key, opts)
-      data
-    end
-
-    # Get experimentation settings
-    # Get current experimentation settings for the given project
-    # @param project_key [String] The project key
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ExperimentationSettingsRep, Integer, Hash)>] ExperimentationSettingsRep data, response status code and response headers
-    def get_experimentation_settings_with_http_info(project_key, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ExperimentsBetaApi.get_experimentation_settings ...'
-      end
-      # verify the required parameter 'project_key' is set
-      if @api_client.config.client_side_validation && project_key.nil?
-        fail ArgumentError, "Missing the required parameter 'project_key' when calling ExperimentsBetaApi.get_experimentation_settings"
-      end
-      # resource path
-      local_var_path = '/api/v2/projects/{projectKey}/experimentation-settings'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ExperimentationSettingsRep'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey']
-
-      new_options = opts.merge(
-        :operation => :"ExperimentsBetaApi.get_experimentation_settings",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ExperimentsBetaApi#get_experimentation_settings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get experiments
-    # Get details about all experiments in an environment.  ### Filtering experiments  LaunchDarkly supports the `filter` query param for filtering, with the following fields:  - `flagKey` filters for only experiments that use the flag with the given key. - `metricKey` filters for only experiments that use the metric with the given key. - `status` filters for only experiments with an iteration with the given status. An iteration can have the status `not_started`, `running` or `stopped`.  For example, `filter=flagKey:my-flag,status:running,metricKey:page-load-ms` filters for experiments for the given flag key and the given metric key which have a currently running iteration.  ### Expanding the experiments response  LaunchDarkly supports four fields for expanding the \"Get experiments\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  - `previousIterations` includes all iterations prior to the current iteration. By default only the current iteration is included in the response. - `draftIteration` includes the iteration which has not been started yet, if any. - `secondaryMetrics` includes secondary metrics. By default only the primary metric is included in the response. - `treatments` includes all treatment and parameter details. By default treatment data is not included in the response.  For example, `expand=draftIteration,treatments` includes the `draftIteration` and `treatments` fields in the response. If fields that you request with the `expand` query parameter are empty, they are not included in the response. 
-    # @param project_key [String] The project key
-    # @param environment_key [String] The environment key
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :limit The maximum number of experiments to return. Defaults to 20.
-    # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
-    # @option opts [String] :filter A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above.
-    # @option opts [String] :expand A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above.
-    # @option opts [String] :lifecycle_state A comma-separated list of experiment archived states. Supports &#x60;archived&#x60;, &#x60;active&#x60;, or both. Defaults to &#x60;active&#x60; experiments.
-    # @return [ExperimentCollectionRep]
-    def get_experiments(project_key, environment_key, opts = {})
-      data, _status_code, _headers = get_experiments_with_http_info(project_key, environment_key, opts)
-      data
-    end
-
-    # Get experiments
-    # Get details about all experiments in an environment.  ### Filtering experiments  LaunchDarkly supports the &#x60;filter&#x60; query param for filtering, with the following fields:  - &#x60;flagKey&#x60; filters for only experiments that use the flag with the given key. - &#x60;metricKey&#x60; filters for only experiments that use the metric with the given key. - &#x60;status&#x60; filters for only experiments with an iteration with the given status. An iteration can have the status &#x60;not_started&#x60;, &#x60;running&#x60; or &#x60;stopped&#x60;.  For example, &#x60;filter&#x3D;flagKey:my-flag,status:running,metricKey:page-load-ms&#x60; filters for experiments for the given flag key and the given metric key which have a currently running iteration.  ### Expanding the experiments response  LaunchDarkly supports four fields for expanding the \&quot;Get experiments\&quot; response. By default, these fields are **not** included in the response.  To expand the response, append the &#x60;expand&#x60; query parameter and add a comma-separated list with any of the following fields:  - &#x60;previousIterations&#x60; includes all iterations prior to the current iteration. By default only the current iteration is included in the response. - &#x60;draftIteration&#x60; includes the iteration which has not been started yet, if any. - &#x60;secondaryMetrics&#x60; includes secondary metrics. By default only the primary metric is included in the response. - &#x60;treatments&#x60; includes all treatment and parameter details. By default treatment data is not included in the response.  For example, &#x60;expand&#x3D;draftIteration,treatments&#x60; includes the &#x60;draftIteration&#x60; and &#x60;treatments&#x60; fields in the response. If fields that you request with the &#x60;expand&#x60; query parameter are empty, they are not included in the response. 
-    # @param project_key [String] The project key
-    # @param environment_key [String] The environment key
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :limit The maximum number of experiments to return. Defaults to 20.
-    # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
-    # @option opts [String] :filter A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above.
-    # @option opts [String] :expand A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above.
-    # @option opts [String] :lifecycle_state A comma-separated list of experiment archived states. Supports &#x60;archived&#x60;, &#x60;active&#x60;, or both. Defaults to &#x60;active&#x60; experiments.
-    # @return [Array<(ExperimentCollectionRep, Integer, Hash)>] ExperimentCollectionRep data, response status code and response headers
-    def get_experiments_with_http_info(project_key, environment_key, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ExperimentsBetaApi.get_experiments ...'
-      end
-      # verify the required parameter 'project_key' is set
-      if @api_client.config.client_side_validation && project_key.nil?
-        fail ArgumentError, "Missing the required parameter 'project_key' when calling ExperimentsBetaApi.get_experiments"
-      end
-      # verify the required parameter 'environment_key' is set
-      if @api_client.config.client_side_validation && environment_key.nil?
-        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ExperimentsBetaApi.get_experiments"
-      end
-      # resource path
-      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
-      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
-      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
-      query_params[:'expand'] = opts[:'expand'] if !opts[:'expand'].nil?
-      query_params[:'lifecycleState'] = opts[:'lifecycle_state'] if !opts[:'lifecycle_state'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ExperimentCollectionRep'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey']
-
-      new_options = opts.merge(
-        :operation => :"ExperimentsBetaApi.get_experiments",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ExperimentsBetaApi#get_experiments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get legacy experiment results (deprecated)
-    # Get detailed experiment result data for legacy experiments.
-    # @param project_key [String] The project key
-    # @param feature_flag_key [String] The feature flag key
-    # @param environment_key [String] The environment key
-    # @param metric_key [String] The metric key
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :from A timestamp denoting the start of the data collection period, expressed as a Unix epoch time in milliseconds.
-    # @option opts [Integer] :to A timestamp denoting the end of the data collection period, expressed as a Unix epoch time in milliseconds.
-    # @return [ExperimentResults]
-    def get_legacy_experiment_results(project_key, feature_flag_key, environment_key, metric_key, opts = {})
-      data, _status_code, _headers = get_legacy_experiment_results_with_http_info(project_key, feature_flag_key, environment_key, metric_key, opts)
-      data
-    end
-
-    # Get legacy experiment results (deprecated)
-    # Get detailed experiment result data for legacy experiments.
-    # @param project_key [String] The project key
-    # @param feature_flag_key [String] The feature flag key
-    # @param environment_key [String] The environment key
-    # @param metric_key [String] The metric key
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :from A timestamp denoting the start of the data collection period, expressed as a Unix epoch time in milliseconds.
-    # @option opts [Integer] :to A timestamp denoting the end of the data collection period, expressed as a Unix epoch time in milliseconds.
-    # @return [Array<(ExperimentResults, Integer, Hash)>] ExperimentResults data, response status code and response headers
-    def get_legacy_experiment_results_with_http_info(project_key, feature_flag_key, environment_key, metric_key, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ExperimentsBetaApi.get_legacy_experiment_results ...'
-      end
-      # verify the required parameter 'project_key' is set
-      if @api_client.config.client_side_validation && project_key.nil?
-        fail ArgumentError, "Missing the required parameter 'project_key' when calling ExperimentsBetaApi.get_legacy_experiment_results"
-      end
-      # verify the required parameter 'feature_flag_key' is set
-      if @api_client.config.client_side_validation && feature_flag_key.nil?
-        fail ArgumentError, "Missing the required parameter 'feature_flag_key' when calling ExperimentsBetaApi.get_legacy_experiment_results"
-      end
-      # verify the required parameter 'environment_key' is set
-      if @api_client.config.client_side_validation && environment_key.nil?
-        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ExperimentsBetaApi.get_legacy_experiment_results"
-      end
-      # verify the required parameter 'metric_key' is set
-      if @api_client.config.client_side_validation && metric_key.nil?
-        fail ArgumentError, "Missing the required parameter 'metric_key' when calling ExperimentsBetaApi.get_legacy_experiment_results"
-      end
-      # resource path
-      local_var_path = '/api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey}'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'featureFlagKey' + '}', CGI.escape(feature_flag_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s)).sub('{' + 'metricKey' + '}', CGI.escape(metric_key.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'from'] = opts[:'from'] if !opts[:'from'].nil?
-      query_params[:'to'] = opts[:'to'] if !opts[:'to'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ExperimentResults'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey']
-
-      new_options = opts.merge(
-        :operation => :"ExperimentsBetaApi.get_legacy_experiment_results",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ExperimentsBetaApi#get_legacy_experiment_results\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Patch experiment
-    # Update an experiment. Updating an experiment uses the semantic patch format.  To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](/reference#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following `kind` instructions for updating experiments.  #### updateName  Updates the experiment name.  ##### Parameters  - `value`: The new name.  #### updateDescription  Updates the experiment description.  ##### Parameters  - `value`: The new description.  #### startIteration  Starts a new iteration for this experiment. You must [create a new iteration](/tag/Experiments-(beta)#operation/createIteration) before calling this instruction.  An iteration may not be started until it meets the following criteria:  * Its associated flag is toggled on and is not archived * Its `randomizationUnit` is set * At least one of its `treatments` has a non-zero `allocationPercent`  ##### Parameters  - `changeJustification`: The reason for starting a new iteration. Required when you call `startIteration` on an already running experiment, otherwise optional.  #### stopIteration  Stops the current iteration for this experiment.  ##### Parameters  - `winningTreatmentId`: The ID of the winning treatment - `winningReason`: The reason for the winner  #### archiveExperiment  Archives this experiment. Archived experiments are hidden by default in the LaunchDarkly user interface. You cannot start new iterations for archived experiments.  #### restoreExperiment  Restores an archived experiment. After restoring an experiment, you can start new iterations for it again. 
-    # @param project_key [String] The project key
-    # @param environment_key [String] The environment key
-    # @param experiment_key [String] The experiment key
-    # @param experiment_patch_input [ExperimentPatchInput] 
-    # @param [Hash] opts the optional parameters
-    # @return [Experiment]
-    def patch_experiment(project_key, environment_key, experiment_key, experiment_patch_input, opts = {})
-      data, _status_code, _headers = patch_experiment_with_http_info(project_key, environment_key, experiment_key, experiment_patch_input, opts)
-      data
-    end
-
-    # Patch experiment
-    # Update an experiment. Updating an experiment uses the semantic patch format.  To make a semantic patch request, you must append &#x60;domain-model&#x3D;launchdarkly.semanticpatch&#x60; to your &#x60;Content-Type&#x60; header. To learn more, read [Updates using semantic patch](/reference#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following &#x60;kind&#x60; instructions for updating experiments.  #### updateName  Updates the experiment name.  ##### Parameters  - &#x60;value&#x60;: The new name.  #### updateDescription  Updates the experiment description.  ##### Parameters  - &#x60;value&#x60;: The new description.  #### startIteration  Starts a new iteration for this experiment. You must [create a new iteration](/tag/Experiments-(beta)#operation/createIteration) before calling this instruction.  An iteration may not be started until it meets the following criteria:  * Its associated flag is toggled on and is not archived * Its &#x60;randomizationUnit&#x60; is set * At least one of its &#x60;treatments&#x60; has a non-zero &#x60;allocationPercent&#x60;  ##### Parameters  - &#x60;changeJustification&#x60;: The reason for starting a new iteration. Required when you call &#x60;startIteration&#x60; on an already running experiment, otherwise optional.  #### stopIteration  Stops the current iteration for this experiment.  ##### Parameters  - &#x60;winningTreatmentId&#x60;: The ID of the winning treatment - &#x60;winningReason&#x60;: The reason for the winner  #### archiveExperiment  Archives this experiment. Archived experiments are hidden by default in the LaunchDarkly user interface. You cannot start new iterations for archived experiments.  #### restoreExperiment  Restores an archived experiment. After restoring an experiment, you can start new iterations for it again. 
-    # @param project_key [String] The project key
-    # @param environment_key [String] The environment key
-    # @param experiment_key [String] The experiment key
-    # @param experiment_patch_input [ExperimentPatchInput] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Experiment, Integer, Hash)>] Experiment data, response status code and response headers
-    def patch_experiment_with_http_info(project_key, environment_key, experiment_key, experiment_patch_input, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ExperimentsBetaApi.patch_experiment ...'
-      end
-      # verify the required parameter 'project_key' is set
-      if @api_client.config.client_side_validation && project_key.nil?
-        fail ArgumentError, "Missing the required parameter 'project_key' when calling ExperimentsBetaApi.patch_experiment"
-      end
-      # verify the required parameter 'environment_key' is set
-      if @api_client.config.client_side_validation && environment_key.nil?
-        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ExperimentsBetaApi.patch_experiment"
-      end
-      # verify the required parameter 'experiment_key' is set
-      if @api_client.config.client_side_validation && experiment_key.nil?
-        fail ArgumentError, "Missing the required parameter 'experiment_key' when calling ExperimentsBetaApi.patch_experiment"
-      end
-      # verify the required parameter 'experiment_patch_input' is set
-      if @api_client.config.client_side_validation && experiment_patch_input.nil?
-        fail ArgumentError, "Missing the required parameter 'experiment_patch_input' when calling ExperimentsBetaApi.patch_experiment"
-      end
-      # resource path
-      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s)).sub('{' + 'experimentKey' + '}', CGI.escape(experiment_key.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(experiment_patch_input)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Experiment'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey']
-
-      new_options = opts.merge(
-        :operation => :"ExperimentsBetaApi.patch_experiment",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ExperimentsBetaApi#patch_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Update experimentation settings
-    # Update experimentation settings for the given project
-    # @param project_key [String] The project key
-    # @param experimentation_settings_put [ExperimentationSettingsPut] 
-    # @param [Hash] opts the optional parameters
-    # @return [ExperimentationSettingsRep]
-    def put_experimentation_settings(project_key, experimentation_settings_put, opts = {})
-      data, _status_code, _headers = put_experimentation_settings_with_http_info(project_key, experimentation_settings_put, opts)
-      data
-    end
-
-    # Update experimentation settings
-    # Update experimentation settings for the given project
-    # @param project_key [String] The project key
-    # @param experimentation_settings_put [ExperimentationSettingsPut] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ExperimentationSettingsRep, Integer, Hash)>] ExperimentationSettingsRep data, response status code and response headers
-    def put_experimentation_settings_with_http_info(project_key, experimentation_settings_put, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ExperimentsBetaApi.put_experimentation_settings ...'
-      end
-      # verify the required parameter 'project_key' is set
-      if @api_client.config.client_side_validation && project_key.nil?
-        fail ArgumentError, "Missing the required parameter 'project_key' when calling ExperimentsBetaApi.put_experimentation_settings"
-      end
-      # verify the required parameter 'experimentation_settings_put' is set
-      if @api_client.config.client_side_validation && experimentation_settings_put.nil?
-        fail ArgumentError, "Missing the required parameter 'experimentation_settings_put' when calling ExperimentsBetaApi.put_experimentation_settings"
-      end
-      # resource path
-      local_var_path = '/api/v2/projects/{projectKey}/experimentation-settings'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(experimentation_settings_put)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ExperimentationSettingsRep'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey']
-
-      new_options = opts.merge(
-        :operation => :"ExperimentsBetaApi.put_experimentation_settings",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ExperimentsBetaApi#put_experimentation_settings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Reset experiment results
-    # Reset all experiment results by deleting all existing data for an experiment.
-    # @param project_key [String] The project key
-    # @param feature_flag_key [String] The feature flag key
-    # @param environment_key [String] The environment key
-    # @param metric_key [String] The metric&#39;s key
+    # @param id [String] The context instance ID
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def reset_experiment(project_key, feature_flag_key, environment_key, metric_key, opts = {})
-      reset_experiment_with_http_info(project_key, feature_flag_key, environment_key, metric_key, opts)
+    def delete_context_instances(project_key, environment_key, id, opts = {})
+      delete_context_instances_with_http_info(project_key, environment_key, id, opts)
       nil
     end
 
-    # Reset experiment results
-    # Reset all experiment results by deleting all existing data for an experiment.
+    # Delete context instances
+    # Delete context instances by ID.
     # @param project_key [String] The project key
-    # @param feature_flag_key [String] The feature flag key
     # @param environment_key [String] The environment key
-    # @param metric_key [String] The metric&#39;s key
+    # @param id [String] The context instance ID
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def reset_experiment_with_http_info(project_key, feature_flag_key, environment_key, metric_key, opts = {})
+    def delete_context_instances_with_http_info(project_key, environment_key, id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ExperimentsBetaApi.reset_experiment ...'
+        @api_client.config.logger.debug 'Calling API: ContextsApi.delete_context_instances ...'
       end
       # verify the required parameter 'project_key' is set
       if @api_client.config.client_side_validation && project_key.nil?
-        fail ArgumentError, "Missing the required parameter 'project_key' when calling ExperimentsBetaApi.reset_experiment"
-      end
-      # verify the required parameter 'feature_flag_key' is set
-      if @api_client.config.client_side_validation && feature_flag_key.nil?
-        fail ArgumentError, "Missing the required parameter 'feature_flag_key' when calling ExperimentsBetaApi.reset_experiment"
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling ContextsApi.delete_context_instances"
       end
       # verify the required parameter 'environment_key' is set
       if @api_client.config.client_side_validation && environment_key.nil?
-        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ExperimentsBetaApi.reset_experiment"
+        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ContextsApi.delete_context_instances"
       end
-      # verify the required parameter 'metric_key' is set
-      if @api_client.config.client_side_validation && metric_key.nil?
-        fail ArgumentError, "Missing the required parameter 'metric_key' when calling ExperimentsBetaApi.reset_experiment"
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ContextsApi.delete_context_instances"
       end
       # resource path
-      local_var_path = '/api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey}/results'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'featureFlagKey' + '}', CGI.escape(feature_flag_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s)).sub('{' + 'metricKey' + '}', CGI.escape(metric_key.to_s))
+      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/{id}'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -800,7 +78,7 @@ module LaunchDarklyApi
       auth_names = opts[:debug_auth_names] || ['ApiKey']
 
       new_options = opts.merge(
-        :operation => :"ExperimentsBetaApi.reset_experiment",
+        :operation => :"ContextsApi.delete_context_instances",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -811,7 +89,625 @@ module LaunchDarklyApi
 
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ExperimentsBetaApi#reset_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ContextsApi#delete_context_instances\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Evaluate flags for context instance
+    # Evaluate flags for a context instance, for example, to determine the expected flag variation. **Do not use this API instead of an SDK.** The LaunchDarkly SDKs are specialized for the tasks of evaluating feature flags in your application at scale and generating analytics events based on those evaluations. This API is not designed for that use case. Any evaluations you perform with this API will not be reflected in features such as flag statuses and flag insights. Context instances evaluated by this API will not appear in the Contexts list. To learn more, read [Comparing LaunchDarkly's SDKs and REST API](https://docs.launchdarkly.com/guide/api/comparing-sdk-rest-api).
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param request_body [Hash<String, Object>] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit The number of feature flags to return. Defaults to -1, which returns all flags
+    # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
+    # @option opts [String] :sort A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order
+    # @option opts [String] :filter A comma-separated list of filters. Each filter is of the form field:value. Supports the same filters as the List Feature Flags API.
+    # @return [ContextInstanceEvaluations]
+    def evaluate_context_instance(project_key, environment_key, request_body, opts = {})
+      data, _status_code, _headers = evaluate_context_instance_with_http_info(project_key, environment_key, request_body, opts)
+      data
+    end
+
+    # Evaluate flags for context instance
+    # Evaluate flags for a context instance, for example, to determine the expected flag variation. **Do not use this API instead of an SDK.** The LaunchDarkly SDKs are specialized for the tasks of evaluating feature flags in your application at scale and generating analytics events based on those evaluations. This API is not designed for that use case. Any evaluations you perform with this API will not be reflected in features such as flag statuses and flag insights. Context instances evaluated by this API will not appear in the Contexts list. To learn more, read [Comparing LaunchDarkly&#39;s SDKs and REST API](https://docs.launchdarkly.com/guide/api/comparing-sdk-rest-api).
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param request_body [Hash<String, Object>] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit The number of feature flags to return. Defaults to -1, which returns all flags
+    # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
+    # @option opts [String] :sort A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order
+    # @option opts [String] :filter A comma-separated list of filters. Each filter is of the form field:value. Supports the same filters as the List Feature Flags API.
+    # @return [Array<(ContextInstanceEvaluations, Integer, Hash)>] ContextInstanceEvaluations data, response status code and response headers
+    def evaluate_context_instance_with_http_info(project_key, environment_key, request_body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ContextsApi.evaluate_context_instance ...'
+      end
+      # verify the required parameter 'project_key' is set
+      if @api_client.config.client_side_validation && project_key.nil?
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling ContextsApi.evaluate_context_instance"
+      end
+      # verify the required parameter 'environment_key' is set
+      if @api_client.config.client_side_validation && environment_key.nil?
+        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ContextsApi.evaluate_context_instance"
+      end
+      # verify the required parameter 'request_body' is set
+      if @api_client.config.client_side_validation && request_body.nil?
+        fail ArgumentError, "Missing the required parameter 'request_body' when calling ContextsApi.evaluate_context_instance"
+      end
+      # resource path
+      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/flags/evaluate'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(request_body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ContextInstanceEvaluations'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ContextsApi.evaluate_context_instance",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ContextsApi#evaluate_context_instance\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get context attribute names
+    # Get context attribute names.
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;name&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+    # @return [ContextAttributeNamesCollection]
+    def get_context_attribute_names(project_key, environment_key, opts = {})
+      data, _status_code, _headers = get_context_attribute_names_with_http_info(project_key, environment_key, opts)
+      data
+    end
+
+    # Get context attribute names
+    # Get context attribute names.
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;name&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+    # @return [Array<(ContextAttributeNamesCollection, Integer, Hash)>] ContextAttributeNamesCollection data, response status code and response headers
+    def get_context_attribute_names_with_http_info(project_key, environment_key, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ContextsApi.get_context_attribute_names ...'
+      end
+      # verify the required parameter 'project_key' is set
+      if @api_client.config.client_side_validation && project_key.nil?
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling ContextsApi.get_context_attribute_names"
+      end
+      # verify the required parameter 'environment_key' is set
+      if @api_client.config.client_side_validation && environment_key.nil?
+        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ContextsApi.get_context_attribute_names"
+      end
+      # resource path
+      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/context-attributes'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ContextAttributeNamesCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ContextsApi.get_context_attribute_names",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ContextsApi#get_context_attribute_names\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get context attribute values
+    # Get context attribute values.
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param attribute_name [String] The attribute name
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;value&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+    # @return [ContextAttributeValuesCollection]
+    def get_context_attribute_values(project_key, environment_key, attribute_name, opts = {})
+      data, _status_code, _headers = get_context_attribute_values_with_http_info(project_key, environment_key, attribute_name, opts)
+      data
+    end
+
+    # Get context attribute values
+    # Get context attribute values.
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param attribute_name [String] The attribute name
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;value&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+    # @return [Array<(ContextAttributeValuesCollection, Integer, Hash)>] ContextAttributeValuesCollection data, response status code and response headers
+    def get_context_attribute_values_with_http_info(project_key, environment_key, attribute_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ContextsApi.get_context_attribute_values ...'
+      end
+      # verify the required parameter 'project_key' is set
+      if @api_client.config.client_side_validation && project_key.nil?
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling ContextsApi.get_context_attribute_values"
+      end
+      # verify the required parameter 'environment_key' is set
+      if @api_client.config.client_side_validation && environment_key.nil?
+        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ContextsApi.get_context_attribute_values"
+      end
+      # verify the required parameter 'attribute_name' is set
+      if @api_client.config.client_side_validation && attribute_name.nil?
+        fail ArgumentError, "Missing the required parameter 'attribute_name' when calling ContextsApi.get_context_attribute_values"
+      end
+      # resource path
+      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/context-attributes/{attributeName}'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s)).sub('{' + 'attributeName' + '}', CGI.escape(attribute_name.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ContextAttributeValuesCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ContextsApi.get_context_attribute_values",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ContextsApi#get_context_attribute_values\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get context instances
+    # Get context instances by ID.
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param id [String] The context instance ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Specifies the maximum number of context instances to return (max: 50, default: 20)
+    # @option opts [String] :continuation_token Limits results to context instances with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead.
+    # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;.
+    # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+    # @option opts [Boolean] :include_total_count Specifies whether to include or omit the total count of matching context instances. Defaults to true.
+    # @return [ContextInstances]
+    def get_context_instances(project_key, environment_key, id, opts = {})
+      data, _status_code, _headers = get_context_instances_with_http_info(project_key, environment_key, id, opts)
+      data
+    end
+
+    # Get context instances
+    # Get context instances by ID.
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param id [String] The context instance ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Specifies the maximum number of context instances to return (max: 50, default: 20)
+    # @option opts [String] :continuation_token Limits results to context instances with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead.
+    # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;.
+    # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+    # @option opts [Boolean] :include_total_count Specifies whether to include or omit the total count of matching context instances. Defaults to true.
+    # @return [Array<(ContextInstances, Integer, Hash)>] ContextInstances data, response status code and response headers
+    def get_context_instances_with_http_info(project_key, environment_key, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ContextsApi.get_context_instances ...'
+      end
+      # verify the required parameter 'project_key' is set
+      if @api_client.config.client_side_validation && project_key.nil?
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling ContextsApi.get_context_instances"
+      end
+      # verify the required parameter 'environment_key' is set
+      if @api_client.config.client_side_validation && environment_key.nil?
+        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ContextsApi.get_context_instances"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ContextsApi.get_context_instances"
+      end
+      # resource path
+      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/{id}'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'continuationToken'] = opts[:'continuation_token'] if !opts[:'continuation_token'].nil?
+      query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+      query_params[:'includeTotalCount'] = opts[:'include_total_count'] if !opts[:'include_total_count'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ContextInstances'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ContextsApi.get_context_instances",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ContextsApi#get_context_instances\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get contexts
+    # Get contexts based on kind and key.
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param kind [String] The context kind
+    # @param key [String] The context key
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Specifies the maximum number of items in the collection to return (max: 50, default: 20)
+    # @option opts [String] :continuation_token Limits results to contexts with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead.
+    # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;.
+    # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+    # @option opts [Boolean] :include_total_count Specifies whether to include or omit the total count of matching contexts. Defaults to true.
+    # @return [Contexts]
+    def get_contexts(project_key, environment_key, kind, key, opts = {})
+      data, _status_code, _headers = get_contexts_with_http_info(project_key, environment_key, kind, key, opts)
+      data
+    end
+
+    # Get contexts
+    # Get contexts based on kind and key.
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param kind [String] The context kind
+    # @param key [String] The context key
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Specifies the maximum number of items in the collection to return (max: 50, default: 20)
+    # @option opts [String] :continuation_token Limits results to contexts with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead.
+    # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;.
+    # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+    # @option opts [Boolean] :include_total_count Specifies whether to include or omit the total count of matching contexts. Defaults to true.
+    # @return [Array<(Contexts, Integer, Hash)>] Contexts data, response status code and response headers
+    def get_contexts_with_http_info(project_key, environment_key, kind, key, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ContextsApi.get_contexts ...'
+      end
+      # verify the required parameter 'project_key' is set
+      if @api_client.config.client_side_validation && project_key.nil?
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling ContextsApi.get_contexts"
+      end
+      # verify the required parameter 'environment_key' is set
+      if @api_client.config.client_side_validation && environment_key.nil?
+        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ContextsApi.get_contexts"
+      end
+      # verify the required parameter 'kind' is set
+      if @api_client.config.client_side_validation && kind.nil?
+        fail ArgumentError, "Missing the required parameter 'kind' when calling ContextsApi.get_contexts"
+      end
+      # verify the required parameter 'key' is set
+      if @api_client.config.client_side_validation && key.nil?
+        fail ArgumentError, "Missing the required parameter 'key' when calling ContextsApi.get_contexts"
+      end
+      # resource path
+      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{kind}/{key}'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s)).sub('{' + 'kind' + '}', CGI.escape(kind.to_s)).sub('{' + 'key' + '}', CGI.escape(key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'continuationToken'] = opts[:'continuation_token'] if !opts[:'continuation_token'].nil?
+      query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+      query_params[:'includeTotalCount'] = opts[:'include_total_count'] if !opts[:'include_total_count'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Contexts'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ContextsApi.get_contexts",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ContextsApi#get_contexts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Search for context instances
+    #  Search for context instances.  You can use either the query parameters or the request body parameters. If both are provided, there is an error.  To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). To learn more about context instances, read [Understanding context instances](https://docs.launchdarkly.com/home/contexts#understanding-context-instances). 
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param context_instance_search [ContextInstanceSearch] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Specifies the maximum number of items in the collection to return (max: 50, default: 20)
+    # @option opts [String] :continuation_token Limits results to context instances with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead.
+    # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;.
+    # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+    # @option opts [Boolean] :include_total_count Specifies whether to include or omit the total count of matching context instances. Defaults to true.
+    # @return [ContextInstances]
+    def search_context_instances(project_key, environment_key, context_instance_search, opts = {})
+      data, _status_code, _headers = search_context_instances_with_http_info(project_key, environment_key, context_instance_search, opts)
+      data
+    end
+
+    # Search for context instances
+    #  Search for context instances.  You can use either the query parameters or the request body parameters. If both are provided, there is an error.  To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). To learn more about context instances, read [Understanding context instances](https://docs.launchdarkly.com/home/contexts#understanding-context-instances). 
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param context_instance_search [ContextInstanceSearch] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Specifies the maximum number of items in the collection to return (max: 50, default: 20)
+    # @option opts [String] :continuation_token Limits results to context instances with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead.
+    # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;.
+    # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+    # @option opts [Boolean] :include_total_count Specifies whether to include or omit the total count of matching context instances. Defaults to true.
+    # @return [Array<(ContextInstances, Integer, Hash)>] ContextInstances data, response status code and response headers
+    def search_context_instances_with_http_info(project_key, environment_key, context_instance_search, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ContextsApi.search_context_instances ...'
+      end
+      # verify the required parameter 'project_key' is set
+      if @api_client.config.client_side_validation && project_key.nil?
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling ContextsApi.search_context_instances"
+      end
+      # verify the required parameter 'environment_key' is set
+      if @api_client.config.client_side_validation && environment_key.nil?
+        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ContextsApi.search_context_instances"
+      end
+      # verify the required parameter 'context_instance_search' is set
+      if @api_client.config.client_side_validation && context_instance_search.nil?
+        fail ArgumentError, "Missing the required parameter 'context_instance_search' when calling ContextsApi.search_context_instances"
+      end
+      # resource path
+      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/search'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'continuationToken'] = opts[:'continuation_token'] if !opts[:'continuation_token'].nil?
+      query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+      query_params[:'includeTotalCount'] = opts[:'include_total_count'] if !opts[:'include_total_count'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(context_instance_search)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ContextInstances'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ContextsApi.search_context_instances",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ContextsApi#search_context_instances\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Search for contexts
+    #  Search for contexts.  You can use either the query parameters or the request body parameters. If both are provided, there is an error.  To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). To learn more about contexts, read [Understanding contexts and context kinds](https://docs.launchdarkly.com/home/contexts#understanding-contexts-and-context-kinds). 
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param context_search [ContextSearch] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Specifies the maximum number of items in the collection to return (max: 50, default: 20)
+    # @option opts [String] :continuation_token Limits results to contexts with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead.
+    # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;.
+    # @option opts [String] :filter A comma-separated list of context filters. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+    # @option opts [Boolean] :include_total_count Specifies whether to include or omit the total count of matching contexts. Defaults to true.
+    # @return [Contexts]
+    def search_contexts(project_key, environment_key, context_search, opts = {})
+      data, _status_code, _headers = search_contexts_with_http_info(project_key, environment_key, context_search, opts)
+      data
+    end
+
+    # Search for contexts
+    #  Search for contexts.  You can use either the query parameters or the request body parameters. If both are provided, there is an error.  To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). To learn more about contexts, read [Understanding contexts and context kinds](https://docs.launchdarkly.com/home/contexts#understanding-contexts-and-context-kinds). 
+    # @param project_key [String] The project key
+    # @param environment_key [String] The environment key
+    # @param context_search [ContextSearch] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Specifies the maximum number of items in the collection to return (max: 50, default: 20)
+    # @option opts [String] :continuation_token Limits results to contexts with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead.
+    # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;.
+    # @option opts [String] :filter A comma-separated list of context filters. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+    # @option opts [Boolean] :include_total_count Specifies whether to include or omit the total count of matching contexts. Defaults to true.
+    # @return [Array<(Contexts, Integer, Hash)>] Contexts data, response status code and response headers
+    def search_contexts_with_http_info(project_key, environment_key, context_search, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ContextsApi.search_contexts ...'
+      end
+      # verify the required parameter 'project_key' is set
+      if @api_client.config.client_side_validation && project_key.nil?
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling ContextsApi.search_contexts"
+      end
+      # verify the required parameter 'environment_key' is set
+      if @api_client.config.client_side_validation && environment_key.nil?
+        fail ArgumentError, "Missing the required parameter 'environment_key' when calling ContextsApi.search_contexts"
+      end
+      # verify the required parameter 'context_search' is set
+      if @api_client.config.client_side_validation && context_search.nil?
+        fail ArgumentError, "Missing the required parameter 'context_search' when calling ContextsApi.search_contexts"
+      end
+      # resource path
+      local_var_path = '/api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/search'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'environmentKey' + '}', CGI.escape(environment_key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'continuationToken'] = opts[:'continuation_token'] if !opts[:'continuation_token'].nil?
+      query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+      query_params[:'includeTotalCount'] = opts[:'include_total_count'] if !opts[:'include_total_count'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(context_search)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Contexts'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ContextsApi.search_contexts",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ContextsApi#search_contexts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

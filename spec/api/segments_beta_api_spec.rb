@@ -92,18 +92,4 @@ describe 'SegmentsBetaApi' do
     end
   end
 
-  # unit tests for get_context_instance_segments_membership_by_env
-  # List segment memberships for context instance
-  # For a given context instance with attributes, get membership details for all segments
-  # @param project_key The project key
-  # @param environment_key The environment key
-  # @param request_body 
-  # @param [Hash] opts the optional parameters
-  # @return [ContextInstanceSegmentMemberships]
-  describe 'get_context_instance_segments_membership_by_env test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
 end

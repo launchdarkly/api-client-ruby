@@ -32,86 +32,6 @@ describe 'ContextsBetaApi' do
     end
   end
 
-  # unit tests for delete_context_instances
-  # Delete context instances
-  # Delete context instances by ID.
-  # @param project_key The project key
-  # @param environment_key The environment key
-  # @param id The context instance ID
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'delete_context_instances test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for evaluate_context_instance
-  # Evaluate flags for context instance
-  # Evaluate flags for a context instance, for example, to determine the expected flag variation. **Do not use this API instead of an SDK.** The LaunchDarkly SDKs are specialized for the tasks of evaluating feature flags in your application at scale and generating analytics events based on those evaluations. This API is not designed for that use case. Any evaluations you perform with this API will not be reflected in features such as flag statuses and flag insights. Context instances evaluated by this API will not appear in the Contexts list. To learn more, read [Comparing LaunchDarkly&#39;s SDKs and REST API](https://docs.launchdarkly.com/guide/api/comparing-sdk-rest-api).
-  # @param project_key The project key
-  # @param environment_key The environment key
-  # @param request_body 
-  # @param [Hash] opts the optional parameters
-  # @option opts [Integer] :limit The number of feature flags to return. Defaults to -1, which returns all flags
-  # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
-  # @option opts [String] :sort A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order
-  # @option opts [String] :filter A comma-separated list of filters. Each filter is of the form field:value. Supports the same filters as the List Feature Flags API.
-  # @return [ContextInstanceEvaluations]
-  describe 'evaluate_context_instance test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for get_context_attribute_names
-  # Get context attribute names
-  # Get context attribute names.
-  # @param project_key The project key
-  # @param environment_key The environment key
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;name&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
-  # @return [ContextAttributeNamesCollection]
-  describe 'get_context_attribute_names test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for get_context_attribute_values
-  # Get context attribute values
-  # Get context attribute values.
-  # @param project_key The project key
-  # @param environment_key The environment key
-  # @param attribute_name The attribute name
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;value&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
-  # @return [ContextAttributeValuesCollection]
-  describe 'get_context_attribute_values test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for get_context_instances
-  # Get context instances
-  # Get context instances by ID.
-  # @param project_key The project key
-  # @param environment_key The environment key
-  # @param id The context instance ID
-  # @param [Hash] opts the optional parameters
-  # @option opts [Integer] :limit Specifies the maximum number of context instances to return (max: 50, default: 20)
-  # @option opts [String] :continuation_token Limits results to context instances with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead.
-  # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;.
-  # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
-  # @option opts [Boolean] :include_total_count Specifies whether to include or omit the total count of matching context instances. Defaults to true.
-  # @return [ContextInstances]
-  describe 'get_context_instances test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
   # unit tests for get_context_kinds_by_project_key
   # Get context kinds
   # Get all context kinds for a given project.
@@ -119,26 +39,6 @@ describe 'ContextsBetaApi' do
   # @param [Hash] opts the optional parameters
   # @return [ContextKindsCollectionRep]
   describe 'get_context_kinds_by_project_key test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for get_contexts
-  # Get contexts
-  # Get contexts based on kind and key.
-  # @param project_key The project key
-  # @param environment_key The environment key
-  # @param kind The context kind
-  # @param key The context key
-  # @param [Hash] opts the optional parameters
-  # @option opts [Integer] :limit Specifies the maximum number of items in the collection to return (max: 50, default: 20)
-  # @option opts [String] :continuation_token Limits results to contexts with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead.
-  # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;.
-  # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
-  # @option opts [Boolean] :include_total_count Specifies whether to include or omit the total count of matching contexts. Defaults to true.
-  # @return [Contexts]
-  describe 'get_contexts test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -153,44 +53,6 @@ describe 'ContextsBetaApi' do
   # @param [Hash] opts the optional parameters
   # @return [UpsertResponseRep]
   describe 'put_context_kind test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for search_context_instances
-  # Search for context instances
-  #  Search for context instances.  You can use either the query parameters or the request body parameters. If both are provided, there is an error.  To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). To learn more about context instances, read [Understanding context instances](https://docs.launchdarkly.com/home/contexts#understanding-context-instances). 
-  # @param project_key The project key
-  # @param environment_key The environment key
-  # @param context_instance_search 
-  # @param [Hash] opts the optional parameters
-  # @option opts [Integer] :limit Specifies the maximum number of items in the collection to return (max: 50, default: 20)
-  # @option opts [String] :continuation_token Limits results to context instances with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead.
-  # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;.
-  # @option opts [String] :filter A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
-  # @option opts [Boolean] :include_total_count Specifies whether to include or omit the total count of matching context instances. Defaults to true.
-  # @return [ContextInstances]
-  describe 'search_context_instances test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for search_contexts
-  # Search for contexts
-  #  Search for contexts.  You can use either the query parameters or the request body parameters. If both are provided, there is an error.  To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). To learn more about contexts, read [Understanding contexts and context kinds](https://docs.launchdarkly.com/home/contexts#understanding-contexts-and-context-kinds). 
-  # @param project_key The project key
-  # @param environment_key The environment key
-  # @param context_search 
-  # @param [Hash] opts the optional parameters
-  # @option opts [Integer] :limit Specifies the maximum number of items in the collection to return (max: 50, default: 20)
-  # @option opts [String] :continuation_token Limits results to contexts with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead.
-  # @option opts [String] :sort Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;.
-  # @option opts [String] :filter A comma-separated list of context filters. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
-  # @option opts [Boolean] :include_total_count Specifies whether to include or omit the total count of matching contexts. Defaults to true.
-  # @return [Contexts]
-  describe 'search_contexts test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

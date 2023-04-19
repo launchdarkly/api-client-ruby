@@ -67,8 +67,9 @@ docs/ContextKindRep.md
 docs/ContextKindsCollectionRep.md
 docs/ContextRecord.md
 docs/ContextSearch.md
-docs/ContextSettingsBetaApi.md
+docs/ContextSettingsApi.md
 docs/Contexts.md
+docs/ContextsApi.md
 docs/ContextsBetaApi.md
 docs/CopiedFromEnv.md
 docs/CreateApprovalRequestRequest.md
@@ -397,7 +398,8 @@ lib/launchdarkly_api/api/approvals_api.rb
 lib/launchdarkly_api/api/approvals_beta_api.rb
 lib/launchdarkly_api/api/audit_log_api.rb
 lib/launchdarkly_api/api/code_references_api.rb
-lib/launchdarkly_api/api/context_settings_beta_api.rb
+lib/launchdarkly_api/api/context_settings_api.rb
+lib/launchdarkly_api/api/contexts_api.rb
 lib/launchdarkly_api/api/contexts_beta_api.rb
 lib/launchdarkly_api/api/custom_roles_api.rb
 lib/launchdarkly_api/api/data_export_destinations_api.rb
@@ -781,7 +783,8 @@ spec/api/approvals_api_spec.rb
 spec/api/approvals_beta_api_spec.rb
 spec/api/audit_log_api_spec.rb
 spec/api/code_references_api_spec.rb
-spec/api/context_settings_beta_api_spec.rb
+spec/api/context_settings_api_spec.rb
+spec/api/contexts_api_spec.rb
 spec/api/contexts_beta_api_spec.rb
 spec/api/custom_roles_api_spec.rb
 spec/api/data_export_destinations_api_spec.rb
