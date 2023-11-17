@@ -16,7 +16,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Create Big Segment export
 
-Starts a new export process for a Big Segment
+Starts a new export process for a Big Segment. This is an export for a list-based segment that can include more than 15,000 entries.
 
 ### Examples
 
@@ -90,7 +90,7 @@ nil (empty response body)
 
 Create Big Segment import
 
-Start a new import process for a Big Segment.
+Start a new import process for a Big Segment. This is an import for a list-based segment that can include more than 15,000 entries.
 
 ### Examples
 
@@ -170,7 +170,7 @@ nil (empty response body)
 
 Get Big Segment export
 
-Returns info about a Big Segment export process.
+Returns information about a Big Segment export process. This is the export of a list-based segment that can include more than 15,000 entries.
 
 ### Examples
 
@@ -247,7 +247,7 @@ end
 
 Get Big Segment import
 
-Returns info about a Big Segment import process.
+Returns information about a Big Segment import process. This is the import of a list-based segment that can include more than 15,000 entries.
 
 ### Examples
 

@@ -9,6 +9,7 @@
 | **creation_date** | **Integer** |  | [optional] |
 | **comment** | **String** |  | [optional] |
 | **member_id** | **String** |  | [optional] |
+| **service_token_id** | **String** |  | [optional] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = LaunchDarklyApi::ReviewOutput.new(
   kind: null,
   creation_date: null,
   comment: null,
-  member_id: null
+  member_id: null,
+  service_token_id: null
 )
 ```
 

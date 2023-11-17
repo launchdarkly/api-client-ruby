@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **upper** | **Float** | The upper bound | [optional] |
-| **lower** | **Float** | The lower bound | [optional] |
-| **from_treatment_id** | **String** | The treatment ID | [optional] |
+| **upper** | **Float** | An upper bound of the relative difference between the treatment and the &lt;code&gt;fromTreatmentId&lt;/code&gt; | [optional] |
+| **lower** | **Float** | A lower bound of the relative difference between the treatment and the &lt;code&gt;fromTreatmentId&lt;/code&gt; | [optional] |
+| **from_treatment_id** | **String** | The treatment ID of the treatment against which the relative difference is calculated | [optional] |
 
 ## Example
 

@@ -147,7 +147,7 @@ nil (empty response body)
 
 ## get_root
 
-> <Hash<String, Link>> get_root
+> <RootResponse> get_root
 
 Root resource
 
@@ -181,7 +181,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Hash<String, Link>>, Integer, Hash)> get_root_with_http_info
+> <Array(<RootResponse>, Integer, Hash)> get_root_with_http_info
 
 ```ruby
 begin
@@ -189,7 +189,7 @@ begin
   data, status_code, headers = api_instance.get_root_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Hash<String, Link>>
+  p data # => <RootResponse>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling OtherApi->get_root_with_http_info: #{e}"
 end
@@ -201,7 +201,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Hash&lt;String, Link&gt;**](Link.md)
+[**RootResponse**](RootResponse.md)
 
 ### Authorization
 

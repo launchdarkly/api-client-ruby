@@ -7,7 +7,7 @@
 | **rules** | **Integer** |  |  |
 | **null_rules** | **Integer** |  |  |
 | **targets** | **Integer** |  |  |
-| **context_targets** | **Integer** |  | [optional] |
+| **context_targets** | **Integer** |  |  |
 | **is_fallthrough** | **Boolean** |  | [optional] |
 | **is_off** | **Boolean** |  | [optional] |
 | **rollout** | **Integer** |  | [optional] |

@@ -9,6 +9,7 @@
 | **creation_date** | **Integer** |  | [optional] |
 | **comment** | **String** | A comment describing the approval response | [optional] |
 | **member_id** | **String** | ID of account member that reviewed request | [optional] |
+| **service_token_id** | **String** | ID of account service token that reviewed request | [optional] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = LaunchDarklyApi::ReviewResponse.new(
   kind: approve,
   creation_date: null,
   comment: Approved!,
-  member_id: 12ab3c45de678910abc12345
+  member_id: 12ab3c45de678910abc12345,
+  service_token_id: 12ab3c45de678910abc12345
 )
 ```
 

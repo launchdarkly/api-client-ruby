@@ -12,6 +12,8 @@
 | **last_modified** | **Integer** |  |  |
 | **last_seen** | **Integer** |  | [optional] |
 | **created_from** | **String** |  |  |
+| **hide_in_targeting** | **Boolean** | Alias for archived. | [optional] |
+| **archived** | **Boolean** | Whether the context kind is archived. Archived context kinds are unavailable for targeting. | [optional] |
 
 ## Example
 
@@ -26,7 +28,9 @@ instance = LaunchDarklyApi::ContextKind.new(
   creation_date: null,
   last_modified: null,
   last_seen: null,
-  created_from: null
+  created_from: null,
+  hide_in_targeting: false,
+  archived: false
 )
 ```
 

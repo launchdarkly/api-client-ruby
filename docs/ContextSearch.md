@@ -15,7 +15,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ContextSearch.new(
-  filter: user.firstName:{&quot;startsWith&quot;: &quot;Jo&quot;},kind:{&quot;anyOf&quot;: [&quot;user&quot;,&quot;organization&quot;]},
+  filter: *.name startsWith Jo,kind anyOf [&quot;user&quot;,&quot;organization&quot;],
   sort: -ts,
   limit: 10,
   continuation_token: QAGFKH1313KUGI2351

@@ -7,6 +7,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_evaluations_usage**](AccountUsageBetaApi.md#get_evaluations_usage) | **GET** /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey} | Get evaluations usage |
 | [**get_events_usage**](AccountUsageBetaApi.md#get_events_usage) | **GET** /api/v2/usage/events/{type} | Get events usage |
 | [**get_experimentation_keys_usage**](AccountUsageBetaApi.md#get_experimentation_keys_usage) | **GET** /api/v2/usage/experimentation-keys | Get experimentation keys usage |
+| [**get_experimentation_units_usage**](AccountUsageBetaApi.md#get_experimentation_units_usage) | **GET** /api/v2/usage/experimentation-units | Get experimentation units usage |
 | [**get_mau_sdks_by_type**](AccountUsageBetaApi.md#get_mau_sdks_by_type) | **GET** /api/v2/usage/mau/sdks | Get MAU SDKs by type |
 | [**get_mau_usage**](AccountUsageBetaApi.md#get_mau_usage) | **GET** /api/v2/usage/mau | Get MAU usage |
 | [**get_mau_usage_by_category**](AccountUsageBetaApi.md#get_mau_usage_by_category) | **GET** /api/v2/usage/mau/bycategory | Get MAU usage by category |
@@ -250,13 +251,88 @@ end
 - **Accept**: application/json
 
 
+## get_experimentation_units_usage
+
+> <SeriesIntervalsRep> get_experimentation_units_usage(opts)
+
+Get experimentation units usage
+
+Get a time-series array of the number of monthly experimentation units from your account. The granularity is always daily, with a maximum of 31 days.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
+opts = {
+  from: 'from_example', # String | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+  to: 'to_example' # String | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+}
+
+begin
+  # Get experimentation units usage
+  result = api_instance.get_experimentation_units_usage(opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountUsageBetaApi->get_experimentation_units_usage: #{e}"
+end
+```
+
+#### Using the get_experimentation_units_usage_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SeriesIntervalsRep>, Integer, Hash)> get_experimentation_units_usage_with_http_info(opts)
+
+```ruby
+begin
+  # Get experimentation units usage
+  data, status_code, headers = api_instance.get_experimentation_units_usage_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SeriesIntervalsRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountUsageBetaApi->get_experimentation_units_usage_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **from** | **String** | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional] |
+| **to** | **String** | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional] |
+
+### Return type
+
+[**SeriesIntervalsRep**](SeriesIntervalsRep.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_mau_sdks_by_type
 
 > <SdkListRep> get_mau_sdks_by_type(opts)
 
 Get MAU SDKs by type
 
-Get a list of SDKs. These are all of the SDKs that have connected to LaunchDarkly by monthly active users (MAU) in the requested time period.<br/><br/>LaunchDarkly's billing calculations will change on April 1, 2023. To learn more, read [Account usage metrics](https://docs.launchdarkly.com/home/billing/usage-metrics).
+Get a list of SDKs. These are all of the SDKs that have connected to LaunchDarkly by monthly active users (MAU) in the requested time period.<br/><br/>Endpoints for retrieving monthly active users (MAU) do not return information about active context instances. After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should not rely on this endpoint. To learn more, read [Account usage metrics](https://docs.launchdarkly.com/home/billing/usage-metrics).
 
 ### Examples
 
@@ -333,7 +409,7 @@ end
 
 Get MAU usage
 
-Get a time-series array of the number of monthly active users (MAU) seen by LaunchDarkly from your account. The granularity is always daily.<br/><br/>LaunchDarkly's billing calculations will change on April 1, 2023. To learn more, read [Account usage metrics](https://docs.launchdarkly.com/home/billing/usage-metrics).
+Get a time-series array of the number of monthly active users (MAU) seen by LaunchDarkly from your account. The granularity is always daily.<br/><br/>Endpoints for retrieving monthly active users (MAU) do not return information about active context instances. After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should not rely on this endpoint. To learn more, read [Account usage metrics](https://docs.launchdarkly.com/home/billing/usage-metrics).
 
 ### Examples
 
@@ -420,7 +496,7 @@ end
 
 Get MAU usage by category
 
-Get time-series arrays of the number of monthly active users (MAU) seen by LaunchDarkly from your account, broken down by the category of users. The category is either `browser`, `mobile`, or `backend`.<br/><br/>LaunchDarkly's billing calculations will change on April 1, 2023. To learn more, read [Account usage metrics](https://docs.launchdarkly.com/home/billing/usage-metrics).
+Get time-series arrays of the number of monthly active users (MAU) seen by LaunchDarkly from your account, broken down by the category of users. The category is either `browser`, `mobile`, or `backend`.<br/><br/>Endpoints for retrieving monthly active users (MAU) do not return information about active context instances. After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should not rely on this endpoint. To learn more, read [Account usage metrics](https://docs.launchdarkly.com/home/billing/usage-metrics).
 
 ### Examples
 

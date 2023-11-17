@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources | [optional] |
 | **total_count** | **Integer** | The number of environments returned | [optional] |
-| **items** | [**Array&lt;Environment&gt;**](Environment.md) | An array of environments | [optional] |
+| **items** | [**Array&lt;Environment&gt;**](Environment.md) | An array of environments |  |
 
 ## Example
 

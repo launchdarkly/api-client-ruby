@@ -20,12 +20,14 @@
 | **_maintainer** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
 | **maintainer_team_key** | **String** | The key of the associated team that maintains this feature flag | [optional] |
 | **_maintainer_team** | [**MaintainerTeam**](MaintainerTeam.md) |  | [optional] |
-| **goal_ids** | **Array&lt;String&gt;** | Deprecated | [optional] |
+| **goal_ids** | **Array&lt;String&gt;** | Deprecated, use &lt;code&gt;experiments&lt;/code&gt; instead | [optional] |
 | **experiments** | [**ExperimentInfoRep**](ExperimentInfoRep.md) |  |  |
 | **custom_properties** | [**Hash&lt;String, CustomProperty&gt;**](CustomProperty.md) |  |  |
 | **archived** | **Boolean** | Boolean indicating if the feature flag is archived |  |
 | **archived_date** | **Integer** |  | [optional] |
 | **defaults** | [**Defaults**](Defaults.md) |  | [optional] |
+| **_purpose** | **String** |  | [optional] |
+| **migration_settings** | [**FlagMigrationSettingsRep**](FlagMigrationSettingsRep.md) |  | [optional] |
 
 ## Example
 
@@ -54,7 +56,9 @@ instance = LaunchDarklyApi::FlagGlobalAttributesRep.new(
   custom_properties: null,
   archived: false,
   archived_date: null,
-  defaults: null
+  defaults: null,
+  _purpose: null,
+  migration_settings: null
 )
 ```
 

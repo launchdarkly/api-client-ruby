@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** |  |  |
-| **key** | **String** |  |  |
+| **name** | **String** | The flag name |  |
+| **key** | **String** | The flag key |  |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
 | **_site** | [**Link**](Link.md) |  | [optional] |
 
@@ -15,8 +15,8 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::FlagListingRep.new(
-  name: null,
-  key: null,
+  name: Example flag,
+  key: flag-key-123abc,
   _links: null,
   _site: null
 )

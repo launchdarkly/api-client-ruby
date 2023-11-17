@@ -12,6 +12,8 @@
 | **last_modified** | **Integer** |  |  |
 | **last_seen** | **Integer** |  | [optional] |
 | **created_from** | **String** |  |  |
+| **hide_in_targeting** | **Boolean** | Alias for archived. | [optional] |
+| **archived** | **Boolean** | Whether the context kind is archived. Archived context kinds are unavailable for targeting. | [optional] |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources | [optional] |
 
 ## Example
@@ -28,6 +30,8 @@ instance = LaunchDarklyApi::ContextKindRep.new(
   last_modified: null,
   last_seen: null,
   created_from: null,
+  hide_in_targeting: false,
+  archived: false,
   _links: null
 )
 ```

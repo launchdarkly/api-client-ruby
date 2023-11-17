@@ -24,6 +24,7 @@
 | **_debug_events_until_date** | **Integer** |  | [optional] |
 | **_summary** | [**FlagSummary**](FlagSummary.md) |  | [optional] |
 | **evaluation** | [**FlagConfigEvaluation**](FlagConfigEvaluation.md) |  | [optional] |
+| **migration_settings** | [**FlagConfigMigrationSettingsRep**](FlagConfigMigrationSettingsRep.md) |  | [optional] |
 
 ## Example
 
@@ -50,7 +51,8 @@ instance = LaunchDarklyApi::FeatureFlagConfig.new(
   track_events_fallthrough: null,
   _debug_events_until_date: null,
   _summary: null,
-  evaluation: null
+  evaluation: null,
+  migration_settings: null
 )
 ```
 

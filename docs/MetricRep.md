@@ -22,8 +22,12 @@
 | **is_numeric** | **Boolean** | For custom metrics, whether to track numeric changes in value against a baseline (&lt;code&gt;true&lt;/code&gt;) or to track a conversion when an end user takes an action (&lt;code&gt;false&lt;/code&gt;). | [optional] |
 | **success_criteria** | **String** | For custom metrics, the success criteria | [optional] |
 | **unit** | **String** | For numeric custom metrics, the unit of measure | [optional] |
-| **event_key** | **String** | For custom metrics, the event name to use in your code | [optional] |
+| **event_key** | **String** | For custom metrics, the event key to use in your code | [optional] |
 | **randomization_units** | **Array&lt;String&gt;** | An array of randomization units allowed for this metric | [optional] |
+| **unit_aggregation_type** | **String** | The method in which multiple unit event values are aggregated | [optional] |
+| **analysis_type** | **String** | The strategy for analyzing metric events | [optional] |
+| **percentile_value** | **Integer** | The percentile, an integer denoting the target percentile between 0 and 100. Only present when &lt;code&gt;analysisType&lt;/code&gt; is &lt;code&gt;percentile&lt;/code&gt;. | [optional] |
+| **event_default** | [**MetricEventDefaultRep**](MetricEventDefaultRep.md) |  | [optional] |
 | **experiments** | [**Array&lt;DependentExperimentRep&gt;**](DependentExperimentRep.md) |  | [optional] |
 | **is_active** | **Boolean** | Whether the metric is active | [optional] |
 | **_attached_features** | [**Array&lt;FlagListingRep&gt;**](FlagListingRep.md) | Details on the flags attached to this metric | [optional] |
@@ -57,6 +61,10 @@ instance = LaunchDarklyApi::MetricRep.new(
   unit: null,
   event_key: null,
   randomization_units: [&quot;user&quot;],
+  unit_aggregation_type: average,
+  analysis_type: mean,
+  percentile_value: 95,
+  event_default: null,
   experiments: null,
   is_active: true,
   _attached_features: null,

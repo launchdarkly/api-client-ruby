@@ -15,6 +15,7 @@
 | **notify_member_ids** | **Array&lt;String&gt;** | An array of member IDs. These members are notified to review the approval request. |  |
 | **applied_date** | **Integer** |  | [optional] |
 | **applied_by_member_id** | **String** | The member ID of the member who applied the approval request | [optional] |
+| **applied_by_service_token_id** | **String** | The service token ID of the service token which applied the approval request | [optional] |
 | **status** | **String** | Current status of the approval request |  |
 | **instructions** | **Array&lt;Hash&gt;** |  |  |
 | **conflicts** | [**Array&lt;Conflict&gt;**](Conflict.md) | Details on any conflicting approval requests |  |
@@ -42,6 +43,7 @@ instance = LaunchDarklyApi::FlagConfigApprovalRequestResponse.new(
   notify_member_ids: [&quot;1234a56b7c89d012345e678f&quot;],
   applied_date: null,
   applied_by_member_id: 1234a56b7c89d012345e678f,
+  applied_by_service_token_id: 1234a56b7c89d012345e678f,
   status: pending,
   instructions: null,
   conflicts: null,

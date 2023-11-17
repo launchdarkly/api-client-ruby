@@ -10,6 +10,7 @@
 | **description** | **String** | The experiment description | [optional] |
 | **_maintainer_id** | **String** | The ID of the member who maintains this experiment. |  |
 | **_creation_date** | **Integer** |  |  |
+| **environment_key** | **String** |  | [optional] |
 | **archived_date** | **Integer** |  | [optional] |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
 | **current_iteration** | [**IterationRep**](IterationRep.md) |  | [optional] |
@@ -28,6 +29,7 @@ instance = LaunchDarklyApi::Experiment.new(
   description: An example experiment, used in testing,
   _maintainer_id: 12ab3c45de678910fgh12345,
   _creation_date: null,
+  environment_key: null,
   archived_date: null,
   _links: {&quot;parent&quot;:{&quot;href&quot;:&quot;/api/v2/projects/my-project/environments/my-environment&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/projects/my-project/environments/my-environment/experiments/my-experiment&quot;,&quot;type&quot;:&quot;application/json&quot;}},
   current_iteration: null,

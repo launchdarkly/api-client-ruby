@@ -14,6 +14,8 @@
 | **tags** | **Array&lt;String&gt;** | Tags for the feature flag. Defaults to an empty array. | [optional] |
 | **custom_properties** | [**Hash&lt;String, CustomProperty&gt;**](CustomProperty.md) |  | [optional] |
 | **defaults** | [**Defaults**](Defaults.md) |  | [optional] |
+| **purpose** | **String** | Purpose of the flag | [optional] |
+| **migration_settings** | [**MigrationSettingsPost**](MigrationSettingsPost.md) |  | [optional] |
 
 ## Example
 
@@ -30,7 +32,9 @@ instance = LaunchDarklyApi::FeatureFlagBody.new(
   temporary: false,
   tags: [&quot;example-tag&quot;],
   custom_properties: null,
-  defaults: null
+  defaults: null,
+  purpose: migration,
+  migration_settings: null
 )
 ```
 

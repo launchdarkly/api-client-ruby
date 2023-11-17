@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **environments** | [**Hash&lt;String, FeatureFlagStatus&gt;**](FeatureFlagStatus.md) | Flag status for environment. | [optional] |
-| **key** | **String** | feature flag key | [optional] |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  | [optional] |
+| **environments** | [**Hash&lt;String, FeatureFlagStatus&gt;**](FeatureFlagStatus.md) | Flag status for environment. |  |
+| **key** | **String** | feature flag key |  |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
 
 ## Example
 

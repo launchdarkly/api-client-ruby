@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **items** | [**Array&lt;ContextInstanceSegmentMembership&gt;**](ContextInstanceSegmentMembership.md) |  |  |
-| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) |  |  |
+| **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
 
 ## Example
 
