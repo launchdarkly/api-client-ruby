@@ -17,7 +17,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Delete release pipeline
 
-Delete a release pipeline
+Deletes a release pipeline.  You cannot delete the default release pipeline.  If you want to delete a release pipeline that is currently the default, create a second release pipeline and set it as the default. Then delete the first release pipeline. To change the default release pipeline, use the [Update project](/tag/Projects#operation/patchProject) API to set the `defaultReleasePipelineKey`. 
 
 ### Examples
 
@@ -85,11 +85,11 @@ nil (empty response body)
 
 ## get_all_release_pipelines
 
-> <ReleasePipelineCollection> get_all_release_pipelines(project_key)
+> <ReleasePipelineCollection> get_all_release_pipelines(project_key, opts)
 
 Get all release pipelines
 
-Get all release pipelines for a project
+Get all release pipelines for a project.  ### Filtering release pipelines  LaunchDarkly supports the following fields for filters:  - `query` is a string that matches against the release pipeline `key`, `name`, and `description`. It is not case sensitive. For example: `?filter=query:examplePipeline`. 
 
 ### Examples
 
@@ -106,10 +106,15 @@ end
 
 api_instance = LaunchDarklyApi::ReleasePipelinesBetaApi.new
 project_key = 'project_key_example' # String | The project key
+opts = {
+  filter: 'filter_example', # String | A comma-separated list of filters. Each filter is of the form field:value. Read the endpoint description for a full list of available filter fields.
+  limit: 789, # Integer | The maximum number of items to return. Defaults to 20.
+  offset: 789 # Integer | Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+}
 
 begin
   # Get all release pipelines
-  result = api_instance.get_all_release_pipelines(project_key)
+  result = api_instance.get_all_release_pipelines(project_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ReleasePipelinesBetaApi->get_all_release_pipelines: #{e}"
@@ -120,12 +125,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ReleasePipelineCollection>, Integer, Hash)> get_all_release_pipelines_with_http_info(project_key)
+> <Array(<ReleasePipelineCollection>, Integer, Hash)> get_all_release_pipelines_with_http_info(project_key, opts)
 
 ```ruby
 begin
   # Get all release pipelines
-  data, status_code, headers = api_instance.get_all_release_pipelines_with_http_info(project_key)
+  data, status_code, headers = api_instance.get_all_release_pipelines_with_http_info(project_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ReleasePipelineCollection>
@@ -139,6 +144,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
+| **filter** | **String** | A comma-separated list of filters. Each filter is of the form field:value. Read the endpoint description for a full list of available filter fields. | [optional] |
+| **limit** | **Integer** | The maximum number of items to return. Defaults to 20. | [optional] |
+| **offset** | **Integer** | Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
 ### Return type
 
@@ -306,7 +314,7 @@ end
 
 Create a release pipeline
 
-Creates a new release pipeline
+Creates a new release pipeline.  The first release pipeline you create is automatically set as the default release pipeline for your project. To change the default release pipeline, use the [Update project](/tag/Projects#operation/patchProject) API to set the `defaultReleasePipelineKey`.  You can create up to 20 release pipelines per project. 
 
 ### Examples
 

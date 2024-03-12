@@ -176,7 +176,9 @@ end
 
 api_instance = LaunchDarklyApi::AccessTokensApi.new
 opts = {
-  show_all: true # Boolean | If set to true, and the authentication access token has the 'Admin' role, personal access tokens for all members will be retrieved.
+  show_all: true, # Boolean | If set to true, and the authentication access token has the 'Admin' role, personal access tokens for all members will be retrieved.
+  limit: 789, # Integer | The number of access tokens to return in the response. Defaults to 25.
+  offset: 789 # Integer | Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
 }
 
 begin
@@ -211,6 +213,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **show_all** | **Boolean** | If set to true, and the authentication access token has the &#39;Admin&#39; role, personal access tokens for all members will be retrieved. | [optional] |
+| **limit** | **Integer** | The number of access tokens to return in the response. Defaults to 25. | [optional] |
+| **offset** | **Integer** | Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
 ### Return type
 

@@ -551,7 +551,7 @@ end
 
 api_instance = LaunchDarklyApi::ProjectsApi.new
 project_key = 'project_key_example' # String | The project key
-upsert_flag_defaults_payload = LaunchDarklyApi::UpsertFlagDefaultsPayload.new({tags: ["tag-1", "tag-2"], temporary: true, default_client_side_availability: LaunchDarklyApi::DefaultClientSideAvailability.new({using_mobile_key: true, using_environment_id: true}), boolean_defaults: LaunchDarklyApi::BooleanFlagDefaults.new({true_display_name: 'True', false_display_name: 'False', true_description: 'serve true', false_description: 'serve false', on_variation: 0, off_variation: 1})}) # UpsertFlagDefaultsPayload | 
+upsert_flag_defaults_payload = LaunchDarklyApi::UpsertFlagDefaultsPayload.new({tags: ["tag-1", "tag-2"], temporary: true, boolean_defaults: LaunchDarklyApi::BooleanFlagDefaults.new({true_display_name: 'True', false_display_name: 'False', true_description: 'serve true', false_description: 'serve false', on_variation: 0, off_variation: 1}), default_client_side_availability: LaunchDarklyApi::DefaultClientSideAvailability.new({using_mobile_key: true, using_environment_id: true})}) # UpsertFlagDefaultsPayload | 
 
 begin
   # Create or update flag defaults for project

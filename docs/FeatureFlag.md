@@ -25,6 +25,8 @@
 | **custom_properties** | [**Hash&lt;String, CustomProperty&gt;**](CustomProperty.md) |  |  |
 | **archived** | **Boolean** | Boolean indicating if the feature flag is archived |  |
 | **archived_date** | **Integer** |  | [optional] |
+| **deprecated** | **Boolean** | Boolean indicating if the feature flag is deprecated |  |
+| **deprecated_date** | **Integer** |  | [optional] |
 | **defaults** | [**Defaults**](Defaults.md) |  | [optional] |
 | **_purpose** | **String** |  | [optional] |
 | **migration_settings** | [**FlagMigrationSettingsRep**](FlagMigrationSettingsRep.md) |  | [optional] |
@@ -57,6 +59,8 @@ instance = LaunchDarklyApi::FeatureFlag.new(
   custom_properties: null,
   archived: false,
   archived_date: null,
+  deprecated: false,
+  deprecated_date: null,
   defaults: null,
   _purpose: null,
   migration_settings: null,

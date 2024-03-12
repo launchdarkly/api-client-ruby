@@ -5,7 +5,9 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **experiment_count** | **Integer** | The number of experiments using this metric | [optional] |
+| **metric_group_count** | **Integer** | The number of metric groups using this metric | [optional] |
 | **_id** | **String** | The ID of this metric |  |
+| **_version_id** | **String** | The version ID of the metric |  |
 | **key** | **String** | A unique key to reference the metric |  |
 | **name** | **String** | A human-friendly name for the metric |  |
 | **kind** | **String** | The kind of event the metric tracks |  |
@@ -36,7 +38,9 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MetricListingRep.new(
   experiment_count: 0,
+  metric_group_count: 0,
   _id: 5902deadbeef667524a01290,
+  _version_id: version-id-123abc,
   key: metric-key-123abc,
   name: My metric,
   kind: custom,

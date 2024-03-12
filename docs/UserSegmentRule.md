@@ -9,6 +9,7 @@
 | **weight** | **Integer** |  | [optional] |
 | **rollout_context_kind** | **String** |  | [optional] |
 | **bucket_by** | **String** |  | [optional] |
+| **description** | **String** |  | [optional] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = LaunchDarklyApi::UserSegmentRule.new(
   clauses: null,
   weight: null,
   rollout_context_kind: null,
-  bucket_by: null
+  bucket_by: null,
+  description: null
 )
 ```
 

@@ -83,7 +83,7 @@ end
 
 ## patch_release_by_flag_key
 
-> patch_release_by_flag_key(project_key, flag_key, patch_operation)
+> <Release> patch_release_by_flag_key(project_key, flag_key, patch_operation)
 
 Patch release for flag
 
@@ -109,7 +109,8 @@ patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/e
 
 begin
   # Patch release for flag
-  api_instance.patch_release_by_flag_key(project_key, flag_key, patch_operation)
+  result = api_instance.patch_release_by_flag_key(project_key, flag_key, patch_operation)
+  p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ReleasesBetaApi->patch_release_by_flag_key: #{e}"
 end
@@ -117,9 +118,9 @@ end
 
 #### Using the patch_release_by_flag_key_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> patch_release_by_flag_key_with_http_info(project_key, flag_key, patch_operation)
+> <Array(<Release>, Integer, Hash)> patch_release_by_flag_key_with_http_info(project_key, flag_key, patch_operation)
 
 ```ruby
 begin
@@ -127,7 +128,7 @@ begin
   data, status_code, headers = api_instance.patch_release_by_flag_key_with_http_info(project_key, flag_key, patch_operation)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <Release>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ReleasesBetaApi->patch_release_by_flag_key_with_http_info: #{e}"
 end
@@ -143,7 +144,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**Release**](Release.md)
 
 ### Authorization
 
@@ -152,5 +153,5 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 

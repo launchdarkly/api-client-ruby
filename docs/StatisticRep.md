@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** | The repository name |  |
+| **type** | **String** | The type of repository |  |
 | **source_link** | **String** | A URL to access the repository |  |
 | **default_branch** | **String** | The repository&#39;s default branch |  |
 | **enabled** | **Boolean** | Whether or not a repository is enabled for code reference scanning |  |
@@ -20,6 +21,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::StatisticRep.new(
   name: LaunchDarkly-Docs,
+  type: github,
   source_link: https://github.com/launchdarkly/LaunchDarkly-Docs,
   default_branch: main,
   enabled: true,

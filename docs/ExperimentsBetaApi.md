@@ -14,7 +14,6 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_legacy_experiment_results**](ExperimentsBetaApi.md#get_legacy_experiment_results) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get legacy experiment results (deprecated) |
 | [**patch_experiment**](ExperimentsBetaApi.md#patch_experiment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Patch experiment |
 | [**put_experimentation_settings**](ExperimentsBetaApi.md#put_experimentation_settings) | **PUT** /api/v2/projects/{projectKey}/experimentation-settings | Update experimentation settings |
-| [**reset_experiment**](ExperimentsBetaApi.md#reset_experiment) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey}/results | Reset experiment results |
 
 
 ## create_experiment
@@ -41,7 +40,7 @@ end
 api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
-experiment_post = LaunchDarklyApi::ExperimentPost.new({name: 'Example experiment', key: 'experiment-key-123abc', iteration: LaunchDarklyApi::IterationInput.new({hypothesis: 'Example hypothesis, the new button placement will increase conversion', metrics: [LaunchDarklyApi::MetricInput.new({key: 'metric-key-123abc', primary: true})], treatments: [LaunchDarklyApi::TreatmentInput.new({name: 'Treatment 1', baseline: true, allocation_percent: '10', parameters: [LaunchDarklyApi::TreatmentParameterInput.new({flag_key: 'example-flag-for-experiment', variation_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05'})]})], flags: { key: LaunchDarklyApi::FlagInput.new({rule_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05', flag_config_version: 12})}})}) # ExperimentPost | 
+experiment_post = LaunchDarklyApi::ExperimentPost.new({name: 'Example experiment', key: 'experiment-key-123abc', iteration: LaunchDarklyApi::IterationInput.new({hypothesis: 'Example hypothesis, the new button placement will increase conversion', metrics: [LaunchDarklyApi::MetricInput.new({key: 'metric-key-123abc'})], treatments: [LaunchDarklyApi::TreatmentInput.new({name: 'Treatment 1', baseline: true, allocation_percent: '10', parameters: [LaunchDarklyApi::TreatmentParameterInput.new({flag_key: 'example-flag-for-experiment', variation_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05'})]})], flags: { key: LaunchDarklyApi::FlagInput.new({rule_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05', flag_config_version: 12})}})}) # ExperimentPost | 
 
 begin
   # Create experiment
@@ -117,7 +116,7 @@ api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 experiment_key = 'experiment_key_example' # String | The experiment key
-iteration_input = LaunchDarklyApi::IterationInput.new({hypothesis: 'Example hypothesis, the new button placement will increase conversion', metrics: [LaunchDarklyApi::MetricInput.new({key: 'metric-key-123abc', primary: true})], treatments: [LaunchDarklyApi::TreatmentInput.new({name: 'Treatment 1', baseline: true, allocation_percent: '10', parameters: [LaunchDarklyApi::TreatmentParameterInput.new({flag_key: 'example-flag-for-experiment', variation_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05'})]})], flags: { key: LaunchDarklyApi::FlagInput.new({rule_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05', flag_config_version: 12})}}) # IterationInput | 
+iteration_input = LaunchDarklyApi::IterationInput.new({hypothesis: 'Example hypothesis, the new button placement will increase conversion', metrics: [LaunchDarklyApi::MetricInput.new({key: 'metric-key-123abc'})], treatments: [LaunchDarklyApi::TreatmentInput.new({name: 'Treatment 1', baseline: true, allocation_percent: '10', parameters: [LaunchDarklyApi::TreatmentParameterInput.new({flag_key: 'example-flag-for-experiment', variation_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05'})]})], flags: { key: LaunchDarklyApi::FlagInput.new({rule_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05', flag_config_version: 12})}}) # IterationInput | 
 
 begin
   # Create iteration
@@ -254,7 +253,7 @@ end
 
 Get experiment results
 
-Get results from an experiment for a particular metric.
+Get results from an experiment for a particular metric.  LaunchDarkly supports one field for expanding the \"Get experiment results\" response. By default, this field is **not** included in the response.  To expand the response, append the `expand` query parameter with the following field: * `traffic` includes the total count of units for each treatment.  For example, `expand=traffic` includes the `traffic` field for the project in the response. 
 
 ### Examples
 
@@ -275,7 +274,8 @@ environment_key = 'environment_key_example' # String | The environment key
 experiment_key = 'experiment_key_example' # String | The experiment key
 metric_key = 'metric_key_example' # String | The metric key
 opts = {
-  iteration_id: 'iteration_id_example' # String | The iteration ID
+  iteration_id: 'iteration_id_example', # String | The iteration ID
+  expand: 'expand_example' # String | A comma-separated list of fields to expand in the response. Supported fields are explained above.
 }
 
 begin
@@ -314,6 +314,7 @@ end
 | **experiment_key** | **String** | The experiment key |  |
 | **metric_key** | **String** | The metric key |  |
 | **iteration_id** | **String** | The iteration ID | [optional] |
+| **expand** | **String** | A comma-separated list of fields to expand in the response. Supported fields are explained above. | [optional] |
 
 ### Return type
 
@@ -412,7 +413,7 @@ end
 
 ## get_experimentation_settings
 
-> <ExperimentationSettingsRep> get_experimentation_settings(project_key)
+> <RandomizationSettingsRep> get_experimentation_settings(project_key)
 
 Get experimentation settings
 
@@ -447,7 +448,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ExperimentationSettingsRep>, Integer, Hash)> get_experimentation_settings_with_http_info(project_key)
+> <Array(<RandomizationSettingsRep>, Integer, Hash)> get_experimentation_settings_with_http_info(project_key)
 
 ```ruby
 begin
@@ -455,7 +456,7 @@ begin
   data, status_code, headers = api_instance.get_experimentation_settings_with_http_info(project_key)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ExperimentationSettingsRep>
+  p data # => <RandomizationSettingsRep>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ExperimentsBetaApi->get_experimentation_settings_with_http_info: #{e}"
 end
@@ -469,7 +470,7 @@ end
 
 ### Return type
 
-[**ExperimentationSettingsRep**](ExperimentationSettingsRep.md)
+[**RandomizationSettingsRep**](RandomizationSettingsRep.md)
 
 ### Authorization
 
@@ -728,7 +729,7 @@ end
 
 ## put_experimentation_settings
 
-> <ExperimentationSettingsRep> put_experimentation_settings(project_key, experimentation_settings_put)
+> <RandomizationSettingsRep> put_experimentation_settings(project_key, randomization_settings_put)
 
 Update experimentation settings
 
@@ -749,11 +750,11 @@ end
 
 api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
 project_key = 'project_key_example' # String | The project key
-experimentation_settings_put = LaunchDarklyApi::ExperimentationSettingsPut.new({randomization_units: [LaunchDarklyApi::RandomizationUnitInput.new({randomization_unit: 'user', default: true, standard_randomization_unit: 'guest'})]}) # ExperimentationSettingsPut | 
+randomization_settings_put = LaunchDarklyApi::RandomizationSettingsPut.new({randomization_units: [LaunchDarklyApi::RandomizationUnitInput.new({randomization_unit: 'user', default: true, standard_randomization_unit: 'guest'})]}) # RandomizationSettingsPut | 
 
 begin
   # Update experimentation settings
-  result = api_instance.put_experimentation_settings(project_key, experimentation_settings_put)
+  result = api_instance.put_experimentation_settings(project_key, randomization_settings_put)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ExperimentsBetaApi->put_experimentation_settings: #{e}"
@@ -764,15 +765,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ExperimentationSettingsRep>, Integer, Hash)> put_experimentation_settings_with_http_info(project_key, experimentation_settings_put)
+> <Array(<RandomizationSettingsRep>, Integer, Hash)> put_experimentation_settings_with_http_info(project_key, randomization_settings_put)
 
 ```ruby
 begin
   # Update experimentation settings
-  data, status_code, headers = api_instance.put_experimentation_settings_with_http_info(project_key, experimentation_settings_put)
+  data, status_code, headers = api_instance.put_experimentation_settings_with_http_info(project_key, randomization_settings_put)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ExperimentationSettingsRep>
+  p data # => <RandomizationSettingsRep>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ExperimentsBetaApi->put_experimentation_settings_with_http_info: #{e}"
 end
@@ -783,11 +784,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
-| **experimentation_settings_put** | [**ExperimentationSettingsPut**](ExperimentationSettingsPut.md) |  |  |
+| **randomization_settings_put** | [**RandomizationSettingsPut**](RandomizationSettingsPut.md) |  |  |
 
 ### Return type
 
-[**ExperimentationSettingsRep**](ExperimentationSettingsRep.md)
+[**RandomizationSettingsRep**](RandomizationSettingsRep.md)
 
 ### Authorization
 
@@ -796,81 +797,5 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## reset_experiment
-
-> reset_experiment(project_key, feature_flag_key, environment_key, metric_key)
-
-Reset experiment results
-
-Reset all experiment results by deleting all existing data for an experiment.
-
-### Examples
-
-```ruby
-require 'time'
-require 'launchdarkly_api'
-# setup authorization
-LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
-end
-
-api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
-project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
-environment_key = 'environment_key_example' # String | The environment key
-metric_key = 'metric_key_example' # String | The metric's key
-
-begin
-  # Reset experiment results
-  api_instance.reset_experiment(project_key, feature_flag_key, environment_key, metric_key)
-rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->reset_experiment: #{e}"
-end
-```
-
-#### Using the reset_experiment_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> reset_experiment_with_http_info(project_key, feature_flag_key, environment_key, metric_key)
-
-```ruby
-begin
-  # Reset experiment results
-  data, status_code, headers = api_instance.reset_experiment_with_http_info(project_key, feature_flag_key, environment_key, metric_key)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->reset_experiment_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag key |  |
-| **environment_key** | **String** | The environment key |  |
-| **metric_key** | **String** | The metric&#39;s key |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 

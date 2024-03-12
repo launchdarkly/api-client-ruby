@@ -15,9 +15,12 @@
 | **can_reshuffle_traffic** | **Boolean** | Whether the experiment may reassign traffic to different variations when the experiment audience changes (true) or must keep all traffic assigned to its initial variation (false). | [optional] |
 | **flags** | [**Hash&lt;String, FlagRep&gt;**](FlagRep.md) | Details on the flag used in this experiment | [optional] |
 | **primary_metric** | [**DependentMetricOrMetricGroupRep**](DependentMetricOrMetricGroupRep.md) |  | [optional] |
+| **primary_single_metric** | [**MetricV2Rep**](MetricV2Rep.md) |  | [optional] |
+| **primary_funnel** | [**DependentMetricGroupRepWithMetrics**](DependentMetricGroupRepWithMetrics.md) |  | [optional] |
 | **randomization_unit** | **String** | The unit of randomization for this iteration | [optional] |
 | **treatments** | [**Array&lt;TreatmentRep&gt;**](TreatmentRep.md) | Details on the variations you are testing in the experiment | [optional] |
-| **secondary_metrics** | [**Array&lt;MetricV2Rep&gt;**](MetricV2Rep.md) | Details on the secondary metrics for this experiment | [optional] |
+| **secondary_metrics** | [**Array&lt;MetricV2Rep&gt;**](MetricV2Rep.md) | Deprecated, use &lt;code&gt;metrics&lt;/code&gt; instead. Details on the secondary metrics for this experiment. | [optional] |
+| **metrics** | [**Array&lt;DependentMetricOrMetricGroupRep&gt;**](DependentMetricOrMetricGroupRep.md) | Details on the metrics for this experiment | [optional] |
 
 ## Example
 
@@ -36,9 +39,12 @@ instance = LaunchDarklyApi::IterationRep.new(
   can_reshuffle_traffic: true,
   flags: null,
   primary_metric: null,
+  primary_single_metric: null,
+  primary_funnel: null,
   randomization_unit: user,
   treatments: null,
-  secondary_metrics: null
+  secondary_metrics: null,
+  metrics: null
 )
 ```
 

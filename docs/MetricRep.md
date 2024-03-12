@@ -5,7 +5,9 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **experiment_count** | **Integer** | The number of experiments using this metric | [optional] |
+| **metric_group_count** | **Integer** | The number of metric groups using this metric | [optional] |
 | **_id** | **String** | The ID of this metric |  |
+| **_version_id** | **String** | The version ID of the metric |  |
 | **key** | **String** | A unique key to reference the metric |  |
 | **name** | **String** | A human-friendly name for the metric |  |
 | **kind** | **String** | The kind of event the metric tracks |  |
@@ -29,6 +31,7 @@
 | **percentile_value** | **Integer** | The percentile, an integer denoting the target percentile between 0 and 100. Only present when &lt;code&gt;analysisType&lt;/code&gt; is &lt;code&gt;percentile&lt;/code&gt;. | [optional] |
 | **event_default** | [**MetricEventDefaultRep**](MetricEventDefaultRep.md) |  | [optional] |
 | **experiments** | [**Array&lt;DependentExperimentRep&gt;**](DependentExperimentRep.md) |  | [optional] |
+| **metric_groups** | [**Array&lt;DependentMetricGroupRep&gt;**](DependentMetricGroupRep.md) | Metric groups that use this metric | [optional] |
 | **is_active** | **Boolean** | Whether the metric is active | [optional] |
 | **_attached_features** | [**Array&lt;FlagListingRep&gt;**](FlagListingRep.md) | Details on the flags attached to this metric | [optional] |
 | **_version** | **Integer** | Version of the metric | [optional] |
@@ -42,7 +45,9 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::MetricRep.new(
   experiment_count: 0,
+  metric_group_count: 0,
   _id: 5902deadbeef667524a01290,
+  _version_id: version-id-123abc,
   key: metric-key-123abc,
   name: My metric,
   kind: custom,
@@ -66,6 +71,7 @@ instance = LaunchDarklyApi::MetricRep.new(
   percentile_value: 95,
   event_default: null,
   experiments: null,
+  metric_groups: null,
   is_active: true,
   _attached_features: null,
   _version: 1,

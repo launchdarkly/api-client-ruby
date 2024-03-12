@@ -11,6 +11,7 @@
 | **default_client_side_availability** | [**ClientSideAvailability**](ClientSideAvailability.md) |  | [optional] |
 | **name** | **String** | A human-friendly name for the project |  |
 | **tags** | **Array&lt;String&gt;** | A list of tags for the project |  |
+| **default_release_pipeline_key** | **String** | The key of the default release pipeline for this project | [optional] |
 | **environments** | [**Environments**](Environments.md) |  | [optional] |
 
 ## Example
@@ -26,6 +27,7 @@ instance = LaunchDarklyApi::Project.new(
   default_client_side_availability: null,
   name: My Project,
   tags: [&quot;ops&quot;],
+  default_release_pipeline_key: null,
   environments: null
 )
 ```

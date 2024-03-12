@@ -4,7 +4,6 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_application**](ApplicationsBetaApi.md#create_application) | **POST** /api/v2/applications | Post application |
 | [**delete_application**](ApplicationsBetaApi.md#delete_application) | **DELETE** /api/v2/applications/{applicationKey} | Delete application |
 | [**delete_application_version**](ApplicationsBetaApi.md#delete_application_version) | **DELETE** /api/v2/applications/{applicationKey}/versions/{versionKey} | Delete application version |
 | [**get_application**](ApplicationsBetaApi.md#get_application) | **GET** /api/v2/applications/{applicationKey} | Get application by key |
@@ -12,78 +11,6 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_applications**](ApplicationsBetaApi.md#get_applications) | **GET** /api/v2/applications | Get applications |
 | [**patch_application**](ApplicationsBetaApi.md#patch_application) | **PATCH** /api/v2/applications/{applicationKey} | Update application |
 | [**patch_application_version**](ApplicationsBetaApi.md#patch_application_version) | **PATCH** /api/v2/applications/{applicationKey}/versions/{versionKey} | Update application version |
-| [**post_application_version**](ApplicationsBetaApi.md#post_application_version) | **POST** /api/v2/applications/{applicationKey}/versions | Post application version |
-
-
-## create_application
-
-> <ApplicationRep> create_application(create_application_input)
-
-Post application
-
-Create a new application
-
-### Examples
-
-```ruby
-require 'time'
-require 'launchdarkly_api'
-# setup authorization
-LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
-end
-
-api_instance = LaunchDarklyApi::ApplicationsBetaApi.new
-create_application_input = LaunchDarklyApi::CreateApplicationInput.new({key: 'com.launchdarkly.cafe', kind: 'browser', name: 'LaunchDarklyCafe'}) # CreateApplicationInput | 
-
-begin
-  # Post application
-  result = api_instance.create_application(create_application_input)
-  p result
-rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ApplicationsBetaApi->create_application: #{e}"
-end
-```
-
-#### Using the create_application_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ApplicationRep>, Integer, Hash)> create_application_with_http_info(create_application_input)
-
-```ruby
-begin
-  # Post application
-  data, status_code, headers = api_instance.create_application_with_http_info(create_application_input)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ApplicationRep>
-rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ApplicationsBetaApi->create_application_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **create_application_input** | [**CreateApplicationInput**](CreateApplicationInput.md) |  |  |
-
-### Return type
-
-[**ApplicationRep**](ApplicationRep.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
 
 
 ## delete_application
@@ -598,79 +525,6 @@ end
 | **application_key** | **String** | The application key |  |
 | **version_key** | **String** | The application version key |  |
 | **patch_operation** | [**Array&lt;PatchOperation&gt;**](PatchOperation.md) |  |  |
-
-### Return type
-
-[**ApplicationVersionRep**](ApplicationVersionRep.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## post_application_version
-
-> <ApplicationVersionRep> post_application_version(application_key, create_application_version_input)
-
-Post application version
-
-Create an application version
-
-### Examples
-
-```ruby
-require 'time'
-require 'launchdarkly_api'
-# setup authorization
-LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
-end
-
-api_instance = LaunchDarklyApi::ApplicationsBetaApi.new
-application_key = 'application_key_example' # String | The application key
-create_application_version_input = LaunchDarklyApi::CreateApplicationVersionInput.new({key: '2', name: '01.02.03'}) # CreateApplicationVersionInput | 
-
-begin
-  # Post application version
-  result = api_instance.post_application_version(application_key, create_application_version_input)
-  p result
-rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ApplicationsBetaApi->post_application_version: #{e}"
-end
-```
-
-#### Using the post_application_version_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ApplicationVersionRep>, Integer, Hash)> post_application_version_with_http_info(application_key, create_application_version_input)
-
-```ruby
-begin
-  # Post application version
-  data, status_code, headers = api_instance.post_application_version_with_http_info(application_key, create_application_version_input)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ApplicationVersionRep>
-rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ApplicationsBetaApi->post_application_version_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **application_key** | **String** | The application key |  |
-| **create_application_version_input** | [**CreateApplicationVersionInput**](CreateApplicationVersionInput.md) |  |  |
 
 ### Return type
 

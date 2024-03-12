@@ -9,6 +9,7 @@
 | **version** | **Integer** |  | [optional] |
 | **included_count** | **Integer** |  | [optional] |
 | **excluded_count** | **Integer** |  | [optional] |
+| **last_modified** | **Integer** |  | [optional] |
 | **deleted** | **Boolean** |  | [optional] |
 
 ## Example
@@ -22,6 +23,7 @@ instance = LaunchDarklyApi::SegmentMetadata.new(
   version: null,
   included_count: null,
   excluded_count: null,
+  last_modified: null,
   deleted: null
 )
 ```
