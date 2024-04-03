@@ -54,8 +54,16 @@ module LaunchDarklyApi
     # An array of randomization units allowed for this metric
     attr_accessor :randomization_units
 
-    # The method in which multiple unit event values are aggregated
+    # The method by which multiple unit event values are aggregated
     attr_accessor :unit_aggregation_type
+
+    # The method for analyzing metric events
+    attr_accessor :analysis_type
+
+    # The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when <code>analysisType</code> is <code>percentile</code>.
+    attr_accessor :percentile_value
+
+    attr_accessor :event_default
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -95,7 +103,10 @@ module LaunchDarklyApi
         :'success_criteria' => :'successCriteria',
         :'tags' => :'tags',
         :'randomization_units' => :'randomizationUnits',
-        :'unit_aggregation_type' => :'unitAggregationType'
+        :'unit_aggregation_type' => :'unitAggregationType',
+        :'analysis_type' => :'analysisType',
+        :'percentile_value' => :'percentileValue',
+        :'event_default' => :'eventDefault'
       }
     end
 
@@ -120,7 +131,10 @@ module LaunchDarklyApi
         :'success_criteria' => :'String',
         :'tags' => :'Array<String>',
         :'randomization_units' => :'Array<String>',
-        :'unit_aggregation_type' => :'String'
+        :'unit_aggregation_type' => :'String',
+        :'analysis_type' => :'String',
+        :'percentile_value' => :'Integer',
+        :'event_default' => :'MetricEventDefaultRep'
       }
     end
 
@@ -206,6 +220,18 @@ module LaunchDarklyApi
       if attributes.key?(:'unit_aggregation_type')
         self.unit_aggregation_type = attributes[:'unit_aggregation_type']
       end
+
+      if attributes.key?(:'analysis_type')
+        self.analysis_type = attributes[:'analysis_type']
+      end
+
+      if attributes.key?(:'percentile_value')
+        self.percentile_value = attributes[:'percentile_value']
+      end
+
+      if attributes.key?(:'event_default')
+        self.event_default = attributes[:'event_default']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -285,7 +311,10 @@ module LaunchDarklyApi
           success_criteria == o.success_criteria &&
           tags == o.tags &&
           randomization_units == o.randomization_units &&
-          unit_aggregation_type == o.unit_aggregation_type
+          unit_aggregation_type == o.unit_aggregation_type &&
+          analysis_type == o.analysis_type &&
+          percentile_value == o.percentile_value &&
+          event_default == o.event_default
     end
 
     # @see the `==` method
@@ -297,7 +326,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [key, name, description, kind, selector, urls, is_active, is_numeric, unit, event_key, success_criteria, tags, randomization_units, unit_aggregation_type].hash
+      [key, name, description, kind, selector, urls, is_active, is_numeric, unit, event_key, success_criteria, tags, randomization_units, unit_aggregation_type, analysis_type, percentile_value, event_default].hash
     end
 
     # Builds the object from hash

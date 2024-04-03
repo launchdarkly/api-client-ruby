@@ -19,6 +19,69 @@ module LaunchDarklyApi
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Get data export events usage
+    # Get a time-series array of the number of monthly data export events from your account. The granularity is always daily, with a maximum of 31 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :from The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+    # @option opts [String] :to The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+    # @return [SeriesIntervalsRep]
+    def get_data_export_events_usage(opts = {})
+      data, _status_code, _headers = get_data_export_events_usage_with_http_info(opts)
+      data
+    end
+
+    # Get data export events usage
+    # Get a time-series array of the number of monthly data export events from your account. The granularity is always daily, with a maximum of 31 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :from The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+    # @option opts [String] :to The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+    # @return [Array<(SeriesIntervalsRep, Integer, Hash)>] SeriesIntervalsRep data, response status code and response headers
+    def get_data_export_events_usage_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountUsageBetaApi.get_data_export_events_usage ...'
+      end
+      # resource path
+      local_var_path = '/api/v2/usage/data-export-events'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'from'] = opts[:'from'] if !opts[:'from'].nil?
+      query_params[:'to'] = opts[:'to'] if !opts[:'to'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SeriesIntervalsRep'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AccountUsageBetaApi.get_data_export_events_usage",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountUsageBetaApi#get_data_export_events_usage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get evaluations usage
     # Get time-series arrays of the number of times a flag is evaluated, broken down by the variation that resulted from that evaluation. The granularity of the data depends on the age of the data requested. If the requested range is within the past two hours, minutely data is returned. If it is within the last two days, hourly data is returned. Otherwise, daily data is returned.
     # @param project_key [String] The project key
@@ -504,6 +567,69 @@ module LaunchDarklyApi
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AccountUsageBetaApi#get_mau_usage_by_category\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get service connection usage
+    # Get a time-series array of the number of monthly service connections from your account. The granularity is always daily, with a maximum of 31 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :from The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+    # @option opts [String] :to The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+    # @return [SeriesIntervalsRep]
+    def get_service_connection_usage(opts = {})
+      data, _status_code, _headers = get_service_connection_usage_with_http_info(opts)
+      data
+    end
+
+    # Get service connection usage
+    # Get a time-series array of the number of monthly service connections from your account. The granularity is always daily, with a maximum of 31 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :from The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+    # @option opts [String] :to The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+    # @return [Array<(SeriesIntervalsRep, Integer, Hash)>] SeriesIntervalsRep data, response status code and response headers
+    def get_service_connection_usage_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountUsageBetaApi.get_service_connection_usage ...'
+      end
+      # resource path
+      local_var_path = '/api/v2/usage/service-connections'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'from'] = opts[:'from'] if !opts[:'from'].nil?
+      query_params[:'to'] = opts[:'to'] if !opts[:'to'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SeriesIntervalsRep'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AccountUsageBetaApi.get_service_connection_usage",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountUsageBetaApi#get_service_connection_usage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

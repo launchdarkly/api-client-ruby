@@ -32,6 +32,8 @@ module LaunchDarklyApi
     # A human-friendly name for the project
     attr_accessor :name
 
+    attr_accessor :_access
+
     # A list of tags for the project
     attr_accessor :tags
 
@@ -49,6 +51,7 @@ module LaunchDarklyApi
         :'include_in_snippet_by_default' => :'includeInSnippetByDefault',
         :'default_client_side_availability' => :'defaultClientSideAvailability',
         :'name' => :'name',
+        :'_access' => :'_access',
         :'tags' => :'tags',
         :'default_release_pipeline_key' => :'defaultReleasePipelineKey',
         :'environments' => :'environments'
@@ -69,6 +72,7 @@ module LaunchDarklyApi
         :'include_in_snippet_by_default' => :'Boolean',
         :'default_client_side_availability' => :'ClientSideAvailability',
         :'name' => :'String',
+        :'_access' => :'Access',
         :'tags' => :'Array<String>',
         :'default_release_pipeline_key' => :'String',
         :'environments' => :'Environments'
@@ -120,6 +124,10 @@ module LaunchDarklyApi
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'_access')
+        self._access = attributes[:'_access']
       end
 
       if attributes.key?(:'tags')
@@ -191,6 +199,7 @@ module LaunchDarklyApi
           include_in_snippet_by_default == o.include_in_snippet_by_default &&
           default_client_side_availability == o.default_client_side_availability &&
           name == o.name &&
+          _access == o._access &&
           tags == o.tags &&
           default_release_pipeline_key == o.default_release_pipeline_key &&
           environments == o.environments
@@ -205,7 +214,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_links, _id, key, include_in_snippet_by_default, default_client_side_availability, name, tags, default_release_pipeline_key, environments].hash
+      [_links, _id, key, include_in_snippet_by_default, default_client_side_availability, name, _access, tags, default_release_pipeline_key, environments].hash
     end
 
     # Builds the object from hash

@@ -341,6 +341,7 @@ docs/RelayAutoConfigPost.md
 docs/RelayAutoConfigRep.md
 docs/RelayProxyConfigurationsApi.md
 docs/Release.md
+docs/ReleaseAudience.md
 docs/ReleasePhase.md
 docs/ReleasePipeline.md
 docs/ReleasePipelineCollection.md
@@ -807,6 +808,7 @@ lib/launchdarkly_api/models/relay_auto_config_collection_rep.rb
 lib/launchdarkly_api/models/relay_auto_config_post.rb
 lib/launchdarkly_api/models/relay_auto_config_rep.rb
 lib/launchdarkly_api/models/release.rb
+lib/launchdarkly_api/models/release_audience.rb
 lib/launchdarkly_api/models/release_phase.rb
 lib/launchdarkly_api/models/release_pipeline.rb
 lib/launchdarkly_api/models/release_pipeline_collection.rb
@@ -1255,6 +1257,7 @@ spec/models/relative_difference_rep_spec.rb
 spec/models/relay_auto_config_collection_rep_spec.rb
 spec/models/relay_auto_config_post_spec.rb
 spec/models/relay_auto_config_rep_spec.rb
+spec/models/release_audience_spec.rb
 spec/models/release_phase_spec.rb
 spec/models/release_pipeline_collection_spec.rb
 spec/models/release_pipeline_spec.rb

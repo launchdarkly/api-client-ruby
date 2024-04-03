@@ -47,6 +47,12 @@ module LaunchDarklyApi
 
     attr_accessor :migration_settings
 
+    # The ID of the member who maintains this feature flag
+    attr_accessor :maintainer_id
+
+    # The key of the team that maintains this feature flag
+    attr_accessor :maintainer_team_key
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -83,7 +89,9 @@ module LaunchDarklyApi
         :'custom_properties' => :'customProperties',
         :'defaults' => :'defaults',
         :'purpose' => :'purpose',
-        :'migration_settings' => :'migrationSettings'
+        :'migration_settings' => :'migrationSettings',
+        :'maintainer_id' => :'maintainerId',
+        :'maintainer_team_key' => :'maintainerTeamKey'
       }
     end
 
@@ -106,7 +114,9 @@ module LaunchDarklyApi
         :'custom_properties' => :'Hash<String, CustomProperty>',
         :'defaults' => :'Defaults',
         :'purpose' => :'String',
-        :'migration_settings' => :'MigrationSettingsPost'
+        :'migration_settings' => :'MigrationSettingsPost',
+        :'maintainer_id' => :'String',
+        :'maintainer_team_key' => :'String'
       }
     end
 
@@ -184,6 +194,14 @@ module LaunchDarklyApi
       if attributes.key?(:'migration_settings')
         self.migration_settings = attributes[:'migration_settings']
       end
+
+      if attributes.key?(:'maintainer_id')
+        self.maintainer_id = attributes[:'maintainer_id']
+      end
+
+      if attributes.key?(:'maintainer_team_key')
+        self.maintainer_team_key = attributes[:'maintainer_team_key']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -237,7 +255,9 @@ module LaunchDarklyApi
           custom_properties == o.custom_properties &&
           defaults == o.defaults &&
           purpose == o.purpose &&
-          migration_settings == o.migration_settings
+          migration_settings == o.migration_settings &&
+          maintainer_id == o.maintainer_id &&
+          maintainer_team_key == o.maintainer_team_key
     end
 
     # @see the `==` method
@@ -249,7 +269,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, key, description, include_in_snippet, client_side_availability, variations, temporary, tags, custom_properties, defaults, purpose, migration_settings].hash
+      [name, key, description, include_in_snippet, client_side_availability, variations, temporary, tags, custom_properties, defaults, purpose, migration_settings, maintainer_id, maintainer_team_key].hash
     end
 
     # Builds the object from hash

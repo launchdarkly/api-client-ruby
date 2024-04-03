@@ -10,7 +10,7 @@
 | **_creation_date** | **Integer** |  |  |
 | **_completion_date** | **Integer** |  | [optional] |
 | **_completed_by** | [**CompletedBy**](CompletedBy.md) |  | [optional] |
-| **_audiences** | [**Array&lt;Audience&gt;**](Audience.md) | A logical grouping of one or more environments that share attributes for rolling out changes |  |
+| **_audiences** | [**Array&lt;ReleaseAudience&gt;**](ReleaseAudience.md) | A logical grouping of one or more environments that share attributes for rolling out changes |  |
 
 ## Example
 

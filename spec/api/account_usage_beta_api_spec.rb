@@ -32,6 +32,19 @@ describe 'AccountUsageBetaApi' do
     end
   end
 
+  # unit tests for get_data_export_events_usage
+  # Get data export events usage
+  # Get a time-series array of the number of monthly data export events from your account. The granularity is always daily, with a maximum of 31 days.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :from The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+  # @option opts [String] :to The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+  # @return [SeriesIntervalsRep]
+  describe 'get_data_export_events_usage test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_evaluations_usage
   # Get evaluations usage
   # Get time-series arrays of the number of times a flag is evaluated, broken down by the variation that resulted from that evaluation. The granularity of the data depends on the age of the data requested. If the requested range is within the past two hours, minutely data is returned. If it is within the last two days, hourly data is returned. Otherwise, daily data is returned.
@@ -130,6 +143,19 @@ describe 'AccountUsageBetaApi' do
   # @option opts [String] :to The series of data returned ends at this timestamp. Defaults to the current time.
   # @return [SeriesListRep]
   describe 'get_mau_usage_by_category test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_service_connection_usage
+  # Get service connection usage
+  # Get a time-series array of the number of monthly service connections from your account. The granularity is always daily, with a maximum of 31 days.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :from The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+  # @option opts [String] :to The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+  # @return [SeriesIntervalsRep]
+  describe 'get_service_connection_usage test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

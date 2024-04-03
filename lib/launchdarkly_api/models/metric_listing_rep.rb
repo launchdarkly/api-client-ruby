@@ -76,13 +76,13 @@ module LaunchDarklyApi
     # An array of randomization units allowed for this metric
     attr_accessor :randomization_units
 
-    # The method in which multiple unit event values are aggregated
+    # The method by which multiple unit event values are aggregated
     attr_accessor :unit_aggregation_type
 
-    # The strategy for analyzing metric events
+    # The method for analyzing metric events
     attr_accessor :analysis_type
 
-    # The percentile, an integer denoting the target percentile between 0 and 100. Only present when <code>analysisType</code> is <code>percentile</code>.
+    # The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when <code>analysisType</code> is <code>percentile</code>.
     attr_accessor :percentile_value
 
     attr_accessor :event_default

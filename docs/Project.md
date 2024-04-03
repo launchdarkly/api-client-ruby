@@ -10,6 +10,7 @@
 | **include_in_snippet_by_default** | **Boolean** | Whether or not flags created in this project are made available to the client-side JavaScript SDK by default |  |
 | **default_client_side_availability** | [**ClientSideAvailability**](ClientSideAvailability.md) |  | [optional] |
 | **name** | **String** | A human-friendly name for the project |  |
+| **_access** | [**Access**](Access.md) |  | [optional] |
 | **tags** | **Array&lt;String&gt;** | A list of tags for the project |  |
 | **default_release_pipeline_key** | **String** | The key of the default release pipeline for this project | [optional] |
 | **environments** | [**Environments**](Environments.md) |  | [optional] |
@@ -26,6 +27,7 @@ instance = LaunchDarklyApi::Project.new(
   include_in_snippet_by_default: true,
   default_client_side_availability: null,
   name: My Project,
+  _access: null,
   tags: [&quot;ops&quot;],
   default_release_pipeline_key: null,
   environments: null

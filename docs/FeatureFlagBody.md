@@ -16,6 +16,8 @@
 | **defaults** | [**Defaults**](Defaults.md) |  | [optional] |
 | **purpose** | **String** | Purpose of the flag | [optional] |
 | **migration_settings** | [**MigrationSettingsPost**](MigrationSettingsPost.md) |  | [optional] |
+| **maintainer_id** | **String** | The ID of the member who maintains this feature flag | [optional] |
+| **maintainer_team_key** | **String** | The key of the team that maintains this feature flag | [optional] |
 
 ## Example
 
@@ -34,7 +36,9 @@ instance = LaunchDarklyApi::FeatureFlagBody.new(
   custom_properties: null,
   defaults: null,
   purpose: migration,
-  migration_settings: null
+  migration_settings: null,
+  maintainer_id: 12ab3c45de678910fgh12345,
+  maintainer_team_key: team-1
 )
 ```
 

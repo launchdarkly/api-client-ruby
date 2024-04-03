@@ -4,6 +4,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**get_data_export_events_usage**](AccountUsageBetaApi.md#get_data_export_events_usage) | **GET** /api/v2/usage/data-export-events | Get data export events usage |
 | [**get_evaluations_usage**](AccountUsageBetaApi.md#get_evaluations_usage) | **GET** /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey} | Get evaluations usage |
 | [**get_events_usage**](AccountUsageBetaApi.md#get_events_usage) | **GET** /api/v2/usage/events/{type} | Get events usage |
 | [**get_experimentation_keys_usage**](AccountUsageBetaApi.md#get_experimentation_keys_usage) | **GET** /api/v2/usage/experimentation-keys | Get experimentation keys usage |
@@ -11,9 +12,85 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_mau_sdks_by_type**](AccountUsageBetaApi.md#get_mau_sdks_by_type) | **GET** /api/v2/usage/mau/sdks | Get MAU SDKs by type |
 | [**get_mau_usage**](AccountUsageBetaApi.md#get_mau_usage) | **GET** /api/v2/usage/mau | Get MAU usage |
 | [**get_mau_usage_by_category**](AccountUsageBetaApi.md#get_mau_usage_by_category) | **GET** /api/v2/usage/mau/bycategory | Get MAU usage by category |
+| [**get_service_connection_usage**](AccountUsageBetaApi.md#get_service_connection_usage) | **GET** /api/v2/usage/service-connections | Get service connection usage |
 | [**get_stream_usage**](AccountUsageBetaApi.md#get_stream_usage) | **GET** /api/v2/usage/streams/{source} | Get stream usage |
 | [**get_stream_usage_by_sdk_version**](AccountUsageBetaApi.md#get_stream_usage_by_sdk_version) | **GET** /api/v2/usage/streams/{source}/bysdkversion | Get stream usage by SDK version |
 | [**get_stream_usage_sdkversion**](AccountUsageBetaApi.md#get_stream_usage_sdkversion) | **GET** /api/v2/usage/streams/{source}/sdkversions | Get stream usage SDK versions |
+
+
+## get_data_export_events_usage
+
+> <SeriesIntervalsRep> get_data_export_events_usage(opts)
+
+Get data export events usage
+
+Get a time-series array of the number of monthly data export events from your account. The granularity is always daily, with a maximum of 31 days.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
+opts = {
+  from: 'from_example', # String | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+  to: 'to_example' # String | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+}
+
+begin
+  # Get data export events usage
+  result = api_instance.get_data_export_events_usage(opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountUsageBetaApi->get_data_export_events_usage: #{e}"
+end
+```
+
+#### Using the get_data_export_events_usage_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SeriesIntervalsRep>, Integer, Hash)> get_data_export_events_usage_with_http_info(opts)
+
+```ruby
+begin
+  # Get data export events usage
+  data, status_code, headers = api_instance.get_data_export_events_usage_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SeriesIntervalsRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountUsageBetaApi->get_data_export_events_usage_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **from** | **String** | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional] |
+| **to** | **String** | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional] |
+
+### Return type
+
+[**SeriesIntervalsRep**](SeriesIntervalsRep.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## get_evaluations_usage
@@ -554,6 +631,81 @@ end
 ### Return type
 
 [**SeriesListRep**](SeriesListRep.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_service_connection_usage
+
+> <SeriesIntervalsRep> get_service_connection_usage(opts)
+
+Get service connection usage
+
+Get a time-series array of the number of monthly service connections from your account. The granularity is always daily, with a maximum of 31 days.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
+opts = {
+  from: 'from_example', # String | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+  to: 'to_example' # String | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+}
+
+begin
+  # Get service connection usage
+  result = api_instance.get_service_connection_usage(opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountUsageBetaApi->get_service_connection_usage: #{e}"
+end
+```
+
+#### Using the get_service_connection_usage_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SeriesIntervalsRep>, Integer, Hash)> get_service_connection_usage_with_http_info(opts)
+
+```ruby
+begin
+  # Get service connection usage
+  data, status_code, headers = api_instance.get_service_connection_usage_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SeriesIntervalsRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountUsageBetaApi->get_service_connection_usage_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **from** | **String** | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional] |
+| **to** | **String** | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional] |
+
+### Return type
+
+[**SeriesIntervalsRep**](SeriesIntervalsRep.md)
 
 ### Authorization
 

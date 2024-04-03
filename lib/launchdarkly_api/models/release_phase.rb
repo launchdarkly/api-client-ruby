@@ -60,7 +60,7 @@ module LaunchDarklyApi
         :'_creation_date' => :'Integer',
         :'_completion_date' => :'Integer',
         :'_completed_by' => :'CompletedBy',
-        :'_audiences' => :'Array<Audience>'
+        :'_audiences' => :'Array<ReleaseAudience>'
       }
     end
 

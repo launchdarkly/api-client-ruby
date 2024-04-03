@@ -7,7 +7,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_deployment_frequency_chart**](InsightsChartsBetaApi.md#get_deployment_frequency_chart) | **GET** /api/v2/engineering-insights/charts/deployments/frequency | Get deployment frequency chart data |
 | [**get_flag_status_chart**](InsightsChartsBetaApi.md#get_flag_status_chart) | **GET** /api/v2/engineering-insights/charts/flags/status | Get flag status chart data |
 | [**get_lead_time_chart**](InsightsChartsBetaApi.md#get_lead_time_chart) | **GET** /api/v2/engineering-insights/charts/lead-time | Get lead time chart data |
-| [**get_release_frequency_chart**](InsightsChartsBetaApi.md#get_release_frequency_chart) | **GET** /api/v2/engineering-insights/charts/releases/frequency | Get replease frequency chart data |
+| [**get_release_frequency_chart**](InsightsChartsBetaApi.md#get_release_frequency_chart) | **GET** /api/v2/engineering-insights/charts/releases/frequency | Get release frequency chart data |
 | [**get_stale_flags_chart**](InsightsChartsBetaApi.md#get_stale_flags_chart) | **GET** /api/v2/engineering-insights/charts/flags/stale | Get stale flags chart data |
 
 
@@ -270,7 +270,7 @@ end
 
 > <InsightsChart> get_release_frequency_chart(project_key, environment_key, opts)
 
-Get replease frequency chart data
+Get release frequency chart data
 
 Get release frequency chart data. Engineering insights displays release frequency data in the [release frequency metric view](https://docs.launchdarkly.com/home/engineering-insights/metrics/release).
 
@@ -292,7 +292,7 @@ project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 opts = {
   application_key: 'application_key_example', # String | Comma separated list of application keys
-  has_experiments: true, # Boolean | Filter events to those associated with an experiment
+  has_experiments: true, # Boolean | Filter events to those associated with an experiment (`true`) or without an experiment (`false`)
   global: 'global_example', # String | Filter to include or exclude global events. Default value is `include`. Options: `include`, `exclude`
   group_by: 'group_by_example', # String | Property to group results by. Options: `impact`
   from: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Unix timestamp in milliseconds. Default value is 7 days ago.
@@ -303,7 +303,7 @@ opts = {
 }
 
 begin
-  # Get replease frequency chart data
+  # Get release frequency chart data
   result = api_instance.get_release_frequency_chart(project_key, environment_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
@@ -319,7 +319,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get replease frequency chart data
+  # Get release frequency chart data
   data, status_code, headers = api_instance.get_release_frequency_chart_with_http_info(project_key, environment_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -336,7 +336,7 @@ end
 | **project_key** | **String** | The project key |  |
 | **environment_key** | **String** | The environment key |  |
 | **application_key** | **String** | Comma separated list of application keys | [optional] |
-| **has_experiments** | **Boolean** | Filter events to those associated with an experiment | [optional] |
+| **has_experiments** | **Boolean** | Filter events to those associated with an experiment (&#x60;true&#x60;) or without an experiment (&#x60;false&#x60;) | [optional] |
 | **global** | **String** | Filter to include or exclude global events. Default value is &#x60;include&#x60;. Options: &#x60;include&#x60;, &#x60;exclude&#x60; | [optional] |
 | **group_by** | **String** | Property to group results by. Options: &#x60;impact&#x60; | [optional] |
 | **from** | **Time** | Unix timestamp in milliseconds. Default value is 7 days ago. | [optional] |

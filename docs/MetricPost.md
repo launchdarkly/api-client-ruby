@@ -17,7 +17,10 @@
 | **success_criteria** | **String** | Success criteria. Required for custom numeric metrics, optional for custom conversion metrics. | [optional] |
 | **tags** | **Array&lt;String&gt;** | Tags for the metric | [optional] |
 | **randomization_units** | **Array&lt;String&gt;** | An array of randomization units allowed for this metric | [optional] |
-| **unit_aggregation_type** | **String** | The method in which multiple unit event values are aggregated | [optional] |
+| **unit_aggregation_type** | **String** | The method by which multiple unit event values are aggregated | [optional] |
+| **analysis_type** | **String** | The method for analyzing metric events | [optional] |
+| **percentile_value** | **Integer** | The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when &lt;code&gt;analysisType&lt;/code&gt; is &lt;code&gt;percentile&lt;/code&gt;. | [optional] |
+| **event_default** | [**MetricEventDefaultRep**](MetricEventDefaultRep.md) |  | [optional] |
 
 ## Example
 
@@ -38,7 +41,10 @@ instance = LaunchDarklyApi::MetricPost.new(
   success_criteria: HigherThanBaseline,
   tags: [&quot;example-tag&quot;],
   randomization_units: [&quot;user&quot;],
-  unit_aggregation_type: average
+  unit_aggregation_type: average,
+  analysis_type: mean,
+  percentile_value: 95,
+  event_default: null
 )
 ```
 
