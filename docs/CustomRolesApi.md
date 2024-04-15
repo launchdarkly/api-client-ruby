@@ -154,7 +154,7 @@ end
 
 ## get_custom_roles
 
-> <CustomRoles> get_custom_roles
+> <CustomRoles> get_custom_roles(opts)
 
 List custom roles
 
@@ -174,10 +174,14 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
+opts = {
+  limit: 789, # Integer | The maximum number of custom roles to return. Defaults to 20.
+  offset: 789 # Integer | Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+}
 
 begin
   # List custom roles
-  result = api_instance.get_custom_roles
+  result = api_instance.get_custom_roles(opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling CustomRolesApi->get_custom_roles: #{e}"
@@ -188,12 +192,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CustomRoles>, Integer, Hash)> get_custom_roles_with_http_info
+> <Array(<CustomRoles>, Integer, Hash)> get_custom_roles_with_http_info(opts)
 
 ```ruby
 begin
   # List custom roles
-  data, status_code, headers = api_instance.get_custom_roles_with_http_info
+  data, status_code, headers = api_instance.get_custom_roles_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <CustomRoles>
@@ -204,7 +208,10 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **limit** | **Integer** | The maximum number of custom roles to return. Defaults to 20. | [optional] |
+| **offset** | **Integer** | Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
 ### Return type
 

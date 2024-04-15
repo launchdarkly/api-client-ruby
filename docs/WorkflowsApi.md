@@ -190,7 +190,9 @@ feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
 opts = {
   status: 'status_example', # String | Filter results by workflow status. Valid status filters are `active`, `completed`, and `failed`.
-  sort: 'sort_example' # String | A field to sort the items by. Prefix field by a dash ( - ) to sort in descending order. This endpoint supports sorting by `creationDate` or `stopDate`.
+  sort: 'sort_example', # String | A field to sort the items by. Prefix field by a dash ( - ) to sort in descending order. This endpoint supports sorting by `creationDate` or `stopDate`.
+  limit: 789, # Integer | The maximum number of workflows to return. Defaults to 20.
+  offset: 789 # Integer | Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
 }
 
 begin
@@ -229,6 +231,8 @@ end
 | **environment_key** | **String** | The environment key |  |
 | **status** | **String** | Filter results by workflow status. Valid status filters are &#x60;active&#x60;, &#x60;completed&#x60;, and &#x60;failed&#x60;. | [optional] |
 | **sort** | **String** | A field to sort the items by. Prefix field by a dash ( - ) to sort in descending order. This endpoint supports sorting by &#x60;creationDate&#x60; or &#x60;stopDate&#x60;. | [optional] |
+| **limit** | **Integer** | The maximum number of workflows to return. Defaults to 20. | [optional] |
+| **offset** | **Integer** | Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
 ### Return type
 

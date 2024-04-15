@@ -30,7 +30,7 @@
 | **defaults** | [**Defaults**](Defaults.md) |  | [optional] |
 | **_purpose** | **String** |  | [optional] |
 | **migration_settings** | [**FlagMigrationSettingsRep**](FlagMigrationSettingsRep.md) |  | [optional] |
-| **environments** | [**Hash&lt;String, FeatureFlagConfig&gt;**](FeatureFlagConfig.md) | Details on the environments for this flag |  |
+| **environments** | [**Hash&lt;String, FeatureFlagConfig&gt;**](FeatureFlagConfig.md) | Details on the environments for this flag. Only returned if the request is filtered by environment, using the &lt;code&gt;filterEnv&lt;/code&gt; query parameter. |  |
 
 ## Example
 

@@ -11,4 +11,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build launchdarkly_api.gemspec
-  - gem install ./launchdarkly_api-15.1.0.gem
+  - gem install ./launchdarkly_api-16.0.0.gem
