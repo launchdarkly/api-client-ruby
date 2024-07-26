@@ -920,9 +920,9 @@ module LaunchDarklyApi
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
+      unless header_params['Content-Type']
+        content_type = @api_client.select_header_content_type(['application/json'])
+        header_params['Content-Type'] = content_type if content_type
       end
 
       # form parameters
