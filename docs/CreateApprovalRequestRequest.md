@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **resource_id** | **String** | String representation of a resource |  |
+| **resource_id** | **String** | String representation of the resource specifier |  |
 | **comment** | **String** | Optional comment describing the approval request | [optional] |
 | **description** | **String** | A brief description of the changes you&#39;re requesting |  |
 | **instructions** | **Array&lt;Hash&gt;** |  |  |
@@ -18,7 +18,7 @@
 require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::CreateApprovalRequestRequest.new(
-  resource_id: null,
+  resource_id: proj/projKey:env/envKey:flag/flagKey,
   comment: optional comment,
   description: Requesting to update targeting,
   instructions: null,

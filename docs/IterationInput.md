@@ -12,6 +12,7 @@
 | **treatments** | [**Array&lt;TreatmentInput&gt;**](TreatmentInput.md) |  |  |
 | **flags** | [**Hash&lt;String, FlagInput&gt;**](FlagInput.md) |  |  |
 | **randomization_unit** | **String** | The unit of randomization for this iteration. Defaults to user. | [optional] |
+| **attributes** | **Array&lt;String&gt;** | The attributes that this iteration&#39;s results can be sliced by | [optional] |
 
 ## Example
 
@@ -26,7 +27,8 @@ instance = LaunchDarklyApi::IterationInput.new(
   primary_funnel_key: metric-group-key-123abc,
   treatments: null,
   flags: null,
-  randomization_unit: user
+  randomization_unit: user,
+  attributes: [&quot;country&quot;,&quot;device&quot;,&quot;os&quot;]
 )
 ```
 

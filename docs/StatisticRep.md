@@ -13,6 +13,7 @@
 | **hunk_count** | **Integer** | The number of code reference hunks in which the flag appears in this repository |  |
 | **file_count** | **Integer** | The number of files in which the flag appears in this repository |  |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
+| **latest_commit_time** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = LaunchDarklyApi::StatisticRep.new(
   version: 3,
   hunk_count: null,
   file_count: null,
-  _links: null
+  _links: null,
+  latest_commit_time: null
 )
 ```
 

@@ -18,6 +18,7 @@
 | **migration_settings** | [**MigrationSettingsPost**](MigrationSettingsPost.md) |  | [optional] |
 | **maintainer_id** | **String** | The ID of the member who maintains this feature flag | [optional] |
 | **maintainer_team_key** | **String** | The key of the team that maintains this feature flag | [optional] |
+| **initial_prerequisites** | [**Array&lt;FlagPrerequisitePost&gt;**](FlagPrerequisitePost.md) | Initial set of prerequisite flags for all environments | [optional] |
 
 ## Example
 
@@ -38,7 +39,8 @@ instance = LaunchDarklyApi::FeatureFlagBody.new(
   purpose: migration,
   migration_settings: null,
   maintainer_id: 12ab3c45de678910fgh12345,
-  maintainer_team_key: team-1
+  maintainer_team_key: team-1,
+  initial_prerequisites: null
 )
 ```
 

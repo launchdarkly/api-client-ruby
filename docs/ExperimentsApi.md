@@ -1,19 +1,19 @@
-# LaunchDarklyApi::ExperimentsBetaApi
+# LaunchDarklyApi::ExperimentsApi
 
 All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_experiment**](ExperimentsBetaApi.md#create_experiment) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Create experiment |
-| [**create_iteration**](ExperimentsBetaApi.md#create_iteration) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations | Create iteration |
-| [**get_experiment**](ExperimentsBetaApi.md#get_experiment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Get experiment |
-| [**get_experiment_results**](ExperimentsBetaApi.md#get_experiment_results) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results | Get experiment results |
-| [**get_experiment_results_for_metric_group**](ExperimentsBetaApi.md#get_experiment_results_for_metric_group) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metric-groups/{metricGroupKey}/results | Get experiment results for metric group |
-| [**get_experimentation_settings**](ExperimentsBetaApi.md#get_experimentation_settings) | **GET** /api/v2/projects/{projectKey}/experimentation-settings | Get experimentation settings |
-| [**get_experiments**](ExperimentsBetaApi.md#get_experiments) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Get experiments |
-| [**get_legacy_experiment_results**](ExperimentsBetaApi.md#get_legacy_experiment_results) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get legacy experiment results (deprecated) |
-| [**patch_experiment**](ExperimentsBetaApi.md#patch_experiment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Patch experiment |
-| [**put_experimentation_settings**](ExperimentsBetaApi.md#put_experimentation_settings) | **PUT** /api/v2/projects/{projectKey}/experimentation-settings | Update experimentation settings |
+| [**create_experiment**](ExperimentsApi.md#create_experiment) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Create experiment |
+| [**create_iteration**](ExperimentsApi.md#create_iteration) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations | Create iteration |
+| [**get_experiment**](ExperimentsApi.md#get_experiment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Get experiment |
+| [**get_experiment_results**](ExperimentsApi.md#get_experiment_results) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results | Get experiment results |
+| [**get_experiment_results_for_metric_group**](ExperimentsApi.md#get_experiment_results_for_metric_group) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metric-groups/{metricGroupKey}/results | Get experiment results for metric group |
+| [**get_experimentation_settings**](ExperimentsApi.md#get_experimentation_settings) | **GET** /api/v2/projects/{projectKey}/experimentation-settings | Get experimentation settings |
+| [**get_experiments**](ExperimentsApi.md#get_experiments) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Get experiments |
+| [**get_legacy_experiment_results**](ExperimentsApi.md#get_legacy_experiment_results) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get legacy experiment results (deprecated) |
+| [**patch_experiment**](ExperimentsApi.md#patch_experiment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Patch experiment |
+| [**put_experimentation_settings**](ExperimentsApi.md#put_experimentation_settings) | **PUT** /api/v2/projects/{projectKey}/experimentation-settings | Update experimentation settings |
 
 
 ## create_experiment
@@ -37,7 +37,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
+api_instance = LaunchDarklyApi::ExperimentsApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 experiment_post = LaunchDarklyApi::ExperimentPost.new({name: 'Example experiment', key: 'experiment-key-123abc', iteration: LaunchDarklyApi::IterationInput.new({hypothesis: 'Example hypothesis, the new button placement will increase conversion', metrics: [LaunchDarklyApi::MetricInput.new({key: 'metric-key-123abc'})], treatments: [LaunchDarklyApi::TreatmentInput.new({name: 'Treatment 1', baseline: true, allocation_percent: '10', parameters: [LaunchDarklyApi::TreatmentParameterInput.new({flag_key: 'example-flag-for-experiment', variation_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05'})]})], flags: { key: LaunchDarklyApi::FlagInput.new({rule_id: 'e432f62b-55f6-49dd-a02f-eb24acf39d05', flag_config_version: 12})}})}) # ExperimentPost | 
@@ -47,7 +47,7 @@ begin
   result = api_instance.create_experiment(project_key, environment_key, experiment_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->create_experiment: #{e}"
+  puts "Error when calling ExperimentsApi->create_experiment: #{e}"
 end
 ```
 
@@ -65,7 +65,7 @@ begin
   p headers # => { ... }
   p data # => <Experiment>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->create_experiment_with_http_info: #{e}"
+  puts "Error when calling ExperimentsApi->create_experiment_with_http_info: #{e}"
 end
 ```
 
@@ -112,7 +112,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
+api_instance = LaunchDarklyApi::ExperimentsApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 experiment_key = 'experiment_key_example' # String | The experiment key
@@ -123,7 +123,7 @@ begin
   result = api_instance.create_iteration(project_key, environment_key, experiment_key, iteration_input)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->create_iteration: #{e}"
+  puts "Error when calling ExperimentsApi->create_iteration: #{e}"
 end
 ```
 
@@ -141,7 +141,7 @@ begin
   p headers # => { ... }
   p data # => <IterationRep>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->create_iteration_with_http_info: #{e}"
+  puts "Error when calling ExperimentsApi->create_iteration_with_http_info: #{e}"
 end
 ```
 
@@ -189,7 +189,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
+api_instance = LaunchDarklyApi::ExperimentsApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 experiment_key = 'experiment_key_example' # String | The experiment key
@@ -202,7 +202,7 @@ begin
   result = api_instance.get_experiment(project_key, environment_key, experiment_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->get_experiment: #{e}"
+  puts "Error when calling ExperimentsApi->get_experiment: #{e}"
 end
 ```
 
@@ -220,7 +220,7 @@ begin
   p headers # => { ... }
   p data # => <Experiment>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->get_experiment_with_http_info: #{e}"
+  puts "Error when calling ExperimentsApi->get_experiment_with_http_info: #{e}"
 end
 ```
 
@@ -268,7 +268,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
+api_instance = LaunchDarklyApi::ExperimentsApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 experiment_key = 'experiment_key_example' # String | The experiment key
@@ -283,7 +283,7 @@ begin
   result = api_instance.get_experiment_results(project_key, environment_key, experiment_key, metric_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->get_experiment_results: #{e}"
+  puts "Error when calling ExperimentsApi->get_experiment_results: #{e}"
 end
 ```
 
@@ -301,7 +301,7 @@ begin
   p headers # => { ... }
   p data # => <ExperimentBayesianResultsRep>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->get_experiment_results_with_http_info: #{e}"
+  puts "Error when calling ExperimentsApi->get_experiment_results_with_http_info: #{e}"
 end
 ```
 
@@ -351,7 +351,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
+api_instance = LaunchDarklyApi::ExperimentsApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 experiment_key = 'experiment_key_example' # String | The experiment key
@@ -365,7 +365,7 @@ begin
   result = api_instance.get_experiment_results_for_metric_group(project_key, environment_key, experiment_key, metric_group_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->get_experiment_results_for_metric_group: #{e}"
+  puts "Error when calling ExperimentsApi->get_experiment_results_for_metric_group: #{e}"
 end
 ```
 
@@ -383,7 +383,7 @@ begin
   p headers # => { ... }
   p data # => <MetricGroupResultsRep>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->get_experiment_results_for_metric_group_with_http_info: #{e}"
+  puts "Error when calling ExperimentsApi->get_experiment_results_for_metric_group_with_http_info: #{e}"
 end
 ```
 
@@ -432,7 +432,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
+api_instance = LaunchDarklyApi::ExperimentsApi.new
 project_key = 'project_key_example' # String | The project key
 
 begin
@@ -440,7 +440,7 @@ begin
   result = api_instance.get_experimentation_settings(project_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->get_experimentation_settings: #{e}"
+  puts "Error when calling ExperimentsApi->get_experimentation_settings: #{e}"
 end
 ```
 
@@ -458,7 +458,7 @@ begin
   p headers # => { ... }
   p data # => <RandomizationSettingsRep>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->get_experimentation_settings_with_http_info: #{e}"
+  puts "Error when calling ExperimentsApi->get_experimentation_settings_with_http_info: #{e}"
 end
 ```
 
@@ -503,7 +503,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
+api_instance = LaunchDarklyApi::ExperimentsApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 opts = {
@@ -519,7 +519,7 @@ begin
   result = api_instance.get_experiments(project_key, environment_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->get_experiments: #{e}"
+  puts "Error when calling ExperimentsApi->get_experiments: #{e}"
 end
 ```
 
@@ -537,7 +537,7 @@ begin
   p headers # => { ... }
   p data # => <ExperimentCollectionRep>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->get_experiments_with_http_info: #{e}"
+  puts "Error when calling ExperimentsApi->get_experiments_with_http_info: #{e}"
 end
 ```
 
@@ -588,7 +588,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
+api_instance = LaunchDarklyApi::ExperimentsApi.new
 project_key = 'project_key_example' # String | The project key
 feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
 environment_key = 'environment_key_example' # String | The environment key
@@ -603,7 +603,7 @@ begin
   result = api_instance.get_legacy_experiment_results(project_key, feature_flag_key, environment_key, metric_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->get_legacy_experiment_results: #{e}"
+  puts "Error when calling ExperimentsApi->get_legacy_experiment_results: #{e}"
 end
 ```
 
@@ -621,7 +621,7 @@ begin
   p headers # => { ... }
   p data # => <ExperimentResults>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->get_legacy_experiment_results_with_http_info: #{e}"
+  puts "Error when calling ExperimentsApi->get_legacy_experiment_results_with_http_info: #{e}"
 end
 ```
 
@@ -671,7 +671,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
+api_instance = LaunchDarklyApi::ExperimentsApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 experiment_key = 'experiment_key_example' # String | The experiment key
@@ -682,7 +682,7 @@ begin
   result = api_instance.patch_experiment(project_key, environment_key, experiment_key, experiment_patch_input)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->patch_experiment: #{e}"
+  puts "Error when calling ExperimentsApi->patch_experiment: #{e}"
 end
 ```
 
@@ -700,7 +700,7 @@ begin
   p headers # => { ... }
   p data # => <Experiment>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->patch_experiment_with_http_info: #{e}"
+  puts "Error when calling ExperimentsApi->patch_experiment_with_http_info: #{e}"
 end
 ```
 
@@ -748,16 +748,16 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::ExperimentsBetaApi.new
+api_instance = LaunchDarklyApi::ExperimentsApi.new
 project_key = 'project_key_example' # String | The project key
-randomization_settings_put = LaunchDarklyApi::RandomizationSettingsPut.new({randomization_units: [LaunchDarklyApi::RandomizationUnitInput.new({randomization_unit: 'user', default: true, standard_randomization_unit: 'guest'})]}) # RandomizationSettingsPut | 
+randomization_settings_put = LaunchDarklyApi::RandomizationSettingsPut.new({randomization_units: [LaunchDarklyApi::RandomizationUnitInput.new({randomization_unit: 'user', standard_randomization_unit: 'guest'})]}) # RandomizationSettingsPut | 
 
 begin
   # Update experimentation settings
   result = api_instance.put_experimentation_settings(project_key, randomization_settings_put)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->put_experimentation_settings: #{e}"
+  puts "Error when calling ExperimentsApi->put_experimentation_settings: #{e}"
 end
 ```
 
@@ -775,7 +775,7 @@ begin
   p headers # => { ... }
   p data # => <RandomizationSettingsRep>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsBetaApi->put_experimentation_settings_with_http_info: #{e}"
+  puts "Error when calling ExperimentsApi->put_experimentation_settings_with_http_info: #{e}"
 end
 ```
 

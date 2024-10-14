@@ -250,7 +250,7 @@ end
 
 api_instance = LaunchDarklyApi::CustomRolesApi.new
 custom_role_key = 'custom_role_key_example' # String | The custom role key
-patch_with_comment = LaunchDarklyApi::PatchWithComment.new({patch: [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})]}) # PatchWithComment | 
+patch_with_comment = LaunchDarklyApi::PatchWithComment.new({patch: [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField'})]}) # PatchWithComment | 
 
 begin
   # Update custom role

@@ -253,7 +253,7 @@ api_instance = LaunchDarklyApi::DataExportDestinationsApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 id = 'id_example' # String | The Data Export destination ID
-patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField'})] # Array<PatchOperation> | 
 
 begin
   # Update Data Export destination

@@ -7,6 +7,7 @@
 | **id** | **String** | The phase ID |  |
 | **audiences** | [**Array&lt;Audience&gt;**](Audience.md) |  |  |
 | **name** | **String** | The release phase name |  |
+| **configuration** | [**PhaseConfiguration**](PhaseConfiguration.md) |  | [optional] |
 
 ## Example
 
@@ -16,7 +17,8 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::Phase.new(
   id: 1234a56b7c89d012345e678f,
   audiences: null,
-  name: Phase 1 - Testing
+  name: Phase 1 - Testing,
+  configuration: null
 )
 ```
 

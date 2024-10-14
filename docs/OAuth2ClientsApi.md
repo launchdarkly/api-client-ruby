@@ -314,7 +314,7 @@ end
 
 api_instance = LaunchDarklyApi::OAuth2ClientsApi.new
 client_id = 'client_id_example' # String | The client ID
-patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField'})] # Array<PatchOperation> | 
 
 begin
   # Patch client by ID

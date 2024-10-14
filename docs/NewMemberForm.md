@@ -11,6 +11,7 @@
 | **role** | **String** | The member&#39;s built-in role | [optional] |
 | **custom_roles** | **Array&lt;String&gt;** | An array of the member&#39;s custom roles | [optional] |
 | **team_keys** | **Array&lt;String&gt;** | An array of the member&#39;s teams | [optional] |
+| **role_attributes** | **Hash&lt;String, Array&gt;** |  | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = LaunchDarklyApi::NewMemberForm.new(
   last_name: Flores,
   role: reader,
   custom_roles: [&quot;customRole1&quot;,&quot;customRole2&quot;],
-  team_keys: [&quot;team-1&quot;,&quot;team-2&quot;]
+  team_keys: [&quot;team-1&quot;,&quot;team-2&quot;],
+  role_attributes: null
 )
 ```
 

@@ -493,7 +493,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::ApprovalsApi.new
-create_approval_request_request = LaunchDarklyApi::CreateApprovalRequestRequest.new({resource_id: 'resource_id_example', description: 'Requesting to update targeting', instructions: [{ key: 3.56}]}) # CreateApprovalRequestRequest | 
+create_approval_request_request = LaunchDarklyApi::CreateApprovalRequestRequest.new({resource_id: 'proj/projKey:env/envKey:flag/flagKey', description: 'Requesting to update targeting', instructions: [{ key: 3.56}]}) # CreateApprovalRequestRequest | 
 
 begin
   # Create approval request

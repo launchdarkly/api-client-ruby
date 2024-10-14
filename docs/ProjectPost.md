@@ -10,6 +10,7 @@
 | **default_client_side_availability** | [**DefaultClientSideAvailabilityPost**](DefaultClientSideAvailabilityPost.md) |  | [optional] |
 | **tags** | **Array&lt;String&gt;** | Tags for the project | [optional] |
 | **environments** | [**Array&lt;EnvironmentPost&gt;**](EnvironmentPost.md) | Creates the provided environments for this project. If omitted default environments will be created instead. | [optional] |
+| **naming_convention** | [**NamingConvention**](NamingConvention.md) |  | [optional] |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = LaunchDarklyApi::ProjectPost.new(
   include_in_snippet_by_default: true,
   default_client_side_availability: null,
   tags: [&quot;ops&quot;],
-  environments: null
+  environments: null,
+  naming_convention: null
 )
 ```
 

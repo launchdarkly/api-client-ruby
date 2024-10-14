@@ -4,15 +4,15 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**delete_flag_followers**](FollowFlagsApi.md#delete_flag_followers) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId} | Remove a member as a follower of a flag in a project and environment |
+| [**delete_flag_follower**](FollowFlagsApi.md#delete_flag_follower) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId} | Remove a member as a follower of a flag in a project and environment |
 | [**get_flag_followers**](FollowFlagsApi.md#get_flag_followers) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers | Get followers of a flag in a project and environment |
 | [**get_followers_by_proj_env**](FollowFlagsApi.md#get_followers_by_proj_env) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/followers | Get followers of all flags in a given project and environment |
-| [**put_flag_followers**](FollowFlagsApi.md#put_flag_followers) | **PUT** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId} | Add a member as a follower of a flag in a project and environment |
+| [**put_flag_follower**](FollowFlagsApi.md#put_flag_follower) | **PUT** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId} | Add a member as a follower of a flag in a project and environment |
 
 
-## delete_flag_followers
+## delete_flag_follower
 
-> delete_flag_followers(project_key, feature_flag_key, environment_key, member_id)
+> delete_flag_follower(project_key, feature_flag_key, environment_key, member_id)
 
 Remove a member as a follower of a flag in a project and environment
 
@@ -39,27 +39,27 @@ member_id = 'member_id_example' # String | The memberId of the member to remove 
 
 begin
   # Remove a member as a follower of a flag in a project and environment
-  api_instance.delete_flag_followers(project_key, feature_flag_key, environment_key, member_id)
+  api_instance.delete_flag_follower(project_key, feature_flag_key, environment_key, member_id)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling FollowFlagsApi->delete_flag_followers: #{e}"
+  puts "Error when calling FollowFlagsApi->delete_flag_follower: #{e}"
 end
 ```
 
-#### Using the delete_flag_followers_with_http_info variant
+#### Using the delete_flag_follower_with_http_info variant
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_flag_followers_with_http_info(project_key, feature_flag_key, environment_key, member_id)
+> <Array(nil, Integer, Hash)> delete_flag_follower_with_http_info(project_key, feature_flag_key, environment_key, member_id)
 
 ```ruby
 begin
   # Remove a member as a follower of a flag in a project and environment
-  data, status_code, headers = api_instance.delete_flag_followers_with_http_info(project_key, feature_flag_key, environment_key, member_id)
+  data, status_code, headers = api_instance.delete_flag_follower_with_http_info(project_key, feature_flag_key, environment_key, member_id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling FollowFlagsApi->delete_flag_followers_with_http_info: #{e}"
+  puts "Error when calling FollowFlagsApi->delete_flag_follower_with_http_info: #{e}"
 end
 ```
 
@@ -234,9 +234,9 @@ end
 - **Accept**: application/json
 
 
-## put_flag_followers
+## put_flag_follower
 
-> put_flag_followers(project_key, feature_flag_key, environment_key, member_id)
+> put_flag_follower(project_key, feature_flag_key, environment_key, member_id)
 
 Add a member as a follower of a flag in a project and environment
 
@@ -263,27 +263,27 @@ member_id = 'member_id_example' # String | The memberId of the member to add as 
 
 begin
   # Add a member as a follower of a flag in a project and environment
-  api_instance.put_flag_followers(project_key, feature_flag_key, environment_key, member_id)
+  api_instance.put_flag_follower(project_key, feature_flag_key, environment_key, member_id)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling FollowFlagsApi->put_flag_followers: #{e}"
+  puts "Error when calling FollowFlagsApi->put_flag_follower: #{e}"
 end
 ```
 
-#### Using the put_flag_followers_with_http_info variant
+#### Using the put_flag_follower_with_http_info variant
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> put_flag_followers_with_http_info(project_key, feature_flag_key, environment_key, member_id)
+> <Array(nil, Integer, Hash)> put_flag_follower_with_http_info(project_key, feature_flag_key, environment_key, member_id)
 
 ```ruby
 begin
   # Add a member as a follower of a flag in a project and environment
-  data, status_code, headers = api_instance.put_flag_followers_with_http_info(project_key, feature_flag_key, environment_key, member_id)
+  data, status_code, headers = api_instance.put_flag_follower_with_http_info(project_key, feature_flag_key, environment_key, member_id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling FollowFlagsApi->put_flag_followers_with_http_info: #{e}"
+  puts "Error when calling FollowFlagsApi->put_flag_follower_with_http_info: #{e}"
 end
 ```
 

@@ -239,7 +239,7 @@ end
 
 List metric groups
 
-Get a list of all metric groups for the specified project.  ### Expanding the metric groups response LaunchDarkly supports one field for expanding the \"Get metric groups\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with the following field:  - `experiments` includes all experiments from the specific project that use the metric group  For example, `expand=experiments` includes the `experiments` field in the response. 
+Get a list of all metric groups for the specified project.  ### Expanding the metric groups response LaunchDarkly supports one field for expanding the \"Get metric groups\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with the following field:  - `experiments` includes all experiments from the specific project that use the metric group  For example, `expand=experiments` includes the `experiments` field in the response.  ### Filtering metric groups  The `filter` parameter supports the `equals` operator on the following fields: `experimentStatus`, `query`.  The `experimentStatus` field supports the following values: `not_started`, `running`, `stopped`, and `started`. The `query` field is a search query that is compared against the metric group name and key.   #### Sample query  `filter=experimentStatus equals 'not_started' and query equals 'metric name'` 
 
 ### Examples
 
@@ -257,7 +257,10 @@ end
 api_instance = LaunchDarklyApi::MetricsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 opts = {
-  expand: 'expand_example' # String | A comma-separated list of properties that can reveal additional information in the response.
+  filter: 'filter_example', # String | Accepts filter by `experimentStatus` and `query`. Example: `filter=experimentStatus equals 'running' and query equals 'test'`.
+  expand: 'expand_example', # String | A comma-separated list of properties that can reveal additional information in the response.
+  limit: 789, # Integer | The number of metric groups to return in the response. Defaults to 20. Maximum limit is 50.
+  offset: 789 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next `limit` items.
 }
 
 begin
@@ -292,7 +295,10 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
+| **filter** | **String** | Accepts filter by &#x60;experimentStatus&#x60; and &#x60;query&#x60;. Example: &#x60;filter&#x3D;experimentStatus equals &#39;running&#39; and query equals &#39;test&#39;&#x60;. | [optional] |
 | **expand** | **String** | A comma-separated list of properties that can reveal additional information in the response. | [optional] |
+| **limit** | **Integer** | The number of metric groups to return in the response. Defaults to 20. Maximum limit is 50. | [optional] |
+| **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. | [optional] |
 
 ### Return type
 
@@ -332,7 +338,7 @@ end
 api_instance = LaunchDarklyApi::MetricsBetaApi.new
 project_key = 'project_key_example' # String | The project key
 metric_group_key = 'metric_group_key_example' # String | The metric group key
-patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField'})] # Array<PatchOperation> | 
 
 begin
   # Patch metric group

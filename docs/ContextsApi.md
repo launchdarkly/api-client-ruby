@@ -181,7 +181,7 @@ end
 
 Get context attribute names
 
-Get context attribute names. Returns only the first 100 attribute names per context.
+Get context attribute names.
 
 ### Examples
 
@@ -200,7 +200,8 @@ api_instance = LaunchDarklyApi::ContextsApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 opts = {
-  filter: 'filter_example' # String | A comma-separated list of context filters. This endpoint only accepts `kind` filters, with the `equals` operator, and `name` filters, with the `startsWith` operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances).
+  filter: 'filter_example', # String | A comma-separated list of context filters. This endpoint only accepts `kind` filters, with the `equals` operator, and `name` filters, with the `startsWith` operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances).
+  limit: 789 # Integer | Specifies the maximum number of items in the collection to return (max: 100, default: 100)
 }
 
 begin
@@ -237,6 +238,7 @@ end
 | **project_key** | **String** | The project key |  |
 | **environment_key** | **String** | The environment key |  |
 | **filter** | **String** | A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;name&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances). | [optional] |
+| **limit** | **Integer** | Specifies the maximum number of items in the collection to return (max: 100, default: 100) | [optional] |
 
 ### Return type
 
@@ -278,7 +280,8 @@ project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 attribute_name = 'attribute_name_example' # String | The attribute name
 opts = {
-  filter: 'filter_example' # String | A comma-separated list of context filters. This endpoint only accepts `kind` filters, with the `equals` operator, and `value` filters, with the `startsWith` operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances).
+  filter: 'filter_example', # String | A comma-separated list of context filters. This endpoint only accepts `kind` filters, with the `equals` operator, and `value` filters, with the `startsWith` operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances).
+  limit: 789 # Integer | Specifies the maximum number of items in the collection to return (max: 100, default: 50)
 }
 
 begin
@@ -316,6 +319,7 @@ end
 | **environment_key** | **String** | The environment key |  |
 | **attribute_name** | **String** | The attribute name |  |
 | **filter** | **String** | A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;value&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances). | [optional] |
+| **limit** | **Integer** | Specifies the maximum number of items in the collection to return (max: 100, default: 50) | [optional] |
 
 ### Return type
 

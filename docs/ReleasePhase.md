@@ -11,6 +11,10 @@
 | **_completion_date** | **Integer** |  | [optional] |
 | **_completed_by** | [**CompletedBy**](CompletedBy.md) |  | [optional] |
 | **_audiences** | [**Array&lt;ReleaseAudience&gt;**](ReleaseAudience.md) | A logical grouping of one or more environments that share attributes for rolling out changes |  |
+| **status** | **String** |  | [optional] |
+| **started** | **Boolean** | Whether or not this phase has started | [optional] |
+| **_started_date** | **Integer** |  | [optional] |
+| **configuration** | [**PhaseConfiguration**](PhaseConfiguration.md) |  | [optional] |
 
 ## Example
 
@@ -24,7 +28,11 @@ instance = LaunchDarklyApi::ReleasePhase.new(
   _creation_date: null,
   _completion_date: null,
   _completed_by: null,
-  _audiences: null
+  _audiences: null,
+  status: null,
+  started: null,
+  _started_date: null,
+  configuration: null
 )
 ```
 

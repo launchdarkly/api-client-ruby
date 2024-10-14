@@ -6,6 +6,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | ------ | ------------ | ----------- |
 | [**delete_release_pipeline**](ReleasePipelinesBetaApi.md#delete_release_pipeline) | **DELETE** /api/v2/projects/{projectKey}/release-pipelines/{pipelineKey} | Delete release pipeline |
 | [**get_all_release_pipelines**](ReleasePipelinesBetaApi.md#get_all_release_pipelines) | **GET** /api/v2/projects/{projectKey}/release-pipelines | Get all release pipelines |
+| [**get_all_release_progressions_for_release_pipeline**](ReleasePipelinesBetaApi.md#get_all_release_progressions_for_release_pipeline) | **GET** /api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}/releases | Get release progressions for release pipeline |
 | [**get_release_pipeline_by_key**](ReleasePipelinesBetaApi.md#get_release_pipeline_by_key) | **GET** /api/v2/projects/{projectKey}/release-pipelines/{pipelineKey} | Get release pipeline by key |
 | [**patch_release_pipeline**](ReleasePipelinesBetaApi.md#patch_release_pipeline) | **PATCH** /api/v2/projects/{projectKey}/release-pipelines/{pipelineKey} | Update a release pipeline |
 | [**post_release_pipeline**](ReleasePipelinesBetaApi.md#post_release_pipeline) | **POST** /api/v2/projects/{projectKey}/release-pipelines | Create a release pipeline |
@@ -89,7 +90,7 @@ nil (empty response body)
 
 Get all release pipelines
 
-Get all release pipelines for a project.  ### Filtering release pipelines  LaunchDarkly supports the following fields for filters:  - `query` is a string that matches against the release pipeline `key`, `name`, and `description`. It is not case sensitive. For example: `?filter=query:examplePipeline`. 
+Get all release pipelines for a project.  ### Filtering release pipelines  LaunchDarkly supports the following fields for filters:  - `query` is a string that matches against the release pipeline `key`, `name`, and `description`. It is not case sensitive. For example: `?filter=query:examplePipeline`.  - `env` is a string that matches an environment key. For example: `?filter=env:production`. 
 
 ### Examples
 
@@ -151,6 +152,87 @@ end
 ### Return type
 
 [**ReleasePipelineCollection**](ReleasePipelineCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_all_release_progressions_for_release_pipeline
+
+> <ReleaseProgressionCollection> get_all_release_progressions_for_release_pipeline(project_key, pipeline_key, opts)
+
+Get release progressions for release pipeline
+
+Get details on the progression of all releases, across all flags, for a release pipeline
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::ReleasePipelinesBetaApi.new
+project_key = 'project_key_example' # String | The project key
+pipeline_key = 'pipeline_key_example' # String | The pipeline key
+opts = {
+  filter: 'filter_example', # String | Accepts filter by `status` and `activePhaseId`. `status` can take a value of `completed` or `active`. `activePhaseId` takes a UUID and will filter results down to releases active on the specified phase. Providing `status equals completed` along with an `activePhaseId` filter will return an error as they are disjoint sets of data. The combination of `status equals active` and `activePhaseId` will return the same results as `activePhaseId` alone.
+  limit: 789, # Integer | The maximum number of items to return. Defaults to 20.
+  offset: 789 # Integer | Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+}
+
+begin
+  # Get release progressions for release pipeline
+  result = api_instance.get_all_release_progressions_for_release_pipeline(project_key, pipeline_key, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ReleasePipelinesBetaApi->get_all_release_progressions_for_release_pipeline: #{e}"
+end
+```
+
+#### Using the get_all_release_progressions_for_release_pipeline_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ReleaseProgressionCollection>, Integer, Hash)> get_all_release_progressions_for_release_pipeline_with_http_info(project_key, pipeline_key, opts)
+
+```ruby
+begin
+  # Get release progressions for release pipeline
+  data, status_code, headers = api_instance.get_all_release_progressions_for_release_pipeline_with_http_info(project_key, pipeline_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ReleaseProgressionCollection>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling ReleasePipelinesBetaApi->get_all_release_progressions_for_release_pipeline_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **pipeline_key** | **String** | The pipeline key |  |
+| **filter** | **String** | Accepts filter by &#x60;status&#x60; and &#x60;activePhaseId&#x60;. &#x60;status&#x60; can take a value of &#x60;completed&#x60; or &#x60;active&#x60;. &#x60;activePhaseId&#x60; takes a UUID and will filter results down to releases active on the specified phase. Providing &#x60;status equals completed&#x60; along with an &#x60;activePhaseId&#x60; filter will return an error as they are disjoint sets of data. The combination of &#x60;status equals active&#x60; and &#x60;activePhaseId&#x60; will return the same results as &#x60;activePhaseId&#x60; alone. | [optional] |
+| **limit** | **Integer** | The maximum number of items to return. Defaults to 20. | [optional] |
+| **offset** | **Integer** | Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
+
+### Return type
+
+[**ReleaseProgressionCollection**](ReleaseProgressionCollection.md)
 
 ### Authorization
 

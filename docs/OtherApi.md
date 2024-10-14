@@ -4,10 +4,79 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**get_caller_identity**](OtherApi.md#get_caller_identity) | **GET** /api/v2/caller-identity | Identify the caller |
 | [**get_ips**](OtherApi.md#get_ips) | **GET** /api/v2/public-ip-list | Gets the public IP list |
 | [**get_openapi_spec**](OtherApi.md#get_openapi_spec) | **GET** /api/v2/openapi.json | Gets the OpenAPI spec in json |
 | [**get_root**](OtherApi.md#get_root) | **GET** /api/v2 | Root resource |
 | [**get_versions**](OtherApi.md#get_versions) | **GET** /api/v2/versions | Get version information |
+
+
+## get_caller_identity
+
+> <CallerIdentityRep> get_caller_identity
+
+Identify the caller
+
+Get basic information about the identity used (session cookie, API token, SDK keys, etc.) to call the API
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::OtherApi.new
+
+begin
+  # Identify the caller
+  result = api_instance.get_caller_identity
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling OtherApi->get_caller_identity: #{e}"
+end
+```
+
+#### Using the get_caller_identity_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CallerIdentityRep>, Integer, Hash)> get_caller_identity_with_http_info
+
+```ruby
+begin
+  # Identify the caller
+  data, status_code, headers = api_instance.get_caller_identity_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CallerIdentityRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling OtherApi->get_caller_identity_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**CallerIdentityRep**](CallerIdentityRep.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## get_ips

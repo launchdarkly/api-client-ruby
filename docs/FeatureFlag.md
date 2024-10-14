@@ -25,7 +25,7 @@
 | **custom_properties** | [**Hash&lt;String, CustomProperty&gt;**](CustomProperty.md) |  |  |
 | **archived** | **Boolean** | Boolean indicating if the feature flag is archived |  |
 | **archived_date** | **Integer** |  | [optional] |
-| **deprecated** | **Boolean** | Boolean indicating if the feature flag is deprecated |  |
+| **deprecated** | **Boolean** | Boolean indicating if the feature flag is deprecated | [optional] |
 | **deprecated_date** | **Integer** |  | [optional] |
 | **defaults** | [**Defaults**](Defaults.md) |  | [optional] |
 | **_purpose** | **String** |  | [optional] |

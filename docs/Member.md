@@ -23,6 +23,8 @@
 | **permission_grants** | [**Array&lt;MemberPermissionGrantSummaryRep&gt;**](MemberPermissionGrantSummaryRep.md) | A list of permission grants. Permission grants allow a member to have access to a specific action, without having to create or update a custom role. | [optional] |
 | **creation_date** | **Integer** |  |  |
 | **oauth_providers** | **Array&lt;String&gt;** | A list of OAuth providers | [optional] |
+| **version** | **Integer** | Version of the current configuration | [optional] |
+| **role_attributes** | **Hash&lt;String, Array&gt;** |  | [optional] |
 
 ## Example
 
@@ -48,7 +50,9 @@ instance = LaunchDarklyApi::Member.new(
   teams: null,
   permission_grants: null,
   creation_date: null,
-  oauth_providers: null
+  oauth_providers: null,
+  version: 1,
+  role_attributes: null
 )
 ```
 

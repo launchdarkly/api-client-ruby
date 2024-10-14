@@ -710,7 +710,7 @@ end
 
 api_instance = LaunchDarklyApi::CodeReferencesApi.new
 repo = 'repo_example' # String | The repository name
-patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField'})] # Array<PatchOperation> | 
 
 begin
   # Update repository

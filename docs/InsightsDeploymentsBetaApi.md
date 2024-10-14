@@ -271,7 +271,7 @@ end
 
 api_instance = LaunchDarklyApi::InsightsDeploymentsBetaApi.new
 deployment_id = 'deployment_id_example' # String | The deployment ID
-patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField', value: new example value})] # Array<PatchOperation> | 
+patch_operation = [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField'})] # Array<PatchOperation> | 
 
 begin
   # Update deployment

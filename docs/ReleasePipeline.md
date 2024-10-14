@@ -12,6 +12,8 @@
 | **tags** | **Array&lt;String&gt;** | A list of the release pipeline&#39;s tags | [optional] |
 | **_version** | **Integer** | The release pipeline version | [optional] |
 | **_access** | [**Access**](Access.md) |  | [optional] |
+| **is_project_default** | **Boolean** | Whether this release pipeline is the default pipeline for the project | [optional] |
+| **_is_legacy** | **Boolean** | Whether this release pipeline is a legacy pipeline | [optional] |
 
 ## Example
 
@@ -26,7 +28,9 @@ instance = LaunchDarklyApi::ReleasePipeline.new(
   phases: null,
   tags: [&quot;example-tag&quot;],
   _version: 1,
-  _access: null
+  _access: null,
+  is_project_default: null,
+  _is_legacy: true
 )
 ```
 

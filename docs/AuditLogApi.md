@@ -6,6 +6,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | ------ | ------------ | ----------- |
 | [**get_audit_log_entries**](AuditLogApi.md#get_audit_log_entries) | **GET** /api/v2/auditlog | List audit log entries |
 | [**get_audit_log_entry**](AuditLogApi.md#get_audit_log_entry) | **GET** /api/v2/auditlog/{id} | Get audit log entry |
+| [**post_audit_log_entries**](AuditLogApi.md#post_audit_log_entries) | **POST** /api/v2/auditlog | Search audit log entries |
 
 
 ## get_audit_log_entries
@@ -157,5 +158,86 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## post_audit_log_entries
+
+> <AuditLogEntryListingRepCollection> post_audit_log_entries(opts)
+
+Search audit log entries
+
+Search your audit log entries. The query parameters let you restrict the results that return by date ranges, or a full-text search query. The request body lets you restrict the results that return by resource specifiers.  LaunchDarkly uses a resource specifier syntax to name resources or collections of resources. To learn more, read [About the resource specifier syntax](https://docs.launchdarkly.com/home/account/role-resources#about-the-resource-specifier-syntax). 
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AuditLogApi.new
+opts = {
+  before: 789, # Integer | A timestamp filter, expressed as a Unix epoch time in milliseconds.  All entries returned occurred before the timestamp.
+  after: 789, # Integer | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned occurred after the timestamp.
+  q: 'q_example', # String | Text to search for. You can search for the full or partial name of the resource.
+  limit: 789, # Integer | A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10.
+  statement_post: [LaunchDarklyApi::StatementPost.new({effect: 'allow'})] # Array<StatementPost> | 
+}
+
+begin
+  # Search audit log entries
+  result = api_instance.post_audit_log_entries(opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AuditLogApi->post_audit_log_entries: #{e}"
+end
+```
+
+#### Using the post_audit_log_entries_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AuditLogEntryListingRepCollection>, Integer, Hash)> post_audit_log_entries_with_http_info(opts)
+
+```ruby
+begin
+  # Search audit log entries
+  data, status_code, headers = api_instance.post_audit_log_entries_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AuditLogEntryListingRepCollection>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AuditLogApi->post_audit_log_entries_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **before** | **Integer** | A timestamp filter, expressed as a Unix epoch time in milliseconds.  All entries returned occurred before the timestamp. | [optional] |
+| **after** | **Integer** | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned occurred after the timestamp. | [optional] |
+| **q** | **String** | Text to search for. You can search for the full or partial name of the resource. | [optional] |
+| **limit** | **Integer** | A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10. | [optional] |
+| **statement_post** | [**Array&lt;StatementPost&gt;**](StatementPost.md) |  | [optional] |
+
+### Return type
+
+[**AuditLogEntryListingRepCollection**](AuditLogEntryListingRepCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

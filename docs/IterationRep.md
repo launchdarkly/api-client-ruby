@@ -18,9 +18,11 @@
 | **primary_single_metric** | [**MetricV2Rep**](MetricV2Rep.md) |  | [optional] |
 | **primary_funnel** | [**DependentMetricGroupRepWithMetrics**](DependentMetricGroupRepWithMetrics.md) |  | [optional] |
 | **randomization_unit** | **String** | The unit of randomization for this iteration | [optional] |
+| **attributes** | **Array&lt;String&gt;** | The available attribute filters for this iteration | [optional] |
 | **treatments** | [**Array&lt;TreatmentRep&gt;**](TreatmentRep.md) | Details on the variations you are testing in the experiment | [optional] |
 | **secondary_metrics** | [**Array&lt;MetricV2Rep&gt;**](MetricV2Rep.md) | Deprecated, use &lt;code&gt;metrics&lt;/code&gt; instead. Details on the secondary metrics for this experiment. | [optional] |
 | **metrics** | [**Array&lt;DependentMetricOrMetricGroupRep&gt;**](DependentMetricOrMetricGroupRep.md) | Details on the metrics for this experiment | [optional] |
+| **layer_snapshot** | [**LayerSnapshotRep**](LayerSnapshotRep.md) |  | [optional] |
 
 ## Example
 
@@ -42,9 +44,11 @@ instance = LaunchDarklyApi::IterationRep.new(
   primary_single_metric: null,
   primary_funnel: null,
   randomization_unit: user,
+  attributes: null,
   treatments: null,
   secondary_metrics: null,
-  metrics: null
+  metrics: null,
+  layer_snapshot: null
 )
 ```
 

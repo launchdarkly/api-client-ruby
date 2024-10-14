@@ -42,7 +42,9 @@ end
 api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
 opts = {
   from: 'from_example', # String | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
-  to: 'to_example' # String | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+  to: 'to_example', # String | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+  project_key: 'project_key_example', # String | A project key. If specified, `environmentKey` is required and results apply to the corresponding environment in this project.
+  environment_key: 'environment_key_example' # String | An environment key. If specified, `projectKey` is required and results apply to the corresponding environment in this project.
 }
 
 begin
@@ -78,6 +80,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **from** | **String** | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional] |
 | **to** | **String** | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional] |
+| **project_key** | **String** | A project key. If specified, &#x60;environmentKey&#x60; is required and results apply to the corresponding environment in this project. | [optional] |
+| **environment_key** | **String** | An environment key. If specified, &#x60;projectKey&#x60; is required and results apply to the corresponding environment in this project. | [optional] |
 
 ### Return type
 
@@ -277,7 +281,9 @@ end
 api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
 opts = {
   from: 'from_example', # String | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
-  to: 'to_example' # String | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+  to: 'to_example', # String | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+  project_key: 'project_key_example', # String | A project key. If specified, `environmentKey` is required and results apply to the corresponding environment in this project.
+  environment_key: 'environment_key_example' # String | An environment key. If specified, `projectKey` is required and results apply to the corresponding environment in this project.
 }
 
 begin
@@ -313,6 +319,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **from** | **String** | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional] |
 | **to** | **String** | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional] |
+| **project_key** | **String** | A project key. If specified, &#x60;environmentKey&#x60; is required and results apply to the corresponding environment in this project. | [optional] |
+| **environment_key** | **String** | An environment key. If specified, &#x60;projectKey&#x60; is required and results apply to the corresponding environment in this project. | [optional] |
 
 ### Return type
 
@@ -352,7 +360,9 @@ end
 api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
 opts = {
   from: 'from_example', # String | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
-  to: 'to_example' # String | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+  to: 'to_example', # String | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+  project_key: 'project_key_example', # String | A project key. If specified, `environmentKey` is required and results apply to the corresponding environment in this project.
+  environment_key: 'environment_key_example' # String | An environment key. If specified, `projectKey` is required and results apply to the corresponding environment in this project.
 }
 
 begin
@@ -388,6 +398,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **from** | **String** | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional] |
 | **to** | **String** | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional] |
+| **project_key** | **String** | A project key. If specified, &#x60;environmentKey&#x60; is required and results apply to the corresponding environment in this project. | [optional] |
+| **environment_key** | **String** | An environment key. If specified, &#x60;projectKey&#x60; is required and results apply to the corresponding environment in this project. | [optional] |
 
 ### Return type
 
@@ -666,7 +678,9 @@ end
 api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
 opts = {
   from: 'from_example', # String | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
-  to: 'to_example' # String | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+  to: 'to_example', # String | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+  project_key: 'project_key_example', # String | A project key. If specified, `environmentKey` is required and results apply to the corresponding environment in this project.
+  environment_key: 'environment_key_example' # String | An environment key. If specified, `projectKey` is required and results apply to the corresponding environment in this project.
 }
 
 begin
@@ -702,6 +716,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **from** | **String** | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional] |
 | **to** | **String** | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional] |
+| **project_key** | **String** | A project key. If specified, &#x60;environmentKey&#x60; is required and results apply to the corresponding environment in this project. | [optional] |
+| **environment_key** | **String** | An environment key. If specified, &#x60;projectKey&#x60; is required and results apply to the corresponding environment in this project. | [optional] |
 
 ### Return type
 
