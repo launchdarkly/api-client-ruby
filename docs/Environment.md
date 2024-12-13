@@ -18,6 +18,7 @@
 | **confirm_changes** | **Boolean** | Whether members who modify flags and segments through the LaunchDarkly user interface are required to confirm those changes |  |
 | **tags** | **Array&lt;String&gt;** | A list of tags for this environment |  |
 | **approval_settings** | [**ApprovalSettings**](ApprovalSettings.md) |  | [optional] |
+| **resource_approval_settings** | [**Hash&lt;String, ApprovalSettings&gt;**](ApprovalSettings.md) | Details on the approval settings for this environment for each resource kind | [optional] |
 | **critical** | **Boolean** | Whether the environment is critical |  |
 
 ## Example
@@ -40,6 +41,7 @@ instance = LaunchDarklyApi::Environment.new(
   confirm_changes: true,
   tags: [&quot;ops&quot;],
   approval_settings: null,
+  resource_approval_settings: null,
   critical: true
 )
 ```

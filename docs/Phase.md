@@ -7,7 +7,7 @@
 | **id** | **String** | The phase ID |  |
 | **audiences** | [**Array&lt;Audience&gt;**](Audience.md) |  |  |
 | **name** | **String** | The release phase name |  |
-| **configuration** | [**PhaseConfiguration**](PhaseConfiguration.md) |  | [optional] |
+| **configuration** | **Object** |  | [optional] |
 
 ## Example
 

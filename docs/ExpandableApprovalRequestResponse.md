@@ -30,6 +30,7 @@
 | **project** | [**Project**](Project.md) |  | [optional] |
 | **environments** | [**Array&lt;Environment&gt;**](Environment.md) | List of environments the approval impacts | [optional] |
 | **flag** | [**ExpandedFlagRep**](ExpandedFlagRep.md) |  | [optional] |
+| **resource** | [**ExpandedResourceRep**](ExpandedResourceRep.md) |  | [optional] |
 
 ## Example
 
@@ -62,7 +63,8 @@ instance = LaunchDarklyApi::ExpandableApprovalRequestResponse.new(
   approval_settings: null,
   project: null,
   environments: null,
-  flag: null
+  flag: null,
+  resource: null
 )
 ```
 

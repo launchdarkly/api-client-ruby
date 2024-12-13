@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **_id** | **String** | The audience ID |  |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources | [optional] |
-| **environment** | [**EnvironmentSummary**](EnvironmentSummary.md) |  |  |
+| **environment** | [**EnvironmentSummary**](EnvironmentSummary.md) |  | [optional] |
 | **name** | **String** | The release phase name |  |
 | **configuration** | [**AudienceConfiguration**](AudienceConfiguration.md) |  | [optional] |
 | **segment_keys** | **Array&lt;String&gt;** | A list of segment keys | [optional] |

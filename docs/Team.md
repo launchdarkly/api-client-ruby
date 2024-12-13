@@ -13,6 +13,7 @@
 | **_last_modified** | **Integer** |  | [optional] |
 | **_version** | **Integer** | The team version | [optional] |
 | **_idp_synced** | **Boolean** | Whether the team has been synced with an external identity provider (IdP). Team sync is available to customers on an Enterprise plan. | [optional] |
+| **role_attributes** | **Hash&lt;String, Array&gt;** |  | [optional] |
 | **roles** | [**TeamCustomRoles**](TeamCustomRoles.md) |  | [optional] |
 | **members** | [**TeamMembers**](TeamMembers.md) |  | [optional] |
 | **projects** | [**TeamProjects**](TeamProjects.md) |  | [optional] |
@@ -33,6 +34,7 @@ instance = LaunchDarklyApi::Team.new(
   _last_modified: null,
   _version: 3,
   _idp_synced: true,
+  role_attributes: null,
   roles: null,
   members: null,
   projects: null,

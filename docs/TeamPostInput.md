@@ -10,6 +10,7 @@
 | **member_ids** | **Array&lt;String&gt;** | A list of member IDs who belong to the team | [optional] |
 | **name** | **String** | A human-friendly name for the team |  |
 | **permission_grants** | [**Array&lt;PermissionGrantInput&gt;**](PermissionGrantInput.md) | A list of permission grants. Permission grants allow access to a specific action, without having to create or update a custom role. | [optional] |
+| **role_attributes** | **Hash&lt;String, Array&gt;** |  | [optional] |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = LaunchDarklyApi::TeamPostInput.new(
   key: team-key-123abc,
   member_ids: [&quot;12ab3c45de678910fgh12345&quot;],
   name: Example team,
-  permission_grants: null
+  permission_grants: null,
+  role_attributes: null
 )
 ```
 

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;Team&gt;**](Team.md) | An array of teams | [optional] |
+| **items** | [**Array&lt;Team&gt;**](Team.md) | An array of teams |  |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources | [optional] |
 | **total_count** | **Integer** | The number of teams | [optional] |
 

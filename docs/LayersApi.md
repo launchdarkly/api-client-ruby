@@ -1,12 +1,12 @@
-# LaunchDarklyApi::LayersBetaApi
+# LaunchDarklyApi::LayersApi
 
 All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_layer**](LayersBetaApi.md#create_layer) | **POST** /api/v2/projects/{projectKey}/layers | Create layer |
-| [**get_layers**](LayersBetaApi.md#get_layers) | **GET** /api/v2/projects/{projectKey}/layers | Get layers |
-| [**update_layer**](LayersBetaApi.md#update_layer) | **PATCH** /api/v2/projects/{projectKey}/layers/{layerKey} | Update layer |
+| [**create_layer**](LayersApi.md#create_layer) | **POST** /api/v2/projects/{projectKey}/layers | Create layer |
+| [**get_layers**](LayersApi.md#get_layers) | **GET** /api/v2/projects/{projectKey}/layers | Get layers |
+| [**update_layer**](LayersApi.md#update_layer) | **PATCH** /api/v2/projects/{projectKey}/layers/{layerKey} | Update layer |
 
 
 ## create_layer
@@ -30,7 +30,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::LayersBetaApi.new
+api_instance = LaunchDarklyApi::LayersApi.new
 project_key = 'project_key_example' # String | The project key
 layer_post = LaunchDarklyApi::LayerPost.new({key: 'checkout-flow', name: 'Checkout Flow', description: 'description_example'}) # LayerPost | 
 
@@ -39,7 +39,7 @@ begin
   result = api_instance.create_layer(project_key, layer_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling LayersBetaApi->create_layer: #{e}"
+  puts "Error when calling LayersApi->create_layer: #{e}"
 end
 ```
 
@@ -57,7 +57,7 @@ begin
   p headers # => { ... }
   p data # => <LayerRep>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling LayersBetaApi->create_layer_with_http_info: #{e}"
+  puts "Error when calling LayersApi->create_layer_with_http_info: #{e}"
 end
 ```
 
@@ -103,7 +103,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::LayersBetaApi.new
+api_instance = LaunchDarklyApi::LayersApi.new
 project_key = 'project_key_example' # String | The project key
 opts = {
   filter: 'filter_example' # String | A comma-separated list of filters. This endpoint only accepts filtering by `experimentKey`. The filter returns layers which include that experiment for the selected environment(s). For example: `filter=reservations.experimentKey contains expKey`.
@@ -114,7 +114,7 @@ begin
   result = api_instance.get_layers(project_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling LayersBetaApi->get_layers: #{e}"
+  puts "Error when calling LayersApi->get_layers: #{e}"
 end
 ```
 
@@ -132,7 +132,7 @@ begin
   p headers # => { ... }
   p data # => <LayerCollectionRep>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling LayersBetaApi->get_layers_with_http_info: #{e}"
+  puts "Error when calling LayersApi->get_layers_with_http_info: #{e}"
 end
 ```
 
@@ -178,7 +178,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::LayersBetaApi.new
+api_instance = LaunchDarklyApi::LayersApi.new
 project_key = 'project_key_example' # String | The project key
 layer_key = 'layer_key_example' # String | The layer key
 layer_patch_input = LaunchDarklyApi::LayerPatchInput.new({instructions: [{ key: 3.56}]}) # LayerPatchInput | 
@@ -188,7 +188,7 @@ begin
   result = api_instance.update_layer(project_key, layer_key, layer_patch_input)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling LayersBetaApi->update_layer: #{e}"
+  puts "Error when calling LayersApi->update_layer: #{e}"
 end
 ```
 
@@ -206,7 +206,7 @@ begin
   p headers # => { ... }
   p data # => <LayerRep>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling LayersBetaApi->update_layer_with_http_info: #{e}"
+  puts "Error when calling LayersApi->update_layer_with_http_info: #{e}"
 end
 ```
 
