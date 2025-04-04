@@ -9,6 +9,7 @@
 | **description** | **String** | Description of custom role | [optional] |
 | **policy** | [**Array&lt;StatementPost&gt;**](StatementPost.md) |  |  |
 | **base_permissions** | **String** |  | [optional] |
+| **resource_category** | **String** |  | [optional] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = LaunchDarklyApi::CustomRolePost.new(
   key: role-key-123abc,
   description: An example role for members of the ops team,
   policy: null,
-  base_permissions: null
+  base_permissions: null,
+  resource_category: null
 )
 ```
 

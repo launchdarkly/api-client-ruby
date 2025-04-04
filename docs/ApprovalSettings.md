@@ -14,6 +14,7 @@
 | **service_config** | **Hash&lt;String, Object&gt;** |  |  |
 | **required_approval_tags** | **Array&lt;String&gt;** | Require approval only on flags with the provided tags. Otherwise all flags will require approval. |  |
 | **service_kind_configuration_id** | **String** | Optional field for integration configuration ID of a custom approval integration. This is an Enterprise-only feature. | [optional] |
+| **resource_kind** | **String** | The kind of resource for which the approval settings apply, for example, flag or segment | [optional] |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = LaunchDarklyApi::ApprovalSettings.new(
   service_kind: launchdarkly,
   service_config: {},
   required_approval_tags: [&quot;require-approval&quot;],
-  service_kind_configuration_id: 1ef45a85-218f-4428-a8b2-a97e5f56c258
+  service_kind_configuration_id: 1ef45a85-218f-4428-a8b2-a97e5f56c258,
+  resource_kind: null
 )
 ```
 

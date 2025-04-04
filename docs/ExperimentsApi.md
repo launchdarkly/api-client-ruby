@@ -7,11 +7,10 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**create_experiment**](ExperimentsApi.md#create_experiment) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Create experiment |
 | [**create_iteration**](ExperimentsApi.md#create_iteration) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations | Create iteration |
 | [**get_experiment**](ExperimentsApi.md#get_experiment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Get experiment |
-| [**get_experiment_results**](ExperimentsApi.md#get_experiment_results) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results | Get experiment results |
-| [**get_experiment_results_for_metric_group**](ExperimentsApi.md#get_experiment_results_for_metric_group) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metric-groups/{metricGroupKey}/results | Get experiment results for metric group |
+| [**get_experiment_results**](ExperimentsApi.md#get_experiment_results) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results | Get experiment results (Deprecated) |
+| [**get_experiment_results_for_metric_group**](ExperimentsApi.md#get_experiment_results_for_metric_group) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metric-groups/{metricGroupKey}/results | Get experiment results for metric group (Deprecated) |
 | [**get_experimentation_settings**](ExperimentsApi.md#get_experimentation_settings) | **GET** /api/v2/projects/{projectKey}/experimentation-settings | Get experimentation settings |
 | [**get_experiments**](ExperimentsApi.md#get_experiments) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Get experiments |
-| [**get_legacy_experiment_results**](ExperimentsApi.md#get_legacy_experiment_results) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get legacy experiment results (deprecated) |
 | [**patch_experiment**](ExperimentsApi.md#patch_experiment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Patch experiment |
 | [**put_experimentation_settings**](ExperimentsApi.md#put_experimentation_settings) | **PUT** /api/v2/projects/{projectKey}/experimentation-settings | Update experimentation settings |
 
@@ -22,7 +21,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Create experiment
 
-Create an experiment.  To run this experiment, you'll need to [create an iteration](/tag/Experiments-(beta)#operation/createIteration) and then [update the experiment](/tag/Experiments-(beta)#operation/patchExperiment) with the `startIteration` instruction.  To learn more, read [Creating experiments](https://docs.launchdarkly.com/home/experimentation/create). 
+Create an experiment.  To run this experiment, you'll need to [create an iteration](https://launchdarkly.com/docs/ld-docs/api/experiments/create-iteration) and then [update the experiment](https://launchdarkly.com/docs/ld-docs/api/experiments/patch-experiment) with the `startIteration` instruction.  To learn more, read [Creating experiments](https://launchdarkly.com/docs/home/experimentation/create). 
 
 ### Examples
 
@@ -97,7 +96,7 @@ end
 
 Create iteration
 
-Create an experiment iteration.  Experiment iterations let you record experiments in individual blocks of time. Initially, iterations are created with a status of `not_started` and appear in the `draftIteration` field of an experiment. To start or stop an iteration, [update the experiment](/tag/Experiments-(beta)#operation/patchExperiment) with the `startIteration` or `stopIteration` instruction.   To learn more, read [Start experiment iterations](https://docs.launchdarkly.com/home/experimentation/feature#start-experiment-iterations). 
+Create an experiment iteration.  Experiment iterations let you record experiments in individual blocks of time. Initially, iterations are created with a status of `not_started` and appear in the `draftIteration` field of an experiment. To start or stop an iteration, [update the experiment](https://launchdarkly.com/docs/ld-docs/api/experiments/patch-experiment) with the `startIteration` or `stopIteration` instruction.   To learn more, read [Start experiment iterations](https://launchdarkly.com/docs/home/experimentation/feature#start-experiment-iterations). 
 
 ### Examples
 
@@ -251,7 +250,7 @@ end
 
 > <ExperimentBayesianResultsRep> get_experiment_results(project_key, environment_key, experiment_key, metric_key, opts)
 
-Get experiment results
+Get experiment results (Deprecated)
 
 Get results from an experiment for a particular metric.  LaunchDarkly supports one field for expanding the \"Get experiment results\" response. By default, this field is **not** included in the response.  To expand the response, append the `expand` query parameter with the following field: * `traffic` includes the total count of units for each treatment.  For example, `expand=traffic` includes the `traffic` field for the project in the response. 
 
@@ -279,7 +278,7 @@ opts = {
 }
 
 begin
-  # Get experiment results
+  # Get experiment results (Deprecated)
   result = api_instance.get_experiment_results(project_key, environment_key, experiment_key, metric_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
@@ -295,7 +294,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get experiment results
+  # Get experiment results (Deprecated)
   data, status_code, headers = api_instance.get_experiment_results_with_http_info(project_key, environment_key, experiment_key, metric_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -334,7 +333,7 @@ end
 
 > <MetricGroupResultsRep> get_experiment_results_for_metric_group(project_key, environment_key, experiment_key, metric_group_key, opts)
 
-Get experiment results for metric group
+Get experiment results for metric group (Deprecated)
 
 Get results from an experiment for a particular metric group.
 
@@ -361,7 +360,7 @@ opts = {
 }
 
 begin
-  # Get experiment results for metric group
+  # Get experiment results for metric group (Deprecated)
   result = api_instance.get_experiment_results_for_metric_group(project_key, environment_key, experiment_key, metric_group_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
@@ -377,7 +376,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get experiment results for metric group
+  # Get experiment results for metric group (Deprecated)
   data, status_code, headers = api_instance.get_experiment_results_for_metric_group_with_http_info(project_key, environment_key, experiment_key, metric_group_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -567,96 +566,13 @@ end
 - **Accept**: application/json
 
 
-## get_legacy_experiment_results
-
-> <ExperimentResults> get_legacy_experiment_results(project_key, feature_flag_key, environment_key, metric_key, opts)
-
-Get legacy experiment results (deprecated)
-
-Get detailed experiment result data for legacy experiments.
-
-### Examples
-
-```ruby
-require 'time'
-require 'launchdarkly_api'
-# setup authorization
-LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
-end
-
-api_instance = LaunchDarklyApi::ExperimentsApi.new
-project_key = 'project_key_example' # String | The project key
-feature_flag_key = 'feature_flag_key_example' # String | The feature flag key
-environment_key = 'environment_key_example' # String | The environment key
-metric_key = 'metric_key_example' # String | The metric key
-opts = {
-  from: 789, # Integer | A timestamp denoting the start of the data collection period, expressed as a Unix epoch time in milliseconds.
-  to: 789 # Integer | A timestamp denoting the end of the data collection period, expressed as a Unix epoch time in milliseconds.
-}
-
-begin
-  # Get legacy experiment results (deprecated)
-  result = api_instance.get_legacy_experiment_results(project_key, feature_flag_key, environment_key, metric_key, opts)
-  p result
-rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsApi->get_legacy_experiment_results: #{e}"
-end
-```
-
-#### Using the get_legacy_experiment_results_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ExperimentResults>, Integer, Hash)> get_legacy_experiment_results_with_http_info(project_key, feature_flag_key, environment_key, metric_key, opts)
-
-```ruby
-begin
-  # Get legacy experiment results (deprecated)
-  data, status_code, headers = api_instance.get_legacy_experiment_results_with_http_info(project_key, feature_flag_key, environment_key, metric_key, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ExperimentResults>
-rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling ExperimentsApi->get_legacy_experiment_results_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **project_key** | **String** | The project key |  |
-| **feature_flag_key** | **String** | The feature flag key |  |
-| **environment_key** | **String** | The environment key |  |
-| **metric_key** | **String** | The metric key |  |
-| **from** | **Integer** | A timestamp denoting the start of the data collection period, expressed as a Unix epoch time in milliseconds. | [optional] |
-| **to** | **Integer** | A timestamp denoting the end of the data collection period, expressed as a Unix epoch time in milliseconds. | [optional] |
-
-### Return type
-
-[**ExperimentResults**](ExperimentResults.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## patch_experiment
 
 > <Experiment> patch_experiment(project_key, environment_key, experiment_key, experiment_patch_input)
 
 Patch experiment
 
-Update an experiment. Updating an experiment uses the semantic patch format.  To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](/reference#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following `kind` instructions for updating experiments.  #### updateName  Updates the experiment name.  ##### Parameters  - `value`: The new name.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"updateName\",     \"value\": \"Example updated experiment name\"   }] } ```  #### updateDescription  Updates the experiment description.  ##### Parameters  - `value`: The new description.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"updateDescription\",     \"value\": \"Example updated description\"   }] } ```  #### startIteration  Starts a new iteration for this experiment. You must [create a new iteration](/tag/Experiments-(beta)#operation/createIteration) before calling this instruction.  An iteration may not be started until it meets the following criteria:  * Its associated flag is toggled on and is not archived * Its `randomizationUnit` is set * At least one of its `treatments` has a non-zero `allocationPercent`  ##### Parameters  - `changeJustification`: The reason for starting a new iteration. Required when you call `startIteration` on an already running experiment, otherwise optional.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"startIteration\",     \"changeJustification\": \"It's time to start a new iteration\"   }] } ```  #### stopIteration  Stops the current iteration for this experiment.  ##### Parameters  - `winningTreatmentId`: The ID of the winning treatment. Treatment IDs are returned as part of the [Get experiment](/tag/Experiments-(beta)#operation/getExperiment) response. They are the `_id` of each element in the `treatments` array. - `winningReason`: The reason for the winner  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"stopIteration\",     \"winningTreatmentId\": \"3a548ec2-72ac-4e59-8518-5c24f5609ccf\",     \"winningReason\": \"Example reason to stop the iteration\"   }] } ```  #### archiveExperiment  Archives this experiment. Archived experiments are hidden by default in the LaunchDarkly user interface. You cannot start new iterations for archived experiments.  Here's an example:  ```json {   \"instructions\": [{ \"kind\": \"archiveExperiment\" }] } ```  #### restoreExperiment  Restores an archived experiment. After restoring an experiment, you can start new iterations for it again.  Here's an example:  ```json {   \"instructions\": [{ \"kind\": \"restoreExperiment\" }] } ``` 
+Update an experiment. Updating an experiment uses the semantic patch format.  To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](https://launchdarkly.com/docs/api#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following `kind` instructions for updating experiments.  #### updateName  Updates the experiment name.  ##### Parameters  - `value`: The new name.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"updateName\",     \"value\": \"Example updated experiment name\"   }] } ```  #### updateDescription  Updates the experiment description.  ##### Parameters  - `value`: The new description.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"updateDescription\",     \"value\": \"Example updated description\"   }] } ```  #### startIteration  Starts a new iteration for this experiment. You must [create a new iteration](https://launchdarkly.com/docs/ld-docs/api/experiments/create-iteration) before calling this instruction.  An iteration may not be started until it meets the following criteria:  * Its associated flag is toggled on and is not archived * Its `randomizationUnit` is set * At least one of its `treatments` has a non-zero `allocationPercent`  ##### Parameters  - `changeJustification`: The reason for starting a new iteration. Required when you call `startIteration` on an already running experiment, otherwise optional.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"startIteration\",     \"changeJustification\": \"It's time to start a new iteration\"   }] } ```  #### stopIteration  Stops the current iteration for this experiment.  ##### Parameters  - `winningTreatmentId`: The ID of the winning treatment. Treatment IDs are returned as part of the [Get experiment](https://launchdarkly.com/docs/ld-docs/api/experiments/get-experiment) response. They are the `_id` of each element in the `treatments` array. - `winningReason`: The reason for the winner  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"stopIteration\",     \"winningTreatmentId\": \"3a548ec2-72ac-4e59-8518-5c24f5609ccf\",     \"winningReason\": \"Example reason to stop the iteration\"   }] } ```  #### archiveExperiment  Archives this experiment. Archived experiments are hidden by default in the LaunchDarkly user interface. You cannot start new iterations for archived experiments.  Here's an example:  ```json {   \"instructions\": [{ \"kind\": \"archiveExperiment\" }] } ```  #### restoreExperiment  Restores an archived experiment. After restoring an experiment, you can start new iterations for it again.  Here's an example:  ```json {   \"instructions\": [{ \"kind\": \"restoreExperiment\" }] } ``` 
 
 ### Examples
 

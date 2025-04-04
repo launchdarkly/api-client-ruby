@@ -21,6 +21,7 @@
 | **maintainer_id** | **String** | The ID of the member who maintains this metric | [optional] |
 | **_maintainer** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
 | **description** | **String** | Description of the metric | [optional] |
+| **category** | **String** | The category of the metric | [optional] |
 | **is_numeric** | **Boolean** | For custom metrics, whether to track numeric changes in value against a baseline (&lt;code&gt;true&lt;/code&gt;) or to track a conversion when an end user takes an action (&lt;code&gt;false&lt;/code&gt;). | [optional] |
 | **success_criteria** | **String** | For custom metrics, the success criteria | [optional] |
 | **unit** | **String** | For numeric custom metrics, the unit of measure | [optional] |
@@ -61,10 +62,11 @@ instance = LaunchDarklyApi::MetricRep.new(
   maintainer_id: 569fdeadbeef1644facecafe,
   _maintainer: null,
   description: null,
+  category: Error monitoring,
   is_numeric: true,
   success_criteria: null,
   unit: null,
-  event_key: null,
+  event_key: Order placed,
   randomization_units: [&quot;user&quot;],
   unit_aggregation_type: average,
   analysis_type: mean,

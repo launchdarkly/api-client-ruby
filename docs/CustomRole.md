@@ -12,6 +12,10 @@
 | **name** | **String** | The name of the custom role |  |
 | **policy** | [**Array&lt;Statement&gt;**](Statement.md) | An array of the policies that comprise this custom role |  |
 | **base_permissions** | **String** |  | [optional] |
+| **resource_category** | **String** |  | [optional] |
+| **assigned_to** | [**AssignedToRep**](AssignedToRep.md) |  | [optional] |
+| **_preset_bundle_version** | **Integer** | If created from a preset, the preset bundle version | [optional] |
+| **_preset_statements** | [**Array&lt;Statement&gt;**](Statement.md) | If created from a preset, the read-only statements copied from the preset | [optional] |
 
 ## Example
 
@@ -26,7 +30,11 @@ instance = LaunchDarklyApi::CustomRole.new(
   key: example-custom-role,
   name: Example custom role,
   policy: null,
-  base_permissions: null
+  base_permissions: null,
+  resource_category: null,
+  assigned_to: null,
+  _preset_bundle_version: null,
+  _preset_statements: null
 )
 ```
 

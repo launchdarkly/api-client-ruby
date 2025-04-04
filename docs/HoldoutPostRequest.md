@@ -13,6 +13,7 @@
 | **primarymetrickey** | **String** | The key of the primary metric for this holdout | [optional] |
 | **metrics** | [**Array&lt;MetricInput&gt;**](MetricInput.md) | Details on the metrics for this experiment | [optional] |
 | **prerequisiteflagkey** | **String** | The key of the flag that the holdout is dependent on | [optional] |
+| **maintainer_id** | **String** | Maintainer id | [optional] |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = LaunchDarklyApi::HoldoutPostRequest.new(
   holdoutamount: 10,
   primarymetrickey: metric-key-123abc,
   metrics: null,
-  prerequisiteflagkey: flag-key-123abc
+  prerequisiteflagkey: flag-key-123abc,
+  maintainer_id: null
 )
 ```
 

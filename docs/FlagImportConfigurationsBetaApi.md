@@ -310,7 +310,7 @@ This endpoint does not need any parameter.
 
 Update a flag import configuration
 
-Updating a flag import configuration uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes. To learn more, read [Updates](/#section/Overview/Updates).<br/><br/>To add an element to the import configuration fields that are arrays, set the `path` to the name of the field and then append `/<array index>`. Use `/0` to add to the beginning of the array. Use `/-` to add to the end of the array.<br/><br/>You can update the `config`, `tags`, and `name` of the flag import configuration.
+Updating a flag import configuration uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes. To learn more, read [Updates](https://launchdarkly.com/docs/api#updates).<br/><br/>To add an element to the import configuration fields that are arrays, set the `path` to the name of the field and then append `/<array index>`. Use `/0` to add to the beginning of the array. Use `/-` to add to the end of the array.<br/><br/>You can update the `config`, `tags`, and `name` of the flag import configuration.
 
 ### Examples
 
@@ -383,7 +383,7 @@ end
 
 ## trigger_flag_import_job
 
-> Object trigger_flag_import_job(project_key, integration_key, integration_id)
+> trigger_flag_import_job(project_key, integration_key, integration_id)
 
 Trigger a single flag import run
 
@@ -409,8 +409,7 @@ integration_id = 'integration_id_example' # String | The integration ID
 
 begin
   # Trigger a single flag import run
-  result = api_instance.trigger_flag_import_job(project_key, integration_key, integration_id)
-  p result
+  api_instance.trigger_flag_import_job(project_key, integration_key, integration_id)
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling FlagImportConfigurationsBetaApi->trigger_flag_import_job: #{e}"
 end
@@ -418,9 +417,9 @@ end
 
 #### Using the trigger_flag_import_job_with_http_info variant
 
-This returns an Array which contains the response data, status code and headers.
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(Object, Integer, Hash)> trigger_flag_import_job_with_http_info(project_key, integration_key, integration_id)
+> <Array(nil, Integer, Hash)> trigger_flag_import_job_with_http_info(project_key, integration_key, integration_id)
 
 ```ruby
 begin
@@ -428,7 +427,7 @@ begin
   data, status_code, headers = api_instance.trigger_flag_import_job_with_http_info(project_key, integration_key, integration_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => Object
+  p data # => nil
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling FlagImportConfigurationsBetaApi->trigger_flag_import_job_with_http_info: #{e}"
 end
@@ -444,7 +443,7 @@ end
 
 ### Return type
 
-**Object**
+nil (empty response body)
 
 ### Authorization
 

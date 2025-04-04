@@ -3,26 +3,28 @@ generated from our [OpenAPI specification](https://app.launchdarkly.com/api/v2/o
 
 This REST API is for custom integrations, data export, or automating your feature flag workflows. *DO NOT* use this client library to include feature flags in your web or mobile application. To integrate feature flags with your application, read the [SDK documentation](https://docs.launchdarkly.com/sdk).
 
-This client library is only compatible with the latest version of our REST API, version `20220603`. Previous versions of this client library, prior to version 10.0.0, are only compatible with earlier versions of our REST API. When you create an access token, you can set the REST API version associated with the token. By default, API requests you send using the token will use the specified API version. To learn more, read [Versioning](https://apidocs.launchdarkly.com/#section/Overview/Versioning).
+This client library is only compatible with the latest version of our REST API. Previous versions of this client library are compatible with earlier versions of our REST API. When you create an access token, you can set the REST API version associated with the token. By default, API requests you send using the token will use the specified API version. To learn more, read [Versioning](https://apidocs.launchdarkly.com/#section/Overview/Versioning).
 View our [sample code](#sample-code) for example usage.
 
 # launchdarkly_api
 
 LaunchDarklyApi - the Ruby gem for the LaunchDarkly REST API
 
-# Overview
+This documentation describes LaunchDarkly's REST API.
+
+To access the complete OpenAPI spec directly, use [Get OpenAPI spec](https://launchdarkly.com/docs/api/other/get-openapi-spec).
 
 ## Authentication
 
 LaunchDarkly's REST API uses the HTTPS protocol with a minimum TLS version of 1.2.
 
-All REST API resources are authenticated with either [personal or service access tokens](https://docs.launchdarkly.com/home/account/api), or session cookies. Other authentication mechanisms are not supported. You can manage personal access tokens on your [**Authorization**](https://app.launchdarkly.com/settings/authorization) page in the LaunchDarkly UI.
+All REST API resources are authenticated with either [personal or service access tokens](https://launchdarkly.com/docs/home/account/api), or session cookies. Other authentication mechanisms are not supported. You can manage personal access tokens on your [**Authorization**](https://app.launchdarkly.com/settings/authorization) page in the LaunchDarkly UI.
 
 LaunchDarkly also has SDK keys, mobile keys, and client-side IDs that are used by our server-side SDKs, mobile SDKs, and JavaScript-based SDKs, respectively. **These keys cannot be used to access our REST API**. These keys are environment-specific, and can only perform read-only operations such as fetching feature flag settings.
 
 | Auth mechanism                                                                                  | Allowed resources                                                                                     | Use cases                                          |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| [Personal or service access tokens](https://docs.launchdarkly.com/home/account/api) | Can be customized on a per-token basis                                                                | Building scripts, custom integrations, data export. |
+| [Personal or service access tokens](https://launchdarkly.com/docs/home/account/api) | Can be customized on a per-token basis                                                                | Building scripts, custom integrations, data export. |
 | SDK keys                                                                                        | Can only access read-only resources specific to server-side SDKs. Restricted to a single environment. | Server-side SDKs                     |
 | Mobile keys                                                                                     | Can only access read-only resources specific to mobile SDKs, and only for flags marked available to mobile keys. Restricted to a single environment.           | Mobile SDKs                                        |
 | Client-side ID                                                                                  | Can only access read-only resources specific to JavaScript-based client-side SDKs, and only for flags marked available to client-side. Restricted to a single environment.           | Client-side JavaScript                             |
@@ -43,7 +45,7 @@ Manage personal access tokens from the [**Authorization**](https://app.launchdar
 
 For testing purposes, you can make API calls directly from your web browser. If you are logged in to the LaunchDarkly application, the API will use your existing session to authenticate calls.
 
-If you have a [role](https://docs.launchdarkly.com/home/account/built-in-roles) other than Admin, or have a [custom role](https://docs.launchdarkly.com/home/account/custom-roles) defined, you may not have permission to perform some API calls. You will receive a `401` response code in that case.
+If you have a [role](https://launchdarkly.com/docs/home/account/built-in-roles) other than Admin, or have a [custom role](https://launchdarkly.com/docs/home/account/custom-roles) defined, you may not have permission to perform some API calls. You will receive a `401` response code in that case.
 
 > ### Modifying the Origin header causes an error
 >
@@ -59,7 +61,7 @@ If you have a [role](https://docs.launchdarkly.com/home/account/built-in-roles) 
 
 ## Representations
 
-All resources expect and return JSON response bodies. Error responses also send a JSON body. To learn more about the error format of the API, read [Errors](/#section/Overview/Errors).
+All resources expect and return JSON response bodies. Error responses also send a JSON body. To learn more about the error format of the API, read [Errors](https://launchdarkly.com/docs/api#errors).
 
 In practice this means that you always get a response with a `Content-Type` header set to `application/json`.
 
@@ -75,7 +77,7 @@ The best way to find a detailed representation is to follow links. Every summary
 
 Sometimes the detailed representation of a resource does not include all of the attributes of the resource by default. If this is the case, the request method will clearly document this and describe which attributes you can include in an expanded response.
 
-To include the additional attributes, append the `expand` request parameter to your request and add a comma-separated list of the attributes to include. For example, when you append `?expand=members,maintainers` to the [Get team](/tag/Teams#operation/getTeam) endpoint, the expanded response includes both of these attributes.
+To include the additional attributes, append the `expand` request parameter to your request and add a comma-separated list of the attributes to include. For example, when you append `?expand=members,maintainers` to the [Get team](https://launchdarkly.com/docs/api/teams/get-team) endpoint, the expanded response includes both of these attributes.
 
 ### Links and addressability
 
@@ -118,7 +120,7 @@ Paginated collections include `first`, `last`, `next`, and `prev` links containi
 
 ## Updates
 
-Resources that accept partial updates use the `PATCH` verb. Most resources support the [JSON patch](/reference#updates-using-json-patch) format. Some resources also support the [JSON merge patch](/reference#updates-using-json-merge-patch) format, and some resources support the [semantic patch](/reference#updates-using-semantic-patch) format, which is a way to specify the modifications to perform as a set of executable instructions. Each resource supports optional [comments](/reference#updates-with-comments) that you can submit with updates. Comments appear in outgoing webhooks, the audit log, and other integrations.
+Resources that accept partial updates use the `PATCH` verb. Most resources support the [JSON patch](https://launchdarkly.com/docs/api#updates-using-json-patch) format. Some resources also support the [JSON merge patch](https://launchdarkly.com/docs/api#updates-using-json-merge-patch) format, and some resources support the [semantic patch](https://launchdarkly.com/docs/api#updates-using-semantic-patch) format, which is a way to specify the modifications to perform as a set of executable instructions. Each resource supports optional [comments](https://launchdarkly.com/docs/api#updates-with-comments) that you can submit with updates. Comments appear in outgoing webhooks, the audit log, and other integrations.
 
 When a resource supports both JSON patch and semantic patch, we document both in the request method. However, the specific request body fields and descriptions included in our documentation only match one type of patch or the other.
 
@@ -254,7 +256,7 @@ The `code` indicates the general class of error. The `message` is a human-readab
 | 405  | Method not allowed | The request method is not allowed on this resource. | Ensure that the HTTP verb is correct. |
 | 409  | Conflict          | The API request can not be completed because it conflicts with a concurrent API request. | Retry your request.                                              |
 | 422  | Unprocessable entity | The API request can not be completed because the update description can not be understood. | Ensure that the request body is correct for the type of patch you are using, either JSON patch or semantic patch.
-| 429  | Too many requests | Read [Rate limiting](/#section/Overview/Rate-limiting).                                               | Wait and try again later.                                        |
+| 429  | Too many requests | Read [Rate limiting](https://launchdarkly.com/docs/api#rate-limiting).                                               | Wait and try again later.                                        |
 
 ## CORS
 
@@ -267,7 +269,7 @@ Access-Control-Allow-Origin: *
 Access-Control-Max-Age: 300
 ```
 
-You can make authenticated CORS calls just as you would make same-origin calls, using either [token or session-based authentication](/#section/Overview/Authentication). If you are using session authentication, you should set the `withCredentials` property for your `xhr` request to `true`. You should never expose your access tokens to untrusted entities.
+You can make authenticated CORS calls just as you would make same-origin calls, using either [token or session-based authentication](https://launchdarkly.com/docs/api#authentication). If you are using session authentication, you should set the `withCredentials` property for your `xhr` request to `true`. You should never expose your access tokens to untrusted entities.
 
 ## Rate limiting
 
@@ -297,7 +299,7 @@ Some authenticated routes have custom rate limits. These also reset every ten se
 | `X-Ratelimit-Route-Remaining` | The maximum number of requests to the current route the account is permitted to make per ten seconds. |
 | `X-Ratelimit-Reset`           | The time at which the current rate limit window resets in epoch milliseconds.                         |
 
-A _route_ represents a specific URL pattern and verb. For example, the [Delete environment](/tag/Environments#operation/deleteEnvironment) endpoint is considered a single route, and each call to delete an environment counts against your route-level rate limit for that route.
+A _route_ represents a specific URL pattern and verb. For example, the [Delete environment](https://launchdarkly.com/docs/api/environments/delete-environment) endpoint is considered a single route, and each call to delete an environment counts against your route-level rate limit for that route.
 
 We do not publicly document the specific number of calls that an account can make to each endpoint per ten seconds. These limits may change, and we encourage clients to program against the specification, relying on the two headers defined above, rather than hardcoding to the current limits.
 
@@ -333,7 +335,7 @@ We mark beta resources with a \"Beta\" callout in our documentation, pictured be
 
 > ### This feature is in beta
 >
-> To use this feature, pass in a header including the `LD-API-Version` key with value set to `beta`. Use this header with each call. To learn more, read [Beta resources](/#section/Overview/Beta-resources).
+> To use this feature, pass in a header including the `LD-API-Version` key with value set to `beta`. Use this header with each call. To learn more, read [Beta resources](https://launchdarkly.com/docs/api#beta-resources).
 >
 > Resources that are in beta are still undergoing testing and development. They may change without notice, including becoming backwards incompatible.
 
@@ -351,9 +353,9 @@ LD-API-Version: beta
 
 The version of LaunchDarkly that is available on domains controlled by the United States government is different from the version of LaunchDarkly available to the general public. If you are an employee or contractor for a United States federal agency and use LaunchDarkly in your work, you likely use the federal instance of LaunchDarkly.
 
-If you are working in the federal instance of LaunchDarkly, the base URI for each request is `https://app.launchdarkly.us`. In the \"Try it\" sandbox for each request, click the request path to view the complete resource path for the federal environment.
+If you are working in the federal instance of LaunchDarkly, the base URI for each request is `https://app.launchdarkly.us`.
 
-To learn more, read [LaunchDarkly in federal environments](https://docs.launchdarkly.com/home/infrastructure/federal).
+To learn more, read [LaunchDarkly in federal environments](https://launchdarkly.com/docs/home/infrastructure/federal).
 
 ## Versioning
 
@@ -387,13 +389,48 @@ If you would like to upgrade your integration to use a new API version, you can 
 
 ### API version changelog
 
-|<div style=\"width:75px\">Version</div> | Changes | End of life (EOL)
-|---|---|---|
-| `20240415` | <ul><li>Changed several endpoints from unpaginated to paginated. Use the `limit` and `offset` query parameters to page through the results.</li> <li>Changed the [list access tokens](/tag/Access-tokens#operation/getTokens) endpoint: <ul><li>Response is now paginated with a default limit of `25`</li></ul></li> <li>Changed the [list account members](/tag/Account-members#operation/getMembers) endpoint: <ul><li>The `accessCheck` filter is no longer available</li></ul></li> <li>Changed the [list custom roles](/tag/Custom-roles#operation/getCustomRoles) endpoint: <ul><li>Response is now paginated with a default limit of `20`</li></ul></li> <li>Changed the [list feature flags](/tag/Feature-flags#operation/getFeatureFlags) endpoint: <ul><li>Response is now paginated with a default limit of `20`</li><li>The `environments` field is now only returned if the request is filtered by environment, using the `filterEnv` query parameter</li><li>The `filterEnv` query parameter supports a maximum of three environments</li><li>The `followerId`, `hasDataExport`, `status`, `contextKindTargeted`, and `segmentTargeted` filters are no longer available</li></ul></li> <li>Changed the [list segments](/tag/Segments#operation/getSegments) endpoint: <ul><li>Response is now paginated with a default limit of `20`</li></ul></li> <li>Changed the [list teams](/tag/Teams#operation/getTeams) endpoint: <ul><li>The `expand` parameter no longer supports including `projects` or `roles`</li><li>In paginated results, the maximum page size is now 100</li></ul></li> <li>Changed the [get workflows](/tag/Workflows#operation/getWorkflows) endpoint: <ul><li>Response is now paginated with a default limit of `20`</li><li>The `_conflicts` field in the response is no longer available</li></ul></li> </ul>  | Current |
-| `20220603` | <ul><li>Changed the [list projects](/tag/Projects#operation/getProjects) return value:<ul><li>Response is now paginated with a default limit of `20`.</li><li>Added support for filter and sort.</li><li>The project `environments` field is now expandable. This field is omitted by default.</li></ul></li><li>Changed the [get project](/tag/Projects#operation/getProject) return value:<ul><li>The `environments` field is now expandable. This field is omitted by default.</li></ul></li></ul> | 2025-04-15 |
-| `20210729` | <ul><li>Changed the [create approval request](/tag/Approvals#operation/postApprovalRequest) return value. It now returns HTTP Status Code `201` instead of `200`.</li><li> Changed the [get users](/tag/Users#operation/getUser) return value. It now returns a user record, not a user. </li><li>Added additional optional fields to environment, segments, flags, members, and segments, including the ability to create big segments. </li><li> Added default values for flag variations when new environments are created. </li><li>Added filtering and pagination for getting flags and members, including `limit`, `number`, `filter`, and `sort` query parameters. </li><li>Added endpoints for expiring user targets for flags and segments, scheduled changes, access tokens, Relay Proxy configuration, integrations and subscriptions, and approvals. </li></ul> | 2023-06-03 |
-| `20191212` | <ul><li>[List feature flags](/tag/Feature-flags#operation/getFeatureFlags) now defaults to sending summaries of feature flag configurations, equivalent to setting the query parameter `summary=true`. Summaries omit flag targeting rules and individual user targets from the payload. </li><li> Added endpoints for flags, flag status, projects, environments, audit logs, members, users, custom roles, segments, usage, streams, events, and data export. </li></ul> | 2022-07-29 |
-| `20160426` | <ul><li>Initial versioning of API. Tokens created before versioning have their version set to this.</li></ul> | 2020-12-12 |
+<table>
+  <tr>
+    <th>Version</th>
+    <th>Changes</th>
+    <th>End of life (EOL)</th>
+  </tr>
+  <tr>
+    <td>`20240415`</td>
+    <td>
+      <ul><li>Changed several endpoints from unpaginated to paginated. Use the `limit` and `offset` query parameters to page through the results.</li> <li>Changed the [list access tokens](https://launchdarkly.com/docs/api/access-tokens/get-tokens) endpoint: <ul><li>Response is now paginated with a default limit of `25`</li></ul></li> <li>Changed the [list account members](https://launchdarkly.com/docs/api/account-members/get-members) endpoint: <ul><li>The `accessCheck` filter is no longer available</li></ul></li> <li>Changed the [list custom roles](https://launchdarkly.com/docs/api/custom-roles/get-custom-roles) endpoint: <ul><li>Response is now paginated with a default limit of `20`</li></ul></li> <li>Changed the [list feature flags](https://launchdarkly.com/docs/api/feature-flags/get-feature-flags) endpoint: <ul><li>Response is now paginated with a default limit of `20`</li><li>The `environments` field is now only returned if the request is filtered by environment, using the `filterEnv` query parameter</li><li>The `followerId`, `hasDataExport`, `status`, `contextKindTargeted`, and `segmentTargeted` filters are no longer available</li><li>The `compare` query parameter is no longer available</li></ul></li> <li>Changed the [list segments](https://launchdarkly.com/docs/api/segments/get-segments) endpoint: <ul><li>Response is now paginated with a default limit of `20`</li></ul></li> <li>Changed the [list teams](https://launchdarkly.com/docs/api/teams/get-teams) endpoint: <ul><li>The `expand` parameter no longer supports including `projects` or `roles`</li><li>In paginated results, the maximum page size is now 100</li></ul></li> <li>Changed the [get workflows](https://launchdarkly.com/docs/api/workflows/get-workflows) endpoint: <ul><li>Response is now paginated with a default limit of `20`</li><li>The `_conflicts` field in the response is no longer available</li></ul></li> </ul>
+    </td>
+    <td>Current</td>
+  </tr>
+  <tr>
+    <td>`20220603`</td>
+    <td>
+      <ul><li>Changed the [list projects](https://launchdarkly.com/docs/api/projects/get-projects) return value:<ul><li>Response is now paginated with a default limit of `20`.</li><li>Added support for filter and sort.</li><li>The project `environments` field is now expandable. This field is omitted by default.</li></ul></li><li>Changed the [get project](https://launchdarkly.com/docs/api/projects/get-project) return value:<ul><li>The `environments` field is now expandable. This field is omitted by default.</li></ul></li></ul>
+    </td>
+    <td>2025-04-15</td>
+  </tr>
+  <tr>
+    <td>`20210729`</td>
+    <td>
+      <ul><li>Changed the [create approval request](https://launchdarkly.com/docs/api/approvals/post-approval-request) return value. It now returns HTTP Status Code `201` instead of `200`.</li><li> Changed the [get user](https://launchdarkly.com/docs/api/users/get-user) return value. It now returns a user record, not a user. </li><li>Added additional optional fields to environment, segments, flags, members, and segments, including the ability to create big segments. </li><li> Added default values for flag variations when new environments are created. </li><li>Added filtering and pagination for getting flags and members, including `limit`, `number`, `filter`, and `sort` query parameters. </li><li>Added endpoints for expiring user targets for flags and segments, scheduled changes, access tokens, Relay Proxy configuration, integrations and subscriptions, and approvals. </li></ul>
+    </td>
+    <td>2023-06-03</td>
+  </tr>
+  <tr>
+    <td>`20191212`</td>
+    <td>
+      <ul><li>[List feature flags](https://launchdarkly.com/docs/api/feature-flags/get-feature-flags) now defaults to sending summaries of feature flag configurations, equivalent to setting the query parameter `summary=true`. Summaries omit flag targeting rules and individual user targets from the payload. </li><li> Added endpoints for flags, flag status, projects, environments, audit logs, members, users, custom roles, segments, usage, streams, events, and data export. </li></ul>
+    </td>
+    <td>2022-07-29</td>
+  </tr>
+  <tr>
+    <td>`20160426`</td>
+    <td>
+      <ul><li>Initial versioning of API. Tokens created before versioning have their version set to this.</li></ul>
+    </td>
+    <td>2020-12-12</td>
+  </tr>
+</table>
 
 To learn more about how EOL is determined, read LaunchDarkly's [End of Life (EOL) Policy](https://launchdarkly.com/policies/end-of-life-policy/).
 
@@ -401,7 +438,7 @@ To learn more about how EOL is determined, read LaunchDarkly's [End of Life (EOL
 This SDK is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: 2.0
-- Package version: 17.1.0
+- Package version: 17.2.0
 - Build package: org.openapitools.codegen.languages.RubyClientCodegen
 For more information, please visit [https://support.launchdarkly.com](https://support.launchdarkly.com)
 
@@ -418,16 +455,16 @@ gem build launchdarkly_api.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./launchdarkly_api-17.1.0.gem
+gem install ./launchdarkly_api-17.2.0.gem
 ```
 
-(for development, run `gem install --dev ./launchdarkly_api-17.1.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./launchdarkly_api-17.2.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'launchdarkly_api', '~> 17.1.0'
+    gem 'launchdarkly_api', '~> 17.2.0'
 
 ### Install from Git
 
@@ -459,14 +496,16 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['ApiKey'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AccessTokensApi.new
-id = 'id_example' # String | The ID of the access token to update
+api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
+ld_api_version = 'beta' # String | Version of the endpoint.
+project_key = 'default' # String | 
+config_key = 'config_key_example' # String | 
 
 begin
-  #Delete access token
-  api_instance.delete_token(id)
+  #Delete AI Config
+  api_instance.delete_ai_config(ld_api_version, project_key, config_key)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Exception when calling AccessTokensApi->delete_token: #{e}"
+  puts "Exception when calling AIConfigsBetaApi->delete_ai_config: #{e}"
 end
 
 ```
@@ -477,6 +516,21 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*LaunchDarklyApi::AIConfigsBetaApi* | [**delete_ai_config**](docs/AIConfigsBetaApi.md#delete_ai_config) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Delete AI Config
+*LaunchDarklyApi::AIConfigsBetaApi* | [**delete_ai_config_variation**](docs/AIConfigsBetaApi.md#delete_ai_config_variation) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Delete AI Config variation
+*LaunchDarklyApi::AIConfigsBetaApi* | [**delete_model_config**](docs/AIConfigsBetaApi.md#delete_model_config) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Delete an AI model config
+*LaunchDarklyApi::AIConfigsBetaApi* | [**get_ai_config**](docs/AIConfigsBetaApi.md#get_ai_config) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Get AI Config
+*LaunchDarklyApi::AIConfigsBetaApi* | [**get_ai_config_metrics**](docs/AIConfigsBetaApi.md#get_ai_config_metrics) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics | Get AI Config metrics
+*LaunchDarklyApi::AIConfigsBetaApi* | [**get_ai_config_metrics_by_variation**](docs/AIConfigsBetaApi.md#get_ai_config_metrics_by_variation) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics-by-variation | Get AI Config metrics by variation
+*LaunchDarklyApi::AIConfigsBetaApi* | [**get_ai_config_variation**](docs/AIConfigsBetaApi.md#get_ai_config_variation) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Get AI Config variation
+*LaunchDarklyApi::AIConfigsBetaApi* | [**get_ai_configs**](docs/AIConfigsBetaApi.md#get_ai_configs) | **GET** /api/v2/projects/{projectKey}/ai-configs | List AI Configs
+*LaunchDarklyApi::AIConfigsBetaApi* | [**get_model_config**](docs/AIConfigsBetaApi.md#get_model_config) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Get AI model config
+*LaunchDarklyApi::AIConfigsBetaApi* | [**list_model_configs**](docs/AIConfigsBetaApi.md#list_model_configs) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs | List AI model configs
+*LaunchDarklyApi::AIConfigsBetaApi* | [**patch_ai_config**](docs/AIConfigsBetaApi.md#patch_ai_config) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Update AI Config
+*LaunchDarklyApi::AIConfigsBetaApi* | [**patch_ai_config_variation**](docs/AIConfigsBetaApi.md#patch_ai_config_variation) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Update AI Config variation
+*LaunchDarklyApi::AIConfigsBetaApi* | [**post_ai_config**](docs/AIConfigsBetaApi.md#post_ai_config) | **POST** /api/v2/projects/{projectKey}/ai-configs | Create new AI Config
+*LaunchDarklyApi::AIConfigsBetaApi* | [**post_ai_config_variation**](docs/AIConfigsBetaApi.md#post_ai_config_variation) | **POST** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations | Create AI Config variation
+*LaunchDarklyApi::AIConfigsBetaApi* | [**post_model_config**](docs/AIConfigsBetaApi.md#post_model_config) | **POST** /api/v2/projects/{projectKey}/ai-configs/model-configs | Create an AI model config
 *LaunchDarklyApi::AccessTokensApi* | [**delete_token**](docs/AccessTokensApi.md#delete_token) | **DELETE** /api/v2/tokens/{id} | Delete access token
 *LaunchDarklyApi::AccessTokensApi* | [**get_token**](docs/AccessTokensApi.md#get_token) | **GET** /api/v2/tokens/{id} | Get access token
 *LaunchDarklyApi::AccessTokensApi* | [**get_tokens**](docs/AccessTokensApi.md#get_tokens) | **GET** /api/v2/tokens | List access tokens
@@ -502,6 +556,10 @@ Class | Method | HTTP request | Description
 *LaunchDarklyApi::AccountUsageBetaApi* | [**get_stream_usage**](docs/AccountUsageBetaApi.md#get_stream_usage) | **GET** /api/v2/usage/streams/{source} | Get stream usage
 *LaunchDarklyApi::AccountUsageBetaApi* | [**get_stream_usage_by_sdk_version**](docs/AccountUsageBetaApi.md#get_stream_usage_by_sdk_version) | **GET** /api/v2/usage/streams/{source}/bysdkversion | Get stream usage by SDK version
 *LaunchDarklyApi::AccountUsageBetaApi* | [**get_stream_usage_sdkversion**](docs/AccountUsageBetaApi.md#get_stream_usage_sdkversion) | **GET** /api/v2/usage/streams/{source}/sdkversions | Get stream usage SDK versions
+*LaunchDarklyApi::AnnouncementsApi* | [**create_announcement_public**](docs/AnnouncementsApi.md#create_announcement_public) | **POST** /api/v2/announcements | Create an announcement
+*LaunchDarklyApi::AnnouncementsApi* | [**delete_announcement_public**](docs/AnnouncementsApi.md#delete_announcement_public) | **DELETE** /api/v2/announcements/{announcementId} | Delete an announcement
+*LaunchDarklyApi::AnnouncementsApi* | [**get_announcements_public**](docs/AnnouncementsApi.md#get_announcements_public) | **GET** /api/v2/announcements | Get announcements
+*LaunchDarklyApi::AnnouncementsApi* | [**update_announcement_public**](docs/AnnouncementsApi.md#update_announcement_public) | **PATCH** /api/v2/announcements/{announcementId} | Update an announcement
 *LaunchDarklyApi::ApplicationsBetaApi* | [**delete_application**](docs/ApplicationsBetaApi.md#delete_application) | **DELETE** /api/v2/applications/{applicationKey} | Delete application
 *LaunchDarklyApi::ApplicationsBetaApi* | [**delete_application_version**](docs/ApplicationsBetaApi.md#delete_application_version) | **DELETE** /api/v2/applications/{applicationKey}/versions/{versionKey} | Delete application version
 *LaunchDarklyApi::ApplicationsBetaApi* | [**get_application**](docs/ApplicationsBetaApi.md#get_application) | **GET** /api/v2/applications/{applicationKey} | Get application by key
@@ -561,6 +619,7 @@ Class | Method | HTTP request | Description
 *LaunchDarklyApi::DataExportDestinationsApi* | [**get_destinations**](docs/DataExportDestinationsApi.md#get_destinations) | **GET** /api/v2/destinations | List destinations
 *LaunchDarklyApi::DataExportDestinationsApi* | [**patch_destination**](docs/DataExportDestinationsApi.md#patch_destination) | **PATCH** /api/v2/destinations/{projectKey}/{environmentKey}/{id} | Update Data Export destination
 *LaunchDarklyApi::DataExportDestinationsApi* | [**post_destination**](docs/DataExportDestinationsApi.md#post_destination) | **POST** /api/v2/destinations/{projectKey}/{environmentKey} | Create Data Export destination
+*LaunchDarklyApi::DataExportDestinationsApi* | [**post_generate_warehouse_destination_key_pair**](docs/DataExportDestinationsApi.md#post_generate_warehouse_destination_key_pair) | **POST** /api/v2/destinations/generate-warehouse-destination-key-pair | Generate Snowflake destination key pair
 *LaunchDarklyApi::EnvironmentsApi* | [**delete_environment**](docs/EnvironmentsApi.md#delete_environment) | **DELETE** /api/v2/projects/{projectKey}/environments/{environmentKey} | Delete environment
 *LaunchDarklyApi::EnvironmentsApi* | [**get_environment**](docs/EnvironmentsApi.md#get_environment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey} | Get environment
 *LaunchDarklyApi::EnvironmentsApi* | [**get_environments_by_project**](docs/EnvironmentsApi.md#get_environments_by_project) | **GET** /api/v2/projects/{projectKey}/environments | List environments
@@ -571,11 +630,10 @@ Class | Method | HTTP request | Description
 *LaunchDarklyApi::ExperimentsApi* | [**create_experiment**](docs/ExperimentsApi.md#create_experiment) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Create experiment
 *LaunchDarklyApi::ExperimentsApi* | [**create_iteration**](docs/ExperimentsApi.md#create_iteration) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations | Create iteration
 *LaunchDarklyApi::ExperimentsApi* | [**get_experiment**](docs/ExperimentsApi.md#get_experiment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Get experiment
-*LaunchDarklyApi::ExperimentsApi* | [**get_experiment_results**](docs/ExperimentsApi.md#get_experiment_results) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results | Get experiment results
-*LaunchDarklyApi::ExperimentsApi* | [**get_experiment_results_for_metric_group**](docs/ExperimentsApi.md#get_experiment_results_for_metric_group) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metric-groups/{metricGroupKey}/results | Get experiment results for metric group
+*LaunchDarklyApi::ExperimentsApi* | [**get_experiment_results**](docs/ExperimentsApi.md#get_experiment_results) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results | Get experiment results (Deprecated)
+*LaunchDarklyApi::ExperimentsApi* | [**get_experiment_results_for_metric_group**](docs/ExperimentsApi.md#get_experiment_results_for_metric_group) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metric-groups/{metricGroupKey}/results | Get experiment results for metric group (Deprecated)
 *LaunchDarklyApi::ExperimentsApi* | [**get_experimentation_settings**](docs/ExperimentsApi.md#get_experimentation_settings) | **GET** /api/v2/projects/{projectKey}/experimentation-settings | Get experimentation settings
 *LaunchDarklyApi::ExperimentsApi* | [**get_experiments**](docs/ExperimentsApi.md#get_experiments) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Get experiments
-*LaunchDarklyApi::ExperimentsApi* | [**get_legacy_experiment_results**](docs/ExperimentsApi.md#get_legacy_experiment_results) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get legacy experiment results (deprecated)
 *LaunchDarklyApi::ExperimentsApi* | [**patch_experiment**](docs/ExperimentsApi.md#patch_experiment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Patch experiment
 *LaunchDarklyApi::ExperimentsApi* | [**put_experimentation_settings**](docs/ExperimentsApi.md#put_experimentation_settings) | **PUT** /api/v2/projects/{projectKey}/experimentation-settings | Update experimentation settings
 *LaunchDarklyApi::FeatureFlagsApi* | [**copy_feature_flag**](docs/FeatureFlagsApi.md#copy_feature_flag) | **POST** /api/v2/flags/{projectKey}/{featureFlagKey}/copy | Copy feature flag
@@ -713,7 +771,11 @@ Class | Method | HTTP request | Description
 *LaunchDarklyApi::ScheduledChangesApi* | [**get_flag_config_scheduled_changes**](docs/ScheduledChangesApi.md#get_flag_config_scheduled_changes) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes | List scheduled changes
 *LaunchDarklyApi::ScheduledChangesApi* | [**patch_flag_config_scheduled_change**](docs/ScheduledChangesApi.md#patch_flag_config_scheduled_change) | **PATCH** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id} | Update scheduled changes workflow
 *LaunchDarklyApi::ScheduledChangesApi* | [**post_flag_config_scheduled_changes**](docs/ScheduledChangesApi.md#post_flag_config_scheduled_changes) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes | Create scheduled changes workflow
+*LaunchDarklyApi::SegmentsApi* | [**create_big_segment_export**](docs/SegmentsApi.md#create_big_segment_export) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports | Create big segment export
+*LaunchDarklyApi::SegmentsApi* | [**create_big_segment_import**](docs/SegmentsApi.md#create_big_segment_import) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports | Create big segment import
 *LaunchDarklyApi::SegmentsApi* | [**delete_segment**](docs/SegmentsApi.md#delete_segment) | **DELETE** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey} | Delete segment
+*LaunchDarklyApi::SegmentsApi* | [**get_big_segment_export**](docs/SegmentsApi.md#get_big_segment_export) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports/{exportID} | Get big segment export
+*LaunchDarklyApi::SegmentsApi* | [**get_big_segment_import**](docs/SegmentsApi.md#get_big_segment_import) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports/{importID} | Get big segment import
 *LaunchDarklyApi::SegmentsApi* | [**get_context_instance_segments_membership_by_env**](docs/SegmentsApi.md#get_context_instance_segments_membership_by_env) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/segments/evaluate | List segment memberships for context instance
 *LaunchDarklyApi::SegmentsApi* | [**get_expiring_targets_for_segment**](docs/SegmentsApi.md#get_expiring_targets_for_segment) | **GET** /api/v2/segments/{projectKey}/{segmentKey}/expiring-targets/{environmentKey} | Get expiring targets for segment
 *LaunchDarklyApi::SegmentsApi* | [**get_expiring_user_targets_for_segment**](docs/SegmentsApi.md#get_expiring_user_targets_for_segment) | **GET** /api/v2/segments/{projectKey}/{segmentKey}/expiring-user-targets/{environmentKey} | Get expiring user targets for segment
@@ -727,10 +789,6 @@ Class | Method | HTTP request | Description
 *LaunchDarklyApi::SegmentsApi* | [**post_segment**](docs/SegmentsApi.md#post_segment) | **POST** /api/v2/segments/{projectKey}/{environmentKey} | Create segment
 *LaunchDarklyApi::SegmentsApi* | [**update_big_segment_context_targets**](docs/SegmentsApi.md#update_big_segment_context_targets) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/contexts | Update context targets on a big segment
 *LaunchDarklyApi::SegmentsApi* | [**update_big_segment_targets**](docs/SegmentsApi.md#update_big_segment_targets) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/users | Update user context targets on a big segment
-*LaunchDarklyApi::SegmentsBetaApi* | [**create_big_segment_export**](docs/SegmentsBetaApi.md#create_big_segment_export) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports | Create big segment export
-*LaunchDarklyApi::SegmentsBetaApi* | [**create_big_segment_import**](docs/SegmentsBetaApi.md#create_big_segment_import) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports | Create big segment import
-*LaunchDarklyApi::SegmentsBetaApi* | [**get_big_segment_export**](docs/SegmentsBetaApi.md#get_big_segment_export) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports/{exportID} | Get big segment export
-*LaunchDarklyApi::SegmentsBetaApi* | [**get_big_segment_import**](docs/SegmentsBetaApi.md#get_big_segment_import) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports/{importID} | Get big segment import
 *LaunchDarklyApi::TagsApi* | [**get_tags**](docs/TagsApi.md#get_tags) | **GET** /api/v2/tags | List tags
 *LaunchDarklyApi::TeamsApi* | [**delete_team**](docs/TeamsApi.md#delete_team) | **DELETE** /api/v2/teams/{teamKey} | Delete team
 *LaunchDarklyApi::TeamsApi* | [**get_team**](docs/TeamsApi.md#get_team) | **GET** /api/v2/teams/{teamKey} | Get team
@@ -767,6 +825,15 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [LaunchDarklyApi::AIConfig](docs/AIConfig.md)
+ - [LaunchDarklyApi::AIConfigMaintainer](docs/AIConfigMaintainer.md)
+ - [LaunchDarklyApi::AIConfigPatch](docs/AIConfigPatch.md)
+ - [LaunchDarklyApi::AIConfigPost](docs/AIConfigPost.md)
+ - [LaunchDarklyApi::AIConfigVariation](docs/AIConfigVariation.md)
+ - [LaunchDarklyApi::AIConfigVariationPatch](docs/AIConfigVariationPatch.md)
+ - [LaunchDarklyApi::AIConfigVariationPost](docs/AIConfigVariationPost.md)
+ - [LaunchDarklyApi::AIConfigVariationsResponse](docs/AIConfigVariationsResponse.md)
+ - [LaunchDarklyApi::AIConfigs](docs/AIConfigs.md)
  - [LaunchDarklyApi::Access](docs/Access.md)
  - [LaunchDarklyApi::AccessAllowedReason](docs/AccessAllowedReason.md)
  - [LaunchDarklyApi::AccessAllowedRep](docs/AccessAllowedRep.md)
@@ -775,6 +842,24 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::AccessTokenPost](docs/AccessTokenPost.md)
  - [LaunchDarklyApi::ActionInput](docs/ActionInput.md)
  - [LaunchDarklyApi::ActionOutput](docs/ActionOutput.md)
+ - [LaunchDarklyApi::AiConfigsAccess](docs/AiConfigsAccess.md)
+ - [LaunchDarklyApi::AiConfigsAccessAllowedReason](docs/AiConfigsAccessAllowedReason.md)
+ - [LaunchDarklyApi::AiConfigsAccessAllowedRep](docs/AiConfigsAccessAllowedRep.md)
+ - [LaunchDarklyApi::AiConfigsAccessDenied](docs/AiConfigsAccessDenied.md)
+ - [LaunchDarklyApi::AiConfigsAccessDeniedReason](docs/AiConfigsAccessDeniedReason.md)
+ - [LaunchDarklyApi::AiConfigsLink](docs/AiConfigsLink.md)
+ - [LaunchDarklyApi::AiConfigsMaintainerTeam](docs/AiConfigsMaintainerTeam.md)
+ - [LaunchDarklyApi::AnnouncementAccess](docs/AnnouncementAccess.md)
+ - [LaunchDarklyApi::AnnouncementAccessAllowedReason](docs/AnnouncementAccessAllowedReason.md)
+ - [LaunchDarklyApi::AnnouncementAccessAllowedRep](docs/AnnouncementAccessAllowedRep.md)
+ - [LaunchDarklyApi::AnnouncementAccessDenied](docs/AnnouncementAccessDenied.md)
+ - [LaunchDarklyApi::AnnouncementAccessDeniedReason](docs/AnnouncementAccessDeniedReason.md)
+ - [LaunchDarklyApi::AnnouncementAccessRep](docs/AnnouncementAccessRep.md)
+ - [LaunchDarklyApi::AnnouncementLink](docs/AnnouncementLink.md)
+ - [LaunchDarklyApi::AnnouncementPaginatedLinks](docs/AnnouncementPaginatedLinks.md)
+ - [LaunchDarklyApi::AnnouncementPatchOperation](docs/AnnouncementPatchOperation.md)
+ - [LaunchDarklyApi::AnnouncementResponse](docs/AnnouncementResponse.md)
+ - [LaunchDarklyApi::AnnouncementResponseLinks](docs/AnnouncementResponseLinks.md)
  - [LaunchDarklyApi::ApplicationCollectionRep](docs/ApplicationCollectionRep.md)
  - [LaunchDarklyApi::ApplicationFlagCollectionRep](docs/ApplicationFlagCollectionRep.md)
  - [LaunchDarklyApi::ApplicationRep](docs/ApplicationRep.md)
@@ -783,6 +868,7 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::ApprovalRequestResponse](docs/ApprovalRequestResponse.md)
  - [LaunchDarklyApi::ApprovalSettings](docs/ApprovalSettings.md)
  - [LaunchDarklyApi::ApprovalsCapabilityConfig](docs/ApprovalsCapabilityConfig.md)
+ - [LaunchDarklyApi::AssignedToRep](docs/AssignedToRep.md)
  - [LaunchDarklyApi::Audience](docs/Audience.md)
  - [LaunchDarklyApi::AudienceConfiguration](docs/AudienceConfiguration.md)
  - [LaunchDarklyApi::AudiencePost](docs/AudiencePost.md)
@@ -817,7 +903,6 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::CompletedBy](docs/CompletedBy.md)
  - [LaunchDarklyApi::ConditionInput](docs/ConditionInput.md)
  - [LaunchDarklyApi::ConditionOutput](docs/ConditionOutput.md)
- - [LaunchDarklyApi::ConfidenceIntervalRep](docs/ConfidenceIntervalRep.md)
  - [LaunchDarklyApi::Conflict](docs/Conflict.md)
  - [LaunchDarklyApi::ConflictOutput](docs/ConflictOutput.md)
  - [LaunchDarklyApi::ContextAttributeName](docs/ContextAttributeName.md)
@@ -840,6 +925,8 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::ContextSearch](docs/ContextSearch.md)
  - [LaunchDarklyApi::Contexts](docs/Contexts.md)
  - [LaunchDarklyApi::CopiedFromEnv](docs/CopiedFromEnv.md)
+ - [LaunchDarklyApi::CoreLink](docs/CoreLink.md)
+ - [LaunchDarklyApi::CreateAnnouncementBody](docs/CreateAnnouncementBody.md)
  - [LaunchDarklyApi::CreateApprovalRequestRequest](docs/CreateApprovalRequestRequest.md)
  - [LaunchDarklyApi::CreateCopyFlagConfigApprovalRequestRequest](docs/CreateCopyFlagConfigApprovalRequestRequest.md)
  - [LaunchDarklyApi::CreateFlagConfigApprovalRequestRequest](docs/CreateFlagConfigApprovalRequestRequest.md)
@@ -895,14 +982,8 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::ExperimentEnabledPeriodRep](docs/ExperimentEnabledPeriodRep.md)
  - [LaunchDarklyApi::ExperimentEnvironmentSettingRep](docs/ExperimentEnvironmentSettingRep.md)
  - [LaunchDarklyApi::ExperimentInfoRep](docs/ExperimentInfoRep.md)
- - [LaunchDarklyApi::ExperimentMetadataRep](docs/ExperimentMetadataRep.md)
  - [LaunchDarklyApi::ExperimentPatchInput](docs/ExperimentPatchInput.md)
  - [LaunchDarklyApi::ExperimentPost](docs/ExperimentPost.md)
- - [LaunchDarklyApi::ExperimentResults](docs/ExperimentResults.md)
- - [LaunchDarklyApi::ExperimentStatsRep](docs/ExperimentStatsRep.md)
- - [LaunchDarklyApi::ExperimentTimeSeriesSlice](docs/ExperimentTimeSeriesSlice.md)
- - [LaunchDarklyApi::ExperimentTimeSeriesVariationSlice](docs/ExperimentTimeSeriesVariationSlice.md)
- - [LaunchDarklyApi::ExperimentTotalsRep](docs/ExperimentTotalsRep.md)
  - [LaunchDarklyApi::ExpiringTarget](docs/ExpiringTarget.md)
  - [LaunchDarklyApi::ExpiringTargetError](docs/ExpiringTargetError.md)
  - [LaunchDarklyApi::ExpiringTargetGetResponse](docs/ExpiringTargetGetResponse.md)
@@ -966,6 +1047,8 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::FollowersPerFlag](docs/FollowersPerFlag.md)
  - [LaunchDarklyApi::ForbiddenErrorRep](docs/ForbiddenErrorRep.md)
  - [LaunchDarklyApi::FormVariable](docs/FormVariable.md)
+ - [LaunchDarklyApi::GenerateWarehouseDestinationKeyPairPostRep](docs/GenerateWarehouseDestinationKeyPairPostRep.md)
+ - [LaunchDarklyApi::GetAnnouncementsPublic200Response](docs/GetAnnouncementsPublic200Response.md)
  - [LaunchDarklyApi::HMACSignature](docs/HMACSignature.md)
  - [LaunchDarklyApi::HeaderItems](docs/HeaderItems.md)
  - [LaunchDarklyApi::HoldoutDetailRep](docs/HoldoutDetailRep.md)
@@ -1031,6 +1114,7 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::LeadTimeStagesRep](docs/LeadTimeStagesRep.md)
  - [LaunchDarklyApi::LegacyExperimentRep](docs/LegacyExperimentRep.md)
  - [LaunchDarklyApi::Link](docs/Link.md)
+ - [LaunchDarklyApi::MaintainerMember](docs/MaintainerMember.md)
  - [LaunchDarklyApi::MaintainerRep](docs/MaintainerRep.md)
  - [LaunchDarklyApi::MaintainerTeam](docs/MaintainerTeam.md)
  - [LaunchDarklyApi::Member](docs/Member.md)
@@ -1042,7 +1126,9 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::MemberTeamsPostInput](docs/MemberTeamsPostInput.md)
  - [LaunchDarklyApi::Members](docs/Members.md)
  - [LaunchDarklyApi::MembersPatchInput](docs/MembersPatchInput.md)
+ - [LaunchDarklyApi::Message](docs/Message.md)
  - [LaunchDarklyApi::MethodNotAllowedErrorRep](docs/MethodNotAllowedErrorRep.md)
+ - [LaunchDarklyApi::MetricByVariation](docs/MetricByVariation.md)
  - [LaunchDarklyApi::MetricCollectionRep](docs/MetricCollectionRep.md)
  - [LaunchDarklyApi::MetricEventDefaultRep](docs/MetricEventDefaultRep.md)
  - [LaunchDarklyApi::MetricGroupCollectionRep](docs/MetricGroupCollectionRep.md)
@@ -1058,8 +1144,11 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::MetricRep](docs/MetricRep.md)
  - [LaunchDarklyApi::MetricSeen](docs/MetricSeen.md)
  - [LaunchDarklyApi::MetricV2Rep](docs/MetricV2Rep.md)
+ - [LaunchDarklyApi::Metrics](docs/Metrics.md)
  - [LaunchDarklyApi::MigrationSafetyIssueRep](docs/MigrationSafetyIssueRep.md)
  - [LaunchDarklyApi::MigrationSettingsPost](docs/MigrationSettingsPost.md)
+ - [LaunchDarklyApi::ModelConfig](docs/ModelConfig.md)
+ - [LaunchDarklyApi::ModelConfigPost](docs/ModelConfigPost.md)
  - [LaunchDarklyApi::Modification](docs/Modification.md)
  - [LaunchDarklyApi::MultiEnvironmentDependentFlag](docs/MultiEnvironmentDependentFlag.md)
  - [LaunchDarklyApi::MultiEnvironmentDependentFlags](docs/MultiEnvironmentDependentFlags.md)
@@ -1067,10 +1156,12 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::NewMemberForm](docs/NewMemberForm.md)
  - [LaunchDarklyApi::NotFoundErrorRep](docs/NotFoundErrorRep.md)
  - [LaunchDarklyApi::OauthClientPost](docs/OauthClientPost.md)
- - [LaunchDarklyApi::Object](docs/Object.md)
  - [LaunchDarklyApi::OptionsArray](docs/OptionsArray.md)
+ - [LaunchDarklyApi::PaginatedLinks](docs/PaginatedLinks.md)
  - [LaunchDarklyApi::ParameterDefault](docs/ParameterDefault.md)
  - [LaunchDarklyApi::ParameterRep](docs/ParameterRep.md)
+ - [LaunchDarklyApi::ParentAndSelfLinks](docs/ParentAndSelfLinks.md)
+ - [LaunchDarklyApi::ParentLink](docs/ParentLink.md)
  - [LaunchDarklyApi::ParentResourceRep](docs/ParentResourceRep.md)
  - [LaunchDarklyApi::PatchFailedErrorRep](docs/PatchFailedErrorRep.md)
  - [LaunchDarklyApi::PatchFlagsRequest](docs/PatchFlagsRequest.md)
