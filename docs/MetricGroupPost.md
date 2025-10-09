@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** | A unique key to reference the metric group |  |
+| **key** | **String** | A unique key to reference the metric group | [optional] |
 | **name** | **String** | A human-friendly name for the metric group |  |
 | **kind** | **String** | The type of the metric group |  |
 | **description** | **String** | Description of the metric group | [optional] |

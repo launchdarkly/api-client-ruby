@@ -14,6 +14,8 @@
 | **winning_reason** | **String** | The reason you stopped the experiment | [optional] |
 | **can_reshuffle_traffic** | **Boolean** | Whether the experiment may reassign traffic to different variations when the experiment audience changes (true) or must keep all traffic assigned to its initial variation (false). | [optional] |
 | **flags** | [**Hash&lt;String, FlagRep&gt;**](FlagRep.md) | Details on the flag used in this experiment | [optional] |
+| **reallocation_frequency_millis** | **Integer** | The cadence (in milliseconds) to update the allocation. Only present for multi-armed bandits. | [optional] |
+| **version** | **Integer** | The current version that the iteration is on | [optional] |
 | **primary_metric** | [**DependentMetricOrMetricGroupRep**](DependentMetricOrMetricGroupRep.md) |  | [optional] |
 | **primary_single_metric** | [**MetricV2Rep**](MetricV2Rep.md) |  | [optional] |
 | **primary_funnel** | [**DependentMetricGroupRepWithMetrics**](DependentMetricGroupRepWithMetrics.md) |  | [optional] |
@@ -40,6 +42,8 @@ instance = LaunchDarklyApi::IterationRep.new(
   winning_reason: We ran this iteration for two weeks and the winning variation was clear,
   can_reshuffle_traffic: true,
   flags: null,
+  reallocation_frequency_millis: 3600000,
+  version: 0,
   primary_metric: null,
   primary_single_metric: null,
   primary_funnel: null,

@@ -8,6 +8,7 @@
 | **key** | **String** |  |  |
 | **maintainer_id** | **String** |  | [optional] |
 | **maintainer_team_key** | **String** |  | [optional] |
+| **mode** | **String** |  | [optional][default to &#39;completion&#39;] |
 | **name** | **String** |  |  |
 | **tags** | **Array&lt;String&gt;** |  | [optional] |
 
@@ -21,6 +22,7 @@ instance = LaunchDarklyApi::AIConfigPost.new(
   key: null,
   maintainer_id: null,
   maintainer_team_key: null,
+  mode: null,
   name: null,
   tags: null
 )

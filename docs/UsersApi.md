@@ -16,7 +16,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Delete user
 
-> ### Use contexts instead > > After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should use [Delete context instances](https://launchdarkly.com/docs/ld-docs/api/contexts/delete-context-instances) instead of this endpoint.  Delete a user by key. 
+> ### Use contexts instead > > After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should use [Delete context instances](https://launchdarkly.com/docs/api/contexts/delete-context-instances) instead of this endpoint.  Delete a user by key. 
 
 ### Examples
 
@@ -90,7 +90,7 @@ nil (empty response body)
 
 Find users
 
-> ### Use contexts instead > > After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should use [Search for context instances](https://launchdarkly.com/docs/ld-docs/api/contexts/search-context-instances) instead of this endpoint.  Search users in LaunchDarkly based on their last active date, a user attribute filter set, or a search query.  An example user attribute filter set is `filter=firstName:Anna,activeTrial:false`. This matches users that have the user attribute `firstName` set to `Anna`, that also have the attribute `activeTrial` set to `false`.  To paginate through results, follow the `next` link in the `_links` object. To learn more, read [Representations](https://launchdarkly.com/docs/ld-docs/api#representations). 
+> ### Use contexts instead > > After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should use [Search for context instances](https://launchdarkly.com/docs/api/contexts/search-context-instances) instead of this endpoint.  Search users in LaunchDarkly based on their last active date, a user attribute filter set, or a search query.  An example user attribute filter set is `filter=firstName:Anna,activeTrial:false`. This matches users that have the user attribute `firstName` set to `Anna`, that also have the attribute `activeTrial` set to `false`.  To paginate through results, follow the `next` link in the `_links` object. To learn more, read [Representations](https://launchdarkly.com/docs/api#representations). 
 
 ### Examples
 
@@ -179,7 +179,7 @@ end
 
 Get user
 
-> ### Use contexts instead > > After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should use [Get context instances](https://launchdarkly.com/docs/ld-docs/api/contexts/get-context-instances) instead of this endpoint.  Get a user by key. The `user` object contains all attributes sent in `variation` calls for that key. 
+> ### Use contexts instead > > After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should use [Get context instances](https://launchdarkly.com/docs/api/contexts/get-context-instances) instead of this endpoint.  Get a user by key. The `user` object contains all attributes sent in `variation` calls for that key. 
 
 ### Examples
 
@@ -254,7 +254,7 @@ end
 
 List users
 
-> ### Use contexts instead > > After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should use [Search for contexts](https://launchdarkly.com/docs/ld-docs/api/contexts/search-contexts) instead of this endpoint.  List all users in the environment. Includes the total count of users. This is useful for exporting all users in the system for further analysis.  Each page displays users up to a set `limit`. The default is 20. To page through, follow the `next` link in the `_links` object. To learn more, read [Representations](https://launchdarkly.com/docs/ld-docs/api#representations). 
+> ### Use contexts instead > > After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should use [Search for contexts](https://launchdarkly.com/docs/api/contexts/search-contexts) instead of this endpoint.  List all users in the environment. Includes the total count of users. This is useful for exporting all users in the system for further analysis.  Each page displays users up to a set `limit`. The default is 20. To page through, follow the `next` link in the `_links` object. To learn more, read [Representations](https://launchdarkly.com/docs/api#representations). 
 
 ### Examples
 

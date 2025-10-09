@@ -19,6 +19,7 @@
 | **maintainer_id** | **String** | The ID of the member who maintains this feature flag | [optional] |
 | **maintainer_team_key** | **String** | The key of the team that maintains this feature flag | [optional] |
 | **initial_prerequisites** | [**Array&lt;FlagPrerequisitePost&gt;**](FlagPrerequisitePost.md) | Initial set of prerequisite flags for all environments | [optional] |
+| **is_flag_on** | **Boolean** | Whether to automatically turn the flag on across all environments at creation. Defaults to &lt;code&gt;false&lt;/code&gt;. | [optional] |
 
 ## Example
 
@@ -40,7 +41,8 @@ instance = LaunchDarklyApi::FeatureFlagBody.new(
   migration_settings: null,
   maintainer_id: 12ab3c45de678910fgh12345,
   maintainer_team_key: team-1,
-  initial_prerequisites: null
+  initial_prerequisites: null,
+  is_flag_on: null
 )
 ```
 

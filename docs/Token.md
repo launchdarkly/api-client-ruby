@@ -13,8 +13,8 @@
 | **creation_date** | **Integer** |  |  |
 | **last_modified** | **Integer** |  |  |
 | **custom_role_ids** | **Array&lt;String&gt;** | A list of custom role IDs to use as access limits for the access token | [optional] |
-| **inline_role** | [**Array&lt;Statement&gt;**](Statement.md) | An array of policy statements, with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. | [optional] |
-| **role** | **String** | Built-in role for the token | [optional] |
+| **inline_role** | [**Array&lt;Statement&gt;**](Statement.md) | An array of policy statements, with three attributes: effect, resources, actions. May be used in place of a role. | [optional] |
+| **role** | **String** | Base role for the token | [optional] |
 | **token** | **String** | The token value. When creating or resetting, contains the entire token value. Otherwise, contains the last four characters. | [optional] |
 | **service_token** | **Boolean** | Whether this is a service token or a personal token | [optional] |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |

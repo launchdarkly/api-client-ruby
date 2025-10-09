@@ -15,7 +15,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 Create workflow template
 
-Create a template for a feature flag workflow
+> ### Workflows are in maintenance mode > > The workflows feature is in maintenance mode, and is planned for future deprecation at a date not yet specified. We will work with existing customers using workflows to migrate to a replacement solution when deprecation occurs.  Create a template for a feature flag workflow. 
 
 ### Examples
 

@@ -158,7 +158,7 @@ end
 
 List custom roles
 
-Get a complete list of custom roles. Custom roles let you create flexible policies providing fine-grained access control to everything in LaunchDarkly, from feature flags to goals, environments, and teams. With custom roles, it's possible to enforce access policies that meet your exact workflow needs. Custom roles are available to customers on our enterprise plans. If you're interested in learning more about our enterprise plans, contact sales@launchdarkly.com.
+Get a complete list of custom roles. This includes project and organization roles that you create, or that are provided as presets by LaunchDarkly. It does not include base roles.
 
 ### Examples
 

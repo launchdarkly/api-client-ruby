@@ -21,6 +21,8 @@
 | **analysis_type** | **String** | The method for analyzing metric events | [optional] |
 | **percentile_value** | **Integer** | The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when &lt;code&gt;analysisType&lt;/code&gt; is &lt;code&gt;percentile&lt;/code&gt;. | [optional] |
 | **event_default** | [**MetricEventDefaultRep**](MetricEventDefaultRep.md) |  | [optional] |
+| **data_source** | [**MetricDataSourceRefRep**](MetricDataSourceRefRep.md) |  | [optional] |
+| **filters** | [**EventFilter**](EventFilter.md) |  | [optional] |
 
 ## Example
 
@@ -44,7 +46,9 @@ instance = LaunchDarklyApi::MetricPost.new(
   unit_aggregation_type: average,
   analysis_type: mean,
   percentile_value: 95,
-  event_default: null
+  event_default: null,
+  data_source: null,
+  filters: null
 )
 ```
 

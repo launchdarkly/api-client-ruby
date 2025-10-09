@@ -16,6 +16,7 @@
 | **all_reviews** | [**Array&lt;ReviewOutput&gt;**](ReviewOutput.md) |  |  |
 | **review_status** | **String** |  |  |
 | **applied_date** | **Integer** |  | [optional] |
+| **creation_config** | **Hash&lt;String, Object&gt;** |  | [optional] |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = LaunchDarklyApi::ConditionOutput.new(
   notify_member_ids: null,
   all_reviews: null,
   review_status: null,
-  applied_date: null
+  applied_date: null,
+  creation_config: null
 )
 ```
 

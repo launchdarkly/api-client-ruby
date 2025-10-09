@@ -9,6 +9,7 @@
 | **description** | **String** |  |  |
 | **key** | **String** |  |  |
 | **_maintainer** | [**AIConfigMaintainer**](AIConfigMaintainer.md) |  | [optional] |
+| **mode** | **String** |  | [optional][default to &#39;completion&#39;] |
 | **name** | **String** |  |  |
 | **tags** | **Array&lt;String&gt;** |  |  |
 | **version** | **Integer** |  |  |
@@ -27,6 +28,7 @@ instance = LaunchDarklyApi::AIConfig.new(
   description: null,
   key: null,
   _maintainer: null,
+  mode: null,
   name: null,
   tags: null,
   version: null,

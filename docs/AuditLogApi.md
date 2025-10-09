@@ -96,7 +96,7 @@ end
 
 Get audit log entry
 
-Fetch a detailed audit log entry representation. The detailed representation includes several fields that are not present in the summary representation, including:  - `delta`: the JSON patch body that was used in the request to update the entity - `previousVersion`: a JSON representation of the previous version of the entity - `currentVersion`: a JSON representation of the current version of the entity 
+Fetch a detailed audit log entry representation. The detailed representation includes several fields that are not present in the summary representation, including:  - `previousVersion`: a JSON representation of the previous version of the entity. - `currentVersion`: a JSON representation of the current version of the entity. - `delta`: the JSON patch body that was used in the request to update the entity. This is only included if the update was made through a [JSON patch](https://launchdarkly.com/docs/api#updates-using-json-patch). It is null when the update was made using [semantic patch](https://launchdarkly.com/docs/api#updates-using-semantic-patch). Because most [flag updates](https://launchdarkly.com/docs/api/feature-flags/patch-feature-flag) are made using semantic patch, this field is rarely returned. 
 
 ### Examples
 

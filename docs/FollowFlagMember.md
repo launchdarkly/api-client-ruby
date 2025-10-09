@@ -8,7 +8,7 @@
 | **_id** | **String** | The member&#39;s ID |  |
 | **first_name** | **String** | The member&#39;s first name | [optional] |
 | **last_name** | **String** | The member&#39;s last name | [optional] |
-| **role** | **String** | The member&#39;s built-in role. If the member has no custom roles, this role will be in effect. |  |
+| **role** | **String** | The member&#39;s base role. If the member has no additional roles, this role will be in effect. |  |
 | **email** | **String** | The member&#39;s email address |  |
 
 ## Example

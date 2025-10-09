@@ -34,7 +34,7 @@ end
 
 api_instance = LaunchDarklyApi::MetricsBetaApi.new
 project_key = 'project_key_example' # String | The project key
-metric_group_post = LaunchDarklyApi::MetricGroupPost.new({key: 'metric-group-key-123abc', name: 'My metric group', kind: 'funnel', maintainer_id: '569fdeadbeef1644facecafe', tags: ["ops"], metrics: [LaunchDarklyApi::MetricInMetricGroupInput.new({key: 'metric-key-123abc', name_in_group: 'Step 1'})]}) # MetricGroupPost | 
+metric_group_post = LaunchDarklyApi::MetricGroupPost.new({name: 'My metric group', kind: 'funnel', maintainer_id: '569fdeadbeef1644facecafe', tags: ["ops"], metrics: [LaunchDarklyApi::MetricInMetricGroupInput.new({key: 'metric-key-123abc', name_in_group: 'Step 1'})]}) # MetricGroupPost | 
 
 begin
   # Create metric group
