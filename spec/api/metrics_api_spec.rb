@@ -51,7 +51,7 @@ describe 'MetricsApi' do
   # @param project_key The project key
   # @param metric_key The metric key
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :expand A comma-separated list of properties that can reveal additional information in the response. Supported fields are &#x60;experiments&#x60;, &#x60;experimentCount&#x60;, &#x60;metricGroups&#x60;, &#x60;metricGroupCount&#x60;, &#x60;eventSources&#x60;, &#x60;guardedRollouts&#x60;, &#x60;guardedRolloutCount&#x60;, and &#x60;lastUsedInEntity&#x60;.
+  # @option opts [String] :expand A comma-separated list of properties that can reveal additional information in the response. Supported fields are &#x60;experiments&#x60;, &#x60;experimentCount&#x60;, &#x60;metricGroups&#x60;, &#x60;metricGroupCount&#x60;, &#x60;eventSources&#x60;, &#x60;guardedRollouts&#x60;, &#x60;guardedRolloutCount&#x60;, &#x60;lastUsedInExperiment&#x60;, and &#x60;lastUsedInGuardedRollout&#x60;.
   # @option opts [String] :version_id The specific version ID of the metric
   # @return [MetricRep]
   describe 'get_metric test' do
