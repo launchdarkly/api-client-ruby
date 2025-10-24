@@ -1686,7 +1686,7 @@ api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
 ld_api_version = 'beta' # String | Version of the endpoint.
 project_key = 'project_key_example' # String | 
 config_key = 'config_key_example' # String | 
-ai_config_variation_post = LaunchDarklyApi::AIConfigVariationPost.new({key: 'key_example', messages: [LaunchDarklyApi::Message.new({content: 'content_example', role: 'role_example'})], name: 'name_example'}) # AIConfigVariationPost | AI Config variation object to create
+ai_config_variation_post = LaunchDarklyApi::AIConfigVariationPost.new({key: 'key_example', name: 'name_example'}) # AIConfigVariationPost | AI Config variation object to create
 
 begin
   # Create AI Config variation

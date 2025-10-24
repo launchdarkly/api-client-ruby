@@ -25,6 +25,7 @@
 | **secondary_metrics** | [**Array&lt;MetricV2Rep&gt;**](MetricV2Rep.md) | Deprecated, use &lt;code&gt;metrics&lt;/code&gt; instead. Details on the secondary metrics for this experiment. | [optional] |
 | **metrics** | [**Array&lt;DependentMetricOrMetricGroupRep&gt;**](DependentMetricOrMetricGroupRep.md) | Details on the metrics for this experiment | [optional] |
 | **layer_snapshot** | [**LayerSnapshotRep**](LayerSnapshotRep.md) |  | [optional] |
+| **covariance_info** | [**CovarianceInfoRep**](CovarianceInfoRep.md) |  | [optional] |
 
 ## Example
 
@@ -52,7 +53,8 @@ instance = LaunchDarklyApi::IterationRep.new(
   treatments: null,
   secondary_metrics: null,
   metrics: null,
-  layer_snapshot: null
+  layer_snapshot: null,
+  covariance_info: null
 )
 ```
 

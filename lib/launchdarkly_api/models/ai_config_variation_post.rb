@@ -130,8 +130,6 @@ module LaunchDarklyApi
         if (value = attributes[:'messages']).is_a?(Array)
           self.messages = value
         end
-      else
-        self.messages = nil
       end
 
       if attributes.key?(:'model')
@@ -174,10 +172,6 @@ module LaunchDarklyApi
         invalid_properties.push('invalid value for "key", key cannot be nil.')
       end
 
-      if @messages.nil?
-        invalid_properties.push('invalid value for "messages", messages cannot be nil.')
-      end
-
       if @name.nil?
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
@@ -190,7 +184,6 @@ module LaunchDarklyApi
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @key.nil?
-      return false if @messages.nil?
       return false if @name.nil?
       true
     end
@@ -203,16 +196,6 @@ module LaunchDarklyApi
       end
 
       @key = key
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] messages Value to be assigned
-    def messages=(messages)
-      if messages.nil?
-        fail ArgumentError, 'messages cannot be nil'
-      end
-
-      @messages = messages
     end
 
     # Custom attribute writer method with validation

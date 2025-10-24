@@ -44,7 +44,6 @@ docs/AccessDeniedReason.md
 docs/AccessTokenPost.md
 docs/AccessTokensApi.md
 docs/AccountMembersApi.md
-docs/AccountMembersBetaApi.md
 docs/AccountUsageBetaApi.md
 docs/ActionInput.md
 docs/ActionOutput.md
@@ -151,6 +150,7 @@ docs/Contexts.md
 docs/ContextsApi.md
 docs/CopiedFromEnv.md
 docs/CoreLink.md
+docs/CovarianceInfoRep.md
 docs/CreateAnnouncementBody.md
 docs/CreateApprovalRequestRequest.md
 docs/CreateCopyFlagConfigApprovalRequestRequest.md
@@ -647,7 +647,6 @@ launchdarkly_api.gemspec
 lib/launchdarkly_api.rb
 lib/launchdarkly_api/api/access_tokens_api.rb
 lib/launchdarkly_api/api/account_members_api.rb
-lib/launchdarkly_api/api/account_members_beta_api.rb
 lib/launchdarkly_api/api/account_usage_beta_api.rb
 lib/launchdarkly_api/api/ai_configs_beta_api.rb
 lib/launchdarkly_api/api/announcements_api.rb
@@ -835,6 +834,7 @@ lib/launchdarkly_api/models/context_search.rb
 lib/launchdarkly_api/models/contexts.rb
 lib/launchdarkly_api/models/copied_from_env.rb
 lib/launchdarkly_api/models/core_link.rb
+lib/launchdarkly_api/models/covariance_info_rep.rb
 lib/launchdarkly_api/models/create_announcement_body.rb
 lib/launchdarkly_api/models/create_approval_request_request.rb
 lib/launchdarkly_api/models/create_copy_flag_config_approval_request_request.rb
@@ -1286,7 +1286,6 @@ lib/launchdarkly_api/models/workflow_templates_listing_output_rep.rb
 lib/launchdarkly_api/version.rb
 spec/api/access_tokens_api_spec.rb
 spec/api/account_members_api_spec.rb
-spec/api/account_members_beta_api_spec.rb
 spec/api/account_usage_beta_api_spec.rb
 spec/api/ai_configs_beta_api_spec.rb
 spec/api/announcements_api_spec.rb
@@ -1471,6 +1470,7 @@ spec/models/context_search_spec.rb
 spec/models/contexts_spec.rb
 spec/models/copied_from_env_spec.rb
 spec/models/core_link_spec.rb
+spec/models/covariance_info_rep_spec.rb
 spec/models/create_announcement_body_spec.rb
 spec/models/create_approval_request_request_spec.rb
 spec/models/create_copy_flag_config_approval_request_request_spec.rb

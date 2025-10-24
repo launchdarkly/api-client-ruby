@@ -8,7 +8,7 @@
 | **description** | **String** | Returns the description for the agent. This is only returned for agent variations. | [optional] |
 | **instructions** | **String** | Returns the instructions for the agent. This is only returned for agent variations. | [optional] |
 | **key** | **String** |  |  |
-| **messages** | [**Array&lt;Message&gt;**](Message.md) |  |  |
+| **messages** | [**Array&lt;Message&gt;**](Message.md) |  | [optional] |
 | **model** | **Object** |  | [optional] |
 | **name** | **String** |  |  |
 | **model_config_key** | **String** |  | [optional] |
