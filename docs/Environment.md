@@ -13,6 +13,7 @@
 | **color** | **String** | The color used to indicate this environment in the UI |  |
 | **default_ttl** | **Integer** | The default time (in minutes) that the PHP SDK can cache feature flag rules locally |  |
 | **secure_mode** | **Boolean** | Ensures that one end user of the client-side SDK cannot inspect the variations for another end user |  |
+| **_access** | [**Access**](Access.md) |  | [optional] |
 | **default_track_events** | **Boolean** | Enables tracking detailed information for new flags by default |  |
 | **require_comments** | **Boolean** | Whether members who modify flags and segments through the LaunchDarkly user interface are required to add a comment |  |
 | **confirm_changes** | **Boolean** | Whether members who modify flags and segments through the LaunchDarkly user interface are required to confirm those changes |  |
@@ -36,6 +37,7 @@ instance = LaunchDarklyApi::Environment.new(
   color: F5A623,
   default_ttl: 5,
   secure_mode: true,
+  _access: null,
   default_track_events: false,
   require_comments: true,
   confirm_changes: true,

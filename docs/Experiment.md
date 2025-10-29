@@ -12,6 +12,7 @@
 | **_creation_date** | **Integer** |  |  |
 | **environment_key** | **String** |  |  |
 | **archived_date** | **Integer** |  | [optional] |
+| **tags** | **Array&lt;String&gt;** | Tags for the experiment | [optional] |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
 | **holdout_id** | **String** | The holdout ID | [optional] |
 | **current_iteration** | [**IterationRep**](IterationRep.md) |  | [optional] |
@@ -32,6 +33,7 @@ instance = LaunchDarklyApi::Experiment.new(
   _creation_date: null,
   environment_key: null,
   archived_date: null,
+  tags: [&quot;experiment&quot;,&quot;feature&quot;],
   _links: {&quot;parent&quot;:{&quot;href&quot;:&quot;/api/v2/projects/my-project/environments/my-environment&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/projects/my-project/environments/my-environment/experiments/my-experiment&quot;,&quot;type&quot;:&quot;application/json&quot;}},
   holdout_id: f3b74309-d581-44e1-8a2b-bb2933b4fe40,
   current_iteration: null,

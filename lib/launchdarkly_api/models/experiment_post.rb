@@ -32,6 +32,9 @@ module LaunchDarklyApi
     # The ID of the holdout
     attr_accessor :holdout_id
 
+    # Tags for the experiment
+    attr_accessor :tags
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -40,7 +43,8 @@ module LaunchDarklyApi
         :'maintainer_id' => :'maintainerId',
         :'key' => :'key',
         :'iteration' => :'iteration',
-        :'holdout_id' => :'holdoutId'
+        :'holdout_id' => :'holdoutId',
+        :'tags' => :'tags'
       }
     end
 
@@ -62,7 +66,8 @@ module LaunchDarklyApi
         :'maintainer_id' => :'String',
         :'key' => :'String',
         :'iteration' => :'IterationInput',
-        :'holdout_id' => :'String'
+        :'holdout_id' => :'String',
+        :'tags' => :'Array<String>'
       }
     end
 
@@ -116,6 +121,12 @@ module LaunchDarklyApi
 
       if attributes.key?(:'holdout_id')
         self.holdout_id = attributes[:'holdout_id']
+      end
+
+      if attributes.key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
       end
     end
 
@@ -189,7 +200,8 @@ module LaunchDarklyApi
           maintainer_id == o.maintainer_id &&
           key == o.key &&
           iteration == o.iteration &&
-          holdout_id == o.holdout_id
+          holdout_id == o.holdout_id &&
+          tags == o.tags
     end
 
     # @see the `==` method
@@ -201,7 +213,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, maintainer_id, key, iteration, holdout_id].hash
+      [name, description, maintainer_id, key, iteration, holdout_id, tags].hash
     end
 
     # Builds the object from hash

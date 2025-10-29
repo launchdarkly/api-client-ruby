@@ -42,6 +42,8 @@ module LaunchDarklyApi
     # Ensures that one end user of the client-side SDK cannot inspect the variations for another end user
     attr_accessor :secure_mode
 
+    attr_accessor :_access
+
     # Enables tracking detailed information for new flags by default
     attr_accessor :default_track_events
 
@@ -74,6 +76,7 @@ module LaunchDarklyApi
         :'color' => :'color',
         :'default_ttl' => :'defaultTtl',
         :'secure_mode' => :'secureMode',
+        :'_access' => :'_access',
         :'default_track_events' => :'defaultTrackEvents',
         :'require_comments' => :'requireComments',
         :'confirm_changes' => :'confirmChanges',
@@ -106,6 +109,7 @@ module LaunchDarklyApi
         :'color' => :'String',
         :'default_ttl' => :'Integer',
         :'secure_mode' => :'Boolean',
+        :'_access' => :'Access',
         :'default_track_events' => :'Boolean',
         :'require_comments' => :'Boolean',
         :'confirm_changes' => :'Boolean',
@@ -192,6 +196,10 @@ module LaunchDarklyApi
         self.secure_mode = attributes[:'secure_mode']
       else
         self.secure_mode = nil
+      end
+
+      if attributes.key?(:'_access')
+        self._access = attributes[:'_access']
       end
 
       if attributes.key?(:'default_track_events')
@@ -476,6 +484,7 @@ module LaunchDarklyApi
           color == o.color &&
           default_ttl == o.default_ttl &&
           secure_mode == o.secure_mode &&
+          _access == o._access &&
           default_track_events == o.default_track_events &&
           require_comments == o.require_comments &&
           confirm_changes == o.confirm_changes &&
@@ -494,7 +503,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_links, _id, key, name, api_key, mobile_key, color, default_ttl, secure_mode, default_track_events, require_comments, confirm_changes, tags, approval_settings, resource_approval_settings, critical].hash
+      [_links, _id, key, name, api_key, mobile_key, color, default_ttl, secure_mode, _access, default_track_events, require_comments, confirm_changes, tags, approval_settings, resource_approval_settings, critical].hash
     end
 
     # Builds the object from hash

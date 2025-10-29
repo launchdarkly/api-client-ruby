@@ -20,7 +20,7 @@ instance = LaunchDarklyApi::PostReleasePolicyRequest.new(
   scope: null,
   release_method: null,
   guarded_release_config: null,
-  progressive_release_config: null,
+  progressive_release_config: {&quot;rolloutContextKindKey&quot;:&quot;user&quot;},
   name: Production Release,
   key: production-release
 )

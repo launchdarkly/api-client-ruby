@@ -36,6 +36,9 @@ module LaunchDarklyApi
 
     attr_accessor :archived_date
 
+    # Tags for the experiment
+    attr_accessor :tags
+
     # The location and content type of related resources
     attr_accessor :_links
 
@@ -60,6 +63,7 @@ module LaunchDarklyApi
         :'_creation_date' => :'_creationDate',
         :'environment_key' => :'environmentKey',
         :'archived_date' => :'archivedDate',
+        :'tags' => :'tags',
         :'_links' => :'_links',
         :'holdout_id' => :'holdoutId',
         :'current_iteration' => :'currentIteration',
@@ -89,6 +93,7 @@ module LaunchDarklyApi
         :'_creation_date' => :'Integer',
         :'environment_key' => :'String',
         :'archived_date' => :'Integer',
+        :'tags' => :'Array<String>',
         :'_links' => :'Hash<String, Link>',
         :'holdout_id' => :'String',
         :'current_iteration' => :'IterationRep',
@@ -159,6 +164,12 @@ module LaunchDarklyApi
 
       if attributes.key?(:'archived_date')
         self.archived_date = attributes[:'archived_date']
+      end
+
+      if attributes.key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
       end
 
       if attributes.key?(:'_links')
@@ -306,6 +317,7 @@ module LaunchDarklyApi
           _creation_date == o._creation_date &&
           environment_key == o.environment_key &&
           archived_date == o.archived_date &&
+          tags == o.tags &&
           _links == o._links &&
           holdout_id == o.holdout_id &&
           current_iteration == o.current_iteration &&
@@ -322,7 +334,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_id, key, name, description, _maintainer_id, _creation_date, environment_key, archived_date, _links, holdout_id, current_iteration, draft_iteration, previous_iterations].hash
+      [_id, key, name, description, _maintainer_id, _creation_date, environment_key, archived_date, tags, _links, holdout_id, current_iteration, draft_iteration, previous_iterations].hash
     end
 
     # Builds the object from hash
