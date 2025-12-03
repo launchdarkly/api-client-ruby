@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** |  | [optional] |
+| **key** | **String** |  |  |
 | **environment_key** | **String** |  | [optional] |
 | **_name** | **String** |  | [optional] |
 | **_integration_key** | **String** |  | [optional] |

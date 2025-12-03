@@ -61,12 +61,6 @@ module LaunchDarklyApi
     # The number of active guarded rollouts using this metric group
     attr_accessor :active_guarded_rollout_count
 
-    # The total number of connections using this metric group
-    attr_accessor :total_connections_count
-
-    # The total number of active connections using this metric group
-    attr_accessor :total_active_connections_count
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -108,9 +102,7 @@ module LaunchDarklyApi
         :'experiments' => :'experiments',
         :'experiment_count' => :'experimentCount',
         :'active_experiment_count' => :'activeExperimentCount',
-        :'active_guarded_rollout_count' => :'activeGuardedRolloutCount',
-        :'total_connections_count' => :'totalConnectionsCount',
-        :'total_active_connections_count' => :'totalActiveConnectionsCount'
+        :'active_guarded_rollout_count' => :'activeGuardedRolloutCount'
       }
     end
 
@@ -143,9 +135,7 @@ module LaunchDarklyApi
         :'experiments' => :'Array<DependentExperimentRep>',
         :'experiment_count' => :'Integer',
         :'active_experiment_count' => :'Integer',
-        :'active_guarded_rollout_count' => :'Integer',
-        :'total_connections_count' => :'Integer',
-        :'total_active_connections_count' => :'Integer'
+        :'active_guarded_rollout_count' => :'Integer'
       }
     end
 
@@ -267,14 +257,6 @@ module LaunchDarklyApi
 
       if attributes.key?(:'active_guarded_rollout_count')
         self.active_guarded_rollout_count = attributes[:'active_guarded_rollout_count']
-      end
-
-      if attributes.key?(:'total_connections_count')
-        self.total_connections_count = attributes[:'total_connections_count']
-      end
-
-      if attributes.key?(:'total_active_connections_count')
-        self.total_active_connections_count = attributes[:'total_active_connections_count']
       end
     end
 
@@ -481,9 +463,7 @@ module LaunchDarklyApi
           experiments == o.experiments &&
           experiment_count == o.experiment_count &&
           active_experiment_count == o.active_experiment_count &&
-          active_guarded_rollout_count == o.active_guarded_rollout_count &&
-          total_connections_count == o.total_connections_count &&
-          total_active_connections_count == o.total_active_connections_count
+          active_guarded_rollout_count == o.active_guarded_rollout_count
     end
 
     # @see the `==` method
@@ -495,7 +475,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_id, key, name, kind, description, _links, _access, tags, _creation_date, _last_modified, maintainer, metrics, _version, experiments, experiment_count, active_experiment_count, active_guarded_rollout_count, total_connections_count, total_active_connections_count].hash
+      [_id, key, name, kind, description, _links, _access, tags, _creation_date, _last_modified, maintainer, metrics, _version, experiments, experiment_count, active_experiment_count, active_guarded_rollout_count].hash
     end
 
     # Builds the object from hash

@@ -17,6 +17,9 @@
 | **satisfaction_rating** | **Float** | A value between 0 and 1 representing satisfaction rating | [optional] |
 | **input_cost** | **Float** | Cost of input tokens in USD | [optional] |
 | **output_cost** | **Float** | Cost of output tokens in USD | [optional] |
+| **judge_accuracy** | **Float** | Average accuracy judge score (0.0-1.0) | [optional] |
+| **judge_relevance** | **Float** | Average relevance judge score (0.0-1.0) | [optional] |
+| **judge_toxicity** | **Float** | Average toxicity judge score (0.0-1.0) | [optional] |
 
 ## Example
 
@@ -36,7 +39,10 @@ instance = LaunchDarklyApi::Metrics.new(
   time_to_first_token_ms: null,
   satisfaction_rating: null,
   input_cost: null,
-  output_cost: null
+  output_cost: null,
+  judge_accuracy: null,
+  judge_relevance: null,
+  judge_toxicity: null
 )
 ```
 

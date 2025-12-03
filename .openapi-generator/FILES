@@ -302,6 +302,7 @@ docs/FollowFlagsApi.md
 docs/FollowersPerFlag.md
 docs/ForbiddenErrorRep.md
 docs/FormVariable.md
+docs/GenerateTrustPolicyPostRep.md
 docs/GenerateWarehouseDestinationKeyPairPostRep.md
 docs/GetAnnouncementsPublic200Response.md
 docs/GuardedReleaseConfig.md
@@ -577,6 +578,8 @@ docs/TreatmentRep.md
 docs/TriggerPost.md
 docs/TriggerWorkflowCollectionRep.md
 docs/TriggerWorkflowRep.md
+docs/TrustPolicyDetails.md
+docs/TrustPolicyStatement.md
 docs/UnauthorizedErrorRep.md
 docs/UnlinkResourceSuccessResponse.md
 docs/UpdatePhaseStatusInput.md
@@ -976,6 +979,7 @@ lib/launchdarkly_api/models/follow_flag_member.rb
 lib/launchdarkly_api/models/followers_per_flag.rb
 lib/launchdarkly_api/models/forbidden_error_rep.rb
 lib/launchdarkly_api/models/form_variable.rb
+lib/launchdarkly_api/models/generate_trust_policy_post_rep.rb
 lib/launchdarkly_api/models/generate_warehouse_destination_key_pair_post_rep.rb
 lib/launchdarkly_api/models/get_announcements_public200_response.rb
 lib/launchdarkly_api/models/guarded_release_config.rb
@@ -1225,6 +1229,8 @@ lib/launchdarkly_api/models/treatment_rep.rb
 lib/launchdarkly_api/models/trigger_post.rb
 lib/launchdarkly_api/models/trigger_workflow_collection_rep.rb
 lib/launchdarkly_api/models/trigger_workflow_rep.rb
+lib/launchdarkly_api/models/trust_policy_details.rb
+lib/launchdarkly_api/models/trust_policy_statement.rb
 lib/launchdarkly_api/models/unauthorized_error_rep.rb
 lib/launchdarkly_api/models/unlink_resource_success_response.rb
 lib/launchdarkly_api/models/update_phase_status_input.rb
@@ -1612,6 +1618,7 @@ spec/models/follow_flag_member_spec.rb
 spec/models/followers_per_flag_spec.rb
 spec/models/forbidden_error_rep_spec.rb
 spec/models/form_variable_spec.rb
+spec/models/generate_trust_policy_post_rep_spec.rb
 spec/models/generate_warehouse_destination_key_pair_post_rep_spec.rb
 spec/models/get_announcements_public200_response_spec.rb
 spec/models/guarded_release_config_spec.rb
@@ -1861,6 +1868,8 @@ spec/models/treatment_rep_spec.rb
 spec/models/trigger_post_spec.rb
 spec/models/trigger_workflow_collection_rep_spec.rb
 spec/models/trigger_workflow_rep_spec.rb
+spec/models/trust_policy_details_spec.rb
+spec/models/trust_policy_statement_spec.rb
 spec/models/unauthorized_error_rep_spec.rb
 spec/models/unlink_resource_success_response_spec.rb
 spec/models/update_phase_status_input_spec.rb

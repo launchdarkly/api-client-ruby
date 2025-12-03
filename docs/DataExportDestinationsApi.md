@@ -9,6 +9,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_destinations**](DataExportDestinationsApi.md#get_destinations) | **GET** /api/v2/destinations | List destinations |
 | [**patch_destination**](DataExportDestinationsApi.md#patch_destination) | **PATCH** /api/v2/destinations/{projectKey}/{environmentKey}/{id} | Update Data Export destination |
 | [**post_destination**](DataExportDestinationsApi.md#post_destination) | **POST** /api/v2/destinations/{projectKey}/{environmentKey} | Create Data Export destination |
+| [**post_generate_trust_policy**](DataExportDestinationsApi.md#post_generate_trust_policy) | **POST** /api/v2/destinations/projects/{projKey}/environments/{envKey}/generate-trust-policy | Generate trust policy |
 | [**post_generate_warehouse_destination_key_pair**](DataExportDestinationsApi.md#post_generate_warehouse_destination_key_pair) | **POST** /api/v2/destinations/generate-warehouse-destination-key-pair | Generate Snowflake destination key pair |
 
 
@@ -378,6 +379,79 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## post_generate_trust_policy
+
+> <GenerateTrustPolicyPostRep> post_generate_trust_policy(proj_key, env_key)
+
+Generate trust policy
+
+Trust policy to allow Data Export to assume the role and perform operations on AWS resources
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::DataExportDestinationsApi.new
+proj_key = 'proj_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
+
+begin
+  # Generate trust policy
+  result = api_instance.post_generate_trust_policy(proj_key, env_key)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling DataExportDestinationsApi->post_generate_trust_policy: #{e}"
+end
+```
+
+#### Using the post_generate_trust_policy_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GenerateTrustPolicyPostRep>, Integer, Hash)> post_generate_trust_policy_with_http_info(proj_key, env_key)
+
+```ruby
+begin
+  # Generate trust policy
+  data, status_code, headers = api_instance.post_generate_trust_policy_with_http_info(proj_key, env_key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GenerateTrustPolicyPostRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling DataExportDestinationsApi->post_generate_trust_policy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **proj_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
+
+### Return type
+
+[**GenerateTrustPolicyPostRep**](GenerateTrustPolicyPostRep.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

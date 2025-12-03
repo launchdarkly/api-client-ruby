@@ -73,6 +73,28 @@ module LaunchDarklyApi
 
     attr_accessor :covariance_info
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -292,6 +314,8 @@ module LaunchDarklyApi
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @hypothesis.nil?
       return false if @status.nil?
+      status_validator = EnumAttributeValidator.new('String', ["not_started", "running", "stopped"])
+      return false unless status_validator.valid?(@status)
       return false if @created_at.nil?
       true
     end
@@ -306,13 +330,13 @@ module LaunchDarklyApi
       @hypothesis = hypothesis
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] status Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status Object to be assigned
     def status=(status)
-      if status.nil?
-        fail ArgumentError, 'status cannot be nil'
+      validator = EnumAttributeValidator.new('String', ["not_started", "running", "stopped"])
+      unless validator.valid?(status)
+        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
       end
-
       @status = status
     end
 

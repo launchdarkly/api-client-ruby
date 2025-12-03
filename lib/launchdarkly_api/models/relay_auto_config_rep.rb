@@ -129,8 +129,6 @@ module LaunchDarklyApi
 
       if attributes.key?(:'full_key')
         self.full_key = attributes[:'full_key']
-      else
-        self.full_key = nil
       end
 
       if attributes.key?(:'display_key')
@@ -169,10 +167,6 @@ module LaunchDarklyApi
         invalid_properties.push('invalid value for "policy", policy cannot be nil.')
       end
 
-      if @full_key.nil?
-        invalid_properties.push('invalid value for "full_key", full_key cannot be nil.')
-      end
-
       if @display_key.nil?
         invalid_properties.push('invalid value for "display_key", display_key cannot be nil.')
       end
@@ -195,7 +189,6 @@ module LaunchDarklyApi
       return false if @_id.nil?
       return false if @name.nil?
       return false if @policy.nil?
-      return false if @full_key.nil?
       return false if @display_key.nil?
       return false if @creation_date.nil?
       return false if @last_modified.nil?
@@ -230,16 +223,6 @@ module LaunchDarklyApi
       end
 
       @policy = policy
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] full_key Value to be assigned
-    def full_key=(full_key)
-      if full_key.nil?
-        fail ArgumentError, 'full_key cannot be nil'
-      end
-
-      @full_key = full_key
     end
 
     # Custom attribute writer method with validation

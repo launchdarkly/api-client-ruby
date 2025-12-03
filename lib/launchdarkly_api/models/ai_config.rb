@@ -39,6 +39,9 @@ module LaunchDarklyApi
 
     attr_accessor :updated_at
 
+    # List of evaluation metric keys for this AI config
+    attr_accessor :evaluation_metric_keys
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -75,7 +78,8 @@ module LaunchDarklyApi
         :'version' => :'version',
         :'variations' => :'variations',
         :'created_at' => :'createdAt',
-        :'updated_at' => :'updatedAt'
+        :'updated_at' => :'updatedAt',
+        :'evaluation_metric_keys' => :'evaluationMetricKeys'
       }
     end
 
@@ -103,7 +107,8 @@ module LaunchDarklyApi
         :'version' => :'Integer',
         :'variations' => :'Array<AIConfigVariation>',
         :'created_at' => :'Integer',
-        :'updated_at' => :'Integer'
+        :'updated_at' => :'Integer',
+        :'evaluation_metric_keys' => :'Array<String>'
       }
     end
 
@@ -197,6 +202,12 @@ module LaunchDarklyApi
         self.updated_at = attributes[:'updated_at']
       else
         self.updated_at = nil
+      end
+
+      if attributes.key?(:'evaluation_metric_keys')
+        if (value = attributes[:'evaluation_metric_keys']).is_a?(Array)
+          self.evaluation_metric_keys = value
+        end
       end
     end
 
@@ -363,7 +374,8 @@ module LaunchDarklyApi
           version == o.version &&
           variations == o.variations &&
           created_at == o.created_at &&
-          updated_at == o.updated_at
+          updated_at == o.updated_at &&
+          evaluation_metric_keys == o.evaluation_metric_keys
     end
 
     # @see the `==` method
@@ -375,7 +387,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_access, _links, description, key, _maintainer, mode, name, tags, version, variations, created_at, updated_at].hash
+      [_access, _links, description, key, _maintainer, mode, name, tags, version, variations, created_at, updated_at, evaluation_metric_keys].hash
     end
 
     # Builds the object from hash

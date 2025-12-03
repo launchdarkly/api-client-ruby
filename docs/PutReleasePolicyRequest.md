@@ -19,7 +19,7 @@ instance = LaunchDarklyApi::PutReleasePolicyRequest.new(
   scope: null,
   release_method: null,
   guarded_release_config: null,
-  progressive_release_config: {&quot;rolloutContextKindKey&quot;:&quot;user&quot;},
+  progressive_release_config: {&quot;rolloutContextKindKey&quot;:&quot;user&quot;,&quot;stages&quot;:[{&quot;allocation&quot;:25000,&quot;durationMillis&quot;:60000},{&quot;allocation&quot;:25000,&quot;durationMillis&quot;:60000}]},
   name: Production Release
 )
 ```

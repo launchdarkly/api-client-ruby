@@ -426,6 +426,8 @@ module LaunchDarklyApi
 
       if attributes.key?(:'data_source')
         self.data_source = attributes[:'data_source']
+      else
+        self.data_source = nil
       end
 
       if attributes.key?(:'archived')
@@ -514,6 +516,10 @@ module LaunchDarklyApi
         invalid_properties.push('invalid value for "_creation_date", _creation_date cannot be nil.')
       end
 
+      if @data_source.nil?
+        invalid_properties.push('invalid value for "data_source", data_source cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -537,6 +543,7 @@ module LaunchDarklyApi
       return false unless unit_aggregation_type_validator.valid?(@unit_aggregation_type)
       analysis_type_validator = EnumAttributeValidator.new('String', ["mean", "percentile"])
       return false unless analysis_type_validator.valid?(@analysis_type)
+      return false if @data_source.nil?
       true
     end
 
@@ -648,6 +655,16 @@ module LaunchDarklyApi
         fail ArgumentError, "invalid value for \"analysis_type\", must be one of #{validator.allowable_values}."
       end
       @analysis_type = analysis_type
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] data_source Value to be assigned
+    def data_source=(data_source)
+      if data_source.nil?
+        fail ArgumentError, 'data_source cannot be nil'
+      end
+
+      @data_source = data_source
     end
 
     # Checks equality by comparing each attribute.

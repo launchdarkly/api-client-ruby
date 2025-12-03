@@ -112,7 +112,7 @@ module LaunchDarklyApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      _case_validator = EnumAttributeValidator.new('String', ["camelCase", "upperCamelCase", "snakeCase", "kebabCase"])
+      _case_validator = EnumAttributeValidator.new('String', ["camelCase", "upperCamelCase", "snakeCase", "kebabCase", "constantCase"])
       return false unless _case_validator.valid?(@_case)
       true
     end
@@ -120,7 +120,7 @@ module LaunchDarklyApi
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] _case Object to be assigned
     def _case=(_case)
-      validator = EnumAttributeValidator.new('String', ["camelCase", "upperCamelCase", "snakeCase", "kebabCase"])
+      validator = EnumAttributeValidator.new('String', ["camelCase", "upperCamelCase", "snakeCase", "kebabCase", "constantCase"])
       unless validator.valid?(_case)
         fail ArgumentError, "invalid value for \"_case\", must be one of #{validator.allowable_values}."
       end

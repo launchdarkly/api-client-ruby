@@ -47,6 +47,15 @@ module LaunchDarklyApi
     # Cost of output tokens in USD
     attr_accessor :output_cost
 
+    # Average accuracy judge score (0.0-1.0)
+    attr_accessor :judge_accuracy
+
+    # Average relevance judge score (0.0-1.0)
+    attr_accessor :judge_relevance
+
+    # Average toxicity judge score (0.0-1.0)
+    attr_accessor :judge_toxicity
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -62,7 +71,10 @@ module LaunchDarklyApi
         :'time_to_first_token_ms' => :'timeToFirstTokenMs',
         :'satisfaction_rating' => :'satisfactionRating',
         :'input_cost' => :'inputCost',
-        :'output_cost' => :'outputCost'
+        :'output_cost' => :'outputCost',
+        :'judge_accuracy' => :'judgeAccuracy',
+        :'judge_relevance' => :'judgeRelevance',
+        :'judge_toxicity' => :'judgeToxicity'
       }
     end
 
@@ -91,7 +103,10 @@ module LaunchDarklyApi
         :'time_to_first_token_ms' => :'Integer',
         :'satisfaction_rating' => :'Float',
         :'input_cost' => :'Float',
-        :'output_cost' => :'Float'
+        :'output_cost' => :'Float',
+        :'judge_accuracy' => :'Float',
+        :'judge_relevance' => :'Float',
+        :'judge_toxicity' => :'Float'
       }
     end
 
@@ -168,6 +183,18 @@ module LaunchDarklyApi
       if attributes.key?(:'output_cost')
         self.output_cost = attributes[:'output_cost']
       end
+
+      if attributes.key?(:'judge_accuracy')
+        self.judge_accuracy = attributes[:'judge_accuracy']
+      end
+
+      if attributes.key?(:'judge_relevance')
+        self.judge_relevance = attributes[:'judge_relevance']
+      end
+
+      if attributes.key?(:'judge_toxicity')
+        self.judge_toxicity = attributes[:'judge_toxicity']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -183,6 +210,30 @@ module LaunchDarklyApi
         invalid_properties.push('invalid value for "satisfaction_rating", must be greater than or equal to 0.')
       end
 
+      if !@judge_accuracy.nil? && @judge_accuracy > 1
+        invalid_properties.push('invalid value for "judge_accuracy", must be smaller than or equal to 1.')
+      end
+
+      if !@judge_accuracy.nil? && @judge_accuracy < 0
+        invalid_properties.push('invalid value for "judge_accuracy", must be greater than or equal to 0.')
+      end
+
+      if !@judge_relevance.nil? && @judge_relevance > 1
+        invalid_properties.push('invalid value for "judge_relevance", must be smaller than or equal to 1.')
+      end
+
+      if !@judge_relevance.nil? && @judge_relevance < 0
+        invalid_properties.push('invalid value for "judge_relevance", must be greater than or equal to 0.')
+      end
+
+      if !@judge_toxicity.nil? && @judge_toxicity > 1
+        invalid_properties.push('invalid value for "judge_toxicity", must be smaller than or equal to 1.')
+      end
+
+      if !@judge_toxicity.nil? && @judge_toxicity < 0
+        invalid_properties.push('invalid value for "judge_toxicity", must be greater than or equal to 0.')
+      end
+
       invalid_properties
     end
 
@@ -192,6 +243,12 @@ module LaunchDarklyApi
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if !@satisfaction_rating.nil? && @satisfaction_rating > 1
       return false if !@satisfaction_rating.nil? && @satisfaction_rating < 0
+      return false if !@judge_accuracy.nil? && @judge_accuracy > 1
+      return false if !@judge_accuracy.nil? && @judge_accuracy < 0
+      return false if !@judge_relevance.nil? && @judge_relevance > 1
+      return false if !@judge_relevance.nil? && @judge_relevance < 0
+      return false if !@judge_toxicity.nil? && @judge_toxicity > 1
+      return false if !@judge_toxicity.nil? && @judge_toxicity < 0
       true
     end
 
@@ -213,6 +270,60 @@ module LaunchDarklyApi
       @satisfaction_rating = satisfaction_rating
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] judge_accuracy Value to be assigned
+    def judge_accuracy=(judge_accuracy)
+      if judge_accuracy.nil?
+        fail ArgumentError, 'judge_accuracy cannot be nil'
+      end
+
+      if judge_accuracy > 1
+        fail ArgumentError, 'invalid value for "judge_accuracy", must be smaller than or equal to 1.'
+      end
+
+      if judge_accuracy < 0
+        fail ArgumentError, 'invalid value for "judge_accuracy", must be greater than or equal to 0.'
+      end
+
+      @judge_accuracy = judge_accuracy
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] judge_relevance Value to be assigned
+    def judge_relevance=(judge_relevance)
+      if judge_relevance.nil?
+        fail ArgumentError, 'judge_relevance cannot be nil'
+      end
+
+      if judge_relevance > 1
+        fail ArgumentError, 'invalid value for "judge_relevance", must be smaller than or equal to 1.'
+      end
+
+      if judge_relevance < 0
+        fail ArgumentError, 'invalid value for "judge_relevance", must be greater than or equal to 0.'
+      end
+
+      @judge_relevance = judge_relevance
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] judge_toxicity Value to be assigned
+    def judge_toxicity=(judge_toxicity)
+      if judge_toxicity.nil?
+        fail ArgumentError, 'judge_toxicity cannot be nil'
+      end
+
+      if judge_toxicity > 1
+        fail ArgumentError, 'invalid value for "judge_toxicity", must be smaller than or equal to 1.'
+      end
+
+      if judge_toxicity < 0
+        fail ArgumentError, 'invalid value for "judge_toxicity", must be greater than or equal to 0.'
+      end
+
+      @judge_toxicity = judge_toxicity
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -230,7 +341,10 @@ module LaunchDarklyApi
           time_to_first_token_ms == o.time_to_first_token_ms &&
           satisfaction_rating == o.satisfaction_rating &&
           input_cost == o.input_cost &&
-          output_cost == o.output_cost
+          output_cost == o.output_cost &&
+          judge_accuracy == o.judge_accuracy &&
+          judge_relevance == o.judge_relevance &&
+          judge_toxicity == o.judge_toxicity
     end
 
     # @see the `==` method
@@ -242,7 +356,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [input_tokens, output_tokens, total_tokens, generation_count, generation_success_count, generation_error_count, thumbs_up, thumbs_down, duration_ms, time_to_first_token_ms, satisfaction_rating, input_cost, output_cost].hash
+      [input_tokens, output_tokens, total_tokens, generation_count, generation_success_count, generation_error_count, thumbs_up, thumbs_down, duration_ms, time_to_first_token_ms, satisfaction_rating, input_cost, output_cost, judge_accuracy, judge_relevance, judge_toxicity].hash
     end
 
     # Builds the object from hash

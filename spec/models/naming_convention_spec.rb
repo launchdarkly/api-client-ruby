@@ -30,7 +30,7 @@ describe LaunchDarklyApi::NamingConvention do
   describe 'test attribute "_case"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["camelCase", "upperCamelCase", "snakeCase", "kebabCase"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["camelCase", "upperCamelCase", "snakeCase", "kebabCase", "constantCase"])
       # validator.allowable_values.each do |value|
       #   expect { instance._case = value }.not_to raise_error
       # end

@@ -392,6 +392,75 @@ module LaunchDarklyApi
       return data, status_code, headers
     end
 
+    # Generate trust policy
+    # Trust policy to allow Data Export to assume the role and perform operations on AWS resources
+    # @param proj_key [String] The project key
+    # @param env_key [String] The environment key
+    # @param [Hash] opts the optional parameters
+    # @return [GenerateTrustPolicyPostRep]
+    def post_generate_trust_policy(proj_key, env_key, opts = {})
+      data, _status_code, _headers = post_generate_trust_policy_with_http_info(proj_key, env_key, opts)
+      data
+    end
+
+    # Generate trust policy
+    # Trust policy to allow Data Export to assume the role and perform operations on AWS resources
+    # @param proj_key [String] The project key
+    # @param env_key [String] The environment key
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GenerateTrustPolicyPostRep, Integer, Hash)>] GenerateTrustPolicyPostRep data, response status code and response headers
+    def post_generate_trust_policy_with_http_info(proj_key, env_key, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DataExportDestinationsApi.post_generate_trust_policy ...'
+      end
+      # verify the required parameter 'proj_key' is set
+      if @api_client.config.client_side_validation && proj_key.nil?
+        fail ArgumentError, "Missing the required parameter 'proj_key' when calling DataExportDestinationsApi.post_generate_trust_policy"
+      end
+      # verify the required parameter 'env_key' is set
+      if @api_client.config.client_side_validation && env_key.nil?
+        fail ArgumentError, "Missing the required parameter 'env_key' when calling DataExportDestinationsApi.post_generate_trust_policy"
+      end
+      # resource path
+      local_var_path = '/api/v2/destinations/projects/{projKey}/environments/{envKey}/generate-trust-policy'.sub('{' + 'projKey' + '}', CGI.escape(proj_key.to_s)).sub('{' + 'envKey' + '}', CGI.escape(env_key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GenerateTrustPolicyPostRep'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DataExportDestinationsApi.post_generate_trust_policy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DataExportDestinationsApi#post_generate_trust_policy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Generate Snowflake destination key pair
     # Generate key pair to allow Data Export to authenticate into a Snowflake warehouse destination
     # @param [Hash] opts the optional parameters

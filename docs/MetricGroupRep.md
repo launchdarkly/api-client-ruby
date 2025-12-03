@@ -21,8 +21,6 @@
 | **experiment_count** | **Integer** | The number of experiments using this metric group | [optional] |
 | **active_experiment_count** | **Integer** | The number of active experiments using this metric group | [optional] |
 | **active_guarded_rollout_count** | **Integer** | The number of active guarded rollouts using this metric group | [optional] |
-| **total_connections_count** | **Integer** | The total number of connections using this metric group | [optional] |
-| **total_active_connections_count** | **Integer** | The total number of active connections using this metric group | [optional] |
 
 ## Example
 
@@ -46,9 +44,7 @@ instance = LaunchDarklyApi::MetricGroupRep.new(
   experiments: null,
   experiment_count: 0,
   active_experiment_count: 0,
-  active_guarded_rollout_count: 0,
-  total_connections_count: 0,
-  total_active_connections_count: 0
+  active_guarded_rollout_count: 0
 )
 ```
 

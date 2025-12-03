@@ -167,7 +167,7 @@ module LaunchDarklyApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      kind_validator = EnumAttributeValidator.new('String', ["google-pubsub", "kinesis", "mparticle", "segment", "azure-event-hubs", "snowflake-v2", "databricks", "bigquery"])
+      kind_validator = EnumAttributeValidator.new('String', ["google-pubsub", "kinesis", "mparticle", "segment", "azure-event-hubs", "snowflake-v2", "databricks", "bigquery", "redshift"])
       return false unless kind_validator.valid?(@kind)
       true
     end
@@ -175,7 +175,7 @@ module LaunchDarklyApi
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] kind Object to be assigned
     def kind=(kind)
-      validator = EnumAttributeValidator.new('String', ["google-pubsub", "kinesis", "mparticle", "segment", "azure-event-hubs", "snowflake-v2", "databricks", "bigquery"])
+      validator = EnumAttributeValidator.new('String', ["google-pubsub", "kinesis", "mparticle", "segment", "azure-event-hubs", "snowflake-v2", "databricks", "bigquery", "redshift"])
       unless validator.valid?(kind)
         fail ArgumentError, "invalid value for \"kind\", must be one of #{validator.allowable_values}."
       end

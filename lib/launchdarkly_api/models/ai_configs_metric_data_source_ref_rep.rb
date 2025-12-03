@@ -77,6 +77,8 @@ module LaunchDarklyApi
 
       if attributes.key?(:'key')
         self.key = attributes[:'key']
+      else
+        self.key = nil
       end
 
       if attributes.key?(:'environment_key')
@@ -97,6 +99,10 @@ module LaunchDarklyApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @key.nil?
+        invalid_properties.push('invalid value for "key", key cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -104,7 +110,18 @@ module LaunchDarklyApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @key.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] key Value to be assigned
+    def key=(key)
+      if key.nil?
+        fail ArgumentError, 'key cannot be nil'
+      end
+
+      @key = key
     end
 
     # Checks equality by comparing each attribute.

@@ -618,7 +618,7 @@ module LaunchDarklyApi
     # @option opts [Integer] :limit The number of feature flags to return. Defaults to 20.
     # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
     # @option opts [Boolean] :archived Deprecated, use &#x60;filter&#x3D;archived:true&#x60; instead. A boolean to filter the list to archived flags. When this is absent, only unarchived flags will be returned
-    # @option opts [Boolean] :summary By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set &#x60;summary&#x3D;0&#x60; to include these fields for each flag returned.
+    # @option opts [Boolean] :summary By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set &#x60;summary&#x3D;0&#x60; and include the &#x60;env&#x60; query parameter to include these fields for each flag returned.
     # @option opts [String] :filter A comma-separated list of filters. Each filter is of the form field:value. Read the endpoint description for a full list of available filter fields.
     # @option opts [String] :sort A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. Read the endpoint description for a full list of available sort fields.
     # @option opts [Boolean] :compare Deprecated, unavailable in API version &#x60;20240415&#x60;. A boolean to filter results by only flags that have differences between environments.
@@ -638,7 +638,7 @@ module LaunchDarklyApi
     # @option opts [Integer] :limit The number of feature flags to return. Defaults to 20.
     # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
     # @option opts [Boolean] :archived Deprecated, use &#x60;filter&#x3D;archived:true&#x60; instead. A boolean to filter the list to archived flags. When this is absent, only unarchived flags will be returned
-    # @option opts [Boolean] :summary By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set &#x60;summary&#x3D;0&#x60; to include these fields for each flag returned.
+    # @option opts [Boolean] :summary By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set &#x60;summary&#x3D;0&#x60; and include the &#x60;env&#x60; query parameter to include these fields for each flag returned.
     # @option opts [String] :filter A comma-separated list of filters. Each filter is of the form field:value. Read the endpoint description for a full list of available filter fields.
     # @option opts [String] :sort A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. Read the endpoint description for a full list of available sort fields.
     # @option opts [Boolean] :compare Deprecated, unavailable in API version &#x60;20240415&#x60;. A boolean to filter results by only flags that have differences between environments.

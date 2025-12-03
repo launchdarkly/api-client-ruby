@@ -100,6 +100,19 @@ describe 'DataExportDestinationsApi' do
     end
   end
 
+  # unit tests for post_generate_trust_policy
+  # Generate trust policy
+  # Trust policy to allow Data Export to assume the role and perform operations on AWS resources
+  # @param proj_key The project key
+  # @param env_key The environment key
+  # @param [Hash] opts the optional parameters
+  # @return [GenerateTrustPolicyPostRep]
+  describe 'post_generate_trust_policy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for post_generate_warehouse_destination_key_pair
   # Generate Snowflake destination key pair
   # Generate key pair to allow Data Export to authenticate into a Snowflake warehouse destination

@@ -48,7 +48,7 @@ describe LaunchDarklyApi::Destination do
   describe 'test attribute "kind"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["google-pubsub", "kinesis", "mparticle", "segment", "azure-event-hubs", "snowflake-v2", "databricks", "bigquery"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["google-pubsub", "kinesis", "mparticle", "segment", "azure-event-hubs", "snowflake-v2", "databricks", "bigquery", "redshift"])
       # validator.allowable_values.each do |value|
       #   expect { instance.kind = value }.not_to raise_error
       # end

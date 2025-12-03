@@ -16,6 +16,7 @@
 | **variations** | [**Array&lt;AIConfigVariation&gt;**](AIConfigVariation.md) |  |  |
 | **created_at** | **Integer** |  |  |
 | **updated_at** | **Integer** |  |  |
+| **evaluation_metric_keys** | **Array&lt;String&gt;** | List of evaluation metric keys for this AI config | [optional] |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = LaunchDarklyApi::AIConfig.new(
   version: null,
   variations: null,
   created_at: null,
-  updated_at: null
+  updated_at: null,
+  evaluation_metric_keys: null
 )
 ```
 
