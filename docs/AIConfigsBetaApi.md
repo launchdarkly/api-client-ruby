@@ -17,6 +17,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_ai_configs**](AIConfigsBetaApi.md#get_ai_configs) | **GET** /api/v2/projects/{projectKey}/ai-configs | List AI Configs |
 | [**get_ai_tool**](AIConfigsBetaApi.md#get_ai_tool) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Get AI tool |
 | [**get_model_config**](AIConfigsBetaApi.md#get_model_config) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Get AI model config |
+| [**list_agent_graphs**](AIConfigsBetaApi.md#list_agent_graphs) | **GET** /api/v2/projects/{projectKey}/agent-graphs | List agent graphs |
 | [**list_ai_tool_versions**](AIConfigsBetaApi.md#list_ai_tool_versions) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey}/versions | List AI tool versions |
 | [**list_ai_tools**](AIConfigsBetaApi.md#list_ai_tools) | **GET** /api/v2/projects/{projectKey}/ai-tools | List AI tools |
 | [**list_model_configs**](AIConfigsBetaApi.md#list_model_configs) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs | List AI model configs |
@@ -24,6 +25,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**patch_ai_config_targeting**](AIConfigsBetaApi.md#patch_ai_config_targeting) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting | Update AI Config targeting |
 | [**patch_ai_config_variation**](AIConfigsBetaApi.md#patch_ai_config_variation) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Update AI Config variation |
 | [**patch_ai_tool**](AIConfigsBetaApi.md#patch_ai_tool) | **PATCH** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Update AI tool |
+| [**post_agent_graph**](AIConfigsBetaApi.md#post_agent_graph) | **POST** /api/v2/projects/{projectKey}/agent-graphs | Create new agent graph |
 | [**post_ai_config**](AIConfigsBetaApi.md#post_ai_config) | **POST** /api/v2/projects/{projectKey}/ai-configs | Create new AI Config |
 | [**post_ai_config_variation**](AIConfigsBetaApi.md#post_ai_config_variation) | **POST** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations | Create AI Config variation |
 | [**post_ai_tool**](AIConfigsBetaApi.md#post_ai_tool) | **POST** /api/v2/projects/{projectKey}/ai-tools | Create an AI tool |
@@ -1025,6 +1027,85 @@ end
 - **Accept**: application/json
 
 
+## list_agent_graphs
+
+> <AgentGraphs> list_agent_graphs(ld_api_version, project_key, opts)
+
+List agent graphs
+
+Get a list of all agent graphs in the given project. Returns metadata only, without edge data.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
+ld_api_version = 'beta' # String | Version of the endpoint.
+project_key = 'project_key_example' # String | 
+opts = {
+  limit: 56, # Integer | The number of AI Configs to return.
+  offset: 56 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+}
+
+begin
+  # List agent graphs
+  result = api_instance.list_agent_graphs(ld_api_version, project_key, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AIConfigsBetaApi->list_agent_graphs: #{e}"
+end
+```
+
+#### Using the list_agent_graphs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AgentGraphs>, Integer, Hash)> list_agent_graphs_with_http_info(ld_api_version, project_key, opts)
+
+```ruby
+begin
+  # List agent graphs
+  data, status_code, headers = api_instance.list_agent_graphs_with_http_info(ld_api_version, project_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AgentGraphs>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AIConfigsBetaApi->list_agent_graphs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ld_api_version** | **String** | Version of the endpoint. |  |
+| **project_key** | **String** |  |  |
+| **limit** | **Integer** | The number of AI Configs to return. | [optional] |
+| **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
+
+### Return type
+
+[**AgentGraphs**](AgentGraphs.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_ai_tool_versions
 
 > <AITools> list_ai_tool_versions(ld_api_version, project_key, tool_key, opts)
@@ -1575,6 +1656,81 @@ end
 ### Return type
 
 [**AITool**](AITool.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## post_agent_graph
+
+> <AgentGraph> post_agent_graph(ld_api_version, project_key, agent_graph_post)
+
+Create new agent graph
+
+Create a new agent graph within the given project.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
+ld_api_version = 'beta' # String | Version of the endpoint.
+project_key = 'project_key_example' # String | 
+agent_graph_post = LaunchDarklyApi::AgentGraphPost.new({key: 'key_example', name: 'name_example'}) # AgentGraphPost | Agent graph object to create
+
+begin
+  # Create new agent graph
+  result = api_instance.post_agent_graph(ld_api_version, project_key, agent_graph_post)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AIConfigsBetaApi->post_agent_graph: #{e}"
+end
+```
+
+#### Using the post_agent_graph_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AgentGraph>, Integer, Hash)> post_agent_graph_with_http_info(ld_api_version, project_key, agent_graph_post)
+
+```ruby
+begin
+  # Create new agent graph
+  data, status_code, headers = api_instance.post_agent_graph_with_http_info(ld_api_version, project_key, agent_graph_post)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AgentGraph>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AIConfigsBetaApi->post_agent_graph_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ld_api_version** | **String** | Version of the endpoint. |  |
+| **project_key** | **String** |  |  |
+| **agent_graph_post** | [**AgentGraphPost**](AgentGraphPost.md) | Agent graph object to create |  |
+
+### Return type
+
+[**AgentGraph**](AgentGraph.md)
 
 ### Authorization
 

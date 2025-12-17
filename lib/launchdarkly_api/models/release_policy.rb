@@ -29,7 +29,6 @@ module LaunchDarklyApi
 
     attr_accessor :guarded_release_config
 
-    # Configuration for progressive releases
     attr_accessor :progressive_release_config
 
     # The name of the release policy
@@ -94,7 +93,7 @@ module LaunchDarklyApi
         :'rank' => :'Integer',
         :'release_method' => :'ReleaseMethod',
         :'guarded_release_config' => :'GuardedReleaseConfig',
-        :'progressive_release_config' => :'Object',
+        :'progressive_release_config' => :'ProgressiveReleaseConfig',
         :'name' => :'String',
         :'key' => :'String'
       }

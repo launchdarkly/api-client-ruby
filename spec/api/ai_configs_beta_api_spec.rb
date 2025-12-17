@@ -225,6 +225,21 @@ describe 'AIConfigsBetaApi' do
     end
   end
 
+  # unit tests for list_agent_graphs
+  # List agent graphs
+  # Get a list of all agent graphs in the given project. Returns metadata only, without edge data.
+  # @param ld_api_version Version of the endpoint.
+  # @param project_key 
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :limit The number of AI Configs to return.
+  # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
+  # @return [AgentGraphs]
+  describe 'list_agent_graphs test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for list_ai_tool_versions
   # List AI tool versions
   # Get a list of all versions of an AI tool in the given project.
@@ -329,6 +344,20 @@ describe 'AIConfigsBetaApi' do
   # @option opts [AIToolPatch] :ai_tool_patch AI tool object to update
   # @return [AITool]
   describe 'patch_ai_tool test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for post_agent_graph
+  # Create new agent graph
+  # Create a new agent graph within the given project.
+  # @param ld_api_version Version of the endpoint.
+  # @param project_key 
+  # @param agent_graph_post Agent graph object to create
+  # @param [Hash] opts the optional parameters
+  # @return [AgentGraph]
+  describe 'post_agent_graph test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

@@ -894,7 +894,8 @@ project_key = 'project_key_example' # String | The project key
 feature_flag_key = 'feature_flag_key_example' # String | The feature flag key. The key identifies the flag in your code.
 patch_with_comment = LaunchDarklyApi::PatchWithComment.new({patch: [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField'})]}) # PatchWithComment | 
 opts = {
-  ignore_conflicts: true # Boolean | If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail.
+  ignore_conflicts: true, # Boolean | If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail.
+  dry_run: true # Boolean | If true, the patch will be validated but not persisted. Returns a preview of the flag after the patch is applied.
 }
 
 begin
@@ -932,6 +933,7 @@ end
 | **feature_flag_key** | **String** | The feature flag key. The key identifies the flag in your code. |  |
 | **patch_with_comment** | [**PatchWithComment**](PatchWithComment.md) |  |  |
 | **ignore_conflicts** | **Boolean** | If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail. | [optional] |
+| **dry_run** | **Boolean** | If true, the patch will be validated but not persisted. Returns a preview of the flag after the patch is applied. | [optional] |
 
 ### Return type
 

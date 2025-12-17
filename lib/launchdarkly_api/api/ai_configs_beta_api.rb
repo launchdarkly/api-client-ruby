@@ -1137,6 +1137,87 @@ module LaunchDarklyApi
       return data, status_code, headers
     end
 
+    # List agent graphs
+    # Get a list of all agent graphs in the given project. Returns metadata only, without edge data.
+    # @param ld_api_version [String] Version of the endpoint.
+    # @param project_key [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit The number of AI Configs to return.
+    # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
+    # @return [AgentGraphs]
+    def list_agent_graphs(ld_api_version, project_key, opts = {})
+      data, _status_code, _headers = list_agent_graphs_with_http_info(ld_api_version, project_key, opts)
+      data
+    end
+
+    # List agent graphs
+    # Get a list of all agent graphs in the given project. Returns metadata only, without edge data.
+    # @param ld_api_version [String] Version of the endpoint.
+    # @param project_key [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit The number of AI Configs to return.
+    # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
+    # @return [Array<(AgentGraphs, Integer, Hash)>] AgentGraphs data, response status code and response headers
+    def list_agent_graphs_with_http_info(ld_api_version, project_key, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AIConfigsBetaApi.list_agent_graphs ...'
+      end
+      # verify the required parameter 'ld_api_version' is set
+      if @api_client.config.client_side_validation && ld_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'ld_api_version' when calling AIConfigsBetaApi.list_agent_graphs"
+      end
+      # verify enum value
+      allowable_values = ["beta"]
+      if @api_client.config.client_side_validation && !allowable_values.include?(ld_api_version)
+        fail ArgumentError, "invalid value for \"ld_api_version\", must be one of #{allowable_values}"
+      end
+      # verify the required parameter 'project_key' is set
+      if @api_client.config.client_side_validation && project_key.nil?
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling AIConfigsBetaApi.list_agent_graphs"
+      end
+      # resource path
+      local_var_path = '/api/v2/projects/{projectKey}/agent-graphs'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      header_params[:'LD-API-Version'] = ld_api_version
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AgentGraphs'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AIConfigsBetaApi.list_agent_graphs",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AIConfigsBetaApi#list_agent_graphs\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List AI tool versions
     # Get a list of all versions of an AI tool in the given project.
     # @param ld_api_version [String] Version of the endpoint.
@@ -1746,6 +1827,92 @@ module LaunchDarklyApi
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AIConfigsBetaApi#patch_ai_tool\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create new agent graph
+    # Create a new agent graph within the given project.
+    # @param ld_api_version [String] Version of the endpoint.
+    # @param project_key [String] 
+    # @param agent_graph_post [AgentGraphPost] Agent graph object to create
+    # @param [Hash] opts the optional parameters
+    # @return [AgentGraph]
+    def post_agent_graph(ld_api_version, project_key, agent_graph_post, opts = {})
+      data, _status_code, _headers = post_agent_graph_with_http_info(ld_api_version, project_key, agent_graph_post, opts)
+      data
+    end
+
+    # Create new agent graph
+    # Create a new agent graph within the given project.
+    # @param ld_api_version [String] Version of the endpoint.
+    # @param project_key [String] 
+    # @param agent_graph_post [AgentGraphPost] Agent graph object to create
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AgentGraph, Integer, Hash)>] AgentGraph data, response status code and response headers
+    def post_agent_graph_with_http_info(ld_api_version, project_key, agent_graph_post, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AIConfigsBetaApi.post_agent_graph ...'
+      end
+      # verify the required parameter 'ld_api_version' is set
+      if @api_client.config.client_side_validation && ld_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'ld_api_version' when calling AIConfigsBetaApi.post_agent_graph"
+      end
+      # verify enum value
+      allowable_values = ["beta"]
+      if @api_client.config.client_side_validation && !allowable_values.include?(ld_api_version)
+        fail ArgumentError, "invalid value for \"ld_api_version\", must be one of #{allowable_values}"
+      end
+      # verify the required parameter 'project_key' is set
+      if @api_client.config.client_side_validation && project_key.nil?
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling AIConfigsBetaApi.post_agent_graph"
+      end
+      # verify the required parameter 'agent_graph_post' is set
+      if @api_client.config.client_side_validation && agent_graph_post.nil?
+        fail ArgumentError, "Missing the required parameter 'agent_graph_post' when calling AIConfigsBetaApi.post_agent_graph"
+      end
+      # resource path
+      local_var_path = '/api/v2/projects/{projectKey}/agent-graphs'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'LD-API-Version'] = ld_api_version
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(agent_graph_post)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AgentGraph'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AIConfigsBetaApi.post_agent_graph",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AIConfigsBetaApi#post_agent_graph\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

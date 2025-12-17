@@ -881,6 +881,7 @@ module LaunchDarklyApi
     # @param patch_with_comment [PatchWithComment] 
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :ignore_conflicts If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail.
+    # @option opts [Boolean] :dry_run If true, the patch will be validated but not persisted. Returns a preview of the flag after the patch is applied.
     # @return [FeatureFlag]
     def patch_feature_flag(project_key, feature_flag_key, patch_with_comment, opts = {})
       data, _status_code, _headers = patch_feature_flag_with_http_info(project_key, feature_flag_key, patch_with_comment, opts)
@@ -894,6 +895,7 @@ module LaunchDarklyApi
     # @param patch_with_comment [PatchWithComment] 
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :ignore_conflicts If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail.
+    # @option opts [Boolean] :dry_run If true, the patch will be validated but not persisted. Returns a preview of the flag after the patch is applied.
     # @return [Array<(FeatureFlag, Integer, Hash)>] FeatureFlag data, response status code and response headers
     def patch_feature_flag_with_http_info(project_key, feature_flag_key, patch_with_comment, opts = {})
       if @api_client.config.debugging
@@ -917,6 +919,7 @@ module LaunchDarklyApi
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'ignoreConflicts'] = opts[:'ignore_conflicts'] if !opts[:'ignore_conflicts'].nil?
+      query_params[:'dryRun'] = opts[:'dry_run'] if !opts[:'dry_run'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

@@ -7,7 +7,7 @@
 | **scope** | [**ReleasePolicyScope**](ReleasePolicyScope.md) |  | [optional] |
 | **release_method** | [**ReleaseMethod**](ReleaseMethod.md) |  |  |
 | **guarded_release_config** | [**GuardedReleaseConfig**](GuardedReleaseConfig.md) |  | [optional] |
-| **progressive_release_config** | **Object** | Configuration for progressive releases | [optional] |
+| **progressive_release_config** | [**ProgressiveReleaseConfig**](ProgressiveReleaseConfig.md) |  | [optional] |
 | **name** | **String** | The name of the release policy |  |
 
 ## Example
@@ -19,7 +19,7 @@ instance = LaunchDarklyApi::PutReleasePolicyRequest.new(
   scope: null,
   release_method: null,
   guarded_release_config: null,
-  progressive_release_config: {&quot;rolloutContextKindKey&quot;:&quot;user&quot;,&quot;stages&quot;:[{&quot;allocation&quot;:25000,&quot;durationMillis&quot;:60000},{&quot;allocation&quot;:25000,&quot;durationMillis&quot;:60000}]},
+  progressive_release_config: null,
   name: Production Release
 )
 ```

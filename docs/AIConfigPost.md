@@ -11,6 +11,7 @@
 | **mode** | **String** |  | [optional][default to &#39;completion&#39;] |
 | **name** | **String** |  |  |
 | **tags** | **Array&lt;String&gt;** |  | [optional] |
+| **default_variation** | [**AIConfigVariationPost**](AIConfigVariationPost.md) |  | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = LaunchDarklyApi::AIConfigPost.new(
   maintainer_team_key: null,
   mode: null,
   name: null,
-  tags: null
+  tags: null,
+  default_variation: null
 )
 ```
 

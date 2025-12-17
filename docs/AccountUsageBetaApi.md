@@ -12,7 +12,9 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_events_usage**](AccountUsageBetaApi.md#get_events_usage) | **GET** /api/v2/usage/events/{type} | Get events usage |
 | [**get_experimentation_events_usage**](AccountUsageBetaApi.md#get_experimentation_events_usage) | **GET** /api/v2/usage/experimentation-events | Get experimentation events usage |
 | [**get_experimentation_keys_usage**](AccountUsageBetaApi.md#get_experimentation_keys_usage) | **GET** /api/v2/usage/experimentation-keys | Get experimentation keys usage |
+| [**get_mau_clientside_usage**](AccountUsageBetaApi.md#get_mau_clientside_usage) | **GET** /api/v2/usage/clientside-mau | Get MAU clientside usage |
 | [**get_mau_sdks_by_type**](AccountUsageBetaApi.md#get_mau_sdks_by_type) | **GET** /api/v2/usage/mau/sdks | Get MAU SDKs by type |
+| [**get_mau_total_usage**](AccountUsageBetaApi.md#get_mau_total_usage) | **GET** /api/v2/usage/total-mau | Get MAU total usage |
 | [**get_mau_usage**](AccountUsageBetaApi.md#get_mau_usage) | **GET** /api/v2/usage/mau | Get MAU usage |
 | [**get_mau_usage_by_category**](AccountUsageBetaApi.md#get_mau_usage_by_category) | **GET** /api/v2/usage/mau/bycategory | Get MAU usage by category |
 | [**get_observability_errors_usage**](AccountUsageBetaApi.md#get_observability_errors_usage) | **GET** /api/v2/usage/observability/errors | Get observability errors usage |
@@ -723,6 +725,95 @@ end
 - **Accept**: application/json
 
 
+## get_mau_clientside_usage
+
+> <SeriesListRep> get_mau_clientside_usage(opts)
+
+Get MAU clientside usage
+
+Get a time series of the number of context key usages observed by LaunchDarkly in your account, for the primary context kind only. The counts reflect data reported from client-side SDKs.<br/><br/>For past months, the primary context kind is fixed and reflects the last known primary kind for that month. For the current month, it may vary as new primary context kinds are observed.<br/><br/>The supported granularity varies by aggregation type. The maximum time range is 365 days.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
+opts = {
+  from: 'from_example', # String | The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month.
+  to: 'to_example', # String | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
+  project_key: 'project_key_example', # String | A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+  environment_key: 'environment_key_example', # String | An environment key to filter results by. If specified, exactly one `projectKey` must be provided. Can be specified multiple times, one query parameter per environment key.
+  sdk_name: 'sdk_name_example', # String | An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name.
+  anonymous: 'anonymous_example', # String | An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.<br/>Valid values: `true`, `false`.
+  group_by: 'group_by_example', # String | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.<br/>Valid values: `projectId`, `environmentId`, `sdkName`, `sdkAppId`, `anonymousV2`.
+  aggregation_type: 'aggregation_type_example', # String | Specifies the aggregation method. Defaults to `month_to_date`.<br/>Valid values: `month_to_date`, `incremental`, `rolling_30d`.
+  granularity: 'granularity_example' # String | Specifies the data granularity. Defaults to `daily`. Valid values depend on `aggregationType`: **month_to_date** supports `daily` and `monthly`; **incremental** and **rolling_30d** support `daily` only.
+}
+
+begin
+  # Get MAU clientside usage
+  result = api_instance.get_mau_clientside_usage(opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountUsageBetaApi->get_mau_clientside_usage: #{e}"
+end
+```
+
+#### Using the get_mau_clientside_usage_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SeriesListRep>, Integer, Hash)> get_mau_clientside_usage_with_http_info(opts)
+
+```ruby
+begin
+  # Get MAU clientside usage
+  data, status_code, headers = api_instance.get_mau_clientside_usage_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SeriesListRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountUsageBetaApi->get_mau_clientside_usage_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **from** | **String** | The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. | [optional] |
+| **to** | **String** | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. | [optional] |
+| **project_key** | **String** | A project key to filter results by. Can be specified multiple times, one query parameter per project key. | [optional] |
+| **environment_key** | **String** | An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. | [optional] |
+| **sdk_name** | **String** | An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. | [optional] |
+| **anonymous** | **String** | An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. | [optional] |
+| **group_by** | **String** | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. | [optional] |
+| **aggregation_type** | **String** | Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. | [optional] |
+| **granularity** | **String** | Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. | [optional] |
+
+### Return type
+
+[**SeriesListRep**](SeriesListRep.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_mau_sdks_by_type
 
 > <SdkListRep> get_mau_sdks_by_type(opts)
@@ -789,6 +880,97 @@ end
 ### Return type
 
 [**SdkListRep**](SdkListRep.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_mau_total_usage
+
+> <SeriesListRep> get_mau_total_usage(opts)
+
+Get MAU total usage
+
+Get a time series of the number of context key usages observed by LaunchDarkly in your account, for the primary context kind only.<br/><br/>For past months, this reflects the context kind that was most recently marked as primary for that month. For the current month, the context kind may vary as new primary kinds are observed.<br/><br/>The supported granularity varies by aggregation type. The maximum time range is 365 days.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
+opts = {
+  from: 'from_example', # String | The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month.
+  to: 'to_example', # String | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
+  project_key: 'project_key_example', # String | A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+  environment_key: 'environment_key_example', # String | An environment key to filter results by. If specified, exactly one `projectKey` must be provided. Can be specified multiple times, one query parameter per environment key.
+  sdk_name: 'sdk_name_example', # String | An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name.
+  sdk_type: 'sdk_type_example', # String | An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type.
+  anonymous: 'anonymous_example', # String | An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.<br/>Valid values: `true`, `false`.
+  group_by: 'group_by_example', # String | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.<br/>Valid values: `projectId`, `environmentId`, `sdkName`, `sdkType`, `sdkAppId`, `anonymousV2`.
+  aggregation_type: 'aggregation_type_example', # String | Specifies the aggregation method. Defaults to `month_to_date`.<br/>Valid values: `month_to_date`, `incremental`, `rolling_30d`.
+  granularity: 'granularity_example' # String | Specifies the data granularity. Defaults to `daily`. Valid values depend on `aggregationType`: **month_to_date** supports `daily` and `monthly`; **incremental** and **rolling_30d** support `daily` only.
+}
+
+begin
+  # Get MAU total usage
+  result = api_instance.get_mau_total_usage(opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountUsageBetaApi->get_mau_total_usage: #{e}"
+end
+```
+
+#### Using the get_mau_total_usage_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SeriesListRep>, Integer, Hash)> get_mau_total_usage_with_http_info(opts)
+
+```ruby
+begin
+  # Get MAU total usage
+  data, status_code, headers = api_instance.get_mau_total_usage_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SeriesListRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountUsageBetaApi->get_mau_total_usage_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **from** | **String** | The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. | [optional] |
+| **to** | **String** | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. | [optional] |
+| **project_key** | **String** | A project key to filter results by. Can be specified multiple times, one query parameter per project key. | [optional] |
+| **environment_key** | **String** | An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. | [optional] |
+| **sdk_name** | **String** | An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. | [optional] |
+| **sdk_type** | **String** | An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type. | [optional] |
+| **anonymous** | **String** | An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. | [optional] |
+| **group_by** | **String** | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkType&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. | [optional] |
+| **aggregation_type** | **String** | Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. | [optional] |
+| **granularity** | **String** | Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. | [optional] |
+
+### Return type
+
+[**SeriesListRep**](SeriesListRep.md)
 
 ### Authorization
 

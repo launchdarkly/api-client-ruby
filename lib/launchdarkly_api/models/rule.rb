@@ -18,6 +18,9 @@ module LaunchDarklyApi
     # The flag rule ID
     attr_accessor :_id
 
+    # Whether the rule is disabled
+    attr_accessor :disabled
+
     # The index of the variation, from the array of variations for this flag
     attr_accessor :variation
 
@@ -38,6 +41,7 @@ module LaunchDarklyApi
     def self.attribute_map
       {
         :'_id' => :'_id',
+        :'disabled' => :'disabled',
         :'variation' => :'variation',
         :'rollout' => :'rollout',
         :'clauses' => :'clauses',
@@ -61,6 +65,7 @@ module LaunchDarklyApi
     def self.openapi_types
       {
         :'_id' => :'String',
+        :'disabled' => :'Boolean',
         :'variation' => :'Integer',
         :'rollout' => :'Rollout',
         :'clauses' => :'Array<Clause>',
@@ -94,6 +99,10 @@ module LaunchDarklyApi
 
       if attributes.key?(:'_id')
         self._id = attributes[:'_id']
+      end
+
+      if attributes.key?(:'disabled')
+        self.disabled = attributes[:'disabled']
       end
 
       if attributes.key?(:'variation')
@@ -178,6 +187,7 @@ module LaunchDarklyApi
       return true if self.equal?(o)
       self.class == o.class &&
           _id == o._id &&
+          disabled == o.disabled &&
           variation == o.variation &&
           rollout == o.rollout &&
           clauses == o.clauses &&
@@ -195,7 +205,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_id, variation, rollout, clauses, track_events, description, ref].hash
+      [_id, disabled, variation, rollout, clauses, track_events, description, ref].hash
     end
 
     # Builds the object from hash

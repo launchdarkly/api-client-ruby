@@ -36,9 +36,6 @@ module LaunchDarklyApi
     # The unit of randomization for this iteration. Defaults to user.
     attr_accessor :randomization_unit
 
-    # The ID of the covariance CSV
-    attr_accessor :covariance_id
-
     # The attributes that this iteration's results can be sliced by
     attr_accessor :attributes
 
@@ -53,7 +50,6 @@ module LaunchDarklyApi
         :'treatments' => :'treatments',
         :'flags' => :'flags',
         :'randomization_unit' => :'randomizationUnit',
-        :'covariance_id' => :'covarianceId',
         :'attributes' => :'attributes'
       }
     end
@@ -79,7 +75,6 @@ module LaunchDarklyApi
         :'treatments' => :'Array<TreatmentInput>',
         :'flags' => :'Hash<String, FlagInput>',
         :'randomization_unit' => :'String',
-        :'covariance_id' => :'String',
         :'attributes' => :'Array<String>'
       }
     end
@@ -150,10 +145,6 @@ module LaunchDarklyApi
 
       if attributes.key?(:'randomization_unit')
         self.randomization_unit = attributes[:'randomization_unit']
-      end
-
-      if attributes.key?(:'covariance_id')
-        self.covariance_id = attributes[:'covariance_id']
       end
 
       if attributes.key?(:'attributes')
@@ -251,7 +242,6 @@ module LaunchDarklyApi
           treatments == o.treatments &&
           flags == o.flags &&
           randomization_unit == o.randomization_unit &&
-          covariance_id == o.covariance_id &&
           attributes == o.attributes
     end
 
@@ -264,7 +254,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [hypothesis, can_reshuffle_traffic, metrics, primary_single_metric_key, primary_funnel_key, treatments, flags, randomization_unit, covariance_id, attributes].hash
+      [hypothesis, can_reshuffle_traffic, metrics, primary_single_metric_key, primary_funnel_key, treatments, flags, randomization_unit, attributes].hash
     end
 
     # Builds the object from hash

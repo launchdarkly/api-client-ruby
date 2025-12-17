@@ -203,6 +203,7 @@ describe 'FeatureFlagsApi' do
   # @param patch_with_comment 
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :ignore_conflicts If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail.
+  # @option opts [Boolean] :dry_run If true, the patch will be validated but not persisted. Returns a preview of the flag after the patch is applied.
   # @return [FeatureFlag]
   describe 'patch_feature_flag test' do
     it 'should work' do

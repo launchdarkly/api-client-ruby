@@ -14,35 +14,20 @@ require 'date'
 require 'time'
 
 module LaunchDarklyApi
-  # Configuration for guarded releases
-  class GuardedReleaseConfig
-    # Context kind key to use as the randomization unit for the rollout
-    attr_accessor :rollout_context_kind_key
+  # A collection of agent graphs
+  class AgentGraphs
+    attr_accessor :_links
 
-    # The minimum number of samples required to make a decision
-    attr_accessor :min_sample_size
+    attr_accessor :items
 
-    # Whether to roll back on regression
-    attr_accessor :rollback_on_regression
-
-    # List of metric keys
-    attr_accessor :metric_keys
-
-    # List of metric group keys
-    attr_accessor :metric_group_keys
-
-    # List of stages
-    attr_accessor :stages
+    attr_accessor :total_count
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'rollout_context_kind_key' => :'rolloutContextKindKey',
-        :'min_sample_size' => :'minSampleSize',
-        :'rollback_on_regression' => :'rollbackOnRegression',
-        :'metric_keys' => :'metricKeys',
-        :'metric_group_keys' => :'metricGroupKeys',
-        :'stages' => :'stages'
+        :'_links' => :'_links',
+        :'items' => :'items',
+        :'total_count' => :'totalCount'
       }
     end
 
@@ -59,12 +44,9 @@ module LaunchDarklyApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'rollout_context_kind_key' => :'String',
-        :'min_sample_size' => :'Integer',
-        :'rollback_on_regression' => :'Boolean',
-        :'metric_keys' => :'Array<String>',
-        :'metric_group_keys' => :'Array<String>',
-        :'stages' => :'Array<ReleasePolicyStage>'
+        :'_links' => :'PaginatedLinks',
+        :'items' => :'Array<AgentGraph>',
+        :'total_count' => :'Integer'
       }
     end
 
@@ -78,46 +60,34 @@ module LaunchDarklyApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `LaunchDarklyApi::GuardedReleaseConfig` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `LaunchDarklyApi::AgentGraphs` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `LaunchDarklyApi::GuardedReleaseConfig`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `LaunchDarklyApi::AgentGraphs`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'rollout_context_kind_key')
-        self.rollout_context_kind_key = attributes[:'rollout_context_kind_key']
+      if attributes.key?(:'_links')
+        self._links = attributes[:'_links']
       end
 
-      if attributes.key?(:'min_sample_size')
-        self.min_sample_size = attributes[:'min_sample_size']
-      end
-
-      if attributes.key?(:'rollback_on_regression')
-        self.rollback_on_regression = attributes[:'rollback_on_regression']
-      end
-
-      if attributes.key?(:'metric_keys')
-        if (value = attributes[:'metric_keys']).is_a?(Array)
-          self.metric_keys = value
+      if attributes.key?(:'items')
+        if (value = attributes[:'items']).is_a?(Array)
+          self.items = value
         end
+      else
+        self.items = nil
       end
 
-      if attributes.key?(:'metric_group_keys')
-        if (value = attributes[:'metric_group_keys']).is_a?(Array)
-          self.metric_group_keys = value
-        end
-      end
-
-      if attributes.key?(:'stages')
-        if (value = attributes[:'stages']).is_a?(Array)
-          self.stages = value
-        end
+      if attributes.key?(:'total_count')
+        self.total_count = attributes[:'total_count']
+      else
+        self.total_count = nil
       end
     end
 
@@ -126,6 +96,14 @@ module LaunchDarklyApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @items.nil?
+        invalid_properties.push('invalid value for "items", items cannot be nil.')
+      end
+
+      if @total_count.nil?
+        invalid_properties.push('invalid value for "total_count", total_count cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -133,7 +111,29 @@ module LaunchDarklyApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @items.nil?
+      return false if @total_count.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] items Value to be assigned
+    def items=(items)
+      if items.nil?
+        fail ArgumentError, 'items cannot be nil'
+      end
+
+      @items = items
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] total_count Value to be assigned
+    def total_count=(total_count)
+      if total_count.nil?
+        fail ArgumentError, 'total_count cannot be nil'
+      end
+
+      @total_count = total_count
     end
 
     # Checks equality by comparing each attribute.
@@ -141,12 +141,9 @@ module LaunchDarklyApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          rollout_context_kind_key == o.rollout_context_kind_key &&
-          min_sample_size == o.min_sample_size &&
-          rollback_on_regression == o.rollback_on_regression &&
-          metric_keys == o.metric_keys &&
-          metric_group_keys == o.metric_group_keys &&
-          stages == o.stages
+          _links == o._links &&
+          items == o.items &&
+          total_count == o.total_count
     end
 
     # @see the `==` method
@@ -158,7 +155,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [rollout_context_kind_key, min_sample_size, rollback_on_regression, metric_keys, metric_group_keys, stages].hash
+      [_links, items, total_count].hash
     end
 
     # Builds the object from hash

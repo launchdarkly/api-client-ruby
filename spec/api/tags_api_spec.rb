@@ -36,7 +36,7 @@ describe 'TagsApi' do
   # List tags
   # Get a list of tags.
   # @param [Hash] opts the optional parameters
-  # @option opts [Array<String>] :kind Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;, &#x60;aiconfig&#x60;, and &#x60;view&#x60;. Returns all types by default.
+  # @option opts [Array<String>] :kind Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;, &#x60;metric-data-source&#x60;, &#x60;aiconfig&#x60;, and &#x60;view&#x60;. Returns all types by default.
   # @option opts [String] :pre Return tags with the specified prefix
   # @option opts [Boolean] :archived Whether or not to return archived flags
   # @option opts [Integer] :limit The number of tags to return. Maximum is 1000.

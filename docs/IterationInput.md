@@ -12,7 +12,6 @@
 | **treatments** | [**Array&lt;TreatmentInput&gt;**](TreatmentInput.md) |  |  |
 | **flags** | [**Hash&lt;String, FlagInput&gt;**](FlagInput.md) |  |  |
 | **randomization_unit** | **String** | The unit of randomization for this iteration. Defaults to user. | [optional] |
-| **covariance_id** | **String** | The ID of the covariance CSV | [optional] |
 | **attributes** | **Array&lt;String&gt;** | The attributes that this iteration&#39;s results can be sliced by | [optional] |
 
 ## Example
@@ -29,7 +28,6 @@ instance = LaunchDarklyApi::IterationInput.new(
   treatments: null,
   flags: null,
   randomization_unit: user,
-  covariance_id: null,
   attributes: [&quot;country&quot;,&quot;device&quot;,&quot;os&quot;]
 )
 ```

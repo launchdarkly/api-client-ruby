@@ -18,10 +18,14 @@ module LaunchDarklyApi
     # List of environment keys this policy applies to
     attr_accessor :environment_keys
 
+    # List of flag tag keys this policy applies to
+    attr_accessor :flag_tag_keys
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'environment_keys' => :'environmentKeys'
+        :'environment_keys' => :'environmentKeys',
+        :'flag_tag_keys' => :'flagTagKeys'
       }
     end
 
@@ -38,7 +42,8 @@ module LaunchDarklyApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'environment_keys' => :'Array<String>'
+        :'environment_keys' => :'Array<String>',
+        :'flag_tag_keys' => :'Array<String>'
       }
     end
 
@@ -69,6 +74,12 @@ module LaunchDarklyApi
           self.environment_keys = value
         end
       end
+
+      if attributes.key?(:'flag_tag_keys')
+        if (value = attributes[:'flag_tag_keys']).is_a?(Array)
+          self.flag_tag_keys = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -91,7 +102,8 @@ module LaunchDarklyApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          environment_keys == o.environment_keys
+          environment_keys == o.environment_keys &&
+          flag_tag_keys == o.flag_tag_keys
     end
 
     # @see the `==` method
@@ -103,7 +115,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [environment_keys].hash
+      [environment_keys, flag_tag_keys].hash
     end
 
     # Builds the object from hash

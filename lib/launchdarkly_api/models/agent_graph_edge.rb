@@ -14,35 +14,23 @@ require 'date'
 require 'time'
 
 module LaunchDarklyApi
-  # Configuration for guarded releases
-  class GuardedReleaseConfig
-    # Context kind key to use as the randomization unit for the rollout
-    attr_accessor :rollout_context_kind_key
+  # An edge in an agent graph connecting two AI Configs
+  class AgentGraphEdge
+    # The AI Config key that is the source of this edge
+    attr_accessor :source_config
 
-    # The minimum number of samples required to make a decision
-    attr_accessor :min_sample_size
+    # The AI Config key that is the target of this edge
+    attr_accessor :target_config
 
-    # Whether to roll back on regression
-    attr_accessor :rollback_on_regression
-
-    # List of metric keys
-    attr_accessor :metric_keys
-
-    # List of metric group keys
-    attr_accessor :metric_group_keys
-
-    # List of stages
-    attr_accessor :stages
+    # The handoff options from the source AI Config to the target AI Config
+    attr_accessor :handoff
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'rollout_context_kind_key' => :'rolloutContextKindKey',
-        :'min_sample_size' => :'minSampleSize',
-        :'rollback_on_regression' => :'rollbackOnRegression',
-        :'metric_keys' => :'metricKeys',
-        :'metric_group_keys' => :'metricGroupKeys',
-        :'stages' => :'stages'
+        :'source_config' => :'sourceConfig',
+        :'target_config' => :'targetConfig',
+        :'handoff' => :'handoff'
       }
     end
 
@@ -59,12 +47,9 @@ module LaunchDarklyApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'rollout_context_kind_key' => :'String',
-        :'min_sample_size' => :'Integer',
-        :'rollback_on_regression' => :'Boolean',
-        :'metric_keys' => :'Array<String>',
-        :'metric_group_keys' => :'Array<String>',
-        :'stages' => :'Array<ReleasePolicyStage>'
+        :'source_config' => :'String',
+        :'target_config' => :'String',
+        :'handoff' => :'Object'
       }
     end
 
@@ -78,46 +63,32 @@ module LaunchDarklyApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `LaunchDarklyApi::GuardedReleaseConfig` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `LaunchDarklyApi::AgentGraphEdge` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `LaunchDarklyApi::GuardedReleaseConfig`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `LaunchDarklyApi::AgentGraphEdge`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'rollout_context_kind_key')
-        self.rollout_context_kind_key = attributes[:'rollout_context_kind_key']
+      if attributes.key?(:'source_config')
+        self.source_config = attributes[:'source_config']
+      else
+        self.source_config = nil
       end
 
-      if attributes.key?(:'min_sample_size')
-        self.min_sample_size = attributes[:'min_sample_size']
+      if attributes.key?(:'target_config')
+        self.target_config = attributes[:'target_config']
+      else
+        self.target_config = nil
       end
 
-      if attributes.key?(:'rollback_on_regression')
-        self.rollback_on_regression = attributes[:'rollback_on_regression']
-      end
-
-      if attributes.key?(:'metric_keys')
-        if (value = attributes[:'metric_keys']).is_a?(Array)
-          self.metric_keys = value
-        end
-      end
-
-      if attributes.key?(:'metric_group_keys')
-        if (value = attributes[:'metric_group_keys']).is_a?(Array)
-          self.metric_group_keys = value
-        end
-      end
-
-      if attributes.key?(:'stages')
-        if (value = attributes[:'stages']).is_a?(Array)
-          self.stages = value
-        end
+      if attributes.key?(:'handoff')
+        self.handoff = attributes[:'handoff']
       end
     end
 
@@ -126,6 +97,14 @@ module LaunchDarklyApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @source_config.nil?
+        invalid_properties.push('invalid value for "source_config", source_config cannot be nil.')
+      end
+
+      if @target_config.nil?
+        invalid_properties.push('invalid value for "target_config", target_config cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -133,7 +112,29 @@ module LaunchDarklyApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @source_config.nil?
+      return false if @target_config.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] source_config Value to be assigned
+    def source_config=(source_config)
+      if source_config.nil?
+        fail ArgumentError, 'source_config cannot be nil'
+      end
+
+      @source_config = source_config
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] target_config Value to be assigned
+    def target_config=(target_config)
+      if target_config.nil?
+        fail ArgumentError, 'target_config cannot be nil'
+      end
+
+      @target_config = target_config
     end
 
     # Checks equality by comparing each attribute.
@@ -141,12 +142,9 @@ module LaunchDarklyApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          rollout_context_kind_key == o.rollout_context_kind_key &&
-          min_sample_size == o.min_sample_size &&
-          rollback_on_regression == o.rollback_on_regression &&
-          metric_keys == o.metric_keys &&
-          metric_group_keys == o.metric_group_keys &&
-          stages == o.stages
+          source_config == o.source_config &&
+          target_config == o.target_config &&
+          handoff == o.handoff
     end
 
     # @see the `==` method
@@ -158,7 +156,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [rollout_context_kind_key, min_sample_size, rollback_on_regression, metric_keys, metric_group_keys, stages].hash
+      [source_config, target_config, handoff].hash
     end
 
     # Builds the object from hash

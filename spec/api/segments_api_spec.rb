@@ -248,6 +248,7 @@ describe 'SegmentsApi' do
   # @param segment_key The segment key
   # @param patch_with_comment 
   # @param [Hash] opts the optional parameters
+  # @option opts [Boolean] :dry_run If true, the patch will be validated but not persisted. Returns a preview of the segment after the patch is applied.
   # @return [UserSegment]
   describe 'patch_segment test' do
     it 'should work' do

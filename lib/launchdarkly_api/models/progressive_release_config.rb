@@ -14,22 +14,10 @@ require 'date'
 require 'time'
 
 module LaunchDarklyApi
-  # Configuration for guarded releases
-  class GuardedReleaseConfig
+  # Configuration for progressive releases
+  class ProgressiveReleaseConfig
     # Context kind key to use as the randomization unit for the rollout
     attr_accessor :rollout_context_kind_key
-
-    # The minimum number of samples required to make a decision
-    attr_accessor :min_sample_size
-
-    # Whether to roll back on regression
-    attr_accessor :rollback_on_regression
-
-    # List of metric keys
-    attr_accessor :metric_keys
-
-    # List of metric group keys
-    attr_accessor :metric_group_keys
 
     # List of stages
     attr_accessor :stages
@@ -38,10 +26,6 @@ module LaunchDarklyApi
     def self.attribute_map
       {
         :'rollout_context_kind_key' => :'rolloutContextKindKey',
-        :'min_sample_size' => :'minSampleSize',
-        :'rollback_on_regression' => :'rollbackOnRegression',
-        :'metric_keys' => :'metricKeys',
-        :'metric_group_keys' => :'metricGroupKeys',
         :'stages' => :'stages'
       }
     end
@@ -60,10 +44,6 @@ module LaunchDarklyApi
     def self.openapi_types
       {
         :'rollout_context_kind_key' => :'String',
-        :'min_sample_size' => :'Integer',
-        :'rollback_on_regression' => :'Boolean',
-        :'metric_keys' => :'Array<String>',
-        :'metric_group_keys' => :'Array<String>',
         :'stages' => :'Array<ReleasePolicyStage>'
       }
     end
@@ -78,40 +58,20 @@ module LaunchDarklyApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `LaunchDarklyApi::GuardedReleaseConfig` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `LaunchDarklyApi::ProgressiveReleaseConfig` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `LaunchDarklyApi::GuardedReleaseConfig`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `LaunchDarklyApi::ProgressiveReleaseConfig`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
       if attributes.key?(:'rollout_context_kind_key')
         self.rollout_context_kind_key = attributes[:'rollout_context_kind_key']
-      end
-
-      if attributes.key?(:'min_sample_size')
-        self.min_sample_size = attributes[:'min_sample_size']
-      end
-
-      if attributes.key?(:'rollback_on_regression')
-        self.rollback_on_regression = attributes[:'rollback_on_regression']
-      end
-
-      if attributes.key?(:'metric_keys')
-        if (value = attributes[:'metric_keys']).is_a?(Array)
-          self.metric_keys = value
-        end
-      end
-
-      if attributes.key?(:'metric_group_keys')
-        if (value = attributes[:'metric_group_keys']).is_a?(Array)
-          self.metric_group_keys = value
-        end
       end
 
       if attributes.key?(:'stages')
@@ -142,10 +102,6 @@ module LaunchDarklyApi
       return true if self.equal?(o)
       self.class == o.class &&
           rollout_context_kind_key == o.rollout_context_kind_key &&
-          min_sample_size == o.min_sample_size &&
-          rollback_on_regression == o.rollback_on_regression &&
-          metric_keys == o.metric_keys &&
-          metric_group_keys == o.metric_group_keys &&
           stages == o.stages
     end
 
@@ -158,7 +114,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [rollout_context_kind_key, min_sample_size, rollback_on_regression, metric_keys, metric_group_keys, stages].hash
+      [rollout_context_kind_key, stages].hash
     end
 
     # Builds the object from hash

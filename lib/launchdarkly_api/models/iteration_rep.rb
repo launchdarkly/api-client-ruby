@@ -71,8 +71,6 @@ module LaunchDarklyApi
 
     attr_accessor :layer_snapshot
 
-    attr_accessor :covariance_info
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -118,8 +116,7 @@ module LaunchDarklyApi
         :'treatments' => :'treatments',
         :'secondary_metrics' => :'secondaryMetrics',
         :'metrics' => :'metrics',
-        :'layer_snapshot' => :'layerSnapshot',
-        :'covariance_info' => :'covarianceInfo'
+        :'layer_snapshot' => :'layerSnapshot'
       }
     end
 
@@ -156,8 +153,7 @@ module LaunchDarklyApi
         :'treatments' => :'Array<TreatmentRep>',
         :'secondary_metrics' => :'Array<MetricV2Rep>',
         :'metrics' => :'Array<DependentMetricOrMetricGroupRep>',
-        :'layer_snapshot' => :'LayerSnapshotRep',
-        :'covariance_info' => :'CovarianceInfoRep'
+        :'layer_snapshot' => :'LayerSnapshotRep'
       }
     end
 
@@ -282,10 +278,6 @@ module LaunchDarklyApi
       if attributes.key?(:'layer_snapshot')
         self.layer_snapshot = attributes[:'layer_snapshot']
       end
-
-      if attributes.key?(:'covariance_info')
-        self.covariance_info = attributes[:'covariance_info']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -375,8 +367,7 @@ module LaunchDarklyApi
           treatments == o.treatments &&
           secondary_metrics == o.secondary_metrics &&
           metrics == o.metrics &&
-          layer_snapshot == o.layer_snapshot &&
-          covariance_info == o.covariance_info
+          layer_snapshot == o.layer_snapshot
     end
 
     # @see the `==` method
@@ -388,7 +379,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_id, hypothesis, status, created_at, started_at, ended_at, winning_treatment_id, winning_reason, can_reshuffle_traffic, flags, reallocation_frequency_millis, version, primary_metric, primary_single_metric, primary_funnel, randomization_unit, attributes, treatments, secondary_metrics, metrics, layer_snapshot, covariance_info].hash
+      [_id, hypothesis, status, created_at, started_at, ended_at, winning_treatment_id, winning_reason, can_reshuffle_traffic, flags, reallocation_frequency_millis, version, primary_metric, primary_single_metric, primary_funnel, randomization_unit, attributes, treatments, secondary_metrics, metrics, layer_snapshot].hash
     end
 
     # Builds the object from hash

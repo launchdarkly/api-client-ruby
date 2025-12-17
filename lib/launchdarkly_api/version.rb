@@ -11,5 +11,5 @@ Generator version: 7.16.0
 =end
 
 module LaunchDarklyApi
-  VERSION = '19.0.0'
+  VERSION = '20.0.0'
 end

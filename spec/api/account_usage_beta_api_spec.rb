@@ -185,6 +185,26 @@ describe 'AccountUsageBetaApi' do
     end
   end
 
+  # unit tests for get_mau_clientside_usage
+  # Get MAU clientside usage
+  # Get a time series of the number of context key usages observed by LaunchDarkly in your account, for the primary context kind only. The counts reflect data reported from client-side SDKs.&lt;br/&gt;&lt;br/&gt;For past months, the primary context kind is fixed and reflects the last known primary kind for that month. For the current month, it may vary as new primary context kinds are observed.&lt;br/&gt;&lt;br/&gt;The supported granularity varies by aggregation type. The maximum time range is 365 days.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month.
+  # @option opts [String] :to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
+  # @option opts [String] :project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+  # @option opts [String] :environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key.
+  # @option opts [String] :sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name.
+  # @option opts [String] :anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;.
+  # @option opts [String] :group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;.
+  # @option opts [String] :aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;.
+  # @option opts [String] :granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only.
+  # @return [SeriesListRep]
+  describe 'get_mau_clientside_usage test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for get_mau_sdks_by_type
   # Get MAU SDKs by type
   # Get a list of SDKs. These are all of the SDKs that have connected to LaunchDarkly by monthly active users (MAU) in the requested time period.&lt;br/&gt;&lt;br/&gt;Endpoints for retrieving monthly active users (MAU) do not return information about active context instances. After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should not rely on this endpoint. To learn more, read [Account usage metrics](https://launchdarkly.com/docs/home/account/metrics).
@@ -194,6 +214,27 @@ describe 'AccountUsageBetaApi' do
   # @option opts [String] :sdktype The type of SDK with monthly active users (MAU) to list. Must be either &#x60;client&#x60; or &#x60;server&#x60;.
   # @return [SdkListRep]
   describe 'get_mau_sdks_by_type test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for get_mau_total_usage
+  # Get MAU total usage
+  # Get a time series of the number of context key usages observed by LaunchDarkly in your account, for the primary context kind only.&lt;br/&gt;&lt;br/&gt;For past months, this reflects the context kind that was most recently marked as primary for that month. For the current month, the context kind may vary as new primary kinds are observed.&lt;br/&gt;&lt;br/&gt;The supported granularity varies by aggregation type. The maximum time range is 365 days.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month.
+  # @option opts [String] :to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
+  # @option opts [String] :project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+  # @option opts [String] :environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key.
+  # @option opts [String] :sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name.
+  # @option opts [String] :sdk_type An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type.
+  # @option opts [String] :anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;.
+  # @option opts [String] :group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkType&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;.
+  # @option opts [String] :aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;.
+  # @option opts [String] :granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only.
+  # @return [SeriesListRep]
+  describe 'get_mau_total_usage test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

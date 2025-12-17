@@ -47,6 +47,11 @@ docs/AccountMembersApi.md
 docs/AccountUsageBetaApi.md
 docs/ActionInput.md
 docs/ActionOutput.md
+docs/AgentGraph.md
+docs/AgentGraphEdge.md
+docs/AgentGraphEdgePost.md
+docs/AgentGraphPost.md
+docs/AgentGraphs.md
 docs/AiConfigsAccess.md
 docs/AiConfigsAccessAllowedReason.md
 docs/AiConfigsAccessAllowedRep.md
@@ -150,7 +155,6 @@ docs/Contexts.md
 docs/ContextsApi.md
 docs/CopiedFromEnv.md
 docs/CoreLink.md
-docs/CovarianceInfoRep.md
 docs/CreateAnnouncementBody.md
 docs/CreateApprovalRequestRequest.md
 docs/CreateCopyFlagConfigApprovalRequestRequest.md
@@ -458,6 +462,7 @@ docs/PostFlagScheduledChangesInput.md
 docs/PostInsightGroupParams.md
 docs/PostReleasePolicyRequest.md
 docs/Prerequisite.md
+docs/ProgressiveReleaseConfig.md
 docs/Project.md
 docs/ProjectPost.md
 docs/ProjectRep.md
@@ -501,6 +506,7 @@ docs/ReleasePoliciesBetaApi.md
 docs/ReleasePoliciesResponse.md
 docs/ReleasePolicy.md
 docs/ReleasePolicyScope.md
+docs/ReleasePolicyStage.md
 docs/ReleaseProgression.md
 docs/ReleaseProgressionCollection.md
 docs/ReleaserAudienceConfigInput.md
@@ -714,6 +720,11 @@ lib/launchdarkly_api/models/access_denied_reason.rb
 lib/launchdarkly_api/models/access_token_post.rb
 lib/launchdarkly_api/models/action_input.rb
 lib/launchdarkly_api/models/action_output.rb
+lib/launchdarkly_api/models/agent_graph.rb
+lib/launchdarkly_api/models/agent_graph_edge.rb
+lib/launchdarkly_api/models/agent_graph_edge_post.rb
+lib/launchdarkly_api/models/agent_graph_post.rb
+lib/launchdarkly_api/models/agent_graphs.rb
 lib/launchdarkly_api/models/ai_config.rb
 lib/launchdarkly_api/models/ai_config_maintainer.rb
 lib/launchdarkly_api/models/ai_config_patch.rb
@@ -837,7 +848,6 @@ lib/launchdarkly_api/models/context_search.rb
 lib/launchdarkly_api/models/contexts.rb
 lib/launchdarkly_api/models/copied_from_env.rb
 lib/launchdarkly_api/models/core_link.rb
-lib/launchdarkly_api/models/covariance_info_rep.rb
 lib/launchdarkly_api/models/create_announcement_body.rb
 lib/launchdarkly_api/models/create_approval_request_request.rb
 lib/launchdarkly_api/models/create_copy_flag_config_approval_request_request.rb
@@ -1119,6 +1129,7 @@ lib/launchdarkly_api/models/post_flag_scheduled_changes_input.rb
 lib/launchdarkly_api/models/post_insight_group_params.rb
 lib/launchdarkly_api/models/post_release_policy_request.rb
 lib/launchdarkly_api/models/prerequisite.rb
+lib/launchdarkly_api/models/progressive_release_config.rb
 lib/launchdarkly_api/models/project.rb
 lib/launchdarkly_api/models/project_post.rb
 lib/launchdarkly_api/models/project_rep.rb
@@ -1158,6 +1169,7 @@ lib/launchdarkly_api/models/release_policies_access_rep.rb
 lib/launchdarkly_api/models/release_policies_response.rb
 lib/launchdarkly_api/models/release_policy.rb
 lib/launchdarkly_api/models/release_policy_scope.rb
+lib/launchdarkly_api/models/release_policy_stage.rb
 lib/launchdarkly_api/models/release_progression.rb
 lib/launchdarkly_api/models/release_progression_collection.rb
 lib/launchdarkly_api/models/releaser_audience_config_input.rb
@@ -1353,6 +1365,11 @@ spec/models/access_spec.rb
 spec/models/access_token_post_spec.rb
 spec/models/action_input_spec.rb
 spec/models/action_output_spec.rb
+spec/models/agent_graph_edge_post_spec.rb
+spec/models/agent_graph_edge_spec.rb
+spec/models/agent_graph_post_spec.rb
+spec/models/agent_graph_spec.rb
+spec/models/agent_graphs_spec.rb
 spec/models/ai_config_maintainer_spec.rb
 spec/models/ai_config_patch_spec.rb
 spec/models/ai_config_post_spec.rb
@@ -1476,7 +1493,6 @@ spec/models/context_search_spec.rb
 spec/models/contexts_spec.rb
 spec/models/copied_from_env_spec.rb
 spec/models/core_link_spec.rb
-spec/models/covariance_info_rep_spec.rb
 spec/models/create_announcement_body_spec.rb
 spec/models/create_approval_request_request_spec.rb
 spec/models/create_copy_flag_config_approval_request_request_spec.rb
@@ -1758,6 +1774,7 @@ spec/models/post_flag_scheduled_changes_input_spec.rb
 spec/models/post_insight_group_params_spec.rb
 spec/models/post_release_policy_request_spec.rb
 spec/models/prerequisite_spec.rb
+spec/models/progressive_release_config_spec.rb
 spec/models/project_post_spec.rb
 spec/models/project_rep_spec.rb
 spec/models/project_spec.rb
@@ -1796,6 +1813,7 @@ spec/models/release_policies_access_spec.rb
 spec/models/release_policies_response_spec.rb
 spec/models/release_policy_scope_spec.rb
 spec/models/release_policy_spec.rb
+spec/models/release_policy_stage_spec.rb
 spec/models/release_progression_collection_spec.rb
 spec/models/release_progression_spec.rb
 spec/models/release_spec.rb

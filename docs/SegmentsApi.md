@@ -1101,7 +1101,7 @@ end
 
 ## patch_segment
 
-> <UserSegment> patch_segment(project_key, environment_key, segment_key, patch_with_comment)
+> <UserSegment> patch_segment(project_key, environment_key, segment_key, patch_with_comment, opts)
 
 Patch segment
 
@@ -1125,10 +1125,13 @@ project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 segment_key = 'segment_key_example' # String | The segment key
 patch_with_comment = LaunchDarklyApi::PatchWithComment.new({patch: [LaunchDarklyApi::PatchOperation.new({op: 'replace', path: '/exampleField'})]}) # PatchWithComment | 
+opts = {
+  dry_run: true # Boolean | If true, the patch will be validated but not persisted. Returns a preview of the segment after the patch is applied.
+}
 
 begin
   # Patch segment
-  result = api_instance.patch_segment(project_key, environment_key, segment_key, patch_with_comment)
+  result = api_instance.patch_segment(project_key, environment_key, segment_key, patch_with_comment, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling SegmentsApi->patch_segment: #{e}"
@@ -1139,12 +1142,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UserSegment>, Integer, Hash)> patch_segment_with_http_info(project_key, environment_key, segment_key, patch_with_comment)
+> <Array(<UserSegment>, Integer, Hash)> patch_segment_with_http_info(project_key, environment_key, segment_key, patch_with_comment, opts)
 
 ```ruby
 begin
   # Patch segment
-  data, status_code, headers = api_instance.patch_segment_with_http_info(project_key, environment_key, segment_key, patch_with_comment)
+  data, status_code, headers = api_instance.patch_segment_with_http_info(project_key, environment_key, segment_key, patch_with_comment, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <UserSegment>
@@ -1161,6 +1164,7 @@ end
 | **environment_key** | **String** | The environment key |  |
 | **segment_key** | **String** | The segment key |  |
 | **patch_with_comment** | [**PatchWithComment**](PatchWithComment.md) |  |  |
+| **dry_run** | **Boolean** | If true, the patch will be validated but not persisted. Returns a preview of the segment after the patch is applied. | [optional] |
 
 ### Return type
 

@@ -29,6 +29,8 @@ module LaunchDarklyApi
 
     attr_accessor :tags
 
+    attr_accessor :default_variation
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -60,7 +62,8 @@ module LaunchDarklyApi
         :'maintainer_team_key' => :'maintainerTeamKey',
         :'mode' => :'mode',
         :'name' => :'name',
-        :'tags' => :'tags'
+        :'tags' => :'tags',
+        :'default_variation' => :'defaultVariation'
       }
     end
 
@@ -83,7 +86,8 @@ module LaunchDarklyApi
         :'maintainer_team_key' => :'String',
         :'mode' => :'String',
         :'name' => :'String',
-        :'tags' => :'Array<String>'
+        :'tags' => :'Array<String>',
+        :'default_variation' => :'AIConfigVariationPost'
       }
     end
 
@@ -145,6 +149,10 @@ module LaunchDarklyApi
         if (value = attributes[:'tags']).is_a?(Array)
           self.tags = value
         end
+      end
+
+      if attributes.key?(:'default_variation')
+        self.default_variation = attributes[:'default_variation']
       end
     end
 
@@ -216,7 +224,8 @@ module LaunchDarklyApi
           maintainer_team_key == o.maintainer_team_key &&
           mode == o.mode &&
           name == o.name &&
-          tags == o.tags
+          tags == o.tags &&
+          default_variation == o.default_variation
     end
 
     # @see the `==` method
@@ -228,7 +237,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [description, key, maintainer_id, maintainer_team_key, mode, name, tags].hash
+      [description, key, maintainer_id, maintainer_team_key, mode, name, tags, default_variation].hash
     end
 
     # Builds the object from hash

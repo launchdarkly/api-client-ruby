@@ -682,6 +682,90 @@ module LaunchDarklyApi
       return data, status_code, headers
     end
 
+    # Get MAU clientside usage
+    # Get a time series of the number of context key usages observed by LaunchDarkly in your account, for the primary context kind only. The counts reflect data reported from client-side SDKs.<br/><br/>For past months, the primary context kind is fixed and reflects the last known primary kind for that month. For the current month, it may vary as new primary context kinds are observed.<br/><br/>The supported granularity varies by aggregation type. The maximum time range is 365 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month.
+    # @option opts [String] :to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
+    # @option opts [String] :project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+    # @option opts [String] :environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key.
+    # @option opts [String] :sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name.
+    # @option opts [String] :anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;.
+    # @option opts [String] :group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;.
+    # @option opts [String] :aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;.
+    # @option opts [String] :granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only.
+    # @return [SeriesListRep]
+    def get_mau_clientside_usage(opts = {})
+      data, _status_code, _headers = get_mau_clientside_usage_with_http_info(opts)
+      data
+    end
+
+    # Get MAU clientside usage
+    # Get a time series of the number of context key usages observed by LaunchDarkly in your account, for the primary context kind only. The counts reflect data reported from client-side SDKs.&lt;br/&gt;&lt;br/&gt;For past months, the primary context kind is fixed and reflects the last known primary kind for that month. For the current month, it may vary as new primary context kinds are observed.&lt;br/&gt;&lt;br/&gt;The supported granularity varies by aggregation type. The maximum time range is 365 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month.
+    # @option opts [String] :to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
+    # @option opts [String] :project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+    # @option opts [String] :environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key.
+    # @option opts [String] :sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name.
+    # @option opts [String] :anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;.
+    # @option opts [String] :group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;.
+    # @option opts [String] :aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;.
+    # @option opts [String] :granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only.
+    # @return [Array<(SeriesListRep, Integer, Hash)>] SeriesListRep data, response status code and response headers
+    def get_mau_clientside_usage_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountUsageBetaApi.get_mau_clientside_usage ...'
+      end
+      # resource path
+      local_var_path = '/api/v2/usage/clientside-mau'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'from'] = opts[:'from'] if !opts[:'from'].nil?
+      query_params[:'to'] = opts[:'to'] if !opts[:'to'].nil?
+      query_params[:'projectKey'] = opts[:'project_key'] if !opts[:'project_key'].nil?
+      query_params[:'environmentKey'] = opts[:'environment_key'] if !opts[:'environment_key'].nil?
+      query_params[:'sdkName'] = opts[:'sdk_name'] if !opts[:'sdk_name'].nil?
+      query_params[:'anonymous'] = opts[:'anonymous'] if !opts[:'anonymous'].nil?
+      query_params[:'groupBy'] = opts[:'group_by'] if !opts[:'group_by'].nil?
+      query_params[:'aggregationType'] = opts[:'aggregation_type'] if !opts[:'aggregation_type'].nil?
+      query_params[:'granularity'] = opts[:'granularity'] if !opts[:'granularity'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SeriesListRep'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AccountUsageBetaApi.get_mau_clientside_usage",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountUsageBetaApi#get_mau_clientside_usage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get MAU SDKs by type
     # Get a list of SDKs. These are all of the SDKs that have connected to LaunchDarkly by monthly active users (MAU) in the requested time period.<br/><br/>Endpoints for retrieving monthly active users (MAU) do not return information about active context instances. After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should not rely on this endpoint. To learn more, read [Account usage metrics](https://launchdarkly.com/docs/home/account/metrics).
     # @param [Hash] opts the optional parameters
@@ -744,6 +828,93 @@ module LaunchDarklyApi
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AccountUsageBetaApi#get_mau_sdks_by_type\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get MAU total usage
+    # Get a time series of the number of context key usages observed by LaunchDarkly in your account, for the primary context kind only.<br/><br/>For past months, this reflects the context kind that was most recently marked as primary for that month. For the current month, the context kind may vary as new primary kinds are observed.<br/><br/>The supported granularity varies by aggregation type. The maximum time range is 365 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month.
+    # @option opts [String] :to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
+    # @option opts [String] :project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+    # @option opts [String] :environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key.
+    # @option opts [String] :sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name.
+    # @option opts [String] :sdk_type An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type.
+    # @option opts [String] :anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;.
+    # @option opts [String] :group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkType&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;.
+    # @option opts [String] :aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;.
+    # @option opts [String] :granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only.
+    # @return [SeriesListRep]
+    def get_mau_total_usage(opts = {})
+      data, _status_code, _headers = get_mau_total_usage_with_http_info(opts)
+      data
+    end
+
+    # Get MAU total usage
+    # Get a time series of the number of context key usages observed by LaunchDarkly in your account, for the primary context kind only.&lt;br/&gt;&lt;br/&gt;For past months, this reflects the context kind that was most recently marked as primary for that month. For the current month, the context kind may vary as new primary kinds are observed.&lt;br/&gt;&lt;br/&gt;The supported granularity varies by aggregation type. The maximum time range is 365 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month.
+    # @option opts [String] :to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
+    # @option opts [String] :project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+    # @option opts [String] :environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key.
+    # @option opts [String] :sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name.
+    # @option opts [String] :sdk_type An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type.
+    # @option opts [String] :anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;.
+    # @option opts [String] :group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkType&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;.
+    # @option opts [String] :aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;.
+    # @option opts [String] :granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only.
+    # @return [Array<(SeriesListRep, Integer, Hash)>] SeriesListRep data, response status code and response headers
+    def get_mau_total_usage_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountUsageBetaApi.get_mau_total_usage ...'
+      end
+      # resource path
+      local_var_path = '/api/v2/usage/total-mau'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'from'] = opts[:'from'] if !opts[:'from'].nil?
+      query_params[:'to'] = opts[:'to'] if !opts[:'to'].nil?
+      query_params[:'projectKey'] = opts[:'project_key'] if !opts[:'project_key'].nil?
+      query_params[:'environmentKey'] = opts[:'environment_key'] if !opts[:'environment_key'].nil?
+      query_params[:'sdkName'] = opts[:'sdk_name'] if !opts[:'sdk_name'].nil?
+      query_params[:'sdkType'] = opts[:'sdk_type'] if !opts[:'sdk_type'].nil?
+      query_params[:'anonymous'] = opts[:'anonymous'] if !opts[:'anonymous'].nil?
+      query_params[:'groupBy'] = opts[:'group_by'] if !opts[:'group_by'].nil?
+      query_params[:'aggregationType'] = opts[:'aggregation_type'] if !opts[:'aggregation_type'].nil?
+      query_params[:'granularity'] = opts[:'granularity'] if !opts[:'granularity'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SeriesListRep'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AccountUsageBetaApi.get_mau_total_usage",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountUsageBetaApi#get_mau_total_usage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
