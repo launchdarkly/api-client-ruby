@@ -32,6 +32,20 @@ describe 'AIConfigsBetaApi' do
     end
   end
 
+  # unit tests for delete_agent_graph
+  # Delete agent graph
+  # Delete an existing agent graph and all of its edges.
+  # @param ld_api_version Version of the endpoint.
+  # @param project_key 
+  # @param graph_key 
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'delete_agent_graph test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for delete_ai_config
   # Delete AI Config
   # Delete an existing AI Config.
@@ -98,6 +112,20 @@ describe 'AIConfigsBetaApi' do
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'delete_restricted_models test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for get_agent_graph
+  # Get agent graph
+  # Retrieve a specific agent graph by its key, including its edges.
+  # @param ld_api_version Version of the endpoint.
+  # @param project_key 
+  # @param graph_key 
+  # @param [Hash] opts the optional parameters
+  # @return [AgentGraph]
+  describe 'get_agent_graph test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -283,6 +311,21 @@ describe 'AIConfigsBetaApi' do
   # @option opts [Boolean] :restricted Whether to return only restricted models
   # @return [Array<ModelConfig>]
   describe 'list_model_configs test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for patch_agent_graph
+  # Update agent graph
+  # Edit an existing agent graph.  The request body must be a JSON object of the fields to update. The values you include replace the existing values for the fields.  If the update includes &#x60;rootConfigKey&#x60; or &#x60;edges&#x60;, both must be present and will be treated as full replacements. 
+  # @param ld_api_version Version of the endpoint.
+  # @param project_key 
+  # @param graph_key 
+  # @param [Hash] opts the optional parameters
+  # @option opts [AgentGraphPatch] :agent_graph_patch Agent graph object to update
+  # @return [AgentGraph]
+  describe 'patch_agent_graph test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

@@ -19,6 +19,87 @@ module LaunchDarklyApi
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Delete agent graph
+    # Delete an existing agent graph and all of its edges.
+    # @param ld_api_version [String] Version of the endpoint.
+    # @param project_key [String] 
+    # @param graph_key [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_agent_graph(ld_api_version, project_key, graph_key, opts = {})
+      delete_agent_graph_with_http_info(ld_api_version, project_key, graph_key, opts)
+      nil
+    end
+
+    # Delete agent graph
+    # Delete an existing agent graph and all of its edges.
+    # @param ld_api_version [String] Version of the endpoint.
+    # @param project_key [String] 
+    # @param graph_key [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_agent_graph_with_http_info(ld_api_version, project_key, graph_key, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AIConfigsBetaApi.delete_agent_graph ...'
+      end
+      # verify the required parameter 'ld_api_version' is set
+      if @api_client.config.client_side_validation && ld_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'ld_api_version' when calling AIConfigsBetaApi.delete_agent_graph"
+      end
+      # verify enum value
+      allowable_values = ["beta"]
+      if @api_client.config.client_side_validation && !allowable_values.include?(ld_api_version)
+        fail ArgumentError, "invalid value for \"ld_api_version\", must be one of #{allowable_values}"
+      end
+      # verify the required parameter 'project_key' is set
+      if @api_client.config.client_side_validation && project_key.nil?
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling AIConfigsBetaApi.delete_agent_graph"
+      end
+      # verify the required parameter 'graph_key' is set
+      if @api_client.config.client_side_validation && graph_key.nil?
+        fail ArgumentError, "Missing the required parameter 'graph_key' when calling AIConfigsBetaApi.delete_agent_graph"
+      end
+      # resource path
+      local_var_path = '/api/v2/projects/{projectKey}/agent-graphs/{graphKey}'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'graphKey' + '}', CGI.escape(graph_key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      header_params[:'LD-API-Version'] = ld_api_version
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AIConfigsBetaApi.delete_agent_graph",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AIConfigsBetaApi#delete_agent_graph\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete AI Config
     # Delete an existing AI Config.
     # @param ld_api_version [String] Version of the endpoint.
@@ -431,6 +512,87 @@ module LaunchDarklyApi
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AIConfigsBetaApi#delete_restricted_models\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get agent graph
+    # Retrieve a specific agent graph by its key, including its edges.
+    # @param ld_api_version [String] Version of the endpoint.
+    # @param project_key [String] 
+    # @param graph_key [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [AgentGraph]
+    def get_agent_graph(ld_api_version, project_key, graph_key, opts = {})
+      data, _status_code, _headers = get_agent_graph_with_http_info(ld_api_version, project_key, graph_key, opts)
+      data
+    end
+
+    # Get agent graph
+    # Retrieve a specific agent graph by its key, including its edges.
+    # @param ld_api_version [String] Version of the endpoint.
+    # @param project_key [String] 
+    # @param graph_key [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AgentGraph, Integer, Hash)>] AgentGraph data, response status code and response headers
+    def get_agent_graph_with_http_info(ld_api_version, project_key, graph_key, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AIConfigsBetaApi.get_agent_graph ...'
+      end
+      # verify the required parameter 'ld_api_version' is set
+      if @api_client.config.client_side_validation && ld_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'ld_api_version' when calling AIConfigsBetaApi.get_agent_graph"
+      end
+      # verify enum value
+      allowable_values = ["beta"]
+      if @api_client.config.client_side_validation && !allowable_values.include?(ld_api_version)
+        fail ArgumentError, "invalid value for \"ld_api_version\", must be one of #{allowable_values}"
+      end
+      # verify the required parameter 'project_key' is set
+      if @api_client.config.client_side_validation && project_key.nil?
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling AIConfigsBetaApi.get_agent_graph"
+      end
+      # verify the required parameter 'graph_key' is set
+      if @api_client.config.client_side_validation && graph_key.nil?
+        fail ArgumentError, "Missing the required parameter 'graph_key' when calling AIConfigsBetaApi.get_agent_graph"
+      end
+      # resource path
+      local_var_path = '/api/v2/projects/{projectKey}/agent-graphs/{graphKey}'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'graphKey' + '}', CGI.escape(graph_key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      header_params[:'LD-API-Version'] = ld_api_version
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AgentGraph'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AIConfigsBetaApi.get_agent_graph",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AIConfigsBetaApi#get_agent_graph\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1469,6 +1631,94 @@ module LaunchDarklyApi
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AIConfigsBetaApi#list_model_configs\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update agent graph
+    # Edit an existing agent graph.  The request body must be a JSON object of the fields to update. The values you include replace the existing values for the fields.  If the update includes `rootConfigKey` or `edges`, both must be present and will be treated as full replacements. 
+    # @param ld_api_version [String] Version of the endpoint.
+    # @param project_key [String] 
+    # @param graph_key [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [AgentGraphPatch] :agent_graph_patch Agent graph object to update
+    # @return [AgentGraph]
+    def patch_agent_graph(ld_api_version, project_key, graph_key, opts = {})
+      data, _status_code, _headers = patch_agent_graph_with_http_info(ld_api_version, project_key, graph_key, opts)
+      data
+    end
+
+    # Update agent graph
+    # Edit an existing agent graph.  The request body must be a JSON object of the fields to update. The values you include replace the existing values for the fields.  If the update includes &#x60;rootConfigKey&#x60; or &#x60;edges&#x60;, both must be present and will be treated as full replacements. 
+    # @param ld_api_version [String] Version of the endpoint.
+    # @param project_key [String] 
+    # @param graph_key [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [AgentGraphPatch] :agent_graph_patch Agent graph object to update
+    # @return [Array<(AgentGraph, Integer, Hash)>] AgentGraph data, response status code and response headers
+    def patch_agent_graph_with_http_info(ld_api_version, project_key, graph_key, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AIConfigsBetaApi.patch_agent_graph ...'
+      end
+      # verify the required parameter 'ld_api_version' is set
+      if @api_client.config.client_side_validation && ld_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'ld_api_version' when calling AIConfigsBetaApi.patch_agent_graph"
+      end
+      # verify enum value
+      allowable_values = ["beta"]
+      if @api_client.config.client_side_validation && !allowable_values.include?(ld_api_version)
+        fail ArgumentError, "invalid value for \"ld_api_version\", must be one of #{allowable_values}"
+      end
+      # verify the required parameter 'project_key' is set
+      if @api_client.config.client_side_validation && project_key.nil?
+        fail ArgumentError, "Missing the required parameter 'project_key' when calling AIConfigsBetaApi.patch_agent_graph"
+      end
+      # verify the required parameter 'graph_key' is set
+      if @api_client.config.client_side_validation && graph_key.nil?
+        fail ArgumentError, "Missing the required parameter 'graph_key' when calling AIConfigsBetaApi.patch_agent_graph"
+      end
+      # resource path
+      local_var_path = '/api/v2/projects/{projectKey}/agent-graphs/{graphKey}'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'graphKey' + '}', CGI.escape(graph_key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'LD-API-Version'] = ld_api_version
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'agent_graph_patch'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AgentGraph'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AIConfigsBetaApi.patch_agent_graph",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AIConfigsBetaApi#patch_agent_graph\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

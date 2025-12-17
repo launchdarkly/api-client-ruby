@@ -4,11 +4,13 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**delete_agent_graph**](AIConfigsBetaApi.md#delete_agent_graph) | **DELETE** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Delete agent graph |
 | [**delete_ai_config**](AIConfigsBetaApi.md#delete_ai_config) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Delete AI Config |
 | [**delete_ai_config_variation**](AIConfigsBetaApi.md#delete_ai_config_variation) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Delete AI Config variation |
 | [**delete_ai_tool**](AIConfigsBetaApi.md#delete_ai_tool) | **DELETE** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Delete AI tool |
 | [**delete_model_config**](AIConfigsBetaApi.md#delete_model_config) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Delete an AI model config |
 | [**delete_restricted_models**](AIConfigsBetaApi.md#delete_restricted_models) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/model-configs/restricted | Remove AI models from the restricted list |
+| [**get_agent_graph**](AIConfigsBetaApi.md#get_agent_graph) | **GET** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Get agent graph |
 | [**get_ai_config**](AIConfigsBetaApi.md#get_ai_config) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Get AI Config |
 | [**get_ai_config_metrics**](AIConfigsBetaApi.md#get_ai_config_metrics) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics | Get AI Config metrics |
 | [**get_ai_config_metrics_by_variation**](AIConfigsBetaApi.md#get_ai_config_metrics_by_variation) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics-by-variation | Get AI Config metrics by variation |
@@ -21,6 +23,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**list_ai_tool_versions**](AIConfigsBetaApi.md#list_ai_tool_versions) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey}/versions | List AI tool versions |
 | [**list_ai_tools**](AIConfigsBetaApi.md#list_ai_tools) | **GET** /api/v2/projects/{projectKey}/ai-tools | List AI tools |
 | [**list_model_configs**](AIConfigsBetaApi.md#list_model_configs) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs | List AI model configs |
+| [**patch_agent_graph**](AIConfigsBetaApi.md#patch_agent_graph) | **PATCH** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Update agent graph |
 | [**patch_ai_config**](AIConfigsBetaApi.md#patch_ai_config) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Update AI Config |
 | [**patch_ai_config_targeting**](AIConfigsBetaApi.md#patch_ai_config_targeting) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting | Update AI Config targeting |
 | [**patch_ai_config_variation**](AIConfigsBetaApi.md#patch_ai_config_variation) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Update AI Config variation |
@@ -31,6 +34,80 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**post_ai_tool**](AIConfigsBetaApi.md#post_ai_tool) | **POST** /api/v2/projects/{projectKey}/ai-tools | Create an AI tool |
 | [**post_model_config**](AIConfigsBetaApi.md#post_model_config) | **POST** /api/v2/projects/{projectKey}/ai-configs/model-configs | Create an AI model config |
 | [**post_restricted_models**](AIConfigsBetaApi.md#post_restricted_models) | **POST** /api/v2/projects/{projectKey}/ai-configs/model-configs/restricted | Add AI models to the restricted list |
+
+
+## delete_agent_graph
+
+> delete_agent_graph(ld_api_version, project_key, graph_key)
+
+Delete agent graph
+
+Delete an existing agent graph and all of its edges.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
+ld_api_version = 'beta' # String | Version of the endpoint.
+project_key = 'project_key_example' # String | 
+graph_key = 'graph_key_example' # String | 
+
+begin
+  # Delete agent graph
+  api_instance.delete_agent_graph(ld_api_version, project_key, graph_key)
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AIConfigsBetaApi->delete_agent_graph: #{e}"
+end
+```
+
+#### Using the delete_agent_graph_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_agent_graph_with_http_info(ld_api_version, project_key, graph_key)
+
+```ruby
+begin
+  # Delete agent graph
+  data, status_code, headers = api_instance.delete_agent_graph_with_http_info(ld_api_version, project_key, graph_key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AIConfigsBetaApi->delete_agent_graph_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ld_api_version** | **String** | Version of the endpoint. |  |
+| **project_key** | **String** |  |  |
+| **graph_key** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## delete_ai_config
@@ -402,6 +479,81 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_agent_graph
+
+> <AgentGraph> get_agent_graph(ld_api_version, project_key, graph_key)
+
+Get agent graph
+
+Retrieve a specific agent graph by its key, including its edges.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
+ld_api_version = 'beta' # String | Version of the endpoint.
+project_key = 'project_key_example' # String | 
+graph_key = 'graph_key_example' # String | 
+
+begin
+  # Get agent graph
+  result = api_instance.get_agent_graph(ld_api_version, project_key, graph_key)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AIConfigsBetaApi->get_agent_graph: #{e}"
+end
+```
+
+#### Using the get_agent_graph_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AgentGraph>, Integer, Hash)> get_agent_graph_with_http_info(ld_api_version, project_key, graph_key)
+
+```ruby
+begin
+  # Get agent graph
+  data, status_code, headers = api_instance.get_agent_graph_with_http_info(ld_api_version, project_key, graph_key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AgentGraph>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AIConfigsBetaApi->get_agent_graph_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ld_api_version** | **String** | Version of the endpoint. |  |
+| **project_key** | **String** |  |  |
+| **graph_key** | **String** |  |  |
+
+### Return type
+
+[**AgentGraph**](AgentGraph.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -1346,6 +1498,85 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## patch_agent_graph
+
+> <AgentGraph> patch_agent_graph(ld_api_version, project_key, graph_key, opts)
+
+Update agent graph
+
+Edit an existing agent graph.  The request body must be a JSON object of the fields to update. The values you include replace the existing values for the fields.  If the update includes `rootConfigKey` or `edges`, both must be present and will be treated as full replacements. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
+ld_api_version = 'beta' # String | Version of the endpoint.
+project_key = 'project_key_example' # String | 
+graph_key = 'graph_key_example' # String | 
+opts = {
+  agent_graph_patch: LaunchDarklyApi::AgentGraphPatch.new # AgentGraphPatch | Agent graph object to update
+}
+
+begin
+  # Update agent graph
+  result = api_instance.patch_agent_graph(ld_api_version, project_key, graph_key, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AIConfigsBetaApi->patch_agent_graph: #{e}"
+end
+```
+
+#### Using the patch_agent_graph_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AgentGraph>, Integer, Hash)> patch_agent_graph_with_http_info(ld_api_version, project_key, graph_key, opts)
+
+```ruby
+begin
+  # Update agent graph
+  data, status_code, headers = api_instance.patch_agent_graph_with_http_info(ld_api_version, project_key, graph_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AgentGraph>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AIConfigsBetaApi->patch_agent_graph_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ld_api_version** | **String** | Version of the endpoint. |  |
+| **project_key** | **String** |  |  |
+| **graph_key** | **String** |  |  |
+| **agent_graph_patch** | [**AgentGraphPatch**](AgentGraphPatch.md) | Agent graph object to update | [optional] |
+
+### Return type
+
+[**AgentGraph**](AgentGraph.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

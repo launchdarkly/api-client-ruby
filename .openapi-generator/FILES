@@ -50,6 +50,7 @@ docs/ActionOutput.md
 docs/AgentGraph.md
 docs/AgentGraphEdge.md
 docs/AgentGraphEdgePost.md
+docs/AgentGraphPatch.md
 docs/AgentGraphPost.md
 docs/AgentGraphs.md
 docs/AiConfigsAccess.md
@@ -723,6 +724,7 @@ lib/launchdarkly_api/models/action_output.rb
 lib/launchdarkly_api/models/agent_graph.rb
 lib/launchdarkly_api/models/agent_graph_edge.rb
 lib/launchdarkly_api/models/agent_graph_edge_post.rb
+lib/launchdarkly_api/models/agent_graph_patch.rb
 lib/launchdarkly_api/models/agent_graph_post.rb
 lib/launchdarkly_api/models/agent_graphs.rb
 lib/launchdarkly_api/models/ai_config.rb
@@ -1367,6 +1369,7 @@ spec/models/action_input_spec.rb
 spec/models/action_output_spec.rb
 spec/models/agent_graph_edge_post_spec.rb
 spec/models/agent_graph_edge_spec.rb
+spec/models/agent_graph_patch_spec.rb
 spec/models/agent_graph_post_spec.rb
 spec/models/agent_graph_spec.rb
 spec/models/agent_graphs_spec.rb

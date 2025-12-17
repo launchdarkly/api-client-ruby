@@ -27,6 +27,12 @@ describe LaunchDarklyApi::AgentGraphEdge do
     end
   end
 
+  describe 'test attribute "key"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "source_config"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

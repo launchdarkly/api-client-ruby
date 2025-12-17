@@ -16,6 +16,9 @@ require 'time'
 module LaunchDarklyApi
   # An edge in an agent graph connecting two AI Configs
   class AgentGraphEdgePost
+    # A unique key for this edge within the graph
+    attr_accessor :key
+
     # The AI Config key that is the source of this edge
     attr_accessor :source_config
 
@@ -28,6 +31,7 @@ module LaunchDarklyApi
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'key' => :'key',
         :'source_config' => :'sourceConfig',
         :'target_config' => :'targetConfig',
         :'handoff' => :'handoff'
@@ -47,6 +51,7 @@ module LaunchDarklyApi
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'key' => :'String',
         :'source_config' => :'String',
         :'target_config' => :'String',
         :'handoff' => :'Object'
@@ -75,6 +80,12 @@ module LaunchDarklyApi
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'key')
+        self.key = attributes[:'key']
+      else
+        self.key = nil
+      end
+
       if attributes.key?(:'source_config')
         self.source_config = attributes[:'source_config']
       else
@@ -97,6 +108,10 @@ module LaunchDarklyApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @key.nil?
+        invalid_properties.push('invalid value for "key", key cannot be nil.')
+      end
+
       if @source_config.nil?
         invalid_properties.push('invalid value for "source_config", source_config cannot be nil.')
       end
@@ -112,9 +127,20 @@ module LaunchDarklyApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @key.nil?
       return false if @source_config.nil?
       return false if @target_config.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] key Value to be assigned
+    def key=(key)
+      if key.nil?
+        fail ArgumentError, 'key cannot be nil'
+      end
+
+      @key = key
     end
 
     # Custom attribute writer method with validation
@@ -142,6 +168,7 @@ module LaunchDarklyApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          key == o.key &&
           source_config == o.source_config &&
           target_config == o.target_config &&
           handoff == o.handoff
@@ -156,7 +183,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [source_config, target_config, handoff].hash
+      [key, source_config, target_config, handoff].hash
     end
 
     # Builds the object from hash
