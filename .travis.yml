@@ -8,4 +8,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build launchdarkly_api.gemspec
-  - gem install ./launchdarkly_api-20.0.0.gem
+  - gem install ./launchdarkly_api-21.0.0.gem

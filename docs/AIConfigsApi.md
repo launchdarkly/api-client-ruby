@@ -1,39 +1,39 @@
-# LaunchDarklyApi::AIConfigsBetaApi
+# LaunchDarklyApi::AIConfigsApi
 
 All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**delete_agent_graph**](AIConfigsBetaApi.md#delete_agent_graph) | **DELETE** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Delete agent graph |
-| [**delete_ai_config**](AIConfigsBetaApi.md#delete_ai_config) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Delete AI Config |
-| [**delete_ai_config_variation**](AIConfigsBetaApi.md#delete_ai_config_variation) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Delete AI Config variation |
-| [**delete_ai_tool**](AIConfigsBetaApi.md#delete_ai_tool) | **DELETE** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Delete AI tool |
-| [**delete_model_config**](AIConfigsBetaApi.md#delete_model_config) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Delete an AI model config |
-| [**delete_restricted_models**](AIConfigsBetaApi.md#delete_restricted_models) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/model-configs/restricted | Remove AI models from the restricted list |
-| [**get_agent_graph**](AIConfigsBetaApi.md#get_agent_graph) | **GET** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Get agent graph |
-| [**get_ai_config**](AIConfigsBetaApi.md#get_ai_config) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Get AI Config |
-| [**get_ai_config_metrics**](AIConfigsBetaApi.md#get_ai_config_metrics) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics | Get AI Config metrics |
-| [**get_ai_config_metrics_by_variation**](AIConfigsBetaApi.md#get_ai_config_metrics_by_variation) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics-by-variation | Get AI Config metrics by variation |
-| [**get_ai_config_targeting**](AIConfigsBetaApi.md#get_ai_config_targeting) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting | Show an AI Config&#39;s targeting |
-| [**get_ai_config_variation**](AIConfigsBetaApi.md#get_ai_config_variation) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Get AI Config variation |
-| [**get_ai_configs**](AIConfigsBetaApi.md#get_ai_configs) | **GET** /api/v2/projects/{projectKey}/ai-configs | List AI Configs |
-| [**get_ai_tool**](AIConfigsBetaApi.md#get_ai_tool) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Get AI tool |
-| [**get_model_config**](AIConfigsBetaApi.md#get_model_config) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Get AI model config |
-| [**list_agent_graphs**](AIConfigsBetaApi.md#list_agent_graphs) | **GET** /api/v2/projects/{projectKey}/agent-graphs | List agent graphs |
-| [**list_ai_tool_versions**](AIConfigsBetaApi.md#list_ai_tool_versions) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey}/versions | List AI tool versions |
-| [**list_ai_tools**](AIConfigsBetaApi.md#list_ai_tools) | **GET** /api/v2/projects/{projectKey}/ai-tools | List AI tools |
-| [**list_model_configs**](AIConfigsBetaApi.md#list_model_configs) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs | List AI model configs |
-| [**patch_agent_graph**](AIConfigsBetaApi.md#patch_agent_graph) | **PATCH** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Update agent graph |
-| [**patch_ai_config**](AIConfigsBetaApi.md#patch_ai_config) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Update AI Config |
-| [**patch_ai_config_targeting**](AIConfigsBetaApi.md#patch_ai_config_targeting) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting | Update AI Config targeting |
-| [**patch_ai_config_variation**](AIConfigsBetaApi.md#patch_ai_config_variation) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Update AI Config variation |
-| [**patch_ai_tool**](AIConfigsBetaApi.md#patch_ai_tool) | **PATCH** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Update AI tool |
-| [**post_agent_graph**](AIConfigsBetaApi.md#post_agent_graph) | **POST** /api/v2/projects/{projectKey}/agent-graphs | Create new agent graph |
-| [**post_ai_config**](AIConfigsBetaApi.md#post_ai_config) | **POST** /api/v2/projects/{projectKey}/ai-configs | Create new AI Config |
-| [**post_ai_config_variation**](AIConfigsBetaApi.md#post_ai_config_variation) | **POST** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations | Create AI Config variation |
-| [**post_ai_tool**](AIConfigsBetaApi.md#post_ai_tool) | **POST** /api/v2/projects/{projectKey}/ai-tools | Create an AI tool |
-| [**post_model_config**](AIConfigsBetaApi.md#post_model_config) | **POST** /api/v2/projects/{projectKey}/ai-configs/model-configs | Create an AI model config |
-| [**post_restricted_models**](AIConfigsBetaApi.md#post_restricted_models) | **POST** /api/v2/projects/{projectKey}/ai-configs/model-configs/restricted | Add AI models to the restricted list |
+| [**delete_agent_graph**](AIConfigsApi.md#delete_agent_graph) | **DELETE** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Delete agent graph |
+| [**delete_ai_config**](AIConfigsApi.md#delete_ai_config) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Delete AI Config |
+| [**delete_ai_config_variation**](AIConfigsApi.md#delete_ai_config_variation) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Delete AI Config variation |
+| [**delete_ai_tool**](AIConfigsApi.md#delete_ai_tool) | **DELETE** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Delete AI tool |
+| [**delete_model_config**](AIConfigsApi.md#delete_model_config) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Delete an AI model config |
+| [**delete_restricted_models**](AIConfigsApi.md#delete_restricted_models) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/model-configs/restricted | Remove AI models from the restricted list |
+| [**get_agent_graph**](AIConfigsApi.md#get_agent_graph) | **GET** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Get agent graph |
+| [**get_ai_config**](AIConfigsApi.md#get_ai_config) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Get AI Config |
+| [**get_ai_config_metrics**](AIConfigsApi.md#get_ai_config_metrics) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics | Get AI Config metrics |
+| [**get_ai_config_metrics_by_variation**](AIConfigsApi.md#get_ai_config_metrics_by_variation) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics-by-variation | Get AI Config metrics by variation |
+| [**get_ai_config_targeting**](AIConfigsApi.md#get_ai_config_targeting) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting | Show an AI Config&#39;s targeting |
+| [**get_ai_config_variation**](AIConfigsApi.md#get_ai_config_variation) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Get AI Config variation |
+| [**get_ai_configs**](AIConfigsApi.md#get_ai_configs) | **GET** /api/v2/projects/{projectKey}/ai-configs | List AI Configs |
+| [**get_ai_tool**](AIConfigsApi.md#get_ai_tool) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Get AI tool |
+| [**get_model_config**](AIConfigsApi.md#get_model_config) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Get AI model config |
+| [**list_agent_graphs**](AIConfigsApi.md#list_agent_graphs) | **GET** /api/v2/projects/{projectKey}/agent-graphs | List agent graphs |
+| [**list_ai_tool_versions**](AIConfigsApi.md#list_ai_tool_versions) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey}/versions | List AI tool versions |
+| [**list_ai_tools**](AIConfigsApi.md#list_ai_tools) | **GET** /api/v2/projects/{projectKey}/ai-tools | List AI tools |
+| [**list_model_configs**](AIConfigsApi.md#list_model_configs) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs | List AI model configs |
+| [**patch_agent_graph**](AIConfigsApi.md#patch_agent_graph) | **PATCH** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Update agent graph |
+| [**patch_ai_config**](AIConfigsApi.md#patch_ai_config) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Update AI Config |
+| [**patch_ai_config_targeting**](AIConfigsApi.md#patch_ai_config_targeting) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting | Update AI Config targeting |
+| [**patch_ai_config_variation**](AIConfigsApi.md#patch_ai_config_variation) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Update AI Config variation |
+| [**patch_ai_tool**](AIConfigsApi.md#patch_ai_tool) | **PATCH** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Update AI tool |
+| [**post_agent_graph**](AIConfigsApi.md#post_agent_graph) | **POST** /api/v2/projects/{projectKey}/agent-graphs | Create new agent graph |
+| [**post_ai_config**](AIConfigsApi.md#post_ai_config) | **POST** /api/v2/projects/{projectKey}/ai-configs | Create new AI Config |
+| [**post_ai_config_variation**](AIConfigsApi.md#post_ai_config_variation) | **POST** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations | Create AI Config variation |
+| [**post_ai_tool**](AIConfigsApi.md#post_ai_tool) | **POST** /api/v2/projects/{projectKey}/ai-tools | Create an AI tool |
+| [**post_model_config**](AIConfigsApi.md#post_model_config) | **POST** /api/v2/projects/{projectKey}/ai-configs/model-configs | Create an AI model config |
+| [**post_restricted_models**](AIConfigsApi.md#post_restricted_models) | **POST** /api/v2/projects/{projectKey}/ai-configs/model-configs/restricted | Add AI models to the restricted list |
 
 
 ## delete_agent_graph
@@ -57,7 +57,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 ld_api_version = 'beta' # String | Version of the endpoint.
 project_key = 'project_key_example' # String | 
 graph_key = 'graph_key_example' # String | 
@@ -66,7 +66,7 @@ begin
   # Delete agent graph
   api_instance.delete_agent_graph(ld_api_version, project_key, graph_key)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->delete_agent_graph: #{e}"
+  puts "Error when calling AIConfigsApi->delete_agent_graph: #{e}"
 end
 ```
 
@@ -84,7 +84,7 @@ begin
   p headers # => { ... }
   p data # => nil
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->delete_agent_graph_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->delete_agent_graph_with_http_info: #{e}"
 end
 ```
 
@@ -112,7 +112,7 @@ nil (empty response body)
 
 ## delete_ai_config
 
-> delete_ai_config(ld_api_version, project_key, config_key)
+> delete_ai_config(project_key, config_key)
 
 Delete AI Config
 
@@ -131,16 +131,15 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'default' # String | 
 config_key = 'config_key_example' # String | 
 
 begin
   # Delete AI Config
-  api_instance.delete_ai_config(ld_api_version, project_key, config_key)
+  api_instance.delete_ai_config(project_key, config_key)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->delete_ai_config: #{e}"
+  puts "Error when calling AIConfigsApi->delete_ai_config: #{e}"
 end
 ```
 
@@ -148,17 +147,17 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_ai_config_with_http_info(ld_api_version, project_key, config_key)
+> <Array(nil, Integer, Hash)> delete_ai_config_with_http_info(project_key, config_key)
 
 ```ruby
 begin
   # Delete AI Config
-  data, status_code, headers = api_instance.delete_ai_config_with_http_info(ld_api_version, project_key, config_key)
+  data, status_code, headers = api_instance.delete_ai_config_with_http_info(project_key, config_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->delete_ai_config_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->delete_ai_config_with_http_info: #{e}"
 end
 ```
 
@@ -166,7 +165,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **config_key** | **String** |  |  |
 
@@ -186,7 +184,7 @@ nil (empty response body)
 
 ## delete_ai_config_variation
 
-> delete_ai_config_variation(ld_api_version, project_key, config_key, variation_key)
+> delete_ai_config_variation(project_key, config_key, variation_key)
 
 Delete AI Config variation
 
@@ -205,17 +203,16 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 config_key = 'config_key_example' # String | 
 variation_key = 'variation_key_example' # String | 
 
 begin
   # Delete AI Config variation
-  api_instance.delete_ai_config_variation(ld_api_version, project_key, config_key, variation_key)
+  api_instance.delete_ai_config_variation(project_key, config_key, variation_key)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->delete_ai_config_variation: #{e}"
+  puts "Error when calling AIConfigsApi->delete_ai_config_variation: #{e}"
 end
 ```
 
@@ -223,17 +220,17 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_ai_config_variation_with_http_info(ld_api_version, project_key, config_key, variation_key)
+> <Array(nil, Integer, Hash)> delete_ai_config_variation_with_http_info(project_key, config_key, variation_key)
 
 ```ruby
 begin
   # Delete AI Config variation
-  data, status_code, headers = api_instance.delete_ai_config_variation_with_http_info(ld_api_version, project_key, config_key, variation_key)
+  data, status_code, headers = api_instance.delete_ai_config_variation_with_http_info(project_key, config_key, variation_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->delete_ai_config_variation_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->delete_ai_config_variation_with_http_info: #{e}"
 end
 ```
 
@@ -241,7 +238,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **config_key** | **String** |  |  |
 | **variation_key** | **String** |  |  |
@@ -262,7 +258,7 @@ nil (empty response body)
 
 ## delete_ai_tool
 
-> delete_ai_tool(ld_api_version, project_key, tool_key)
+> delete_ai_tool(project_key, tool_key)
 
 Delete AI tool
 
@@ -281,16 +277,15 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 tool_key = 'tool_key_example' # String | 
 
 begin
   # Delete AI tool
-  api_instance.delete_ai_tool(ld_api_version, project_key, tool_key)
+  api_instance.delete_ai_tool(project_key, tool_key)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->delete_ai_tool: #{e}"
+  puts "Error when calling AIConfigsApi->delete_ai_tool: #{e}"
 end
 ```
 
@@ -298,17 +293,17 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_ai_tool_with_http_info(ld_api_version, project_key, tool_key)
+> <Array(nil, Integer, Hash)> delete_ai_tool_with_http_info(project_key, tool_key)
 
 ```ruby
 begin
   # Delete AI tool
-  data, status_code, headers = api_instance.delete_ai_tool_with_http_info(ld_api_version, project_key, tool_key)
+  data, status_code, headers = api_instance.delete_ai_tool_with_http_info(project_key, tool_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->delete_ai_tool_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->delete_ai_tool_with_http_info: #{e}"
 end
 ```
 
@@ -316,7 +311,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **tool_key** | **String** |  |  |
 
@@ -336,7 +330,7 @@ nil (empty response body)
 
 ## delete_model_config
 
-> delete_model_config(ld_api_version, project_key, model_config_key)
+> delete_model_config(project_key, model_config_key)
 
 Delete an AI model config
 
@@ -355,16 +349,15 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'default' # String | 
 model_config_key = 'model_config_key_example' # String | 
 
 begin
   # Delete an AI model config
-  api_instance.delete_model_config(ld_api_version, project_key, model_config_key)
+  api_instance.delete_model_config(project_key, model_config_key)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->delete_model_config: #{e}"
+  puts "Error when calling AIConfigsApi->delete_model_config: #{e}"
 end
 ```
 
@@ -372,17 +365,17 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_model_config_with_http_info(ld_api_version, project_key, model_config_key)
+> <Array(nil, Integer, Hash)> delete_model_config_with_http_info(project_key, model_config_key)
 
 ```ruby
 begin
   # Delete an AI model config
-  data, status_code, headers = api_instance.delete_model_config_with_http_info(ld_api_version, project_key, model_config_key)
+  data, status_code, headers = api_instance.delete_model_config_with_http_info(project_key, model_config_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->delete_model_config_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->delete_model_config_with_http_info: #{e}"
 end
 ```
 
@@ -390,7 +383,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **model_config_key** | **String** |  |  |
 
@@ -410,7 +402,7 @@ nil (empty response body)
 
 ## delete_restricted_models
 
-> delete_restricted_models(ld_api_version, project_key, restricted_models_request)
+> delete_restricted_models(project_key, restricted_models_request)
 
 Remove AI models from the restricted list
 
@@ -429,16 +421,15 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'default' # String | 
 restricted_models_request = LaunchDarklyApi::RestrictedModelsRequest.new({keys: ['keys_example']}) # RestrictedModelsRequest | List of AI model keys to remove from the restricted list
 
 begin
   # Remove AI models from the restricted list
-  api_instance.delete_restricted_models(ld_api_version, project_key, restricted_models_request)
+  api_instance.delete_restricted_models(project_key, restricted_models_request)
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->delete_restricted_models: #{e}"
+  puts "Error when calling AIConfigsApi->delete_restricted_models: #{e}"
 end
 ```
 
@@ -446,17 +437,17 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_restricted_models_with_http_info(ld_api_version, project_key, restricted_models_request)
+> <Array(nil, Integer, Hash)> delete_restricted_models_with_http_info(project_key, restricted_models_request)
 
 ```ruby
 begin
   # Remove AI models from the restricted list
-  data, status_code, headers = api_instance.delete_restricted_models_with_http_info(ld_api_version, project_key, restricted_models_request)
+  data, status_code, headers = api_instance.delete_restricted_models_with_http_info(project_key, restricted_models_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->delete_restricted_models_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->delete_restricted_models_with_http_info: #{e}"
 end
 ```
 
@@ -464,7 +455,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **restricted_models_request** | [**RestrictedModelsRequest**](RestrictedModelsRequest.md) | List of AI model keys to remove from the restricted list |  |
 
@@ -503,7 +493,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 ld_api_version = 'beta' # String | Version of the endpoint.
 project_key = 'project_key_example' # String | 
 graph_key = 'graph_key_example' # String | 
@@ -513,7 +503,7 @@ begin
   result = api_instance.get_agent_graph(ld_api_version, project_key, graph_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_agent_graph: #{e}"
+  puts "Error when calling AIConfigsApi->get_agent_graph: #{e}"
 end
 ```
 
@@ -531,7 +521,7 @@ begin
   p headers # => { ... }
   p data # => <AgentGraph>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_agent_graph_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->get_agent_graph_with_http_info: #{e}"
 end
 ```
 
@@ -559,7 +549,7 @@ end
 
 ## get_ai_config
 
-> <AIConfig> get_ai_config(ld_api_version, project_key, config_key)
+> <AIConfig> get_ai_config(project_key, config_key)
 
 Get AI Config
 
@@ -578,17 +568,16 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 config_key = 'config_key_example' # String | 
 
 begin
   # Get AI Config
-  result = api_instance.get_ai_config(ld_api_version, project_key, config_key)
+  result = api_instance.get_ai_config(project_key, config_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_config: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_config: #{e}"
 end
 ```
 
@@ -596,17 +585,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AIConfig>, Integer, Hash)> get_ai_config_with_http_info(ld_api_version, project_key, config_key)
+> <Array(<AIConfig>, Integer, Hash)> get_ai_config_with_http_info(project_key, config_key)
 
 ```ruby
 begin
   # Get AI Config
-  data, status_code, headers = api_instance.get_ai_config_with_http_info(ld_api_version, project_key, config_key)
+  data, status_code, headers = api_instance.get_ai_config_with_http_info(project_key, config_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AIConfig>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_config_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_config_with_http_info: #{e}"
 end
 ```
 
@@ -614,7 +603,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **config_key** | **String** |  |  |
 
@@ -634,7 +622,7 @@ end
 
 ## get_ai_config_metrics
 
-> <Metrics> get_ai_config_metrics(ld_api_version, project_key, config_key, from, to, env)
+> <Metrics> get_ai_config_metrics(project_key, config_key, from, to, env)
 
 Get AI Config metrics
 
@@ -653,8 +641,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 config_key = 'config_key_example' # String | 
 from = 56 # Integer | The starting time, as milliseconds since epoch (inclusive).
@@ -663,10 +650,10 @@ env = 'env_example' # String | An environment key. Only metrics from this enviro
 
 begin
   # Get AI Config metrics
-  result = api_instance.get_ai_config_metrics(ld_api_version, project_key, config_key, from, to, env)
+  result = api_instance.get_ai_config_metrics(project_key, config_key, from, to, env)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_config_metrics: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_config_metrics: #{e}"
 end
 ```
 
@@ -674,17 +661,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Metrics>, Integer, Hash)> get_ai_config_metrics_with_http_info(ld_api_version, project_key, config_key, from, to, env)
+> <Array(<Metrics>, Integer, Hash)> get_ai_config_metrics_with_http_info(project_key, config_key, from, to, env)
 
 ```ruby
 begin
   # Get AI Config metrics
-  data, status_code, headers = api_instance.get_ai_config_metrics_with_http_info(ld_api_version, project_key, config_key, from, to, env)
+  data, status_code, headers = api_instance.get_ai_config_metrics_with_http_info(project_key, config_key, from, to, env)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Metrics>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_config_metrics_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_config_metrics_with_http_info: #{e}"
 end
 ```
 
@@ -692,7 +679,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **config_key** | **String** |  |  |
 | **from** | **Integer** | The starting time, as milliseconds since epoch (inclusive). |  |
@@ -715,7 +701,7 @@ end
 
 ## get_ai_config_metrics_by_variation
 
-> <Array<MetricByVariation>> get_ai_config_metrics_by_variation(ld_api_version, project_key, config_key, from, to, env)
+> <Array<MetricByVariation>> get_ai_config_metrics_by_variation(project_key, config_key, from, to, env)
 
 Get AI Config metrics by variation
 
@@ -734,8 +720,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 config_key = 'config_key_example' # String | 
 from = 56 # Integer | The starting time, as milliseconds since epoch (inclusive).
@@ -744,10 +729,10 @@ env = 'env_example' # String | An environment key. Only metrics from this enviro
 
 begin
   # Get AI Config metrics by variation
-  result = api_instance.get_ai_config_metrics_by_variation(ld_api_version, project_key, config_key, from, to, env)
+  result = api_instance.get_ai_config_metrics_by_variation(project_key, config_key, from, to, env)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_config_metrics_by_variation: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_config_metrics_by_variation: #{e}"
 end
 ```
 
@@ -755,17 +740,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<MetricByVariation>>, Integer, Hash)> get_ai_config_metrics_by_variation_with_http_info(ld_api_version, project_key, config_key, from, to, env)
+> <Array(<Array<MetricByVariation>>, Integer, Hash)> get_ai_config_metrics_by_variation_with_http_info(project_key, config_key, from, to, env)
 
 ```ruby
 begin
   # Get AI Config metrics by variation
-  data, status_code, headers = api_instance.get_ai_config_metrics_by_variation_with_http_info(ld_api_version, project_key, config_key, from, to, env)
+  data, status_code, headers = api_instance.get_ai_config_metrics_by_variation_with_http_info(project_key, config_key, from, to, env)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<MetricByVariation>>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_config_metrics_by_variation_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_config_metrics_by_variation_with_http_info: #{e}"
 end
 ```
 
@@ -773,7 +758,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **config_key** | **String** |  |  |
 | **from** | **Integer** | The starting time, as milliseconds since epoch (inclusive). |  |
@@ -796,7 +780,7 @@ end
 
 ## get_ai_config_targeting
 
-> <AIConfigTargeting> get_ai_config_targeting(ld_api_version, project_key, config_key)
+> <AIConfigTargeting> get_ai_config_targeting(project_key, config_key)
 
 Show an AI Config's targeting
 
@@ -815,17 +799,16 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 config_key = 'config_key_example' # String | 
 
 begin
   # Show an AI Config's targeting
-  result = api_instance.get_ai_config_targeting(ld_api_version, project_key, config_key)
+  result = api_instance.get_ai_config_targeting(project_key, config_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_config_targeting: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_config_targeting: #{e}"
 end
 ```
 
@@ -833,17 +816,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AIConfigTargeting>, Integer, Hash)> get_ai_config_targeting_with_http_info(ld_api_version, project_key, config_key)
+> <Array(<AIConfigTargeting>, Integer, Hash)> get_ai_config_targeting_with_http_info(project_key, config_key)
 
 ```ruby
 begin
   # Show an AI Config's targeting
-  data, status_code, headers = api_instance.get_ai_config_targeting_with_http_info(ld_api_version, project_key, config_key)
+  data, status_code, headers = api_instance.get_ai_config_targeting_with_http_info(project_key, config_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AIConfigTargeting>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_config_targeting_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_config_targeting_with_http_info: #{e}"
 end
 ```
 
@@ -851,7 +834,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **config_key** | **String** |  |  |
 
@@ -871,7 +853,7 @@ end
 
 ## get_ai_config_variation
 
-> <AIConfigVariationsResponse> get_ai_config_variation(ld_api_version, project_key, config_key, variation_key)
+> <AIConfigVariationsResponse> get_ai_config_variation(project_key, config_key, variation_key)
 
 Get AI Config variation
 
@@ -890,18 +872,17 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'default' # String | 
 config_key = 'default' # String | 
 variation_key = 'default' # String | 
 
 begin
   # Get AI Config variation
-  result = api_instance.get_ai_config_variation(ld_api_version, project_key, config_key, variation_key)
+  result = api_instance.get_ai_config_variation(project_key, config_key, variation_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_config_variation: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_config_variation: #{e}"
 end
 ```
 
@@ -909,17 +890,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AIConfigVariationsResponse>, Integer, Hash)> get_ai_config_variation_with_http_info(ld_api_version, project_key, config_key, variation_key)
+> <Array(<AIConfigVariationsResponse>, Integer, Hash)> get_ai_config_variation_with_http_info(project_key, config_key, variation_key)
 
 ```ruby
 begin
   # Get AI Config variation
-  data, status_code, headers = api_instance.get_ai_config_variation_with_http_info(ld_api_version, project_key, config_key, variation_key)
+  data, status_code, headers = api_instance.get_ai_config_variation_with_http_info(project_key, config_key, variation_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AIConfigVariationsResponse>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_config_variation_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_config_variation_with_http_info: #{e}"
 end
 ```
 
@@ -927,7 +908,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **config_key** | **String** |  |  |
 | **variation_key** | **String** |  |  |
@@ -948,7 +928,7 @@ end
 
 ## get_ai_configs
 
-> <AIConfigs> get_ai_configs(ld_api_version, project_key, opts)
+> <AIConfigs> get_ai_configs(project_key, opts)
 
 List AI Configs
 
@@ -967,8 +947,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'default' # String | 
 opts = {
   sort: 'sort_example', # String | A sort to apply to the list of AI Configs.
@@ -979,10 +958,10 @@ opts = {
 
 begin
   # List AI Configs
-  result = api_instance.get_ai_configs(ld_api_version, project_key, opts)
+  result = api_instance.get_ai_configs(project_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_configs: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_configs: #{e}"
 end
 ```
 
@@ -990,17 +969,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AIConfigs>, Integer, Hash)> get_ai_configs_with_http_info(ld_api_version, project_key, opts)
+> <Array(<AIConfigs>, Integer, Hash)> get_ai_configs_with_http_info(project_key, opts)
 
 ```ruby
 begin
   # List AI Configs
-  data, status_code, headers = api_instance.get_ai_configs_with_http_info(ld_api_version, project_key, opts)
+  data, status_code, headers = api_instance.get_ai_configs_with_http_info(project_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AIConfigs>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_configs_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_configs_with_http_info: #{e}"
 end
 ```
 
@@ -1008,7 +987,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **sort** | **String** | A sort to apply to the list of AI Configs. | [optional] |
 | **limit** | **Integer** | The number of AI Configs to return. | [optional] |
@@ -1031,7 +1009,7 @@ end
 
 ## get_ai_tool
 
-> <AITool> get_ai_tool(ld_api_version, project_key, tool_key)
+> <AITool> get_ai_tool(project_key, tool_key)
 
 Get AI tool
 
@@ -1050,17 +1028,16 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 tool_key = 'tool_key_example' # String | 
 
 begin
   # Get AI tool
-  result = api_instance.get_ai_tool(ld_api_version, project_key, tool_key)
+  result = api_instance.get_ai_tool(project_key, tool_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_tool: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_tool: #{e}"
 end
 ```
 
@@ -1068,17 +1045,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AITool>, Integer, Hash)> get_ai_tool_with_http_info(ld_api_version, project_key, tool_key)
+> <Array(<AITool>, Integer, Hash)> get_ai_tool_with_http_info(project_key, tool_key)
 
 ```ruby
 begin
   # Get AI tool
-  data, status_code, headers = api_instance.get_ai_tool_with_http_info(ld_api_version, project_key, tool_key)
+  data, status_code, headers = api_instance.get_ai_tool_with_http_info(project_key, tool_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AITool>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_ai_tool_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->get_ai_tool_with_http_info: #{e}"
 end
 ```
 
@@ -1086,7 +1063,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **tool_key** | **String** |  |  |
 
@@ -1106,7 +1082,7 @@ end
 
 ## get_model_config
 
-> <ModelConfig> get_model_config(ld_api_version, project_key, model_config_key)
+> <ModelConfig> get_model_config(project_key, model_config_key)
 
 Get AI model config
 
@@ -1125,17 +1101,16 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'default' # String | 
 model_config_key = 'default' # String | 
 
 begin
   # Get AI model config
-  result = api_instance.get_model_config(ld_api_version, project_key, model_config_key)
+  result = api_instance.get_model_config(project_key, model_config_key)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_model_config: #{e}"
+  puts "Error when calling AIConfigsApi->get_model_config: #{e}"
 end
 ```
 
@@ -1143,17 +1118,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ModelConfig>, Integer, Hash)> get_model_config_with_http_info(ld_api_version, project_key, model_config_key)
+> <Array(<ModelConfig>, Integer, Hash)> get_model_config_with_http_info(project_key, model_config_key)
 
 ```ruby
 begin
   # Get AI model config
-  data, status_code, headers = api_instance.get_model_config_with_http_info(ld_api_version, project_key, model_config_key)
+  data, status_code, headers = api_instance.get_model_config_with_http_info(project_key, model_config_key)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ModelConfig>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->get_model_config_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->get_model_config_with_http_info: #{e}"
 end
 ```
 
@@ -1161,7 +1136,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **model_config_key** | **String** |  |  |
 
@@ -1200,7 +1174,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 ld_api_version = 'beta' # String | Version of the endpoint.
 project_key = 'project_key_example' # String | 
 opts = {
@@ -1213,7 +1187,7 @@ begin
   result = api_instance.list_agent_graphs(ld_api_version, project_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->list_agent_graphs: #{e}"
+  puts "Error when calling AIConfigsApi->list_agent_graphs: #{e}"
 end
 ```
 
@@ -1231,7 +1205,7 @@ begin
   p headers # => { ... }
   p data # => <AgentGraphs>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->list_agent_graphs_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->list_agent_graphs_with_http_info: #{e}"
 end
 ```
 
@@ -1260,7 +1234,7 @@ end
 
 ## list_ai_tool_versions
 
-> <AITools> list_ai_tool_versions(ld_api_version, project_key, tool_key, opts)
+> <AITools> list_ai_tool_versions(project_key, tool_key, opts)
 
 List AI tool versions
 
@@ -1279,8 +1253,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 tool_key = 'tool_key_example' # String | 
 opts = {
@@ -1291,10 +1264,10 @@ opts = {
 
 begin
   # List AI tool versions
-  result = api_instance.list_ai_tool_versions(ld_api_version, project_key, tool_key, opts)
+  result = api_instance.list_ai_tool_versions(project_key, tool_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->list_ai_tool_versions: #{e}"
+  puts "Error when calling AIConfigsApi->list_ai_tool_versions: #{e}"
 end
 ```
 
@@ -1302,17 +1275,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AITools>, Integer, Hash)> list_ai_tool_versions_with_http_info(ld_api_version, project_key, tool_key, opts)
+> <Array(<AITools>, Integer, Hash)> list_ai_tool_versions_with_http_info(project_key, tool_key, opts)
 
 ```ruby
 begin
   # List AI tool versions
-  data, status_code, headers = api_instance.list_ai_tool_versions_with_http_info(ld_api_version, project_key, tool_key, opts)
+  data, status_code, headers = api_instance.list_ai_tool_versions_with_http_info(project_key, tool_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AITools>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->list_ai_tool_versions_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->list_ai_tool_versions_with_http_info: #{e}"
 end
 ```
 
@@ -1320,7 +1293,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **tool_key** | **String** |  |  |
 | **sort** | **String** | A sort to apply to the list of AI Configs. | [optional] |
@@ -1343,7 +1315,7 @@ end
 
 ## list_ai_tools
 
-> <AITools> list_ai_tools(ld_api_version, project_key, opts)
+> <AITools> list_ai_tools(project_key, opts)
 
 List AI tools
 
@@ -1362,8 +1334,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 opts = {
   sort: 'sort_example', # String | A sort to apply to the list of AI Configs.
@@ -1374,10 +1345,10 @@ opts = {
 
 begin
   # List AI tools
-  result = api_instance.list_ai_tools(ld_api_version, project_key, opts)
+  result = api_instance.list_ai_tools(project_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->list_ai_tools: #{e}"
+  puts "Error when calling AIConfigsApi->list_ai_tools: #{e}"
 end
 ```
 
@@ -1385,17 +1356,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AITools>, Integer, Hash)> list_ai_tools_with_http_info(ld_api_version, project_key, opts)
+> <Array(<AITools>, Integer, Hash)> list_ai_tools_with_http_info(project_key, opts)
 
 ```ruby
 begin
   # List AI tools
-  data, status_code, headers = api_instance.list_ai_tools_with_http_info(ld_api_version, project_key, opts)
+  data, status_code, headers = api_instance.list_ai_tools_with_http_info(project_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AITools>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->list_ai_tools_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->list_ai_tools_with_http_info: #{e}"
 end
 ```
 
@@ -1403,7 +1374,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **sort** | **String** | A sort to apply to the list of AI Configs. | [optional] |
 | **limit** | **Integer** | The number of AI Configs to return. | [optional] |
@@ -1426,7 +1396,7 @@ end
 
 ## list_model_configs
 
-> <Array<ModelConfig>> list_model_configs(ld_api_version, project_key, opts)
+> <Array<ModelConfig>> list_model_configs(project_key, opts)
 
 List AI model configs
 
@@ -1445,8 +1415,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'default' # String | 
 opts = {
   restricted: true # Boolean | Whether to return only restricted models
@@ -1454,10 +1423,10 @@ opts = {
 
 begin
   # List AI model configs
-  result = api_instance.list_model_configs(ld_api_version, project_key, opts)
+  result = api_instance.list_model_configs(project_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->list_model_configs: #{e}"
+  puts "Error when calling AIConfigsApi->list_model_configs: #{e}"
 end
 ```
 
@@ -1465,17 +1434,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<ModelConfig>>, Integer, Hash)> list_model_configs_with_http_info(ld_api_version, project_key, opts)
+> <Array(<Array<ModelConfig>>, Integer, Hash)> list_model_configs_with_http_info(project_key, opts)
 
 ```ruby
 begin
   # List AI model configs
-  data, status_code, headers = api_instance.list_model_configs_with_http_info(ld_api_version, project_key, opts)
+  data, status_code, headers = api_instance.list_model_configs_with_http_info(project_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<ModelConfig>>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->list_model_configs_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->list_model_configs_with_http_info: #{e}"
 end
 ```
 
@@ -1483,7 +1452,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **restricted** | **Boolean** | Whether to return only restricted models | [optional] |
 
@@ -1522,7 +1490,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 ld_api_version = 'beta' # String | Version of the endpoint.
 project_key = 'project_key_example' # String | 
 graph_key = 'graph_key_example' # String | 
@@ -1535,7 +1503,7 @@ begin
   result = api_instance.patch_agent_graph(ld_api_version, project_key, graph_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->patch_agent_graph: #{e}"
+  puts "Error when calling AIConfigsApi->patch_agent_graph: #{e}"
 end
 ```
 
@@ -1553,7 +1521,7 @@ begin
   p headers # => { ... }
   p data # => <AgentGraph>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->patch_agent_graph_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->patch_agent_graph_with_http_info: #{e}"
 end
 ```
 
@@ -1582,7 +1550,7 @@ end
 
 ## patch_ai_config
 
-> <AIConfig> patch_ai_config(ld_api_version, project_key, config_key, opts)
+> <AIConfig> patch_ai_config(project_key, config_key, opts)
 
 Update AI Config
 
@@ -1601,8 +1569,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 config_key = 'config_key_example' # String | 
 opts = {
@@ -1611,10 +1578,10 @@ opts = {
 
 begin
   # Update AI Config
-  result = api_instance.patch_ai_config(ld_api_version, project_key, config_key, opts)
+  result = api_instance.patch_ai_config(project_key, config_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->patch_ai_config: #{e}"
+  puts "Error when calling AIConfigsApi->patch_ai_config: #{e}"
 end
 ```
 
@@ -1622,17 +1589,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AIConfig>, Integer, Hash)> patch_ai_config_with_http_info(ld_api_version, project_key, config_key, opts)
+> <Array(<AIConfig>, Integer, Hash)> patch_ai_config_with_http_info(project_key, config_key, opts)
 
 ```ruby
 begin
   # Update AI Config
-  data, status_code, headers = api_instance.patch_ai_config_with_http_info(ld_api_version, project_key, config_key, opts)
+  data, status_code, headers = api_instance.patch_ai_config_with_http_info(project_key, config_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AIConfig>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->patch_ai_config_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->patch_ai_config_with_http_info: #{e}"
 end
 ```
 
@@ -1640,7 +1607,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **config_key** | **String** |  |  |
 | **ai_config_patch** | [**AIConfigPatch**](AIConfigPatch.md) | AI Config object to update | [optional] |
@@ -1661,7 +1627,7 @@ end
 
 ## patch_ai_config_targeting
 
-> <AIConfigTargeting> patch_ai_config_targeting(ld_api_version, project_key, config_key, opts)
+> <AIConfigTargeting> patch_ai_config_targeting(project_key, config_key, opts)
 
 Update AI Config targeting
 
@@ -1680,8 +1646,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 config_key = 'config_key_example' # String | 
 opts = {
@@ -1690,10 +1655,10 @@ opts = {
 
 begin
   # Update AI Config targeting
-  result = api_instance.patch_ai_config_targeting(ld_api_version, project_key, config_key, opts)
+  result = api_instance.patch_ai_config_targeting(project_key, config_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->patch_ai_config_targeting: #{e}"
+  puts "Error when calling AIConfigsApi->patch_ai_config_targeting: #{e}"
 end
 ```
 
@@ -1701,17 +1666,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AIConfigTargeting>, Integer, Hash)> patch_ai_config_targeting_with_http_info(ld_api_version, project_key, config_key, opts)
+> <Array(<AIConfigTargeting>, Integer, Hash)> patch_ai_config_targeting_with_http_info(project_key, config_key, opts)
 
 ```ruby
 begin
   # Update AI Config targeting
-  data, status_code, headers = api_instance.patch_ai_config_targeting_with_http_info(ld_api_version, project_key, config_key, opts)
+  data, status_code, headers = api_instance.patch_ai_config_targeting_with_http_info(project_key, config_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AIConfigTargeting>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->patch_ai_config_targeting_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->patch_ai_config_targeting_with_http_info: #{e}"
 end
 ```
 
@@ -1719,7 +1684,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **config_key** | **String** |  |  |
 | **ai_config_targeting_patch** | [**AIConfigTargetingPatch**](AIConfigTargetingPatch.md) | AI Config targeting semantic patch instructions | [optional] |
@@ -1740,7 +1704,7 @@ end
 
 ## patch_ai_config_variation
 
-> <AIConfigVariation> patch_ai_config_variation(ld_api_version, project_key, config_key, variation_key, opts)
+> <AIConfigVariation> patch_ai_config_variation(project_key, config_key, variation_key, opts)
 
 Update AI Config variation
 
@@ -1759,8 +1723,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 config_key = 'config_key_example' # String | 
 variation_key = 'variation_key_example' # String | 
@@ -1770,10 +1733,10 @@ opts = {
 
 begin
   # Update AI Config variation
-  result = api_instance.patch_ai_config_variation(ld_api_version, project_key, config_key, variation_key, opts)
+  result = api_instance.patch_ai_config_variation(project_key, config_key, variation_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->patch_ai_config_variation: #{e}"
+  puts "Error when calling AIConfigsApi->patch_ai_config_variation: #{e}"
 end
 ```
 
@@ -1781,17 +1744,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AIConfigVariation>, Integer, Hash)> patch_ai_config_variation_with_http_info(ld_api_version, project_key, config_key, variation_key, opts)
+> <Array(<AIConfigVariation>, Integer, Hash)> patch_ai_config_variation_with_http_info(project_key, config_key, variation_key, opts)
 
 ```ruby
 begin
   # Update AI Config variation
-  data, status_code, headers = api_instance.patch_ai_config_variation_with_http_info(ld_api_version, project_key, config_key, variation_key, opts)
+  data, status_code, headers = api_instance.patch_ai_config_variation_with_http_info(project_key, config_key, variation_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AIConfigVariation>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->patch_ai_config_variation_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->patch_ai_config_variation_with_http_info: #{e}"
 end
 ```
 
@@ -1799,7 +1762,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **config_key** | **String** |  |  |
 | **variation_key** | **String** |  |  |
@@ -1821,7 +1783,7 @@ end
 
 ## patch_ai_tool
 
-> <AITool> patch_ai_tool(ld_api_version, project_key, tool_key, opts)
+> <AITool> patch_ai_tool(project_key, tool_key, opts)
 
 Update AI tool
 
@@ -1840,8 +1802,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 tool_key = 'tool_key_example' # String | 
 opts = {
@@ -1850,10 +1811,10 @@ opts = {
 
 begin
   # Update AI tool
-  result = api_instance.patch_ai_tool(ld_api_version, project_key, tool_key, opts)
+  result = api_instance.patch_ai_tool(project_key, tool_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->patch_ai_tool: #{e}"
+  puts "Error when calling AIConfigsApi->patch_ai_tool: #{e}"
 end
 ```
 
@@ -1861,17 +1822,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AITool>, Integer, Hash)> patch_ai_tool_with_http_info(ld_api_version, project_key, tool_key, opts)
+> <Array(<AITool>, Integer, Hash)> patch_ai_tool_with_http_info(project_key, tool_key, opts)
 
 ```ruby
 begin
   # Update AI tool
-  data, status_code, headers = api_instance.patch_ai_tool_with_http_info(ld_api_version, project_key, tool_key, opts)
+  data, status_code, headers = api_instance.patch_ai_tool_with_http_info(project_key, tool_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AITool>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->patch_ai_tool_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->patch_ai_tool_with_http_info: #{e}"
 end
 ```
 
@@ -1879,7 +1840,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **tool_key** | **String** |  |  |
 | **ai_tool_patch** | [**AIToolPatch**](AIToolPatch.md) | AI tool object to update | [optional] |
@@ -1919,7 +1879,7 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 ld_api_version = 'beta' # String | Version of the endpoint.
 project_key = 'project_key_example' # String | 
 agent_graph_post = LaunchDarklyApi::AgentGraphPost.new({key: 'key_example', name: 'name_example'}) # AgentGraphPost | Agent graph object to create
@@ -1929,7 +1889,7 @@ begin
   result = api_instance.post_agent_graph(ld_api_version, project_key, agent_graph_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->post_agent_graph: #{e}"
+  puts "Error when calling AIConfigsApi->post_agent_graph: #{e}"
 end
 ```
 
@@ -1947,7 +1907,7 @@ begin
   p headers # => { ... }
   p data # => <AgentGraph>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->post_agent_graph_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->post_agent_graph_with_http_info: #{e}"
 end
 ```
 
@@ -1975,7 +1935,7 @@ end
 
 ## post_ai_config
 
-> <AIConfig> post_ai_config(ld_api_version, project_key, ai_config_post)
+> <AIConfig> post_ai_config(project_key, ai_config_post)
 
 Create new AI Config
 
@@ -1994,17 +1954,16 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 ai_config_post = LaunchDarklyApi::AIConfigPost.new({key: 'key_example', name: 'name_example'}) # AIConfigPost | AI Config object to create
 
 begin
   # Create new AI Config
-  result = api_instance.post_ai_config(ld_api_version, project_key, ai_config_post)
+  result = api_instance.post_ai_config(project_key, ai_config_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->post_ai_config: #{e}"
+  puts "Error when calling AIConfigsApi->post_ai_config: #{e}"
 end
 ```
 
@@ -2012,17 +1971,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AIConfig>, Integer, Hash)> post_ai_config_with_http_info(ld_api_version, project_key, ai_config_post)
+> <Array(<AIConfig>, Integer, Hash)> post_ai_config_with_http_info(project_key, ai_config_post)
 
 ```ruby
 begin
   # Create new AI Config
-  data, status_code, headers = api_instance.post_ai_config_with_http_info(ld_api_version, project_key, ai_config_post)
+  data, status_code, headers = api_instance.post_ai_config_with_http_info(project_key, ai_config_post)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AIConfig>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->post_ai_config_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->post_ai_config_with_http_info: #{e}"
 end
 ```
 
@@ -2030,7 +1989,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **ai_config_post** | [**AIConfigPost**](AIConfigPost.md) | AI Config object to create |  |
 
@@ -2050,7 +2008,7 @@ end
 
 ## post_ai_config_variation
 
-> <AIConfigVariation> post_ai_config_variation(ld_api_version, project_key, config_key, ai_config_variation_post)
+> <AIConfigVariation> post_ai_config_variation(project_key, config_key, ai_config_variation_post)
 
 Create AI Config variation
 
@@ -2069,18 +2027,17 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 config_key = 'config_key_example' # String | 
 ai_config_variation_post = LaunchDarklyApi::AIConfigVariationPost.new({key: 'key_example', name: 'name_example'}) # AIConfigVariationPost | AI Config variation object to create
 
 begin
   # Create AI Config variation
-  result = api_instance.post_ai_config_variation(ld_api_version, project_key, config_key, ai_config_variation_post)
+  result = api_instance.post_ai_config_variation(project_key, config_key, ai_config_variation_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->post_ai_config_variation: #{e}"
+  puts "Error when calling AIConfigsApi->post_ai_config_variation: #{e}"
 end
 ```
 
@@ -2088,17 +2045,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AIConfigVariation>, Integer, Hash)> post_ai_config_variation_with_http_info(ld_api_version, project_key, config_key, ai_config_variation_post)
+> <Array(<AIConfigVariation>, Integer, Hash)> post_ai_config_variation_with_http_info(project_key, config_key, ai_config_variation_post)
 
 ```ruby
 begin
   # Create AI Config variation
-  data, status_code, headers = api_instance.post_ai_config_variation_with_http_info(ld_api_version, project_key, config_key, ai_config_variation_post)
+  data, status_code, headers = api_instance.post_ai_config_variation_with_http_info(project_key, config_key, ai_config_variation_post)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AIConfigVariation>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->post_ai_config_variation_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->post_ai_config_variation_with_http_info: #{e}"
 end
 ```
 
@@ -2106,7 +2063,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **config_key** | **String** |  |  |
 | **ai_config_variation_post** | [**AIConfigVariationPost**](AIConfigVariationPost.md) | AI Config variation object to create |  |
@@ -2127,7 +2083,7 @@ end
 
 ## post_ai_tool
 
-> <AITool> post_ai_tool(ld_api_version, project_key, ai_tool_post)
+> <AITool> post_ai_tool(project_key, ai_tool_post)
 
 Create an AI tool
 
@@ -2146,17 +2102,16 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'project_key_example' # String | 
 ai_tool_post = LaunchDarklyApi::AIToolPost.new({key: 'key_example', schema: 3.56}) # AIToolPost | AI tool object to create
 
 begin
   # Create an AI tool
-  result = api_instance.post_ai_tool(ld_api_version, project_key, ai_tool_post)
+  result = api_instance.post_ai_tool(project_key, ai_tool_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->post_ai_tool: #{e}"
+  puts "Error when calling AIConfigsApi->post_ai_tool: #{e}"
 end
 ```
 
@@ -2164,17 +2119,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AITool>, Integer, Hash)> post_ai_tool_with_http_info(ld_api_version, project_key, ai_tool_post)
+> <Array(<AITool>, Integer, Hash)> post_ai_tool_with_http_info(project_key, ai_tool_post)
 
 ```ruby
 begin
   # Create an AI tool
-  data, status_code, headers = api_instance.post_ai_tool_with_http_info(ld_api_version, project_key, ai_tool_post)
+  data, status_code, headers = api_instance.post_ai_tool_with_http_info(project_key, ai_tool_post)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AITool>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->post_ai_tool_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->post_ai_tool_with_http_info: #{e}"
 end
 ```
 
@@ -2182,7 +2137,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **ai_tool_post** | [**AIToolPost**](AIToolPost.md) | AI tool object to create |  |
 
@@ -2202,7 +2156,7 @@ end
 
 ## post_model_config
 
-> <ModelConfig> post_model_config(ld_api_version, project_key, model_config_post)
+> <ModelConfig> post_model_config(project_key, model_config_post)
 
 Create an AI model config
 
@@ -2221,17 +2175,16 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'default' # String | 
 model_config_post = LaunchDarklyApi::ModelConfigPost.new({name: 'name_example', key: 'key_example', id: 'id_example'}) # ModelConfigPost | AI model config object to create
 
 begin
   # Create an AI model config
-  result = api_instance.post_model_config(ld_api_version, project_key, model_config_post)
+  result = api_instance.post_model_config(project_key, model_config_post)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->post_model_config: #{e}"
+  puts "Error when calling AIConfigsApi->post_model_config: #{e}"
 end
 ```
 
@@ -2239,17 +2192,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ModelConfig>, Integer, Hash)> post_model_config_with_http_info(ld_api_version, project_key, model_config_post)
+> <Array(<ModelConfig>, Integer, Hash)> post_model_config_with_http_info(project_key, model_config_post)
 
 ```ruby
 begin
   # Create an AI model config
-  data, status_code, headers = api_instance.post_model_config_with_http_info(ld_api_version, project_key, model_config_post)
+  data, status_code, headers = api_instance.post_model_config_with_http_info(project_key, model_config_post)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ModelConfig>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->post_model_config_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->post_model_config_with_http_info: #{e}"
 end
 ```
 
@@ -2257,7 +2210,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **model_config_post** | [**ModelConfigPost**](ModelConfigPost.md) | AI model config object to create |  |
 
@@ -2277,11 +2229,11 @@ end
 
 ## post_restricted_models
 
-> <RestrictedModelsResponse> post_restricted_models(ld_api_version, project_key, restricted_models_request)
+> <RestrictedModelsResponse> post_restricted_models(project_key, restricted_models_request)
 
 Add AI models to the restricted list
 
-Add AI models, by key, to the restricted list. Keys are included in the response from the [List AI model configs](https://launchdarkly.com/docs/api/ai-configs-beta/list-model-configs) endpoint.
+Add AI models, by key, to the restricted list. Keys are included in the response from the [List AI model configs](https://launchdarkly.com/docs/api/ai-configs/list-model-configs) endpoint.
 
 ### Examples
 
@@ -2296,17 +2248,16 @@ LaunchDarklyApi.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = LaunchDarklyApi::AIConfigsBetaApi.new
-ld_api_version = 'beta' # String | Version of the endpoint.
+api_instance = LaunchDarklyApi::AIConfigsApi.new
 project_key = 'default' # String | 
 restricted_models_request = LaunchDarklyApi::RestrictedModelsRequest.new({keys: ['keys_example']}) # RestrictedModelsRequest | List of AI model keys to add to the restricted list.
 
 begin
   # Add AI models to the restricted list
-  result = api_instance.post_restricted_models(ld_api_version, project_key, restricted_models_request)
+  result = api_instance.post_restricted_models(project_key, restricted_models_request)
   p result
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->post_restricted_models: #{e}"
+  puts "Error when calling AIConfigsApi->post_restricted_models: #{e}"
 end
 ```
 
@@ -2314,17 +2265,17 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RestrictedModelsResponse>, Integer, Hash)> post_restricted_models_with_http_info(ld_api_version, project_key, restricted_models_request)
+> <Array(<RestrictedModelsResponse>, Integer, Hash)> post_restricted_models_with_http_info(project_key, restricted_models_request)
 
 ```ruby
 begin
   # Add AI models to the restricted list
-  data, status_code, headers = api_instance.post_restricted_models_with_http_info(ld_api_version, project_key, restricted_models_request)
+  data, status_code, headers = api_instance.post_restricted_models_with_http_info(project_key, restricted_models_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RestrictedModelsResponse>
 rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling AIConfigsBetaApi->post_restricted_models_with_http_info: #{e}"
+  puts "Error when calling AIConfigsApi->post_restricted_models_with_http_info: #{e}"
 end
 ```
 
@@ -2332,7 +2283,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ld_api_version** | **String** | Version of the endpoint. |  |
 | **project_key** | **String** |  |  |
 | **restricted_models_request** | [**RestrictedModelsRequest**](RestrictedModelsRequest.md) | List of AI model keys to add to the restricted list. |  |
 

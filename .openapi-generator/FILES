@@ -30,7 +30,7 @@ docs/AIConfigVariationPatch.md
 docs/AIConfigVariationPost.md
 docs/AIConfigVariationsResponse.md
 docs/AIConfigs.md
-docs/AIConfigsBetaApi.md
+docs/AIConfigsApi.md
 docs/AIConfigsSummary.md
 docs/AITool.md
 docs/AIToolPatch.md
@@ -88,6 +88,7 @@ docs/ApplicationRep.md
 docs/ApplicationVersionRep.md
 docs/ApplicationVersionsCollectionRep.md
 docs/ApplicationsBetaApi.md
+docs/ApprovalRequestPatchInput.md
 docs/ApprovalRequestResponse.md
 docs/ApprovalRequestSetting.md
 docs/ApprovalRequestSettingWithEnvs.md
@@ -658,7 +659,7 @@ lib/launchdarkly_api.rb
 lib/launchdarkly_api/api/access_tokens_api.rb
 lib/launchdarkly_api/api/account_members_api.rb
 lib/launchdarkly_api/api/account_usage_beta_api.rb
-lib/launchdarkly_api/api/ai_configs_beta_api.rb
+lib/launchdarkly_api/api/ai_configs_api.rb
 lib/launchdarkly_api/api/announcements_api.rb
 lib/launchdarkly_api/api/applications_beta_api.rb
 lib/launchdarkly_api/api/approvals_api.rb
@@ -712,6 +713,7 @@ lib/launchdarkly_api/api/workflow_templates_api.rb
 lib/launchdarkly_api/api/workflows_api.rb
 lib/launchdarkly_api/api_client.rb
 lib/launchdarkly_api/api_error.rb
+lib/launchdarkly_api/api_model_base.rb
 lib/launchdarkly_api/configuration.rb
 lib/launchdarkly_api/models/access.rb
 lib/launchdarkly_api/models/access_allowed_reason.rb
@@ -788,6 +790,7 @@ lib/launchdarkly_api/models/application_flag_collection_rep.rb
 lib/launchdarkly_api/models/application_rep.rb
 lib/launchdarkly_api/models/application_version_rep.rb
 lib/launchdarkly_api/models/application_versions_collection_rep.rb
+lib/launchdarkly_api/models/approval_request_patch_input.rb
 lib/launchdarkly_api/models/approval_request_response.rb
 lib/launchdarkly_api/models/approval_request_setting.rb
 lib/launchdarkly_api/models/approval_request_setting_with_envs.rb
@@ -1307,7 +1310,7 @@ lib/launchdarkly_api/version.rb
 spec/api/access_tokens_api_spec.rb
 spec/api/account_members_api_spec.rb
 spec/api/account_usage_beta_api_spec.rb
-spec/api/ai_configs_beta_api_spec.rb
+spec/api/ai_configs_api_spec.rb
 spec/api/announcements_api_spec.rb
 spec/api/applications_beta_api_spec.rb
 spec/api/approvals_api_spec.rb
@@ -1434,6 +1437,7 @@ spec/models/application_flag_collection_rep_spec.rb
 spec/models/application_rep_spec.rb
 spec/models/application_version_rep_spec.rb
 spec/models/application_versions_collection_rep_spec.rb
+spec/models/approval_request_patch_input_spec.rb
 spec/models/approval_request_response_spec.rb
 spec/models/approval_request_setting_spec.rb
 spec/models/approval_request_setting_with_envs_spec.rb

@@ -16,7 +16,9 @@
 | **variations** | [**Array&lt;AIConfigVariation&gt;**](AIConfigVariation.md) |  |  |
 | **created_at** | **Integer** |  |  |
 | **updated_at** | **Integer** |  |  |
-| **evaluation_metric_keys** | **Array&lt;String&gt;** | List of evaluation metric keys for this AI config | [optional] |
+| **evaluation_metric_key** | **String** | Evaluation metric key for this AI Config | [optional] |
+| **evaluation_metric_keys** | **Array&lt;String&gt;** | List of evaluation metric keys for this AI Config | [optional] |
+| **is_inverted** | **Boolean** | Whether the evaluation metric is inverted, meaning a lower value is better if set as true | [optional] |
 
 ## Example
 
@@ -36,7 +38,9 @@ instance = LaunchDarklyApi::AIConfig.new(
   variations: null,
   created_at: null,
   updated_at: null,
-  evaluation_metric_keys: null
+  evaluation_metric_key: null,
+  evaluation_metric_keys: null,
+  is_inverted: null
 )
 ```
 

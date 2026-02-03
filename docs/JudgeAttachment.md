@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **judge_config_key** | **String** | Key of the judge AI config |  |
+| **judge_config_key** | **String** | Key of the judge AI Config |  |
 | **sampling_rate** | **Float** | Sampling rate for this judge attachment (0.0 to 1.0) |  |
 
 ## Example

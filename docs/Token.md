@@ -41,7 +41,7 @@ instance = LaunchDarklyApi::Token.new(
   token: 1234,
   service_token: false,
   _links: {&quot;parent&quot;:{&quot;href&quot;:&quot;/api/v2/tokens&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/tokens/61095542756dba551110ae21&quot;,&quot;type&quot;:&quot;application/json&quot;}},
-  default_api_version: 20220603,
+  default_api_version: 20240415,
   last_used: null
 )
 ```

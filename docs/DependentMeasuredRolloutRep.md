@@ -7,6 +7,7 @@
 | **_id** | **String** | The guarded rollout measured rollout Id |  |
 | **flag_key** | **String** | The guarded rollout flag key  |  |
 | **flag_name** | **String** | The guarded rollout flag name  |  |
+| **flag_purpose** | **String** | The guarded rollout flag purpose | [optional] |
 | **environment_key** | **String** | The guarded rollout environment key |  |
 | **environment_name** | **String** | The guarded rollout environment name |  |
 | **status** | **String** | The guarded rollout status |  |
@@ -22,6 +23,7 @@ instance = LaunchDarklyApi::DependentMeasuredRolloutRep.new(
   _id: 885ccadf-181b-4a9a-8414-7ad6f7ba2db0,
   flag_key: my-flag,
   flag_name: My Flag,
+  flag_purpose: migration,
   environment_key: production,
   environment_name: Production,
   status: monitoring,
