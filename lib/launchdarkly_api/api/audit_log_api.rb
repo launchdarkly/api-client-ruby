@@ -229,5 +229,86 @@ module LaunchDarklyApi
       end
       return data, status_code, headers
     end
+
+    # Get audit log entry counts
+    # Returns aggregate counts of audit log entries per time bucket. Used for dashboard overlays that show flag targeting changes.
+    # @param after [Integer] A timestamp filter, expressed as a Unix epoch time in milliseconds. Required.
+    # @param statement_post [Array<StatementPost>] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :before A timestamp filter, expressed as a Unix epoch time in milliseconds. Defaults to now.
+    # @option opts [Integer] :buckets Number of time buckets to divide the range into. Default 50, max 500.
+    # @return [CountBucketsResult]
+    def post_audit_log_entry_counts(after, statement_post, opts = {})
+      data, _status_code, _headers = post_audit_log_entry_counts_with_http_info(after, statement_post, opts)
+      data
+    end
+
+    # Get audit log entry counts
+    # Returns aggregate counts of audit log entries per time bucket. Used for dashboard overlays that show flag targeting changes.
+    # @param after [Integer] A timestamp filter, expressed as a Unix epoch time in milliseconds. Required.
+    # @param statement_post [Array<StatementPost>] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :before A timestamp filter, expressed as a Unix epoch time in milliseconds. Defaults to now.
+    # @option opts [Integer] :buckets Number of time buckets to divide the range into. Default 50, max 500.
+    # @return [Array<(CountBucketsResult, Integer, Hash)>] CountBucketsResult data, response status code and response headers
+    def post_audit_log_entry_counts_with_http_info(after, statement_post, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AuditLogApi.post_audit_log_entry_counts ...'
+      end
+      # verify the required parameter 'after' is set
+      if @api_client.config.client_side_validation && after.nil?
+        fail ArgumentError, "Missing the required parameter 'after' when calling AuditLogApi.post_audit_log_entry_counts"
+      end
+      # verify the required parameter 'statement_post' is set
+      if @api_client.config.client_side_validation && statement_post.nil?
+        fail ArgumentError, "Missing the required parameter 'statement_post' when calling AuditLogApi.post_audit_log_entry_counts"
+      end
+      # resource path
+      local_var_path = '/api/v2/auditlog/counts'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'after'] = after
+      query_params[:'before'] = opts[:'before'] if !opts[:'before'].nil?
+      query_params[:'buckets'] = opts[:'buckets'] if !opts[:'buckets'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(statement_post)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CountBucketsResult'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AuditLogApi.post_audit_log_entry_counts",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AuditLogApi#post_audit_log_entry_counts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end

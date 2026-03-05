@@ -19,6 +19,7 @@
 | **evaluation_metric_key** | **String** | Evaluation metric key for this AI Config | [optional] |
 | **evaluation_metric_keys** | **Array&lt;String&gt;** | List of evaluation metric keys for this AI Config | [optional] |
 | **is_inverted** | **Boolean** | Whether the evaluation metric is inverted, meaning a lower value is better if set as true | [optional] |
+| **dependencies** | [**Array&lt;AIConfigDependency&gt;**](AIConfigDependency.md) | Resources that depend on this AI Config, grouped by type | [optional] |
 
 ## Example
 
@@ -40,7 +41,8 @@ instance = LaunchDarklyApi::AIConfig.new(
   updated_at: null,
   evaluation_metric_key: null,
   evaluation_metric_keys: null,
-  is_inverted: null
+  is_inverted: null,
+  dependencies: null
 )
 ```
 

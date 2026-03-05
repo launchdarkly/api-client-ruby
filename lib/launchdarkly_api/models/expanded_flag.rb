@@ -29,7 +29,7 @@ module LaunchDarklyApi
     attr_accessor :creation_date
 
     # Version of the flag
-    attr_accessor :version
+    attr_accessor :_version
 
     # Whether the flag is archived
     attr_accessor :archived
@@ -43,6 +43,8 @@ module LaunchDarklyApi
     # Whether to include in snippet
     attr_accessor :include_in_snippet
 
+    attr_accessor :maintainer
+
     attr_accessor :_links
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -52,11 +54,12 @@ module LaunchDarklyApi
         :'name' => :'name',
         :'description' => :'description',
         :'creation_date' => :'creationDate',
-        :'version' => :'version',
+        :'_version' => :'_version',
         :'archived' => :'archived',
         :'tags' => :'tags',
         :'temporary' => :'temporary',
         :'include_in_snippet' => :'includeInSnippet',
+        :'maintainer' => :'maintainer',
         :'_links' => :'_links'
       }
     end
@@ -78,11 +81,12 @@ module LaunchDarklyApi
         :'name' => :'String',
         :'description' => :'String',
         :'creation_date' => :'Integer',
-        :'version' => :'Integer',
+        :'_version' => :'Integer',
         :'archived' => :'Boolean',
         :'tags' => :'Array<String>',
         :'temporary' => :'Boolean',
         :'include_in_snippet' => :'Boolean',
+        :'maintainer' => :'ExpandedFlagMaintainer',
         :'_links' => :'ParentAndSelfLinks'
       }
     end
@@ -129,8 +133,8 @@ module LaunchDarklyApi
         self.creation_date = attributes[:'creation_date']
       end
 
-      if attributes.key?(:'version')
-        self.version = attributes[:'version']
+      if attributes.key?(:'_version')
+        self._version = attributes[:'_version']
       end
 
       if attributes.key?(:'archived')
@@ -149,6 +153,10 @@ module LaunchDarklyApi
 
       if attributes.key?(:'include_in_snippet')
         self.include_in_snippet = attributes[:'include_in_snippet']
+      end
+
+      if attributes.key?(:'maintainer')
+        self.maintainer = attributes[:'maintainer']
       end
 
       if attributes.key?(:'_links')
@@ -210,11 +218,12 @@ module LaunchDarklyApi
           name == o.name &&
           description == o.description &&
           creation_date == o.creation_date &&
-          version == o.version &&
+          _version == o._version &&
           archived == o.archived &&
           tags == o.tags &&
           temporary == o.temporary &&
           include_in_snippet == o.include_in_snippet &&
+          maintainer == o.maintainer &&
           _links == o._links
     end
 
@@ -227,7 +236,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [key, name, description, creation_date, version, archived, tags, temporary, include_in_snippet, _links].hash
+      [key, name, description, creation_date, _version, archived, tags, temporary, include_in_snippet, maintainer, _links].hash
     end
 
     # Builds the object from hash

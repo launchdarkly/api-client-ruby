@@ -76,4 +76,19 @@ describe 'AuditLogApi' do
     end
   end
 
+  # unit tests for post_audit_log_entry_counts
+  # Get audit log entry counts
+  # Returns aggregate counts of audit log entries per time bucket. Used for dashboard overlays that show flag targeting changes.
+  # @param after A timestamp filter, expressed as a Unix epoch time in milliseconds. Required.
+  # @param statement_post 
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :before A timestamp filter, expressed as a Unix epoch time in milliseconds. Defaults to now.
+  # @option opts [Integer] :buckets Number of time buckets to divide the range into. Default 50, max 500.
+  # @return [CountBucketsResult]
+  describe 'post_audit_log_entry_counts test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
 end

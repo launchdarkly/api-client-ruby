@@ -19,10 +19,6 @@ module LaunchDarklyApi
 
     attr_accessor :segment_count
 
-    attr_accessor :metric_count
-
-    attr_accessor :ai_config_count
-
     attr_accessor :total_count
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -30,8 +26,6 @@ module LaunchDarklyApi
       {
         :'flag_count' => :'flagCount',
         :'segment_count' => :'segmentCount',
-        :'metric_count' => :'metricCount',
-        :'ai_config_count' => :'aiConfigCount',
         :'total_count' => :'totalCount'
       }
     end
@@ -51,8 +45,6 @@ module LaunchDarklyApi
       {
         :'flag_count' => :'Integer',
         :'segment_count' => :'Integer',
-        :'metric_count' => :'Integer',
-        :'ai_config_count' => :'Integer',
         :'total_count' => :'Integer'
       }
     end
@@ -87,14 +79,6 @@ module LaunchDarklyApi
 
       if attributes.key?(:'segment_count')
         self.segment_count = attributes[:'segment_count']
-      end
-
-      if attributes.key?(:'metric_count')
-        self.metric_count = attributes[:'metric_count']
-      end
-
-      if attributes.key?(:'ai_config_count')
-        self.ai_config_count = attributes[:'ai_config_count']
       end
 
       if attributes.key?(:'total_count')
@@ -156,8 +140,6 @@ module LaunchDarklyApi
       self.class == o.class &&
           flag_count == o.flag_count &&
           segment_count == o.segment_count &&
-          metric_count == o.metric_count &&
-          ai_config_count == o.ai_config_count &&
           total_count == o.total_count
     end
 
@@ -170,7 +152,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [flag_count, segment_count, metric_count, ai_config_count, total_count].hash
+      [flag_count, segment_count, total_count].hash
     end
 
     # Builds the object from hash

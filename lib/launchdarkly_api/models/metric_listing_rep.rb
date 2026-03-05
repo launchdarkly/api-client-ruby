@@ -103,6 +103,8 @@ module LaunchDarklyApi
 
     attr_accessor :data_source
 
+    attr_accessor :last_seen
+
     # Whether the metric version is archived
     attr_accessor :archived
 
@@ -170,6 +172,7 @@ module LaunchDarklyApi
         :'percentile_value' => :'percentileValue',
         :'event_default' => :'eventDefault',
         :'data_source' => :'dataSource',
+        :'last_seen' => :'lastSeen',
         :'archived' => :'archived',
         :'archived_at' => :'archivedAt',
         :'selector' => :'selector',
@@ -222,6 +225,7 @@ module LaunchDarklyApi
         :'percentile_value' => :'Integer',
         :'event_default' => :'MetricEventDefaultRep',
         :'data_source' => :'MetricDataSourceRefRep',
+        :'last_seen' => :'Integer',
         :'archived' => :'Boolean',
         :'archived_at' => :'Integer',
         :'selector' => :'String',
@@ -401,6 +405,10 @@ module LaunchDarklyApi
         self.data_source = attributes[:'data_source']
       else
         self.data_source = nil
+      end
+
+      if attributes.key?(:'last_seen')
+        self.last_seen = attributes[:'last_seen']
       end
 
       if attributes.key?(:'archived')
@@ -647,6 +655,7 @@ module LaunchDarklyApi
           percentile_value == o.percentile_value &&
           event_default == o.event_default &&
           data_source == o.data_source &&
+          last_seen == o.last_seen &&
           archived == o.archived &&
           archived_at == o.archived_at &&
           selector == o.selector &&
@@ -662,7 +671,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [experiment_count, metric_group_count, active_experiment_count, active_guarded_rollout_count, _id, _version_id, _version, key, name, kind, _attached_flag_count, _links, _site, _access, tags, _creation_date, last_modified, maintainer_id, _maintainer, description, category, is_numeric, success_criteria, unit, event_key, randomization_units, filters, unit_aggregation_type, analysis_type, percentile_value, event_default, data_source, archived, archived_at, selector, urls].hash
+      [experiment_count, metric_group_count, active_experiment_count, active_guarded_rollout_count, _id, _version_id, _version, key, name, kind, _attached_flag_count, _links, _site, _access, tags, _creation_date, last_modified, maintainer_id, _maintainer, description, category, is_numeric, success_criteria, unit, event_key, randomization_units, filters, unit_aggregation_type, analysis_type, percentile_value, event_default, data_source, last_seen, archived, archived_at, selector, urls].hash
     end
 
     # Builds the object from hash

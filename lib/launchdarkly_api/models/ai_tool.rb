@@ -25,7 +25,11 @@ module LaunchDarklyApi
 
     attr_accessor :description
 
+    # JSON Schema defining the tool's parameters for LLM consumption
     attr_accessor :schema
+
+    # Custom metadata and configuration for application-level use (not sent to LLM)
+    attr_accessor :custom_parameters
 
     attr_accessor :version
 
@@ -40,6 +44,7 @@ module LaunchDarklyApi
         :'_maintainer' => :'_maintainer',
         :'description' => :'description',
         :'schema' => :'schema',
+        :'custom_parameters' => :'customParameters',
         :'version' => :'version',
         :'created_at' => :'createdAt'
       }
@@ -64,6 +69,7 @@ module LaunchDarklyApi
         :'_maintainer' => :'AIConfigMaintainer',
         :'description' => :'String',
         :'schema' => :'Object',
+        :'custom_parameters' => :'Object',
         :'version' => :'Integer',
         :'created_at' => :'Integer'
       }
@@ -117,6 +123,10 @@ module LaunchDarklyApi
         self.schema = attributes[:'schema']
       else
         self.schema = nil
+      end
+
+      if attributes.key?(:'custom_parameters')
+        self.custom_parameters = attributes[:'custom_parameters']
       end
 
       if attributes.key?(:'version')
@@ -218,6 +228,7 @@ module LaunchDarklyApi
           _maintainer == o._maintainer &&
           description == o.description &&
           schema == o.schema &&
+          custom_parameters == o.custom_parameters &&
           version == o.version &&
           created_at == o.created_at
     end
@@ -231,7 +242,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [key, _access, _links, _maintainer, description, schema, version, created_at].hash
+      [key, _access, _links, _maintainer, description, schema, custom_parameters, version, created_at].hash
     end
 
     # Builds the object from hash

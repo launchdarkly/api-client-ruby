@@ -36,6 +36,7 @@
 | **percentile_value** | **Integer** | The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when &lt;code&gt;analysisType&lt;/code&gt; is &lt;code&gt;percentile&lt;/code&gt;. | [optional] |
 | **event_default** | [**MetricEventDefaultRep**](MetricEventDefaultRep.md) |  | [optional] |
 | **data_source** | [**MetricDataSourceRefRep**](MetricDataSourceRefRep.md) |  |  |
+| **last_seen** | **Integer** |  | [optional] |
 | **archived** | **Boolean** | Whether the metric version is archived | [optional] |
 | **archived_at** | **Integer** |  | [optional] |
 | **selector** | **String** | For click metrics, the CSS selectors | [optional] |
@@ -79,6 +80,7 @@ instance = LaunchDarklyApi::MetricListingRep.new(
   percentile_value: 95,
   event_default: null,
   data_source: null,
+  last_seen: null,
   archived: null,
   archived_at: null,
   selector: null,

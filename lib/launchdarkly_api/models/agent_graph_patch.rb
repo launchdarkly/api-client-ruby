@@ -22,6 +22,12 @@ module LaunchDarklyApi
     # A description of the agent graph
     attr_accessor :description
 
+    # The ID of the member who maintains this agent graph. Pass an empty string to remove maintainer.
+    attr_accessor :maintainer_id
+
+    # The key of the team that maintains this agent graph. Pass an empty string to remove maintainer.
+    attr_accessor :maintainer_team_key
+
     # The AI Config key of the root node. If present, edges must also be present.
     attr_accessor :root_config_key
 
@@ -33,6 +39,8 @@ module LaunchDarklyApi
       {
         :'name' => :'name',
         :'description' => :'description',
+        :'maintainer_id' => :'maintainerId',
+        :'maintainer_team_key' => :'maintainerTeamKey',
         :'root_config_key' => :'rootConfigKey',
         :'edges' => :'edges'
       }
@@ -53,6 +61,8 @@ module LaunchDarklyApi
       {
         :'name' => :'String',
         :'description' => :'String',
+        :'maintainer_id' => :'String',
+        :'maintainer_team_key' => :'String',
         :'root_config_key' => :'String',
         :'edges' => :'Array<AgentGraphEdge>'
       }
@@ -88,6 +98,14 @@ module LaunchDarklyApi
         self.description = attributes[:'description']
       end
 
+      if attributes.key?(:'maintainer_id')
+        self.maintainer_id = attributes[:'maintainer_id']
+      end
+
+      if attributes.key?(:'maintainer_team_key')
+        self.maintainer_team_key = attributes[:'maintainer_team_key']
+      end
+
       if attributes.key?(:'root_config_key')
         self.root_config_key = attributes[:'root_config_key']
       end
@@ -121,6 +139,8 @@ module LaunchDarklyApi
       self.class == o.class &&
           name == o.name &&
           description == o.description &&
+          maintainer_id == o.maintainer_id &&
+          maintainer_team_key == o.maintainer_team_key &&
           root_config_key == o.root_config_key &&
           edges == o.edges
     end
@@ -134,7 +154,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, root_config_key, edges].hash
+      [name, description, maintainer_id, maintainer_team_key, root_config_key, edges].hash
     end
 
     # Builds the object from hash

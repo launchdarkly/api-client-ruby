@@ -193,7 +193,7 @@ module LaunchDarklyApi
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @name.nil?
       return false if @kind.nil?
-      kind_validator = EnumAttributeValidator.new('String', ["funnel", "standard", "guardrail"])
+      kind_validator = EnumAttributeValidator.new('String', ["funnel", "standard"])
       return false unless kind_validator.valid?(@kind)
       return false if @maintainer_id.nil?
       return false if @tags.nil?
@@ -214,7 +214,7 @@ module LaunchDarklyApi
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] kind Object to be assigned
     def kind=(kind)
-      validator = EnumAttributeValidator.new('String', ["funnel", "standard", "guardrail"])
+      validator = EnumAttributeValidator.new('String', ["funnel", "standard"])
       unless validator.valid?(kind)
         fail ArgumentError, "invalid value for \"kind\", must be one of #{validator.allowable_values}."
       end

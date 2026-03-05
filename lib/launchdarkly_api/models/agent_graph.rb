@@ -16,6 +16,8 @@ require 'time'
 module LaunchDarklyApi
   # An agent graph representing a directed graph of AI Configs
   class AgentGraph < ApiModelBase
+    attr_accessor :_access
+
     # A unique key for the agent graph
     attr_accessor :key
 
@@ -24,6 +26,8 @@ module LaunchDarklyApi
 
     # A description of the agent graph
     attr_accessor :description
+
+    attr_accessor :_maintainer
 
     # The AI Config key of the root node
     attr_accessor :root_config_key
@@ -38,9 +42,11 @@ module LaunchDarklyApi
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'_access' => :'_access',
         :'key' => :'key',
         :'name' => :'name',
         :'description' => :'description',
+        :'_maintainer' => :'_maintainer',
         :'root_config_key' => :'rootConfigKey',
         :'edges' => :'edges',
         :'created_at' => :'createdAt',
@@ -61,9 +67,11 @@ module LaunchDarklyApi
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'_access' => :'AiConfigsAccess',
         :'key' => :'String',
         :'name' => :'String',
         :'description' => :'String',
+        :'_maintainer' => :'AgentGraphMaintainer',
         :'root_config_key' => :'String',
         :'edges' => :'Array<AgentGraphEdge>',
         :'created_at' => :'Integer',
@@ -93,6 +101,10 @@ module LaunchDarklyApi
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'_access')
+        self._access = attributes[:'_access']
+      end
+
       if attributes.key?(:'key')
         self.key = attributes[:'key']
       else
@@ -107,6 +119,10 @@ module LaunchDarklyApi
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'_maintainer')
+        self._maintainer = attributes[:'_maintainer']
       end
 
       if attributes.key?(:'root_config_key')
@@ -212,9 +228,11 @@ module LaunchDarklyApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          _access == o._access &&
           key == o.key &&
           name == o.name &&
           description == o.description &&
+          _maintainer == o._maintainer &&
           root_config_key == o.root_config_key &&
           edges == o.edges &&
           created_at == o.created_at &&
@@ -230,7 +248,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [key, name, description, root_config_key, edges, created_at, updated_at].hash
+      [_access, key, name, description, _maintainer, root_config_key, edges, created_at, updated_at].hash
     end
 
     # Builds the object from hash

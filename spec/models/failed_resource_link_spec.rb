@@ -42,7 +42,7 @@ describe LaunchDarklyApi::FailedResourceLink do
   describe 'test attribute "resource_type"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["flag", "segment", "metric", "aiConfig"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["flag", "segment"])
       # validator.allowable_values.each do |value|
       #   expect { instance.resource_type = value }.not_to raise_error
       # end

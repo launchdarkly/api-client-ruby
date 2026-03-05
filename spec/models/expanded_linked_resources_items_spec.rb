@@ -39,16 +39,4 @@ describe LaunchDarklyApi::ExpandedLinkedResourcesItems do
     end
   end
 
-  describe 'test attribute "ai_configs"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "metrics"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
 end

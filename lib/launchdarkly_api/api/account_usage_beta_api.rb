@@ -1213,6 +1213,78 @@ module LaunchDarklyApi
       return data, status_code, headers
     end
 
+    # Get observability metrics usage
+    # Get time-series arrays of the number of observability metrics. Supports `daily` and `monthly` granularity.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :from The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+    # @option opts [String] :to The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+    # @option opts [String] :project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+    # @option opts [String] :granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only.
+    # @option opts [String] :aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;.
+    # @return [SeriesListRep]
+    def get_observability_metrics_usage(opts = {})
+      data, _status_code, _headers = get_observability_metrics_usage_with_http_info(opts)
+      data
+    end
+
+    # Get observability metrics usage
+    # Get time-series arrays of the number of observability metrics. Supports &#x60;daily&#x60; and &#x60;monthly&#x60; granularity.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :from The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+    # @option opts [String] :to The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+    # @option opts [String] :project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+    # @option opts [String] :granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only.
+    # @option opts [String] :aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;.
+    # @return [Array<(SeriesListRep, Integer, Hash)>] SeriesListRep data, response status code and response headers
+    def get_observability_metrics_usage_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountUsageBetaApi.get_observability_metrics_usage ...'
+      end
+      # resource path
+      local_var_path = '/api/v2/usage/observability/metrics'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'from'] = opts[:'from'] if !opts[:'from'].nil?
+      query_params[:'to'] = opts[:'to'] if !opts[:'to'].nil?
+      query_params[:'projectKey'] = opts[:'project_key'] if !opts[:'project_key'].nil?
+      query_params[:'granularity'] = opts[:'granularity'] if !opts[:'granularity'].nil?
+      query_params[:'aggregationType'] = opts[:'aggregation_type'] if !opts[:'aggregation_type'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SeriesListRep'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AccountUsageBetaApi.get_observability_metrics_usage",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountUsageBetaApi#get_observability_metrics_usage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get observability sessions usage
     # Get time-series arrays of the number of observability sessions. Supports `daily` and `monthly` granularity.
     # @param [Hash] opts the optional parameters
@@ -1659,6 +1731,78 @@ module LaunchDarklyApi
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AccountUsageBetaApi#get_stream_usage_sdkversion\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get Vega AI usage
+    # Get time-series arrays of the number of Vega AI usage. Supports `daily` and `monthly` granularity.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :from The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+    # @option opts [String] :to The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+    # @option opts [String] :project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+    # @option opts [String] :granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only.
+    # @option opts [String] :aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;.
+    # @return [SeriesListRep]
+    def get_vega_ai_usage(opts = {})
+      data, _status_code, _headers = get_vega_ai_usage_with_http_info(opts)
+      data
+    end
+
+    # Get Vega AI usage
+    # Get time-series arrays of the number of Vega AI usage. Supports &#x60;daily&#x60; and &#x60;monthly&#x60; granularity.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :from The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+    # @option opts [String] :to The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+    # @option opts [String] :project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+    # @option opts [String] :granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only.
+    # @option opts [String] :aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;.
+    # @return [Array<(SeriesListRep, Integer, Hash)>] SeriesListRep data, response status code and response headers
+    def get_vega_ai_usage_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountUsageBetaApi.get_vega_ai_usage ...'
+      end
+      # resource path
+      local_var_path = '/api/v2/usage/vega-ai'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'from'] = opts[:'from'] if !opts[:'from'].nil?
+      query_params[:'to'] = opts[:'to'] if !opts[:'to'].nil?
+      query_params[:'projectKey'] = opts[:'project_key'] if !opts[:'project_key'].nil?
+      query_params[:'granularity'] = opts[:'granularity'] if !opts[:'granularity'].nil?
+      query_params[:'aggregationType'] = opts[:'aggregation_type'] if !opts[:'aggregation_type'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SeriesListRep'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AccountUsageBetaApi.get_vega_ai_usage",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountUsageBetaApi#get_vega_ai_usage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

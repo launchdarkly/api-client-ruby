@@ -71,6 +71,9 @@ describe 'ViewsBetaApi' do
   # @option opts [Integer] :limit The number of views to return.
   # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
   # @option opts [String] :sort Field to sort by. Default field is &#x60;linkedAt&#x60;, default order is ascending.
+  # @option opts [String] :query Case-insensitive search query for linked resources. Matches resource key and, when expanded, resource name.
+  # @option opts [String] :filter Optional resource filter expression for linked resources. - Supported for &#x60;flags&#x60; and &#x60;segments&#x60; resource types. - Uses the same syntax as link/unlink and list endpoints. - For &#x60;segments&#x60;, &#x60;environmentId&#x60; is required when &#x60;filter&#x60; is provided. 
+  # @option opts [Array<String>] :expand A comma-separated list of fields to expand.
   # @return [ViewLinkedResources]
   describe 'get_linked_resources test' do
     it 'should work' do
@@ -80,7 +83,7 @@ describe 'ViewsBetaApi' do
 
   # unit tests for get_linked_views
   # Get linked views for a given resource
-  # Get a list of all linked views for a resource. Flags, AI configs and metrics are identified by key. Segments are identified by segment ID.
+  # Get a list of all linked views for a resource. Flags are identified by key. Segments are identified by segment ID.
   # @param ld_api_version Version of the endpoint.
   # @param project_key 
   # @param resource_type 
@@ -106,7 +109,7 @@ describe 'ViewsBetaApi' do
   # @option opts [String] :sort A sort to apply to the list of views.
   # @option opts [Integer] :limit The number of views to return.
   # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
-  # @option opts [String] :filter A filter to apply to the list of views.
+  # @option opts [String] :filter A filter to apply to the list of views. Supports the following fields and operators: &#x60;name&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;key&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;tag&#x60; (equals, anyOf), &#x60;maintainerId&#x60; (equals, anyOf), &#x60;isPayloadView&#x60; (equals).
   # @option opts [Array<String>] :expand A comma-separated list of fields to expand.
   # @return [View]
   describe 'get_view test' do
@@ -124,7 +127,7 @@ describe 'ViewsBetaApi' do
   # @option opts [String] :sort A sort to apply to the list of views.
   # @option opts [Integer] :limit The number of views to return.
   # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
-  # @option opts [String] :filter A filter to apply to the list of views.
+  # @option opts [String] :filter A filter to apply to the list of views. Supports the following fields and operators: &#x60;name&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;key&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;tag&#x60; (equals, anyOf), &#x60;maintainerId&#x60; (equals, anyOf), &#x60;isPayloadView&#x60; (equals).
   # @option opts [Array<String>] :expand A comma-separated list of fields to expand.
   # @return [Views]
   describe 'get_views test' do
@@ -135,12 +138,12 @@ describe 'ViewsBetaApi' do
 
   # unit tests for link_resource
   # Link resource
-  # Link one or multiple resources to a view: - Link flags using flag keys - Link AI configs using AI config keys - Link metrics using metric keys - Link segments using segment IDs 
+  # Link one or multiple resources to a view by keys, filters, or both: - Link flags using flag keys or filters (maintainerId, maintainerTeamKey, tags, state, query) - Link segments using segment IDs or filters (tags, query, unbounded)  When both keys and filters are provided, resources matching either condition are linked (union). 
   # @param ld_api_version Version of the endpoint.
   # @param project_key 
   # @param view_key 
   # @param resource_type 
-  # @param view_link_request The resource to link to the view. Flags are identified by key. Segments are identified by segment ID.
+  # @param view_link_request Resources to link to the view. You can provide explicit keys/IDs, filters, or both. - Flags: identified by key or filtered by maintainerId, maintainerTeamKey, tags, state, query - Segments: identified by segment ID or filtered by tags, query, unbounded 
   # @param [Hash] opts the optional parameters
   # @return [LinkResourceSuccessResponse]
   describe 'link_resource test' do
@@ -151,7 +154,7 @@ describe 'ViewsBetaApi' do
 
   # unit tests for unlink_resource
   # Unlink resource
-  # Unlink one or multiple resources from a view: - Unlink flags using flag keys - Unlink segments using segment IDs - Unlink AI configs using AI config keys - Unlink metrics using metric keys 
+  # Unlink one or multiple resources from a view: - Unlink flags using flag keys - Unlink segments using segment IDs 
   # @param ld_api_version Version of the endpoint.
   # @param project_key 
   # @param view_key 

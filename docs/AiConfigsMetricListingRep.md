@@ -7,6 +7,7 @@
 | **experiment_count** | **Integer** | The number of experiments using this metric | [optional] |
 | **metric_group_count** | **Integer** | The number of metric groups using this metric | [optional] |
 | **guarded_rollout_count** | **Integer** | The number of guarded rollouts using this metric | [optional] |
+| **release_policy_count** | **Integer** | The number of release policies using this metric | [optional] |
 | **active_experiment_count** | **Integer** | The number of active experiments using this metric | [optional] |
 | **active_guarded_rollout_count** | **Integer** | The number of active guarded rollouts using this metric | [optional] |
 | **_id** | **String** | The ID of this metric |  |
@@ -37,6 +38,7 @@
 | **percentile_value** | **Integer** | The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when &lt;code&gt;analysisType&lt;/code&gt; is &lt;code&gt;percentile&lt;/code&gt;. | [optional] |
 | **event_default** | [**AiConfigsMetricEventDefaultRep**](AiConfigsMetricEventDefaultRep.md) |  | [optional] |
 | **data_source** | [**AiConfigsMetricDataSourceRefRep**](AiConfigsMetricDataSourceRefRep.md) |  |  |
+| **last_seen** | **Integer** |  | [optional] |
 | **archived** | **Boolean** | Whether the metric version is archived | [optional] |
 | **archived_at** | **Integer** |  | [optional] |
 | **selector** | **String** | For click metrics, the CSS selectors | [optional] |
@@ -51,6 +53,7 @@ instance = LaunchDarklyApi::AiConfigsMetricListingRep.new(
   experiment_count: 0,
   metric_group_count: 0,
   guarded_rollout_count: 0,
+  release_policy_count: 0,
   active_experiment_count: 2,
   active_guarded_rollout_count: 1,
   _id: 5902deadbeef667524a01290,
@@ -81,6 +84,7 @@ instance = LaunchDarklyApi::AiConfigsMetricListingRep.new(
   percentile_value: 95,
   event_default: null,
   data_source: null,
+  last_seen: null,
   archived: null,
   archived_at: null,
   selector: null,

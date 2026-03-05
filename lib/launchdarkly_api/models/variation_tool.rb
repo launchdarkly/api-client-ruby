@@ -21,11 +21,15 @@ module LaunchDarklyApi
     # The version of the tool.
     attr_accessor :version
 
+    # Custom metadata and configuration for application-level use
+    attr_accessor :custom_parameters
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'key' => :'key',
-        :'version' => :'version'
+        :'version' => :'version',
+        :'custom_parameters' => :'customParameters'
       }
     end
 
@@ -43,7 +47,8 @@ module LaunchDarklyApi
     def self.openapi_types
       {
         :'key' => :'String',
-        :'version' => :'Integer'
+        :'version' => :'Integer',
+        :'custom_parameters' => :'Hash<String, Object>'
       }
     end
 
@@ -79,6 +84,12 @@ module LaunchDarklyApi
         self.version = attributes[:'version']
       else
         self.version = nil
+      end
+
+      if attributes.key?(:'custom_parameters')
+        if (value = attributes[:'custom_parameters']).is_a?(Hash)
+          self.custom_parameters = value
+        end
       end
     end
 
@@ -133,7 +144,8 @@ module LaunchDarklyApi
       return true if self.equal?(o)
       self.class == o.class &&
           key == o.key &&
-          version == o.version
+          version == o.version &&
+          custom_parameters == o.custom_parameters
     end
 
     # @see the `==` method
@@ -145,7 +157,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [key, version].hash
+      [key, version, custom_parameters].hash
     end
 
     # Builds the object from hash

@@ -23,7 +23,11 @@ module LaunchDarklyApi
 
     attr_accessor :description
 
+    # JSON Schema defining the tool's parameters for LLM consumption
     attr_accessor :schema
+
+    # Custom metadata and configuration for application-level use (not sent to LLM)
+    attr_accessor :custom_parameters
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -32,7 +36,8 @@ module LaunchDarklyApi
         :'maintainer_id' => :'maintainerId',
         :'maintainer_team_key' => :'maintainerTeamKey',
         :'description' => :'description',
-        :'schema' => :'schema'
+        :'schema' => :'schema',
+        :'custom_parameters' => :'customParameters'
       }
     end
 
@@ -53,7 +58,8 @@ module LaunchDarklyApi
         :'maintainer_id' => :'String',
         :'maintainer_team_key' => :'String',
         :'description' => :'String',
-        :'schema' => :'Object'
+        :'schema' => :'Object',
+        :'custom_parameters' => :'Object'
       }
     end
 
@@ -101,6 +107,10 @@ module LaunchDarklyApi
         self.schema = attributes[:'schema']
       else
         self.schema = nil
+      end
+
+      if attributes.key?(:'custom_parameters')
+        self.custom_parameters = attributes[:'custom_parameters']
       end
     end
 
@@ -158,7 +168,8 @@ module LaunchDarklyApi
           maintainer_id == o.maintainer_id &&
           maintainer_team_key == o.maintainer_team_key &&
           description == o.description &&
-          schema == o.schema
+          schema == o.schema &&
+          custom_parameters == o.custom_parameters
     end
 
     # @see the `==` method
@@ -170,7 +181,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [key, maintainer_id, maintainer_team_key, description, schema].hash
+      [key, maintainer_id, maintainer_team_key, description, schema, custom_parameters].hash
     end
 
     # Builds the object from hash

@@ -23,7 +23,7 @@ module LaunchDarklyApi
 
     attr_accessor :op
 
-    # The context attribute / event property values or group member nodes
+    # The context attribute / event property values or group member nodes. Numeric values must not exceed 14 decimal places.
     attr_accessor :values
 
     # For context attribute filters, the context kind.

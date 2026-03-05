@@ -7,6 +7,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_audit_log_entries**](AuditLogApi.md#get_audit_log_entries) | **GET** /api/v2/auditlog | List audit log entries |
 | [**get_audit_log_entry**](AuditLogApi.md#get_audit_log_entry) | **GET** /api/v2/auditlog/{id} | Get audit log entry |
 | [**post_audit_log_entries**](AuditLogApi.md#post_audit_log_entries) | **POST** /api/v2/auditlog | Search audit log entries |
+| [**post_audit_log_entry_counts**](AuditLogApi.md#post_audit_log_entry_counts) | **POST** /api/v2/auditlog/counts | Get audit log entry counts |
 
 
 ## get_audit_log_entries
@@ -231,6 +232,85 @@ end
 ### Return type
 
 [**AuditLogEntryListingRepCollection**](AuditLogEntryListingRepCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## post_audit_log_entry_counts
+
+> <CountBucketsResult> post_audit_log_entry_counts(after, statement_post, opts)
+
+Get audit log entry counts
+
+Returns aggregate counts of audit log entries per time bucket. Used for dashboard overlays that show flag targeting changes.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AuditLogApi.new
+after = 789 # Integer | A timestamp filter, expressed as a Unix epoch time in milliseconds. Required.
+statement_post = [LaunchDarklyApi::StatementPost.new({effect: 'allow'})] # Array<StatementPost> | 
+opts = {
+  before: 789, # Integer | A timestamp filter, expressed as a Unix epoch time in milliseconds. Defaults to now.
+  buckets: 789 # Integer | Number of time buckets to divide the range into. Default 50, max 500.
+}
+
+begin
+  # Get audit log entry counts
+  result = api_instance.post_audit_log_entry_counts(after, statement_post, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AuditLogApi->post_audit_log_entry_counts: #{e}"
+end
+```
+
+#### Using the post_audit_log_entry_counts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CountBucketsResult>, Integer, Hash)> post_audit_log_entry_counts_with_http_info(after, statement_post, opts)
+
+```ruby
+begin
+  # Get audit log entry counts
+  data, status_code, headers = api_instance.post_audit_log_entry_counts_with_http_info(after, statement_post, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CountBucketsResult>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AuditLogApi->post_audit_log_entry_counts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **after** | **Integer** | A timestamp filter, expressed as a Unix epoch time in milliseconds. Required. |  |
+| **statement_post** | [**Array&lt;StatementPost&gt;**](StatementPost.md) |  |  |
+| **before** | **Integer** | A timestamp filter, expressed as a Unix epoch time in milliseconds. Defaults to now. | [optional] |
+| **buckets** | **Integer** | Number of time buckets to divide the range into. Default 50, max 500. | [optional] |
+
+### Return type
+
+[**CountBucketsResult**](CountBucketsResult.md)
 
 ### Authorization
 

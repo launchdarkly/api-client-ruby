@@ -193,7 +193,10 @@ resource_type = 'flags' # String |
 opts = {
   limit: 56, # Integer | The number of views to return.
   offset: 56, # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
-  sort: 'linkedAt' # String | Field to sort by. Default field is `linkedAt`, default order is ascending.
+  sort: 'linkedAt', # String | Field to sort by. Default field is `linkedAt`, default order is ascending.
+  query: 'query_example', # String | Case-insensitive search query for linked resources. Matches resource key and, when expanded, resource name.
+  filter: 'filter_example', # String | Optional resource filter expression for linked resources. - Supported for `flags` and `segments` resource types. - Uses the same syntax as link/unlink and list endpoints. - For `segments`, `environmentId` is required when `filter` is provided. 
+  expand: ['maintainer'] # Array<String> | A comma-separated list of fields to expand.
 }
 
 begin
@@ -234,6 +237,9 @@ end
 | **limit** | **Integer** | The number of views to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 | **sort** | **String** | Field to sort by. Default field is &#x60;linkedAt&#x60;, default order is ascending. | [optional][default to &#39;linkedAt&#39;] |
+| **query** | **String** | Case-insensitive search query for linked resources. Matches resource key and, when expanded, resource name. | [optional] |
+| **filter** | **String** | Optional resource filter expression for linked resources. - Supported for &#x60;flags&#x60; and &#x60;segments&#x60; resource types. - Uses the same syntax as link/unlink and list endpoints. - For &#x60;segments&#x60;, &#x60;environmentId&#x60; is required when &#x60;filter&#x60; is provided.  | [optional] |
+| **expand** | [**Array&lt;String&gt;**](String.md) | A comma-separated list of fields to expand. | [optional] |
 
 ### Return type
 
@@ -255,7 +261,7 @@ end
 
 Get linked views for a given resource
 
-Get a list of all linked views for a resource. Flags, AI configs and metrics are identified by key. Segments are identified by segment ID.
+Get a list of all linked views for a resource. Flags are identified by key. Segments are identified by segment ID.
 
 ### Examples
 
@@ -363,7 +369,7 @@ opts = {
   sort: 'key', # String | A sort to apply to the list of views.
   limit: 56, # Integer | The number of views to return.
   offset: 56, # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
-  filter: 'filter_example', # String | A filter to apply to the list of views.
+  filter: 'filter_example', # String | A filter to apply to the list of views. Supports the following fields and operators: `name` (equals, notEquals, startsWith, contains, anyOf), `key` (equals, notEquals, startsWith, contains, anyOf), `tag` (equals, anyOf), `maintainerId` (equals, anyOf), `isPayloadView` (equals).
   expand: ['allFlags'] # Array<String> | A comma-separated list of fields to expand.
 }
 
@@ -404,7 +410,7 @@ end
 | **sort** | **String** | A sort to apply to the list of views. | [optional] |
 | **limit** | **Integer** | The number of views to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
-| **filter** | **String** | A filter to apply to the list of views. | [optional] |
+| **filter** | **String** | A filter to apply to the list of views. Supports the following fields and operators: &#x60;name&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;key&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;tag&#x60; (equals, anyOf), &#x60;maintainerId&#x60; (equals, anyOf), &#x60;isPayloadView&#x60; (equals). | [optional] |
 | **expand** | [**Array&lt;String&gt;**](String.md) | A comma-separated list of fields to expand. | [optional] |
 
 ### Return type
@@ -449,7 +455,7 @@ opts = {
   sort: 'key', # String | A sort to apply to the list of views.
   limit: 56, # Integer | The number of views to return.
   offset: 56, # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
-  filter: 'filter_example', # String | A filter to apply to the list of views.
+  filter: 'filter_example', # String | A filter to apply to the list of views. Supports the following fields and operators: `name` (equals, notEquals, startsWith, contains, anyOf), `key` (equals, notEquals, startsWith, contains, anyOf), `tag` (equals, anyOf), `maintainerId` (equals, anyOf), `isPayloadView` (equals).
   expand: ['flagsSummary'] # Array<String> | A comma-separated list of fields to expand.
 }
 
@@ -489,7 +495,7 @@ end
 | **sort** | **String** | A sort to apply to the list of views. | [optional] |
 | **limit** | **Integer** | The number of views to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
-| **filter** | **String** | A filter to apply to the list of views. | [optional] |
+| **filter** | **String** | A filter to apply to the list of views. Supports the following fields and operators: &#x60;name&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;key&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;tag&#x60; (equals, anyOf), &#x60;maintainerId&#x60; (equals, anyOf), &#x60;isPayloadView&#x60; (equals). | [optional] |
 | **expand** | [**Array&lt;String&gt;**](String.md) | A comma-separated list of fields to expand. | [optional] |
 
 ### Return type
@@ -512,7 +518,7 @@ end
 
 Link resource
 
-Link one or multiple resources to a view: - Link flags using flag keys - Link AI configs using AI config keys - Link metrics using metric keys - Link segments using segment IDs 
+Link one or multiple resources to a view by keys, filters, or both: - Link flags using flag keys or filters (maintainerId, maintainerTeamKey, tags, state, query) - Link segments using segment IDs or filters (tags, query, unbounded)  When both keys and filters are provided, resources matching either condition are linked (union). 
 
 ### Examples
 
@@ -532,7 +538,7 @@ ld_api_version = 'beta' # String | Version of the endpoint.
 project_key = 'default' # String | 
 view_key = 'my-view' # String | 
 resource_type = 'flags' # String | 
-view_link_request = LaunchDarklyApi::ViewLinkRequestKeys.new({keys: ['keys_example']}) # ViewLinkRequest | The resource to link to the view. Flags are identified by key. Segments are identified by segment ID.
+view_link_request = LaunchDarklyApi::ViewLinkRequestFilter.new({filter: 'maintainerId:507f1f77bcf86cd799439011,tags:backend+beta'}) # ViewLinkRequest | Resources to link to the view. You can provide explicit keys/IDs, filters, or both. - Flags: identified by key or filtered by maintainerId, maintainerTeamKey, tags, state, query - Segments: identified by segment ID or filtered by tags, query, unbounded 
 
 begin
   # Link resource
@@ -569,7 +575,7 @@ end
 | **project_key** | **String** |  |  |
 | **view_key** | **String** |  |  |
 | **resource_type** | **String** |  |  |
-| **view_link_request** | [**ViewLinkRequest**](ViewLinkRequest.md) | The resource to link to the view. Flags are identified by key. Segments are identified by segment ID. |  |
+| **view_link_request** | [**ViewLinkRequest**](ViewLinkRequest.md) | Resources to link to the view. You can provide explicit keys/IDs, filters, or both. - Flags: identified by key or filtered by maintainerId, maintainerTeamKey, tags, state, query - Segments: identified by segment ID or filtered by tags, query, unbounded  |  |
 
 ### Return type
 
@@ -591,7 +597,7 @@ end
 
 Unlink resource
 
-Unlink one or multiple resources from a view: - Unlink flags using flag keys - Unlink segments using segment IDs - Unlink AI configs using AI config keys - Unlink metrics using metric keys 
+Unlink one or multiple resources from a view: - Unlink flags using flag keys - Unlink segments using segment IDs 
 
 ### Examples
 
@@ -611,7 +617,7 @@ ld_api_version = 'beta' # String | Version of the endpoint.
 project_key = 'default' # String | 
 view_key = 'my-view' # String | 
 resource_type = 'flags' # String | 
-view_link_request = LaunchDarklyApi::ViewLinkRequestKeys.new({keys: ['keys_example']}) # ViewLinkRequest | The resource to link to the view. Flags are identified by key. Segments are identified by segment ID.
+view_link_request = LaunchDarklyApi::ViewLinkRequestFilter.new({filter: 'maintainerId:507f1f77bcf86cd799439011,tags:backend+beta'}) # ViewLinkRequest | The resource to link to the view. Flags are identified by key. Segments are identified by segment ID.
 
 begin
   # Unlink resource

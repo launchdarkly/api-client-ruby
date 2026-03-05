@@ -51,7 +51,7 @@ describe LaunchDarklyApi::ExpandedFlag do
     end
   end
 
-  describe 'test attribute "version"' do
+  describe 'test attribute "_version"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -76,6 +76,12 @@ describe LaunchDarklyApi::ExpandedFlag do
   end
 
   describe 'test attribute "include_in_snippet"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "maintainer"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

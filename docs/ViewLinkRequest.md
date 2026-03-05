@@ -14,6 +14,7 @@ require 'launchdarkly_api'
 LaunchDarklyApi::ViewLinkRequest.openapi_one_of
 # =>
 # [
+#   :'ViewLinkRequestFilter',
 #   :'ViewLinkRequestKeys',
 #   :'ViewLinkRequestSegmentIdentifiers'
 # ]
@@ -29,7 +30,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'launchdarkly_api'
 
 LaunchDarklyApi::ViewLinkRequest.build(data)
-# => #<ViewLinkRequestKeys:0x00007fdd4aab02a0>
+# => #<ViewLinkRequestFilter:0x00007fdd4aab02a0>
 
 LaunchDarklyApi::ViewLinkRequest.build(data_that_doesnt_match)
 # => nil
@@ -43,6 +44,7 @@ LaunchDarklyApi::ViewLinkRequest.build(data_that_doesnt_match)
 
 #### Return type
 
+- `ViewLinkRequestFilter`
 - `ViewLinkRequestKeys`
 - `ViewLinkRequestSegmentIdentifiers`
 - `nil` (if no type matches)

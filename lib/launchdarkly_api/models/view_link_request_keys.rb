@@ -15,8 +15,11 @@ require 'time'
 
 module LaunchDarklyApi
   class ViewLinkRequestKeys < ApiModelBase
-    # Keys of the resources (flags, segments, AI configs) to link/unlink
+    # Keys of the resources (flags, segments) to link/unlink
     attr_accessor :keys
+
+    # Optional filter string to determine which resources should be linked. Resources only need to match either the filter or explicitly-listed keys to be linked (union). Uses the same syntax as list endpoints: flags use comma-separated field:value filters, segments use queryfilter syntax.  Supported filters by resource type: - flags: query, tags, maintainerId, maintainerTeamKey, type, status, state, staleState, sdkAvailability, targeting, hasExperiment, hasDataExport, evaluated, creationDate, contextKindTargeted, contextKindsEvaluated, filterEnv, segmentTargeted, codeReferences.min, codeReferences.max, excludeSettings, releasePipeline, applicationEvaluated, purpose, guardedRollout, view, key, name, archived, followerId - segments (queryfilter): query, tags, keys, excludedKeys, unbounded, external, view, type Some filters are only available when the corresponding feature is enabled on your account. 
+    attr_accessor :filter
 
     # Optional comment for the link/unlink operation
     attr_accessor :comment
@@ -25,6 +28,7 @@ module LaunchDarklyApi
     def self.attribute_map
       {
         :'keys' => :'keys',
+        :'filter' => :'filter',
         :'comment' => :'comment'
       }
     end
@@ -43,6 +47,7 @@ module LaunchDarklyApi
     def self.openapi_types
       {
         :'keys' => :'Array<String>',
+        :'filter' => :'String',
         :'comment' => :'String'
       }
     end
@@ -75,6 +80,10 @@ module LaunchDarklyApi
         end
       else
         self.keys = nil
+      end
+
+      if attributes.key?(:'filter')
+        self.filter = attributes[:'filter']
       end
 
       if attributes.key?(:'comment')
@@ -120,6 +129,7 @@ module LaunchDarklyApi
       return true if self.equal?(o)
       self.class == o.class &&
           keys == o.keys &&
+          filter == o.filter &&
           comment == o.comment
     end
 
@@ -132,7 +142,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [keys, comment].hash
+      [keys, filter, comment].hash
     end
 
     # Builds the object from hash

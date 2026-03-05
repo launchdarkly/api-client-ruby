@@ -19,17 +19,11 @@ module LaunchDarklyApi
 
     attr_accessor :segments
 
-    attr_accessor :ai_configs
-
-    attr_accessor :metrics
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'flags' => :'flags',
-        :'segments' => :'segments',
-        :'ai_configs' => :'aiConfigs',
-        :'metrics' => :'metrics'
+        :'segments' => :'segments'
       }
     end
 
@@ -47,9 +41,7 @@ module LaunchDarklyApi
     def self.openapi_types
       {
         :'flags' => :'ExpandedLinkedResourcesFlags',
-        :'segments' => :'ExpandedLinkedResourcesSegments',
-        :'ai_configs' => :'ExpandedLinkedResourcesAIConfigs',
-        :'metrics' => :'ExpandedLinkedResourcesMetrics'
+        :'segments' => :'ExpandedLinkedResourcesSegments'
       }
     end
 
@@ -83,14 +75,6 @@ module LaunchDarklyApi
 
       if attributes.key?(:'segments')
         self.segments = attributes[:'segments']
-      end
-
-      if attributes.key?(:'ai_configs')
-        self.ai_configs = attributes[:'ai_configs']
-      end
-
-      if attributes.key?(:'metrics')
-        self.metrics = attributes[:'metrics']
       end
     end
 
@@ -130,9 +114,7 @@ module LaunchDarklyApi
       return true if self.equal?(o)
       self.class == o.class &&
           flags == o.flags &&
-          segments == o.segments &&
-          ai_configs == o.ai_configs &&
-          metrics == o.metrics
+          segments == o.segments
     end
 
     # @see the `==` method
@@ -144,7 +126,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [flags, segments, ai_configs, metrics].hash
+      [flags, segments].hash
     end
 
     # Builds the object from hash

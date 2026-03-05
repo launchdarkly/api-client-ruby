@@ -196,6 +196,9 @@ module LaunchDarklyApi
     # @option opts [Integer] :limit The number of views to return.
     # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
     # @option opts [String] :sort Field to sort by. Default field is &#x60;linkedAt&#x60;, default order is ascending. (default to 'linkedAt')
+    # @option opts [String] :query Case-insensitive search query for linked resources. Matches resource key and, when expanded, resource name.
+    # @option opts [String] :filter Optional resource filter expression for linked resources. - Supported for &#x60;flags&#x60; and &#x60;segments&#x60; resource types. - Uses the same syntax as link/unlink and list endpoints. - For &#x60;segments&#x60;, &#x60;environmentId&#x60; is required when &#x60;filter&#x60; is provided. 
+    # @option opts [Array<String>] :expand A comma-separated list of fields to expand.
     # @return [ViewLinkedResources]
     def get_linked_resources(ld_api_version, project_key, view_key, resource_type, opts = {})
       data, _status_code, _headers = get_linked_resources_with_http_info(ld_api_version, project_key, view_key, resource_type, opts)
@@ -212,6 +215,9 @@ module LaunchDarklyApi
     # @option opts [Integer] :limit The number of views to return.
     # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
     # @option opts [String] :sort Field to sort by. Default field is &#x60;linkedAt&#x60;, default order is ascending. (default to 'linkedAt')
+    # @option opts [String] :query Case-insensitive search query for linked resources. Matches resource key and, when expanded, resource name.
+    # @option opts [String] :filter Optional resource filter expression for linked resources. - Supported for &#x60;flags&#x60; and &#x60;segments&#x60; resource types. - Uses the same syntax as link/unlink and list endpoints. - For &#x60;segments&#x60;, &#x60;environmentId&#x60; is required when &#x60;filter&#x60; is provided. 
+    # @option opts [Array<String>] :expand A comma-separated list of fields to expand.
     # @return [Array<(ViewLinkedResources, Integer, Hash)>] ViewLinkedResources data, response status code and response headers
     def get_linked_resources_with_http_info(ld_api_version, project_key, view_key, resource_type, opts = {})
       if @api_client.config.debugging
@@ -239,13 +245,17 @@ module LaunchDarklyApi
         fail ArgumentError, "Missing the required parameter 'resource_type' when calling ViewsBetaApi.get_linked_resources"
       end
       # verify enum value
-      allowable_values = ["flags", "segments", "aiConfigs", "metrics"]
+      allowable_values = ["flags", "segments"]
       if @api_client.config.client_side_validation && !allowable_values.include?(resource_type)
         fail ArgumentError, "invalid value for \"resource_type\", must be one of #{allowable_values}"
       end
       allowable_values = ["linkedAt", "name"]
       if @api_client.config.client_side_validation && opts[:'sort'] && !allowable_values.include?(opts[:'sort'])
         fail ArgumentError, "invalid value for \"sort\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["maintainer", "resourceDetails"]
+      if @api_client.config.client_side_validation && opts[:'expand'] && !opts[:'expand'].all? { |item| allowable_values.include?(item) }
+        fail ArgumentError, "invalid value for \"expand\", must include one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/api/v2/projects/{projectKey}/views/{viewKey}/linked/{resourceType}'.sub('{' + 'projectKey' + '}', CGI.escape(project_key.to_s)).sub('{' + 'viewKey' + '}', CGI.escape(view_key.to_s)).sub('{' + 'resourceType' + '}', CGI.escape(resource_type.to_s))
@@ -255,6 +265,9 @@ module LaunchDarklyApi
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
+      query_params[:'query'] = opts[:'query'] if !opts[:'query'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+      query_params[:'expand'] = @api_client.build_collection_param(opts[:'expand'], :csv) if !opts[:'expand'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -292,7 +305,7 @@ module LaunchDarklyApi
     end
 
     # Get linked views for a given resource
-    # Get a list of all linked views for a resource. Flags, AI configs and metrics are identified by key. Segments are identified by segment ID.
+    # Get a list of all linked views for a resource. Flags are identified by key. Segments are identified by segment ID.
     # @param ld_api_version [String] Version of the endpoint.
     # @param project_key [String] 
     # @param resource_type [String] 
@@ -308,7 +321,7 @@ module LaunchDarklyApi
     end
 
     # Get linked views for a given resource
-    # Get a list of all linked views for a resource. Flags, AI configs and metrics are identified by key. Segments are identified by segment ID.
+    # Get a list of all linked views for a resource. Flags are identified by key. Segments are identified by segment ID.
     # @param ld_api_version [String] Version of the endpoint.
     # @param project_key [String] 
     # @param resource_type [String] 
@@ -340,7 +353,7 @@ module LaunchDarklyApi
         fail ArgumentError, "Missing the required parameter 'resource_type' when calling ViewsBetaApi.get_linked_views"
       end
       # verify enum value
-      allowable_values = ["flags", "segments", "aiConfigs", "metrics"]
+      allowable_values = ["flags", "segments"]
       if @api_client.config.client_side_validation && !allowable_values.include?(resource_type)
         fail ArgumentError, "invalid value for \"resource_type\", must be one of #{allowable_values}"
       end
@@ -401,7 +414,7 @@ module LaunchDarklyApi
     # @option opts [String] :sort A sort to apply to the list of views.
     # @option opts [Integer] :limit The number of views to return.
     # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
-    # @option opts [String] :filter A filter to apply to the list of views.
+    # @option opts [String] :filter A filter to apply to the list of views. Supports the following fields and operators: &#x60;name&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;key&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;tag&#x60; (equals, anyOf), &#x60;maintainerId&#x60; (equals, anyOf), &#x60;isPayloadView&#x60; (equals).
     # @option opts [Array<String>] :expand A comma-separated list of fields to expand.
     # @return [View]
     def get_view(ld_api_version, project_key, view_key, opts = {})
@@ -418,7 +431,7 @@ module LaunchDarklyApi
     # @option opts [String] :sort A sort to apply to the list of views.
     # @option opts [Integer] :limit The number of views to return.
     # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
-    # @option opts [String] :filter A filter to apply to the list of views.
+    # @option opts [String] :filter A filter to apply to the list of views. Supports the following fields and operators: &#x60;name&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;key&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;tag&#x60; (equals, anyOf), &#x60;maintainerId&#x60; (equals, anyOf), &#x60;isPayloadView&#x60; (equals).
     # @option opts [Array<String>] :expand A comma-separated list of fields to expand.
     # @return [Array<(View, Integer, Hash)>] View data, response status code and response headers
     def get_view_with_http_info(ld_api_version, project_key, view_key, opts = {})
@@ -446,7 +459,7 @@ module LaunchDarklyApi
       if @api_client.config.client_side_validation && opts[:'sort'] && !allowable_values.include?(opts[:'sort'])
         fail ArgumentError, "invalid value for \"sort\", must be one of #{allowable_values}"
       end
-      allowable_values = ["allFlags", "allSegments", "allMetrics", "allAIConfigs", "allResources", "flagsSummary", "segmentsSummary", "metricsSummary", "aiConfigsSummary", "resourceSummary"]
+      allowable_values = ["allFlags", "allSegments", "allResources", "maintainer", "flagsSummary", "segmentsSummary", "resourceSummary"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !opts[:'expand'].all? { |item| allowable_values.include?(item) }
         fail ArgumentError, "invalid value for \"expand\", must include one of #{allowable_values}"
       end
@@ -504,7 +517,7 @@ module LaunchDarklyApi
     # @option opts [String] :sort A sort to apply to the list of views.
     # @option opts [Integer] :limit The number of views to return.
     # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
-    # @option opts [String] :filter A filter to apply to the list of views.
+    # @option opts [String] :filter A filter to apply to the list of views. Supports the following fields and operators: &#x60;name&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;key&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;tag&#x60; (equals, anyOf), &#x60;maintainerId&#x60; (equals, anyOf), &#x60;isPayloadView&#x60; (equals).
     # @option opts [Array<String>] :expand A comma-separated list of fields to expand.
     # @return [Views]
     def get_views(ld_api_version, project_key, opts = {})
@@ -520,7 +533,7 @@ module LaunchDarklyApi
     # @option opts [String] :sort A sort to apply to the list of views.
     # @option opts [Integer] :limit The number of views to return.
     # @option opts [Integer] :offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;.
-    # @option opts [String] :filter A filter to apply to the list of views.
+    # @option opts [String] :filter A filter to apply to the list of views. Supports the following fields and operators: &#x60;name&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;key&#x60; (equals, notEquals, startsWith, contains, anyOf), &#x60;tag&#x60; (equals, anyOf), &#x60;maintainerId&#x60; (equals, anyOf), &#x60;isPayloadView&#x60; (equals).
     # @option opts [Array<String>] :expand A comma-separated list of fields to expand.
     # @return [Array<(Views, Integer, Hash)>] Views data, response status code and response headers
     def get_views_with_http_info(ld_api_version, project_key, opts = {})
@@ -544,7 +557,7 @@ module LaunchDarklyApi
       if @api_client.config.client_side_validation && opts[:'sort'] && !allowable_values.include?(opts[:'sort'])
         fail ArgumentError, "invalid value for \"sort\", must be one of #{allowable_values}"
       end
-      allowable_values = ["flagsSummary", "segmentsSummary", "metricsSummary", "aiConfigsSummary", "resourceSummary"]
+      allowable_values = ["flagsSummary", "segmentsSummary", "resourceSummary"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !opts[:'expand'].all? { |item| allowable_values.include?(item) }
         fail ArgumentError, "invalid value for \"expand\", must include one of #{allowable_values}"
       end
@@ -595,12 +608,12 @@ module LaunchDarklyApi
     end
 
     # Link resource
-    # Link one or multiple resources to a view: - Link flags using flag keys - Link AI configs using AI config keys - Link metrics using metric keys - Link segments using segment IDs 
+    # Link one or multiple resources to a view by keys, filters, or both: - Link flags using flag keys or filters (maintainerId, maintainerTeamKey, tags, state, query) - Link segments using segment IDs or filters (tags, query, unbounded)  When both keys and filters are provided, resources matching either condition are linked (union). 
     # @param ld_api_version [String] Version of the endpoint.
     # @param project_key [String] 
     # @param view_key [String] 
     # @param resource_type [String] 
-    # @param view_link_request [ViewLinkRequest] The resource to link to the view. Flags are identified by key. Segments are identified by segment ID.
+    # @param view_link_request [ViewLinkRequest] Resources to link to the view. You can provide explicit keys/IDs, filters, or both. - Flags: identified by key or filtered by maintainerId, maintainerTeamKey, tags, state, query - Segments: identified by segment ID or filtered by tags, query, unbounded 
     # @param [Hash] opts the optional parameters
     # @return [LinkResourceSuccessResponse]
     def link_resource(ld_api_version, project_key, view_key, resource_type, view_link_request, opts = {})
@@ -609,12 +622,12 @@ module LaunchDarklyApi
     end
 
     # Link resource
-    # Link one or multiple resources to a view: - Link flags using flag keys - Link AI configs using AI config keys - Link metrics using metric keys - Link segments using segment IDs 
+    # Link one or multiple resources to a view by keys, filters, or both: - Link flags using flag keys or filters (maintainerId, maintainerTeamKey, tags, state, query) - Link segments using segment IDs or filters (tags, query, unbounded)  When both keys and filters are provided, resources matching either condition are linked (union). 
     # @param ld_api_version [String] Version of the endpoint.
     # @param project_key [String] 
     # @param view_key [String] 
     # @param resource_type [String] 
-    # @param view_link_request [ViewLinkRequest] The resource to link to the view. Flags are identified by key. Segments are identified by segment ID.
+    # @param view_link_request [ViewLinkRequest] Resources to link to the view. You can provide explicit keys/IDs, filters, or both. - Flags: identified by key or filtered by maintainerId, maintainerTeamKey, tags, state, query - Segments: identified by segment ID or filtered by tags, query, unbounded 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LinkResourceSuccessResponse, Integer, Hash)>] LinkResourceSuccessResponse data, response status code and response headers
     def link_resource_with_http_info(ld_api_version, project_key, view_key, resource_type, view_link_request, opts = {})
@@ -643,7 +656,7 @@ module LaunchDarklyApi
         fail ArgumentError, "Missing the required parameter 'resource_type' when calling ViewsBetaApi.link_resource"
       end
       # verify enum value
-      allowable_values = ["flags", "segments", "aiConfigs", "metrics"]
+      allowable_values = ["flags", "segments"]
       if @api_client.config.client_side_validation && !allowable_values.include?(resource_type)
         fail ArgumentError, "invalid value for \"resource_type\", must be one of #{allowable_values}"
       end
@@ -698,7 +711,7 @@ module LaunchDarklyApi
     end
 
     # Unlink resource
-    # Unlink one or multiple resources from a view: - Unlink flags using flag keys - Unlink segments using segment IDs - Unlink AI configs using AI config keys - Unlink metrics using metric keys 
+    # Unlink one or multiple resources from a view: - Unlink flags using flag keys - Unlink segments using segment IDs 
     # @param ld_api_version [String] Version of the endpoint.
     # @param project_key [String] 
     # @param view_key [String] 
@@ -712,7 +725,7 @@ module LaunchDarklyApi
     end
 
     # Unlink resource
-    # Unlink one or multiple resources from a view: - Unlink flags using flag keys - Unlink segments using segment IDs - Unlink AI configs using AI config keys - Unlink metrics using metric keys 
+    # Unlink one or multiple resources from a view: - Unlink flags using flag keys - Unlink segments using segment IDs 
     # @param ld_api_version [String] Version of the endpoint.
     # @param project_key [String] 
     # @param view_key [String] 
@@ -746,7 +759,7 @@ module LaunchDarklyApi
         fail ArgumentError, "Missing the required parameter 'resource_type' when calling ViewsBetaApi.unlink_resource"
       end
       # verify enum value
-      allowable_values = ["flags", "segments", "aiConfigs", "metrics"]
+      allowable_values = ["flags", "segments"]
       if @api_client.config.client_side_validation && !allowable_values.include?(resource_type)
         fail ArgumentError, "invalid value for \"resource_type\", must be one of #{allowable_values}"
       end

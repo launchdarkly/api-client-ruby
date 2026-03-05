@@ -39,6 +39,8 @@ module LaunchDarklyApi
 
     attr_accessor :service_token
 
+    attr_accessor :scopes
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -53,7 +55,8 @@ module LaunchDarklyApi
         :'token_name' => :'tokenName',
         :'token_id' => :'tokenId',
         :'member_id' => :'memberId',
-        :'service_token' => :'serviceToken'
+        :'service_token' => :'serviceToken',
+        :'scopes' => :'scopes'
       }
     end
 
@@ -81,7 +84,8 @@ module LaunchDarklyApi
         :'token_name' => :'String',
         :'token_id' => :'String',
         :'member_id' => :'String',
-        :'service_token' => :'Boolean'
+        :'service_token' => :'Boolean',
+        :'scopes' => :'Array<String>'
       }
     end
 
@@ -154,6 +158,12 @@ module LaunchDarklyApi
       if attributes.key?(:'service_token')
         self.service_token = attributes[:'service_token']
       end
+
+      if attributes.key?(:'scopes')
+        if (value = attributes[:'scopes']).is_a?(Array)
+          self.scopes = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -187,7 +197,8 @@ module LaunchDarklyApi
           token_name == o.token_name &&
           token_id == o.token_id &&
           member_id == o.member_id &&
-          service_token == o.service_token
+          service_token == o.service_token &&
+          scopes == o.scopes
     end
 
     # @see the `==` method
@@ -199,7 +210,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_id, environment_id, project_id, environment_name, project_name, auth_kind, token_kind, client_id, token_name, token_id, member_id, service_token].hash
+      [account_id, environment_id, project_id, environment_name, project_name, auth_kind, token_kind, client_id, token_name, token_id, member_id, service_token, scopes].hash
     end
 
     # Builds the object from hash

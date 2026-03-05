@@ -24,6 +24,9 @@ module LaunchDarklyApi
     # The number of guarded rollouts using this metric
     attr_accessor :guarded_rollout_count
 
+    # The number of release policies using this metric
+    attr_accessor :release_policy_count
+
     # The number of active experiments using this metric
     attr_accessor :active_experiment_count
 
@@ -106,6 +109,8 @@ module LaunchDarklyApi
 
     attr_accessor :data_source
 
+    attr_accessor :last_seen
+
     # Whether the metric version is archived
     attr_accessor :archived
 
@@ -144,6 +149,7 @@ module LaunchDarklyApi
         :'experiment_count' => :'experimentCount',
         :'metric_group_count' => :'metricGroupCount',
         :'guarded_rollout_count' => :'guardedRolloutCount',
+        :'release_policy_count' => :'releasePolicyCount',
         :'active_experiment_count' => :'activeExperimentCount',
         :'active_guarded_rollout_count' => :'activeGuardedRolloutCount',
         :'_id' => :'_id',
@@ -174,6 +180,7 @@ module LaunchDarklyApi
         :'percentile_value' => :'percentileValue',
         :'event_default' => :'eventDefault',
         :'data_source' => :'dataSource',
+        :'last_seen' => :'lastSeen',
         :'archived' => :'archived',
         :'archived_at' => :'archivedAt',
         :'selector' => :'selector',
@@ -197,6 +204,7 @@ module LaunchDarklyApi
         :'experiment_count' => :'Integer',
         :'metric_group_count' => :'Integer',
         :'guarded_rollout_count' => :'Integer',
+        :'release_policy_count' => :'Integer',
         :'active_experiment_count' => :'Integer',
         :'active_guarded_rollout_count' => :'Integer',
         :'_id' => :'String',
@@ -227,6 +235,7 @@ module LaunchDarklyApi
         :'percentile_value' => :'Integer',
         :'event_default' => :'AiConfigsMetricEventDefaultRep',
         :'data_source' => :'AiConfigsMetricDataSourceRefRep',
+        :'last_seen' => :'Integer',
         :'archived' => :'Boolean',
         :'archived_at' => :'Integer',
         :'selector' => :'String',
@@ -266,6 +275,10 @@ module LaunchDarklyApi
 
       if attributes.key?(:'guarded_rollout_count')
         self.guarded_rollout_count = attributes[:'guarded_rollout_count']
+      end
+
+      if attributes.key?(:'release_policy_count')
+        self.release_policy_count = attributes[:'release_policy_count']
       end
 
       if attributes.key?(:'active_experiment_count')
@@ -410,6 +423,10 @@ module LaunchDarklyApi
         self.data_source = attributes[:'data_source']
       else
         self.data_source = nil
+      end
+
+      if attributes.key?(:'last_seen')
+        self.last_seen = attributes[:'last_seen']
       end
 
       if attributes.key?(:'archived')
@@ -627,6 +644,7 @@ module LaunchDarklyApi
           experiment_count == o.experiment_count &&
           metric_group_count == o.metric_group_count &&
           guarded_rollout_count == o.guarded_rollout_count &&
+          release_policy_count == o.release_policy_count &&
           active_experiment_count == o.active_experiment_count &&
           active_guarded_rollout_count == o.active_guarded_rollout_count &&
           _id == o._id &&
@@ -657,6 +675,7 @@ module LaunchDarklyApi
           percentile_value == o.percentile_value &&
           event_default == o.event_default &&
           data_source == o.data_source &&
+          last_seen == o.last_seen &&
           archived == o.archived &&
           archived_at == o.archived_at &&
           selector == o.selector &&
@@ -672,7 +691,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [experiment_count, metric_group_count, guarded_rollout_count, active_experiment_count, active_guarded_rollout_count, _id, _version_id, _version, key, name, kind, _attached_flag_count, _links, _site, _access, tags, _creation_date, last_modified, maintainer_id, _maintainer, description, category, is_numeric, success_criteria, unit, event_key, randomization_units, filters, unit_aggregation_type, analysis_type, percentile_value, event_default, data_source, archived, archived_at, selector, urls].hash
+      [experiment_count, metric_group_count, guarded_rollout_count, release_policy_count, active_experiment_count, active_guarded_rollout_count, _id, _version_id, _version, key, name, kind, _attached_flag_count, _links, _site, _access, tags, _creation_date, last_modified, maintainer_id, _maintainer, description, category, is_numeric, success_criteria, unit, event_key, randomization_units, filters, unit_aggregation_type, analysis_type, percentile_value, event_default, data_source, last_seen, archived, archived_at, selector, urls].hash
     end
 
     # Builds the object from hash

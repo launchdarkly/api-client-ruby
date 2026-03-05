@@ -17,7 +17,7 @@ module LaunchDarklyApi
   class ViewLinkedResource < ApiModelBase
     attr_accessor :_links
 
-    # Key of the resource (flag, segment, AI config or metric)
+    # Key of the resource (flag or segment)
     attr_accessor :resource_key
 
     # Environment ID of the resource (only present for segments)
@@ -180,7 +180,7 @@ module LaunchDarklyApi
       return false if @_links.nil?
       return false if @resource_key.nil?
       return false if @resource_type.nil?
-      resource_type_validator = EnumAttributeValidator.new('String', ["flag", "segment", "metric", "aiConfig"])
+      resource_type_validator = EnumAttributeValidator.new('String', ["flag", "segment"])
       return false unless resource_type_validator.valid?(@resource_type)
       return false if @linked_at.nil?
       true
@@ -209,7 +209,7 @@ module LaunchDarklyApi
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] resource_type Object to be assigned
     def resource_type=(resource_type)
-      validator = EnumAttributeValidator.new('String', ["flag", "segment", "metric", "aiConfig"])
+      validator = EnumAttributeValidator.new('String', ["flag", "segment"])
       unless validator.valid?(resource_type)
         fail ArgumentError, "invalid value for \"resource_type\", must be one of #{validator.allowable_values}."
       end

@@ -6,8 +6,6 @@
 | ---- | ---- | ----------- | ----- |
 | **flags** | [**ExpandedLinkedResourcesFlags**](ExpandedLinkedResourcesFlags.md) |  |  |
 | **segments** | [**ExpandedLinkedResourcesSegments**](ExpandedLinkedResourcesSegments.md) |  | [optional] |
-| **ai_configs** | [**ExpandedLinkedResourcesAIConfigs**](ExpandedLinkedResourcesAIConfigs.md) |  | [optional] |
-| **metrics** | [**ExpandedLinkedResourcesMetrics**](ExpandedLinkedResourcesMetrics.md) |  | [optional] |
 
 ## Example
 
@@ -16,9 +14,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ExpandedLinkedResourcesItems.new(
   flags: null,
-  segments: null,
-  ai_configs: null,
-  metrics: null
+  segments: null
 )
 ```
 

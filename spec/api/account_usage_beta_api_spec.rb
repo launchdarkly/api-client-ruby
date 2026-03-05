@@ -306,6 +306,22 @@ describe 'AccountUsageBetaApi' do
     end
   end
 
+  # unit tests for get_observability_metrics_usage
+  # Get observability metrics usage
+  # Get time-series arrays of the number of observability metrics. Supports &#x60;daily&#x60; and &#x60;monthly&#x60; granularity.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :from The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+  # @option opts [String] :to The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+  # @option opts [String] :project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+  # @option opts [String] :granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only.
+  # @option opts [String] :aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;.
+  # @return [SeriesListRep]
+  describe 'get_observability_metrics_usage test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for get_observability_sessions_usage
   # Get observability sessions usage
   # Get time-series arrays of the number of observability sessions. Supports &#x60;daily&#x60; and &#x60;monthly&#x60; granularity.
@@ -400,6 +416,22 @@ describe 'AccountUsageBetaApi' do
   # @param [Hash] opts the optional parameters
   # @return [SdkVersionListRep]
   describe 'get_stream_usage_sdkversion test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for get_vega_ai_usage
+  # Get Vega AI usage
+  # Get time-series arrays of the number of Vega AI usage. Supports &#x60;daily&#x60; and &#x60;monthly&#x60; granularity.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :from The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+  # @option opts [String] :to The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+  # @option opts [String] :project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+  # @option opts [String] :granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only.
+  # @option opts [String] :aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;.
+  # @return [SeriesListRep]
+  describe 'get_vega_ai_usage test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

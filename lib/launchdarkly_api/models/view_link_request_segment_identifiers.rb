@@ -18,6 +18,12 @@ module LaunchDarklyApi
     # Identifiers of the segments to link/unlink (environmentId and segmentKey)
     attr_accessor :segment_identifiers
 
+    # Optional filter string to determine which resources should be linked. Resources only need to match either the filter or explicitly-listed keys to be linked (union). Uses the same queryfilter syntax as the segments list endpoint.  Supported filters for segments: query, tags, keys, excludedKeys, unbounded, external, view, type 
+    attr_accessor :filter
+
+    # Required when using filter for segment resources. Specifies which environment to query for segments matching the filter. Ignored when only using explicit segmentIdentifiers (since each identifier contains its own environmentId). 
+    attr_accessor :environment_id
+
     # Optional comment for the link/unlink operation
     attr_accessor :comment
 
@@ -25,6 +31,8 @@ module LaunchDarklyApi
     def self.attribute_map
       {
         :'segment_identifiers' => :'segmentIdentifiers',
+        :'filter' => :'filter',
+        :'environment_id' => :'environmentId',
         :'comment' => :'comment'
       }
     end
@@ -43,6 +51,8 @@ module LaunchDarklyApi
     def self.openapi_types
       {
         :'segment_identifiers' => :'Array<ViewLinkRequestSegmentIdentifier>',
+        :'filter' => :'String',
+        :'environment_id' => :'String',
         :'comment' => :'String'
       }
     end
@@ -75,6 +85,14 @@ module LaunchDarklyApi
         end
       else
         self.segment_identifiers = nil
+      end
+
+      if attributes.key?(:'filter')
+        self.filter = attributes[:'filter']
+      end
+
+      if attributes.key?(:'environment_id')
+        self.environment_id = attributes[:'environment_id']
       end
 
       if attributes.key?(:'comment')
@@ -120,6 +138,8 @@ module LaunchDarklyApi
       return true if self.equal?(o)
       self.class == o.class &&
           segment_identifiers == o.segment_identifiers &&
+          filter == o.filter &&
+          environment_id == o.environment_id &&
           comment == o.comment
     end
 
@@ -132,7 +152,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [segment_identifiers, comment].hash
+      [segment_identifiers, filter, environment_id, comment].hash
     end
 
     # Builds the object from hash

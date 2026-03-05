@@ -23,8 +23,8 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::AIConfigPost.new(
   description: null,
   key: null,
-  maintainer_id: null,
-  maintainer_team_key: null,
+  maintainer_id: 507f1f77bcf86cd799439011,
+  maintainer_team_key: example-team-key,
   mode: null,
   name: null,
   tags: null,

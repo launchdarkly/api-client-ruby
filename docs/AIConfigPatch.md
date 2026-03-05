@@ -19,8 +19,8 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::AIConfigPatch.new(
   description: null,
-  maintainer_id: null,
-  maintainer_team_key: null,
+  maintainer_id: 507f1f77bcf86cd799439011,
+  maintainer_team_key: example-team-key,
   name: null,
   tags: null,
   evaluation_metric_key: null,

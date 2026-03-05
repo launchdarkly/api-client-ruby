@@ -16,6 +16,7 @@
 | **token_id** | **String** |  | [optional] |
 | **member_id** | **String** |  | [optional] |
 | **service_token** | **Boolean** |  | [optional] |
+| **scopes** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = LaunchDarklyApi::CallerIdentityRep.new(
   token_name: null,
   token_id: null,
   member_id: null,
-  service_token: null
+  service_token: null,
+  scopes: null
 )
 ```
 

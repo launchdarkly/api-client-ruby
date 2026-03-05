@@ -48,6 +48,9 @@ module LaunchDarklyApi
     # Whether the evaluation metric is inverted, meaning a lower value is better if set as true
     attr_accessor :is_inverted
 
+    # Resources that depend on this AI Config, grouped by type
+    attr_accessor :dependencies
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -87,7 +90,8 @@ module LaunchDarklyApi
         :'updated_at' => :'updatedAt',
         :'evaluation_metric_key' => :'evaluationMetricKey',
         :'evaluation_metric_keys' => :'evaluationMetricKeys',
-        :'is_inverted' => :'isInverted'
+        :'is_inverted' => :'isInverted',
+        :'dependencies' => :'dependencies'
       }
     end
 
@@ -118,7 +122,8 @@ module LaunchDarklyApi
         :'updated_at' => :'Integer',
         :'evaluation_metric_key' => :'String',
         :'evaluation_metric_keys' => :'Array<String>',
-        :'is_inverted' => :'Boolean'
+        :'is_inverted' => :'Boolean',
+        :'dependencies' => :'Array<AIConfigDependency>'
       }
     end
 
@@ -226,6 +231,12 @@ module LaunchDarklyApi
 
       if attributes.key?(:'is_inverted')
         self.is_inverted = attributes[:'is_inverted']
+      end
+
+      if attributes.key?(:'dependencies')
+        if (value = attributes[:'dependencies']).is_a?(Array)
+          self.dependencies = value
+        end
       end
     end
 
@@ -395,7 +406,8 @@ module LaunchDarklyApi
           updated_at == o.updated_at &&
           evaluation_metric_key == o.evaluation_metric_key &&
           evaluation_metric_keys == o.evaluation_metric_keys &&
-          is_inverted == o.is_inverted
+          is_inverted == o.is_inverted &&
+          dependencies == o.dependencies
     end
 
     # @see the `==` method
@@ -407,7 +419,7 @@ module LaunchDarklyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_access, _links, description, key, _maintainer, mode, name, tags, version, variations, created_at, updated_at, evaluation_metric_key, evaluation_metric_keys, is_inverted].hash
+      [_access, _links, description, key, _maintainer, mode, name, tags, version, variations, created_at, updated_at, evaluation_metric_key, evaluation_metric_keys, is_inverted, dependencies].hash
     end
 
     # Builds the object from hash
