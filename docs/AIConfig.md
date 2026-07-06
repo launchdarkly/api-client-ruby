@@ -16,10 +16,10 @@
 | **variations** | [**Array&lt;AIConfigVariation&gt;**](AIConfigVariation.md) |  |  |
 | **created_at** | **Integer** |  |  |
 | **updated_at** | **Integer** |  |  |
-| **evaluation_metric_key** | **String** | Evaluation metric key for this AI Config | [optional] |
-| **evaluation_metric_keys** | **Array&lt;String&gt;** | List of evaluation metric keys for this AI Config | [optional] |
+| **evaluation_metric_key** | **String** | Evaluation metric key for this config | [optional] |
+| **evaluation_metric_keys** | **Array&lt;String&gt;** | List of evaluation metric keys for this config | [optional] |
 | **is_inverted** | **Boolean** | Whether the evaluation metric is inverted, meaning a lower value is better if set as true | [optional] |
-| **dependencies** | [**Array&lt;AIConfigDependency&gt;**](AIConfigDependency.md) | Resources that depend on this AI Config, grouped by type | [optional] |
+| **dependencies** | [**Array&lt;AIConfigDependency&gt;**](AIConfigDependency.md) | Resources that depend on this config, grouped by type | [optional] |
 
 ## Example
 

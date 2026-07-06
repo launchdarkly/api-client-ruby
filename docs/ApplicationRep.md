@@ -13,7 +13,7 @@
 | **description** | **String** | The application description | [optional] |
 | **key** | **String** | The unique identifier of this application |  |
 | **kind** | **String** | To distinguish the kind of application |  |
-| **_maintainer** | [**MaintainerRep**](MaintainerRep.md) |  | [optional] |
+| **_maintainer** | [**ApplicationMaintainerRep**](ApplicationMaintainerRep.md) |  | [optional] |
 | **name** | **String** | The name of the application |  |
 
 ## Example

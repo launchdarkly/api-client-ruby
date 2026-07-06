@@ -14,6 +14,9 @@
 | **description** | **String** | Description of the change recorded in the audit log entry |  |
 | **short_description** | **String** | Shorter version of the change recorded in the audit log entry |  |
 | **comment** | **String** | Optional comment for the audit log entry | [optional] |
+| **related_flag** | [**RelatedFlag**](RelatedFlag.md) |  | [optional] |
+| **related_experiment** | [**RelatedExperiment**](RelatedExperiment.md) |  | [optional] |
+| **related_ai_config** | [**RelatedAIConfig**](RelatedAIConfig.md) |  | [optional] |
 | **subject** | [**SubjectDataRep**](SubjectDataRep.md) |  | [optional] |
 | **member** | [**MemberDataRep**](MemberDataRep.md) |  | [optional] |
 | **token** | [**TokenSummary**](TokenSummary.md) |  | [optional] |
@@ -45,6 +48,9 @@ instance = LaunchDarklyApi::AuditLogEntryRep.new(
   description: Example, turning on the flag for testing,
   short_description: Example, turning on the flag,
   comment: This is an automated test,
+  related_flag: null,
+  related_experiment: null,
+  related_ai_config: null,
   subject: null,
   member: null,
   token: null,

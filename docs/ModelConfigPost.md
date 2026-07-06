@@ -14,6 +14,7 @@
 | **tags** | **Array&lt;String&gt;** |  | [optional] |
 | **cost_per_input_token** | **Float** | Cost per input token in USD | [optional] |
 | **cost_per_output_token** | **Float** | Cost per output token in USD | [optional] |
+| **cost_per_cached_input_token** | **Float** | Cost per cached input token in USD | [optional] |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = LaunchDarklyApi::ModelConfigPost.new(
   custom_params: null,
   tags: null,
   cost_per_input_token: null,
-  cost_per_output_token: null
+  cost_per_output_token: null,
+  cost_per_cached_input_token: null
 )
 ```
 

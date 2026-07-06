@@ -9,6 +9,7 @@
 | **description** | **String** |  | [optional] |
 | **schema** | **Object** | JSON Schema defining the tool&#39;s parameters for LLM consumption | [optional] |
 | **custom_parameters** | **Object** | Custom metadata and configuration for application-level use (not sent to LLM) | [optional] |
+| **tags** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = LaunchDarklyApi::AIToolPatch.new(
   maintainer_team_key: example-team-key,
   description: null,
   schema: null,
-  custom_parameters: null
+  custom_parameters: null,
+  tags: null
 )
 ```
 

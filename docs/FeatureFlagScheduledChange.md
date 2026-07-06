@@ -7,6 +7,7 @@
 | **_id** | **String** |  |  |
 | **_creation_date** | **Integer** |  |  |
 | **_maintainer_id** | **String** | The ID of the scheduled change maintainer |  |
+| **_maintainer_service_token_id** | **String** | The ID of the service token that created or updated this scheduled change | [optional] |
 | **_version** | **Integer** | Version of the scheduled change |  |
 | **execution_date** | **Integer** |  |  |
 | **instructions** | **Array&lt;Hash&gt;** |  |  |
@@ -22,6 +23,7 @@ instance = LaunchDarklyApi::FeatureFlagScheduledChange.new(
   _id: null,
   _creation_date: null,
   _maintainer_id: 12ab3c45de678910abc12345,
+  _maintainer_service_token_id: null,
   _version: 1,
   execution_date: null,
   instructions: null,

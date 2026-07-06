@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **addresses** | **Array&lt;String&gt;** | A list of the IP addresses LaunchDarkly&#39;s service uses |  |
+| **addresses** | **Array&lt;String&gt;** | A list of IP addresses used by the LaunchDarkly service |  |
 | **outbound_addresses** | **Array&lt;String&gt;** | A list of the IP addresses outgoing webhook notifications use |  |
 
 ## Example

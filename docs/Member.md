@@ -23,8 +23,11 @@
 | **permission_grants** | [**Array&lt;MemberPermissionGrantSummaryRep&gt;**](MemberPermissionGrantSummaryRep.md) | A list of permission grants. Permission grants allow a member to have access to a specific action, without having to create or update a custom role. | [optional] |
 | **creation_date** | **Integer** |  |  |
 | **oauth_providers** | **Array&lt;String&gt;** | A list of OAuth providers | [optional] |
+| **has_password** | **Boolean** | Whether the member has a password set (basic auth). False for OAuth-only or SCIM-provisioned members without a password. | [optional] |
 | **version** | **Integer** | Version of the current configuration | [optional] |
 | **role_attributes** | **Hash&lt;String, Array&gt;** |  | [optional] |
+| **mfa_enforced** | **Boolean** |  | [optional] |
+| **mfa_grace_period_expires_at** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -51,8 +54,11 @@ instance = LaunchDarklyApi::Member.new(
   permission_grants: null,
   creation_date: null,
   oauth_providers: null,
+  has_password: null,
   version: 1,
-  role_attributes: null
+  role_attributes: null,
+  mfa_enforced: null,
+  mfa_grace_period_expires_at: null
 )
 ```
 

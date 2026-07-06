@@ -17,6 +17,7 @@
 | **version** | **Integer** |  |  |
 | **cost_per_input_token** | **Float** | Cost per input token in USD | [optional] |
 | **cost_per_output_token** | **Float** | Cost per output token in USD | [optional] |
+| **cost_per_cached_input_token** | **Float** | Cost per cached input token in USD | [optional] |
 | **is_restricted** | **Boolean** | Whether the model is restricted |  |
 
 ## Example
@@ -38,6 +39,7 @@ instance = LaunchDarklyApi::ModelConfig.new(
   version: null,
   cost_per_input_token: null,
   cost_per_output_token: null,
+  cost_per_cached_input_token: null,
   is_restricted: null
 )
 ```

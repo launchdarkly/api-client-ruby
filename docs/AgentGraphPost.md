@@ -9,7 +9,7 @@
 | **description** | **String** | A description of the agent graph | [optional] |
 | **maintainer_id** | **String** | The ID of the member who maintains this agent graph | [optional] |
 | **maintainer_team_key** | **String** | The key of the team that maintains this agent graph | [optional] |
-| **root_config_key** | **String** | The AI Config key of the root node. A missing root implies a newly created graph with metadata only. | [optional] |
+| **root_config_key** | **String** | The config key of the root node. A missing root implies a newly created graph with metadata only. | [optional] |
 | **edges** | [**Array&lt;AgentGraphEdgePost&gt;**](AgentGraphEdgePost.md) | The edges in the graph. If edges or rootConfigKey is present, both must be present. | [optional] |
 
 ## Example

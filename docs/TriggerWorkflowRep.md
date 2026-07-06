@@ -10,6 +10,8 @@
 | **_maintainer_id** | **String** | The ID of the flag trigger maintainer | [optional] |
 | **_maintainer** | [**MemberSummary**](MemberSummary.md) |  | [optional] |
 | **enabled** | **Boolean** | Whether the flag trigger is currently enabled | [optional] |
+| **_status** | **String** | The trigger state: active, inactive, or failed | [optional] |
+| **_last_failed_at** | **Integer** |  | [optional] |
 | **_integration_key** | **String** | The unique identifier of the integration for your trigger | [optional] |
 | **instructions** | **Array&lt;Hash&gt;** |  | [optional] |
 | **_last_triggered_at** | **Integer** |  | [optional] |
@@ -30,6 +32,8 @@ instance = LaunchDarklyApi::TriggerWorkflowRep.new(
   _maintainer_id: 12ab3c45de678910abc12345,
   _maintainer: null,
   enabled: true,
+  _status: active,
+  _last_failed_at: null,
   _integration_key: generic-trigger,
   instructions: null,
   _last_triggered_at: null,

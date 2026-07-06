@@ -11,7 +11,10 @@
 | **version** | **Float** |  | [optional] |
 | **config** | **Object** | An object with the configuration parameters required for the destination type | [optional] |
 | **on** | **Boolean** | Whether the export is on, that is, the status of the integration | [optional] |
+| **created_at** | **Integer** |  | [optional] |
+| **maintainer_id** | **String** | The ID of the member who maintains this Data Export destination | [optional] |
 | **_access** | [**Access**](Access.md) |  | [optional] |
+| **completed_artifacts** | [**RedshiftDataExportCompletedArtifactsRep**](RedshiftDataExportCompletedArtifactsRep.md) |  | [optional] |
 
 ## Example
 
@@ -26,7 +29,10 @@ instance = LaunchDarklyApi::Destination.new(
   version: 1,
   config: {&quot;project&quot;:&quot;test-prod&quot;,&quot;topic&quot;:&quot;ld-pubsub-test-192301&quot;},
   on: true,
-  _access: null
+  created_at: null,
+  maintainer_id: 569f183514f4432160000007,
+  _access: null,
+  completed_artifacts: null
 )
 ```
 

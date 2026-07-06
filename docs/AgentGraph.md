@@ -9,7 +9,7 @@
 | **name** | **String** | A human-readable name for the agent graph |  |
 | **description** | **String** | A description of the agent graph | [optional] |
 | **_maintainer** | [**AgentGraphMaintainer**](AgentGraphMaintainer.md) |  | [optional] |
-| **root_config_key** | **String** | The AI Config key of the root node | [optional] |
+| **root_config_key** | **String** | The config key of the root node | [optional] |
 | **edges** | [**Array&lt;AgentGraphEdge&gt;**](AgentGraphEdge.md) | The edges in the graph | [optional] |
 | **created_at** | **Integer** |  |  |
 | **updated_at** | **Integer** |  |  |

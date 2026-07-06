@@ -261,7 +261,7 @@ end
 
 Get linked views for a given resource
 
-Get a list of all linked views for a resource. Flags are identified by key. Segments are identified by segment ID.
+Get a list of all linked views for a resource. Flags and AI configs are identified by key. Segments are identified by segment ID.
 
 ### Examples
 
@@ -518,7 +518,7 @@ end
 
 Link resource
 
-Link one or multiple resources to a view by keys, filters, or both: - Link flags using flag keys or filters (maintainerId, maintainerTeamKey, tags, state, query) - Link segments using segment IDs or filters (tags, query, unbounded)  When both keys and filters are provided, resources matching either condition are linked (union). 
+Link one or multiple resources to a view by keys, filters, or both: - Link flags using flag keys or filters (maintainerId, maintainerTeamKey, tags, state, query) - Link segments using segment IDs or filters (tags, query, unbounded) - Link AI configs using config keys  When both keys and filters are provided, resources matching either condition are linked (union). 
 
 ### Examples
 
@@ -597,7 +597,7 @@ end
 
 Unlink resource
 
-Unlink one or multiple resources from a view: - Unlink flags using flag keys - Unlink segments using segment IDs 
+Unlink one or multiple resources from a view: - Unlink flags using flag keys - Unlink segments using segment IDs - Unlink AI configs using config keys 
 
 ### Examples
 

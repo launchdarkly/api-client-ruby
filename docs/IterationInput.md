@@ -12,6 +12,8 @@
 | **treatments** | [**Array&lt;TreatmentInput&gt;**](TreatmentInput.md) |  |  |
 | **flags** | [**Hash&lt;String, FlagInput&gt;**](FlagInput.md) |  |  |
 | **randomization_unit** | **String** | The unit of randomization for this iteration. Defaults to user. | [optional] |
+| **reallocation_frequency_millis** | **Integer** | The cadence (in milliseconds) to update the allocation. | [optional] |
+| **covariate_id** | **String** | The ID of the covariate CSV | [optional] |
 | **attributes** | **Array&lt;String&gt;** | The attributes that this iteration&#39;s results can be sliced by | [optional] |
 
 ## Example
@@ -28,6 +30,8 @@ instance = LaunchDarklyApi::IterationInput.new(
   treatments: null,
   flags: null,
   randomization_unit: user,
+  reallocation_frequency_millis: 3600000,
+  covariate_id: null,
   attributes: [&quot;country&quot;,&quot;device&quot;,&quot;os&quot;]
 )
 ```

@@ -27,11 +27,12 @@
 | **_maintainer** | [**AiConfigsMemberSummary**](AiConfigsMemberSummary.md) |  | [optional] |
 | **description** | **String** | Description of the metric | [optional] |
 | **category** | **String** | The category of the metric | [optional] |
-| **is_numeric** | **Boolean** | For custom metrics, whether to track numeric changes in value against a baseline (&lt;code&gt;true&lt;/code&gt;) or to track a conversion when an end user takes an action (&lt;code&gt;false&lt;/code&gt;). | [optional] |
-| **success_criteria** | **String** | For custom metrics, the success criteria | [optional] |
-| **unit** | **String** | For numeric custom metrics, the unit of measure | [optional] |
+| **is_numeric** | **Boolean** | For custom and trace metrics, whether to track numeric changes in value against a baseline (&lt;code&gt;true&lt;/code&gt;) or to track a conversion when an end user takes an action (&lt;code&gt;false&lt;/code&gt;). | [optional] |
+| **success_criteria** | **String** | For custom and trace metrics, the success criteria | [optional] |
+| **unit** | **String** | For numeric custom and trace metrics, the unit of measure | [optional] |
 | **event_key** | **String** | For custom metrics, the event key to use in your code | [optional] |
-| **randomization_units** | **Array&lt;String&gt;** | An array of randomization units allowed for this metric | [optional] |
+| **randomization_units** | **Array&lt;String&gt;** | Deprecated, use &lt;code&gt;analysisUnits&lt;/code&gt; instead. | [optional] |
+| **analysis_units** | **Array&lt;String&gt;** | An array of analysis units allowed for this metric. | [optional] |
 | **filters** | [**AiConfigsFilter**](AiConfigsFilter.md) |  | [optional] |
 | **unit_aggregation_type** | **String** | The method by which multiple unit event values are aggregated | [optional] |
 | **analysis_type** | **String** | The method for analyzing metric events | [optional] |
@@ -43,6 +44,15 @@
 | **archived_at** | **Integer** |  | [optional] |
 | **selector** | **String** | For click metrics, the CSS selectors | [optional] |
 | **urls** | **Array&lt;Hash&gt;** |  | [optional] |
+| **window_start_offset** | **Integer** | Not yet implemented - The start of the measurement window, in milliseconds relative to the unit&#39;s first exposure to a flag variation | [optional] |
+| **window_end_offset** | **Integer** | Not yet implemented - The end of the measurement window, in milliseconds relative to the unit&#39;s first exposure to a flag variation | [optional] |
+| **winsor_lower_percentile** | **Float** | Lower winsorization percentile, expressed as a percent in the open interval (0, 100). When both bounds are set, defines a two-sided clamp range. Otherwise lower-only winsorization. | [optional] |
+| **winsor_upper_percentile** | **Float** | Upper winsorization percentile, expressed as a percent in the open interval (0, 100). When both bounds are set, must be greater than winsorLowerPercentile. | [optional] |
+| **winsor_exclude_imputed** | **Boolean** | Deprecated and ignored. Use winsorIncludeImputed instead. | [optional] |
+| **winsor_include_imputed** | **Boolean** | When true, the percentile bound calculation includes imputed zeros. Only meaningful when at least one bound is set and the metric includes units that didn&#39;t send events. | [optional] |
+| **trace_query** | **String** | For trace metrics, the trace query to use for the metric. | [optional] |
+| **trace_value_location** | **String** | For trace metrics, the location in the trace to use for numeric values. | [optional] |
+| **denominator** | [**AiConfigsMetricDenominatorRep**](AiConfigsMetricDenominatorRep.md) |  | [optional] |
 
 ## Example
 
@@ -78,6 +88,7 @@ instance = LaunchDarklyApi::AiConfigsMetricListingRep.new(
   unit: null,
   event_key: Order placed,
   randomization_units: [&quot;user&quot;],
+  analysis_units: [&quot;user&quot;],
   filters: null,
   unit_aggregation_type: average,
   analysis_type: mean,
@@ -88,7 +99,16 @@ instance = LaunchDarklyApi::AiConfigsMetricListingRep.new(
   archived: null,
   archived_at: null,
   selector: null,
-  urls: null
+  urls: null,
+  window_start_offset: null,
+  window_end_offset: null,
+  winsor_lower_percentile: 1,
+  winsor_upper_percentile: 99.5,
+  winsor_exclude_imputed: false,
+  winsor_include_imputed: false,
+  trace_query: service.name &#x3D; &quot;checkout&quot;,
+  trace_value_location: duration,
+  denominator: null
 )
 ```
 

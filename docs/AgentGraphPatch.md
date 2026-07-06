@@ -8,7 +8,7 @@
 | **description** | **String** | A description of the agent graph | [optional] |
 | **maintainer_id** | **String** | The ID of the member who maintains this agent graph. Pass an empty string to remove maintainer. | [optional] |
 | **maintainer_team_key** | **String** | The key of the team that maintains this agent graph. Pass an empty string to remove maintainer. | [optional] |
-| **root_config_key** | **String** | The AI Config key of the root node. If present, edges must also be present. | [optional] |
+| **root_config_key** | **String** | The config key of the root node. If present, edges must also be present. | [optional] |
 | **edges** | [**Array&lt;AgentGraphEdge&gt;**](AgentGraphEdge.md) | The edges in the graph. If present, rootConfigKey must also be present. Replaces all existing edges. | [optional] |
 
 ## Example

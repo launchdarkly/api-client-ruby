@@ -15,6 +15,7 @@
 | **model** | **Object** |  |  |
 | **model_config_key** | **String** |  | [optional] |
 | **name** | **String** |  |  |
+| **output_format** | **Hash&lt;String, Object&gt;** | JSON Schema defining the structured output format for the variation. | [optional] |
 | **created_at** | **Integer** |  |  |
 | **version** | **Integer** |  |  |
 | **state** | **String** |  | [optional] |
@@ -41,6 +42,7 @@ instance = LaunchDarklyApi::AIConfigVariation.new(
   model: null,
   model_config_key: null,
   name: null,
+  output_format: null,
   created_at: null,
   version: null,
   state: null,

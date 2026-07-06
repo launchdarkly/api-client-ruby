@@ -11,6 +11,7 @@
 | **description** | **String** |  | [optional] |
 | **schema** | **Object** | JSON Schema defining the tool&#39;s parameters for LLM consumption |  |
 | **custom_parameters** | **Object** | Custom metadata and configuration for application-level use (not sent to LLM) | [optional] |
+| **tags** | **Array&lt;String&gt;** |  | [optional] |
 | **version** | **Integer** |  |  |
 | **created_at** | **Integer** |  |  |
 
@@ -27,6 +28,7 @@ instance = LaunchDarklyApi::AITool.new(
   description: null,
   schema: null,
   custom_parameters: null,
+  tags: null,
   version: null,
   created_at: null
 )

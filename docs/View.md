@@ -13,7 +13,8 @@
 | **key** | **String** | Unique key for the view within the account/project |  |
 | **name** | **String** | Human-readable name for the view |  |
 | **description** | **String** | Optional detailed description of the view |  |
-| **generate_sdk_keys** | **Boolean** | Whether to generate SDK keys for this view. Defaults to false. |  |
+| **_affects_sdk_payload** | **Boolean** | Whether this view is used to filter SDK payloads |  |
+| **generate_sdk_keys** | **Boolean** | Deprecated compatibility field. Mirrors &#x60;_affectsSdkPayload&#x60; during rollout. | [optional][readonly] |
 | **version** | **Integer** | Version number for tracking changes |  |
 | **tags** | **Array&lt;String&gt;** | Tags associated with this view |  |
 | **created_at** | **Integer** |  |  |
@@ -49,6 +50,7 @@ instance = LaunchDarklyApi::View.new(
   key: null,
   name: null,
   description: null,
+  _affects_sdk_payload: null,
   generate_sdk_keys: null,
   version: null,
   tags: null,

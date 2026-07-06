@@ -1047,7 +1047,7 @@ api_instance = LaunchDarklyApi::SegmentsApi.new
 project_key = 'project_key_example' # String | The project key
 environment_key = 'environment_key_example' # String | The environment key
 segment_key = 'segment_key_example' # String | The segment key
-patch_segment_request = LaunchDarklyApi::PatchSegmentRequest.new({instructions: [{"contextKey": "contextKey", "contextKind": "user", "kind": "updateExpiringTarget", "targetType": "included", "value": 1587582000000, "version": 0}]}) # PatchSegmentRequest | 
+patch_segment_request = LaunchDarklyApi::PatchSegmentRequest.new({instructions: [{"kind": "updateExpireUserTargetDate", "targetType": "included", "userKey": "user-key-123abc", "value": 1587582000000, "version": 0}]}) # PatchSegmentRequest | 
 
 begin
   # Update expiring user targets for segment

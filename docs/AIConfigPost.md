@@ -11,8 +11,9 @@
 | **mode** | **String** |  | [optional][default to &#39;completion&#39;] |
 | **name** | **String** |  |  |
 | **tags** | **Array&lt;String&gt;** |  | [optional] |
+| **view_keys** | **Array&lt;String&gt;** |  | [optional] |
 | **default_variation** | [**AIConfigVariationPost**](AIConfigVariationPost.md) |  | [optional] |
-| **evaluation_metric_key** | **String** | Evaluation metric key for this AI Config | [optional] |
+| **evaluation_metric_key** | **String** | Evaluation metric key for this config | [optional] |
 | **is_inverted** | **Boolean** | Whether the evaluation metric is inverted, meaning a lower value is better if set as true | [optional] |
 
 ## Example
@@ -28,6 +29,7 @@ instance = LaunchDarklyApi::AIConfigPost.new(
   mode: null,
   name: null,
   tags: null,
+  view_keys: null,
   default_variation: null,
   evaluation_metric_key: null,
   is_inverted: null

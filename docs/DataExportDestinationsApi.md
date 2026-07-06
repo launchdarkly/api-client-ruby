@@ -8,9 +8,12 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_destination**](DataExportDestinationsApi.md#get_destination) | **GET** /api/v2/destinations/{projectKey}/{environmentKey}/{id} | Get destination |
 | [**get_destinations**](DataExportDestinationsApi.md#get_destinations) | **GET** /api/v2/destinations | List destinations |
 | [**patch_destination**](DataExportDestinationsApi.md#patch_destination) | **PATCH** /api/v2/destinations/{projectKey}/{environmentKey}/{id} | Update Data Export destination |
+| [**post_complete_warehouse_destination_setup**](DataExportDestinationsApi.md#post_complete_warehouse_destination_setup) | **POST** /api/v2/destinations/projects/{projKey}/environments/{envKey}/kinds/{kind}/complete-setup | Complete warehouse destination setup |
 | [**post_destination**](DataExportDestinationsApi.md#post_destination) | **POST** /api/v2/destinations/{projectKey}/{environmentKey} | Create Data Export destination |
+| [**post_generate_project_env_warehouse_destination_key_pair**](DataExportDestinationsApi.md#post_generate_project_env_warehouse_destination_key_pair) | **POST** /api/v2/destinations/projects/{projKey}/environments/{envKey}/generate-warehouse-destination-key-pair | Generate Snowflake destination key pair |
 | [**post_generate_trust_policy**](DataExportDestinationsApi.md#post_generate_trust_policy) | **POST** /api/v2/destinations/projects/{projKey}/environments/{envKey}/generate-trust-policy | Generate trust policy |
 | [**post_generate_warehouse_destination_key_pair**](DataExportDestinationsApi.md#post_generate_warehouse_destination_key_pair) | **POST** /api/v2/destinations/generate-warehouse-destination-key-pair | Generate Snowflake destination key pair |
+| [**post_generate_warehouse_destination_setup_script**](DataExportDestinationsApi.md#post_generate_warehouse_destination_setup_script) | **POST** /api/v2/destinations/projects/{projKey}/environments/{envKey}/kinds/{kind}/setup | Generate warehouse destination setup script |
 
 
 ## delete_destination
@@ -307,6 +310,83 @@ end
 - **Accept**: application/json
 
 
+## post_complete_warehouse_destination_setup
+
+> <Destination> post_complete_warehouse_destination_setup(proj_key, env_key, kind, complete_setup_post_body)
+
+Complete warehouse destination setup
+
+Complete the setup of a warehouse destination by providing the Snowflake host address and the public keys from the /setup response. The custom names are read from the stored configuration.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::DataExportDestinationsApi.new
+proj_key = 'proj_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
+kind = 'kind_example' # String | The destination kind (snowflake-v2, bigquery, clickhouse, redshift)
+complete_setup_post_body = LaunchDarklyApi::CompleteSetupPostBody.new # CompleteSetupPostBody | 
+
+begin
+  # Complete warehouse destination setup
+  result = api_instance.post_complete_warehouse_destination_setup(proj_key, env_key, kind, complete_setup_post_body)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling DataExportDestinationsApi->post_complete_warehouse_destination_setup: #{e}"
+end
+```
+
+#### Using the post_complete_warehouse_destination_setup_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Destination>, Integer, Hash)> post_complete_warehouse_destination_setup_with_http_info(proj_key, env_key, kind, complete_setup_post_body)
+
+```ruby
+begin
+  # Complete warehouse destination setup
+  data, status_code, headers = api_instance.post_complete_warehouse_destination_setup_with_http_info(proj_key, env_key, kind, complete_setup_post_body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Destination>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling DataExportDestinationsApi->post_complete_warehouse_destination_setup_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **proj_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
+| **kind** | **String** | The destination kind (snowflake-v2, bigquery, clickhouse, redshift) |  |
+| **complete_setup_post_body** | [**CompleteSetupPostBody**](CompleteSetupPostBody.md) |  |  |
+
+### Return type
+
+[**Destination**](Destination.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## post_destination
 
 > <Destination> post_destination(project_key, environment_key, destination_post)
@@ -379,6 +459,79 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## post_generate_project_env_warehouse_destination_key_pair
+
+> <GenerateWarehouseDestinationKeyPairPostRep> post_generate_project_env_warehouse_destination_key_pair(proj_key, env_key)
+
+Generate Snowflake destination key pair
+
+Generate key pair to allow Data Export to authenticate into a Snowflake warehouse destination
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::DataExportDestinationsApi.new
+proj_key = 'proj_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
+
+begin
+  # Generate Snowflake destination key pair
+  result = api_instance.post_generate_project_env_warehouse_destination_key_pair(proj_key, env_key)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling DataExportDestinationsApi->post_generate_project_env_warehouse_destination_key_pair: #{e}"
+end
+```
+
+#### Using the post_generate_project_env_warehouse_destination_key_pair_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GenerateWarehouseDestinationKeyPairPostRep>, Integer, Hash)> post_generate_project_env_warehouse_destination_key_pair_with_http_info(proj_key, env_key)
+
+```ruby
+begin
+  # Generate Snowflake destination key pair
+  data, status_code, headers = api_instance.post_generate_project_env_warehouse_destination_key_pair_with_http_info(proj_key, env_key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GenerateWarehouseDestinationKeyPairPostRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling DataExportDestinationsApi->post_generate_project_env_warehouse_destination_key_pair_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **proj_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
+
+### Return type
+
+[**GenerateWarehouseDestinationKeyPairPostRep**](GenerateWarehouseDestinationKeyPairPostRep.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -520,5 +673,84 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## post_generate_warehouse_destination_setup_script
+
+> <WarehouseDestinationSetupScriptRep> post_generate_warehouse_destination_setup_script(proj_key, env_key, kind, opts)
+
+Generate warehouse destination setup script
+
+Generate the SQL setup script required to prepare a warehouse for LaunchDarkly Data Export. For Snowflake, this also generates a key pair. Custom Snowflake object names may be provided. If omitted, defaults are used.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::DataExportDestinationsApi.new
+proj_key = 'proj_key_example' # String | The project key
+env_key = 'env_key_example' # String | The environment key
+kind = 'kind_example' # String | The destination kind (snowflake-v2, redshift, clickhouse)
+opts = {
+  warehouse_setup_script_post_body: LaunchDarklyApi::WarehouseSetupScriptPostBody.new # WarehouseSetupScriptPostBody | 
+}
+
+begin
+  # Generate warehouse destination setup script
+  result = api_instance.post_generate_warehouse_destination_setup_script(proj_key, env_key, kind, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling DataExportDestinationsApi->post_generate_warehouse_destination_setup_script: #{e}"
+end
+```
+
+#### Using the post_generate_warehouse_destination_setup_script_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<WarehouseDestinationSetupScriptRep>, Integer, Hash)> post_generate_warehouse_destination_setup_script_with_http_info(proj_key, env_key, kind, opts)
+
+```ruby
+begin
+  # Generate warehouse destination setup script
+  data, status_code, headers = api_instance.post_generate_warehouse_destination_setup_script_with_http_info(proj_key, env_key, kind, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <WarehouseDestinationSetupScriptRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling DataExportDestinationsApi->post_generate_warehouse_destination_setup_script_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **proj_key** | **String** | The project key |  |
+| **env_key** | **String** | The environment key |  |
+| **kind** | **String** | The destination kind (snowflake-v2, redshift, clickhouse) |  |
+| **warehouse_setup_script_post_body** | [**WarehouseSetupScriptPostBody**](WarehouseSetupScriptPostBody.md) |  | [optional] |
+
+### Return type
+
+[**WarehouseDestinationSetupScriptRep**](WarehouseDestinationSetupScriptRep.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
