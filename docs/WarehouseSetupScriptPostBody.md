@@ -22,6 +22,7 @@
 | **click_house_include_host_restriction** | **Boolean** |  | [optional] |
 | **click_house_service_role_arn** | **String** |  | [optional] |
 | **click_house_password** | **String** |  | [optional] |
+| **s3_bucket_name** | **String** |  | [optional] |
 
 ## Example
 
@@ -46,7 +47,8 @@ instance = LaunchDarklyApi::WarehouseSetupScriptPostBody.new(
   click_house_s3_bucket_name: null,
   click_house_include_host_restriction: null,
   click_house_service_role_arn: null,
-  click_house_password: null
+  click_house_password: null,
+  s3_bucket_name: null
 )
 ```
 

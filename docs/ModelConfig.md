@@ -5,7 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **_access** | [**AiConfigsAccess**](AiConfigsAccess.md) |  | [optional] |
-| **name** | **String** | Human readable name of the model |  |
+| **_maintainer** | [**AIConfigMaintainer**](AIConfigMaintainer.md) |  | [optional] |
+| **name** | **String** | Human-readable name of the model |  |
 | **key** | **String** | Unique key for the model |  |
 | **id** | **String** | Identifier for the model, for use with third party providers |  |
 | **icon** | **String** | Icon for the model | [optional] |
@@ -27,6 +28,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::ModelConfig.new(
   _access: null,
+  _maintainer: null,
   name: null,
   key: null,
   id: null,

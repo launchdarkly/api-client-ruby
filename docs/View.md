@@ -19,8 +19,6 @@
 | **tags** | **Array&lt;String&gt;** | Tags associated with this view |  |
 | **created_at** | **Integer** |  |  |
 | **updated_at** | **Integer** |  |  |
-| **archived** | **Boolean** | Whether this view is archived | [default to false] |
-| **archived_at** | **Integer** |  | [optional] |
 | **deleted_at** | **Integer** |  | [optional] |
 | **deleted** | **Boolean** | Whether this view is deleted | [default to false] |
 | **maintainer** | [**Maintainer**](Maintainer.md) |  | [optional] |
@@ -56,8 +54,6 @@ instance = LaunchDarklyApi::View.new(
   tags: null,
   created_at: null,
   updated_at: null,
-  archived: null,
-  archived_at: null,
   deleted_at: null,
   deleted: null,
   maintainer: null,

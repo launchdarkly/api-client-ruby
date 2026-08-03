@@ -16,7 +16,6 @@
 | **_created_at** | **Integer** |  |  |
 | **_updated_at** | **Integer** |  |  |
 | **_version** | **Integer** | The auto-incremented version number of the SDK key. |  |
-| **view_summaries** | [**Array&lt;ViewSummary&gt;**](ViewSummary.md) | Summaries of views associated with the SDK key. | [optional] |
 
 ## Example
 
@@ -35,8 +34,7 @@ instance = LaunchDarklyApi::SdkKey.new(
   _created_by_member_id: null,
   _created_at: null,
   _updated_at: null,
-  _version: null,
-  view_summaries: null
+  _version: null
 )
 ```
 

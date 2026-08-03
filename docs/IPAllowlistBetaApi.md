@@ -154,7 +154,7 @@ nil (empty response body)
 
 ## get_ip_allowlist
 
-> <IpAllowlistResponse> get_ip_allowlist
+> <IpAllowlistResponse> get_ip_allowlist(opts)
 
 Get IP Allowlist
 
@@ -174,10 +174,15 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::IPAllowlistBetaApi.new
+opts = {
+  search: 'search_example', # String | A case-insensitive substring to filter entries by. Matches against the IP address or CIDR block and the description.
+  limit: 56, # Integer | The number of entries to return. When omitted, all matching entries are returned. Maximum is 100.
+  offset: 56 # Integer | The number of entries to skip. Used for pagination.
+}
 
 begin
   # Get IP Allowlist
-  result = api_instance.get_ip_allowlist
+  result = api_instance.get_ip_allowlist(opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling IPAllowlistBetaApi->get_ip_allowlist: #{e}"
@@ -188,12 +193,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<IpAllowlistResponse>, Integer, Hash)> get_ip_allowlist_with_http_info
+> <Array(<IpAllowlistResponse>, Integer, Hash)> get_ip_allowlist_with_http_info(opts)
 
 ```ruby
 begin
   # Get IP Allowlist
-  data, status_code, headers = api_instance.get_ip_allowlist_with_http_info
+  data, status_code, headers = api_instance.get_ip_allowlist_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <IpAllowlistResponse>
@@ -204,7 +209,11 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **search** | **String** | A case-insensitive substring to filter entries by. Matches against the IP address or CIDR block and the description. | [optional] |
+| **limit** | **Integer** | The number of entries to return. When omitted, all matching entries are returned. Maximum is 100. | [optional] |
+| **offset** | **Integer** | The number of entries to skip. Used for pagination. | [optional] |
 
 ### Return type
 

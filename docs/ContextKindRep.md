@@ -11,6 +11,7 @@
 | **creation_date** | **Integer** |  |  |
 | **last_modified** | **Integer** |  |  |
 | **last_seen** | **Integer** |  | [optional] |
+| **environment_observations** | [**Array&lt;ContextKindEnvironmentObservation&gt;**](ContextKindEnvironmentObservation.md) | Recent environment observations retained from flag evaluations. This is not a complete historical record. | [optional] |
 | **created_from** | **String** |  |  |
 | **hide_in_targeting** | **Boolean** | Alias for archived. | [optional] |
 | **archived** | **Boolean** | Whether the context kind is archived. Archived context kinds are unavailable for targeting. | [optional] |
@@ -29,6 +30,7 @@ instance = LaunchDarklyApi::ContextKindRep.new(
   creation_date: null,
   last_modified: null,
   last_seen: null,
+  environment_observations: null,
   created_from: null,
   hide_in_targeting: false,
   archived: false,

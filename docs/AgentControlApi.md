@@ -7,6 +7,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**delete_agent_graph**](AgentControlApi.md#delete_agent_graph) | **DELETE** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Delete agent graph |
 | [**delete_agent_optimization**](AgentControlApi.md#delete_agent_optimization) | **DELETE** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey} | Delete an agent optimization |
 | [**delete_agent_optimization_run**](AgentControlApi.md#delete_agent_optimization_run) | **DELETE** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/runs/{runId} | Delete an agent optimization run |
+| [**delete_agent_skill**](AgentControlApi.md#delete_agent_skill) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/skills/{skillKey} | Delete an agent skill |
 | [**delete_ai_config**](AgentControlApi.md#delete_ai_config) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Delete AI Config |
 | [**delete_ai_config_variation**](AgentControlApi.md#delete_ai_config_variation) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Delete AI Config variation |
 | [**delete_ai_tool**](AgentControlApi.md#delete_ai_tool) | **DELETE** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Delete AI tool |
@@ -15,6 +16,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**delete_restricted_models**](AgentControlApi.md#delete_restricted_models) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/model-configs/restricted | Remove AI models from the restricted list |
 | [**get_agent_graph**](AgentControlApi.md#get_agent_graph) | **GET** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Get agent graph |
 | [**get_agent_optimization**](AgentControlApi.md#get_agent_optimization) | **GET** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey} | Get an agent optimization |
+| [**get_agent_skill**](AgentControlApi.md#get_agent_skill) | **GET** /api/v2/projects/{projectKey}/ai-configs/skills/{skillKey} | Get an agent skill |
 | [**get_ai_config**](AgentControlApi.md#get_ai_config) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Get AI Config |
 | [**get_ai_config_metrics**](AgentControlApi.md#get_ai_config_metrics) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics | Get AI Config metrics |
 | [**get_ai_config_metrics_by_variation**](AgentControlApi.md#get_ai_config_metrics_by_variation) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics-by-variation | Get AI Config metrics by variation |
@@ -29,9 +31,13 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**list_agent_optimization_results**](AgentControlApi.md#list_agent_optimization_results) | **GET** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/results | List agent optimization runs |
 | [**list_agent_optimization_results_by_run_id**](AgentControlApi.md#list_agent_optimization_results_by_run_id) | **GET** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/runs/{runId}/results | List agent optimization results for a run |
 | [**list_agent_optimizations**](AgentControlApi.md#list_agent_optimizations) | **GET** /api/v2/projects/{projectKey}/agent-optimizations | List agent optimizations |
+| [**list_agent_skill_references**](AgentControlApi.md#list_agent_skill_references) | **GET** /api/v2/projects/{projectKey}/ai-configs/skills/{skillKey}/references | List agent skill references |
+| [**list_agent_skill_versions**](AgentControlApi.md#list_agent_skill_versions) | **GET** /api/v2/projects/{projectKey}/ai-configs/skills/{skillKey}/versions | List agent skill versions |
+| [**list_agent_skills**](AgentControlApi.md#list_agent_skills) | **GET** /api/v2/projects/{projectKey}/ai-configs/skills | List agent skills |
 | [**list_ai_tool_versions**](AgentControlApi.md#list_ai_tool_versions) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey}/versions | List AI tool versions |
 | [**list_ai_tools**](AgentControlApi.md#list_ai_tools) | **GET** /api/v2/projects/{projectKey}/ai-tools | List AI tools |
 | [**list_all_agent_optimization_results**](AgentControlApi.md#list_all_agent_optimization_results) | **GET** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/all-results | List all agent optimization results across versions |
+| [**list_model_config_versions**](AgentControlApi.md#list_model_config_versions) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey}/versions | List AI model config versions |
 | [**list_model_configs**](AgentControlApi.md#list_model_configs) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs | List AI model configs |
 | [**list_prompt_snippet_references**](AgentControlApi.md#list_prompt_snippet_references) | **GET** /api/v2/projects/{projectKey}/ai-configs/prompt-snippets/{snippetKey}/references | List prompt snippet references |
 | [**list_prompt_snippet_versions**](AgentControlApi.md#list_prompt_snippet_versions) | **GET** /api/v2/projects/{projectKey}/ai-configs/prompt-snippets/{snippetKey}/versions | List prompt snippet versions |
@@ -39,14 +45,17 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**patch_agent_graph**](AgentControlApi.md#patch_agent_graph) | **PATCH** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Update agent graph |
 | [**patch_agent_optimization**](AgentControlApi.md#patch_agent_optimization) | **PATCH** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey} | Update an agent optimization |
 | [**patch_agent_optimization_result**](AgentControlApi.md#patch_agent_optimization_result) | **PATCH** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/results/{resultId} | Update an agent optimization result |
+| [**patch_agent_skill**](AgentControlApi.md#patch_agent_skill) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/skills/{skillKey} | Update an agent skill |
 | [**patch_ai_config**](AgentControlApi.md#patch_ai_config) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Update AI Config |
 | [**patch_ai_config_targeting**](AgentControlApi.md#patch_ai_config_targeting) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting | Update AI Config targeting |
 | [**patch_ai_config_variation**](AgentControlApi.md#patch_ai_config_variation) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Update AI Config variation |
 | [**patch_ai_tool**](AgentControlApi.md#patch_ai_tool) | **PATCH** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Update AI tool |
+| [**patch_model_config**](AgentControlApi.md#patch_model_config) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Update an AI model config |
 | [**patch_prompt_snippet**](AgentControlApi.md#patch_prompt_snippet) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/prompt-snippets/{snippetKey} | Update a prompt snippet |
 | [**post_agent_graph**](AgentControlApi.md#post_agent_graph) | **POST** /api/v2/projects/{projectKey}/agent-graphs | Create new agent graph |
 | [**post_agent_optimization**](AgentControlApi.md#post_agent_optimization) | **POST** /api/v2/projects/{projectKey}/agent-optimizations | Create agent optimization |
 | [**post_agent_optimization_result**](AgentControlApi.md#post_agent_optimization_result) | **POST** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/results | Create agent optimization result |
+| [**post_agent_skill**](AgentControlApi.md#post_agent_skill) | **POST** /api/v2/projects/{projectKey}/ai-configs/skills | Create an agent skill |
 | [**post_ai_config**](AgentControlApi.md#post_ai_config) | **POST** /api/v2/projects/{projectKey}/ai-configs | Create new AI Config |
 | [**post_ai_config_variation**](AgentControlApi.md#post_ai_config_variation) | **POST** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations | Create AI Config variation |
 | [**post_ai_tool**](AgentControlApi.md#post_ai_tool) | **POST** /api/v2/projects/{projectKey}/ai-tools | Create an AI tool |
@@ -262,6 +271,78 @@ end
 | **project_key** | **String** |  |  |
 | **optimization_key** | **String** |  |  |
 | **run_id** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_agent_skill
+
+> delete_agent_skill(project_key, skill_key)
+
+Delete an agent skill
+
+Delete an agent skill, including all of its versions.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AgentControlApi.new
+project_key = 'project_key_example' # String | 
+skill_key = 'skill_key_example' # String | 
+
+begin
+  # Delete an agent skill
+  api_instance.delete_agent_skill(project_key, skill_key)
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->delete_agent_skill: #{e}"
+end
+```
+
+#### Using the delete_agent_skill_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_agent_skill_with_http_info(project_key, skill_key)
+
+```ruby
+begin
+  # Delete an agent skill
+  data, status_code, headers = api_instance.delete_agent_skill_with_http_info(project_key, skill_key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->delete_agent_skill_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** |  |  |
+| **skill_key** | **String** |  |  |
 
 ### Return type
 
@@ -848,6 +929,79 @@ end
 ### Return type
 
 [**AgentOptimization**](AgentOptimization.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_skill
+
+> <AgentSkill> get_agent_skill(project_key, skill_key)
+
+Get an agent skill
+
+Retrieve a specific agent skill by its key.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AgentControlApi.new
+project_key = 'project_key_example' # String | 
+skill_key = 'skill_key_example' # String | 
+
+begin
+  # Get an agent skill
+  result = api_instance.get_agent_skill(project_key, skill_key)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->get_agent_skill: #{e}"
+end
+```
+
+#### Using the get_agent_skill_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AgentSkill>, Integer, Hash)> get_agent_skill_with_http_info(project_key, skill_key)
+
+```ruby
+begin
+  # Get an agent skill
+  data, status_code, headers = api_instance.get_agent_skill_with_http_info(project_key, skill_key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AgentSkill>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->get_agent_skill_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** |  |  |
+| **skill_key** | **String** |  |  |
+
+### Return type
+
+[**AgentSkill**](AgentSkill.md)
 
 ### Authorization
 
@@ -1479,11 +1633,11 @@ end
 
 ## get_model_config
 
-> <ModelConfig> get_model_config(project_key, model_config_key)
+> <ModelConfig> get_model_config(project_key, model_config_key, opts)
 
 Get AI model config
 
-Get an AI model config by key.
+Get an AI model config by key. Specify a version to retrieve a historical custom model config version. Global model configs accept version 0 or 1 and return their current representation.
 
 ### Examples
 
@@ -1501,10 +1655,13 @@ end
 api_instance = LaunchDarklyApi::AgentControlApi.new
 project_key = 'default' # String | 
 model_config_key = 'default' # String | 
+opts = {
+  version: 56 # Integer | Specific model config version to return. Omit to return the latest version.
+}
 
 begin
   # Get AI model config
-  result = api_instance.get_model_config(project_key, model_config_key)
+  result = api_instance.get_model_config(project_key, model_config_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling AgentControlApi->get_model_config: #{e}"
@@ -1515,12 +1672,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ModelConfig>, Integer, Hash)> get_model_config_with_http_info(project_key, model_config_key)
+> <Array(<ModelConfig>, Integer, Hash)> get_model_config_with_http_info(project_key, model_config_key, opts)
 
 ```ruby
 begin
   # Get AI model config
-  data, status_code, headers = api_instance.get_model_config_with_http_info(project_key, model_config_key)
+  data, status_code, headers = api_instance.get_model_config_with_http_info(project_key, model_config_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ModelConfig>
@@ -1535,6 +1692,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** |  |  |
 | **model_config_key** | **String** |  |  |
+| **version** | **Integer** | Specific model config version to return. Omit to return the latest version. | [optional] |
 
 ### Return type
 
@@ -1937,6 +2095,243 @@ end
 - **Accept**: application/json
 
 
+## list_agent_skill_references
+
+> <AgentSkillReferences> list_agent_skill_references(project_key, skill_key, opts)
+
+List agent skill references
+
+Get all config variations that currently reference this agent skill.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AgentControlApi.new
+project_key = 'project_key_example' # String | 
+skill_key = 'skill_key_example' # String | 
+opts = {
+  limit: 56, # Integer | The number of resources to return.
+  offset: 56 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+}
+
+begin
+  # List agent skill references
+  result = api_instance.list_agent_skill_references(project_key, skill_key, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->list_agent_skill_references: #{e}"
+end
+```
+
+#### Using the list_agent_skill_references_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AgentSkillReferences>, Integer, Hash)> list_agent_skill_references_with_http_info(project_key, skill_key, opts)
+
+```ruby
+begin
+  # List agent skill references
+  data, status_code, headers = api_instance.list_agent_skill_references_with_http_info(project_key, skill_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AgentSkillReferences>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->list_agent_skill_references_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** |  |  |
+| **skill_key** | **String** |  |  |
+| **limit** | **Integer** | The number of resources to return. | [optional] |
+| **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
+
+### Return type
+
+[**AgentSkillReferences**](AgentSkillReferences.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_agent_skill_versions
+
+> <AgentSkills> list_agent_skill_versions(project_key, skill_key, opts)
+
+List agent skill versions
+
+Get all versions of an agent skill in the given project, ordered by version descending.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AgentControlApi.new
+project_key = 'project_key_example' # String | 
+skill_key = 'skill_key_example' # String | 
+opts = {
+  limit: 56, # Integer | The number of resources to return.
+  offset: 56 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+}
+
+begin
+  # List agent skill versions
+  result = api_instance.list_agent_skill_versions(project_key, skill_key, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->list_agent_skill_versions: #{e}"
+end
+```
+
+#### Using the list_agent_skill_versions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AgentSkills>, Integer, Hash)> list_agent_skill_versions_with_http_info(project_key, skill_key, opts)
+
+```ruby
+begin
+  # List agent skill versions
+  data, status_code, headers = api_instance.list_agent_skill_versions_with_http_info(project_key, skill_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AgentSkills>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->list_agent_skill_versions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** |  |  |
+| **skill_key** | **String** |  |  |
+| **limit** | **Integer** | The number of resources to return. | [optional] |
+| **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
+
+### Return type
+
+[**AgentSkills**](AgentSkills.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_agent_skills
+
+> <AgentSkills> list_agent_skills(project_key, opts)
+
+List agent skills
+
+Get a list of all agent skills in the given project.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AgentControlApi.new
+project_key = 'project_key_example' # String | 
+opts = {
+  limit: 56, # Integer | The number of resources to return.
+  offset: 56, # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+  filter: 'filter_example' # String | A filter to apply to the list.
+}
+
+begin
+  # List agent skills
+  result = api_instance.list_agent_skills(project_key, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->list_agent_skills: #{e}"
+end
+```
+
+#### Using the list_agent_skills_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AgentSkills>, Integer, Hash)> list_agent_skills_with_http_info(project_key, opts)
+
+```ruby
+begin
+  # List agent skills
+  data, status_code, headers = api_instance.list_agent_skills_with_http_info(project_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AgentSkills>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->list_agent_skills_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** |  |  |
+| **limit** | **Integer** | The number of resources to return. | [optional] |
+| **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
+| **filter** | **String** | A filter to apply to the list. | [optional] |
+
+### Return type
+
+[**AgentSkills**](AgentSkills.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_ai_tool_versions
 
 > <AITools> list_ai_tool_versions(project_key, tool_key, opts)
@@ -2167,6 +2562,85 @@ end
 ### Return type
 
 [**AgentOptimizationResults**](AgentOptimizationResults.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_model_config_versions
+
+> <ModelConfigs> list_model_config_versions(project_key, model_config_key, opts)
+
+List AI model config versions
+
+Get a paginated list of all available versions of an AI model config, ordered from newest to oldest. Global model configs return their single current representation.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AgentControlApi.new
+project_key = 'default' # String | 
+model_config_key = 'default' # String | 
+opts = {
+  limit: 56, # Integer | The number of resources to return.
+  offset: 56 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+}
+
+begin
+  # List AI model config versions
+  result = api_instance.list_model_config_versions(project_key, model_config_key, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->list_model_config_versions: #{e}"
+end
+```
+
+#### Using the list_model_config_versions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ModelConfigs>, Integer, Hash)> list_model_config_versions_with_http_info(project_key, model_config_key, opts)
+
+```ruby
+begin
+  # List AI model config versions
+  data, status_code, headers = api_instance.list_model_config_versions_with_http_info(project_key, model_config_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ModelConfigs>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->list_model_config_versions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** |  |  |
+| **model_config_key** | **String** |  |  |
+| **limit** | **Integer** | The number of resources to return. | [optional] |
+| **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
+
+### Return type
+
+[**ModelConfigs**](ModelConfigs.md)
 
 ### Authorization
 
@@ -2721,6 +3195,81 @@ end
 - **Accept**: application/json
 
 
+## patch_agent_skill
+
+> <AgentSkill> patch_agent_skill(project_key, skill_key, agent_skill_patch)
+
+Update an agent skill
+
+Update an existing agent skill. Creates a new version of the skill.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AgentControlApi.new
+project_key = 'project_key_example' # String | 
+skill_key = 'skill_key_example' # String | 
+agent_skill_patch = LaunchDarklyApi::AgentSkillPatch.new # AgentSkillPatch | Agent skill fields to update
+
+begin
+  # Update an agent skill
+  result = api_instance.patch_agent_skill(project_key, skill_key, agent_skill_patch)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->patch_agent_skill: #{e}"
+end
+```
+
+#### Using the patch_agent_skill_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AgentSkill>, Integer, Hash)> patch_agent_skill_with_http_info(project_key, skill_key, agent_skill_patch)
+
+```ruby
+begin
+  # Update an agent skill
+  data, status_code, headers = api_instance.patch_agent_skill_with_http_info(project_key, skill_key, agent_skill_patch)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AgentSkill>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->patch_agent_skill_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** |  |  |
+| **skill_key** | **String** |  |  |
+| **agent_skill_patch** | [**AgentSkillPatch**](AgentSkillPatch.md) | Agent skill fields to update |  |
+
+### Return type
+
+[**AgentSkill**](AgentSkill.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## patch_ai_config
 
 > <AIConfig> patch_ai_config(project_key, config_key, opts)
@@ -3031,6 +3580,81 @@ end
 - **Accept**: application/json
 
 
+## patch_model_config
+
+> <ModelConfig> patch_model_config(project_key, model_config_key, model_config_patch)
+
+Update an AI model config
+
+Update an AI model config.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AgentControlApi.new
+project_key = 'default' # String | 
+model_config_key = 'model_config_key_example' # String | 
+model_config_patch = LaunchDarklyApi::ModelConfigPatch.new # ModelConfigPatch | AI model config object to update
+
+begin
+  # Update an AI model config
+  result = api_instance.patch_model_config(project_key, model_config_key, model_config_patch)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->patch_model_config: #{e}"
+end
+```
+
+#### Using the patch_model_config_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ModelConfig>, Integer, Hash)> patch_model_config_with_http_info(project_key, model_config_key, model_config_patch)
+
+```ruby
+begin
+  # Update an AI model config
+  data, status_code, headers = api_instance.patch_model_config_with_http_info(project_key, model_config_key, model_config_patch)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ModelConfig>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->patch_model_config_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** |  |  |
+| **model_config_key** | **String** |  |  |
+| **model_config_patch** | [**ModelConfigPatch**](ModelConfigPatch.md) | AI model config object to update |  |
+
+### Return type
+
+[**ModelConfig**](ModelConfig.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## patch_prompt_snippet
 
 > <PromptSnippet> patch_prompt_snippet(project_key, snippet_key, prompt_snippet_patch)
@@ -3318,6 +3942,79 @@ end
 ### Return type
 
 [**AgentOptimizationResult**](AgentOptimizationResult.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## post_agent_skill
+
+> <AgentSkill> post_agent_skill(project_key, agent_skill_post)
+
+Create an agent skill
+
+Create a new agent skill within the given project.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AgentControlApi.new
+project_key = 'project_key_example' # String | 
+agent_skill_post = LaunchDarklyApi::AgentSkillPost.new({key: 'key_example', name: 'name_example', markdown: 'markdown_example'}) # AgentSkillPost | Agent skill object to create
+
+begin
+  # Create an agent skill
+  result = api_instance.post_agent_skill(project_key, agent_skill_post)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->post_agent_skill: #{e}"
+end
+```
+
+#### Using the post_agent_skill_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AgentSkill>, Integer, Hash)> post_agent_skill_with_http_info(project_key, agent_skill_post)
+
+```ruby
+begin
+  # Create an agent skill
+  data, status_code, headers = api_instance.post_agent_skill_with_http_info(project_key, agent_skill_post)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AgentSkill>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->post_agent_skill_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** |  |  |
+| **agent_skill_post** | [**AgentSkillPost**](AgentSkillPost.md) | Agent skill object to create |  |
+
+### Return type
+
+[**AgentSkill**](AgentSkill.md)
 
 ### Authorization
 

@@ -12,6 +12,7 @@
 | **unit_aggregation_type** | **String** | The type of unit aggregation to use for the metric | [optional] |
 | **analysis_type** | **String** | The method for analyzing metric events | [optional] |
 | **event_key** | **String** | The event key sent with the metric. Only relevant for custom metrics. | [optional] |
+| **analysis_unit** | **String** | The context kind used as the analysis unit for this metric in the experiment iteration | [optional] |
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
 
 ## Example
@@ -28,6 +29,7 @@ instance = LaunchDarklyApi::MetricV2Rep.new(
   unit_aggregation_type: sum,
   analysis_type: mean,
   event_key: event-key-123abc,
+  analysis_unit: null,
   _links: {&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/metrics/my-project/my-metric&quot;,&quot;type&quot;:&quot;application/json&quot;}}
 )
 ```

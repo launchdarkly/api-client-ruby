@@ -22,6 +22,7 @@
 | **_archived_at** | **Integer** |  | [optional] |
 | **_published_at** | **Integer** |  | [optional] |
 | **tools** | [**Array&lt;VariationTool&gt;**](VariationTool.md) |  | [optional] |
+| **skills** | [**Array&lt;VariationSkill&gt;**](VariationSkill.md) |  | [optional] |
 | **judge_configuration** | [**JudgeConfiguration**](JudgeConfiguration.md) |  | [optional] |
 | **judging_config_keys** | **Array&lt;String&gt;** |  | [optional] |
 
@@ -49,6 +50,7 @@ instance = LaunchDarklyApi::AIConfigVariation.new(
   _archived_at: null,
   _published_at: null,
   tools: null,
+  skills: null,
   judge_configuration: null,
   judging_config_keys: null
 )

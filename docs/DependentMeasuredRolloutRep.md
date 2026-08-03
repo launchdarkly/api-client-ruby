@@ -28,7 +28,7 @@ instance = LaunchDarklyApi::DependentMeasuredRolloutRep.new(
   environment_name: Production,
   status: monitoring,
   creation_date: null,
-  _links: {&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/projects/my-project/flags/my-flag/environments/production/measured-rollouts/885ccadf-181b-4a9a-8414-7ad6f7ba2db0&quot;,&quot;type&quot;:&quot;application/json&quot;}}
+  _links: {&quot;self&quot;:{&quot;href&quot;:&quot;/internal/projects/my-project/environments/production/automated-releases/885ccadf-181b-4a9a-8414-7ad6f7ba2db0&quot;,&quot;type&quot;:&quot;application/json&quot;}}
 )
 ```
 

@@ -70,6 +70,12 @@ docs/AgentOptimizationResults.md
 docs/AgentOptimizationRun.md
 docs/AgentOptimizationRuns.md
 docs/AgentOptimizations.md
+docs/AgentSkill.md
+docs/AgentSkillPatch.md
+docs/AgentSkillPost.md
+docs/AgentSkillReference.md
+docs/AgentSkillReferences.md
+docs/AgentSkills.md
 docs/AiConfigsAccess.md
 docs/AiConfigsAccessAllowedReason.md
 docs/AiConfigsAccessAllowedRep.md
@@ -170,6 +176,7 @@ docs/ContextInstanceSearch.md
 docs/ContextInstanceSegmentMembership.md
 docs/ContextInstanceSegmentMemberships.md
 docs/ContextInstances.md
+docs/ContextKindEnvironmentObservation.md
 docs/ContextKindRep.md
 docs/ContextKindsCollectionRep.md
 docs/ContextRecord.md
@@ -349,6 +356,7 @@ docs/HoldoutsApi.md
 docs/HoldoutsCollectionRep.md
 docs/HunkRep.md
 docs/IPAllowlistBetaApi.md
+docs/IPAllowlistSelfLink.md
 docs/Import.md
 docs/InitiatorRep.md
 docs/InsightGroup.md
@@ -458,7 +466,9 @@ docs/MetricsSummary.md
 docs/MigrationSafetyIssueRep.md
 docs/MigrationSettingsPost.md
 docs/ModelConfig.md
+docs/ModelConfigPatch.md
 docs/ModelConfigPost.md
+docs/ModelConfigs.md
 docs/Modification.md
 docs/MultiEnvironmentDependentFlag.md
 docs/MultiEnvironmentDependentFlags.md
@@ -575,9 +585,14 @@ docs/RuleClause.md
 docs/SDKKeysBetaApi.md
 docs/ScheduledChangesApi.md
 docs/SdkKey.md
+docs/SdkKeyForPutSdkKeyViews.md
 docs/SdkKeyKind.md
+docs/SdkKeyListItem.md
 docs/SdkKeyPatch.md
 docs/SdkKeyPost.md
+docs/SdkKeysEnvironmentSummary.md
+docs/SdkKeysForGetSdkKeys.md
+docs/SdkKeysSelfLink.md
 docs/SdkListRep.md
 docs/SdkVersionDetailsRep.md
 docs/SdkVersionListRep.md
@@ -598,6 +613,7 @@ docs/SourceEnv.md
 docs/SourceFlag.md
 docs/StageInput.md
 docs/StageOutput.md
+docs/StaleFlagData.md
 docs/Statement.md
 docs/StatementPost.md
 docs/StatisticCollectionRep.md
@@ -666,6 +682,8 @@ docs/ValuePut.md
 docs/Variation.md
 docs/VariationEvalSummary.md
 docs/VariationOrRolloutRep.md
+docs/VariationSkill.md
+docs/VariationSkillPost.md
 docs/VariationSummary.md
 docs/VariationTool.md
 docs/VariationToolPost.md
@@ -804,6 +822,12 @@ lib/launchdarkly_api/models/agent_optimization_results.rb
 lib/launchdarkly_api/models/agent_optimization_run.rb
 lib/launchdarkly_api/models/agent_optimization_runs.rb
 lib/launchdarkly_api/models/agent_optimizations.rb
+lib/launchdarkly_api/models/agent_skill.rb
+lib/launchdarkly_api/models/agent_skill_patch.rb
+lib/launchdarkly_api/models/agent_skill_post.rb
+lib/launchdarkly_api/models/agent_skill_reference.rb
+lib/launchdarkly_api/models/agent_skill_references.rb
+lib/launchdarkly_api/models/agent_skills.rb
 lib/launchdarkly_api/models/ai_config.rb
 lib/launchdarkly_api/models/ai_config_dependency.rb
 lib/launchdarkly_api/models/ai_config_maintainer.rb
@@ -927,6 +951,7 @@ lib/launchdarkly_api/models/context_instance_search.rb
 lib/launchdarkly_api/models/context_instance_segment_membership.rb
 lib/launchdarkly_api/models/context_instance_segment_memberships.rb
 lib/launchdarkly_api/models/context_instances.rb
+lib/launchdarkly_api/models/context_kind_environment_observation.rb
 lib/launchdarkly_api/models/context_kind_rep.rb
 lib/launchdarkly_api/models/context_kinds_collection_rep.rb
 lib/launchdarkly_api/models/context_record.rb
@@ -1137,6 +1162,7 @@ lib/launchdarkly_api/models/integrations.rb
 lib/launchdarkly_api/models/invalid_request_error_rep.rb
 lib/launchdarkly_api/models/ip_allowlist_entry_response.rb
 lib/launchdarkly_api/models/ip_allowlist_response.rb
+lib/launchdarkly_api/models/ip_allowlist_self_link.rb
 lib/launchdarkly_api/models/ip_list.rb
 lib/launchdarkly_api/models/iteration_input.rb
 lib/launchdarkly_api/models/iteration_rep.rb
@@ -1189,7 +1215,9 @@ lib/launchdarkly_api/models/metrics_summary.rb
 lib/launchdarkly_api/models/migration_safety_issue_rep.rb
 lib/launchdarkly_api/models/migration_settings_post.rb
 lib/launchdarkly_api/models/model_config.rb
+lib/launchdarkly_api/models/model_config_patch.rb
 lib/launchdarkly_api/models/model_config_post.rb
+lib/launchdarkly_api/models/model_configs.rb
 lib/launchdarkly_api/models/modification.rb
 lib/launchdarkly_api/models/multi_environment_dependent_flag.rb
 lib/launchdarkly_api/models/multi_environment_dependent_flags.rb
@@ -1296,9 +1324,14 @@ lib/launchdarkly_api/models/root_response.rb
 lib/launchdarkly_api/models/rule.rb
 lib/launchdarkly_api/models/rule_clause.rb
 lib/launchdarkly_api/models/sdk_key.rb
+lib/launchdarkly_api/models/sdk_key_for_put_sdk_key_views.rb
 lib/launchdarkly_api/models/sdk_key_kind.rb
+lib/launchdarkly_api/models/sdk_key_list_item.rb
 lib/launchdarkly_api/models/sdk_key_patch.rb
 lib/launchdarkly_api/models/sdk_key_post.rb
+lib/launchdarkly_api/models/sdk_keys_environment_summary.rb
+lib/launchdarkly_api/models/sdk_keys_for_get_sdk_keys.rb
+lib/launchdarkly_api/models/sdk_keys_self_link.rb
 lib/launchdarkly_api/models/sdk_list_rep.rb
 lib/launchdarkly_api/models/sdk_version_details_rep.rb
 lib/launchdarkly_api/models/sdk_version_list_rep.rb
@@ -1318,6 +1351,7 @@ lib/launchdarkly_api/models/source_env.rb
 lib/launchdarkly_api/models/source_flag.rb
 lib/launchdarkly_api/models/stage_input.rb
 lib/launchdarkly_api/models/stage_output.rb
+lib/launchdarkly_api/models/stale_flag_data.rb
 lib/launchdarkly_api/models/statement.rb
 lib/launchdarkly_api/models/statement_post.rb
 lib/launchdarkly_api/models/statistic_collection_rep.rb
@@ -1381,6 +1415,8 @@ lib/launchdarkly_api/models/value_put.rb
 lib/launchdarkly_api/models/variation.rb
 lib/launchdarkly_api/models/variation_eval_summary.rb
 lib/launchdarkly_api/models/variation_or_rollout_rep.rb
+lib/launchdarkly_api/models/variation_skill.rb
+lib/launchdarkly_api/models/variation_skill_post.rb
 lib/launchdarkly_api/models/variation_summary.rb
 lib/launchdarkly_api/models/variation_tool.rb
 lib/launchdarkly_api/models/variation_tool_post.rb
@@ -1509,6 +1545,12 @@ spec/models/agent_optimization_run_spec.rb
 spec/models/agent_optimization_runs_spec.rb
 spec/models/agent_optimization_spec.rb
 spec/models/agent_optimizations_spec.rb
+spec/models/agent_skill_patch_spec.rb
+spec/models/agent_skill_post_spec.rb
+spec/models/agent_skill_reference_spec.rb
+spec/models/agent_skill_references_spec.rb
+spec/models/agent_skill_spec.rb
+spec/models/agent_skills_spec.rb
 spec/models/ai_config_dependency_spec.rb
 spec/models/ai_config_maintainer_spec.rb
 spec/models/ai_config_patch_spec.rb
@@ -1632,6 +1674,7 @@ spec/models/context_instance_search_spec.rb
 spec/models/context_instance_segment_membership_spec.rb
 spec/models/context_instance_segment_memberships_spec.rb
 spec/models/context_instances_spec.rb
+spec/models/context_kind_environment_observation_spec.rb
 spec/models/context_kind_rep_spec.rb
 spec/models/context_kinds_collection_rep_spec.rb
 spec/models/context_record_spec.rb
@@ -1842,6 +1885,7 @@ spec/models/integrations_spec.rb
 spec/models/invalid_request_error_rep_spec.rb
 spec/models/ip_allowlist_entry_response_spec.rb
 spec/models/ip_allowlist_response_spec.rb
+spec/models/ip_allowlist_self_link_spec.rb
 spec/models/ip_list_spec.rb
 spec/models/iteration_input_spec.rb
 spec/models/iteration_rep_spec.rb
@@ -1893,8 +1937,10 @@ spec/models/metrics_spec.rb
 spec/models/metrics_summary_spec.rb
 spec/models/migration_safety_issue_rep_spec.rb
 spec/models/migration_settings_post_spec.rb
+spec/models/model_config_patch_spec.rb
 spec/models/model_config_post_spec.rb
 spec/models/model_config_spec.rb
+spec/models/model_configs_spec.rb
 spec/models/modification_spec.rb
 spec/models/multi_environment_dependent_flag_spec.rb
 spec/models/multi_environment_dependent_flags_spec.rb
@@ -2000,10 +2046,15 @@ spec/models/rollout_spec.rb
 spec/models/root_response_spec.rb
 spec/models/rule_clause_spec.rb
 spec/models/rule_spec.rb
+spec/models/sdk_key_for_put_sdk_key_views_spec.rb
 spec/models/sdk_key_kind_spec.rb
+spec/models/sdk_key_list_item_spec.rb
 spec/models/sdk_key_patch_spec.rb
 spec/models/sdk_key_post_spec.rb
 spec/models/sdk_key_spec.rb
+spec/models/sdk_keys_environment_summary_spec.rb
+spec/models/sdk_keys_for_get_sdk_keys_spec.rb
+spec/models/sdk_keys_self_link_spec.rb
 spec/models/sdk_list_rep_spec.rb
 spec/models/sdk_version_details_rep_spec.rb
 spec/models/sdk_version_list_rep_spec.rb
@@ -2023,6 +2074,7 @@ spec/models/source_env_spec.rb
 spec/models/source_flag_spec.rb
 spec/models/stage_input_spec.rb
 spec/models/stage_output_spec.rb
+spec/models/stale_flag_data_spec.rb
 spec/models/statement_post_spec.rb
 spec/models/statement_spec.rb
 spec/models/statistic_collection_rep_spec.rb
@@ -2085,6 +2137,8 @@ spec/models/validation_failed_error_rep_spec.rb
 spec/models/value_put_spec.rb
 spec/models/variation_eval_summary_spec.rb
 spec/models/variation_or_rollout_rep_spec.rb
+spec/models/variation_skill_post_spec.rb
+spec/models/variation_skill_spec.rb
 spec/models/variation_spec.rb
 spec/models/variation_summary_spec.rb
 spec/models/variation_tool_post_spec.rb

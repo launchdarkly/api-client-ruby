@@ -13,6 +13,8 @@
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
 | **is_group** | **Boolean** | Whether this is a metric group or a metric |  |
 | **metrics** | [**Array&lt;MetricInGroupRep&gt;**](MetricInGroupRep.md) | An ordered list of the metrics in this metric group | [optional] |
+| **analysis_type** | **String** | The method for analyzing metric events. Only set for individual metrics, not metric groups. | [optional] |
+| **analysis_unit** | **String** | The context kind chosen as the analysis unit for this metric in the iteration. If null, analysis uses the iteration&#39;s randomization unit. | [optional] |
 
 ## Example
 
@@ -28,7 +30,9 @@ instance = LaunchDarklyApi::DependentMetricOrMetricGroupRep.new(
   event_key: event-key-123abc,
   _links: {&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/metrics/my-project/my-metric&quot;,&quot;type&quot;:&quot;application/json&quot;}},
   is_group: null,
-  metrics: null
+  metrics: null,
+  analysis_type: mean,
+  analysis_unit: user
 )
 ```
 

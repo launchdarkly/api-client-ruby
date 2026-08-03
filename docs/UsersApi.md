@@ -4,84 +4,9 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**delete_user**](UsersApi.md#delete_user) | **DELETE** /api/v2/users/{projectKey}/{environmentKey}/{userKey} | Delete user |
 | [**get_search_users**](UsersApi.md#get_search_users) | **GET** /api/v2/user-search/{projectKey}/{environmentKey} | Find users |
 | [**get_user**](UsersApi.md#get_user) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey} | Get user |
 | [**get_users**](UsersApi.md#get_users) | **GET** /api/v2/users/{projectKey}/{environmentKey} | List users |
-
-
-## delete_user
-
-> delete_user(project_key, environment_key, user_key)
-
-Delete user
-
-> ### Use contexts instead > > After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should use [Delete context instances](https://launchdarkly.com/docs/api/contexts/delete-context-instances) instead of this endpoint.  Delete a user by key. 
-
-### Examples
-
-```ruby
-require 'time'
-require 'launchdarkly_api'
-# setup authorization
-LaunchDarklyApi.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = LaunchDarklyApi::UsersApi.new
-project_key = 'project_key_example' # String | The project key
-environment_key = 'environment_key_example' # String | The environment key
-user_key = 'user_key_example' # String | The user key
-
-begin
-  # Delete user
-  api_instance.delete_user(project_key, environment_key, user_key)
-rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling UsersApi->delete_user: #{e}"
-end
-```
-
-#### Using the delete_user_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> delete_user_with_http_info(project_key, environment_key, user_key)
-
-```ruby
-begin
-  # Delete user
-  data, status_code, headers = api_instance.delete_user_with_http_info(project_key, environment_key, user_key)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue LaunchDarklyApi::ApiError => e
-  puts "Error when calling UsersApi->delete_user_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **project_key** | **String** | The project key |  |
-| **environment_key** | **String** | The environment key |  |
-| **user_key** | **String** | The user key |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 
 ## get_search_users

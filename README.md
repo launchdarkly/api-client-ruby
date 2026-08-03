@@ -273,7 +273,11 @@ You can make authenticated CORS calls just as you would make same-origin calls, 
 
 ## Rate limiting
 
-We use several rate limiting strategies to ensure the availability of our APIs. Rate-limited calls to our APIs return a `429` status code. Calls to our APIs include headers indicating the current rate limit status. The specific headers returned depend on the API route being called. The limits differ based on the route, authentication mechanism, and other factors. Routes that are not rate limited may not contain any of the headers described below.
+We use several rate-limiting strategies to ensure the availability of our APIs. Rate-limited calls to our APIs return a `429` status code and include headers to indicate the current rate limit status. The specific headers returned depend on the API route that was called. Limits differ based on the route, authentication mechanism, and other factors.
+
+Each set of headers below appears only when the corresponding limit is being enforced for your call. A given route may be subject to any combination of these limits, so a response can include one, several, or none of these headers. A missing header indicates that the limit was not applied to this specific call; it does not necessarily indicate that the limit does not exist. To reduce usage before hitting a `429` status, program against whichever rate limit headers are present rather than expecting a specific header.
+
+We do not publicly document the specific number of calls permitted by any of these limits, and these limits may change. We encourage clients to program against the specification and rely on the headers described below, rather than hardcoding the current limits.
 
 > ### Rate limiting and SDKs
 >
@@ -285,10 +289,9 @@ Authenticated requests are subject to a global limit. This is the maximum number
 
 | Header name                    | Description                                                                      |
 | ------------------------------ | -------------------------------------------------------------------------------- |
-| `X-Ratelimit-Global-Remaining` | The maximum number of requests the account is permitted to make per ten seconds. |
+| `X-Ratelimit-Global-Limit`     | The maximum number of requests the account is permitted to make per ten seconds. |
+| `X-Ratelimit-Global-Remaining` | The number of requests remaining in the current global rate limit window.        |
 | `X-Ratelimit-Reset`            | The time at which the current rate limit window resets in epoch milliseconds.    |
-
-We do not publicly document the specific number of calls that can be made globally. This limit may change, and we encourage clients to program against the specification, relying on the two headers defined above, rather than hardcoding to the current limit.
 
 ### Route-level rate limits
 
@@ -296,12 +299,23 @@ Some authenticated routes have custom rate limits. These also reset every ten se
 
 | Header name                   | Description                                                                                           |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `X-Ratelimit-Route-Remaining` | The maximum number of requests to the current route the account is permitted to make per ten seconds. |
-| `X-Ratelimit-Reset`           | The time at which the current rate limit window resets in epoch milliseconds.                         |
+| `X-Ratelimit-Route-Limit`     | The maximum number of requests to the current route permitted per ten seconds.           |
+| `X-Ratelimit-Route-Remaining` | The number of requests remaining for the current route in the current rate limit window. |
+| `X-Ratelimit-Reset`           | The time at which the current rate limit window resets in epoch milliseconds.            |
 
 A _route_ represents a specific URL pattern and verb. For example, the [Delete environment](https://launchdarkly.com/docs/api/environments/delete-environment) endpoint is considered a single route, and each call to delete an environment counts against your route-level rate limit for that route.
 
-We do not publicly document the specific number of calls that an account can make to each endpoint per ten seconds. These limits may change, and we encourage clients to program against the specification, relying on the two headers defined above, rather than hardcoding to the current limits.
+### Access token rate limits
+
+Some calls are rate limited per access token. Unlike the global and route-level limits, this limit applies to a single service or personal access token on its own. Exceeding a limit with one access token does not affect other tokens on the account. Calls that are subject to access token rate limits return these headers:
+
+| Header name                        | Description                                                                             |
+| ---------------------------------- | --------------------------------------------------------------------------------------- |
+| `X-Ratelimit-Auth-Token-Limit`     | The maximum number of requests the access token can make per ten seconds.               |
+| `X-Ratelimit-Auth-Token-Remaining` | The number of requests remaining for the access token in the current rate limit window. |
+| `X-Ratelimit-Auth-Token-Reset`     | The time at which the current rate limit window resets in epoch milliseconds.           |
+
+Unlike the other rate limits, access token rate limits report their own reset time in the `X-Ratelimit-Auth-Token-Reset` header instead of in `X-Ratelimit-Reset`.
 
 ### IP-based rate limiting
 
@@ -450,7 +464,7 @@ To learn more about how EOL is determined, read LaunchDarkly's [End of Life (EOL
 This SDK is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: 2.0
-- Package version: 23.0.0
+- Package version: 24.0.0
 - Generator version: 7.18.0
 - Build package: org.openapitools.codegen.languages.RubyClientCodegen
 For more information, please visit [https://support.launchdarkly.com](https://support.launchdarkly.com)
@@ -468,16 +482,16 @@ gem build launchdarkly_api.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./launchdarkly_api-23.0.0.gem
+gem install ./launchdarkly_api-24.0.0.gem
 ```
 
-(for development, run `gem install --dev ./launchdarkly_api-23.0.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./launchdarkly_api-24.0.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'launchdarkly_api', '~> 23.0.0'
+    gem 'launchdarkly_api', '~> 24.0.0'
 
 ### Install from Git
 
@@ -578,6 +592,7 @@ Class | Method | HTTP request | Description
 *LaunchDarklyApi::AgentControlApi* | [**delete_agent_graph**](docs/AgentControlApi.md#delete_agent_graph) | **DELETE** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Delete agent graph
 *LaunchDarklyApi::AgentControlApi* | [**delete_agent_optimization**](docs/AgentControlApi.md#delete_agent_optimization) | **DELETE** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey} | Delete an agent optimization
 *LaunchDarklyApi::AgentControlApi* | [**delete_agent_optimization_run**](docs/AgentControlApi.md#delete_agent_optimization_run) | **DELETE** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/runs/{runId} | Delete an agent optimization run
+*LaunchDarklyApi::AgentControlApi* | [**delete_agent_skill**](docs/AgentControlApi.md#delete_agent_skill) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/skills/{skillKey} | Delete an agent skill
 *LaunchDarklyApi::AgentControlApi* | [**delete_ai_config**](docs/AgentControlApi.md#delete_ai_config) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Delete AI Config
 *LaunchDarklyApi::AgentControlApi* | [**delete_ai_config_variation**](docs/AgentControlApi.md#delete_ai_config_variation) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Delete AI Config variation
 *LaunchDarklyApi::AgentControlApi* | [**delete_ai_tool**](docs/AgentControlApi.md#delete_ai_tool) | **DELETE** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Delete AI tool
@@ -586,6 +601,7 @@ Class | Method | HTTP request | Description
 *LaunchDarklyApi::AgentControlApi* | [**delete_restricted_models**](docs/AgentControlApi.md#delete_restricted_models) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/model-configs/restricted | Remove AI models from the restricted list
 *LaunchDarklyApi::AgentControlApi* | [**get_agent_graph**](docs/AgentControlApi.md#get_agent_graph) | **GET** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Get agent graph
 *LaunchDarklyApi::AgentControlApi* | [**get_agent_optimization**](docs/AgentControlApi.md#get_agent_optimization) | **GET** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey} | Get an agent optimization
+*LaunchDarklyApi::AgentControlApi* | [**get_agent_skill**](docs/AgentControlApi.md#get_agent_skill) | **GET** /api/v2/projects/{projectKey}/ai-configs/skills/{skillKey} | Get an agent skill
 *LaunchDarklyApi::AgentControlApi* | [**get_ai_config**](docs/AgentControlApi.md#get_ai_config) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Get AI Config
 *LaunchDarklyApi::AgentControlApi* | [**get_ai_config_metrics**](docs/AgentControlApi.md#get_ai_config_metrics) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics | Get AI Config metrics
 *LaunchDarklyApi::AgentControlApi* | [**get_ai_config_metrics_by_variation**](docs/AgentControlApi.md#get_ai_config_metrics_by_variation) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics-by-variation | Get AI Config metrics by variation
@@ -600,9 +616,13 @@ Class | Method | HTTP request | Description
 *LaunchDarklyApi::AgentControlApi* | [**list_agent_optimization_results**](docs/AgentControlApi.md#list_agent_optimization_results) | **GET** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/results | List agent optimization runs
 *LaunchDarklyApi::AgentControlApi* | [**list_agent_optimization_results_by_run_id**](docs/AgentControlApi.md#list_agent_optimization_results_by_run_id) | **GET** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/runs/{runId}/results | List agent optimization results for a run
 *LaunchDarklyApi::AgentControlApi* | [**list_agent_optimizations**](docs/AgentControlApi.md#list_agent_optimizations) | **GET** /api/v2/projects/{projectKey}/agent-optimizations | List agent optimizations
+*LaunchDarklyApi::AgentControlApi* | [**list_agent_skill_references**](docs/AgentControlApi.md#list_agent_skill_references) | **GET** /api/v2/projects/{projectKey}/ai-configs/skills/{skillKey}/references | List agent skill references
+*LaunchDarklyApi::AgentControlApi* | [**list_agent_skill_versions**](docs/AgentControlApi.md#list_agent_skill_versions) | **GET** /api/v2/projects/{projectKey}/ai-configs/skills/{skillKey}/versions | List agent skill versions
+*LaunchDarklyApi::AgentControlApi* | [**list_agent_skills**](docs/AgentControlApi.md#list_agent_skills) | **GET** /api/v2/projects/{projectKey}/ai-configs/skills | List agent skills
 *LaunchDarklyApi::AgentControlApi* | [**list_ai_tool_versions**](docs/AgentControlApi.md#list_ai_tool_versions) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey}/versions | List AI tool versions
 *LaunchDarklyApi::AgentControlApi* | [**list_ai_tools**](docs/AgentControlApi.md#list_ai_tools) | **GET** /api/v2/projects/{projectKey}/ai-tools | List AI tools
 *LaunchDarklyApi::AgentControlApi* | [**list_all_agent_optimization_results**](docs/AgentControlApi.md#list_all_agent_optimization_results) | **GET** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/all-results | List all agent optimization results across versions
+*LaunchDarklyApi::AgentControlApi* | [**list_model_config_versions**](docs/AgentControlApi.md#list_model_config_versions) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey}/versions | List AI model config versions
 *LaunchDarklyApi::AgentControlApi* | [**list_model_configs**](docs/AgentControlApi.md#list_model_configs) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs | List AI model configs
 *LaunchDarklyApi::AgentControlApi* | [**list_prompt_snippet_references**](docs/AgentControlApi.md#list_prompt_snippet_references) | **GET** /api/v2/projects/{projectKey}/ai-configs/prompt-snippets/{snippetKey}/references | List prompt snippet references
 *LaunchDarklyApi::AgentControlApi* | [**list_prompt_snippet_versions**](docs/AgentControlApi.md#list_prompt_snippet_versions) | **GET** /api/v2/projects/{projectKey}/ai-configs/prompt-snippets/{snippetKey}/versions | List prompt snippet versions
@@ -610,14 +630,17 @@ Class | Method | HTTP request | Description
 *LaunchDarklyApi::AgentControlApi* | [**patch_agent_graph**](docs/AgentControlApi.md#patch_agent_graph) | **PATCH** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Update agent graph
 *LaunchDarklyApi::AgentControlApi* | [**patch_agent_optimization**](docs/AgentControlApi.md#patch_agent_optimization) | **PATCH** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey} | Update an agent optimization
 *LaunchDarklyApi::AgentControlApi* | [**patch_agent_optimization_result**](docs/AgentControlApi.md#patch_agent_optimization_result) | **PATCH** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/results/{resultId} | Update an agent optimization result
+*LaunchDarklyApi::AgentControlApi* | [**patch_agent_skill**](docs/AgentControlApi.md#patch_agent_skill) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/skills/{skillKey} | Update an agent skill
 *LaunchDarklyApi::AgentControlApi* | [**patch_ai_config**](docs/AgentControlApi.md#patch_ai_config) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Update AI Config
 *LaunchDarklyApi::AgentControlApi* | [**patch_ai_config_targeting**](docs/AgentControlApi.md#patch_ai_config_targeting) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting | Update AI Config targeting
 *LaunchDarklyApi::AgentControlApi* | [**patch_ai_config_variation**](docs/AgentControlApi.md#patch_ai_config_variation) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Update AI Config variation
 *LaunchDarklyApi::AgentControlApi* | [**patch_ai_tool**](docs/AgentControlApi.md#patch_ai_tool) | **PATCH** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Update AI tool
+*LaunchDarklyApi::AgentControlApi* | [**patch_model_config**](docs/AgentControlApi.md#patch_model_config) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Update an AI model config
 *LaunchDarklyApi::AgentControlApi* | [**patch_prompt_snippet**](docs/AgentControlApi.md#patch_prompt_snippet) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/prompt-snippets/{snippetKey} | Update a prompt snippet
 *LaunchDarklyApi::AgentControlApi* | [**post_agent_graph**](docs/AgentControlApi.md#post_agent_graph) | **POST** /api/v2/projects/{projectKey}/agent-graphs | Create new agent graph
 *LaunchDarklyApi::AgentControlApi* | [**post_agent_optimization**](docs/AgentControlApi.md#post_agent_optimization) | **POST** /api/v2/projects/{projectKey}/agent-optimizations | Create agent optimization
 *LaunchDarklyApi::AgentControlApi* | [**post_agent_optimization_result**](docs/AgentControlApi.md#post_agent_optimization_result) | **POST** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/results | Create agent optimization result
+*LaunchDarklyApi::AgentControlApi* | [**post_agent_skill**](docs/AgentControlApi.md#post_agent_skill) | **POST** /api/v2/projects/{projectKey}/ai-configs/skills | Create an agent skill
 *LaunchDarklyApi::AgentControlApi* | [**post_ai_config**](docs/AgentControlApi.md#post_ai_config) | **POST** /api/v2/projects/{projectKey}/ai-configs | Create new AI Config
 *LaunchDarklyApi::AgentControlApi* | [**post_ai_config_variation**](docs/AgentControlApi.md#post_ai_config_variation) | **POST** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations | Create AI Config variation
 *LaunchDarklyApi::AgentControlApi* | [**post_ai_tool**](docs/AgentControlApi.md#post_ai_tool) | **POST** /api/v2/projects/{projectKey}/ai-tools | Create an AI tool
@@ -853,6 +876,7 @@ Class | Method | HTTP request | Description
 *LaunchDarklyApi::ReleasesBetaApi* | [**update_phase_status**](docs/ReleasesBetaApi.md#update_phase_status) | **PUT** /api/v2/projects/{projectKey}/flags/{flagKey}/release/phases/{phaseId} | Update phase status for release
 *LaunchDarklyApi::SDKKeysBetaApi* | [**delete_sdk_key_by_key**](docs/SDKKeysBetaApi.md#delete_sdk_key_by_key) | **DELETE** /api/v2/projects/{projectKey}/environments/{environmentKey}/sdk-keys/{sdkKeyKey} | Delete SDK key
 *LaunchDarklyApi::SDKKeysBetaApi* | [**get_sdk_key_by_key**](docs/SDKKeysBetaApi.md#get_sdk_key_by_key) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/sdk-keys/{sdkKeyKey} | Get SDK key
+*LaunchDarklyApi::SDKKeysBetaApi* | [**get_sdk_keys**](docs/SDKKeysBetaApi.md#get_sdk_keys) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/sdk-keys | Get all environment SDK keys
 *LaunchDarklyApi::SDKKeysBetaApi* | [**patch_sdk_key_by_key**](docs/SDKKeysBetaApi.md#patch_sdk_key_by_key) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey}/sdk-keys/{sdkKeyKey} | Update SDK key
 *LaunchDarklyApi::SDKKeysBetaApi* | [**post_sdk_key**](docs/SDKKeysBetaApi.md#post_sdk_key) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/sdk-keys | Create SDK key
 *LaunchDarklyApi::ScheduledChangesApi* | [**delete_flag_config_scheduled_changes**](docs/ScheduledChangesApi.md#delete_flag_config_scheduled_changes) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id} | Delete scheduled changes workflow
@@ -893,7 +917,6 @@ Class | Method | HTTP request | Description
 *LaunchDarklyApi::UserSettingsApi* | [**get_user_flag_settings**](docs/UserSettingsApi.md#get_user_flag_settings) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags | List flag settings for user
 *LaunchDarklyApi::UserSettingsApi* | [**patch_expiring_flags_for_user**](docs/UserSettingsApi.md#patch_expiring_flags_for_user) | **PATCH** /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey} | Update expiring user target for flags
 *LaunchDarklyApi::UserSettingsApi* | [**put_flag_setting**](docs/UserSettingsApi.md#put_flag_setting) | **PUT** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Update flag settings for user
-*LaunchDarklyApi::UsersApi* | [**delete_user**](docs/UsersApi.md#delete_user) | **DELETE** /api/v2/users/{projectKey}/{environmentKey}/{userKey} | Delete user
 *LaunchDarklyApi::UsersApi* | [**get_search_users**](docs/UsersApi.md#get_search_users) | **GET** /api/v2/user-search/{projectKey}/{environmentKey} | Find users
 *LaunchDarklyApi::UsersApi* | [**get_user**](docs/UsersApi.md#get_user) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey} | Get user
 *LaunchDarklyApi::UsersApi* | [**get_users**](docs/UsersApi.md#get_users) | **GET** /api/v2/users/{projectKey}/{environmentKey} | List users
@@ -980,6 +1003,12 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::AgentOptimizationRun](docs/AgentOptimizationRun.md)
  - [LaunchDarklyApi::AgentOptimizationRuns](docs/AgentOptimizationRuns.md)
  - [LaunchDarklyApi::AgentOptimizations](docs/AgentOptimizations.md)
+ - [LaunchDarklyApi::AgentSkill](docs/AgentSkill.md)
+ - [LaunchDarklyApi::AgentSkillPatch](docs/AgentSkillPatch.md)
+ - [LaunchDarklyApi::AgentSkillPost](docs/AgentSkillPost.md)
+ - [LaunchDarklyApi::AgentSkillReference](docs/AgentSkillReference.md)
+ - [LaunchDarklyApi::AgentSkillReferences](docs/AgentSkillReferences.md)
+ - [LaunchDarklyApi::AgentSkills](docs/AgentSkills.md)
  - [LaunchDarklyApi::AiConfigsAccess](docs/AiConfigsAccess.md)
  - [LaunchDarklyApi::AiConfigsAccessAllowedReason](docs/AiConfigsAccessAllowedReason.md)
  - [LaunchDarklyApi::AiConfigsAccessAllowedRep](docs/AiConfigsAccessAllowedRep.md)
@@ -1074,6 +1103,7 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::ContextInstanceSegmentMembership](docs/ContextInstanceSegmentMembership.md)
  - [LaunchDarklyApi::ContextInstanceSegmentMemberships](docs/ContextInstanceSegmentMemberships.md)
  - [LaunchDarklyApi::ContextInstances](docs/ContextInstances.md)
+ - [LaunchDarklyApi::ContextKindEnvironmentObservation](docs/ContextKindEnvironmentObservation.md)
  - [LaunchDarklyApi::ContextKindRep](docs/ContextKindRep.md)
  - [LaunchDarklyApi::ContextKindsCollectionRep](docs/ContextKindsCollectionRep.md)
  - [LaunchDarklyApi::ContextRecord](docs/ContextRecord.md)
@@ -1239,6 +1269,7 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::HoldoutRep](docs/HoldoutRep.md)
  - [LaunchDarklyApi::HoldoutsCollectionRep](docs/HoldoutsCollectionRep.md)
  - [LaunchDarklyApi::HunkRep](docs/HunkRep.md)
+ - [LaunchDarklyApi::IPAllowlistSelfLink](docs/IPAllowlistSelfLink.md)
  - [LaunchDarklyApi::Import](docs/Import.md)
  - [LaunchDarklyApi::InitiatorRep](docs/InitiatorRep.md)
  - [LaunchDarklyApi::InsightGroup](docs/InsightGroup.md)
@@ -1336,7 +1367,9 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::MigrationSafetyIssueRep](docs/MigrationSafetyIssueRep.md)
  - [LaunchDarklyApi::MigrationSettingsPost](docs/MigrationSettingsPost.md)
  - [LaunchDarklyApi::ModelConfig](docs/ModelConfig.md)
+ - [LaunchDarklyApi::ModelConfigPatch](docs/ModelConfigPatch.md)
  - [LaunchDarklyApi::ModelConfigPost](docs/ModelConfigPost.md)
+ - [LaunchDarklyApi::ModelConfigs](docs/ModelConfigs.md)
  - [LaunchDarklyApi::Modification](docs/Modification.md)
  - [LaunchDarklyApi::MultiEnvironmentDependentFlag](docs/MultiEnvironmentDependentFlag.md)
  - [LaunchDarklyApi::MultiEnvironmentDependentFlags](docs/MultiEnvironmentDependentFlags.md)
@@ -1443,9 +1476,14 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::Rule](docs/Rule.md)
  - [LaunchDarklyApi::RuleClause](docs/RuleClause.md)
  - [LaunchDarklyApi::SdkKey](docs/SdkKey.md)
+ - [LaunchDarklyApi::SdkKeyForPutSdkKeyViews](docs/SdkKeyForPutSdkKeyViews.md)
  - [LaunchDarklyApi::SdkKeyKind](docs/SdkKeyKind.md)
+ - [LaunchDarklyApi::SdkKeyListItem](docs/SdkKeyListItem.md)
  - [LaunchDarklyApi::SdkKeyPatch](docs/SdkKeyPatch.md)
  - [LaunchDarklyApi::SdkKeyPost](docs/SdkKeyPost.md)
+ - [LaunchDarklyApi::SdkKeysEnvironmentSummary](docs/SdkKeysEnvironmentSummary.md)
+ - [LaunchDarklyApi::SdkKeysForGetSdkKeys](docs/SdkKeysForGetSdkKeys.md)
+ - [LaunchDarklyApi::SdkKeysSelfLink](docs/SdkKeysSelfLink.md)
  - [LaunchDarklyApi::SdkListRep](docs/SdkListRep.md)
  - [LaunchDarklyApi::SdkVersionDetailsRep](docs/SdkVersionDetailsRep.md)
  - [LaunchDarklyApi::SdkVersionListRep](docs/SdkVersionListRep.md)
@@ -1465,6 +1503,7 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::SourceFlag](docs/SourceFlag.md)
  - [LaunchDarklyApi::StageInput](docs/StageInput.md)
  - [LaunchDarklyApi::StageOutput](docs/StageOutput.md)
+ - [LaunchDarklyApi::StaleFlagData](docs/StaleFlagData.md)
  - [LaunchDarklyApi::Statement](docs/Statement.md)
  - [LaunchDarklyApi::StatementPost](docs/StatementPost.md)
  - [LaunchDarklyApi::StatisticCollectionRep](docs/StatisticCollectionRep.md)
@@ -1528,6 +1567,8 @@ Class | Method | HTTP request | Description
  - [LaunchDarklyApi::Variation](docs/Variation.md)
  - [LaunchDarklyApi::VariationEvalSummary](docs/VariationEvalSummary.md)
  - [LaunchDarklyApi::VariationOrRolloutRep](docs/VariationOrRolloutRep.md)
+ - [LaunchDarklyApi::VariationSkill](docs/VariationSkill.md)
+ - [LaunchDarklyApi::VariationSkillPost](docs/VariationSkillPost.md)
  - [LaunchDarklyApi::VariationSummary](docs/VariationSummary.md)
  - [LaunchDarklyApi::VariationTool](docs/VariationTool.md)
  - [LaunchDarklyApi::VariationToolPost](docs/VariationToolPost.md)

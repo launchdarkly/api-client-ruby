@@ -6,6 +6,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | ------ | ------------ | ----------- |
 | [**delete_sdk_key_by_key**](SDKKeysBetaApi.md#delete_sdk_key_by_key) | **DELETE** /api/v2/projects/{projectKey}/environments/{environmentKey}/sdk-keys/{sdkKeyKey} | Delete SDK key |
 | [**get_sdk_key_by_key**](SDKKeysBetaApi.md#get_sdk_key_by_key) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/sdk-keys/{sdkKeyKey} | Get SDK key |
+| [**get_sdk_keys**](SDKKeysBetaApi.md#get_sdk_keys) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/sdk-keys | Get all environment SDK keys |
 | [**patch_sdk_key_by_key**](SDKKeysBetaApi.md#patch_sdk_key_by_key) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey}/sdk-keys/{sdkKeyKey} | Update SDK key |
 | [**post_sdk_key**](SDKKeysBetaApi.md#post_sdk_key) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/sdk-keys | Create SDK key |
 
@@ -152,6 +153,91 @@ end
 ### Return type
 
 [**SdkKey**](SdkKey.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sdk_keys
+
+> <SdkKeysForGetSdkKeys> get_sdk_keys(ld_api_version, project_key, environment_key, opts)
+
+Get all environment SDK keys
+
+Get all SDK keys for a given project and environment. Can filter by kind.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::SDKKeysBetaApi.new
+ld_api_version = 'beta' # String | Version of the endpoint.
+project_key = 'default' # String | 
+environment_key = 'production' # String | 
+opts = {
+  filter: 'filter_example', # String | A filter to apply to the list of SDK keys. Supports the following fields and operators: `kind` (equals \"sdk\" or \"mobile\"), `active` (equals true or false). Format: `field:value`. Example: `kind:sdk`.
+  limit: 56, # Integer | The number of SDK keys to return. Defaults to 20. Maximum is 100.
+  offset: 56, # Integer | The number of SDK keys to skip. Used for pagination.
+  sort: 'createdAt' # String | A sort to apply to the list of SDK keys. Supported field: `createdAt`. Prefix the field with `-` to sort in descending order (for example, `-createdAt`).
+}
+
+begin
+  # Get all environment SDK keys
+  result = api_instance.get_sdk_keys(ld_api_version, project_key, environment_key, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling SDKKeysBetaApi->get_sdk_keys: #{e}"
+end
+```
+
+#### Using the get_sdk_keys_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SdkKeysForGetSdkKeys>, Integer, Hash)> get_sdk_keys_with_http_info(ld_api_version, project_key, environment_key, opts)
+
+```ruby
+begin
+  # Get all environment SDK keys
+  data, status_code, headers = api_instance.get_sdk_keys_with_http_info(ld_api_version, project_key, environment_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SdkKeysForGetSdkKeys>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling SDKKeysBetaApi->get_sdk_keys_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ld_api_version** | **String** | Version of the endpoint. |  |
+| **project_key** | **String** |  |  |
+| **environment_key** | **String** |  |  |
+| **filter** | **String** | A filter to apply to the list of SDK keys. Supports the following fields and operators: &#x60;kind&#x60; (equals \&quot;sdk\&quot; or \&quot;mobile\&quot;), &#x60;active&#x60; (equals true or false). Format: &#x60;field:value&#x60;. Example: &#x60;kind:sdk&#x60;. | [optional] |
+| **limit** | **Integer** | The number of SDK keys to return. Defaults to 20. Maximum is 100. | [optional] |
+| **offset** | **Integer** | The number of SDK keys to skip. Used for pagination. | [optional] |
+| **sort** | **String** | A sort to apply to the list of SDK keys. Supported field: &#x60;createdAt&#x60;. Prefix the field with &#x60;-&#x60; to sort in descending order (for example, &#x60;-createdAt&#x60;). | [optional] |
+
+### Return type
+
+[**SdkKeysForGetSdkKeys**](SdkKeysForGetSdkKeys.md)
 
 ### Authorization
 

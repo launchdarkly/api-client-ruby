@@ -16,6 +16,7 @@
 | **state** | **String** | One of &#39;archived&#39;, &#39;published&#39; | [optional] |
 | **tools** | [**Array&lt;VariationToolPost&gt;**](VariationToolPost.md) | List of tools to use for this variation. The latest version of the tool will be used. | [optional] |
 | **tool_keys** | **Array&lt;String&gt;** | List of tool keys to use for this variation. The latest version of the tool will be used. | [optional] |
+| **skills** | [**Array&lt;VariationSkillPost&gt;**](VariationSkillPost.md) | List of agent skills to attach to this variation. Replaces the current attachments. | [optional] |
 | **judge_configuration** | [**JudgeConfiguration**](JudgeConfiguration.md) |  | [optional] |
 
 ## Example
@@ -36,6 +37,7 @@ instance = LaunchDarklyApi::AIConfigVariationPatch.new(
   state: null,
   tools: null,
   tool_keys: null,
+  skills: null,
   judge_configuration: null
 )
 ```

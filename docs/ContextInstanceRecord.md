@@ -23,7 +23,7 @@ instance = LaunchDarklyApi::ContextInstanceRecord.new(
   application_id: GoSDK/1.2,
   anonymous_kinds: [&quot;device&quot;,&quot;privateKind&quot;],
   context: {&quot;kind&quot;: &quot;user&quot;, &quot;key&quot;: &quot;context-key-123abc&quot;, &quot;name&quot;: &quot;Sandy Smith&quot;, &quot;email&quot;: &quot;sandy@example.com&quot;},
-  _links: {&quot;parent&quot;:{&quot;href&quot;:&quot;/api/v2/projects/my-project/environments/my-environment&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/projects/my-project/environments/my-env/context-instances/organization:launch-darkly:user:henry?filter&#x3D;applicationId:\&quot;GoSDK/1.2\&quot;&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;site&quot;:{&quot;href&quot;:&quot;/my-project/my-environment/context-instances/organization:launch-darkly:user:henry&quot;,&quot;type&quot;:&quot;text/html&quot;}},
+  _links: {&quot;parent&quot;:{&quot;href&quot;:&quot;/api/v2/projects/my-project/environments/my-environment&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/projects/my-project/environments/my-env/context-instances/organization:launch-darkly:user:henry?filter&#x3D;applicationid+equals+%22GoSDK%2F1.2%22&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;site&quot;:{&quot;href&quot;:&quot;/my-project/my-environment/context-instances/organization:launch-darkly:user:henry&quot;,&quot;type&quot;:&quot;text/html&quot;}},
   _access: null
 )
 ```

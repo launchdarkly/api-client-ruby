@@ -424,7 +424,7 @@ end
 
 ## get_context_kinds_by_project_key
 
-> <ContextKindsCollectionRep> get_context_kinds_by_project_key(project_key)
+> <ContextKindsCollectionRep> get_context_kinds_by_project_key(project_key, opts)
 
 Get context kinds
 
@@ -445,10 +445,13 @@ end
 
 api_instance = LaunchDarklyApi::ContextsApi.new
 project_key = 'project_key_example' # String | The project key
+opts = {
+  expand: 'expand_example' # String | A comma-separated list of properties that can reveal additional information in the response. Options: `environmentObservations`.
+}
 
 begin
   # Get context kinds
-  result = api_instance.get_context_kinds_by_project_key(project_key)
+  result = api_instance.get_context_kinds_by_project_key(project_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling ContextsApi->get_context_kinds_by_project_key: #{e}"
@@ -459,12 +462,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ContextKindsCollectionRep>, Integer, Hash)> get_context_kinds_by_project_key_with_http_info(project_key)
+> <Array(<ContextKindsCollectionRep>, Integer, Hash)> get_context_kinds_by_project_key_with_http_info(project_key, opts)
 
 ```ruby
 begin
   # Get context kinds
-  data, status_code, headers = api_instance.get_context_kinds_by_project_key_with_http_info(project_key)
+  data, status_code, headers = api_instance.get_context_kinds_by_project_key_with_http_info(project_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ContextKindsCollectionRep>
@@ -478,6 +481,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **project_key** | **String** | The project key |  |
+| **expand** | **String** | A comma-separated list of properties that can reveal additional information in the response. Options: &#x60;environmentObservations&#x60;. | [optional] |
 
 ### Return type
 

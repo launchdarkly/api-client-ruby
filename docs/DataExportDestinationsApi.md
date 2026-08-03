@@ -334,7 +334,7 @@ end
 api_instance = LaunchDarklyApi::DataExportDestinationsApi.new
 proj_key = 'proj_key_example' # String | The project key
 env_key = 'env_key_example' # String | The environment key
-kind = 'kind_example' # String | The destination kind (snowflake-v2, bigquery, clickhouse, redshift)
+kind = 'kind_example' # String | The destination kind (snowflake-v2, bigquery, clickhouse, redshift, databricks)
 complete_setup_post_body = LaunchDarklyApi::CompleteSetupPostBody.new # CompleteSetupPostBody | 
 
 begin
@@ -370,7 +370,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **proj_key** | **String** | The project key |  |
 | **env_key** | **String** | The environment key |  |
-| **kind** | **String** | The destination kind (snowflake-v2, bigquery, clickhouse, redshift) |  |
+| **kind** | **String** | The destination kind (snowflake-v2, bigquery, clickhouse, redshift, databricks) |  |
 | **complete_setup_post_body** | [**CompleteSetupPostBody**](CompleteSetupPostBody.md) |  |  |
 
 ### Return type
