@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **_links** | [**PaginatedLinks**](PaginatedLinks.md) |  | [optional] |
-| **items** | [**Array&lt;AgentSkill&gt;**](AgentSkill.md) |  |  |
-| **total_count** | **Integer** |  |  |
+| **items** | [**Array&lt;AgentSkill&gt;**](AgentSkill.md) | The items on this page |  |
+| **total_count** | **Integer** | The total number of items |  |
 
 ## Example
 

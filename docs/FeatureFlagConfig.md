@@ -19,8 +19,8 @@
 | **_site** | [**Link**](Link.md) |  |  |
 | **_access** | [**Access**](Access.md) |  | [optional] |
 | **_environment_name** | **String** | The environment name |  |
-| **track_events** | **Boolean** | Whether LaunchDarkly tracks events for the feature flag, for all rules |  |
-| **track_events_fallthrough** | **Boolean** | Whether LaunchDarkly tracks events for the feature flag, for the default rule |  |
+| **track_events** | **Boolean** | Whether the SDK sends a detailed event for every evaluation of this flag, across all rules, instead of only summary counts. Required for Data Export, but doesn&#39;t enable Data Export on its own. |  |
+| **track_events_fallthrough** | **Boolean** | Whether the SDK sends a detailed event for every evaluation of this flag&#39;s default rule, instead of only summary counts. Required for Data Export, but doesn&#39;t enable Data Export on its own. |  |
 | **_debug_events_until_date** | **Integer** |  | [optional] |
 | **_summary** | [**FlagSummary**](FlagSummary.md) |  | [optional] |
 | **evaluation** | [**FlagConfigEvaluation**](FlagConfigEvaluation.md) |  | [optional] |

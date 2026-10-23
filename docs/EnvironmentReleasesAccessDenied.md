@@ -1,0 +1,20 @@
+# LaunchDarklyApi::EnvironmentReleasesAccessDenied
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **action** | **String** |  |  |
+| **reason** | [**AccessDeniedReason**](AccessDeniedReason.md) |  |  |
+
+## Example
+
+```ruby
+require 'launchdarkly_api'
+
+instance = LaunchDarklyApi::EnvironmentReleasesAccessDenied.new(
+  action: null,
+  reason: null
+)
+```
+

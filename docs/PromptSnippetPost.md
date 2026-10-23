@@ -4,13 +4,13 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** |  |  |
-| **name** | **String** |  |  |
-| **description** | **String** |  | [optional] |
+| **key** | **String** | A unique key for the prompt snippet |  |
+| **name** | **String** | A human-readable name for the prompt snippet |  |
+| **description** | **String** | A description of the prompt snippet | [optional] |
 | **text** | **String** | The text content of the prompt snippet |  |
-| **maintainer_id** | **String** |  | [optional] |
-| **maintainer_team_key** | **String** |  | [optional] |
-| **tags** | **Array&lt;String&gt;** |  | [optional] |
+| **maintainer_id** | **String** | The ID of the member who maintains this resource | [optional] |
+| **maintainer_team_key** | **String** | The key of the team that maintains this resource | [optional] |
+| **tags** | **Array&lt;String&gt;** | Tags for this resource | [optional] |
 
 ## Example
 

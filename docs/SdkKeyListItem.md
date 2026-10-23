@@ -17,6 +17,7 @@
 | **_updated_at** | **Integer** |  |  |
 | **_version** | **Integer** | The auto-incremented version number of the SDK key. |  |
 | **environment_summary** | [**SdkKeysEnvironmentSummary**](SdkKeysEnvironmentSummary.md) |  | [optional] |
+| **view_summaries** | [**Array&lt;ViewSummary&gt;**](ViewSummary.md) | Summaries of views associated with the SDK key. | [optional] |
 
 ## Example
 
@@ -36,7 +37,8 @@ instance = LaunchDarklyApi::SdkKeyListItem.new(
   _created_at: null,
   _updated_at: null,
   _version: null,
-  environment_summary: null
+  environment_summary: null,
+  view_summaries: null
 )
 ```
 

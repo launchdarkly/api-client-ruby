@@ -28,12 +28,14 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_model_config**](AgentControlApi.md#get_model_config) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Get AI model config |
 | [**get_prompt_snippet**](AgentControlApi.md#get_prompt_snippet) | **GET** /api/v2/projects/{projectKey}/ai-configs/prompt-snippets/{snippetKey} | Get a prompt snippet |
 | [**list_agent_graphs**](AgentControlApi.md#list_agent_graphs) | **GET** /api/v2/projects/{projectKey}/agent-graphs | List agent graphs |
-| [**list_agent_optimization_results**](AgentControlApi.md#list_agent_optimization_results) | **GET** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/results | List agent optimization runs |
+| [**list_agent_optimization_results**](AgentControlApi.md#list_agent_optimization_results) | **GET** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/results | List latest agent optimization result per run |
 | [**list_agent_optimization_results_by_run_id**](AgentControlApi.md#list_agent_optimization_results_by_run_id) | **GET** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/runs/{runId}/results | List agent optimization results for a run |
+| [**list_agent_optimization_runs**](AgentControlApi.md#list_agent_optimization_runs) | **GET** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/runs | List agent optimization runs |
 | [**list_agent_optimizations**](AgentControlApi.md#list_agent_optimizations) | **GET** /api/v2/projects/{projectKey}/agent-optimizations | List agent optimizations |
 | [**list_agent_skill_references**](AgentControlApi.md#list_agent_skill_references) | **GET** /api/v2/projects/{projectKey}/ai-configs/skills/{skillKey}/references | List agent skill references |
 | [**list_agent_skill_versions**](AgentControlApi.md#list_agent_skill_versions) | **GET** /api/v2/projects/{projectKey}/ai-configs/skills/{skillKey}/versions | List agent skill versions |
 | [**list_agent_skills**](AgentControlApi.md#list_agent_skills) | **GET** /api/v2/projects/{projectKey}/ai-configs/skills | List agent skills |
+| [**list_ai_tool_references**](AgentControlApi.md#list_ai_tool_references) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey}/references | List AI tool references |
 | [**list_ai_tool_versions**](AgentControlApi.md#list_ai_tool_versions) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey}/versions | List AI tool versions |
 | [**list_ai_tools**](AgentControlApi.md#list_ai_tools) | **GET** /api/v2/projects/{projectKey}/ai-tools | List AI tools |
 | [**list_all_agent_optimization_results**](AgentControlApi.md#list_all_agent_optimization_results) | **GET** /api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/all-results | List all agent optimization results across versions |
@@ -87,8 +89,8 @@ end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
 ld_api_version = 'beta' # String | Version of the endpoint.
-project_key = 'project_key_example' # String | 
-graph_key = 'graph_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+graph_key = 'graph_key_example' # String | The agent graph key
 
 begin
   # Delete agent graph
@@ -121,8 +123,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ld_api_version** | **String** | Version of the endpoint. |  |
-| **project_key** | **String** |  |  |
-| **graph_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **graph_key** | **String** | The agent graph key |  |
 
 ### Return type
 
@@ -160,8 +162,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-optimization_key = 'optimization_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+optimization_key = 'optimization_key_example' # String | The agent optimization key
 
 begin
   # Delete an agent optimization
@@ -193,8 +195,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **optimization_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **optimization_key** | **String** | The agent optimization key |  |
 
 ### Return type
 
@@ -233,9 +235,9 @@ end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
 ld_api_version = 'beta' # String | Version of the endpoint.
-project_key = 'project_key_example' # String | 
-optimization_key = 'optimization_key_example' # String | 
-run_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
+project_key = 'project_key_example' # String | The project key
+optimization_key = 'optimization_key_example' # String | The agent optimization key
+run_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | The agent optimization run ID
 
 begin
   # Delete an agent optimization run
@@ -268,9 +270,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ld_api_version** | **String** | Version of the endpoint. |  |
-| **project_key** | **String** |  |  |
-| **optimization_key** | **String** |  |  |
-| **run_id** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **optimization_key** | **String** | The agent optimization key |  |
+| **run_id** | **String** | The agent optimization run ID |  |
 
 ### Return type
 
@@ -308,8 +310,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-skill_key = 'skill_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+skill_key = 'skill_key_example' # String | The agent skill key
 
 begin
   # Delete an agent skill
@@ -341,8 +343,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **skill_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **skill_key** | **String** | The agent skill key |  |
 
 ### Return type
 
@@ -380,8 +382,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'default' # String | 
-config_key = 'config_key_example' # String | 
+project_key = 'default' # String | The project key
+config_key = 'config_key_example' # String | The AI Config key
 
 begin
   # Delete AI Config
@@ -413,8 +415,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **config_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **config_key** | **String** | The AI Config key |  |
 
 ### Return type
 
@@ -452,9 +454,9 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-config_key = 'config_key_example' # String | 
-variation_key = 'variation_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+config_key = 'config_key_example' # String | The AI Config key
+variation_key = 'variation_key_example' # String | The AI Config variation key
 
 begin
   # Delete AI Config variation
@@ -486,9 +488,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **config_key** | **String** |  |  |
-| **variation_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **config_key** | **String** | The AI Config key |  |
+| **variation_key** | **String** | The AI Config variation key |  |
 
 ### Return type
 
@@ -526,8 +528,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-tool_key = 'tool_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+tool_key = 'tool_key_example' # String | The AI tool key
 
 begin
   # Delete AI tool
@@ -559,8 +561,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **tool_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **tool_key** | **String** | The AI tool key |  |
 
 ### Return type
 
@@ -598,8 +600,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'default' # String | 
-model_config_key = 'model_config_key_example' # String | 
+project_key = 'default' # String | The project key
+model_config_key = 'model_config_key_example' # String | The AI model config key
 
 begin
   # Delete an AI model config
@@ -631,8 +633,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **model_config_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **model_config_key** | **String** | The AI model config key |  |
 
 ### Return type
 
@@ -670,8 +672,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-snippet_key = 'snippet_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+snippet_key = 'snippet_key_example' # String | The prompt snippet key
 
 begin
   # Delete a prompt snippet
@@ -703,8 +705,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **snippet_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **snippet_key** | **String** | The prompt snippet key |  |
 
 ### Return type
 
@@ -742,8 +744,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'default' # String | 
-restricted_models_request = LaunchDarklyApi::RestrictedModelsRequest.new({keys: ['keys_example']}) # RestrictedModelsRequest | List of AI model keys to remove from the restricted list
+project_key = 'default' # String | The project key
+restricted_models_request = LaunchDarklyApi::RestrictedModelsRequest.new({keys: ["OpenAI.gpt-image-2"]}) # RestrictedModelsRequest | List of AI model keys to remove from the restricted list
 
 begin
   # Remove AI models from the restricted list
@@ -775,7 +777,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **restricted_models_request** | [**RestrictedModelsRequest**](RestrictedModelsRequest.md) | List of AI model keys to remove from the restricted list |  |
 
 ### Return type
@@ -815,8 +817,8 @@ end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
 ld_api_version = 'beta' # String | Version of the endpoint.
-project_key = 'project_key_example' # String | 
-graph_key = 'graph_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+graph_key = 'graph_key_example' # String | The agent graph key
 
 begin
   # Get agent graph
@@ -850,8 +852,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ld_api_version** | **String** | Version of the endpoint. |  |
-| **project_key** | **String** |  |  |
-| **graph_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **graph_key** | **String** | The agent graph key |  |
 
 ### Return type
 
@@ -889,8 +891,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-optimization_key = 'optimization_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+optimization_key = 'optimization_key_example' # String | The agent optimization key
 
 begin
   # Get an agent optimization
@@ -923,8 +925,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **optimization_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **optimization_key** | **String** | The agent optimization key |  |
 
 ### Return type
 
@@ -962,8 +964,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-skill_key = 'skill_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+skill_key = 'skill_key_example' # String | The agent skill key
 
 begin
   # Get an agent skill
@@ -996,8 +998,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **skill_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **skill_key** | **String** | The agent skill key |  |
 
 ### Return type
 
@@ -1035,8 +1037,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-config_key = 'config_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+config_key = 'config_key_example' # String | The AI Config key
 
 begin
   # Get AI Config
@@ -1069,8 +1071,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **config_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **config_key** | **String** | The AI Config key |  |
 
 ### Return type
 
@@ -1108,8 +1110,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-config_key = 'config_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+config_key = 'config_key_example' # String | The AI Config key
 from = 56 # Integer | The starting time, as milliseconds since epoch (inclusive).
 to = 56 # Integer | The ending time, as milliseconds since epoch (exclusive). May not be more than 100 days after `from`.
 env = 'env_example' # String | An environment key. Only metrics from this environment will be included.
@@ -1149,8 +1151,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **config_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **config_key** | **String** | The AI Config key |  |
 | **from** | **Integer** | The starting time, as milliseconds since epoch (inclusive). |  |
 | **to** | **Integer** | The ending time, as milliseconds since epoch (exclusive). May not be more than 100 days after &#x60;from&#x60;. |  |
 | **env** | **String** | An environment key. Only metrics from this environment will be included. |  |
@@ -1193,8 +1195,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-config_key = 'config_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+config_key = 'config_key_example' # String | The AI Config key
 from = 56 # Integer | The starting time, as milliseconds since epoch (inclusive).
 to = 56 # Integer | The ending time, as milliseconds since epoch (exclusive). May not be more than 100 days after `from`.
 env = 'env_example' # String | An environment key. Only metrics from this environment will be included.
@@ -1234,8 +1236,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **config_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **config_key** | **String** | The AI Config key |  |
 | **from** | **Integer** | The starting time, as milliseconds since epoch (inclusive). |  |
 | **to** | **Integer** | The ending time, as milliseconds since epoch (exclusive). May not be more than 100 days after &#x60;from&#x60;. |  |
 | **env** | **String** | An environment key. Only metrics from this environment will be included. |  |
@@ -1278,7 +1280,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
 env = 'env_example' # String | An environment key. Only metrics from this environment will be included.
 
 begin
@@ -1312,7 +1314,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **env** | **String** | An environment key. Only metrics from this environment will be included. |  |
 
 ### Return type
@@ -1351,8 +1353,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-config_key = 'config_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+config_key = 'config_key_example' # String | The AI Config key
 
 begin
   # Show an AI Config's targeting
@@ -1385,8 +1387,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **config_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **config_key** | **String** | The AI Config key |  |
 
 ### Return type
 
@@ -1424,9 +1426,9 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'default' # String | 
-config_key = 'default' # String | 
-variation_key = 'default' # String | 
+project_key = 'default' # String | The project key
+config_key = 'default' # String | The AI Config key
+variation_key = 'default' # String | The AI Config variation key
 
 begin
   # Get AI Config variation
@@ -1459,9 +1461,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **config_key** | **String** |  |  |
-| **variation_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **config_key** | **String** | The AI Config key |  |
+| **variation_key** | **String** | The AI Config variation key |  |
 
 ### Return type
 
@@ -1499,7 +1501,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'default' # String | 
+project_key = 'default' # String | The project key
 opts = {
   sort: 'sort_example', # String | A sort to apply to the list of AgentControl configs.
   limit: 56, # Integer | The number of resources to return.
@@ -1538,7 +1540,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **sort** | **String** | A sort to apply to the list of AgentControl configs. | [optional] |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
@@ -1580,8 +1582,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-tool_key = 'tool_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+tool_key = 'tool_key_example' # String | The AI tool key
 
 begin
   # Get AI tool
@@ -1614,8 +1616,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **tool_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **tool_key** | **String** | The AI tool key |  |
 
 ### Return type
 
@@ -1653,8 +1655,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'default' # String | 
-model_config_key = 'default' # String | 
+project_key = 'default' # String | The project key
+model_config_key = 'default' # String | The AI model config key
 opts = {
   version: 56 # Integer | Specific model config version to return. Omit to return the latest version.
 }
@@ -1690,8 +1692,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **model_config_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **model_config_key** | **String** | The AI model config key |  |
 | **version** | **Integer** | Specific model config version to return. Omit to return the latest version. | [optional] |
 
 ### Return type
@@ -1730,8 +1732,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-snippet_key = 'snippet_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+snippet_key = 'snippet_key_example' # String | The prompt snippet key
 
 begin
   # Get a prompt snippet
@@ -1764,8 +1766,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **snippet_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **snippet_key** | **String** | The prompt snippet key |  |
 
 ### Return type
 
@@ -1804,7 +1806,7 @@ end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
 ld_api_version = 'beta' # String | Version of the endpoint.
-project_key = 'project_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
 opts = {
   limit: 56, # Integer | The number of resources to return.
   offset: 56, # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
@@ -1843,7 +1845,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ld_api_version** | **String** | Version of the endpoint. |  |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 | **filter** | **String** | A filter to apply to the list. | [optional] |
@@ -1866,7 +1868,7 @@ end
 
 > <AgentOptimizationResults> list_agent_optimization_results(project_key, optimization_key, opts)
 
-List agent optimization runs
+List latest agent optimization result per run
 
 Get the most recent result for each unique run of an agent optimization.
 
@@ -1884,15 +1886,15 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-optimization_key = 'optimization_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+optimization_key = 'optimization_key_example' # String | The agent optimization key
 opts = {
   limit: 56, # Integer | The number of resources to return.
   offset: 56 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
 }
 
 begin
-  # List agent optimization runs
+  # List latest agent optimization result per run
   result = api_instance.list_agent_optimization_results(project_key, optimization_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
@@ -1908,7 +1910,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # List agent optimization runs
+  # List latest agent optimization result per run
   data, status_code, headers = api_instance.list_agent_optimization_results_with_http_info(project_key, optimization_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -1922,8 +1924,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **optimization_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **optimization_key** | **String** | The agent optimization key |  |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
@@ -1963,9 +1965,9 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-optimization_key = 'optimization_key_example' # String | 
-run_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
+project_key = 'project_key_example' # String | The project key
+optimization_key = 'optimization_key_example' # String | The agent optimization key
+run_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | The agent optimization run ID
 
 begin
   # List agent optimization results for a run
@@ -1998,13 +2000,92 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **optimization_key** | **String** |  |  |
-| **run_id** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **optimization_key** | **String** | The agent optimization key |  |
+| **run_id** | **String** | The agent optimization run ID |  |
 
 ### Return type
 
 [**AgentOptimizationResults**](AgentOptimizationResults.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_agent_optimization_runs
+
+> <AgentOptimizationRuns> list_agent_optimization_runs(project_key, optimization_key, opts)
+
+List agent optimization runs
+
+Get one run summary per distinct run_id across all versions of an agent optimization config, ordered by created_at DESC.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AgentControlApi.new
+project_key = 'project_key_example' # String | The project key
+optimization_key = 'optimization_key_example' # String | The agent optimization key
+opts = {
+  limit: 56, # Integer | The number of resources to return.
+  offset: 56 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+}
+
+begin
+  # List agent optimization runs
+  result = api_instance.list_agent_optimization_runs(project_key, optimization_key, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->list_agent_optimization_runs: #{e}"
+end
+```
+
+#### Using the list_agent_optimization_runs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AgentOptimizationRuns>, Integer, Hash)> list_agent_optimization_runs_with_http_info(project_key, optimization_key, opts)
+
+```ruby
+begin
+  # List agent optimization runs
+  data, status_code, headers = api_instance.list_agent_optimization_runs_with_http_info(project_key, optimization_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AgentOptimizationRuns>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->list_agent_optimization_runs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **optimization_key** | **String** | The agent optimization key |  |
+| **limit** | **Integer** | The number of resources to return. | [optional] |
+| **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
+
+### Return type
+
+[**AgentOptimizationRuns**](AgentOptimizationRuns.md)
 
 ### Authorization
 
@@ -2038,7 +2119,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
 opts = {
   limit: 56, # Integer | The number of resources to return.
   offset: 56, # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
@@ -2076,7 +2157,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 | **filter** | **String** | A filter to apply to the list. | [optional] |
@@ -2117,8 +2198,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-skill_key = 'skill_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+skill_key = 'skill_key_example' # String | The agent skill key
 opts = {
   limit: 56, # Integer | The number of resources to return.
   offset: 56 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
@@ -2155,8 +2236,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **skill_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **skill_key** | **String** | The agent skill key |  |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
@@ -2196,8 +2277,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-skill_key = 'skill_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+skill_key = 'skill_key_example' # String | The agent skill key
 opts = {
   limit: 56, # Integer | The number of resources to return.
   offset: 56 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
@@ -2234,8 +2315,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **skill_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **skill_key** | **String** | The agent skill key |  |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
@@ -2275,7 +2356,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
 opts = {
   limit: 56, # Integer | The number of resources to return.
   offset: 56, # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
@@ -2313,7 +2394,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 | **filter** | **String** | A filter to apply to the list. | [optional] |
@@ -2321,6 +2402,85 @@ end
 ### Return type
 
 [**AgentSkills**](AgentSkills.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_ai_tool_references
+
+> <ToolReferences> list_ai_tool_references(project_key, tool_key, opts)
+
+List AI tool references
+
+Get all AgentControl config variations that currently reference this tool.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AgentControlApi.new
+project_key = 'project_key_example' # String | The project key
+tool_key = 'tool_key_example' # String | The AI tool key
+opts = {
+  limit: 56, # Integer | The number of resources to return.
+  offset: 56 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+}
+
+begin
+  # List AI tool references
+  result = api_instance.list_ai_tool_references(project_key, tool_key, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->list_ai_tool_references: #{e}"
+end
+```
+
+#### Using the list_ai_tool_references_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ToolReferences>, Integer, Hash)> list_ai_tool_references_with_http_info(project_key, tool_key, opts)
+
+```ruby
+begin
+  # List AI tool references
+  data, status_code, headers = api_instance.list_ai_tool_references_with_http_info(project_key, tool_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ToolReferences>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AgentControlApi->list_ai_tool_references_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **project_key** | **String** | The project key |  |
+| **tool_key** | **String** | The AI tool key |  |
+| **limit** | **Integer** | The number of resources to return. | [optional] |
+| **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
+
+### Return type
+
+[**ToolReferences**](ToolReferences.md)
 
 ### Authorization
 
@@ -2354,8 +2514,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-tool_key = 'tool_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+tool_key = 'tool_key_example' # String | The AI tool key
 opts = {
   sort: 'sort_example', # String | A sort to apply to the list of AgentControl configs.
   limit: 56, # Integer | The number of resources to return.
@@ -2393,8 +2553,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **tool_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **tool_key** | **String** | The AI tool key |  |
 | **sort** | **String** | A sort to apply to the list of AgentControl configs. | [optional] |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
@@ -2435,7 +2595,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
 opts = {
   sort: 'sort_example', # String | A sort to apply to the list of AgentControl configs.
   limit: 56, # Integer | The number of resources to return.
@@ -2474,7 +2634,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **sort** | **String** | A sort to apply to the list of AgentControl configs. | [optional] |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
@@ -2516,8 +2676,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-optimization_key = 'optimization_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+optimization_key = 'optimization_key_example' # String | The agent optimization key
 opts = {
   limit: 56, # Integer | The number of resources to return.
   offset: 56 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
@@ -2554,8 +2714,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **optimization_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **optimization_key** | **String** | The agent optimization key |  |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
@@ -2595,8 +2755,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'default' # String | 
-model_config_key = 'default' # String | 
+project_key = 'default' # String | The project key
+model_config_key = 'default' # String | The AI model config key
 opts = {
   limit: 56, # Integer | The number of resources to return.
   offset: 56 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
@@ -2633,8 +2793,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **model_config_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **model_config_key** | **String** | The AI model config key |  |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
@@ -2674,9 +2834,11 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'default' # String | 
+project_key = 'default' # String | The project key
 opts = {
-  restricted: true # Boolean | Whether to return only restricted models
+  restricted: true, # Boolean | Whether to return only restricted models
+  sort: 'sort_example', # String | A sort to apply to the list of AgentControl configs.
+  filter: 'filter_example' # String | A filter to apply to the list.
 }
 
 begin
@@ -2710,8 +2872,10 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **restricted** | **Boolean** | Whether to return only restricted models | [optional] |
+| **sort** | **String** | A sort to apply to the list of AgentControl configs. | [optional] |
+| **filter** | **String** | A filter to apply to the list. | [optional] |
 
 ### Return type
 
@@ -2749,8 +2913,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-snippet_key = 'snippet_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+snippet_key = 'snippet_key_example' # String | The prompt snippet key
 opts = {
   limit: 56, # Integer | The number of resources to return.
   offset: 56 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
@@ -2787,8 +2951,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **snippet_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **snippet_key** | **String** | The prompt snippet key |  |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
@@ -2828,8 +2992,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-snippet_key = 'snippet_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+snippet_key = 'snippet_key_example' # String | The prompt snippet key
 opts = {
   limit: 56, # Integer | The number of resources to return.
   offset: 56 # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
@@ -2866,8 +3030,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **snippet_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **snippet_key** | **String** | The prompt snippet key |  |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
@@ -2907,7 +3071,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
 opts = {
   limit: 56, # Integer | The number of resources to return.
   offset: 56, # Integer | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
@@ -2945,7 +3109,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **limit** | **Integer** | The number of resources to return. | [optional] |
 | **offset** | **Integer** | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 | **filter** | **String** | A filter to apply to the list. | [optional] |
@@ -2987,8 +3151,8 @@ end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
 ld_api_version = 'beta' # String | Version of the endpoint.
-project_key = 'project_key_example' # String | 
-graph_key = 'graph_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+graph_key = 'graph_key_example' # String | The agent graph key
 opts = {
   agent_graph_patch: LaunchDarklyApi::AgentGraphPatch.new # AgentGraphPatch | Agent graph object to update
 }
@@ -3025,8 +3189,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ld_api_version** | **String** | Version of the endpoint. |  |
-| **project_key** | **String** |  |  |
-| **graph_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **graph_key** | **String** | The agent graph key |  |
 | **agent_graph_patch** | [**AgentGraphPatch**](AgentGraphPatch.md) | Agent graph object to update | [optional] |
 
 ### Return type
@@ -3065,8 +3229,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-optimization_key = 'optimization_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+optimization_key = 'optimization_key_example' # String | The agent optimization key
 agent_optimization_patch = LaunchDarklyApi::AgentOptimizationPatch.new # AgentOptimizationPatch | Agent optimization fields to update
 
 begin
@@ -3100,8 +3264,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **optimization_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **optimization_key** | **String** | The agent optimization key |  |
 | **agent_optimization_patch** | [**AgentOptimizationPatch**](AgentOptimizationPatch.md) | Agent optimization fields to update |  |
 
 ### Return type
@@ -3140,9 +3304,9 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-optimization_key = 'optimization_key_example' # String | 
-result_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
+project_key = 'project_key_example' # String | The project key
+optimization_key = 'optimization_key_example' # String | The agent optimization key
+result_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | The agent optimization result ID
 agent_optimization_result_patch = LaunchDarklyApi::AgentOptimizationResultPatch.new # AgentOptimizationResultPatch | Agent optimization result fields to update
 
 begin
@@ -3176,9 +3340,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **optimization_key** | **String** |  |  |
-| **result_id** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **optimization_key** | **String** | The agent optimization key |  |
+| **result_id** | **String** | The agent optimization result ID |  |
 | **agent_optimization_result_patch** | [**AgentOptimizationResultPatch**](AgentOptimizationResultPatch.md) | Agent optimization result fields to update |  |
 
 ### Return type
@@ -3217,8 +3381,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-skill_key = 'skill_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+skill_key = 'skill_key_example' # String | The agent skill key
 agent_skill_patch = LaunchDarklyApi::AgentSkillPatch.new # AgentSkillPatch | Agent skill fields to update
 
 begin
@@ -3252,8 +3416,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **skill_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **skill_key** | **String** | The agent skill key |  |
 | **agent_skill_patch** | [**AgentSkillPatch**](AgentSkillPatch.md) | Agent skill fields to update |  |
 
 ### Return type
@@ -3292,8 +3456,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-config_key = 'config_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+config_key = 'config_key_example' # String | The AI Config key
 opts = {
   ai_config_patch: LaunchDarklyApi::AIConfigPatch.new # AIConfigPatch | AI Config object to update
 }
@@ -3329,8 +3493,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **config_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **config_key** | **String** | The AI Config key |  |
 | **ai_config_patch** | [**AIConfigPatch**](AIConfigPatch.md) | AI Config object to update | [optional] |
 
 ### Return type
@@ -3369,8 +3533,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-config_key = 'config_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+config_key = 'config_key_example' # String | The AI Config key
 opts = {
   ai_config_targeting_patch: LaunchDarklyApi::AIConfigTargetingPatch.new({environment_key: 'environment_key_example', instructions: [{ key: 3.56}]}) # AIConfigTargetingPatch | AI Config targeting semantic patch instructions
 }
@@ -3406,8 +3570,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **config_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **config_key** | **String** | The AI Config key |  |
 | **ai_config_targeting_patch** | [**AIConfigTargetingPatch**](AIConfigTargetingPatch.md) | AI Config targeting semantic patch instructions | [optional] |
 
 ### Return type
@@ -3430,7 +3594,7 @@ end
 
 Update AI Config variation
 
-Edit an existing variation of an AI Config. This creates a new version of the variation.  The request body must be a JSON object of the fields to update. The values you include replace the existing values for the fields.  Here's an example: ```   {     \"messages\": [       {         \"role\": \"system\",         \"content\": \"The new message\"       }     ]   } ``` 
+Edit an existing variation of an AI Config. This creates a new version of the variation.  The request body must be a JSON object of the fields to update. The values you include replace the existing values for the fields.  If the variation is in use in a project environment where approval settings require review for this AI Config, this endpoint returns 403 and the change must be submitted through an approval request.  Here's an example: ```   {     \"messages\": [       {         \"role\": \"system\",         \"content\": \"The new message\"       }     ]   } ``` 
 
 ### Examples
 
@@ -3446,9 +3610,9 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-config_key = 'config_key_example' # String | 
-variation_key = 'variation_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+config_key = 'config_key_example' # String | The AI Config key
+variation_key = 'variation_key_example' # String | The AI Config variation key
 opts = {
   ai_config_variation_patch: LaunchDarklyApi::AIConfigVariationPatch.new # AIConfigVariationPatch | AI Config variation object to update
 }
@@ -3484,9 +3648,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **config_key** | **String** |  |  |
-| **variation_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **config_key** | **String** | The AI Config key |  |
+| **variation_key** | **String** | The AI Config variation key |  |
 | **ai_config_variation_patch** | [**AIConfigVariationPatch**](AIConfigVariationPatch.md) | AI Config variation object to update | [optional] |
 
 ### Return type
@@ -3525,8 +3689,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-tool_key = 'tool_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+tool_key = 'tool_key_example' # String | The AI tool key
 opts = {
   ai_tool_patch: LaunchDarklyApi::AIToolPatch.new # AIToolPatch | AI tool object to update
 }
@@ -3562,8 +3726,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **tool_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **tool_key** | **String** | The AI tool key |  |
 | **ai_tool_patch** | [**AIToolPatch**](AIToolPatch.md) | AI tool object to update | [optional] |
 
 ### Return type
@@ -3602,8 +3766,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'default' # String | 
-model_config_key = 'model_config_key_example' # String | 
+project_key = 'default' # String | The project key
+model_config_key = 'model_config_key_example' # String | The AI model config key
 model_config_patch = LaunchDarklyApi::ModelConfigPatch.new # ModelConfigPatch | AI model config object to update
 
 begin
@@ -3637,8 +3801,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **model_config_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **model_config_key** | **String** | The AI model config key |  |
 | **model_config_patch** | [**ModelConfigPatch**](ModelConfigPatch.md) | AI model config object to update |  |
 
 ### Return type
@@ -3677,8 +3841,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-snippet_key = 'snippet_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+snippet_key = 'snippet_key_example' # String | The prompt snippet key
 prompt_snippet_patch = LaunchDarklyApi::PromptSnippetPatch.new # PromptSnippetPatch | Prompt snippet fields to update
 
 begin
@@ -3712,8 +3876,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **snippet_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **snippet_key** | **String** | The prompt snippet key |  |
 | **prompt_snippet_patch** | [**PromptSnippetPatch**](PromptSnippetPatch.md) | Prompt snippet fields to update |  |
 
 ### Return type
@@ -3753,7 +3917,7 @@ end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
 ld_api_version = 'beta' # String | Version of the endpoint.
-project_key = 'project_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
 agent_graph_post = LaunchDarklyApi::AgentGraphPost.new({key: 'key_example', name: 'name_example'}) # AgentGraphPost | Agent graph object to create
 
 begin
@@ -3788,7 +3952,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ld_api_version** | **String** | Version of the endpoint. |  |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **agent_graph_post** | [**AgentGraphPost**](AgentGraphPost.md) | Agent graph object to create |  |
 
 ### Return type
@@ -3827,7 +3991,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
 agent_optimization_post = LaunchDarklyApi::AgentOptimizationPost.new({key: 'key_example', ai_config_key: 'ai_config_key_example', max_attempts: 37, judge_model: 'judge_model_example'}) # AgentOptimizationPost | Agent optimization object to create
 
 begin
@@ -3861,7 +4025,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **agent_optimization_post** | [**AgentOptimizationPost**](AgentOptimizationPost.md) | Agent optimization object to create |  |
 
 ### Return type
@@ -3900,8 +4064,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-optimization_key = 'optimization_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+optimization_key = 'optimization_key_example' # String | The agent optimization key
 agent_optimization_result_post = LaunchDarklyApi::AgentOptimizationResultPost.new({run_id: 'run_id_example', agent_optimization_version: 37, iteration: 37, instructions: 'instructions_example', user_input: 'user_input_example'}) # AgentOptimizationResultPost | Agent optimization result to create
 
 begin
@@ -3935,8 +4099,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **optimization_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **optimization_key** | **String** | The agent optimization key |  |
 | **agent_optimization_result_post** | [**AgentOptimizationResultPost**](AgentOptimizationResultPost.md) | Agent optimization result to create |  |
 
 ### Return type
@@ -3975,8 +4139,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-agent_skill_post = LaunchDarklyApi::AgentSkillPost.new({key: 'key_example', name: 'name_example', markdown: 'markdown_example'}) # AgentSkillPost | Agent skill object to create
+project_key = 'project_key_example' # String | The project key
+agent_skill_post = LaunchDarklyApi::AgentSkillPost.new({key: 'pdf-extraction', name: 'PDF extraction', markdown: 'markdown_example'}) # AgentSkillPost | Agent skill object to create
 
 begin
   # Create an agent skill
@@ -4009,7 +4173,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **agent_skill_post** | [**AgentSkillPost**](AgentSkillPost.md) | Agent skill object to create |  |
 
 ### Return type
@@ -4048,7 +4212,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
 ai_config_post = LaunchDarklyApi::AIConfigPost.new({key: 'key_example', name: 'name_example'}) # AIConfigPost | AI Config object to create
 
 begin
@@ -4082,7 +4246,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **ai_config_post** | [**AIConfigPost**](AIConfigPost.md) | AI Config object to create |  |
 
 ### Return type
@@ -4121,8 +4285,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
-config_key = 'config_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
+config_key = 'config_key_example' # String | The AI Config key
 ai_config_variation_post = LaunchDarklyApi::AIConfigVariationPost.new({key: 'key_example', name: 'name_example'}) # AIConfigVariationPost | AI Config variation object to create
 
 begin
@@ -4156,8 +4320,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
-| **config_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
+| **config_key** | **String** | The AI Config key |  |
 | **ai_config_variation_post** | [**AIConfigVariationPost**](AIConfigVariationPost.md) | AI Config variation object to create |  |
 
 ### Return type
@@ -4196,7 +4360,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
 ai_tool_post = LaunchDarklyApi::AIToolPost.new({key: 'key_example', schema: 3.56}) # AIToolPost | AI tool object to create
 
 begin
@@ -4230,7 +4394,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **ai_tool_post** | [**AIToolPost**](AIToolPost.md) | AI tool object to create |  |
 
 ### Return type
@@ -4269,8 +4433,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'default' # String | 
-model_config_post = LaunchDarklyApi::ModelConfigPost.new({name: 'name_example', key: 'key_example', id: 'id_example'}) # ModelConfigPost | AI model config object to create
+project_key = 'default' # String | The project key
+model_config_post = LaunchDarklyApi::ModelConfigPost.new({name: 'GPT Image 2', key: 'OpenAI.gpt-image-2', id: 'gpt-image-2'}) # ModelConfigPost | AI model config object to create
 
 begin
   # Create an AI model config
@@ -4303,7 +4467,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **model_config_post** | [**ModelConfigPost**](ModelConfigPost.md) | AI model config object to create |  |
 
 ### Return type
@@ -4342,7 +4506,7 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'project_key_example' # String | 
+project_key = 'project_key_example' # String | The project key
 prompt_snippet_post = LaunchDarklyApi::PromptSnippetPost.new({key: 'key_example', name: 'name_example', text: 'text_example'}) # PromptSnippetPost | Prompt snippet object to create
 
 begin
@@ -4376,7 +4540,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **prompt_snippet_post** | [**PromptSnippetPost**](PromptSnippetPost.md) | Prompt snippet object to create |  |
 
 ### Return type
@@ -4415,8 +4579,8 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::AgentControlApi.new
-project_key = 'default' # String | 
-restricted_models_request = LaunchDarklyApi::RestrictedModelsRequest.new({keys: ['keys_example']}) # RestrictedModelsRequest | List of AI model keys to add to the restricted list.
+project_key = 'default' # String | The project key
+restricted_models_request = LaunchDarklyApi::RestrictedModelsRequest.new({keys: ["OpenAI.gpt-image-2"]}) # RestrictedModelsRequest | List of AI model keys to add to the restricted list.
 
 begin
   # Add AI models to the restricted list
@@ -4449,7 +4613,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **project_key** | **String** |  |  |
+| **project_key** | **String** | The project key |  |
 | **restricted_models_request** | [**RestrictedModelsRequest**](RestrictedModelsRequest.md) | List of AI model keys to add to the restricted list. |  |
 
 ### Return type

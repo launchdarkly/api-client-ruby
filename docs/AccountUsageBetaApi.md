@@ -9,6 +9,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_contexts_serverside_usage**](AccountUsageBetaApi.md#get_contexts_serverside_usage) | **GET** /api/v2/usage/serverside-contexts | Get contexts serverside usage |
 | [**get_contexts_total_usage**](AccountUsageBetaApi.md#get_contexts_total_usage) | **GET** /api/v2/usage/total-contexts | Get contexts total usage |
 | [**get_data_export_events_usage**](AccountUsageBetaApi.md#get_data_export_events_usage) | **GET** /api/v2/usage/data-export-events | Get data export events usage |
+| [**get_data_export_project_ranking**](AccountUsageBetaApi.md#get_data_export_project_ranking) | **GET** /api/v2/usage/data-export-events/projects/ranking | Rank Streaming usage by project |
 | [**get_evaluations_usage**](AccountUsageBetaApi.md#get_evaluations_usage) | **GET** /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey} | Get evaluations usage |
 | [**get_events_usage**](AccountUsageBetaApi.md#get_events_usage) | **GET** /api/v2/usage/events/{type} | Get events usage |
 | [**get_experimentation_events_usage**](AccountUsageBetaApi.md#get_experimentation_events_usage) | **GET** /api/v2/usage/experimentation-events | Get experimentation events usage |
@@ -401,11 +402,11 @@ end
 
 ## get_data_export_events_usage
 
-> <SeriesListRep> get_data_export_events_usage(opts)
+> <DataExportSeriesListRep> get_data_export_events_usage(opts)
 
 Get data export events usage
 
-Get a time series array showing the number of data export events from your account. The supported granularity varies by aggregation type. The maximum time range is 365 days.
+Get a time series array showing the number of data export events from your account. The supported granularity varies by aggregation type. The maximum time range is 365 days. `groupBy=projectId` resolves legacy rows through the account's current environment-to-project mapping and returns `409` instead of a partial series when any successful row remains unattributed. Plain project filtering keeps its current-environment compatibility behavior.
 
 ### Examples
 
@@ -424,10 +425,11 @@ api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
 opts = {
   from: 'from_example', # String | The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month.
   to: 'to_example', # String | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
-  project_key: 'project_key_example', # String | A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+  project_key: 'project_key_example', # String | A project key to filter results by. Without `groupBy=projectId`, filters to the project's current environments so retained pre-materialization usage remains visible. Can be specified multiple times, one query parameter per project key.
   environment_key: 'environment_key_example', # String | An environment key to filter results by. If specified, exactly one `projectKey` must be provided. Can be specified multiple times, one query parameter per environment key.
   event_kind: 'event_kind_example', # String | An event kind to filter results by. Can be specified multiple times, one query parameter per event kind.
-  group_by: 'group_by_example', # String | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.<br/>Valid values: `environmentId`, `eventKind`.
+  destination_kind: 'destination_kind_example', # String | A Streaming configuration kind to filter results by. Values preserve raw product identity; `snowflake` is legacy Streaming Snowflake and is distinct from Warehouse `snowflake-v2`. Can be specified multiple times.<br/>Valid values: `kinesis`, `google-pubsub`, `mparticle`, `segment`, `azure-event-hubs`, `snowflake`, `unknown`.
+  group_by: 'group_by_example', # String | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension. `projectId` requires one or more explicit `projectKey` filters and is capped at 100 selected projects. `destinationId` returns one series per streaming destination with `destinationName` metadata, plus `destinationViewable` when the destination is in the current configuration. The destination's own kind is added as `destinationKind` only when you can view the destination. A kind requested with `groupBy=destinationKind` is returned unchanged. A destination ID absent from the current configuration is named `Unknown historical destination`. Destinations you cannot view are reported together in one `Unknown destination` series with `destinationId` `hidden` and `destinationViewable` `false`, one per combination of the other requested dimensions, such as `destinationKind`. Usage without a destination ID is one series with an empty `destinationId` named `Unattributed`.<br/>Valid values: `projectId`, `environmentId`, `eventKind`, `destinationKind`, `destinationId`.
   aggregation_type: 'aggregation_type_example', # String | Specifies the aggregation method. Defaults to `month_to_date`.<br/>Valid values: `month_to_date`, `incremental`.
   granularity: 'granularity_example' # String | Specifies the data granularity. Defaults to `daily`. `monthly` granularity is only supported with the **month_to_date** aggregation type.<br/>Valid values: `daily`, `hourly`, `monthly`.
 }
@@ -445,7 +447,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SeriesListRep>, Integer, Hash)> get_data_export_events_usage_with_http_info(opts)
+> <Array(<DataExportSeriesListRep>, Integer, Hash)> get_data_export_events_usage_with_http_info(opts)
 
 ```ruby
 begin
@@ -453,7 +455,7 @@ begin
   data, status_code, headers = api_instance.get_data_export_events_usage_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SeriesListRep>
+  p data # => <DataExportSeriesListRep>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling AccountUsageBetaApi->get_data_export_events_usage_with_http_info: #{e}"
 end
@@ -465,16 +467,104 @@ end
 | ---- | ---- | ----------- | ----- |
 | **from** | **String** | The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. | [optional] |
 | **to** | **String** | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. | [optional] |
-| **project_key** | **String** | A project key to filter results by. Can be specified multiple times, one query parameter per project key. | [optional] |
+| **project_key** | **String** | A project key to filter results by. Without &#x60;groupBy&#x3D;projectId&#x60;, filters to the project&#39;s current environments so retained pre-materialization usage remains visible. Can be specified multiple times, one query parameter per project key. | [optional] |
 | **environment_key** | **String** | An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. | [optional] |
 | **event_kind** | **String** | An event kind to filter results by. Can be specified multiple times, one query parameter per event kind. | [optional] |
-| **group_by** | **String** | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;environmentId&#x60;, &#x60;eventKind&#x60;. | [optional] |
+| **destination_kind** | **String** | A Streaming configuration kind to filter results by. Values preserve raw product identity; &#x60;snowflake&#x60; is legacy Streaming Snowflake and is distinct from Warehouse &#x60;snowflake-v2&#x60;. Can be specified multiple times.&lt;br/&gt;Valid values: &#x60;kinesis&#x60;, &#x60;google-pubsub&#x60;, &#x60;mparticle&#x60;, &#x60;segment&#x60;, &#x60;azure-event-hubs&#x60;, &#x60;snowflake&#x60;, &#x60;unknown&#x60;. | [optional] |
+| **group_by** | **String** | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension. &#x60;projectId&#x60; requires one or more explicit &#x60;projectKey&#x60; filters and is capped at 100 selected projects. &#x60;destinationId&#x60; returns one series per streaming destination with &#x60;destinationName&#x60; metadata, plus &#x60;destinationViewable&#x60; when the destination is in the current configuration. The destination&#39;s own kind is added as &#x60;destinationKind&#x60; only when you can view the destination. A kind requested with &#x60;groupBy&#x3D;destinationKind&#x60; is returned unchanged. A destination ID absent from the current configuration is named &#x60;Unknown historical destination&#x60;. Destinations you cannot view are reported together in one &#x60;Unknown destination&#x60; series with &#x60;destinationId&#x60; &#x60;hidden&#x60; and &#x60;destinationViewable&#x60; &#x60;false&#x60;, one per combination of the other requested dimensions, such as &#x60;destinationKind&#x60;. Usage without a destination ID is one series with an empty &#x60;destinationId&#x60; named &#x60;Unattributed&#x60;.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;eventKind&#x60;, &#x60;destinationKind&#x60;, &#x60;destinationId&#x60;. | [optional] |
 | **aggregation_type** | **String** | Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;. | [optional] |
 | **granularity** | **String** | Specifies the data granularity. Defaults to &#x60;daily&#x60;. &#x60;monthly&#x60; granularity is only supported with the **month_to_date** aggregation type.&lt;br/&gt;Valid values: &#x60;daily&#x60;, &#x60;hourly&#x60;, &#x60;monthly&#x60;. | [optional] |
 
 ### Return type
 
-[**SeriesListRep**](SeriesListRep.md)
+[**DataExportSeriesListRep**](DataExportSeriesListRep.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_data_export_project_ranking
+
+> <DataExportProjectRankingRep> get_data_export_project_ranking(from, to, opts)
+
+Rank Streaming usage by project
+
+Rank projects with usage in the requested range by successful Streaming transfers. Legacy rows are attributed through the account's complete current environment-to-project mapping. If any successful row remains unattributed after resolution, the operation returns `409` instead of a partial ranking. The result limit does not cap the account-wide project universe or environment mapping. This source-specific operation does not provide Combined or Warehouse ranking.
+
+### Examples
+
+```ruby
+require 'time'
+require 'launchdarkly_api'
+# setup authorization
+LaunchDarklyApi.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
+from = 789 # Integer | Inclusive UTC range start in Unix milliseconds.
+to = 789 # Integer | Exclusive UTC range end in Unix milliseconds.
+opts = {
+  source: 'source_example', # String | The source scope. Only `streaming` is supported.
+  dimension: 'dimension_example', # String | The ranking dimension. Only `project` is supported.
+  project_key: ['inner_example'], # Array<String> | A canonical project key to include. Can be specified multiple times, with at most 100 unique explicit selections; duplicates do not consume the limit. When omitted, all account projects with usage in the requested range are ranked.
+  search: 'search_example', # String | A case-insensitive substring matched against canonical project keys before querying usage. Project names are not searched.
+  cursor: 'cursor_example', # String | An opaque cursor returned by a previous response. Cursors are bound to the account and ranking inputs.
+  limit: 56 # Integer | The maximum number of ranked projects to return. This bounds response rows and look-ahead, not the account-wide candidate universe.
+}
+
+begin
+  # Rank Streaming usage by project
+  result = api_instance.get_data_export_project_ranking(from, to, opts)
+  p result
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountUsageBetaApi->get_data_export_project_ranking: #{e}"
+end
+```
+
+#### Using the get_data_export_project_ranking_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DataExportProjectRankingRep>, Integer, Hash)> get_data_export_project_ranking_with_http_info(from, to, opts)
+
+```ruby
+begin
+  # Rank Streaming usage by project
+  data, status_code, headers = api_instance.get_data_export_project_ranking_with_http_info(from, to, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DataExportProjectRankingRep>
+rescue LaunchDarklyApi::ApiError => e
+  puts "Error when calling AccountUsageBetaApi->get_data_export_project_ranking_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **from** | **Integer** | Inclusive UTC range start in Unix milliseconds. |  |
+| **to** | **Integer** | Exclusive UTC range end in Unix milliseconds. |  |
+| **source** | **String** | The source scope. Only &#x60;streaming&#x60; is supported. | [optional][default to &#39;streaming&#39;] |
+| **dimension** | **String** | The ranking dimension. Only &#x60;project&#x60; is supported. | [optional][default to &#39;project&#39;] |
+| **project_key** | [**Array&lt;String&gt;**](String.md) | A canonical project key to include. Can be specified multiple times, with at most 100 unique explicit selections; duplicates do not consume the limit. When omitted, all account projects with usage in the requested range are ranked. | [optional] |
+| **search** | **String** | A case-insensitive substring matched against canonical project keys before querying usage. Project names are not searched. | [optional] |
+| **cursor** | **String** | An opaque cursor returned by a previous response. Cursors are bound to the account and ranking inputs. | [optional] |
+| **limit** | **Integer** | The maximum number of ranked projects to return. This bounds response rows and look-ahead, not the account-wide candidate universe. | [optional][default to 5] |
+
+### Return type
+
+[**DataExportProjectRankingRep**](DataExportProjectRankingRep.md)
 
 ### Authorization
 
@@ -492,7 +582,7 @@ end
 
 Get evaluations usage
 
-Get time-series arrays of the number of times a flag is evaluated, broken down by the variation that resulted from that evaluation. The granularity of the data depends on the age of the data requested. If the requested range is within the past two hours, minutely data is returned. If it is within the last two days, hourly data is returned. Otherwise, daily data is returned.
+Get time-series arrays of the number of times a flag is evaluated, broken down by the variation that resulted from that evaluation. The granularity of the returned data depends on the length of the requested time range: ranges shorter than two hours return minutely data, ranges shorter than two days return hourly data, and ranges of two days or longer return daily data. Minutely data is retained for 70 days; a range shorter than two hours that starts before then is returned at hourly granularity instead, with the start of the range widened to the containing hour. Ranges that predate available data return an empty series list. If a flag has served many distinct variation values in the requested range, the least recently seen values may be aggregated into a single additional series labeled \"Other Variations\".
 
 ### Examples
 
@@ -671,7 +761,7 @@ api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
 opts = {
   from: 'from_example', # String | The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month.
   to: 'to_example', # String | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
-  project_key: 'project_key_example', # String | A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+  project_key: 'project_key_example', # String | A project key to filter results by. Without `environmentKey`, filters to the project's current environments. Can be specified multiple times, one query parameter per project key.
   environment_key: 'environment_key_example', # String | An environment key to filter results by. If specified, exactly one `projectKey` must be provided. Can be specified multiple times, one query parameter per environment key.
   event_key: 'event_key_example', # String | An event key to filter results by. Can be specified multiple times, one query parameter per event key.
   event_kind: 'event_kind_example', # String | An event kind to filter results by. Can be specified multiple times, one query parameter per event kind.
@@ -713,7 +803,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **from** | **String** | The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. | [optional] |
 | **to** | **String** | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. | [optional] |
-| **project_key** | **String** | A project key to filter results by. Can be specified multiple times, one query parameter per project key. | [optional] |
+| **project_key** | **String** | A project key to filter results by. Without &#x60;environmentKey&#x60;, filters to the project&#39;s current environments. Can be specified multiple times, one query parameter per project key. | [optional] |
 | **environment_key** | **String** | An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. | [optional] |
 | **event_key** | **String** | An event key to filter results by. Can be specified multiple times, one query parameter per event key. | [optional] |
 | **event_kind** | **String** | An event kind to filter results by. Can be specified multiple times, one query parameter per event kind. | [optional] |
@@ -760,7 +850,7 @@ api_instance = LaunchDarklyApi::AccountUsageBetaApi.new
 opts = {
   from: 'from_example', # String | The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month.
   to: 'to_example', # String | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
-  project_key: 'project_key_example', # String | A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+  project_key: 'project_key_example', # String | A project key to filter results by. Without `environmentKey`, filters by project, including projects that currently have no environments. Can be specified multiple times, one query parameter per project key.
   environment_key: 'environment_key_example', # String | An environment key to filter results by. If specified, exactly one `projectKey` must be provided. Can be specified multiple times, one query parameter per environment key.
   experiment_id: 'experiment_id_example', # String | An experiment ID to filter results by. Can be specified multiple times, one query parameter per experiment ID.
   group_by: 'group_by_example', # String | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.<br/>Valid values: `projectId`, `environmentId`, `experimentId`.
@@ -801,7 +891,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **from** | **String** | The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. | [optional] |
 | **to** | **String** | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. | [optional] |
-| **project_key** | **String** | A project key to filter results by. Can be specified multiple times, one query parameter per project key. | [optional] |
+| **project_key** | **String** | A project key to filter results by. Without &#x60;environmentKey&#x60;, filters by project, including projects that currently have no environments. Can be specified multiple times, one query parameter per project key. | [optional] |
 | **environment_key** | **String** | An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. | [optional] |
 | **experiment_id** | **String** | An experiment ID to filter results by. Can be specified multiple times, one query parameter per experiment ID. | [optional] |
 | **group_by** | **String** | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;experimentId&#x60;. | [optional] |
@@ -1832,9 +1922,9 @@ opts = {
   relay_version: 'relay_version_example', # String | A relay version to filter results by. Can be specified multiple times, one query parameter per relay version.
   sdk_name: 'sdk_name_example', # String | An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name.
   sdk_version: 'sdk_version_example', # String | An SDK version to filter results by. Can be specified multiple times, one query parameter per SDK version.
-  sdk_type: 'sdk_type_example', # String | An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type.
+  sdk_type: 'sdk_type_example', # String | Deprecated. This endpoint reports server-side connections only, so `server` is the only value that returns data and omitting the parameter is equivalent. Any other value returns an empty series. To report client-side connections, use `GET /api/v2/usage/streams/{source}`.
   sdk_app_id: 'sdk_app_id_example', # String | An SDK app ID to filter results by. Can be specified multiple times, one query parameter per SDK app ID.
-  group_by: 'group_by_example', # String | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.<br/>Valid values: `projectId`, `environmentId`, `connectionType`, `relayVersion`, `sdkName`, `sdkVersion`, `sdkType`, `sdkAppId`.
+  group_by: 'group_by_example', # String | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.<br/>Valid values: `projectId`, `environmentId`, `connectionType`, `relayVersion`, `sdkName`, `sdkVersion`, `sdkAppId`.<br/>`sdkType` is no longer offered: this endpoint reports server-side connections only, so grouping by it returns a single group. It is still accepted, for compatibility.
   aggregation_type: 'aggregation_type_example', # String | Specifies the aggregation method. Defaults to `month_to_date`.<br/>Valid values: `month_to_date`, `incremental`.
   granularity: 'granularity_example' # String | Specifies the data granularity. Defaults to `daily`. `monthly` granularity is only supported with the **month_to_date** aggregation type.<br/>Valid values: `daily`, `hourly`, `monthly`.
 }
@@ -1878,9 +1968,9 @@ end
 | **relay_version** | **String** | A relay version to filter results by. Can be specified multiple times, one query parameter per relay version. | [optional] |
 | **sdk_name** | **String** | An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. | [optional] |
 | **sdk_version** | **String** | An SDK version to filter results by. Can be specified multiple times, one query parameter per SDK version. | [optional] |
-| **sdk_type** | **String** | An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type. | [optional] |
+| **sdk_type** | **String** | Deprecated. This endpoint reports server-side connections only, so &#x60;server&#x60; is the only value that returns data and omitting the parameter is equivalent. Any other value returns an empty series. To report client-side connections, use &#x60;GET /api/v2/usage/streams/{source}&#x60;. | [optional] |
 | **sdk_app_id** | **String** | An SDK app ID to filter results by. Can be specified multiple times, one query parameter per SDK app ID. | [optional] |
-| **group_by** | **String** | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;connectionType&#x60;, &#x60;relayVersion&#x60;, &#x60;sdkName&#x60;, &#x60;sdkVersion&#x60;, &#x60;sdkType&#x60;, &#x60;sdkAppId&#x60;. | [optional] |
+| **group_by** | **String** | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;connectionType&#x60;, &#x60;relayVersion&#x60;, &#x60;sdkName&#x60;, &#x60;sdkVersion&#x60;, &#x60;sdkAppId&#x60;.&lt;br/&gt;&#x60;sdkType&#x60; is no longer offered: this endpoint reports server-side connections only, so grouping by it returns a single group. It is still accepted, for compatibility. | [optional] |
 | **aggregation_type** | **String** | Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;. | [optional] |
 | **granularity** | **String** | Specifies the data granularity. Defaults to &#x60;daily&#x60;. &#x60;monthly&#x60; granularity is only supported with the **month_to_date** aggregation type.&lt;br/&gt;Valid values: &#x60;daily&#x60;, &#x60;hourly&#x60;, &#x60;monthly&#x60;. | [optional] |
 
@@ -2214,7 +2304,7 @@ end
 
 ## get_warehouse_export_usage
 
-> <SeriesListRep> get_warehouse_export_usage(opts)
+> <DataExportSeriesListRep> get_warehouse_export_usage(opts)
 
 Get warehouse Data Export usage
 
@@ -2239,8 +2329,9 @@ opts = {
   to: 'to_example', # String | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
   project_key: 'project_key_example', # String | A project key to filter results by. Can be specified multiple times, one query parameter per project key.
   environment_key: 'environment_key_example', # String | An environment key to filter results by. If specified, exactly one `projectKey` must be provided. Can be specified multiple times, one query parameter per environment key.
-  destination: 'destination_example', # String | A destination kind to filter results by. Can be specified multiple times, one query parameter per destination kind.<br/>Valid values: `snowflake-v2`, `databricks`, `bigquery`, `redshift`, `clickhouse`.
-  group_by: 'group_by_example', # String | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.<br/>Valid values: `projectId`, `environmentId`, `destination`.
+  destination_kind: 'destination_kind_example', # String | A Warehouse configuration kind to filter results by. Cannot be combined with `destination`. Can be specified multiple times.<br/>Valid values: `snowflake-v2`, `databricks`, `bigquery`, `redshift`, `clickhouse`, `s3`.
+  destination: 'destination_example', # String | A Warehouse configuration kind to filter results by. Cannot be combined with `destinationKind`. Existing behavior is unchanged. Can be specified multiple times.<br/>Valid values: `snowflake-v2`, `databricks`, `bigquery`, `redshift`, `clickhouse`.
+  group_by: 'group_by_example', # String | If specified, returns data for each distinct value of the given field. Can be specified multiple times.<br/>Valid values: `projectId`, `environmentId`, `destination`, `destinationKind`, `destinationId`. `destination` and `destinationKind` return the same raw Warehouse configuration kinds. `destinationId` returns one series per warehouse destination with `destinationName` metadata. When a current destination you can view matches, its `destinationId` is the LaunchDarkly destination ID, with `destinationViewable`. Otherwise, it is the warehouse provider's destination ID, named `Unknown destination`. The destination's own kind is added as `destinationKind` only when you can view the destination. A kind requested with `groupBy=destinationKind` is returned unchanged. Destinations you cannot view are reported together in one `Unknown destination` series with `destinationId` `hidden` and `destinationViewable` `false`, one per combination of the other requested dimensions, such as `destinationKind`. Usage without a destination ID is one series with an empty `destinationId` named `Unattributed`.
   aggregation_type: 'aggregation_type_example', # String | Specifies the aggregation method. Defaults to `month_to_date`.<br/>Valid values: `month_to_date`, `incremental`.
   granularity: 'granularity_example' # String | Specifies the data granularity. Defaults to `daily`. `monthly` granularity is only supported with the **month_to_date** aggregation type.<br/>Valid values: `daily`, `hourly`, `monthly`.
 }
@@ -2258,7 +2349,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SeriesListRep>, Integer, Hash)> get_warehouse_export_usage_with_http_info(opts)
+> <Array(<DataExportSeriesListRep>, Integer, Hash)> get_warehouse_export_usage_with_http_info(opts)
 
 ```ruby
 begin
@@ -2266,7 +2357,7 @@ begin
   data, status_code, headers = api_instance.get_warehouse_export_usage_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SeriesListRep>
+  p data # => <DataExportSeriesListRep>
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling AccountUsageBetaApi->get_warehouse_export_usage_with_http_info: #{e}"
 end
@@ -2280,14 +2371,15 @@ end
 | **to** | **String** | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. | [optional] |
 | **project_key** | **String** | A project key to filter results by. Can be specified multiple times, one query parameter per project key. | [optional] |
 | **environment_key** | **String** | An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. | [optional] |
-| **destination** | **String** | A destination kind to filter results by. Can be specified multiple times, one query parameter per destination kind.&lt;br/&gt;Valid values: &#x60;snowflake-v2&#x60;, &#x60;databricks&#x60;, &#x60;bigquery&#x60;, &#x60;redshift&#x60;, &#x60;clickhouse&#x60;. | [optional] |
-| **group_by** | **String** | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;destination&#x60;. | [optional] |
+| **destination_kind** | **String** | A Warehouse configuration kind to filter results by. Cannot be combined with &#x60;destination&#x60;. Can be specified multiple times.&lt;br/&gt;Valid values: &#x60;snowflake-v2&#x60;, &#x60;databricks&#x60;, &#x60;bigquery&#x60;, &#x60;redshift&#x60;, &#x60;clickhouse&#x60;, &#x60;s3&#x60;. | [optional] |
+| **destination** | **String** | A Warehouse configuration kind to filter results by. Cannot be combined with &#x60;destinationKind&#x60;. Existing behavior is unchanged. Can be specified multiple times.&lt;br/&gt;Valid values: &#x60;snowflake-v2&#x60;, &#x60;databricks&#x60;, &#x60;bigquery&#x60;, &#x60;redshift&#x60;, &#x60;clickhouse&#x60;. | [optional] |
+| **group_by** | **String** | If specified, returns data for each distinct value of the given field. Can be specified multiple times.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;destination&#x60;, &#x60;destinationKind&#x60;, &#x60;destinationId&#x60;. &#x60;destination&#x60; and &#x60;destinationKind&#x60; return the same raw Warehouse configuration kinds. &#x60;destinationId&#x60; returns one series per warehouse destination with &#x60;destinationName&#x60; metadata. When a current destination you can view matches, its &#x60;destinationId&#x60; is the LaunchDarkly destination ID, with &#x60;destinationViewable&#x60;. Otherwise, it is the warehouse provider&#39;s destination ID, named &#x60;Unknown destination&#x60;. The destination&#39;s own kind is added as &#x60;destinationKind&#x60; only when you can view the destination. A kind requested with &#x60;groupBy&#x3D;destinationKind&#x60; is returned unchanged. Destinations you cannot view are reported together in one &#x60;Unknown destination&#x60; series with &#x60;destinationId&#x60; &#x60;hidden&#x60; and &#x60;destinationViewable&#x60; &#x60;false&#x60;, one per combination of the other requested dimensions, such as &#x60;destinationKind&#x60;. Usage without a destination ID is one series with an empty &#x60;destinationId&#x60; named &#x60;Unattributed&#x60;. | [optional] |
 | **aggregation_type** | **String** | Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;. | [optional] |
 | **granularity** | **String** | Specifies the data granularity. Defaults to &#x60;daily&#x60;. &#x60;monthly&#x60; granularity is only supported with the **month_to_date** aggregation type.&lt;br/&gt;Valid values: &#x60;daily&#x60;, &#x60;hourly&#x60;, &#x60;monthly&#x60;. | [optional] |
 
 ### Return type
 
-[**SeriesListRep**](SeriesListRep.md)
+[**DataExportSeriesListRep**](DataExportSeriesListRep.md)
 
 ### Authorization
 

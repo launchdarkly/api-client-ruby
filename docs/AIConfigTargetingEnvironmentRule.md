@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **clauses** | [**Array&lt;AIConfigTargetingEnvironmentRuleClause&gt;**](AIConfigTargetingEnvironmentRuleClause.md) |  |  |
-| **track_events** | **Boolean** |  |  |
+| **clauses** | [**Array&lt;AIConfigTargetingEnvironmentRuleClause&gt;**](AIConfigTargetingEnvironmentRuleClause.md) | The clauses a context must match |  |
+| **track_events** | **Boolean** | Whether to send detailed events for evaluations that match this rule |  |
 
 ## Example
 

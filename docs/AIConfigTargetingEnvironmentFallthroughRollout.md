@@ -4,11 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **bucket_by** | **String** |  | [optional] |
-| **context_kind** | **String** |  |  |
+| **bucket_by** | **String** | The context attribute used to bucket contexts | [optional] |
+| **context_kind** | **String** | The context kind used to bucket contexts |  |
 | **experiment_allocation** | [**AIConfigTargetingEnvironmentFallthroughRolloutExperimentationAllocation**](AIConfigTargetingEnvironmentFallthroughRolloutExperimentationAllocation.md) |  | [optional] |
-| **seed** | **Integer** |  | [optional] |
-| **variations** | [**Array&lt;AIConfigTargetingEnvironmentFallthroughRolloutVariation&gt;**](AIConfigTargetingEnvironmentFallthroughRolloutVariation.md) |  |  |
+| **seed** | **Integer** | The seed used for bucketing | [optional] |
+| **variations** | [**Array&lt;AIConfigTargetingEnvironmentFallthroughRolloutVariation&gt;**](AIConfigTargetingEnvironmentFallthroughRolloutVariation.md) | The variations and their weights |  |
 
 ## Example
 

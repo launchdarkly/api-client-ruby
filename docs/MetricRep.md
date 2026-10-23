@@ -49,11 +49,12 @@
 | **winsor_include_imputed** | **Boolean** | When true, the percentile bound calculation includes imputed zeros. Only meaningful when at least one bound is set and the metric includes units that didn&#39;t send events. | [optional] |
 | **trace_query** | **String** | For trace metrics, the trace query to use for the metric. | [optional] |
 | **trace_value_location** | **String** | For trace metrics, the location in the trace to use for numeric values. | [optional] |
+| **unit_aggregation_field** | **String** | For count_distinct metrics, the column to count distinct values of | [optional] |
 | **denominator** | [**MetricDenominatorRep**](MetricDenominatorRep.md) |  | [optional] |
 | **experiments** | [**Array&lt;DependentExperimentRep&gt;**](DependentExperimentRep.md) |  | [optional] |
 | **metric_groups** | [**Array&lt;DependentMetricGroupRep&gt;**](DependentMetricGroupRep.md) | Metric groups that use this metric | [optional] |
 | **last_used_in_experiment** | [**DependentExperimentRep**](DependentExperimentRep.md) |  | [optional] |
-| **last_used_in_guarded_rollout** | [**DependentMeasuredRolloutRep**](DependentMeasuredRolloutRep.md) |  | [optional] |
+| **last_used_in_guarded_rollout** | [**DependentReleasePhaseRep**](DependentReleasePhaseRep.md) |  | [optional] |
 | **is_active** | **Boolean** | Whether the metric is active | [optional] |
 | **_attached_features** | [**Array&lt;FlagListingRep&gt;**](FlagListingRep.md) | Details on the flags attached to this metric | [optional] |
 
@@ -108,6 +109,7 @@ instance = LaunchDarklyApi::MetricRep.new(
   winsor_include_imputed: false,
   trace_query: service.name &#x3D; &quot;checkout&quot;,
   trace_value_location: duration,
+  unit_aggregation_field: null,
   denominator: null,
   experiments: null,
   metric_groups: null,

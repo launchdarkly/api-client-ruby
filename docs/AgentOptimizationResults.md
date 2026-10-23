@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **_links** | [**PaginatedLinks**](PaginatedLinks.md) |  | [optional] |
-| **items** | [**Array&lt;AgentOptimizationResult&gt;**](AgentOptimizationResult.md) |  |  |
-| **total_count** | **Integer** |  | [optional] |
+| **items** | [**Array&lt;AgentOptimizationResult&gt;**](AgentOptimizationResult.md) | The items on this page |  |
+| **total_count** | **Integer** | The total number of items | [optional] |
 
 ## Example
 

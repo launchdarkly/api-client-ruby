@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** |  | [optional] |
-| **environment_key** | **String** |  |  |
-| **instructions** | **Array&lt;Hash&lt;String, Object&gt;&gt;** |  |  |
+| **comment** | **String** | A comment describing the change | [optional] |
+| **environment_key** | **String** | The environment key |  |
+| **instructions** | **Array&lt;Hash&lt;String, Object&gt;&gt;** | The semantic patch instructions to apply |  |
 
 ## Example
 

@@ -4,11 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **_id** | **String** |  |  |
-| **email** | **String** |  |  |
-| **first_name** | **String** |  | [optional] |
-| **last_name** | **String** |  | [optional] |
-| **role** | **String** |  |  |
+| **_id** | **String** | The member ID |  |
+| **email** | **String** | The member email address |  |
+| **first_name** | **String** | The member first name | [optional] |
+| **last_name** | **String** | The member last name | [optional] |
+| **role** | **String** | The member role |  |
 
 ## Example
 

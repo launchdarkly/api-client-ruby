@@ -6,13 +6,13 @@
 | ---- | ---- | ----------- | ----- |
 | **created_at** | **Integer** | Unix timestamp in milliseconds |  |
 | **defaults** | [**AIConfigTargetingDefaults**](AIConfigTargetingDefaults.md) |  | [optional] |
-| **environments** | [**Hash&lt;String, AIConfigTargetingEnvironment&gt;**](AIConfigTargetingEnvironment.md) |  |  |
+| **environments** | [**Hash&lt;String, AIConfigTargetingEnvironment&gt;**](AIConfigTargetingEnvironment.md) | Targeting for each environment, keyed by environment key |  |
 | **experiments** | [**AiConfigsExperimentInfoRep**](AiConfigsExperimentInfoRep.md) |  |  |
-| **key** | **String** |  |  |
-| **name** | **String** |  |  |
-| **tags** | **Array&lt;String&gt;** |  |  |
-| **variations** | [**Array&lt;AIConfigTargetingVariation&gt;**](AIConfigTargetingVariation.md) |  |  |
-| **_version** | **Integer** |  |  |
+| **key** | **String** | The AI Config key |  |
+| **name** | **String** | The AI Config name |  |
+| **tags** | **Array&lt;String&gt;** | Tags for this resource |  |
+| **variations** | [**Array&lt;AIConfigTargetingVariation&gt;**](AIConfigTargetingVariation.md) | The variations of this AI Config |  |
+| **_version** | **Integer** | The version number of this resource |  |
 
 ## Example
 

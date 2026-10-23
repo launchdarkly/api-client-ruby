@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **statement** | **String** |  |  |
-| **threshold** | **Float** |  |  |
+| **statement** | **String** | A statement the response must satisfy |  |
+| **threshold** | **Float** | The minimum score needed to pass |  |
 
 ## Example
 

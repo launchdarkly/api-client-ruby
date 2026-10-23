@@ -6,27 +6,27 @@
 | ---- | ---- | ----------- | ----- |
 | **_access** | [**AiConfigsAccess**](AiConfigsAccess.md) |  | [optional] |
 | **_links** | [**ParentAndSelfLinks**](ParentAndSelfLinks.md) |  | [optional] |
-| **id** | **String** |  |  |
-| **run_id** | **String** |  |  |
-| **agent_optimization_id** | **String** |  |  |
-| **agent_optimization_version** | **Integer** |  |  |
+| **id** | **String** | The result ID |  |
+| **run_id** | **String** | The ID of the run this result belongs to |  |
+| **agent_optimization_id** | **String** | The agent optimization ID |  |
+| **agent_optimization_version** | **Integer** | The version of the agent optimization used |  |
 | **status** | [**AgentOptimizationResultStatus**](AgentOptimizationResultStatus.md) |  |  |
 | **activity** | [**AgentOptimizationResultActivity**](AgentOptimizationResultActivity.md) |  |  |
-| **iteration** | **Integer** |  |  |
-| **instructions** | **String** |  |  |
-| **parameters** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **user_input** | **String** |  |  |
-| **completion_response** | **String** |  | [optional] |
-| **variation** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **scores** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **generation_tokens** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **evaluation_tokens** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **generation_latency** | **Integer** |  | [optional] |
-| **evaluation_latencies** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **completed_at** | **Integer** |  | [optional] |
-| **created_variation_key** | **String** |  | [optional] |
-| **created_at** | **Integer** |  |  |
-| **updated_at** | **Integer** |  |  |
+| **iteration** | **Integer** | The iteration number within the run |  |
+| **instructions** | **String** | The instructions used for this attempt |  |
+| **parameters** | **Hash&lt;String, Object&gt;** | The model parameters used for this attempt | [optional] |
+| **user_input** | **String** | The user input used for this attempt |  |
+| **completion_response** | **String** | The model response | [optional] |
+| **variation** | **Hash&lt;String, Object&gt;** | The variation that was tested | [optional] |
+| **scores** | **Hash&lt;String, Object&gt;** | The scores for the response | [optional] |
+| **generation_tokens** | **Hash&lt;String, Object&gt;** | Token usage for generating the response | [optional] |
+| **evaluation_tokens** | **Hash&lt;String, Object&gt;** | Token usage for judging the response | [optional] |
+| **generation_latency** | **Integer** | How long the response took to generate | [optional] |
+| **evaluation_latencies** | **Hash&lt;String, Object&gt;** | How long each evaluation took | [optional] |
+| **completed_at** | **Integer** | When this finished, in Unix milliseconds | [optional] |
+| **created_variation_key** | **String** | The key of the variation created from this result | [optional] |
+| **created_at** | **Integer** | When this resource was created, in Unix milliseconds |  |
+| **updated_at** | **Integer** | When this resource was last updated, in Unix milliseconds |  |
 
 ## Example
 

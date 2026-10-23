@@ -9,6 +9,7 @@
 | **name** | **String** | The human-readable name of the SDK key. |  |
 | **description** | **String** | The optional description of the SDK key. | [optional] |
 | **expiry** | **Integer** |  | [optional] |
+| **view_keys** | **Array&lt;String&gt;** | List of view keys to associate with the SDK key. | [optional] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = LaunchDarklyApi::SdkKeyPost.new(
   key: null,
   name: null,
   description: null,
-  expiry: null
+  expiry: null,
+  view_keys: null
 )
 ```
 

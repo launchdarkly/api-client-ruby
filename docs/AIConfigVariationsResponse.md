@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;AIConfigVariation&gt;**](AIConfigVariation.md) |  |  |
-| **total_count** | **Integer** |  |  |
+| **items** | [**Array&lt;AIConfigVariation&gt;**](AIConfigVariation.md) | The items on this page |  |
+| **total_count** | **Integer** | The total number of items |  |
 
 ## Example
 

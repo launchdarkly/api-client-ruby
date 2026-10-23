@@ -4,10 +4,10 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **active_configs** | **Integer** |  |  |
-| **active_experiments** | **Integer** |  |  |
-| **average_satisfaction7_d** | **Float** |  | [optional] |
-| **spend_month_to_date** | **Float** |  | [optional] |
+| **active_configs** | **Integer** | Number of active AI Configs |  |
+| **active_experiments** | **Integer** | Number of active experiments on AI Configs |  |
+| **average_satisfaction7_d** | **Float** | Average satisfaction rating over the last 7 days | [optional] |
+| **spend_month_to_date** | **Float** | Spend so far this month | [optional] |
 
 ## Example
 

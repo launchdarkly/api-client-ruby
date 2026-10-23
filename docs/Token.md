@@ -20,6 +20,7 @@
 | **_links** | [**Hash&lt;String, Link&gt;**](Link.md) | The location and content type of related resources |  |
 | **default_api_version** | **Integer** | The default API version for this token | [optional] |
 | **last_used** | **Integer** |  | [optional] |
+| **expiry** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -42,7 +43,8 @@ instance = LaunchDarklyApi::Token.new(
   service_token: false,
   _links: {&quot;parent&quot;:{&quot;href&quot;:&quot;/api/v2/tokens&quot;,&quot;type&quot;:&quot;application/json&quot;},&quot;self&quot;:{&quot;href&quot;:&quot;/api/v2/tokens/61095542756dba551110ae21&quot;,&quot;type&quot;:&quot;application/json&quot;}},
   default_api_version: 20240415,
-  last_used: null
+  last_used: null,
+  expiry: null
 )
 ```
 

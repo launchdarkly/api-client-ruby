@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **_access** | [**AiConfigsAccess**](AiConfigsAccess.md) |  | [optional] |
+| **_site** | [**CoreLink**](CoreLink.md) |  | [optional] |
 | **key** | **String** | A unique key for the agent graph |  |
 | **name** | **String** | A human-readable name for the agent graph |  |
 | **description** | **String** | A description of the agent graph | [optional] |
@@ -21,6 +22,7 @@ require 'launchdarkly_api'
 
 instance = LaunchDarklyApi::AgentGraph.new(
   _access: null,
+  _site: null,
   key: null,
   name: null,
   description: null,

@@ -6,14 +6,14 @@
 | ---- | ---- | ----------- | ----- |
 | **status** | [**AgentOptimizationResultStatus**](AgentOptimizationResultStatus.md) |  | [optional] |
 | **activity** | [**AgentOptimizationResultActivity**](AgentOptimizationResultActivity.md) |  | [optional] |
-| **completion_response** | **String** |  | [optional] |
-| **variation** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **scores** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **generation_tokens** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **evaluation_tokens** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **generation_latency** | **Integer** |  | [optional] |
-| **evaluation_latencies** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **created_variation_key** | **String** |  | [optional] |
+| **completion_response** | **String** | The model response | [optional] |
+| **variation** | **Hash&lt;String, Object&gt;** | The variation that was tested | [optional] |
+| **scores** | **Hash&lt;String, Object&gt;** | The scores for the response | [optional] |
+| **generation_tokens** | **Hash&lt;String, Object&gt;** | Token usage for generating the response | [optional] |
+| **evaluation_tokens** | **Hash&lt;String, Object&gt;** | Token usage for judging the response | [optional] |
+| **generation_latency** | **Integer** | How long the response took to generate | [optional] |
+| **evaluation_latencies** | **Hash&lt;String, Object&gt;** | How long each evaluation took | [optional] |
+| **created_variation_key** | **String** | The key of the variation created from this result | [optional] |
 
 ## Example
 

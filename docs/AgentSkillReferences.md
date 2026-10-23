@@ -7,7 +7,7 @@
 | **_links** | [**PaginatedLinks**](PaginatedLinks.md) |  | [optional] |
 | **resource_key** | **String** | The key of the agent skill. |  |
 | **resource_type** | **String** | The type of the resource being referenced. |  |
-| **items** | [**Array&lt;AgentSkillReference&gt;**](AgentSkillReference.md) |  |  |
+| **items** | [**Array&lt;AgentSkillReference&gt;**](AgentSkillReference.md) | The resources that reference this agent skill |  |
 | **total_count** | **Integer** | The total number of references. |  |
 
 ## Example

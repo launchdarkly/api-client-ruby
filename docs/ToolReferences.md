@@ -7,7 +7,7 @@
 | **_links** | [**PaginatedLinks**](PaginatedLinks.md) |  | [optional] |
 | **resource_key** | **String** | The key of the AI tool. |  |
 | **resource_type** | **String** | The type of the resource being referenced. |  |
-| **items** | [**Array&lt;ToolReference&gt;**](ToolReference.md) |  |  |
+| **items** | [**Array&lt;ToolReference&gt;**](ToolReference.md) | The resources that reference this tool |  |
 | **total_count** | **Integer** | The total number of references. |  |
 
 ## Example

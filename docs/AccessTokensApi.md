@@ -9,7 +9,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 | [**get_tokens**](AccessTokensApi.md#get_tokens) | **GET** /api/v2/tokens | List access tokens |
 | [**patch_token**](AccessTokensApi.md#patch_token) | **PATCH** /api/v2/tokens/{id} | Patch access token |
 | [**post_token**](AccessTokensApi.md#post_token) | **POST** /api/v2/tokens | Create access token |
-| [**reset_token**](AccessTokensApi.md#reset_token) | **POST** /api/v2/tokens/{id}/reset | Reset access token |
+| [**reset_token**](AccessTokensApi.md#reset_token) | **POST** /api/v2/tokens/{id}/reset | Reset access token (legacy) |
 
 
 ## delete_token
@@ -378,9 +378,9 @@ end
 
 > <Token> reset_token(id, opts)
 
-Reset access token
+Reset access token (legacy)
 
-Reset an access token's secret key with an optional expiry time for the old key.
+Reset an access token's secret key with an optional expiry time for the old key. Use of this legacy handler is discouraged. Patch the `expiry` field on the token directly instead.
 
 ### Examples
 
@@ -402,7 +402,7 @@ opts = {
 }
 
 begin
-  # Reset access token
+  # Reset access token (legacy)
   result = api_instance.reset_token(id, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
@@ -418,7 +418,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Reset access token
+  # Reset access token (legacy)
   data, status_code, headers = api_instance.reset_token_with_http_info(id, opts)
   p status_code # => 2xx
   p headers # => { ... }

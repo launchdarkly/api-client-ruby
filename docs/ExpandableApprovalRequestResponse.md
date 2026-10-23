@@ -13,6 +13,7 @@
 | **review_status** | **String** | Current status of the review of this approval request |  |
 | **all_reviews** | [**Array&lt;ReviewResponse&gt;**](ReviewResponse.md) | An array of individual reviews of this approval request |  |
 | **notify_member_ids** | **Array&lt;String&gt;** | An array of member IDs. These members are notified to review the approval request. |  |
+| **notify_team_keys** | **Array&lt;String&gt;** | An array of team keys, if teams were specified when the approval request was created. The members of these teams are listed in &lt;code&gt;notifyMemberIds&lt;/code&gt;, resolved when the request was made. Team membership may have changed since then. | [optional] |
 | **applied_date** | **Integer** |  | [optional] |
 | **applied_by_member_id** | **String** | The member ID of the member who applied the approval request | [optional] |
 | **applied_by_service_token_id** | **String** | The service token ID of the service token which applied the approval request | [optional] |
@@ -47,6 +48,7 @@ instance = LaunchDarklyApi::ExpandableApprovalRequestResponse.new(
   review_status: pending,
   all_reviews: null,
   notify_member_ids: [&quot;1234a56b7c89d012345e678f&quot;],
+  notify_team_keys: [&quot;example-reviewer-team&quot;],
   applied_date: null,
   applied_by_member_id: 1234a56b7c89d012345e678f,
   applied_by_service_token_id: 1234a56b7c89d012345e678f,
