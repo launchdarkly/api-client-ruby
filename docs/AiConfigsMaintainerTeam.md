@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** |  |  |
-| **name** | **String** |  |  |
+| **key** | **String** | The team key |  |
+| **name** | **String** | The team name |  |
 
 ## Example
 

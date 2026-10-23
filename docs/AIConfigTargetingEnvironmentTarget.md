@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **context_kind** | **String** |  |  |
-| **values** | **Array&lt;String&gt;** |  |  |
-| **variation** | **Integer** |  |  |
+| **context_kind** | **String** | The context kind |  |
+| **values** | **Array&lt;String&gt;** | The context keys to target |  |
+| **variation** | **Integer** | Index of the variation to serve |  |
 
 ## Example
 

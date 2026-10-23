@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **variation_key** | **String** |  | [optional] |
+| **variation_key** | **String** | The variation key | [optional] |
 | **metrics** | [**Metrics**](Metrics.md) |  | [optional] |
 
 ## Example

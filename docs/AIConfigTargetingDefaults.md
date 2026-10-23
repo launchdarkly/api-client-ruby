@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **on_variation** | **Integer** |  |  |
-| **off_variation** | **Integer** |  |  |
+| **on_variation** | **Integer** | Index of the variation served when targeting is on |  |
+| **off_variation** | **Integer** | Index of the variation served when targeting is off |  |
 
 ## Example
 

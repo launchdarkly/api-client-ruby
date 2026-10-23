@@ -49,6 +49,7 @@
 | **winsor_include_imputed** | **Boolean** | When true, the percentile bound calculation includes imputed zeros. Only meaningful when at least one bound is set and the metric includes units that didn&#39;t send events. | [optional] |
 | **trace_query** | **String** | For trace metrics, the trace query to use for the metric. | [optional] |
 | **trace_value_location** | **String** | For trace metrics, the location in the trace to use for numeric values. | [optional] |
+| **unit_aggregation_field** | **String** | For count_distinct metrics, the column to count distinct values of | [optional] |
 | **denominator** | [**MetricDenominatorRep**](MetricDenominatorRep.md) |  | [optional] |
 
 ## Example
@@ -102,6 +103,7 @@ instance = LaunchDarklyApi::MetricListingRep.new(
   winsor_include_imputed: false,
   trace_query: service.name &#x3D; &quot;checkout&quot;,
   trace_value_location: duration,
+  unit_aggregation_field: null,
   denominator: null
 )
 ```

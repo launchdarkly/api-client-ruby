@@ -6,14 +6,15 @@
 | ---- | ---- | ----------- | ----- |
 | **_access** | [**AiConfigsAccess**](AiConfigsAccess.md) |  | [optional] |
 | **_links** | [**ParentAndSelfLinks**](ParentAndSelfLinks.md) |  | [optional] |
-| **description** | **String** |  |  |
-| **key** | **String** |  |  |
+| **_site** | [**CoreLink**](CoreLink.md) |  | [optional] |
+| **description** | **String** | A description of the AI Config |  |
+| **key** | **String** | The AI Config key |  |
 | **_maintainer** | [**AIConfigMaintainer**](AIConfigMaintainer.md) |  | [optional] |
-| **mode** | **String** |  | [optional][default to &#39;completion&#39;] |
-| **name** | **String** |  |  |
-| **tags** | **Array&lt;String&gt;** |  |  |
-| **version** | **Integer** |  |  |
-| **variations** | [**Array&lt;AIConfigVariation&gt;**](AIConfigVariation.md) |  |  |
+| **mode** | **String** | The AI Config mode | [optional][default to &#39;completion&#39;] |
+| **name** | **String** | The AI Config name |  |
+| **tags** | **Array&lt;String&gt;** | Tags for this resource |  |
+| **version** | **Integer** | The version number of this resource |  |
+| **variations** | [**Array&lt;AIConfigVariation&gt;**](AIConfigVariation.md) | The variations of this AI Config |  |
 | **created_at** | **Integer** |  |  |
 | **updated_at** | **Integer** |  |  |
 | **evaluation_metric_key** | **String** | Evaluation metric key for this config | [optional] |
@@ -29,6 +30,7 @@ require 'launchdarkly_api'
 instance = LaunchDarklyApi::AIConfig.new(
   _access: null,
   _links: null,
+  _site: null,
   description: null,
   key: null,
   _maintainer: null,

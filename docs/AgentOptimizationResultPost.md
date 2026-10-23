@@ -4,12 +4,12 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **run_id** | **String** |  |  |
-| **agent_optimization_version** | **Integer** |  |  |
-| **iteration** | **Integer** |  |  |
-| **instructions** | **String** |  |  |
-| **user_input** | **String** |  |  |
-| **parameters** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **run_id** | **String** | The ID of the run this result belongs to |  |
+| **agent_optimization_version** | **Integer** | The version of the agent optimization used |  |
+| **iteration** | **Integer** | The iteration number within the run |  |
+| **instructions** | **String** | The instructions used for this attempt |  |
+| **user_input** | **String** | The user input used for this attempt |  |
+| **parameters** | **Hash&lt;String, Object&gt;** | The model parameters used for this attempt | [optional] |
 
 ## Example
 

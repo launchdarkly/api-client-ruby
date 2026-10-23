@@ -11,7 +11,7 @@
 | **iteration** | [**IterationInput**](IterationInput.md) |  |  |
 | **holdout_id** | **String** | The ID of the holdout | [optional] |
 | **tags** | **Array&lt;String&gt;** | Tags for the experiment | [optional] |
-| **methodology** | **String** | The results analysis approach. | [optional] |
+| **methodology** | **String** | The results analysis approach. Defaults to \&quot;frequentist\&quot; when not provided, or \&quot;bayesian\&quot; for multi-armed bandit experiments. | [optional] |
 | **analysis_config** | [**AnalysisConfigInput**](AnalysisConfigInput.md) |  | [optional] |
 | **data_source** | **String** | The source of metric data in order to analyze results. Defaults to \&quot;launchdarkly\&quot; when not provided. | [optional] |
 | **type** | **String** | The type of experiment. | [optional] |
@@ -29,7 +29,7 @@ instance = LaunchDarklyApi::ExperimentPost.new(
   iteration: null,
   holdout_id: f3b74309-d581-44e1-8a2b-bb2933b4fe40,
   tags: null,
-  methodology: bayesian,
+  methodology: frequentist,
   analysis_config: null,
   data_source: snowflake,
   type: experiment

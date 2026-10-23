@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **_links** | [**PaginatedLinks**](PaginatedLinks.md) |  | [optional] |
-| **items** | [**Array&lt;AITool&gt;**](AITool.md) |  |  |
-| **total_count** | **Integer** |  |  |
+| **items** | [**Array&lt;AITool&gt;**](AITool.md) | The items on this page |  |
+| **total_count** | **Integer** | The total number of items |  |
 
 ## Example
 

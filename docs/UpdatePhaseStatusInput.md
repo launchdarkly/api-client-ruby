@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **status** | **String** |  | [optional] |
-| **audiences** | [**Array&lt;ReleaserAudienceConfigInput&gt;**](ReleaserAudienceConfigInput.md) | Extra configuration for audiences required upon phase initialization. | [optional] |
+| **audiences** | [**Array&lt;PipelineReleaseAudienceConfigInput&gt;**](PipelineReleaseAudienceConfigInput.md) | Extra configuration for audiences required upon phase initialization. | [optional] |
 
 ## Example
 

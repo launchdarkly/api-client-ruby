@@ -4,13 +4,13 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **key** | **String** |  |  |
-| **maintainer_id** | **String** |  | [optional] |
-| **maintainer_team_key** | **String** |  | [optional] |
-| **description** | **String** |  | [optional] |
+| **key** | **String** | A unique key for the tool |  |
+| **maintainer_id** | **String** | The ID of the member who maintains this resource | [optional] |
+| **maintainer_team_key** | **String** | The key of the team that maintains this resource | [optional] |
+| **description** | **String** | A description of the tool | [optional] |
 | **schema** | **Object** | JSON Schema defining the tool&#39;s parameters for LLM consumption |  |
 | **custom_parameters** | **Object** | Custom metadata and configuration for application-level use (not sent to LLM) | [optional] |
-| **tags** | **Array&lt;String&gt;** |  | [optional] |
+| **tags** | **Array&lt;String&gt;** | Tags for the tool. Tags can be used in custom role policies. | [optional] |
 
 ## Example
 
@@ -23,8 +23,8 @@ instance = LaunchDarklyApi::AIToolPost.new(
   maintainer_team_key: example-team-key,
   description: null,
   schema: null,
-  custom_parameters: null,
-  tags: null
+  custom_parameters: {&quot;requiresApproval&quot;:true,&quot;timeoutMs&quot;:5000},
+  tags: [&quot;support&quot;]
 )
 ```
 

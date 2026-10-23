@@ -11,6 +11,7 @@
 | **inline_role** | [**Array&lt;StatementPost&gt;**](StatementPost.md) | A JSON array of statements represented as JSON objects with three attributes: effect, resources, actions. May be used in place of a role. | [optional] |
 | **service_token** | **Boolean** | Whether the token is a service token | [optional] |
 | **default_api_version** | **Integer** | The default API version for this token | [optional] |
+| **expiry** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = LaunchDarklyApi::AccessTokenPost.new(
   custom_role_ids: null,
   inline_role: null,
   service_token: null,
-  default_api_version: null
+  default_api_version: null,
+  expiry: null
 )
 ```
 

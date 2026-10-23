@@ -9,7 +9,7 @@
 | **rollback_on_regression** | **Boolean** | Whether to roll back on regression | [optional] |
 | **metric_keys** | **Array&lt;String&gt;** | List of metric keys | [optional] |
 | **metric_group_keys** | **Array&lt;String&gt;** | List of metric group keys | [optional] |
-| **stages** | [**Array&lt;ReleasePolicyStage&gt;**](ReleasePolicyStage.md) | List of stages | [optional] |
+| **stages** | [**Array&lt;ReleasePolicyStage&gt;**](ReleasePolicyStage.md) | List of stages. At most 10 stages by default; the server enforces the per-account limit, which is never more than 20. | [optional] |
 
 ## Example
 
@@ -22,7 +22,7 @@ instance = LaunchDarklyApi::GuardedReleaseConfig.new(
   rollback_on_regression: true,
   metric_keys: [&quot;http-errors&quot;,&quot;latency&quot;],
   metric_group_keys: [&quot;frontend-metrics&quot;,&quot;backend-metrics&quot;],
-  stages: null
+  stages: [{&quot;allocation&quot;:25000,&quot;durationMillis&quot;:60000},{&quot;allocation&quot;:50000,&quot;durationMillis&quot;:60000}]
 )
 ```
 

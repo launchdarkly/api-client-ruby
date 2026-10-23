@@ -156,7 +156,7 @@ nil (empty response body)
 
 ## get_all_integration_configurations
 
-> <IntegrationConfigurationCollectionRep> get_all_integration_configurations(integration_key)
+> <IntegrationConfigurationCollectionRep> get_all_integration_configurations(integration_key, opts)
 
 Get all configurations for the integration
 
@@ -176,11 +176,14 @@ LaunchDarklyApi.configure do |config|
 end
 
 api_instance = LaunchDarklyApi::IntegrationsBetaApi.new
-integration_key = 'integration_key_example' # String | Integration key
+integration_key = 'integration_key_example' # String | A key that corresponds to the third-party integration you are configuring. For example, `mezmo`.
+opts = {
+  include_pending: true # Boolean | When `true`, includes pending two-step setup drafts that were created using `/setup` but are not yet finalized. Defaults to `false`, which returns only active configurations.
+}
 
 begin
   # Get all configurations for the integration
-  result = api_instance.get_all_integration_configurations(integration_key)
+  result = api_instance.get_all_integration_configurations(integration_key, opts)
   p result
 rescue LaunchDarklyApi::ApiError => e
   puts "Error when calling IntegrationsBetaApi->get_all_integration_configurations: #{e}"
@@ -191,12 +194,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<IntegrationConfigurationCollectionRep>, Integer, Hash)> get_all_integration_configurations_with_http_info(integration_key)
+> <Array(<IntegrationConfigurationCollectionRep>, Integer, Hash)> get_all_integration_configurations_with_http_info(integration_key, opts)
 
 ```ruby
 begin
   # Get all configurations for the integration
-  data, status_code, headers = api_instance.get_all_integration_configurations_with_http_info(integration_key)
+  data, status_code, headers = api_instance.get_all_integration_configurations_with_http_info(integration_key, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <IntegrationConfigurationCollectionRep>
@@ -209,7 +212,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **integration_key** | **String** | Integration key |  |
+| **integration_key** | **String** | A key that corresponds to the third-party integration you are configuring. For example, &#x60;mezmo&#x60;. |  |
+| **include_pending** | **Boolean** | When &#x60;true&#x60;, includes pending two-step setup drafts that were created using &#x60;/setup&#x60; but are not yet finalized. Defaults to &#x60;false&#x60;, which returns only active configurations. | [optional] |
 
 ### Return type
 

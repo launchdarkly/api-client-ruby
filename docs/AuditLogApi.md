@@ -16,7 +16,7 @@ All URIs are relative to *https://app.launchdarkly.com*
 
 List audit log entries
 
-Get a list of all audit log entries. The query parameters let you restrict the results that return by date ranges, resource specifiers, or a full-text search query.  LaunchDarkly uses a resource specifier syntax to name resources or collections of resources. To learn more, read [About the resource specifier syntax](https://launchdarkly.com/docs/home/account/role-resources#about-the-resource-specifier-syntax). 
+Get a list of all audit log entries. The query parameters let you restrict the results that return by date ranges, resource specifiers, or a full-text search query.  LaunchDarkly uses a resource specifier syntax to name resources or collections of resources. To learn more, read [Specifying resources in the advanced editor](https://launchdarkly.com/docs/home/account/roles/role-resources#specifying-resources-in-the-advanced-editor). 
 
 ### Examples
 
@@ -37,7 +37,9 @@ opts = {
   after: 789, # Integer | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries this returns occurred after the timestamp.
   q: 'q_example', # String | Text to search for. You can search for the full or partial name of the resource.
   limit: 789, # Integer | A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10.
-  spec: 'spec_example' # String | A resource specifier that lets you filter audit log listings by resource
+  spec: 'spec_example', # String | A resource specifier that lets you filter audit log listings by resource
+  member: 'member_example', # String | A member ID that lets you filter audit log listings by the member who made the change. Repeat the parameter to filter by multiple members.
+  token: 'token_example' # String | An access token ID that lets you filter audit log listings by the token that made the change. Repeat the parameter to filter by multiple tokens.
 }
 
 begin
@@ -76,6 +78,8 @@ end
 | **q** | **String** | Text to search for. You can search for the full or partial name of the resource. | [optional] |
 | **limit** | **Integer** | A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10. | [optional] |
 | **spec** | **String** | A resource specifier that lets you filter audit log listings by resource | [optional] |
+| **member** | **String** | A member ID that lets you filter audit log listings by the member who made the change. Repeat the parameter to filter by multiple members. | [optional] |
+| **token** | **String** | An access token ID that lets you filter audit log listings by the token that made the change. Repeat the parameter to filter by multiple tokens. | [optional] |
 
 ### Return type
 
@@ -168,7 +172,7 @@ end
 
 Search audit log entries
 
-Search your audit log entries. The query parameters let you restrict the results that return by date ranges, or a full-text search query. The request body lets you restrict the results that return by resource specifiers.  LaunchDarkly uses a resource specifier syntax to name resources or collections of resources. To learn more, read [About the resource specifier syntax](https://launchdarkly.com/docs/home/account/role-resources#about-the-resource-specifier-syntax). 
+Search your audit log entries. The query parameters let you restrict the results that return by date ranges, or a full-text search query. The request body lets you restrict the results that return by resource specifiers.  LaunchDarkly uses a resource specifier syntax to name resources or collections of resources. To learn more, read [Specifying resources in the advanced editor](https://launchdarkly.com/docs/home/account/roles/role-resources#specifying-resources-in-the-advanced-editor). 
 
 ### Examples
 
@@ -189,6 +193,8 @@ opts = {
   after: 789, # Integer | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned occurred after the timestamp.
   q: 'q_example', # String | Text to search for. You can search for the full or partial name of the resource.
   limit: 789, # Integer | A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10.
+  member: 'member_example', # String | A member ID that lets you filter audit log listings by the member who made the change. Repeat the parameter to filter by multiple members.
+  token: 'token_example', # String | An access token ID that lets you filter audit log listings by the token that made the change. Repeat the parameter to filter by multiple tokens.
   statement_post: [LaunchDarklyApi::StatementPost.new({effect: 'allow'})] # Array<StatementPost> | 
 }
 
@@ -227,6 +233,8 @@ end
 | **after** | **Integer** | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned occurred after the timestamp. | [optional] |
 | **q** | **String** | Text to search for. You can search for the full or partial name of the resource. | [optional] |
 | **limit** | **Integer** | A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10. | [optional] |
+| **member** | **String** | A member ID that lets you filter audit log listings by the member who made the change. Repeat the parameter to filter by multiple members. | [optional] |
+| **token** | **String** | An access token ID that lets you filter audit log listings by the token that made the change. Repeat the parameter to filter by multiple tokens. | [optional] |
 | **statement_post** | [**Array&lt;StatementPost&gt;**](StatementPost.md) |  | [optional] |
 
 ### Return type
@@ -269,7 +277,9 @@ after = 789 # Integer | A timestamp filter, expressed as a Unix epoch time in mi
 statement_post = [LaunchDarklyApi::StatementPost.new({effect: 'allow'})] # Array<StatementPost> | 
 opts = {
   before: 789, # Integer | A timestamp filter, expressed as a Unix epoch time in milliseconds. Defaults to now.
-  buckets: 789 # Integer | Number of time buckets to divide the range into. Default 50, max 500.
+  buckets: 789, # Integer | Number of time buckets to divide the range into. Default 50, max 500.
+  member: 'member_example', # String | A member ID that lets you filter counts to changes made by that member. Repeat the parameter to filter by multiple members.
+  token: 'token_example' # String | An access token ID that lets you filter counts to changes made by that token. Repeat the parameter to filter by multiple tokens.
 }
 
 begin
@@ -307,6 +317,8 @@ end
 | **statement_post** | [**Array&lt;StatementPost&gt;**](StatementPost.md) |  |  |
 | **before** | **Integer** | A timestamp filter, expressed as a Unix epoch time in milliseconds. Defaults to now. | [optional] |
 | **buckets** | **Integer** | Number of time buckets to divide the range into. Default 50, max 500. | [optional] |
+| **member** | **String** | A member ID that lets you filter counts to changes made by that member. Repeat the parameter to filter by multiple members. | [optional] |
+| **token** | **String** | An access token ID that lets you filter counts to changes made by that token. Repeat the parameter to filter by multiple tokens. | [optional] |
 
 ### Return type
 
